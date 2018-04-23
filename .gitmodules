@@ -1,6 +1,7 @@
-[submodule "OpenCV"]
-	path = third_party/opencv
-	url = https://github.com/opencv/opencv
+
 [submodule "third_party/opencv"]
 	path = third_party/opencv
 	url = https://github.com/opencv/opencv
+[submodule "third_party/cppzmq"]
+	path = third_party/cppzmq
+	url = git@github.com:zeromq/cppzmq.git
