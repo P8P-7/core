@@ -96,7 +96,7 @@ build
 .nfs*
 
 # Protobuff generated files
-./goliath/proto/*
+goliath/proto
 
 
 # End of https://www.gitignore.io/api/linux,cmake,clion+all
