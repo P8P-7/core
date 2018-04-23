@@ -4,15 +4,15 @@ include(flags)
 
 set(COMMAND_SOURCE
     commands/command.h
-    commands/move_command.h
     commands/move_command.cpp
     )
 
 set(CONTROLLER_SOURCE
     main.cpp
+    ${COMMAND_SOURCE}
     )
 
-add_executable(${PROJECT_NAME} ${CONTROLLER_SOURCE} ${COMMAND_SOURCE})
+add_executable(${PROJECT_NAME} ${CONTROLLER_SOURCE})
 
 compiler_flags(${PROJECT_NAME} 4)
 

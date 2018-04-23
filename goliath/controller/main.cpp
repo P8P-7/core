@@ -1,7 +1,7 @@
 #include <iostream>
 #include <goliath/caterpillar_movement.h>
 
-#include "commands/move_command.cpp"
+#include "commands/move_command.h"
 
 using namespace goliath::core;
 
