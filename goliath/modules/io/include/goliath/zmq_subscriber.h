@@ -1,5 +1,7 @@
 #pragma once
 
+#include <thread>
+
 #include "zmq_io.h"
 
 namespace goliath::io {
@@ -7,9 +9,11 @@ namespace goliath::io {
     public:
         zmq_subscriber(const std::string &host, const int port, const std::string &topic);
 
-        std::string get();
+        void receive();
 
     private:
         const std::string topic;
+
+        std::thread worker;
     };
 }

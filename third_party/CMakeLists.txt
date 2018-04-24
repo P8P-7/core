@@ -1,15 +1,19 @@
-find_package(Threads REQUIRED)
+MACRO(add_simple_library TARGET PACKAGE)
+    IF(NOT ${PACKAGE}_FOUND)
+        find_package(${PACKAGE} REQUIRED)
+        include_directories(${${PACKAGE}_INCLUDE_DIR})
+    ENDIF()
+
+    target_link_libraries(${TARGET} ${${PACKAGE}_LIBRARY} ${${PACKAGE}_LIBS})
+ENDMACRO()
 
 MACRO(multithread TARGET)
+    find_package(Threads REQUIRED)
     target_link_libraries(${TARGET} ${CMAKE_THREAD_LIBS_INIT})
 ENDMACRO(multithread)
 
-find_package(OpenCV 3 REQUIRED)
-
 MACRO(link_opencv TARGET)
-    IF(OpenCV_FOUND)
-        target_link_libraries(${TARGET} ${OpenCV_LIBS})
-    ENDIF()
+    add_simple_library(${TARGET} OpenCV)
 ENDMACRO(link_opencv)
 
 MACRO(link_cppzmq TARGET)
@@ -21,13 +25,8 @@ MACRO(link_cppzmq TARGET)
     ENDIF()
 ENDMACRO(link_cppzmq)
 
-find_package(Boost REQUIRED)
-
 MACRO(link_boost TARGET)
-    IF(Boost_FOUND)
-        include_directories(${Boost_INCLUDE_DIRS})
-        target_link_libraries(${TARGET} ${Boost_LIBRARIES})
-    ENDIF()
+    add_simple_library(${TARGET} Boost)
 ENDMACRO(link_boost)
 
 find_package(Protobuf REQUIRED)
