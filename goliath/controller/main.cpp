@@ -10,8 +10,6 @@ using namespace goliath::io;
 
 int main() {
     std::cout << "Started controller!" << std::endl;
-    zmq_subscriber sub("localhost", 5555, "kleisislief");
-    zmq_publisher pub("localhost", 5556, "kleisislief");
-
+    zmq_subscriber sub("localhost", 5555, "test");
     return 0;
 }

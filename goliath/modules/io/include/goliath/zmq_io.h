@@ -1,5 +1,11 @@
 #pragma once
 
+#include <iostream>
+#include <string>
+#include <zmq.hpp>
+
+const std::string PROTOCOL = "tcp";
+
 namespace goliath::io {
     class zmq_io {
     public:

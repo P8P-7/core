@@ -1,5 +1,4 @@
-#include <goliath/io.h>
-#include <iostream>
+#include <goliath/zmq_io.h>
 
 using namespace goliath::io;
 

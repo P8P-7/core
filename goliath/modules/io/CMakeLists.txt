@@ -9,8 +9,8 @@ set(IO_MODULE_INCLUDES
 add_library(${PROJECT_NAME} ${IO_MODULE_INCLUDES})
 
 target_link_libraries(${PROJECT_NAME} core-module)
-link_cppzmq(${PROJECT_NAME})
 
+link_cppzmq(${PROJECT_NAME})
 target_include_directories(${PROJECT_NAME}
     PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include
     PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src
