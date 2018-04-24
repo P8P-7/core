@@ -13,6 +13,7 @@ MACRO(link_opencv TARGET)
 ENDMACRO(link_opencv)
 
 find_package(cppzmq REQUIRED)
+find_package(ZeroMQ REQUIRED)
 
 MACRO(link_cppzmq TARGET)
     include_directories(${ZeroMQ_INCLUDE_DIR} ${cppzmq_INCLUDE_DIR})
