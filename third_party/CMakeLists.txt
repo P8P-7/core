@@ -2,7 +2,7 @@ find_package(Threads REQUIRED)
 
 MACRO(multithread TARGET)
     target_link_libraries(${TARGET} ${CMAKE_THREAD_LIBS_INIT})
-ENDMACRO()
+ENDMACRO(multithread)
 
 find_package(OpenCV 3 REQUIRED)
 
@@ -17,14 +17,14 @@ find_package(cppzmq REQUIRED)
 MACRO(link_cppzmq TARGET)
     include_directories(${ZeroMQ_INCLUDE_DIR} ${cppzmq_INCLUDE_DIR})
     target_link_libraries(${TARGET} ${ZeroMQ_LIBRARY} ${cppzmq_LIBRARY})
-ENDMACRO()
+ENDMACRO(link_cppzmq)
 
 find_package(Boost REQUIRED)
 
 MACRO(link_boost TARGET)
     include_directories(${Boost_INCLUDE_DIRS})
     target_link_libraries(${TARGET} ${Boost_LIBRARIES})
-ENDMACRO()
+ENDMACRO(link_boost)
 
 find_package(Protobuf REQUIRED)
 

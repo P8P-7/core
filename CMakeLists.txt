@@ -7,3 +7,7 @@ set(CMAKE_CXX_STANDARD  14)
 
 add_subdirectory(third_party)
 add_subdirectory(goliath)
+
+enable_testing()
+
+add_subdirectory(tests)
