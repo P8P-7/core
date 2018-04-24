@@ -13,11 +13,12 @@ MACRO(link_opencv TARGET)
 ENDMACRO(link_opencv)
 
 find_package(cppzmq REQUIRED)
-find_package(ZeroMQ REQUIRED)
 
 MACRO(link_cppzmq TARGET)
-    include_directories(${ZeroMQ_INCLUDE_DIR} ${cppzmq_INCLUDE_DIR})
-    target_link_libraries(${TARGET} ${ZeroMQ_LIBRARY} ${cppzmq_LIBRARY})
+    IF(cppzmq_FOUND)
+        include_directories(${ZeroMQ_INCLUDE_DIR} ${cppzmq_INCLUDE_DIR})
+        target_link_libraries(${TARGET} ${cppzmq_LIBRARY})
+    ENDIF()
 ENDMACRO(link_cppzmq)
 
 find_package(Boost REQUIRED)
