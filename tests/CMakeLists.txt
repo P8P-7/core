@@ -1,16 +1,6 @@
-MACRO(set_test TEST_EXEC TEST_SRC TARGETS)
-    add_executable(${TEST_EXEC} ${TEST_SRC})
-    add_test(${TEST_EXEC} ${TEST_EXEC})
-    target_link_libraries(${TEST_EXEC} ${TARGETS})
-    link_boost(${TEST_EXEC})
-ENDMACRO(set_test)
+find_package(Boost REQUIRED)
+include_directories(${Boost_INCLUDE_DIR})
 
-set(TEST_TEST_SRC
-    test_test.cpp
-    )
-
-set(TEST_TEST_TARGETS
-    caterpillar-movement-module
-    )
-
-set_test(test_test ${TEST_TEST_SRC} ${TEST_TEST_TARGETS})
+add_executable(test_test test_test.cpp)
+add_test(test_test test_test)
+target_link_libraries(test_test ${Boost_LIBRARY} ${Boost_LIBS})

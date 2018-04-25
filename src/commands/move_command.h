@@ -1,7 +1,7 @@
 #pragma once
 
 #include <memory>
-#include <goliath/movement_service.h>
+#include "goliath/movement_service.h"
 
 #include "command.h"
 

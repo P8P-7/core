@@ -1,4 +1,4 @@
-#include <goliath/zmq_subscriber.h>
+#include "zmq_subscriber.h"
 #include <unistd.h>
 
 using namespace goliath::io;
@@ -47,10 +47,33 @@ void zmq_subscriber::receive() {
             //  Read message contents
             socket.recv(&data);
 
-            idp::Content content;
-            content.ParseFromArray(data.data(), static_cast<int>(data.size()));
+            Command command;
+            command.ParseFromArray(data.data(), static_cast<int>(data.size()));
 
-            std::cout << "[" << topic << "] " << content.content() << std::endl;
+            switch (command.command_case()) {
+                case Command::kMoveCommand: {
+                    const MoveCommand &moveCommand = command.movecommand();
+
+                    std::cout << "[" << topic << "] [ move ] speed: "
+                              << moveCommand.speed()
+                              << " direction: "
+                              << moveCommand.direction() << std::endl;
+                    break;
+                }
+                case Command::kConfigCommand: {
+                    const ConfigCommand &configCommand = command.configcommand();
+
+                    std::cout << "[" << topic << "] [ config ] name: "
+                              << configCommand.name()
+                              << " value: "
+                              << configCommand.value() << std::endl;
+                    break;
+                }
+                case Command::COMMAND_NOT_SET: {
+                    std::cout << "Command not set" << std::endl;
+                    break;
+                }
+            }
         }
     }
 }

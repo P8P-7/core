@@ -1,4 +1,4 @@
-#include <goliath/zmq_publisher.h>
+#include "zmq_publisher.h"
 
 using namespace goliath::io;
 
@@ -7,15 +7,17 @@ zmq_publisher::zmq_publisher(zmq::context_t &context, const std::string &host, c
     connect(address());
 }
 
-bool zmq_publisher::publish(const idp::Message &message) {
+bool zmq_publisher::publish(const CommandMessage &message) {
     try {
-        zmq::message_t address(message.channel().size());
-        memcpy(address.data(), message.channel().data(), message.channel().size());
+        std::string channel = std::to_string(message.channel());
+
+        zmq::message_t address(channel.size());
+        memcpy(address.data(),channel.data(), channel.size());
 
         socket.send(address, ZMQ_SNDMORE);
 
         std::string str;
-        message.data().SerializeToString(&str);
+        message.command().SerializeToString(&str);
 
         unsigned long sz = str.length();
         zmq::message_t data(sz);

@@ -4,7 +4,6 @@
 #include <atomic>
 
 #include "zmq_io.h"
-#include <goliath/message.pb.h>
 
 namespace goliath::io {
     class zmq_subscriber : public zmq_io {

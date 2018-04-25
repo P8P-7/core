@@ -1,6 +1,6 @@
 #pragma once
 
-#include <goliath/movement_service.h>
+#include "movement_service.h"
 
 namespace goliath::caterpillar_movement {
     class caterpillar_movement : public goliath::core::movement_service {
