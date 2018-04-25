@@ -24,7 +24,7 @@ bool zmq_publisher::publish(const idp::Message &message) {
         socket.send(data);
         return true;
     }
-    catch (zmq::error_t &e) {
+    catch (const zmq::error_t &ex) {
         return false;
     }
 }

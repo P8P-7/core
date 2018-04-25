@@ -13,15 +13,15 @@ namespace goliath::io {
 
         void receive();
 
-        void stop();
+        void join();
 
     private:
         const std::string topic;
 
-        std::vector<zmq::pollitem_t> p;
+        std::vector<zmq::pollitem_t> poll;
 
         std::thread subs_thread;
 
-        std::atomic<bool> stop_flag{false};
+        std::atomic<bool> interrupted{false};
     };
 }

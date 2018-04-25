@@ -41,10 +41,7 @@ int main(int argc, char *argv[]) {
         pub.publish(msg);
     }
 
-    // Give 0MQ/2.0.x time to publish
-    usleep(1000);
-
-    sub.stop();
+    sub.join();
 
     return 0;
 }
