@@ -1,9 +1,16 @@
-MACRO(add_simple_library TARGET PACKAGE)
+MACRO(message_version PACKAGE)
+    IF(${PACKAGE}_FOUND)
+        goliath_message("Found ${PACKAGE} ${${PACKAGE}_VERSION}")
+    ENDIF()
+ENDMACRO(message_version)
+
+MACRO(add_simple_library TARGET PACKAGE VERSION)
     IF(NOT ${PACKAGE}_FOUND)
-        find_package(${PACKAGE} REQUIRED)
+        find_package(${PACKAGE} ${VERSION} REQUIRED)
         include_directories(${${PACKAGE}_INCLUDE_DIR})
     ENDIF()
 
+    message_version(${PACKAGE})
     target_link_libraries(${TARGET} ${${PACKAGE}_LIBRARY} ${${PACKAGE}_LIBS})
 ENDMACRO()
 
@@ -13,23 +20,27 @@ MACRO(multithread TARGET)
 ENDMACRO(multithread)
 
 MACRO(link_opencv TARGET)
-    add_simple_library(${TARGET} OpenCV)
+    add_simple_library(${TARGET} OpenCV ${OPENCV_MIN_VERSION})
 ENDMACRO(link_opencv)
 
 MACRO(link_cppzmq TARGET)
-    find_package(cppzmq REQUIRED)
+    find_package(cppzmq ${CPPZMQ_MIN_VERSION} REQUIRED)
 
     IF(cppzmq_FOUND)
+        message_version(cppzmq)
+
         include_directories(${ZeroMQ_INCLUDE_DIR} ${cppzmq_INCLUDE_DIR})
         target_link_libraries(${TARGET} ${cppzmq_LIBRARY})
     ENDIF()
 ENDMACRO(link_cppzmq)
 
 MACRO(link_boost TARGET)
-    add_simple_library(${TARGET} Boost)
+    add_simple_library(${TARGET} Boost ${BOOST_MIN_VERSION})
 ENDMACRO(link_boost)
 
-find_package(Protobuf REQUIRED)
+find_package(Protobuf ${PROTOBUF_MIN_VERSION} REQUIRED)
+
+message_version(Protobuf)
 
 file(GLOB PROTOBUF_FILELIST proto/*.proto)
 
@@ -42,7 +53,6 @@ IF(PROTOBUF_FILELIST)
     protobuf_generate_cpp(PROTO_SRC PROTO_HEADER ${PROTOBUF_FILELIST})
 
     add_library(proto ${PROTO_HEADER} ${PROTO_SRC})
-    set_target_properties(proto PROPERTIES LINKER_LANGUAGE CXX)
 
     file(GLOB PROTOBUF_SRC ${CMAKE_BINARY_DIR}/third_party/*.pb.cc)
     file(GLOB PROTOBUF_HDR ${CMAKE_BINARY_DIR}/third_party/*.pb.h)
