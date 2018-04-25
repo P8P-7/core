@@ -1,15 +1,15 @@
 #pragma once
 
 #include "zmq_io.h"
+#include <goliath/message.pb.h>
 
 namespace goliath::io {
     class zmq_publisher : public zmq_io {
     public:
-        zmq_publisher(const std::string &host, const int port, const std::string& topic);
+        zmq_publisher(zmq::context_t &context, const std::string &host, const int port);
 
-        bool publish(const std::string& message);
+        bool publish(const idp::Message &message);
 
     private:
-        const std::string topic;
     };
 }

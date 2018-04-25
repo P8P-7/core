@@ -11,6 +11,7 @@ add_library(${PROJECT_NAME} ${IO_MODULE_INCLUDES})
 target_link_libraries(${PROJECT_NAME} core-module)
 
 link_cppzmq(${PROJECT_NAME})
+link_protobuf(${PROJECT_NAME})
 multithread(${PROJECT_NAME})
 
 target_include_directories(${PROJECT_NAME}

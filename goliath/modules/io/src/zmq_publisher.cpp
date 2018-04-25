@@ -2,20 +2,29 @@
 
 using namespace goliath::io;
 
-zmq_publisher::zmq_publisher(const std::string &host, const int port, const std::string &topic)
-    : zmq_io(host, port, ZMQ_PUB), topic(topic) {
-    bind(address());
+zmq_publisher::zmq_publisher(zmq::context_t &context, const std::string &host, const int port)
+        : zmq_io(context, host, port, ZMQ_PUB) {
+    connect(address());
 }
 
-bool zmq_publisher::publish(const std::string &message) {
-    try{
-        zmq::message_t mess(message.size() + topic.size());
-        snprintf(static_cast<char*>(mess.data()), mess.size() + topic.size(), (message + topic).c_str());
+bool zmq_publisher::publish(const idp::Message &message) {
+    try {
+        zmq::message_t address(message.channel().size());
+        memcpy(address.data(), message.channel().data(), message.channel().size());
 
-        socket.send(mess);
+        socket.send(address, ZMQ_SNDMORE);
+
+        std::string str;
+        message.data().SerializeToString(&str);
+
+        unsigned long sz = str.length();
+        zmq::message_t data(sz);
+        memcpy(data.data(), str.c_str(), sz);
+
+        socket.send(data);
         return true;
     }
-    catch(zmq::error_t &e) {
+    catch (zmq::error_t &e) {
         return false;
     }
 }
