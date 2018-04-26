@@ -15,3 +15,13 @@ target_include_directories(goliath-proto
 )
 
 target_link_libraries(goliath-proto ${Protobuf_LIBRARIES})
+
+add_library(goliath-dynamixel
+        lib-dynamixel/src/Dynamixel.cpp
+        lib-dynamixel/src/SerialPort.cpp
+)
+
+target_include_directories(goliath-dynamixel
+    PUBLIC
+        lib-dynamixel/include
+)

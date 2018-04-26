@@ -1,3 +1,6 @@
 [submodule "third_party/proto"]
 	path = third_party/proto
 	url = git@github.com:P8P-7/proto.git
+[submodule "third_party/lib-dynamixel"]
+	path = third_party/lib-dynamixel
+	url = git@github.com:P8P-7/lib-dynamixel.git
