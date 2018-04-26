@@ -8,6 +8,7 @@ set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules)
 
 find_package(cppzmq REQUIRED)
 find_package(Protobuf REQUIRED)
+find_package(OpenCV REQUIRED)
 find_package(Boost REQUIRED)
 
 add_subdirectory(third_party)

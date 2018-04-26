@@ -1,4 +1,4 @@
-#include "zmq_io.h"
+#include "goliath/zmq_io.h"
 
 using namespace goliath::io;
 

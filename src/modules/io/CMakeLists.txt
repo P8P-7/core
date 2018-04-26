@@ -1,9 +1,9 @@
 set(SOURCES
-        include/zmq_io.h
+        include/goliath/zmq_io.h
         zmq_io.cpp
-        include/zmq_publisher.h
+        include/goliath/zmq_publisher.h
         zmq_publisher.cpp
-        include/zmq_subscriber.h
+        include/goliath/zmq_subscriber.h
         zmq_subscriber.cpp)
 
 add_library(goliath-io ${SOURCES})

@@ -1,4 +1,4 @@
-#include "zmq_subscriber.h"
+#include "goliath/zmq_subscriber.h"
 #include <unistd.h>
 
 using namespace goliath::io;

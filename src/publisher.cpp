@@ -1,4 +1,4 @@
-#include "zmq_publisher.h"
+#include "goliath/zmq_publisher.h"
 
 #include <unistd.h>
 
