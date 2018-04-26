@@ -1,11 +1,19 @@
+project(goliath-controller CXX)
+
+include(flags)
+
 set(SOURCES
         commands/command.h
-        commands/move_command.h
-        commands/move_command.cpp
+        commands/command_map.cpp
+        handles/handles.h
+        handles/handle_mutex.cpp
+        handles/handle_map.cpp
         controller.cpp)
 
-add_executable(goliath-controller ${SOURCES})
-target_link_libraries(goliath-controller
-   PUBLIC
-        goliath-io
+compiler_flags(${PROJECT_NAME} 4)
+
+add_executable(${PROJECT_NAME} ${SOURCES})
+target_link_libraries(${PROJECT_NAME}
+    PUBLIC
+        io-module
 )

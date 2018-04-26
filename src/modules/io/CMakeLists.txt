@@ -1,3 +1,5 @@
+project(io-module CXX)
+
 set(SOURCES
         include/goliath/zmq_io.h
         zmq_io.cpp
@@ -6,9 +8,9 @@ set(SOURCES
         include/goliath/zmq_subscriber.h
         zmq_subscriber.cpp)
 
-add_library(goliath-io ${SOURCES})
+add_library(${PROJECT_NAME} ${SOURCES})
 
-target_include_directories(goliath-io
+target_include_directories(${PROJECT_NAME}
     PUBLIC
         ${CMAKE_CURRENT_SOURCE_DIR}/include
     PRIVATE
@@ -16,7 +18,7 @@ target_include_directories(goliath-io
         ${cppzmq_INCLUDE_DIR}
 )
 
-target_link_libraries(goliath-io
+target_link_libraries(${PROJECT_NAME}
     PUBLIC
         goliath-proto
     PRIVATE

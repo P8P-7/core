@@ -2,6 +2,9 @@
 
 #include <unistd.h>
 
+#include "handles/handle_map.h"
+
+using namespace goliath::handles;
 using namespace goliath::io;
 
 int main(int argc, char *argv[]) {
