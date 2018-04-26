@@ -1,19 +1,19 @@
-include_directories(include ${ZeroMQ_INCLUDE_DIR} ${cppzmq_INCLUDE_DIR})
-
 set(SOURCES
-        zmq_io.h
+        include/zmq_io.h
         zmq_io.cpp
-        zmq_publisher.h
+        include/zmq_publisher.h
         zmq_publisher.cpp
-        zmq_subscriber.h
+        include/zmq_subscriber.h
         zmq_subscriber.cpp)
 
 add_library(goliath-io ${SOURCES})
 
 target_include_directories(goliath-io
     PUBLIC
-        ${CMAKE_CURRENT_BINARY_DIR}
-        ${CMAKE_SOURCE_DIR}/include
+        ${CMAKE_CURRENT_SOURCE_DIR}/include
+    PRIVATE
+        ${ZeroMQ_INCLUDE_DIR}
+        ${cppzmq_INCLUDE_DIR}
 )
 
 target_link_libraries(goliath-io

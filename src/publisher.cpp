@@ -1,11 +1,8 @@
-#include "io/zmq_publisher.h"
-
-#include <goliath/caterpillar_movement.h>
+#include "zmq_publisher.h"
 
 #include <unistd.h>
 
 using namespace goliath::io;
-using namespace goliath::core;
 
 int main(int argc, char *argv[]) {
     // "You should create and use exactly one context in your process."

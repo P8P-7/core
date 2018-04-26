@@ -12,7 +12,7 @@ bool zmq_publisher::publish(const CommandMessage &message) {
         std::string channel = std::to_string(message.channel());
 
         zmq::message_t address(channel.size());
-        memcpy(address.data(),channel.data(), channel.size());
+        memcpy(address.data(), channel.data(), channel.size());
 
         socket.send(address, ZMQ_SNDMORE);
 
