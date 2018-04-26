@@ -8,8 +8,6 @@ set(IO_MODULE_INCLUDES
 
 add_library(${PROJECT_NAME} ${IO_MODULE_INCLUDES})
 
-target_link_libraries(${PROJECT_NAME} core-module)
-
 link_cppzmq(${PROJECT_NAME})
 multithread(${PROJECT_NAME})
 

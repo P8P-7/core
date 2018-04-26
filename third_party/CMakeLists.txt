@@ -4,6 +4,7 @@ MACRO(message_version PACKAGE)
     ENDIF()
 ENDMACRO(message_version)
 
+# Macro to add a find and add a specific library that doesn't need special treatment
 MACRO(add_simple_library TARGET PACKAGE VERSION)
     IF(NOT ${PACKAGE}_FOUND)
         find_package(${PACKAGE} ${VERSION} REQUIRED)
@@ -38,29 +39,29 @@ MACRO(link_boost TARGET)
     add_simple_library(${TARGET} Boost ${BOOST_MIN_VERSION})
 ENDMACRO(link_boost)
 
-find_package(Protobuf ${PROTOBUF_MIN_VERSION} REQUIRED)
+IF(NOT ${Protobuf_FOUND})
+    find_package(Protobuf ${PROTOBUF_MIN_VERSION} REQUIRED)
+ENDIF()
 message_version(Protobuf)
 include_directories(${Protobuf_INCLUDE_DIRS})
 
-file(GLOB PROTOBUF_FILELIST proto/*.proto)
+file(GLOB PROTO_FILES proto/*.proto)
 
-set(PROTOBUF_FILENAMES "")
+IF(PROTO_FILES)
+    protobuf_generate_cpp(PROTO_SRC PROTO_HDR ${PROTO_FILES})
+    goliath_message("Generated Protbuf files")
+ENDIF()
 
-FOREACH(PROTOBUF_FILE ${PROTOBUF_FILELIST})
-    get_filename_component(PROTOBUF_FILENAME ${PROTOBUF_FILE} NAME)
-    list(APPEND PROTOBUF_FILENAMES ${PROTOBUF_FILENAME})
-ENDFOREACH()
+add_library(goliath-proto ${PROTO_SRC} ${PROTO_HDR})
 
-execute_process(
-    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
-    COMMAND protoc -I=third_party/proto --cpp_out=goliath/proto/goliath ${PROTOBUF_FILENAMES}
+target_include_directories(goliath-proto
+    PUBLIC
+    ${CMAKE_CURRENT_BINARY_DIR}
+    ${Protobuf_INCLUDE_DIRS}
     )
 
-MACRO(link_protobuf TARGET)
-    file(GLOB PROTOUT_SRC ${CMAKE_SOURCE_DIR}/goliath/proto/goliath/*.pb.cc)
-    file(GLOB PROTOUT_HDR ${CMAKE_SOURCE_DIR}/goliath/proto/goliath/*.pb.h)
+target_link_libraries(goliath-proto ${Protobuf_LIBRARIES})
 
-    include_directories(${Protobuf_INCLUDE_DIRS})
-    include_directories(${CMAKE_SOURCE_DIR}/goliath/proto)
-    add_library(proto ${PROTOUT_SRC} ${PROTOUT_HDR})
+MACRO(link_protobuf TARGET)
+    target_link_libraries(${TARGET} goliath-proto)
 ENDMACRO()

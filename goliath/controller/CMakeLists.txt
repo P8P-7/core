@@ -4,7 +4,7 @@ include(flags)
 
 set(COMMAND_SOURCE
     commands/command.h
-    commands/move_command.cpp
+    commands/command_map.cpp
     handles/handles.h
     handles/handle_mutex.cpp
     handles/handle_map.cpp
@@ -16,9 +16,7 @@ set(CONTROLLER_SOURCE
     )
 
 set(CONTROLLER_MODULES
-    core-module
     io-module
-    caterpillar-movement-module
     )
 
 add_executable(${PROJECT_NAME} ${CONTROLLER_SOURCE})

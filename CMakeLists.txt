@@ -9,12 +9,16 @@ set(CPPZMQ_MIN_VERSION "4.2.3")
 set(PROTOBUF_MIN_VERSOIN "3.5.1")
 
 set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules)
-
 set(CMAKE_CXX_STANDARD  14)
 
 MACRO(goliath_message MESSAGE)
     message("-- GOLIATH: " ${MESSAGE})
 ENDMACRO(goliath_message)
+
+find_package(OpenCV ${OPENV_MIN_VERSION} REQUIRED)
+find_package(Boost ${BOOST_MIN_VERSION} REQUIRED)
+find_package(cppzmq ${CPPZMQ_MIN_VERSION} REQUIRED)
+find_package(Protobuf ${PROTOBUF_MIN_VERSION} REQUIRED)
 
 add_subdirectory(third_party)
 add_subdirectory(goliath)
