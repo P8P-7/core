@@ -8,7 +8,7 @@ void handle_mutex::lock() {
 
 void handle_mutex::unlock() {
     locked = false;
-    var->notify_one();
+    var.lock()->notify_one();
 }
 
 const unsigned handle_mutex::get_caller() const {

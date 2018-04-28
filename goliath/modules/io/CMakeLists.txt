@@ -1,12 +1,12 @@
 project(io-module CXX)
 
-set(IO_MODULE_INCLUDES
+set(IO_MODULE_SRC
     src/zmq_io.cpp
     src/zmq_publisher.cpp
     src/zmq_subscriber.cpp
     )
 
-add_library(${PROJECT_NAME} ${IO_MODULE_INCLUDES})
+add_library(${PROJECT_NAME} ${IO_MODULE_SRC})
 
 link_cppzmq(${PROJECT_NAME})
 multithread(${PROJECT_NAME})

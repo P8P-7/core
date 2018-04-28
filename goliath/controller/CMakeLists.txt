@@ -17,6 +17,7 @@ set(CONTROLLER_SOURCE
 
 set(CONTROLLER_MODULES
     io-module
+    vision-module
     )
 
 add_executable(${PROJECT_NAME} ${CONTROLLER_SOURCE})
