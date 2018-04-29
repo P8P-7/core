@@ -16,4 +16,3 @@ Command* command_map::get_instance(const unsigned command_id) {
     else
         return nullptr;
 }
-

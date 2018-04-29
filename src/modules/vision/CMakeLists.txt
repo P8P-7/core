@@ -1,8 +1,10 @@
-project(io-vision CXX)
+project(vision-module CXX)
 
 set(SOURCES
-        include/goliath/vision.h
-        vision.cpp)
+        webcam.cpp
+        color_detector.cpp
+        line_detector.cpp
+)
 
 add_library(${PROJECT_NAME} ${SOURCES})
 

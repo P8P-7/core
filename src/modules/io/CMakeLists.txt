@@ -6,7 +6,8 @@ set(SOURCES
         include/goliath/zmq_publisher.h
         zmq_publisher.cpp
         include/goliath/zmq_subscriber.h
-        zmq_subscriber.cpp)
+        zmq_subscriber.cpp
+)
 
 add_library(${PROJECT_NAME} ${SOURCES})
 

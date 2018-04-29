@@ -1,3 +1,4 @@
+## Protocol Buffers
 include_directories(${Protobuf_INCLUDE_DIRS})
 
 file(GLOB PROTOBUF_FILELIST proto/*.proto)
@@ -16,6 +17,7 @@ target_include_directories(goliath-proto
 
 target_link_libraries(goliath-proto ${Protobuf_LIBRARIES})
 
+## libdynamixel
 add_library(goliath-dynamixel
         lib-dynamixel/src/Dynamixel.cpp
         lib-dynamixel/src/SerialPort.cpp

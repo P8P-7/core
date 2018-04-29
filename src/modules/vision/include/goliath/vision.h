@@ -1,8 +1,4 @@
 #pragma once
 
-namespace goliath::vision {
-    class Vision {
-    public:
-        Vision() {}
-    };
-}
+#include "webcam.h"
+#include "color_detector.h"
