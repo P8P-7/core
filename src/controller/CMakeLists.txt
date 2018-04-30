@@ -1,7 +1,5 @@
 project(goliath-controller CXX)
 
-include(flags)
-
 set(SOURCES
         commands/command.h
         commands/command_map.cpp

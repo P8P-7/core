@@ -1,13 +1,14 @@
 ## Protocol Buffers
-include_directories(${Protobuf_INCLUDE_DIRS})
-
-file(GLOB PROTOBUF_FILELIST proto/*.proto)
+file(GLOB_RECURSE PROTOBUF_FILELIST RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}/proto
+        "${CMAKE_CURRENT_SOURCE_DIR}/proto/*.proto"
+)
 
 IF (PROTOBUF_FILELIST)
-    protobuf_generate_cpp(PROTO_SRC PROTO_HEADER ${PROTOBUF_FILELIST})
+    relative_protobuf_generate_cpp(PROTO_SRCS PROTO_HDRS
+            ${CMAKE_CURRENT_SOURCE_DIR}/proto ${PROTOBUF_FILELIST})
 ENDIF ()
 
-add_library(goliath-proto ${PROTO_HEADER} ${PROTO_SRC})
+add_library(goliath-proto ${PROTO_SRCS} ${PROTO_HDRS})
 
 target_include_directories(goliath-proto
     PUBLIC
@@ -15,7 +16,7 @@ target_include_directories(goliath-proto
         ${Protobuf_INCLUDE_DIRS}
 )
 
-target_link_libraries(goliath-proto ${Protobuf_LIBRARIES})
+target_link_libraries(goliath-proto ${PROTOBUF_LIBRARIES})
 
 ## libdynamixel
 add_library(goliath-dynamixel

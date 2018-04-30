@@ -7,6 +7,9 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules)
 
+include(flags)
+include(protobuf)
+
 # Library versions
 set(OPENCV_MIN_VERSION "3.4.0")
 set(BOOST_MIN_VERSION "1.64.0")
