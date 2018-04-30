@@ -47,30 +47,51 @@ void zmq_subscriber::receive() {
             //  Read message contents
             socket.recv(&data);
 
-            Command command;
-            command.ParseFromArray(data.data(), static_cast<int>(data.size()));
+            Message message;
+            message.ParseFromArray(data.data(), static_cast<int>(data.size()));
 
-            switch (command.command_case()) {
-                case Command::kMoveCommand: {
-                    const MoveCommand &moveCommand = command.movecommand();
 
-                    std::cout << "[" << topic << "] [ move ] speed: "
-                              << moveCommand.speed()
-                              << " direction: "
-                              << moveCommand.direction() << std::endl;
+            switch (message.data_case()) {
+                case Message::kCommand: {
+                    const CommandMessage &commandMessage = message.command();
+
+                    if (commandMessage.command_case() == CommandMessage::kMoveCommand) {
+                        const MoveCommand &moveCommand = commandMessage.movecommand();
+
+                        std::cout << "[" << topic << "] [ move ] speed: "
+                                  << moveCommand.speed()
+                                  << " direction: "
+                                  << moveCommand.direction() << std::endl;
+                    }
                     break;
                 }
-                case Command::kConfigCommand: {
-                    const ConfigCommand &configCommand = command.configcommand();
+                case Message::kConfig: {
+                    const ConfigMessage &configCommand = message.config();
 
-                    std::cout << "[" << topic << "] [ config ] name: "
-                              << configCommand.name()
-                              << " value: "
-                              << configCommand.value() << std::endl;
+                    if (configCommand.config_case() == ConfigMessage::kIoConfig) {
+                        const IoConfig &ioConfig = configCommand.ioconfig();
+
+                        std::cout << "[" << topic << "] [ io-config ] ip: "
+                                  << ioConfig.publisher_ip()
+                                  << " port: "
+                                  << ioConfig.publisher_port() << std::endl;
+                    } else if (configCommand.config_case() == ConfigMessage::kVisionConfig) {
+                        const VisionConfig &visionConfig = configCommand.visionconfig();
+
+                        std::cout << "[" << topic << "] [ vision-config ] camera enabled: "
+                                  << visionConfig.camera_enabled() << std::endl;
+                    }
                     break;
                 }
-                case Command::COMMAND_NOT_SET: {
-                    std::cout << "Command not set" << std::endl;
+                case Message::kStats: {
+                    const Stats &stats = message.stats();
+
+                    std::cout << "[" << topic << "] [ stats ] total cpu usage: "
+                              << stats.cpu_usage().total_usage() << std::endl;
+                    break;
+                }
+                case Message::DATA_NOT_SET: {
+                    std::cout << "Data not set" << std::endl;
                     break;
                 }
             }

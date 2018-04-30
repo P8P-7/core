@@ -8,7 +8,7 @@ MACRO(compiler_flags TARGET WARNING_LEVEL)
                         "-D_FORTIFY_SOURCE=2"
                         "-D_GLIBCXX_ASSERTIONS"
                         "-fasynchronous-unwind-tables"
-                        "-fexceptions"`
+                        "-fexceptions"
                         "-fpic -shared"
                         "-fstack-clash-protection"
                         "-fstack-protector-strong"

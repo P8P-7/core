@@ -7,7 +7,7 @@ namespace goliath::io {
     public:
         zmq_publisher(zmq::context_t &context, const std::string &host, int port);
 
-        bool publish(const CommandMessage &message);
+        bool publish(const Message &message);
 
     private:
     };

@@ -1,10 +1,11 @@
 #pragma once
+
 #include "iostream"
 
 #include "string"
 #include "zmq.hpp"
 
-#include <CommandMessage.pb.h>
+#include <Message.pb.h>
 
 const std::string PROTOCOL = "tcp";
 

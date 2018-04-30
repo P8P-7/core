@@ -7,9 +7,9 @@ zmq_publisher::zmq_publisher(zmq::context_t &context, const std::string &host, c
     connect(address());
 }
 
-bool zmq_publisher::publish(const CommandMessage &message) {
+bool zmq_publisher::publish(const Message &message) {
     try {
-        std::string channel = std::to_string(message.channel());
+        std::string channel = std::to_string(message.data_case());
 
         zmq::message_t address(channel.size());
         memcpy(address.data(), channel.data(), channel.size());
@@ -17,7 +17,7 @@ bool zmq_publisher::publish(const CommandMessage &message) {
         socket.send(address, ZMQ_SNDMORE);
 
         std::string str;
-        message.command().SerializeToString(&str);
+        message.SerializeToString(&str);
 
         unsigned long sz = str.length();
         zmq::message_t data(sz);

@@ -19,26 +19,27 @@ int main(int argc, char *argv[]) {
 
         s << "Hello " << i;
 
-        CommandMessage msg;
-        msg.set_channel(CommandMessage_Channel_DEFAULT);
-
-        auto *command(new Command);
+        Message msg;
 
         if (i < 5) {
             auto *movement(new MoveCommand);
             movement->set_speed(123);
             movement->set_direction(123);
 
+            auto *command(new CommandMessage);
             command->set_allocated_movecommand(movement);
+
+            msg.set_allocated_command(command);
         } else {
-            auto *config(new ConfigCommand);
-            config->set_name("test");
-            config->set_value("test");
+            auto *ioConfig(new IoConfig);
+            ioConfig->set_publisher_ip("127.0.0.1");
+            ioConfig->set_publisher_port(5556);
 
-            command->set_allocated_configcommand(config);
+            auto *config(new ConfigMessage);
+            config->set_allocated_ioconfig(ioConfig);
+
+            msg.set_allocated_config(config);
         }
-
-        msg.set_allocated_command(command);
 
         pub.publish(msg);
     }
