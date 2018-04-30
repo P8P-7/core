@@ -2,6 +2,7 @@
 
 #include <atomic>
 #include <map>
+#include <memory>
 
 #include "command.h"
 
@@ -14,11 +15,11 @@ namespace goliath::commands {
 
     struct command_item {
         command_item()
-            : command(nullptr), status(command_status::STALE) {}
-        command_item(Command *command, command_status status)
+            : status(command_status::STALE) {}
+        command_item(std::shared_ptr<Command> command, command_status status)
             : command(command), status(status) {}
 
-        Command *command;
+        std::weak_ptr<Command> command;
         command_status status;
     };
 
@@ -27,11 +28,14 @@ namespace goliath::commands {
         command_map(const std::map<const unsigned, command_item> commands)
             : map(commands) {}
 
-        void add_command(const unsigned command_id, Command *command);
-        bool get_command_status(const unsigned command_id);
-        Command* get_instance(const unsigned command_id);
+        void add(const unsigned command_id, std::shared_ptr<Command> command);
+
+        command_status get_command_status(const unsigned command_id) const;
+        void set_command_status(const unsigned command_id, const command_status status) const;
+
+        std::weak_ptr<Command> get_instance(const unsigned command_id);
 
     private:
-        std::map<const unsigned, command_item> map;
+        mutable std::map<const unsigned, command_item> map;
     };
 }

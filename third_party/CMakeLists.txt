@@ -1,7 +1,7 @@
 ## Protocol Buffers
 include_directories(${Protobuf_INCLUDE_DIRS})
 
-file(GLOB PROTOBUF_FILELIST proto/*.proto)
+file(GLOB PROTOBUF_FILELIST proto/**/*.proto)
 
 IF (PROTOBUF_FILELIST)
     protobuf_generate_cpp(PROTO_SRC PROTO_HEADER ${PROTOBUF_FILELIST})

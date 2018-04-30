@@ -9,9 +9,10 @@ namespace goliath::handles {
     public:
         handle_map(std::shared_ptr<std::condition_variable> var);
 
-        handle_mutex *operator[](const int index);
+        std::shared_ptr<handle_mutex> get(const size_t index) const;
+        std::shared_ptr<handle_mutex> operator[](const size_t index) const;
 
     private:
-        std::map<int, handle_mutex> map;
+        mutable std::map<int, handle_mutex> map;
     };
 }

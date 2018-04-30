@@ -15,15 +15,14 @@ namespace goliath::handles {
         void lock();
         void unlock();
 
-        void set_caller(const unsigned &command_id);
-        const unsigned get_caller() const;
-
-        bool operator()() const;
+        void set_locker(const unsigned &command_id);
+        const unsigned get_locker() const;
+        bool get_status() const;
 
     private:
         bool locked = false;
 
-        mutable unsigned caller = 0;
+        mutable unsigned locker_id = 0;
         std::weak_ptr<std::condition_variable> var;
     };
 }

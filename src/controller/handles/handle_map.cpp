@@ -7,6 +7,10 @@ handle_map::handle_map(std::shared_ptr<std::condition_variable> var) {
         map[i] = handle_mutex(var);
 }
 
-handle_mutex *handle_map::operator[](const int index) {
-    return &map[index];
+std::shared_ptr<handle_mutex> handle_map::get(const size_t index) const {
+    return std::shared_ptr<handle_mutex>(&map[index]);
+}
+
+std::shared_ptr<handle_mutex> handle_map::operator[](const size_t index) const {
+    return get(index);
 }
