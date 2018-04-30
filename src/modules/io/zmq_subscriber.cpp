@@ -50,7 +50,6 @@ void zmq_subscriber::receive() {
             Message message;
             message.ParseFromArray(data.data(), static_cast<int>(data.size()));
 
-
             switch (message.data_case()) {
                 case Message::kCommand: {
                     const CommandMessage &commandMessage = message.command();

@@ -13,12 +13,8 @@ int main(int argc, char *argv[]) {
     // Give 0MQ/2.0.x time to connect
     usleep(2000);
 
-    // Let's publish a few "Hello" messages
+    // Let's publish a few messages
     for (size_t i = 0; i < 10; ++i) {
-        std::stringstream s;
-
-        s << "Hello " << i;
-
         Message msg;
 
         if (i < 5) {
