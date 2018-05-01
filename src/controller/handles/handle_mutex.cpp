@@ -11,14 +11,14 @@ void handle_mutex::unlock() {
     var.lock()->notify_one();
 }
 
-const unsigned handle_mutex::get_caller() const {
-    return caller;
+void handle_mutex::set_locker(const unsigned& command_id) {
+    locker_id = command_id;
 }
 
-void handle_mutex::set_caller(const unsigned& command_id) {
-    caller = command_id;
+const unsigned handle_mutex::get_locker() const {
+    return locker_id;
 }
 
-bool handle_mutex::operator()() const {
+bool handle_mutex::get_status() const {
     return locked;
 }

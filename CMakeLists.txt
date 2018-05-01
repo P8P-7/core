@@ -20,6 +20,7 @@ find_package(OpenCV ${OPENV_MIN_VERSION} REQUIRED)
 find_package(Boost ${BOOST_MIN_VERSION} REQUIRED)
 find_package(cppzmq ${CPPZMQ_MIN_VERSION} REQUIRED)
 find_package(Protobuf ${PROTOBUF_MIN_VERSION} REQUIRED)
+find_package(Threads REQUIRED)
 
 add_subdirectory(third_party)
 add_subdirectory(src)

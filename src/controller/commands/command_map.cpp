@@ -2,17 +2,21 @@
 
 using namespace goliath::commands;
 
-bool command_map::get_command_status(const unsigned command_id) {
-    return true;
-}
-
-void command_map::add_command(const unsigned command_id, Command *command) {
+void command_map::add(const unsigned command_id, std::shared_ptr<Command> command) {
     map[command_id] = {command, command_status::STALE};
 }
 
-Command* command_map::get_instance(const unsigned command_id) {
-    if(get_command_status(command_id))
+command_status command_map::get_command_status(const unsigned command_id) const {
+    return map[command_id].status;
+}
+
+void command_map::set_command_status(const unsigned command_id, const command_status status) const {
+    map[command_id].status = status;
+}
+
+
+std::weak_ptr<Command> command_map::get_instance(const unsigned command_id) {
+    if(get_command_status(command_id) == command_status::STALE)
         return map[command_id].command;
-    else
-        return nullptr;
+    return std::shared_ptr<Command>(nullptr);
 }
