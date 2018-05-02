@@ -12,7 +12,7 @@ include(protobuf)
 
 # Library versions
 set(OPENCV_MIN_VERSION "3.4.0")
-set(BOOST_MIN_VERSION "1.64.0")
+set(BOOST_MIN_VERSION "1.62.0")
 set(CPPZMQ_MIN_VERSION "4.2.3")
 set(PROTOBUF_MIN_VERSOIN "3.5.1")
 
