@@ -12,7 +12,6 @@ protobuf_version_latest=3.5.2
 
 boost_root="/usr/local"
 boost_version_latest=1.67.0
-boost_lib_version_latest="1_67"
 
 make_flags="-j4"
 
@@ -174,6 +173,10 @@ version() {
   echo "$@" | awk -F. '{ printf("%d%03d%03d%03d\n", $1,$2,$3,$4); }'; 
 }
 
+format_version() { 
+  echo "$@" | awk -F. '{ printf("%d.%d.%d", $1,$2,$3); }'; 
+}
+
 # Check CMake
 cmake_exe=$(which cmake 2> /dev/null)
 cmake_version=""
@@ -216,11 +219,11 @@ if [ $protobuf_exists -eq 0 ]; then
 fi
 
 # Check Boost
-boost_version=`cat "${boost_root}/include/boost/version.hpp" 2>/dev/null | grep BOOST_LIB_VERSION | tail -1 | tr -s ' ' | cut -d\  -f3 | sed 's/[^0-9\._]//gI'`
+boost_version=`cat "${boost_root}/include/boost/version.hpp" 2>/dev/null | grep BOOST_LIB_VERSION | tail -1 | awk '{print $3}' | tr -d '"' | tr '_' '.'`
 
-if [ "$boost_version" != "$boost_lib_version_latest" ]; then
+if [ $(version $boost_version) -lt $(version $boost_version_latest) ]; then
   if [ "$boost_version" != "" ]; then
-    echo "Found Boost $boost_version but require $boost_lib_version_latest"
+    echo "Found Boost $(format_version $boost_version) but require $boost_version_latest"
   else 
     echo "Could not find Boost"
   fi
@@ -233,5 +236,5 @@ if [ "$boost_version" != "$boost_lib_version_latest" ]; then
   apt-get build-dep -y boost1.62
   install_boost_from_source
 else
-  echo "Found Boost $boost_version"
+  echo "Found Boost $(format_version $boost_version)"
 fi
