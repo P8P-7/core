@@ -10,7 +10,7 @@ int main(int argc, char *argv[]) {
     commands::command_map command_map;
     command_map.add(test_id, std::make_shared<commands::move_command>(commands::move_command()));
 
-    commands::command_runner runner(command_map);
+    commands::command_runner runner(std::make_shared<commands::command_map>(command_map));
 
     return 0;
 }

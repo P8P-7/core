@@ -4,6 +4,8 @@
 #include <map>
 #include <memory>
 
+#include <Message.pb.h>
+
 #include "command.h"
 
 namespace goliath::commands {

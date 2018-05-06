@@ -5,7 +5,7 @@ using namespace goliath::commands;
 void command_runner::run(const unsigned command_id) {
     auto instance = commands->get_instance(command_id);
     if (instance == nullptr) {
-        throw std::runtime_error("Command does not exist"); // TODO: Eigen exception classes?
+        throw std::runtime_error("Command does not exist"); // TODO: Own exception class?
     }
 
     std::thread(&command_runner::execute, this, std::ref(command_id), instance);
@@ -27,8 +27,10 @@ void command_runner::execute(const unsigned &command_id, std::shared_ptr<command
             commands->get_instance(locker)->interrupt();
         }
 
-        std::unique_lock<std::mutex> lock(mutex);
-        var->wait(lock);
+    }
+
+    for(unsigned handle : instance->get_handles()) {
+        handles[handle]->wait();
     }
 
     thread_count--;

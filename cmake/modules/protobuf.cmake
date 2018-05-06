@@ -1,15 +1,15 @@
 ########################################################
 # A variant of PROTOBUF_GENERATE_CPP that keeps the directory hierarchy.
 # ROOT_DIR must be absolute, and proto paths must be relative to ROOT_DIR.
-function(RELATIVE_PROTOBUF_GENERATE_CPP SRCS HDRS ROOT_DIR)
-    if (NOT ARGN)
+FUNCTION(relative_protobuf_generate_cpp SRCS HDRS ROOT_DIR)
+    IF(NOT ARGN)
         message(SEND_ERROR "Error: RELATIVE_PROTOBUF_GENERATE_CPP() called without any proto files")
         return()
-    endif ()
+    ENDIF()
 
     set(${SRCS})
     set(${HDRS})
-    foreach (FIL ${ARGN})
+    FOREACH(FIL ${ARGN})
         set(ABS_FIL ${ROOT_DIR}/${FIL})
         get_filename_component(FIL_WE ${FIL} NAME_WE)
         get_filename_component(FIL_DIR ${ABS_FIL} PATH)
@@ -26,9 +26,9 @@ function(RELATIVE_PROTOBUF_GENERATE_CPP SRCS HDRS ROOT_DIR)
                 DEPENDS ${ABS_FIL} proto
                 COMMENT "Running C++ protocol buffer compiler on ${FIL}"
                 VERBATIM)
-    endforeach ()
+    ENDFOREACH()
 
     set_source_files_properties(${${SRCS}} ${${HDRS}} PROPERTIES GENERATED TRUE)
     set(${SRCS} ${${SRCS}} PARENT_SCOPE)
     set(${HDRS} ${${HDRS}} PARENT_SCOPE)
-endfunction()
+ENDFUNCTION(relative_protobuf_generate_cpp)

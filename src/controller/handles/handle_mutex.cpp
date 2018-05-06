@@ -2,6 +2,14 @@
 
 using namespace goliath::handles;
 
+handle_mutex::handle_mutex()
+        : locker_id{0} {
+}
+
+handle_mutex::handle_mutex(const handle_mutex& other)
+        : locked(other.is_locked()), locker_id(other.get_locker()) {
+}
+
 void handle_mutex::lock() {
     locked = true;
 }

@@ -11,8 +11,8 @@ using namespace goliath::handles;
 namespace goliath::commands {
     class command_runner {
     public:
-        command_runner(std::shared_ptr<command_map> commands, std::shared_ptr<std::condition_variable> var)
-                : commands(std::move(commands)), handles(var), var(var) {}
+        command_runner(std::shared_ptr<command_map> commands)
+                : commands(std::move(commands)) {}
 
         void run(const unsigned command_id);
         void execute(const unsigned &command_id, std::shared_ptr<command> instance);
@@ -25,6 +25,5 @@ namespace goliath::commands {
         handle_map handles;
 
         std::mutex mutex;
-        std::shared_ptr<std::condition_variable> var;
     };
 }
