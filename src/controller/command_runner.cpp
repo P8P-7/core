@@ -3,33 +3,28 @@
 using namespace goliath::commands;
 
 void command_runner::run(const unsigned command_id) {
-    std::shared_ptr<Command> instance;
-
-    auto instance_ptr = cm.lock()->get_instance(command_id);
-
-    if(auto command_ptr = instance_ptr.lock())
-        instance = command_ptr;
-    else
-        return;
+    auto instance = commands->get_instance(command_id);
+    if (instance == nullptr) {
+        throw std::runtime_error("Command does not exist"); // TODO: Eigen exception classes?
+    }
 
     std::thread(&command_runner::execute, this, std::ref(command_id), instance);
 }
 
-void command_runner::execute(const unsigned &command_id, std::shared_ptr<Command> instance) {
+void command_runner::execute(const unsigned &command_id, std::shared_ptr<command> instance) {
     thread_count++;
 
     while(true) {
         if(can_start(*instance)) {
-            cm.lock()->set_command_status(command_id, command_status::RUNNING);
+            commands->set_command_status(command_id, command_status::RUNNING);
             instance->execute();
-            cm.lock()->set_command_status(command_id, command_status::STALE);
+            commands->set_command_status(command_id, command_status::STALE);
             break;
         }
-        else {
-            for(unsigned handle : instance->get_handles()) {
-                unsigned locker = hm.get(handle)->get_locker();
-                cm.lock()->get_instance(locker).lock()->interrupt();
-            }
+
+        for(size_t handle_id : instance->get_handles()) {
+            size_t locker = handles[handle_id]->get_locker();
+            commands->get_instance(locker)->interrupt();
         }
 
         std::unique_lock<std::mutex> lock(mutex);
@@ -39,12 +34,12 @@ void command_runner::execute(const unsigned &command_id, std::shared_ptr<Command
     thread_count--;
 }
 
-bool command_runner::can_start(const Command& command) const {
-    bool start = true;
+bool command_runner::can_start(const command& command) const {
+    for(const size_t handle_id : command.get_handles()) {
+        if (handles.get(handle_id)->is_locked()) {
+            return false;
+        }
+    }
 
-    for(const unsigned handle : command.get_handles())
-        if(hm.get(handle)->get_status())
-            start = false;
-
-    return start;
+    return true;
 }

@@ -7,35 +7,33 @@
 #include "command.h"
 
 namespace goliath::commands {
-
     enum class command_status {
-        RUNNING = true,
-        STALE = false
+        RUNNING,
+        STALE
     };
 
     struct command_item {
-        command_item()
-            : status(command_status::STALE) {}
-        command_item(std::shared_ptr<Command> command, command_status status)
-            : command(command), status(status) {}
+        command_item();
+        command_item(std::shared_ptr<command> command, command_status status);
 
-        std::weak_ptr<Command> command;
+        std::shared_ptr<command> instance;
         command_status status;
     };
 
     class command_map {
     public:
-        command_map(const std::map<const unsigned, command_item> commands)
-            : map(commands) {}
+        command_map();
+        explicit command_map(std::map<size_t, command_item> commands);
 
-        void add(const unsigned command_id, std::shared_ptr<Command> command);
+        void add(size_t command_id, std::shared_ptr<command> command);
 
-        command_status get_command_status(const unsigned command_id) const;
-        void set_command_status(const unsigned command_id, const command_status status) const;
+        const command_status get_command_status(size_t command_id) const;
+        void set_command_status(size_t command_id, command_status status);
 
-        std::weak_ptr<Command> get_instance(const unsigned command_id);
+        std::shared_ptr<command> get_instance(size_t command_id) const;
 
+        const command_item& operator[](size_t id) const;
     private:
-        mutable std::map<const unsigned, command_item> map;
+        std::map<size_t, command_item> map;
     };
 }

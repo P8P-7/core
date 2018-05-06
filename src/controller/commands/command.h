@@ -3,12 +3,9 @@
 #include <vector>
 
 namespace goliath::commands {
-    class Command {
+    class command {
     public:
-        Command() {}
-
-        Command(const std::vector<unsigned> &oh)
-            : occupying_handles(oh) {}
+        explicit command(const std::vector<unsigned> &occupying_handles);
 
         virtual void execute() = 0;
 

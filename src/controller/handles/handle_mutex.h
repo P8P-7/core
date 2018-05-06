@@ -9,20 +9,18 @@ namespace goliath::handles {
     public:
         handle_mutex() {}
 
-        handle_mutex(std::shared_ptr<std::condition_variable> var)
-            : var(var) {}
-
         void lock();
         void unlock();
+        void wait();
 
         void set_locker(const unsigned &command_id);
         const unsigned get_locker() const;
-        bool get_status() const;
-
+        bool is_locked() const;
     private:
         bool locked = false;
 
         mutable unsigned locker_id = 0;
-        std::weak_ptr<std::condition_variable> var;
+        std::mutex mutex;
+        std::condition_variable var;
     };
 }
