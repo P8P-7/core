@@ -1,0 +1,8 @@
+#pragma once
+
+#define COMMAND_UNKNOWN 0
+
+#define COMMAND_MOVE 1
+
+#define COMMAND_FOLLOW_LINE 101
+#define COMMAND_MOVE_TOWER 102

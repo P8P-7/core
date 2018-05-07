@@ -2,13 +2,17 @@
 
 using namespace goliath::commands;
 
-command::command(const std::vector<unsigned> &occupying_handles)
-        : occupying_handles(occupying_handles) {}
+command::command(const std::vector<size_t> &required_handles)
+        : required_handles(required_handles) {}
 
 void command::interrupt() {
     interrupted = true;
 }
 
-const std::vector<unsigned>& command::get_handles() const {
-    return occupying_handles;
+bool command::is_interrupted() const {
+    return interrupted;
+}
+
+const std::vector<size_t>& command::get_required_handles() const {
+    return required_handles;
 }

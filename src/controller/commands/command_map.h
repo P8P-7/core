@@ -30,10 +30,6 @@ namespace goliath::commands {
 
         void add(size_t command_id, std::shared_ptr<command> command);
 
-        const command_status get_command_status(size_t command_id) const;
-        void set_command_status(size_t command_id, command_status status);
-        std::shared_ptr<command> get_instance(size_t command_id) const;
-
         command_item& operator[](size_t id);
         const command_item& operator[](size_t id) const;
         bool command_exists(size_t id) const;

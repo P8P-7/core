@@ -1,5 +1,6 @@
 #include <goliath/line_detector.h>
 #include <cmath>
+#include <goliath/webcam_handle.h>
 
 using namespace goliath::vision;
 

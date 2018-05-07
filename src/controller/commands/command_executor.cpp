@@ -3,6 +3,15 @@
 
 using namespace goliath::commands;
 
+command_executor::command_executor(command_map& commands, handle_map &handles)
+    : commands(commands), handles(handles) {}
+
+command_executor::~command_executor() {
+    for (auto &thread : threads) {
+        thread.join();
+    }
+}
+
 void command_executor::run(const size_t command_id) {
     std::lock_guard<std::mutex> lock_guard(mutex);
 
@@ -17,8 +26,8 @@ void command_executor::run(const size_t command_id) {
                                    << " has been dropped because was it was already running";
         return;
     }
-
     item.status = command_status::RUNNING;
+
     threads.emplace_back(std::thread(&command_executor::try_execute, this, command_id));
 }
 
@@ -26,40 +35,41 @@ void command_executor::try_execute(const size_t &command_id) {
     std::unique_lock<std::mutex> lock(mutex);
 
     command_item& item = commands[command_id];
+    auto required_handles = handles.get_handles(item.instance->get_required_handles());
     if(can_start(*(item.instance))) {
         lock.unlock();
-        item.instance->execute();
+
+        for(size_t handle_id : item.instance->get_required_handles()) {
+            required_handles[handle_id]->lock(command_id);
+        }
+        item.instance->execute(required_handles);
+
         lock.lock();
         item.status = command_status::STALE;
         return;
     }
 
     lock.unlock();
-    for(size_t handle_id : item.instance->get_handles()) {
-        size_t locker_id = handles[handle_id]->get_locker();
+    for(size_t handle_id : item.instance->get_required_handles()) {
+        size_t locker_id = handles[handle_id]->get_owner_id();
         commands[locker_id].instance->interrupt();
     }
 
-    for(size_t handle_id : item.instance->get_handles()) {
-        handles[handle_id]->wait();
-        handles[handle_id]->lock();
+    for(size_t handle_id : item.instance->get_required_handles()) {
+        required_handles[handle_id]->wait();
+        required_handles[handle_id]->lock(command_id);
     }
 
-    try_execute(command_id);
+    item.instance->execute(required_handles);
+    item.status = command_status::STALE;
 }
 
 bool command_executor::can_start(const command& command) const {
-    for(const size_t handle_id : command.get_handles()) {
-        if (handles.get(handle_id)->is_locked()) {
+    for(const size_t handle_id : command.get_required_handles()) {
+        if (handles[handle_id]->is_locked()) {
             return false;
         }
     }
 
     return true;
-}
-
-void command_executor::wait_for_completion() {
-    for (auto &thread : threads) {
-        thread.join();
-    }
 }

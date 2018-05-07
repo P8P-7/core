@@ -8,14 +8,13 @@ set(SOURCES_COMMANDS
         )
 set(SOURCES_HANDLES
         handles/handles.h
-        handles/handle_mutex.cpp
         handles/handle_map.cpp
         )
 set(SOURCES
         ${SOURCES_COMMANDS}
         ${SOURCES_HANDLES}
         controller.cpp
-        )
+        commands/follow_line_command.cpp commands/follow_line_command.h commands/commands.h commands/move_tower_command.cpp commands/move_tower_command.h)
 
 compiler_flags(${PROJECT_NAME} 4)
 
@@ -30,6 +29,7 @@ add_executable(${PROJECT_NAME} ${SOURCES})
 include_directories(${Boost_INCLUDE_DIRS})
 target_link_libraries(${PROJECT_NAME}
         PUBLIC
+            core-module
             io-module
             vision-module
             ${CMAKE_THREAD_LIBS_INIT}

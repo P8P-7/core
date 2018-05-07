@@ -1,20 +1,22 @@
 #pragma once
 
 #include <vector>
+#include "../handles/handle_map.h"
 
 namespace goliath::commands {
     class command {
     public:
-        explicit command(const std::vector<unsigned> &occupying_handles);
+        explicit command(const std::vector<size_t> &required_handles);
 
-        virtual void execute() = 0;
+        virtual void execute(const handles::handle_map &handles) = 0;
 
         void interrupt();
-        const std::vector<unsigned>& get_handles() const;
+        bool is_interrupted() const;
+        const std::vector<size_t>& get_required_handles() const;
 
     protected:
         bool interrupted = false;
 
-        const std::vector<unsigned> occupying_handles;
+        const std::vector<size_t> required_handles;
     };
 }
