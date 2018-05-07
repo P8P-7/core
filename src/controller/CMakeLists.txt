@@ -1,14 +1,20 @@
 project(goliath-controller CXX)
 
-set(SOURCES
+set(SOURCES_COMMANDS
         commands/command.cpp
         commands/command_map.cpp
+        commands/command_executor.cpp
+        commands/move_command.cpp
+        )
+set(SOURCES_HANDLES
         handles/handles.h
         handles/handle_mutex.cpp
         handles/handle_map.cpp
+        )
+set(SOURCES
+        ${SOURCES_COMMANDS}
+        ${SOURCES_HANDLES}
         controller.cpp
-        command_runner.cpp
-        commands/move_command.cpp
         )
 
 compiler_flags(${PROJECT_NAME} 4)

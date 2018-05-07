@@ -28,12 +28,18 @@ void command_map::set_command_status(const size_t command_id, const command_stat
 }
 
 std::shared_ptr<command> command_map::get_instance(const size_t command_id) const {
-    if(get_command_status(command_id) == command_status::STALE) {
-        return map.at(command_id).instance;
-    }
-    return std::shared_ptr<command>(nullptr);
+    return map.at(command_id).instance;
 }
 
-const command_item &command_map::operator[](const size_t id) const {
+const command_item& command_map::operator[](const size_t id) const {
     return map.at(id);
 }
+
+command_item& command_map::operator[](const size_t id) {
+    return map.at(id);
+}
+
+bool command_map::command_exists(const size_t id) const {
+    return map.find(id) != map.end();
+}
+

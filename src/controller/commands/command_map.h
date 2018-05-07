@@ -22,6 +22,7 @@ namespace goliath::commands {
         command_status status;
     };
 
+    // TODO: make thread-safe?
     class command_map {
     public:
         command_map();
@@ -31,10 +32,11 @@ namespace goliath::commands {
 
         const command_status get_command_status(size_t command_id) const;
         void set_command_status(size_t command_id, command_status status);
-
         std::shared_ptr<command> get_instance(size_t command_id) const;
 
+        command_item& operator[](size_t id);
         const command_item& operator[](size_t id) const;
+        bool command_exists(size_t id) const;
     private:
         std::map<size_t, command_item> map;
     };
