@@ -1,4 +1,4 @@
-project(io-module CXX)
+project(goliath-io-module LANGUAGES CXX)
 
 set(SOURCES
         include/goliath/zmq_io.h

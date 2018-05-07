@@ -1,4 +1,4 @@
-project(vision-module CXX)
+project(goliath-vision-module LANGUAGES CXX)
 
 set(SOURCES
         webcam.cpp
@@ -18,7 +18,7 @@ target_include_directories(${PROJECT_NAME}
 
 target_link_libraries(${PROJECT_NAME}
         PUBLIC
-            core-module
+            goliath-core-module
         PRIVATE
             ${OpenCV_LIBRARY}
         )

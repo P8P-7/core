@@ -25,9 +25,9 @@ add_executable(${PROJECT_NAME} ${SOURCES})
 include_directories(${Boost_INCLUDE_DIRS})
 target_link_libraries(${PROJECT_NAME}
         PUBLIC
-            core-module
-            io-module
-            vision-module
+            goliath-core-module
+            goliath-io-module
+            goliath-vision-module
             ${CMAKE_THREAD_LIBS_INIT}
             ${Boost_LIBRARIES}
         )

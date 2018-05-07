@@ -1,0 +1,29 @@
+sudo: false
+
+language: cpp
+compiler:
+  - gcc
+
+branches:
+  except:
+    - gh-pages
+
+env:
+  global:
+    - GH_REPO_NAME: core
+    - GH_REPO_REF: github.com/P8P-7/core
+
+addons:
+  apt:
+    packages:
+      - doxygen
+      - doxygen-doc
+      - doxygen-latex
+      - doxygen-gui
+      - cmake-data
+      - cmake
+
+script:
+  - cd $TRAVIS_BUILD_DIR/doc
+  - chmod +x push_docs.sh
+  - ./push_docs.sh

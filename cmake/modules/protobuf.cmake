@@ -1,5 +1,5 @@
 ########################################################
-# A variant of PROTOBUF_GENERATE_CPP that keeps the goliath hierarchy.
+# A variant of PROTOBUF_GENERATE_CPP that keeps the directory hierarchy.
 # ROOT_DIR must be absolute, and proto paths must be relative to ROOT_DIR.
 FUNCTION(relative_protobuf_generate_cpp SRCS HDRS ROOT_DIR)
     IF(NOT ARGN)

@@ -7,6 +7,12 @@
 #include "command_map.h"
 #include "handle_map.h"
 
+/**
+ * @file command_executor.h
+ * @brief Contains a class that executes a command
+ * @author Group 7 - Informatica
+ */
+
 using namespace goliath::handles;
 
 namespace goliath::commands {

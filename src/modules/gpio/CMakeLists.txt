@@ -1,4 +1,4 @@
-project(gpio-module CXX)
+project(goliath-gpio-module LANGUAGES CXX)
 
 set(SOURCES
         include/goliath/gpio.h
@@ -30,5 +30,5 @@ add_executable(gpio-test
 
 target_link_libraries(gpio-test
         PUBLIC
-            gpio-module
+            goliath-gpio-module
         )
