@@ -4,6 +4,12 @@
 
 using namespace goliath;
 
+/**
+ * @file controller.cpp
+ * @brief Application entry point
+ * @author Group 7 - Informatica
+ */
+
 int main(int argc, char *argv[]) {
     const size_t test_id = 42;
 

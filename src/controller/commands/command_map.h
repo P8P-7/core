@@ -8,6 +8,12 @@
 
 #include "command.h"
 
+/**
+ * @file command_map.h
+ * @brief Contains a map to connect a integer value to a command instance
+ * @author Group 7 - Informatica
+ */
+
 namespace goliath::commands {
     enum class command_status {
         RUNNING,

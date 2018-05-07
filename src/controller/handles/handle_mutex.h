@@ -4,6 +4,12 @@
 
 #include "handles.h"
 
+/**
+ * @file handle_mutex.h
+ * @brief Defines a mutex to indicate the state of a specific handle
+ * @author Group 7 - Informatica
+ */
+
 namespace goliath::handles {
     class handle_mutex {
     public:

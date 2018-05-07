@@ -2,22 +2,22 @@
 
 using namespace goliath::commands;
 
-void command_runner::run(const unsigned command_id) {
+void command_runner::run(const unsigned command_id, Message &message) {
     auto instance = commands->get_instance(command_id);
     if (instance == nullptr) {
         throw std::runtime_error("Command does not exist"); // TODO: Own exception class?
     }
 
-    std::thread(&command_runner::execute, this, std::ref(command_id), instance);
+    std::thread(&command_runner::execute, this, std::ref(command_id), instance, std::ref(message));
 }
 
-void command_runner::execute(const unsigned &command_id, std::shared_ptr<command> instance) {
+void command_runner::execute(const unsigned &command_id, std::shared_ptr<command> instance, Message &message) {
     thread_count++;
 
     while(true) {
         if(can_start(*instance)) {
             commands->set_command_status(command_id, command_status::RUNNING);
-            instance->execute();
+            instance->execute(message);
             commands->set_command_status(command_id, command_status::STALE);
             break;
         }

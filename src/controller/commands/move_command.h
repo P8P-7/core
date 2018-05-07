@@ -7,6 +7,6 @@ namespace goliath::commands {
     public:
         move_command();
 
-        void execute() override;
+        void execute(Message &message) override;
     };
 }

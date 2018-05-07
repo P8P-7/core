@@ -1,5 +1,11 @@
 #pragma once
 
+/**
+ * @file handles.h
+ * @brief Defines all handles
+ * @author Group 7 - Informatica
+ */
+
 #define MAX_HANDLES 255
 
 #define FRONTAL_RIGHT_LEG_MOTOR 0

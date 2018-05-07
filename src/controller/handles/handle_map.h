@@ -4,6 +4,12 @@
 
 #include "handle_mutex.h"
 
+/**
+ * @file handle_map.h
+ * @brief A map of all handles
+ * @author Group 7 - Informatica
+ */
+
 namespace goliath::handles {
     class handle_map {
     public:
