@@ -22,7 +22,7 @@ namespace goliath::commands {
         std::vector<std::thread> threads;
 
         command_map& commands;
-        handle_map handles;
+        handle_map& handles;
 
         std::mutex mutex;
     };

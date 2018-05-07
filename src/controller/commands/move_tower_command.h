@@ -7,7 +7,9 @@ namespace goliath::commands {
     public:
         move_tower_command();
 
+    private:
         void execute(const handles::handle_map& handles, const Message &message) override ;
+
     };
 }
 

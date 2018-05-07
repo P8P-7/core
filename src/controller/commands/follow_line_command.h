@@ -7,6 +7,7 @@ namespace goliath::commands {
     public:
         follow_line_command();
 
+    private:
         void execute(const handles::handle_map &handles, const Message &message) override;
     };
 }

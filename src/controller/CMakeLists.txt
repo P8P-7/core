@@ -1,20 +1,14 @@
 project(goliath-controller CXX)
 
-set(SOURCES_COMMANDS
+set(SOURCES
+        command_map.cpp
+        command_executor.cpp
         commands/command.cpp
         commands/move_command.cpp
         commands/follow_line_command.cpp
         commands/move_tower_command.cpp
-        command_map.cpp
-        command_executor.cpp
-        )
-set(SOURCES_HANDLES
         handles.h
         handle_map.cpp
-        )
-set(SOURCES
-        ${SOURCES_COMMANDS}
-        ${SOURCES_HANDLES}
         controller.cpp
         )
 

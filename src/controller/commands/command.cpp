@@ -16,3 +16,9 @@ bool command::is_interrupted() const {
 const std::vector<size_t>& command::get_required_handles() const {
     return required_handles;
 }
+
+void command::run(const goliath::handles::handle_map &handles, const Message& message) {
+    running = true;
+    execute(handles, message);
+    running = false;
+}

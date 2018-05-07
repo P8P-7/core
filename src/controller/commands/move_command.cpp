@@ -4,6 +4,9 @@
 
 #include "move_command.h"
 
+using namespace goliath::commands;
+
+
 goliath::commands::move_command::move_command()
         : command({}) {
 }
