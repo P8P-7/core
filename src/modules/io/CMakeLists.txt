@@ -27,3 +27,10 @@ target_link_libraries(${PROJECT_NAME}
             ${cppzmq_LIBRARY}
             ${Protobuf_LIBRARY}
         )
+
+add_executable(io-test publisher.cpp)
+
+target_link_libraries(io-test
+        PUBLIC
+            io-module
+        )
