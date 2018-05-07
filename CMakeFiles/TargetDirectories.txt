@@ -1,3 +1,0 @@
-/home/travis/build/P8P-7/core/doc/build_docs/CMakeFiles/edit_cache.dir
-/home/travis/build/P8P-7/core/doc/build_docs/CMakeFiles/rebuild_cache.dir
-/home/travis/build/P8P-7/core/doc/build_docs/CMakeFiles/doc.dir
