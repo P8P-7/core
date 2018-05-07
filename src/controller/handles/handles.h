@@ -6,6 +6,11 @@
  * @author Group 7 - Informatica
  */
 
+/**
+* @namespace goliath::handles
+* @brief Contains all handles and handle utilities
+*/
+
 #define MAX_HANDLES 255
 
 #define FRONTAL_RIGHT_LEG_MOTOR 0

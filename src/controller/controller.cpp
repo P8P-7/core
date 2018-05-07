@@ -10,6 +10,11 @@ using namespace goliath;
  * @author Group 7 - Informatica
  */
 
+/**
+ * @namespace goliath
+ * @brief Main project namespace
+ */
+
 int main(int argc, char *argv[]) {
     const size_t test_id = 42;
 

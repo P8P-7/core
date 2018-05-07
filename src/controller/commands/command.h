@@ -10,7 +10,17 @@
  * @author Group 7 - Informatica
  */
 
+ /**
+  * @namespace goliath::commands
+  * @brief Contains all command and command utilities
+  */
+
 namespace goliath::commands {
+
+    /**
+     * @class command
+     * @brief Command base class
+     */
     class command {
     public:
         explicit command(const std::vector<unsigned> &occupying_handles);
