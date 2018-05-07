@@ -1,14 +1,21 @@
 project(goliath-controller CXX)
 
-set(SOURCES
+set(SOURCES_COMMANDS
         commands/command.cpp
-        commands/command_map.cpp
-        handles/handles.h
-        handles/handle_mutex.cpp
-        handles/handle_map.cpp
-        controller.cpp
-        command_runner.cpp
         commands/move_command.cpp
+        commands/follow_line_command.cpp
+        commands/move_tower_command.cpp
+        command_map.cpp
+        command_executor.cpp
+        )
+set(SOURCES_HANDLES
+        handles.h
+        handle_map.cpp
+        )
+set(SOURCES
+        ${SOURCES_COMMANDS}
+        ${SOURCES_HANDLES}
+        controller.cpp
         )
 
 compiler_flags(${PROJECT_NAME} 4)
@@ -24,6 +31,7 @@ add_executable(${PROJECT_NAME} ${SOURCES})
 include_directories(${Boost_INCLUDE_DIRS})
 target_link_libraries(${PROJECT_NAME}
         PUBLIC
+            core-module
             io-module
             vision-module
             ${CMAKE_THREAD_LIBS_INIT}
