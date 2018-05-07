@@ -59,8 +59,9 @@ void command_executor::try_execute(const size_t &command_id) {
         required_handles[handle_id]->wait();
         required_handles[handle_id]->lock(command_id);
     }
-
+    
     item.instance->execute(required_handles);
+    lock.lock();
     item.status = command_status::STALE;
 }
 
