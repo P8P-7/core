@@ -10,13 +10,7 @@ void command_executor::run(const size_t command_id) {
         throw std::runtime_error("Command does not exist"); // TODO: Own exception class?
     }
 
-    threads.emplace_back(std::thread(&command_executor::try_execute, this, command_id));
-}
-
-void command_executor::try_execute(const size_t &command_id) {
-    std::unique_lock<std::mutex> lock(mutex);
-
-    command_item& item = commands[command_id];
+    auto& item = commands[command_id];
     if (item.status != command_status::STALE) {
         BOOST_LOG_TRIVIAL(warning) << "Command "
                                    << command_id
@@ -24,8 +18,15 @@ void command_executor::try_execute(const size_t &command_id) {
         return;
     }
 
+    item.status = command_status::RUNNING;
+    threads.emplace_back(std::thread(&command_executor::try_execute, this, command_id));
+}
+
+void command_executor::try_execute(const size_t &command_id) {
+    std::unique_lock<std::mutex> lock(mutex);
+
+    command_item& item = commands[command_id];
     if(can_start(*(item.instance))) {
-        item.status = command_status::RUNNING;
         lock.unlock();
         item.instance->execute();
         lock.lock();
