@@ -11,6 +11,11 @@ follow_line_command::follow_line_command() : command({ HANDLE_RIGHT_EYE_CAM, HAN
 void follow_line_command::execute(const handles::handle_map &handles) {
     BOOST_LOG_TRIVIAL(info) << "Execution of follow line command has started";
     std::this_thread::sleep_for(std::chrono::milliseconds(2000));
+    if (is_interrupted()) {
+        BOOST_LOG_TRIVIAL(warning) << "Follow line command was interrupted";
+        return;
+    }
+    std::this_thread::sleep_for(std::chrono::milliseconds(2000));
     BOOST_LOG_TRIVIAL(info) << "Execution of follow line command has finished";
 }
 

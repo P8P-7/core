@@ -7,9 +7,13 @@ using namespace goliath::commands;
 
 move_tower_command::move_tower_command() : command({ HANDLE_RIGHT_EYE_CAM, HANDLE_LEFT_EYE_CAM }) {}
 
-
 void move_tower_command::execute(const goliath::handles::handle_map &handles) {
     BOOST_LOG_TRIVIAL(info) << "Execution of move tower command has started";
+    std::this_thread::sleep_for(std::chrono::milliseconds(2000));
+    if (is_interrupted()) {
+        BOOST_LOG_TRIVIAL(warning) << "Move tower command was interrupted";
+        return;
+    }
     std::this_thread::sleep_for(std::chrono::milliseconds(2000));
     BOOST_LOG_TRIVIAL(info) << "Execution of move tower command has finished";
 }

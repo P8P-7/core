@@ -13,7 +13,7 @@ command_map::command_map(const std::map<size_t, command_item> commands)
 }
 
 void command_map::add(const size_t command_id, std::shared_ptr<command> command) {
-    map[command_id] = {command, command_status::STALE};
+    map[command_id] = { command, command_status::STALE };
 }
 
 const command_item& command_map::operator[](const size_t id) const {

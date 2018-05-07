@@ -26,7 +26,7 @@ void command_executor::run(const size_t command_id) {
                                    << " has been dropped because was it was already running";
         return;
     }
-    item.status = command_status::RUNNING;
+    item.status = command_status::STARTING;
 
     threads.emplace_back(std::thread(&command_executor::try_execute, this, command_id));
 }
@@ -39,10 +39,9 @@ void command_executor::try_execute(const size_t &command_id) {
     if(can_start(*(item.instance))) {
         lock.unlock();
 
-        for(size_t handle_id : item.instance->get_required_handles()) {
-            required_handles[handle_id]->lock(command_id);
-        }
-        item.instance->execute(required_handles);
+        required_handles.lock_all(command_id);
+        item.status = command_status::STARTED;
+        item.instance->run(required_handles);
 
         lock.lock();
         item.status = command_status::STALE;
@@ -59,8 +58,9 @@ void command_executor::try_execute(const size_t &command_id) {
         required_handles[handle_id]->wait();
         required_handles[handle_id]->lock(command_id);
     }
-    
-    item.instance->execute(required_handles);
+
+    item.status = command_status::STARTED;
+    item.instance->run(required_handles);
     lock.lock();
     item.status = command_status::STALE;
 }

@@ -10,7 +10,8 @@
 
 namespace goliath::commands {
     enum class command_status {
-        RUNNING,
+        STARTING,
+        STARTED,
         STALE
     };
 
