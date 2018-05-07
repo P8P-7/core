@@ -1,7 +1,7 @@
 #include <boost/log/trivial.hpp>
 #include <thread>
 #include "move_tower_command.h"
-#include "../handles/handles.h"
+#include "../handles.h"
 
 using namespace goliath::commands;
 

@@ -1,7 +1,7 @@
 #pragma once
 
 #include <vector>
-#include "../handles/handle_map.h"
+#include "../handle_map.h"
 
 namespace goliath::commands {
     class command {

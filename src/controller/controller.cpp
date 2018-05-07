@@ -1,10 +1,10 @@
 #include <goliath/webcam_handle.h>
-#include "commands/command_map.h"
+#include "command_map.h"
 #include "commands/move_command.h"
-#include "commands/command_executor.h"
-#include "handles/handles.h"
+#include "command_executor.h"
+#include "handles.h"
 #include "commands/follow_line_command.h"
-#include "commands/commands.h"
+#include "commands.h"
 #include "commands/move_tower_command.h"
 
 using namespace goliath;

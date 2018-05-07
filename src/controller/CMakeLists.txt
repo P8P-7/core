@@ -2,19 +2,19 @@ project(goliath-controller CXX)
 
 set(SOURCES_COMMANDS
         commands/command.cpp
-        commands/command_map.cpp
-        commands/command_executor.cpp
+        command_map.cpp
+        command_executor.cpp
         commands/move_command.cpp
         )
 set(SOURCES_HANDLES
-        handles/handles.h
-        handles/handle_map.cpp
+        handles.h
+        handle_map.cpp
         )
 set(SOURCES
         ${SOURCES_COMMANDS}
         ${SOURCES_HANDLES}
         controller.cpp
-        commands/follow_line_command.cpp commands/follow_line_command.h commands/commands.h commands/move_tower_command.cpp commands/move_tower_command.h)
+        commands/follow_line_command.cpp commands/follow_line_command.h commands.h commands/move_tower_command.cpp commands/move_tower_command.h)
 
 compiler_flags(${PROJECT_NAME} 4)
 

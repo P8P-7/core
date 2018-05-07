@@ -1,7 +1,7 @@
 #include <boost/log/trivial.hpp>
 #include <chrono>
 #include "follow_line_command.h"
-#include "../handles/handles.h"
+#include "../handles.h"
 #include <thread>
 
 using namespace goliath::commands;

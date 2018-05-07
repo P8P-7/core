@@ -6,7 +6,7 @@
 
 #include <Message.pb.h>
 
-#include "command.h"
+#include "commands/command.h"
 
 namespace goliath::commands {
     enum class command_status {

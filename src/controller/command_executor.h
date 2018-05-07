@@ -4,7 +4,7 @@
 #include <thread>
 #include <utility>
 #include "command_map.h"
-#include "../handles/handle_map.h"
+#include "handle_map.h"
 
 using namespace goliath::handles;
 
