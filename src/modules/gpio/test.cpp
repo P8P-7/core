@@ -3,6 +3,8 @@
 #include <boost/log/trivial.hpp>
 #include <goliath/gpio.h>
 
+using namespace goliath::gpio;
+
 int main() {
     GPIO gpio;
     std::string state;

@@ -31,4 +31,5 @@ add_executable(gpio-test
 target_link_libraries(gpio-test
         PUBLIC
             goliath-gpio-module
+            ${CMAKE_THREAD_LIBS_INIT}
         )
