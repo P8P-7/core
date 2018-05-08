@@ -1,7 +1,6 @@
 project(goliath-core-module LANGUAGES CXX)
 
 set(SOURCES
-        include/goliath/handle.h
         handle.cpp
         )
 

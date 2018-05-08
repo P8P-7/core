@@ -20,5 +20,5 @@ target_link_libraries(${PROJECT_NAME}
         PUBLIC
             goliath-core-module
         PRIVATE
-            ${OpenCV_LIBRARY}
+            ${OpenCV_LIBRARIES}
         )

@@ -1,8 +1,9 @@
 #pragma once
 
 #include <map>
-#include <goliath/handle.h>
 #include <vector>
+
+#include <goliath/core.h>
 
 /**
  * @file handle_map.h
