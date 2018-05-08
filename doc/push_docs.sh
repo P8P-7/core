@@ -18,8 +18,8 @@ cd ..
 mkdir build_docs
 cd build_docs
 
-echo 'Generating Doxygen code documentation...'
-cmake ..
+echo 'Generating Doxygen documentation...'
+cmake -DCMAKE_BUILD_TYPE=Release ..
 make
 cd ..
 

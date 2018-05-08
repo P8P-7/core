@@ -5,7 +5,7 @@
 namespace goliath::handles {
     class webcam_handle: public handle {
     public:
-        webcam_handle(const std::string& device);
+        explicit webcam_handle(const std::string& device);
 
         const std::string& get_device() const;
     private:
