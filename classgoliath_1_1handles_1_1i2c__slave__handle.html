@@ -107,35 +107,43 @@ Inheritance diagram for goliath::handles::i2c_slave_handle:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a123fe7e41b98b1ed339e26dc49e87882"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a123fe7e41b98b1ed339e26dc49e87882"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>i2c_slave_handle</b> (const std::string &amp;device, const std::uint8_t &amp;address)</td></tr>
-<tr class="separator:a123fe7e41b98b1ed339e26dc49e87882"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a65d8f0b2c3b4ec6e3700c7470998d3e5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a65d8f0b2c3b4ec6e3700c7470998d3e5"></a>
-const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>get_device_path</b> () const </td></tr>
-<tr class="separator:a65d8f0b2c3b4ec6e3700c7470998d3e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af9b5a5c87371e13d3720332dce65c9be"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af9b5a5c87371e13d3720332dce65c9be"></a>
-const std::uint8_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>get_slave_address</b> () const </td></tr>
-<tr class="separator:af9b5a5c87371e13d3720332dce65c9be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa7441327f397e03cb9cd02a6542af6d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aaa7441327f397e03cb9cd02a6542af6d"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>i2c_slave_handle</b> (const i2c::i2c_address &amp;address)</td></tr>
+<tr class="separator:aaa7441327f397e03cb9cd02a6542af6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b462e09f9638e70d9ebeb9e29098081"><td class="memItemLeft" align="right" valign="top">const i2c::i2c_address &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1handles_1_1i2c__slave__handle.html#a6b462e09f9638e70d9ebeb9e29098081">get_slave_address</a> () const </td></tr>
+<tr class="separator:a6b462e09f9638e70d9ebeb9e29098081"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classgoliath_1_1handles_1_1handle"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classgoliath_1_1handles_1_1handle')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classgoliath_1_1handles_1_1handle.html">goliath::handles::handle</a></td></tr>
 <tr class="memitem:a45201866d5f9c0b390688e3f0febb8fe inherit pub_methods_classgoliath_1_1handles_1_1handle"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a45201866d5f9c0b390688e3f0febb8fe"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>handle</b> (const <a class="el" href="classgoliath_1_1handles_1_1handle.html">handle</a> &amp;other)</td></tr>
 <tr class="separator:a45201866d5f9c0b390688e3f0febb8fe inherit pub_methods_classgoliath_1_1handles_1_1handle"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abc045776e41489a3b1235a6dd0413295 inherit pub_methods_classgoliath_1_1handles_1_1handle"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abc045776e41489a3b1235a6dd0413295"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>lock</b> (const size_t &amp;command_id)</td></tr>
+<tr class="memitem:abc045776e41489a3b1235a6dd0413295 inherit pub_methods_classgoliath_1_1handles_1_1handle"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1handles_1_1handle.html#abc045776e41489a3b1235a6dd0413295">lock</a> (const size_t &amp;command_id)</td></tr>
 <tr class="separator:abc045776e41489a3b1235a6dd0413295 inherit pub_methods_classgoliath_1_1handles_1_1handle"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae31bb86a6a3cac45f7e228bdc87a22c8 inherit pub_methods_classgoliath_1_1handles_1_1handle"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae31bb86a6a3cac45f7e228bdc87a22c8"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>unlock</b> ()</td></tr>
+<tr class="memitem:ae31bb86a6a3cac45f7e228bdc87a22c8 inherit pub_methods_classgoliath_1_1handles_1_1handle"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1handles_1_1handle.html#ae31bb86a6a3cac45f7e228bdc87a22c8">unlock</a> ()</td></tr>
 <tr class="separator:ae31bb86a6a3cac45f7e228bdc87a22c8 inherit pub_methods_classgoliath_1_1handles_1_1handle"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1268b6b494b35c4d5c589c06556fa2db inherit pub_methods_classgoliath_1_1handles_1_1handle"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1268b6b494b35c4d5c589c06556fa2db"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>wait</b> ()</td></tr>
-<tr class="separator:a1268b6b494b35c4d5c589c06556fa2db inherit pub_methods_classgoliath_1_1handles_1_1handle"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a71f4076fb91ad15a4d4a2171e3329351 inherit pub_methods_classgoliath_1_1handles_1_1handle"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a71f4076fb91ad15a4d4a2171e3329351"></a>
-const size_t&#160;</td><td class="memItemRight" valign="bottom"><b>get_owner_id</b> () const </td></tr>
+<tr class="memitem:a80bd5b72ecb561514723472ef960d9b1 inherit pub_methods_classgoliath_1_1handles_1_1handle"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1handles_1_1handle.html#a80bd5b72ecb561514723472ef960d9b1">wait_and_lock</a> (const size_t &amp;command_id)</td></tr>
+<tr class="separator:a80bd5b72ecb561514723472ef960d9b1 inherit pub_methods_classgoliath_1_1handles_1_1handle"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a71f4076fb91ad15a4d4a2171e3329351 inherit pub_methods_classgoliath_1_1handles_1_1handle"><td class="memItemLeft" align="right" valign="top">const size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1handles_1_1handle.html#a71f4076fb91ad15a4d4a2171e3329351">get_owner_id</a> () const </td></tr>
 <tr class="separator:a71f4076fb91ad15a4d4a2171e3329351 inherit pub_methods_classgoliath_1_1handles_1_1handle"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8e628f30e89e4e4b0d8066564a510fc8 inherit pub_methods_classgoliath_1_1handles_1_1handle"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8e628f30e89e4e4b0d8066564a510fc8"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_locked</b> () const </td></tr>
+<tr class="memitem:a8e628f30e89e4e4b0d8066564a510fc8 inherit pub_methods_classgoliath_1_1handles_1_1handle"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1handles_1_1handle.html#a8e628f30e89e4e4b0d8066564a510fc8">is_locked</a> () const </td></tr>
 <tr class="separator:a8e628f30e89e4e4b0d8066564a510fc8 inherit pub_methods_classgoliath_1_1handles_1_1handle"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a6b462e09f9638e70d9ebeb9e29098081"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const i2c_address &amp; i2c_slave_handle::get_slave_address </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>slave address </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>/home/travis/build/P8P-7/core/src/modules/i2c/handles/<a class="el" href="i2c__slave__handle_8h_source.html">i2c_slave_handle.h</a></li>
 <li>/home/travis/build/P8P-7/core/src/modules/i2c/handles/i2c_slave_handle.cpp</li>

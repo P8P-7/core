@@ -112,22 +112,113 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a45201866d5f9c0b390688e3f0febb8fe"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a45201866d5f9c0b390688e3f0febb8fe"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>handle</b> (const <a class="el" href="classgoliath_1_1handles_1_1handle.html">handle</a> &amp;other)</td></tr>
 <tr class="separator:a45201866d5f9c0b390688e3f0febb8fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abc045776e41489a3b1235a6dd0413295"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abc045776e41489a3b1235a6dd0413295"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>lock</b> (const size_t &amp;command_id)</td></tr>
+<tr class="memitem:abc045776e41489a3b1235a6dd0413295"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1handles_1_1handle.html#abc045776e41489a3b1235a6dd0413295">lock</a> (const size_t &amp;command_id)</td></tr>
 <tr class="separator:abc045776e41489a3b1235a6dd0413295"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae31bb86a6a3cac45f7e228bdc87a22c8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae31bb86a6a3cac45f7e228bdc87a22c8"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>unlock</b> ()</td></tr>
+<tr class="memitem:ae31bb86a6a3cac45f7e228bdc87a22c8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1handles_1_1handle.html#ae31bb86a6a3cac45f7e228bdc87a22c8">unlock</a> ()</td></tr>
 <tr class="separator:ae31bb86a6a3cac45f7e228bdc87a22c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1268b6b494b35c4d5c589c06556fa2db"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1268b6b494b35c4d5c589c06556fa2db"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>wait</b> ()</td></tr>
-<tr class="separator:a1268b6b494b35c4d5c589c06556fa2db"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a71f4076fb91ad15a4d4a2171e3329351"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a71f4076fb91ad15a4d4a2171e3329351"></a>
-const size_t&#160;</td><td class="memItemRight" valign="bottom"><b>get_owner_id</b> () const </td></tr>
+<tr class="memitem:a80bd5b72ecb561514723472ef960d9b1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1handles_1_1handle.html#a80bd5b72ecb561514723472ef960d9b1">wait_and_lock</a> (const size_t &amp;command_id)</td></tr>
+<tr class="separator:a80bd5b72ecb561514723472ef960d9b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a71f4076fb91ad15a4d4a2171e3329351"><td class="memItemLeft" align="right" valign="top">const size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1handles_1_1handle.html#a71f4076fb91ad15a4d4a2171e3329351">get_owner_id</a> () const </td></tr>
 <tr class="separator:a71f4076fb91ad15a4d4a2171e3329351"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8e628f30e89e4e4b0d8066564a510fc8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8e628f30e89e4e4b0d8066564a510fc8"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_locked</b> () const </td></tr>
+<tr class="memitem:a8e628f30e89e4e4b0d8066564a510fc8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1handles_1_1handle.html#a8e628f30e89e4e4b0d8066564a510fc8">is_locked</a> () const </td></tr>
 <tr class="separator:a8e628f30e89e4e4b0d8066564a510fc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a71f4076fb91ad15a4d4a2171e3329351"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const size_t handle::get_owner_id </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>command id of owning command in </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a8e628f30e89e4e4b0d8066564a510fc8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool handle::is_locked </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Inidicates whether or not this handle has been locked. </p>
+<dl class="section return"><dt>Returns</dt><dd>true if this handle has been locked </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="abc045776e41489a3b1235a6dd0413295"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void handle::lock </td>
+          <td>(</td>
+          <td class="paramtype">const size_t &amp;&#160;</td>
+          <td class="paramname"><em>command_id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Lock the handle. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">command_id</td><td>the owning command </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ae31bb86a6a3cac45f7e228bdc87a22c8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void handle::unlock </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Release the handle. </p>
+
+</div>
+</div>
+<a class="anchor" id="a80bd5b72ecb561514723472ef960d9b1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void handle::wait_and_lock </td>
+          <td>(</td>
+          <td class="paramtype">const size_t &amp;&#160;</td>
+          <td class="paramname"><em>command_id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Wait for the lock to become available and acquire the lock. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">command_id</td><td>the owning command </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>/home/travis/build/P8P-7/core/src/modules/core/include/goliath/<a class="el" href="handle_8h_source.html">handle.h</a></li>
 <li>/home/travis/build/P8P-7/core/src/modules/core/handle.cpp</li>
