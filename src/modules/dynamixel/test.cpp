@@ -2,6 +2,8 @@
 #include "goliath/gpio.h"
 #include "dynamixel/Dynamixel.h"
 
+using namespace goliath::gpio;
+
 int main(int argc, char *argv[]) {
     byte motorId = 4;
     short iData = 512;
@@ -33,7 +35,6 @@ int main(int argc, char *argv[]) {
 
         // configure the motor object
         motor = new AX12(motorId, &port);
-
 
         motor->configure();
         motor->setSerialFeedback(false);
@@ -79,7 +80,6 @@ int main(int argc, char *argv[]) {
                   baudRate << std::endl;
         return -1;
     }
-
 
     return 0;
 }

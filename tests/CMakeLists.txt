@@ -15,7 +15,7 @@ MACRO(add_goliath_test NAME DEPENDENCIES)
             )
 ENDMACRO()
 
-add_goliath_test(i2c i2c-module)
+add_goliath_test(i2c goliath-i2c-module)
 
 add_goliath_test(vision goliath-vision-module)
 target_compile_definitions(test_vision PRIVATE GOLIATH_TEST_IMAGE_DIR="${CMAKE_CURRENT_SOURCE_DIR}/test_vision_images/")

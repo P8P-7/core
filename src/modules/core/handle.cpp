@@ -11,28 +11,34 @@ handle::handle(const handle& other)
 }
 
 void handle::lock(const size_t& command_id) {
+    std::lock_guard<std::mutex> lock(mutex);
+
     locked = true;
     owner_id = command_id;
 }
 
 void handle::unlock() {
+    std::lock_guard<std::mutex> lock(mutex);
+
     locked = false;
     owner_id.reset();
     var.notify_one();
 }
 
-void handle::wait() {
+void handle::wait_and_lock(const size_t &command_id) {
     std::unique_lock<std::mutex> lock(mutex);
     var.wait(lock, [&]() { return !locked; });
+
+    locked = true;
+    owner_id = command_id;
 }
 
 const size_t handle::get_owner_id() const {
     if(owner_id.is_initialized()) {
         return owner_id.get();
     }
-    else {
-        throw std::runtime_error("Owner is not set"); //TODO: Own exception
-    }
+
+    throw std::runtime_error("Owner is not set");
 }
 
 bool handle::is_locked() const {

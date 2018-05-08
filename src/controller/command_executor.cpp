@@ -55,8 +55,7 @@ void command_executor::try_execute(const size_t &command_id, const Message &mess
     }
 
     for(size_t handle_id : item.instance->get_required_handles()) {
-        required_handles[handle_id]->wait();
-        required_handles[handle_id]->lock(command_id);
+        required_handles[handle_id]->wait_and_lock(command_id);
     }
 
     item.status = command_status::STARTED;

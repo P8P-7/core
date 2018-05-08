@@ -1,7 +1,3 @@
-//
-// Created by obe on 8-5-18.
-//
-
 #include "i2c_bus_handle.h"
 
 using namespace goliath::handles;
