@@ -1,4 +1,6 @@
 add_subdirectory(core)
+add_subdirectory(dynamixel)
 add_subdirectory(gpio)
 add_subdirectory(io)
+add_subdirectory(i2c)
 add_subdirectory(vision)

@@ -6,6 +6,8 @@
 #include <boost/log/trivial.hpp>
 #include <goliath/gpio.h>
 
+using namespace goliath::gpio;
+
 GPIO::GPIO() {
     this->gpionum = "";
 }
