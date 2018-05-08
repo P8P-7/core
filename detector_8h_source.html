@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Goliath II: /home/travis/build/P8P-7/core/src/modules/vision/include/goliath/detector.h Source File</title>
+<title>Goliath II: /home/travis/build/P8P-7/core/src/modules/vision/detectors/detector.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -81,7 +81,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_ddb4d7e95cc2d6c8e1ade10a20d7247d.html">modules</a></li><li class="navelem"><a class="el" href="dir_0ae6af70715d2b0a0098397538b9852f.html">vision</a></li><li class="navelem"><a class="el" href="dir_264699ebcc30487b87a82a4d3480caeb.html">include</a></li><li class="navelem"><a class="el" href="dir_d52685e5e2e951fce313e0c0cd14e31c.html">goliath</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_ddb4d7e95cc2d6c8e1ade10a20d7247d.html">modules</a></li><li class="navelem"><a class="el" href="dir_0ae6af70715d2b0a0098397538b9852f.html">vision</a></li><li class="navelem"><a class="el" href="dir_f60ebdfea5f38719fd2f22ca0e17e62a.html">detectors</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -93,16 +93,16 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;opencv2/opencv.hpp&gt;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">namespace </span>goliath::vision {</div>
+<div class="line"><a name="l00005"></a><span class="lineno"><a class="line" href="namespacegoliath_1_1vision.html">    5</a></span>&#160;<span class="keyword">namespace </span>goliath::vision {</div>
 <div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="classgoliath_1_1vision_1_1detector.html">    6</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classgoliath_1_1vision_1_1detector.html">detector</a> {</div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;        <a class="code" href="classgoliath_1_1vision_1_1detector.html">detector</a>(<span class="keyword">const</span> cv::Mat &amp;input)</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;            : input(input) {}</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        <span class="keyword">virtual</span> cv::Mat detect() <span class="keyword">const</span> = 0;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <span class="keyword">const</span> cv::Mat input;</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;        <span class="keyword">explicit</span> <a class="code" href="classgoliath_1_1vision_1_1detector.html">detector</a>(<span class="keyword">const</span> cv::Mat &amp;input);</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        <span class="keyword">virtual</span> std::vector&lt;cv::Vec4i&gt; detect() <span class="keyword">const</span> = 0;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <span class="keyword">const</span> cv::Mat input;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    };</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;}</div>
 <div class="ttc" id="classgoliath_1_1vision_1_1detector_html"><div class="ttname"><a href="classgoliath_1_1vision_1_1detector.html">goliath::vision::detector</a></div><div class="ttdef"><b>Definition:</b> detector.h:6</div></div>
