@@ -7,6 +7,7 @@
 #include "commands/follow_line_command.h"
 #include "commands/move_tower_command.h"
 #include "handles.h"
+#include "../modules/vision/detectors/line_detector.h"
 
 /**
  * @file controller.cpp

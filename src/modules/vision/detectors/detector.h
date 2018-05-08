@@ -5,12 +5,12 @@
 namespace goliath::vision {
     class detector {
     public:
-        detector(const cv::Mat &input)
-            : input(input) {}
+        explicit detector(const cv::Mat &input);
 
-        virtual cv::Mat detect() const = 0;
+        virtual std::vector<cv::Vec4i> detect() const = 0;
 
     protected:
         const cv::Mat input;
+
     };
 }

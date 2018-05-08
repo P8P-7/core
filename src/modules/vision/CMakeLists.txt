@@ -1,10 +1,13 @@
 project(goliath-vision-module LANGUAGES CXX)
 
 set(SOURCES
+        processors/processor.cpp
+        processors/color_processor.cpp
+        processors/line_processor.cpp
+        detectors/detector.cpp
+        detectors/line_detector.cpp
+        webcam_handle.cpp
         webcam.cpp
-        color_detector.cpp
-        line_detector.cpp
-        include/goliath/webcam_handle.h webcam_handle.cpp
         )
 
 add_library(${PROJECT_NAME} ${SOURCES})
