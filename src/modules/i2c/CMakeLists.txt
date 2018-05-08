@@ -1,4 +1,4 @@
-project(i2c-module CXX)
+project(goliath-i2c-module CXX)
 
 set(SOURCES
         handles/i2c_slave_handle.h
@@ -26,7 +26,7 @@ target_include_directories(${PROJECT_NAME}
 
 target_link_libraries(${PROJECT_NAME}
         PUBLIC
-        core-module
+        goliath-core-module
         ${CMAKE_THREAD_LIBS_INIT}
         ${Boost_LIBRARIES}
         )

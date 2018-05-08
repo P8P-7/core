@@ -1,9 +1,7 @@
 #define BOOST_TEST_MODULE test_i2c
 
 #include <boost/test/included/unit_test.hpp>
-#include "../src/modules/i2c/handles/i2c_slave_handle.h"
-#include "../src/modules/i2c/handles/i2c_bus_handle.h"
-#include "../src/modules/i2c/i2c_slave.h"
+#include <goliath/i2c.h>
 
 using namespace goliath;
 

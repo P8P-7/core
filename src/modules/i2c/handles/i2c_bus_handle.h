@@ -8,6 +8,9 @@ namespace goliath::handles {
     public:
         i2c_bus_handle(const std::string& device);
 
+        /**
+         * @return path to i2c device
+         */
         const std::string& get_device_path() const;
     private:
         std::string device;
