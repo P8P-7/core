@@ -5,8 +5,8 @@ compiler:
   - gcc
 
 branches:
-  except:
-    - gh-pages
+  only:
+    - master
 
 env:
   global:

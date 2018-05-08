@@ -7,11 +7,11 @@ line_detector::line_detector(const cv::Mat &input, double rho, double theta, int
 }
 
 line_detector::line_detector(const cv::Mat& input, int threshold, double min_line_length, double max_line_gap)
-        : line_detector(input, 1, CV_PI / 180, threshold, min_line_length, max_line_gap) {
+        : line_detector(input, DEFAULT_LINE_DETECTOR_RHO, DEFAULT_LINE_DETECTOR_THETA, threshold, min_line_length, max_line_gap) {
 }
 
-std::vector<cv::Vec4i> line_detector::detect() const {
-    std::vector<cv::Vec4i> lines;
+std::vector<cv::Vec4d> line_detector::detect() const {
+    std::vector<cv::Vec4d> lines;
     cv::HoughLinesP(input, lines, rho, theta, threshold, min_line_length, max_line_gap);
 
     return lines;
