@@ -7,7 +7,7 @@ int main(int argc, char *argv[]) {
     short iData = 512;
     std::string command = "Set";
     std::string address = "Goal";
-    std::string portName = "/dev/ttyAMA0";
+    std::string portName = "/dev/serial0";
     int baudRate = 1000000;
 
     // motor object
@@ -36,6 +36,7 @@ int main(int argc, char *argv[]) {
 
 
         motor->configure();
+        motor->setSerialFeedback(false);
         motor->setDirectionCallback([&gpio](std::string direction) {
             if (direction == "tx") {
                 gpio.set(HIGH);
