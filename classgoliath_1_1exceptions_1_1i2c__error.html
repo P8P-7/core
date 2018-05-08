@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Goliath II: goliath::handles::handle Class Reference</title>
+<title>Goliath II: goliath::exceptions::i2c_error Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -84,53 +84,38 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="namespacegoliath.html">goliath</a></li><li class="navelem"><a class="el" href="namespacegoliath_1_1handles.html">handles</a></li><li class="navelem"><a class="el" href="classgoliath_1_1handles_1_1handle.html">handle</a></li>  </ul>
+<li class="navelem"><a class="el" href="namespacegoliath.html">goliath</a></li><li class="navelem"><b>exceptions</b></li><li class="navelem"><a class="el" href="classgoliath_1_1exceptions_1_1i2c__error.html">i2c_error</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="classgoliath_1_1handles_1_1handle-members.html">List of all members</a>  </div>
+<a href="classgoliath_1_1exceptions_1_1i2c__error-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">goliath::handles::handle Class Reference</div>  </div>
+<div class="title">goliath::exceptions::i2c_error Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="dynheader">
-Inheritance diagram for goliath::handles::handle:</div>
+Inheritance diagram for goliath::exceptions::i2c_error:</div>
 <div class="dyncontent">
  <div class="center">
-  <img src="classgoliath_1_1handles_1_1handle.png" usemap="#goliath::handles::handle_map" alt=""/>
-  <map id="goliath::handles::handle_map" name="goliath::handles::handle_map">
-<area href="classgoliath_1_1handles_1_1i2c__bus__handle.html" alt="goliath::handles::i2c_bus_handle" shape="rect" coords="0,56,204,80"/>
-<area href="classgoliath_1_1handles_1_1i2c__slave__handle.html" alt="goliath::handles::i2c_slave_handle" shape="rect" coords="214,56,418,80"/>
-<area href="classgoliath_1_1handles_1_1webcam__handle.html" alt="goliath::handles::webcam_handle" shape="rect" coords="428,56,632,80"/>
+  <img src="classgoliath_1_1exceptions_1_1i2c__error.png" usemap="#goliath::exceptions::i2c_error_map" alt=""/>
+  <map id="goliath::exceptions::i2c_error_map" name="goliath::exceptions::i2c_error_map">
 </map>
  </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a45201866d5f9c0b390688e3f0febb8fe"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a45201866d5f9c0b390688e3f0febb8fe"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>handle</b> (const <a class="el" href="classgoliath_1_1handles_1_1handle.html">handle</a> &amp;other)</td></tr>
-<tr class="separator:a45201866d5f9c0b390688e3f0febb8fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abc045776e41489a3b1235a6dd0413295"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abc045776e41489a3b1235a6dd0413295"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>lock</b> (const size_t &amp;command_id)</td></tr>
-<tr class="separator:abc045776e41489a3b1235a6dd0413295"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae31bb86a6a3cac45f7e228bdc87a22c8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae31bb86a6a3cac45f7e228bdc87a22c8"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>unlock</b> ()</td></tr>
-<tr class="separator:ae31bb86a6a3cac45f7e228bdc87a22c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1268b6b494b35c4d5c589c06556fa2db"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1268b6b494b35c4d5c589c06556fa2db"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>wait</b> ()</td></tr>
-<tr class="separator:a1268b6b494b35c4d5c589c06556fa2db"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a71f4076fb91ad15a4d4a2171e3329351"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a71f4076fb91ad15a4d4a2171e3329351"></a>
-const size_t&#160;</td><td class="memItemRight" valign="bottom"><b>get_owner_id</b> () const </td></tr>
-<tr class="separator:a71f4076fb91ad15a4d4a2171e3329351"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8e628f30e89e4e4b0d8066564a510fc8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8e628f30e89e4e4b0d8066564a510fc8"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_locked</b> () const </td></tr>
-<tr class="separator:a8e628f30e89e4e4b0d8066564a510fc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab87296f7ddf5e0620174aa84f928e2e1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab87296f7ddf5e0620174aa84f928e2e1"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>i2c_error</b> (std::string device, std::string reason)</td></tr>
+<tr class="separator:ab87296f7ddf5e0620174aa84f928e2e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09eda44e988d59cf113d4449c63ca4bf"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a09eda44e988d59cf113d4449c63ca4bf"></a>
+const char *&#160;</td><td class="memItemRight" valign="bottom"><b>what</b> () const noexceptoverride</td></tr>
+<tr class="separator:a09eda44e988d59cf113d4449c63ca4bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>/home/travis/build/P8P-7/core/src/modules/core/include/goliath/<a class="el" href="handle_8h_source.html">handle.h</a></li>
-<li>/home/travis/build/P8P-7/core/src/modules/core/handle.cpp</li>
+<li>/home/travis/build/P8P-7/core/src/modules/i2c/<a class="el" href="i2c__error_8h_source.html">i2c_error.h</a></li>
+<li>/home/travis/build/P8P-7/core/src/modules/i2c/i2c_error.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
