@@ -10,7 +10,6 @@ branches:
 
 env:
   global:
-    - GH_REPO_NAME: core
     - GH_REPO_REF: github.com/P8P-7/core
 
 addons:
