@@ -17,7 +17,7 @@ void handle::lock(const size_t& command_id) {
 
 void handle::unlock() {
     locked = false;
-    owner_id = 0;
+    owner_id.reset();
     var.notify_one();
 }
 
@@ -27,7 +27,12 @@ void handle::wait() {
 }
 
 const size_t handle::get_owner_id() const {
-    return owner_id;
+    if(owner_id.is_initialized()) {
+        return owner_id.get();
+    }
+    else {
+        throw std::runtime_error("Owner is not set"); //TODO: Own exception
+    }
 }
 
 bool handle::is_locked() const {

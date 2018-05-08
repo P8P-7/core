@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include <mutex>
 #include <condition_variable>
+#include <boost/optional.hpp>
 
 namespace goliath::handles {
     class handle {
@@ -19,7 +20,7 @@ namespace goliath::handles {
     private:
         bool locked = false;
 
-        size_t owner_id;
+        boost::optional<size_t> owner_id;
         std::mutex mutex;
         std::condition_variable var;
     };

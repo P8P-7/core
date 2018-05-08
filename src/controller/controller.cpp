@@ -1,14 +1,12 @@
-#include <goliath/webcam_handle.h>
+#include <goliath/vision.h>
 #include <goliath/io.h>
 
 #include "command_map.h"
 #include "commands/move_command.h"
 #include "command_executor.h"
-#include "handles.h"
 #include "commands/follow_line_command.h"
 #include "commands/move_tower_command.h"
-
-using namespace goliath;
+#include "handles.h"
 
 /**
  * @file controller.cpp
@@ -17,10 +15,10 @@ using namespace goliath;
  */
 
 /**
- * @namespace goliath
- * @brief Main project namespace
- */
-
+* @namespace goliath
+* @brief Main project namespace
+*/
+using namespace goliath;
 
 int main(int argc, char *argv[]) {
     handles::handle_map handle_map;
