@@ -44,6 +44,7 @@ int main(int argc, char *argv[]) {
         runner.run(command_id, message);
     });
 
+
     subscriber.receive();
 
     return 0;
