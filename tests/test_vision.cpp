@@ -3,6 +3,7 @@
 #include <boost/test/included/unit_test.hpp>
 #include <boost/format.hpp>
 #include <goliath/vision.h>
+#include "../src/modules/vision/detectors/within_box_detector.h"
 
 using namespace goliath;
 
@@ -18,8 +19,8 @@ BOOST_FIXTURE_TEST_SUITE(BOOST_TEST_MODULE, test_vision_fixture)
         cv::Mat image = cv::imread(image_path + "highway.jpg", CV_BGR2GRAY);
 
         BOOST_TEST_CHECKPOINT("Creating a canny");
-        vision::line_processor line_processor(image);
-        cv::Mat canny_image = line_processor.process();
+        vision::canny_processor canny_processor(image, 200, 50);
+        cv::Mat canny_image = canny_processor.process();
 
         BOOST_TEST_CHECKPOINT("Detecting lines");
         vision::line_detector line_detector(canny_image, 125, 50, 2);
@@ -50,5 +51,7 @@ BOOST_FIXTURE_TEST_SUITE(BOOST_TEST_MODULE, test_vision_fixture)
 
         BOOST_ASSERT(false);
     }
+
+
 
 BOOST_AUTO_TEST_SUITE_END()
