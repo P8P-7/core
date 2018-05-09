@@ -2,7 +2,7 @@ include_directories(${Boost_INCLUDE_DIR})
 
 MACRO(add_goliath_test NAME DEPENDENCIES)
     add_executable(test_${NAME} test_${NAME}.cpp)
-    add_test(test_${NAME} test_${NAME})
+    add_test(NAME test_${NAME} COMMAND $<TARGET_FILE:test_${NAME}>)
     target_include_directories(test_${NAME}
             PUBLIC
                 ${DEPENDENCIES}
