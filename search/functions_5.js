@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['run',['run',['../classgoliath_1_1commands_1_1command.html#a6ceb7b09b51e2040e793533fe0233fab',1,'goliath::commands::command']]]
+  ['line_5fdetector',['line_detector',['../classgoliath_1_1vision_1_1line__detector.html#a2887cb878ada8fdcd536522e9095d11d',1,'goliath::vision::line_detector']]],
+  ['lock',['lock',['../classgoliath_1_1handles_1_1handle.html#abc045776e41489a3b1235a6dd0413295',1,'goliath::handles::handle']]]
 ];

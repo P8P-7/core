@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['wait_5fand_5flock',['wait_and_lock',['../classgoliath_1_1handles_1_1handle.html#a80bd5b72ecb561514723472ef960d9b1',1,'goliath::handles::handle']]],
-  ['what',['what',['../classgoliath_1_1exceptions_1_1i2c__error.html#a09eda44e988d59cf113d4449c63ca4bf',1,'goliath::exceptions::i2c_error']]],
-  ['write',['write',['../classgoliath_1_1i2c_1_1i2c__slave.html#a07ba4458fcb9a0350aa3c73f89bd2aa4',1,'goliath::i2c::i2c_slave']]]
+  ['process',['process',['../classgoliath_1_1vision_1_1color__processor.html#a78720596a8bdfe9276cea1593cf42f54',1,'goliath::vision::color_processor::process()'],['../classgoliath_1_1vision_1_1line__processor.html#a7439eea7049f856d8567f82f186cf288',1,'goliath::vision::line_processor::process()'],['../classgoliath_1_1vision_1_1processor.html#aa66473730c35e3db89ee3d73e0d82c6a',1,'goliath::vision::processor::process()']]],
+  ['processor',['processor',['../classgoliath_1_1vision_1_1processor.html#a15347f446a956628c29578cc6e4e0607',1,'goliath::vision::processor']]]
 ];

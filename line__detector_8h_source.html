@@ -70,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -89,26 +89,33 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">line_detector.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<a href="line__detector_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;detector.h&quot;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="detector_8h.html">detector.h</a>&quot;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;../processors/line_processor.h&quot;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">namespace </span>goliath::vision {</div>
-<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="classgoliath_1_1vision_1_1line__detector.html">    7</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classgoliath_1_1vision_1_1line__detector.html">line_detector</a> : <span class="keyword">public</span> <a class="code" href="classgoliath_1_1vision_1_1detector.html">detector</a> {</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;        <a class="code" href="classgoliath_1_1vision_1_1line__detector.html">line_detector</a>(<span class="keyword">const</span> cv::Mat &amp;input, <span class="keywordtype">double</span> rho, <span class="keywordtype">double</span> theta, <span class="keywordtype">int</span> threshold, <span class="keywordtype">double</span> min_line_length, <span class="keywordtype">double</span> max_line_gap);</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        <a class="code" href="classgoliath_1_1vision_1_1line__detector.html">line_detector</a>(<span class="keyword">const</span> cv::Mat &amp;input, <span class="keywordtype">int</span> threshold, <span class="keywordtype">double</span> min_line_length, <span class="keywordtype">double</span> max_line_gap);</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        std::vector&lt;cv::Vec4i&gt; detect() <span class="keyword">const override</span>;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        <span class="keywordtype">int</span> threshold;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <span class="keywordtype">double</span> rho, theta, min_line_length, max_line_gap;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    };</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;}</div>
-<div class="ttc" id="classgoliath_1_1vision_1_1line__detector_html"><div class="ttname"><a href="classgoliath_1_1vision_1_1line__detector.html">goliath::vision::line_detector</a></div><div class="ttdef"><b>Definition:</b> line_detector.h:7</div></div>
-<div class="ttc" id="classgoliath_1_1vision_1_1detector_html"><div class="ttname"><a href="classgoliath_1_1vision_1_1detector.html">goliath::vision::detector</a></div><div class="ttdef"><b>Definition:</b> detector.h:6</div></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">namespace </span>goliath::vision {</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="namespacegoliath_1_1vision.html#a7e252e4581a0e7f460632530d298056d">   15</a></span>&#160;    <span class="keyword">const</span> <span class="keywordtype">double</span> <a class="code" href="namespacegoliath_1_1vision.html#a7e252e4581a0e7f460632530d298056d">DEFAULT_LINE_DETECTOR_RHO</a> = 1;</div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="namespacegoliath_1_1vision.html#ab54eb23513b99eeccf10c04ea285f0cb">   19</a></span>&#160;    <span class="keyword">const</span> <span class="keywordtype">double</span> <a class="code" href="namespacegoliath_1_1vision.html#ab54eb23513b99eeccf10c04ea285f0cb">DEFAULT_LINE_DETECTOR_THETA</a> = CV_PI / 180;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="classgoliath_1_1vision_1_1line__detector.html">   25</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classgoliath_1_1vision_1_1line__detector.html">line_detector</a> : <span class="keyword">public</span> <a class="code" href="classgoliath_1_1vision_1_1detector.html">detector</a> {</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <a class="code" href="classgoliath_1_1vision_1_1line__detector.html">line_detector</a>(<span class="keyword">const</span> cv::Mat &amp;input, <span class="keywordtype">double</span> rho, <span class="keywordtype">double</span> theta, <span class="keywordtype">int</span> threshold, <span class="keywordtype">double</span> min_line_length, <span class="keywordtype">double</span> max_line_gap);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <a class="code" href="classgoliath_1_1vision_1_1line__detector.html">line_detector</a>(<span class="keyword">const</span> cv::Mat &amp;input, <span class="keywordtype">int</span> threshold, <span class="keywordtype">double</span> min_line_length, <span class="keywordtype">double</span> max_line_gap);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        std::vector&lt;cv::Vec4d&gt; <a class="code" href="classgoliath_1_1vision_1_1line__detector.html#a84fc340934cf6a632d09265fc7e45c7e">detect</a>() <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keywordtype">int</span> threshold;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keywordtype">double</span> rho, theta, min_line_length, max_line_gap;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    };</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;}</div>
+<div class="ttc" id="namespacegoliath_1_1vision_html_ab54eb23513b99eeccf10c04ea285f0cb"><div class="ttname"><a href="namespacegoliath_1_1vision.html#ab54eb23513b99eeccf10c04ea285f0cb">goliath::vision::DEFAULT_LINE_DETECTOR_THETA</a></div><div class="ttdeci">const double DEFAULT_LINE_DETECTOR_THETA</div><div class="ttdoc">Default Theta. </div><div class="ttdef"><b>Definition:</b> line_detector.h:19</div></div>
+<div class="ttc" id="namespacegoliath_1_1vision_html_a7e252e4581a0e7f460632530d298056d"><div class="ttname"><a href="namespacegoliath_1_1vision.html#a7e252e4581a0e7f460632530d298056d">goliath::vision::DEFAULT_LINE_DETECTOR_RHO</a></div><div class="ttdeci">const double DEFAULT_LINE_DETECTOR_RHO</div><div class="ttdoc">Default Rho. </div><div class="ttdef"><b>Definition:</b> line_detector.h:15</div></div>
+<div class="ttc" id="classgoliath_1_1vision_1_1line__detector_html_a84fc340934cf6a632d09265fc7e45c7e"><div class="ttname"><a href="classgoliath_1_1vision_1_1line__detector.html#a84fc340934cf6a632d09265fc7e45c7e">goliath::vision::line_detector::detect</a></div><div class="ttdeci">std::vector&lt; cv::Vec4d &gt; detect() const override</div><div class="ttdef"><b>Definition:</b> line_detector.cpp:13</div></div>
+<div class="ttc" id="classgoliath_1_1vision_1_1line__detector_html"><div class="ttname"><a href="classgoliath_1_1vision_1_1line__detector.html">goliath::vision::line_detector</a></div><div class="ttdoc">Takes in an image and detects all lines in the image. </div><div class="ttdef"><b>Definition:</b> line_detector.h:25</div></div>
+<div class="ttc" id="classgoliath_1_1vision_1_1detector_html"><div class="ttname"><a href="classgoliath_1_1vision_1_1detector.html">goliath::vision::detector</a></div><div class="ttdoc">Base class of detectors that take an input and detect a vector of shapes, colors or sizes...</div><div class="ttdef"><b>Definition:</b> detector.h:16</div></div>
+<div class="ttc" id="detector_8h_html"><div class="ttname"><a href="detector_8h.html">detector.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

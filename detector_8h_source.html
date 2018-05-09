@@ -70,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -89,23 +89,26 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">detector.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<a href="detector_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;opencv2/opencv.hpp&gt;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div>
-<div class="line"><a name="l00005"></a><span class="lineno"><a class="line" href="namespacegoliath_1_1vision.html">    5</a></span>&#160;<span class="keyword">namespace </span>goliath::vision {</div>
-<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="classgoliath_1_1vision_1_1detector.html">    6</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classgoliath_1_1vision_1_1detector.html">detector</a> {</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;        <span class="keyword">explicit</span> <a class="code" href="classgoliath_1_1vision_1_1detector.html">detector</a>(<span class="keyword">const</span> cv::Mat &amp;input);</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        <span class="keyword">virtual</span> std::vector&lt;cv::Vec4i&gt; detect() <span class="keyword">const</span> = 0;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <span class="keyword">const</span> cv::Mat input;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    };</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;}</div>
-<div class="ttc" id="classgoliath_1_1vision_1_1detector_html"><div class="ttname"><a href="classgoliath_1_1vision_1_1detector.html">goliath::vision::detector</a></div><div class="ttdef"><b>Definition:</b> detector.h:6</div></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;boost/variant.hpp&gt;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;opencv2/opencv.hpp&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="namespacegoliath_1_1vision.html">   11</a></span>&#160;<span class="keyword">namespace </span>goliath::vision {</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="classgoliath_1_1vision_1_1detector.html">   16</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classgoliath_1_1vision_1_1detector.html">detector</a> {</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="keyword">explicit</span> <a class="code" href="classgoliath_1_1vision_1_1detector.html#adce7fa9ba7bcfc94ec31265972271fdd">detector</a>(<span class="keyword">const</span> cv::Mat &amp;input);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="keyword">virtual</span> std::vector&lt;cv::Vec4d&gt; <a class="code" href="classgoliath_1_1vision_1_1detector.html#a7f73e432d55cccfafc3a50542a43deea">detect</a>() <span class="keyword">const</span> = 0;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="keyword">const</span> cv::Mat input;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    };</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;}</div>
+<div class="ttc" id="classgoliath_1_1vision_1_1detector_html_a7f73e432d55cccfafc3a50542a43deea"><div class="ttname"><a href="classgoliath_1_1vision_1_1detector.html#a7f73e432d55cccfafc3a50542a43deea">goliath::vision::detector::detect</a></div><div class="ttdeci">virtual std::vector&lt; cv::Vec4d &gt; detect() const =0</div></div>
+<div class="ttc" id="classgoliath_1_1vision_1_1detector_html_adce7fa9ba7bcfc94ec31265972271fdd"><div class="ttname"><a href="classgoliath_1_1vision_1_1detector.html#adce7fa9ba7bcfc94ec31265972271fdd">goliath::vision::detector::detector</a></div><div class="ttdeci">detector(const cv::Mat &amp;input)</div><div class="ttdef"><b>Definition:</b> detector.cpp:5</div></div>
+<div class="ttc" id="classgoliath_1_1vision_1_1detector_html"><div class="ttname"><a href="classgoliath_1_1vision_1_1detector.html">goliath::vision::detector</a></div><div class="ttdoc">Base class of detectors that take an input and detect a vector of shapes, colors or sizes...</div><div class="ttdef"><b>Definition:</b> detector.h:16</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
