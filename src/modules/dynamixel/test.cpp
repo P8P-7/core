@@ -6,6 +6,7 @@ using namespace goliath::gpio;
 
 int main(int argc, char *argv[]) {
     byte motorId = 4;
+    int numBytes = 2;
     short iData = 512;
     std::string command = "Set";
     std::string address = "Goal";
@@ -18,10 +19,33 @@ int main(int argc, char *argv[]) {
     std::vector<byte> data;
     std::vector<byte> recvData;
 
-    byte h, l;
-    Utils::convertToHL(iData, &h, &l);
-    data.push_back(l);
-    data.push_back(h);
+    // parse command line args
+    for (int i = 1; i < argc; i++) {
+        if (!strcmp(argv[i], "--baudRate")) {
+            baudRate = atoi(argv[++i]);
+        } else if (!strcmp(argv[i], "--motorId")) {
+            motorId = atoi(argv[++i]);
+        } else if (!strcmp(argv[i], "--numBytes")) {
+            numBytes = atoi(argv[++i]);
+        } else if (!strcmp(argv[i], "--command")) {
+            command = argv[++i];
+        } else if (!strcmp(argv[i], "--address")) {
+            address = argv[++i];
+        } else if (!strcmp(argv[i], "--portName")) {
+            portName = argv[++i];
+        } else if (!strcmp(argv[i], "--data")) {
+            iData = std::strtoul(argv[++i], 0, 10);
+        }
+    }
+
+    if (numBytes == 1) {
+        data.push_back(iData);
+    } else if (numBytes == 2) {
+        byte h, l;
+        Utils::convertToHL(iData, &h, &l);
+        data.push_back(l);
+        data.push_back(h);
+    }
 
     SerialPort port;
     std::cout << "Connecting to: " <<
@@ -41,8 +65,8 @@ int main(int argc, char *argv[]) {
             if (direction == "tx") {
                 gpio.set(HIGH);
             } else {
-                gpio.set(LOW);
                 usleep(20);
+                gpio.set(LOW);
             }
         });
 
@@ -69,6 +93,7 @@ int main(int argc, char *argv[]) {
         } else if (recvData.size() == 2) {
             recvVal = Utils::convertFromHL(recvData[0], recvData[1]);
         }
+
         std::cout << "received: " <<
                   retVal << " : " << recvVal << std::endl;
 
