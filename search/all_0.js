@@ -1,5 +1,8 @@
 var searchData=
 [
+  ['canny_5fprocessor',['canny_processor',['../classgoliath_1_1vision_1_1canny__processor.html',1,'goliath::vision']]],
+  ['canny_5fprocessor',['canny_processor',['../classgoliath_1_1vision_1_1canny__processor.html#a1391dba6409b7ab261f875e9ab78e3f1',1,'goliath::vision::canny_processor']]],
+  ['canny_5fprocessor_2eh',['canny_processor.h',['../canny__processor_8h.html',1,'']]],
   ['color_5fprocessor',['color_processor',['../classgoliath_1_1vision_1_1color__processor.html',1,'goliath::vision']]],
   ['color_5fprocessor',['color_processor',['../classgoliath_1_1vision_1_1color__processor.html#a058cc1c3fbddcde17e0fce0733310e1b',1,'goliath::vision::color_processor']]],
   ['color_5fprocessor_2eh',['color_processor.h',['../color__processor_8h.html',1,'']]],
