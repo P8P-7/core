@@ -1,7 +1,9 @@
 #pragma once
 
+#include <algorithm>
+
 #include "detector.h"
-#include "../processors/line_processor.h"
+#include "../processors/canny_processor.h"
 
 /**
  * @file line_detector.h
@@ -37,6 +39,11 @@ namespace goliath::vision {
          * @return Vector of all detected lines
          */
         std::vector<cv::Vec4d> detect() const override;
+
+        /**
+         * @return The longest lines in detected lines
+         */
+        std::vector<cv::Vec4d> longest_lines() const;
 
     private:
         int threshold;
