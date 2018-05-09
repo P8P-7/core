@@ -19,7 +19,7 @@ int main(int argc, char *argv[]) {
     std::vector<byte> recvData;
 
     byte h, l;
-    Utils::ConvertToHL(iData, &h, &l);
+    Utils::convertToHL(iData, &h, &l);
     data.push_back(l);
     data.push_back(h);
 
@@ -37,12 +37,12 @@ int main(int argc, char *argv[]) {
         motor = new AX12(motorId, &port);
 
         motor->configure();
-        motor->setSerialFeedback(false);
         motor->setDirectionCallback([&gpio](std::string direction) {
             if (direction == "tx") {
                 gpio.set(HIGH);
             } else {
                 gpio.set(LOW);
+                usleep(20);
             }
         });
 
@@ -54,7 +54,7 @@ int main(int argc, char *argv[]) {
                                           buffer);
 
         std::cout << "buffer: " <<
-                  Utils::PrintBuffer(buffer, length) << std::endl;
+                  Utils::printBuffer(buffer, length) << std::endl;
         // end of debugging
 
         int retVal;
@@ -67,7 +67,7 @@ int main(int argc, char *argv[]) {
         if (recvData.size() == 1) {
             recvVal = recvData[0];
         } else if (recvData.size() == 2) {
-            recvVal = Utils::ConvertFromHL(recvData[0], recvData[1]);
+            recvVal = Utils::convertFromHL(recvData[0], recvData[1]);
         }
         std::cout << "received: " <<
                   retVal << " : " << recvVal << std::endl;
