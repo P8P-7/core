@@ -3,9 +3,10 @@ project(goliath-vision-module LANGUAGES CXX)
 set(SOURCES
         processors/processor.cpp
         processors/color_processor.cpp
-        processors/line_processor.cpp
+        processors/canny_processor.cpp
         detectors/detector.cpp
         detectors/line_detector.cpp
+        detectors/within_box_detector.cpp
         webcam_handle.cpp
         webcam.cpp
         )

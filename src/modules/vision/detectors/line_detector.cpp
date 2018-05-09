@@ -16,3 +16,13 @@ std::vector<cv::Vec4d> line_detector::detect() const {
 
     return lines;
 }
+
+std::vector<cv::Vec4d> line_detector::longest_lines() const {
+    std::vector<cv::Vec4d> lines = detect();
+
+    std::sort(lines.begin(), lines.end(), [](cv::Vec4d a, cv::Vec4d b){
+        return cv::norm(a) > cv::norm(b);
+    });
+
+    return lines;
+}
