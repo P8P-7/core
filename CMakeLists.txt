@@ -1,5 +1,9 @@
 cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
 
+IF(NOT CMAKE_BUILD_TYPE)
+    set(CMAKE_BUILD_TYPE Debug)
+ENDIF()
+
 project(goliath-core
         DESCRIPTION "Core of the Goliath II bot"
         LANGUAGES CXX
