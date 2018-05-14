@@ -1,8 +1,9 @@
 var searchData=
 [
-  ['i2c_5ferror',['i2c_error',['../classgoliath_1_1exceptions_1_1i2c__error.html#ab87296f7ddf5e0620174aa84f928e2e1',1,'goliath::exceptions::i2c_error']]],
-  ['i2c_5fslave',['i2c_slave',['../classgoliath_1_1i2c_1_1i2c__slave.html#aad60d064131e44f29ff059de22cedd2d',1,'goliath::i2c::i2c_slave::i2c_slave(const handles::i2c_bus_handle &amp;bus_handle, const handles::i2c_slave_handle &amp;slave_handle)'],['../classgoliath_1_1i2c_1_1i2c__slave.html#a511edbdab536e53138cb28f1ac426c56',1,'goliath::i2c::i2c_slave::i2c_slave(const handles::i2c_bus_handle &amp;bus_handle, const i2c_address &amp;slave_address)']]],
-  ['interrupt',['interrupt',['../classgoliath_1_1commands_1_1command.html#a53393b5e9918340528219f0cd7d1aaac',1,'goliath::commands::command']]],
-  ['is_5finterrupted',['is_interrupted',['../classgoliath_1_1commands_1_1command.html#a39591a7239cbfe899d6c438936fd50ce',1,'goliath::commands::command']]],
-  ['is_5flocked',['is_locked',['../classgoliath_1_1handles_1_1handle.html#a8e628f30e89e4e4b0d8066564a510fc8',1,'goliath::handles::handle']]]
+  ['get_5fdevice',['get_device',['../classgoliath_1_1handles_1_1webcam__handle.html#a55362b1f53dc5eeb03f17947e766a803',1,'goliath::handles::webcam_handle']]],
+  ['get_5fdevice_5fpath',['get_device_path',['../classgoliath_1_1handles_1_1i2c__bus__handle.html#a8eb25e39d7985bc4ed71b742f9641364',1,'goliath::handles::i2c_bus_handle']]],
+  ['get_5fframe',['get_frame',['../classgoliath_1_1vision_1_1webcam.html#affd93c6258e0bcc2e527568fd708103d',1,'goliath::vision::webcam::get_frame(cv::Mat &amp;frame)'],['../classgoliath_1_1vision_1_1webcam.html#a181ac19e8f84d3f73e27fbd371880f2c',1,'goliath::vision::webcam::get_frame()']]],
+  ['get_5fowner_5fid',['get_owner_id',['../classgoliath_1_1handles_1_1handle.html#a71f4076fb91ad15a4d4a2171e3329351',1,'goliath::handles::handle']]],
+  ['get_5frequired_5fhandles',['get_required_handles',['../classgoliath_1_1commands_1_1command.html#abf72fe6dee2952b9348626d772a9f25c',1,'goliath::commands::command']]],
+  ['get_5fslave_5faddress',['get_slave_address',['../classgoliath_1_1handles_1_1i2c__slave__handle.html#a6b462e09f9638e70d9ebeb9e29098081',1,'goliath::handles::i2c_slave_handle']]]
 ];

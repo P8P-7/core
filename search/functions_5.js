@@ -1,6 +1,8 @@
 var searchData=
 [
-  ['line_5fdetector',['line_detector',['../classgoliath_1_1vision_1_1line__detector.html#a2887cb878ada8fdcd536522e9095d11d',1,'goliath::vision::line_detector']]],
-  ['lock',['lock',['../classgoliath_1_1handles_1_1handle.html#abc045776e41489a3b1235a6dd0413295',1,'goliath::handles::handle']]],
-  ['longest_5flines',['longest_lines',['../classgoliath_1_1vision_1_1line__detector.html#ac5b422a42f4fe99e8a91c6848007709b',1,'goliath::vision::line_detector']]]
+  ['i2c_5ferror',['i2c_error',['../classgoliath_1_1exceptions_1_1i2c__error.html#ab87296f7ddf5e0620174aa84f928e2e1',1,'goliath::exceptions::i2c_error']]],
+  ['i2c_5fslave',['i2c_slave',['../classgoliath_1_1i2c_1_1i2c__slave.html#aad60d064131e44f29ff059de22cedd2d',1,'goliath::i2c::i2c_slave::i2c_slave(const handles::i2c_bus_handle &amp;bus_handle, const handles::i2c_slave_handle &amp;slave_handle)'],['../classgoliath_1_1i2c_1_1i2c__slave.html#a511edbdab536e53138cb28f1ac426c56',1,'goliath::i2c::i2c_slave::i2c_slave(const handles::i2c_bus_handle &amp;bus_handle, const i2c_address &amp;slave_address)']]],
+  ['interrupt',['interrupt',['../classgoliath_1_1commands_1_1command.html#a53393b5e9918340528219f0cd7d1aaac',1,'goliath::commands::command']]],
+  ['is_5finterrupted',['is_interrupted',['../classgoliath_1_1commands_1_1command.html#a39591a7239cbfe899d6c438936fd50ce',1,'goliath::commands::command']]],
+  ['is_5flocked',['is_locked',['../classgoliath_1_1handles_1_1handle.html#a8e628f30e89e4e4b0d8066564a510fc8',1,'goliath::handles::handle']]]
 ];

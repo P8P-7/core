@@ -107,8 +107,9 @@ Inheritance diagram for goliath::vision::detector:</div>
  <div class="center">
   <img src="classgoliath_1_1vision_1_1detector.png" usemap="#goliath::vision::detector_map" alt=""/>
   <map id="goliath::vision::detector_map" name="goliath::vision::detector_map">
-<area href="classgoliath_1_1vision_1_1line__detector.html" title="Takes in an image and detects all lines in the image. " alt="goliath::vision::line_detector" shape="rect" coords="0,56,206,80"/>
-<area href="classgoliath_1_1vision_1_1within__box__detector.html" alt="goliath::vision::within_box_detector" shape="rect" coords="0,112,206,136"/>
+<area href="classgoliath_1_1vision_1_1follow__line__detector.html" alt="goliath::vision::follow_line_detector" shape="rect" coords="0,56,207,80"/>
+<area href="classgoliath_1_1vision_1_1line__detector.html" title="Takes in an image and detects all lines in the image. " alt="goliath::vision::line_detector" shape="rect" coords="217,56,424,80"/>
+<area href="classgoliath_1_1vision_1_1within__box__detector.html" alt="goliath::vision::within_box_detector" shape="rect" coords="217,112,424,136"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -116,6 +117,8 @@ Inheritance diagram for goliath::vision::detector:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:adce7fa9ba7bcfc94ec31265972271fdd"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1vision_1_1detector.html#adce7fa9ba7bcfc94ec31265972271fdd">detector</a> (const cv::Mat &amp;input)</td></tr>
 <tr class="separator:adce7fa9ba7bcfc94ec31265972271fdd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c36469bdd06efd4caa18661bcb85f99"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1vision_1_1detector.html#a7c36469bdd06efd4caa18661bcb85f99">detector</a> (const <a class="el" href="classgoliath_1_1vision_1_1detector.html">detector</a> &amp;other)</td></tr>
+<tr class="separator:a7c36469bdd06efd4caa18661bcb85f99"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7f73e432d55cccfafc3a50542a43deea"><td class="memItemLeft" align="right" valign="top">virtual std::vector&lt; cv::Vec4d &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1vision_1_1detector.html#a7f73e432d55cccfafc3a50542a43deea">detect</a> () const =0</td></tr>
 <tr class="separator:a7f73e432d55cccfafc3a50542a43deea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -158,6 +161,36 @@ const cv::Mat&#160;</td><td class="memItemRight" valign="bottom"><b>input</b></t
 
 </div>
 </div>
+<a class="anchor" id="a7c36469bdd06efd4caa18661bcb85f99"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">detector::detector </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classgoliath_1_1vision_1_1detector.html">detector</a> &amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>Copy constructor </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="a7f73e432d55cccfafc3a50542a43deea"></a>
 <div class="memitem">
@@ -181,7 +214,7 @@ const cv::Mat&#160;</td><td class="memItemRight" valign="bottom"><b>input</b></t
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>A vector of vectors representing different objects that can be referenced from other detectors or commands. It is abstract and can represent anything the implementation desires. </dd></dl>
 
-<p>Implemented in <a class="el" href="classgoliath_1_1vision_1_1line__detector.html#a84fc340934cf6a632d09265fc7e45c7e">goliath::vision::line_detector</a>, and <a class="el" href="classgoliath_1_1vision_1_1within__box__detector.html#a3bc1ba6b3fe0a01953699547aa764ba9">goliath::vision::within_box_detector</a>.</p>
+<p>Implemented in <a class="el" href="classgoliath_1_1vision_1_1line__detector.html#a84fc340934cf6a632d09265fc7e45c7e">goliath::vision::line_detector</a>, <a class="el" href="classgoliath_1_1vision_1_1follow__line__detector.html#a24e0ded92542e678a4bbe6c0c42137a5">goliath::vision::follow_line_detector</a>, and <a class="el" href="classgoliath_1_1vision_1_1within__box__detector.html#a3bc1ba6b3fe0a01953699547aa764ba9">goliath::vision::within_box_detector</a>.</p>
 
 </div>
 </div>
