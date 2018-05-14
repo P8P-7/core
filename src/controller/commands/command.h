@@ -2,7 +2,7 @@
 
 #include <vector>
 
-#include <Message.pb.h>
+#include <CommandMessage.pb.h>
 
 #include "../handle_map.h"
 
@@ -32,7 +32,7 @@ namespace goliath::commands {
          * @param handles Handle map to be passed to implementation to be unlocked dynamically
          * @param message Arguments to be passed
          */
-        void run(const handles::handle_map &handles, const Message &message);
+        void run(const handles::handle_map &handles, const CommandMessage &message);
 
         /**
          * @brief Interrupt a command by setting the interrupted property
@@ -56,7 +56,7 @@ namespace goliath::commands {
          * @param handles Handle map to be passed to implementation to be unlocked dynamically
          * @param message Arguments to be passed to implementers
          */
-        virtual void execute(const handles::handle_map &handles, const Message &message) = 0;
+        virtual void execute(const handles::handle_map &handles, const CommandMessage &message) = 0;
 
     private:
         /**

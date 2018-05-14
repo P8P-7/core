@@ -7,10 +7,10 @@ std::string zmq_io::address() const {
     return address;
 }
 
-void zmq_io::connect(const std::string &address) {
-    socket.connect(address);
+void zmq_io::connect() {
+    socket.connect(address());
 }
 
-void zmq_io::bind(const std::string &address) {
-    socket.bind(address);
+void zmq_io::bind() {
+    socket.bind(address());
 }

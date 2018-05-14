@@ -1,14 +1,15 @@
 #include <boost/log/trivial.hpp>
 #include <chrono>
-#include "follow_line_command.h"
-#include "../handles.h"
 #include <thread>
+
+#include "../handles.h"
+#include "follow_line_command.h"
 
 using namespace goliath::commands;
 
 follow_line_command::follow_line_command() : command({ HANDLE_RIGHT_EYE_CAM, HANDLE_LEFT_EYE_CAM }) { }
 
-void follow_line_command::execute(const handles::handle_map &handles, const Message &message) {
+void follow_line_command::execute(const handles::handle_map &handles, const CommandMessage &message) {
     BOOST_LOG_TRIVIAL(info) << "Execution of follow line command has started";
     std::this_thread::sleep_for(std::chrono::milliseconds(2000));
     if (is_interrupted()) {
