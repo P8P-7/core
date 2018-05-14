@@ -1,11 +1,8 @@
 project(goliath-io-module LANGUAGES CXX)
 
 set(SOURCES
-        include/goliath/zmq_io.h
         zmq_io.cpp
-        include/goliath/zmq_publisher.h
         zmq_publisher.cpp
-        include/goliath/zmq_subscriber.h
         zmq_subscriber.cpp
         )
 

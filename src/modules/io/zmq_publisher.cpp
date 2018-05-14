@@ -1,4 +1,4 @@
-#include "goliath/zmq_publisher.h"
+#include "zmq_publisher.h"
 
 using namespace goliath::io;
 

@@ -20,6 +20,8 @@ namespace goliath::vision {
          */
         explicit processor(const cv::Mat& input);
 
+        virtual ~processor();
+
         /**
          * @return Output image
          */
@@ -29,6 +31,6 @@ namespace goliath::vision {
         /**
          * @brief Input image
          */
-        const cv::Mat input;
+        cv::Mat input;
     };
 }

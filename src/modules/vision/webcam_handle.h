@@ -17,15 +17,15 @@ namespace goliath::handles {
         /**
          * @param device The recording device
          */
-        explicit webcam_handle(const std::string& device);
+        explicit webcam_handle(const int& device);
 
         /**
          * @return Currently set device
          */
-        const std::string& get_device() const;
+        const int& get_device() const;
 
     private:
-        const std::string device;
+        const int device;
 
     };
 }

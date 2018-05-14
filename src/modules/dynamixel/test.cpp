@@ -1,5 +1,5 @@
 #include <iostream>
-#include "goliath/gpio.h"
+#include "../gpio/gpio.h"
 #include "dynamixel/Dynamixel.h"
 
 using namespace goliath::gpio;

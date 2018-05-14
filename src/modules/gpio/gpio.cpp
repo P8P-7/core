@@ -4,7 +4,7 @@
 #include <sstream>
 
 #include <boost/log/trivial.hpp>
-#include <goliath/gpio.h>
+#include "gpio.h"
 
 using namespace goliath::gpio;
 

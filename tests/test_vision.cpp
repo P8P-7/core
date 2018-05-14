@@ -67,9 +67,9 @@ BOOST_FIXTURE_TEST_SUITE(BOOST_TEST_MODULE, test_vision_fixture)
         BOOST_TEST_CHECKPOINT("Loading image");
         cv::Mat input = cv::imread(image_path + "line.jpg");
 
-        vision::follow_line_detector follow_line_detector(input, 4, 100, 100, 50);
-        follow_line_detector.detect();
+        vision::follow_line_detector follow_line_detector(input, 4, 100, 100, 50, 20, 10000);
+        std::vector<cv::Vec4d> output = follow_line_detector.detect();
 
-        cv::waitKey();
-    }
+        BOOST_CHECK_EQUAL(output[0][0], vision::follow_line_direction::RIGHT);
+     }
 BOOST_AUTO_TEST_SUITE_END()

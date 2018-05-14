@@ -4,6 +4,7 @@
 
 #include "detector.h"
 #include "../util/vision_error.h"
+#include "../util/vision_utilities.h"
 #include "../processors/roi_processor.h"
 
 /**
@@ -16,7 +17,7 @@ namespace goliath::vision {
      * @enum goliath::vision::follow_line_direction
      * @brief Represents a direction the robot should go in, outputted from the follow_line_detector.
      */
-    enum class follow_line_direction {
+    enum follow_line_direction {
         ON_COURSE = 0,
         LEFT = 1,
         RIGHT = 2,
@@ -27,7 +28,8 @@ namespace goliath::vision {
      * @class goliath::vision::follow_line_detector
      * @brief Takes in an input image, splits it up into "boxes". Within those boxes it checks if there is a single
      * contour, if so take the center of that contour and compare it to the center of the box. This will return an
-     * offset. Take the average of all offsets to determine if the robot should go straight, left or right.
+     * offset. Take the average of all offsets to determine if the robot should go straight, left or right. The second
+     * value will be the distance from the edge of the box (percentage) the robot will have to turn.
      */
     class follow_line_detector : public detector {
     public:
@@ -37,21 +39,25 @@ namespace goliath::vision {
           * @param box_height The height of each of the boxes
           * @param boxes_bottom_margin Margin to start bottom-most box from
           * @param boxes_horizontal_margin Margins on both sides of the boxes
+          * @param min_contour_area Minimal area of the contour within a box to be considered part of a line
+          * @param max_contour_area Maximal area of the contour within a box to be considered part of a line
           */
         follow_line_detector(const cv::Mat &input, int boxes, int box_height, int boxes_bottom_margin,
-                             int boxes_horizontal_margin);
+                             int boxes_horizontal_margin, double min_contour_area, double max_contour_area);
         /**
          * @brief Copy constructor
          */
         follow_line_detector(const follow_line_detector &other);
 
         /**
-         * @return Only value [0][0] has a value. Containing a value whether the robot should continue going straight,
-         * or go left/right. This value is defined in the follow_line_direction enum
+         * @return Value [0][0] contains whether the robot should continue going straight, or go left/right. This value
+         * is defined in the follow_line_direction enum. Value [0][1] contains the percentage from the edge of the
+         * current box the camera is located. Can be used to determine the strength of the caterpillars.
          */
         std::vector<cv::Vec4d> detect() const override;
 
     private:
         const int boxes, box_height, boxes_bottom_margin, boxes_horizontal_margin;
+        const double min_contour_area, max_contour_area;
     };
 }

@@ -9,3 +9,7 @@ detector::detector(const cv::Mat& input)
 detector::detector(const detector& other)
         : detector(other.input) {
 }
+
+detector::~detector() {
+    input.release();
+}

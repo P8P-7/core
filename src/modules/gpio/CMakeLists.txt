@@ -1,7 +1,7 @@
 project(goliath-gpio-module LANGUAGES CXX)
 
 set(SOURCES
-        include/goliath/gpio.h
+    gpio.h
         gpio.cpp
         )
 

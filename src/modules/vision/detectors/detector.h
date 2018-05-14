@@ -24,6 +24,8 @@ namespace goliath::vision {
          */
         explicit detector(const detector &other);
 
+        virtual ~detector();
+
         /**
          * @return A vector of vectors representing different objects that can be referenced from other detectors or
          * commands.
@@ -32,7 +34,7 @@ namespace goliath::vision {
         virtual std::vector<cv::Vec4d> detect() const = 0;
 
     protected:
-        const cv::Mat input;
+        cv::Mat input;
 
     };
 }

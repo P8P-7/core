@@ -1,7 +1,7 @@
 #include <unistd.h>
 #include <functional>
 
-#include "goliath/zmq_subscriber.h"
+#include "zmq_subscriber.h"
 
 using namespace goliath::io;
 
