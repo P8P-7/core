@@ -207,8 +207,8 @@ fi
 # Check OpenCV
 if [ $opencv_exists -eq 0 ]; then
   echo "Installing OpenCV dependencies via apt-get"
-  apt-get install -y libjpeg-dev libtiff5-dev libjasper-dev libpng12-dev \
-  libavcodec-dev libavformat-dev libswscale-dev libv4l-dev \
+  apt-get install -y libjpeg-dev libtiff5-dev libjasper-dev libpng-dev \
+  libgtk-3-dev libavcodec-dev libavformat-dev libswscale-dev libv4l-dev \
   libxvidcore-dev libx264-dev libatlas-base-dev gfortran
   install_opencv_from_source
 fi
