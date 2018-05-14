@@ -6,6 +6,7 @@ var searchData=
   ['color_5fprocessor',['color_processor',['../classgoliath_1_1vision_1_1color__processor.html',1,'goliath::vision']]],
   ['color_5fprocessor',['color_processor',['../classgoliath_1_1vision_1_1color__processor.html#a058cc1c3fbddcde17e0fce0733310e1b',1,'goliath::vision::color_processor']]],
   ['color_5fprocessor_2eh',['color_processor.h',['../color__processor_8h.html',1,'']]],
+  ['color_5fregion_5fdetector',['color_region_detector',['../classgoliath_1_1vision_1_1color__region__detector.html',1,'goliath::vision']]],
   ['command',['command',['../classgoliath_1_1commands_1_1command.html',1,'goliath::commands']]],
   ['command_2eh',['command.h',['../command_8h.html',1,'']]],
   ['command_5fexecutor',['command_executor',['../classgoliath_1_1commands_1_1command__executor.html',1,'goliath::commands']]],

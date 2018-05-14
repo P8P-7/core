@@ -25,7 +25,7 @@
   <td style="padding-left: 0.5em;">
    <div id="projectname">Goliath II
    </div>
-   <div id="projectbrief">Group 7</div>
+   <div id="projectbrief">Core</div>
   </td>
  </tr>
  </tbody>
@@ -84,7 +84,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="namespacegoliath.html">goliath</a></li><li class="navelem"><b>exceptions</b></li><li class="navelem"><a class="el" href="classgoliath_1_1exceptions_1_1vision__error.html">vision_error</a></li>  </ul>
+<li class="navelem"><a class="el" href="namespacegoliath.html">goliath</a></li><li class="navelem"><a class="el" href="namespacegoliath_1_1exceptions.html">exceptions</a></li><li class="navelem"><a class="el" href="classgoliath_1_1exceptions_1_1vision__error.html">vision_error</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -95,6 +95,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">goliath::exceptions::vision_error Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>All errors related to the vision module.  
+ <a href="classgoliath_1_1exceptions_1_1vision__error.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="vision__error_8h_source.html">vision_error.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for goliath::exceptions::vision_error:</div>
 <div class="dyncontent">
@@ -106,13 +111,37 @@ Inheritance diagram for goliath::exceptions::vision_error:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a8253012fd4f2bb0771de7bdd2f8f03bd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8253012fd4f2bb0771de7bdd2f8f03bd"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>vision_error</b> (const std::string reason)</td></tr>
+<tr class="memitem:a8253012fd4f2bb0771de7bdd2f8f03bd"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1exceptions_1_1vision__error.html#a8253012fd4f2bb0771de7bdd2f8f03bd">vision_error</a> (const std::string reason)</td></tr>
 <tr class="separator:a8253012fd4f2bb0771de7bdd2f8f03bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a01918b819d5fe779d9b0b7385bb55852"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a01918b819d5fe779d9b0b7385bb55852"></a>
 const char *&#160;</td><td class="memItemRight" valign="bottom"><b>what</b> () const noexceptoverride</td></tr>
 <tr class="separator:a01918b819d5fe779d9b0b7385bb55852"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>All errors related to the vision module. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a8253012fd4f2bb0771de7bdd2f8f03bd"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">vision_error::vision_error </td>
+          <td>(</td>
+          <td class="paramtype">const std::string&#160;</td>
+          <td class="paramname"><em>reason</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">reason</td><td>Reason for exception </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>/home/travis/build/P8P-7/core/src/modules/vision/util/<a class="el" href="vision__error_8h_source.html">vision_error.h</a></li>
 <li>/home/travis/build/P8P-7/core/src/modules/vision/util/vision_error.cpp</li>

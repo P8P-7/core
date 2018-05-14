@@ -25,7 +25,7 @@
   <td style="padding-left: 0.5em;">
    <div id="projectname">Goliath II
    </div>
-   <div id="projectbrief">Group 7</div>
+   <div id="projectbrief">Core</div>
   </td>
  </tr>
  </tbody>
@@ -109,23 +109,23 @@ Inheritance diagram for goliath::vision::processor:</div>
   <map id="goliath::vision::processor_map" name="goliath::vision::processor_map">
 <area href="classgoliath_1_1vision_1_1canny__processor.html" title="Processor that returns a canny image of the input. " alt="goliath::vision::canny_processor" shape="rect" coords="0,56,193,80"/>
 <area href="classgoliath_1_1vision_1_1color__processor.html" title="Processor that returns an image with only colors within a specific range. " alt="goliath::vision::color_processor" shape="rect" coords="203,56,396,80"/>
-<area href="classgoliath_1_1vision_1_1roi__processor.html" alt="goliath::vision::roi_processor" shape="rect" coords="406,56,599,80"/>
+<area href="classgoliath_1_1vision_1_1roi__processor.html" title="Takes an input and returns a ROI selection from that image. " alt="goliath::vision::roi_processor" shape="rect" coords="406,56,599,80"/>
 </map>
  </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a15347f446a956628c29578cc6e4e0607"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1vision_1_1processor.html#a15347f446a956628c29578cc6e4e0607">processor</a> (const cv::Mat &amp;<a class="el" href="classgoliath_1_1vision_1_1processor.html#a86b0cb14da444bb69671799531f87d1b">input</a>)</td></tr>
+<tr class="memitem:a15347f446a956628c29578cc6e4e0607"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1vision_1_1processor.html#a15347f446a956628c29578cc6e4e0607">processor</a> (const cv::Mat &amp;<a class="el" href="classgoliath_1_1vision_1_1processor.html#ab666c7206d12889dbf89c1d0e0fa038b">input</a>)</td></tr>
 <tr class="separator:a15347f446a956628c29578cc6e4e0607"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa66473730c35e3db89ee3d73e0d82c6a"><td class="memItemLeft" align="right" valign="top">virtual cv::Mat&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1vision_1_1processor.html#aa66473730c35e3db89ee3d73e0d82c6a">process</a> () const =0</td></tr>
 <tr class="separator:aa66473730c35e3db89ee3d73e0d82c6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:a86b0cb14da444bb69671799531f87d1b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a86b0cb14da444bb69671799531f87d1b"></a>
-const cv::Mat&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1vision_1_1processor.html#a86b0cb14da444bb69671799531f87d1b">input</a></td></tr>
-<tr class="memdesc:a86b0cb14da444bb69671799531f87d1b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Input image. <br/></td></tr>
-<tr class="separator:a86b0cb14da444bb69671799531f87d1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab666c7206d12889dbf89c1d0e0fa038b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab666c7206d12889dbf89c1d0e0fa038b"></a>
+cv::Mat&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1vision_1_1processor.html#ab666c7206d12889dbf89c1d0e0fa038b">input</a></td></tr>
+<tr class="memdesc:ab666c7206d12889dbf89c1d0e0fa038b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Input image. <br/></td></tr>
+<tr class="separator:ab666c7206d12889dbf89c1d0e0fa038b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Base class of processors that take in an input and manipulate in some way returning the output from the virtual <a class="el" href="classgoliath_1_1vision_1_1processor.html#aa66473730c35e3db89ee3d73e0d82c6a">process()</a> method. </p>

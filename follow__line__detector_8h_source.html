@@ -25,7 +25,7 @@
   <td style="padding-left: 0.5em;">
    <div id="projectname">Goliath II
    </div>
-   <div id="projectbrief">Group 7</div>
+   <div id="projectbrief">Core</div>
   </td>
  </tr>
  </tbody>
@@ -95,32 +95,34 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="detector_8h.html">detector.h</a>&quot;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;../util/vision_error.h&quot;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;../processors/roi_processor.h&quot;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">namespace </span>goliath::vision {</div>
-<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="namespacegoliath_1_1vision.html#a39b046cc4cce5466d69e5841de9c9edd">   19</a></span>&#160;    <span class="keyword">enum class</span> <a class="code" href="namespacegoliath_1_1vision.html#a39b046cc4cce5466d69e5841de9c9edd">follow_line_direction</a> {</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        ON_COURSE = 0,</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        LEFT = 1,</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        RIGHT = 2,</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        ERROR = 3</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    };</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
-<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="classgoliath_1_1vision_1_1follow__line__detector.html">   32</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classgoliath_1_1vision_1_1follow__line__detector.html">follow_line_detector</a> : <span class="keyword">public</span> <a class="code" href="classgoliath_1_1vision_1_1detector.html">detector</a> {</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <a class="code" href="classgoliath_1_1vision_1_1follow__line__detector.html#a84eba1472cd3467a67b5002c28f9802d">follow_line_detector</a>(<span class="keyword">const</span> cv::Mat &amp;input, <span class="keywordtype">int</span> boxes, <span class="keywordtype">int</span> box_height, <span class="keywordtype">int</span> boxes_bottom_margin,</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                             <span class="keywordtype">int</span> boxes_horizontal_margin);</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <a class="code" href="classgoliath_1_1vision_1_1follow__line__detector.html#a84eba1472cd3467a67b5002c28f9802d">follow_line_detector</a>(<span class="keyword">const</span> <a class="code" href="classgoliath_1_1vision_1_1follow__line__detector.html">follow_line_detector</a> &amp;other);</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        std::vector&lt;cv::Vec4d&gt; <a class="code" href="classgoliath_1_1vision_1_1follow__line__detector.html#a24e0ded92542e678a4bbe6c0c42137a5">detect</a>() <span class="keyword">const override</span>;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="keyword">const</span> <span class="keywordtype">int</span> boxes, box_height, boxes_bottom_margin, boxes_horizontal_margin;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    };</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;}</div>
-<div class="ttc" id="namespacegoliath_1_1vision_html_a39b046cc4cce5466d69e5841de9c9edd"><div class="ttname"><a href="namespacegoliath_1_1vision.html#a39b046cc4cce5466d69e5841de9c9edd">goliath::vision::follow_line_direction</a></div><div class="ttdeci">follow_line_direction</div><div class="ttdoc">Represents a direction the robot should go in, outputted from the follow_line_detector. </div><div class="ttdef"><b>Definition:</b> follow_line_detector.h:19</div></div>
-<div class="ttc" id="classgoliath_1_1vision_1_1follow__line__detector_html"><div class="ttname"><a href="classgoliath_1_1vision_1_1follow__line__detector.html">goliath::vision::follow_line_detector</a></div><div class="ttdoc">Takes in an input image, splits it up into &quot;boxes&quot;. Within those boxes it checks if there is a single...</div><div class="ttdef"><b>Definition:</b> follow_line_detector.h:32</div></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;../util/vision_utilities.h&quot;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;../processors/roi_processor.h&quot;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">namespace </span>goliath::vision {</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="namespacegoliath_1_1vision.html#a39b046cc4cce5466d69e5841de9c9edd">   20</a></span>&#160;    <span class="keyword">enum</span> <a class="code" href="namespacegoliath_1_1vision.html#a39b046cc4cce5466d69e5841de9c9edd">follow_line_direction</a> {</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        ON_COURSE = 0,</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        LEFT = 1,</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        RIGHT = 2,</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        ERROR = 3</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    };</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="classgoliath_1_1vision_1_1follow__line__detector.html">   34</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classgoliath_1_1vision_1_1follow__line__detector.html">follow_line_detector</a> : <span class="keyword">public</span> <a class="code" href="classgoliath_1_1vision_1_1detector.html">detector</a> {</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <a class="code" href="classgoliath_1_1vision_1_1follow__line__detector.html#a8b62c2e552689d204615612b4366d0de">follow_line_detector</a>(<span class="keyword">const</span> cv::Mat &amp;input, <span class="keywordtype">int</span> boxes, <span class="keywordtype">int</span> box_height, <span class="keywordtype">int</span> boxes_bottom_margin,</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                             <span class="keywordtype">int</span> boxes_horizontal_margin, <span class="keywordtype">double</span> min_contour_area, <span class="keywordtype">double</span> max_contour_area);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <a class="code" href="classgoliath_1_1vision_1_1follow__line__detector.html#a8b62c2e552689d204615612b4366d0de">follow_line_detector</a>(<span class="keyword">const</span> <a class="code" href="classgoliath_1_1vision_1_1follow__line__detector.html">follow_line_detector</a> &amp;other);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        std::vector&lt;cv::Vec4d&gt; <a class="code" href="classgoliath_1_1vision_1_1follow__line__detector.html#a24e0ded92542e678a4bbe6c0c42137a5">detect</a>() <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keyword">const</span> <span class="keywordtype">int</span> boxes, box_height, boxes_bottom_margin, boxes_horizontal_margin;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="keyword">const</span> <span class="keywordtype">double</span> min_contour_area, max_contour_area;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    };</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;}</div>
+<div class="ttc" id="classgoliath_1_1vision_1_1follow__line__detector_html_a8b62c2e552689d204615612b4366d0de"><div class="ttname"><a href="classgoliath_1_1vision_1_1follow__line__detector.html#a8b62c2e552689d204615612b4366d0de">goliath::vision::follow_line_detector::follow_line_detector</a></div><div class="ttdeci">follow_line_detector(const cv::Mat &amp;input, int boxes, int box_height, int boxes_bottom_margin, int boxes_horizontal_margin, double min_contour_area, double max_contour_area)</div><div class="ttdef"><b>Definition:</b> follow_line_detector.cpp:6</div></div>
+<div class="ttc" id="namespacegoliath_1_1vision_html_a39b046cc4cce5466d69e5841de9c9edd"><div class="ttname"><a href="namespacegoliath_1_1vision.html#a39b046cc4cce5466d69e5841de9c9edd">goliath::vision::follow_line_direction</a></div><div class="ttdeci">follow_line_direction</div><div class="ttdoc">Represents a direction the robot should go in, outputted from the follow_line_detector. </div><div class="ttdef"><b>Definition:</b> follow_line_detector.h:20</div></div>
+<div class="ttc" id="classgoliath_1_1vision_1_1follow__line__detector_html"><div class="ttname"><a href="classgoliath_1_1vision_1_1follow__line__detector.html">goliath::vision::follow_line_detector</a></div><div class="ttdoc">Takes in an input image, splits it up into &quot;boxes&quot;. Within those boxes it checks if there is a single...</div><div class="ttdef"><b>Definition:</b> follow_line_detector.h:34</div></div>
 <div class="ttc" id="classgoliath_1_1vision_1_1follow__line__detector_html_a24e0ded92542e678a4bbe6c0c42137a5"><div class="ttname"><a href="classgoliath_1_1vision_1_1follow__line__detector.html#a24e0ded92542e678a4bbe6c0c42137a5">goliath::vision::follow_line_detector::detect</a></div><div class="ttdeci">std::vector&lt; cv::Vec4d &gt; detect() const override</div><div class="ttdef"><b>Definition:</b> follow_line_detector.cpp:20</div></div>
-<div class="ttc" id="classgoliath_1_1vision_1_1follow__line__detector_html_a84eba1472cd3467a67b5002c28f9802d"><div class="ttname"><a href="classgoliath_1_1vision_1_1follow__line__detector.html#a84eba1472cd3467a67b5002c28f9802d">goliath::vision::follow_line_detector::follow_line_detector</a></div><div class="ttdeci">follow_line_detector(const cv::Mat &amp;input, int boxes, int box_height, int boxes_bottom_margin, int boxes_horizontal_margin)</div><div class="ttdef"><b>Definition:</b> follow_line_detector.cpp:6</div></div>
 <div class="ttc" id="classgoliath_1_1vision_1_1detector_html"><div class="ttname"><a href="classgoliath_1_1vision_1_1detector.html">goliath::vision::detector</a></div><div class="ttdoc">Base class of detectors that take an input and detect a vector of shapes, colors or sizes...</div><div class="ttdef"><b>Definition:</b> detector.h:16</div></div>
 <div class="ttc" id="detector_8h_html"><div class="ttname"><a href="detector_8h.html">detector.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->

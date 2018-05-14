@@ -25,7 +25,7 @@
   <td style="padding-left: 0.5em;">
    <div id="projectname">Goliath II
    </div>
-   <div id="projectbrief">Group 7</div>
+   <div id="projectbrief">Core</div>
   </td>
  </tr>
  </tbody>
@@ -96,7 +96,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 
-<p>Takes in an input image, splits it up into "boxes". Within those boxes it checks if there is a single contour, if so take the center of that contour and compare it to the center of the box. This will return an offset. Take the average of all offsets to determine if the robot should go straight, left or right.  
+<p>Takes in an input image, splits it up into "boxes". Within those boxes it checks if there is a single contour, if so take the center of that contour and compare it to the center of the box. This will return an offset. Take the average of all offsets to determine if the robot should go straight, left or right. The second value will be the distance from the edge of the box (percentage) the robot will have to turn.  
  <a href="classgoliath_1_1vision_1_1follow__line__detector.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="follow__line__detector_8h_source.html">follow_line_detector.h</a>&gt;</code></p>
@@ -112,8 +112,8 @@ Inheritance diagram for goliath::vision::follow_line_detector:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a84eba1472cd3467a67b5002c28f9802d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1vision_1_1follow__line__detector.html#a84eba1472cd3467a67b5002c28f9802d">follow_line_detector</a> (const cv::Mat &amp;input, int boxes, int box_height, int boxes_bottom_margin, int boxes_horizontal_margin)</td></tr>
-<tr class="separator:a84eba1472cd3467a67b5002c28f9802d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b62c2e552689d204615612b4366d0de"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1vision_1_1follow__line__detector.html#a8b62c2e552689d204615612b4366d0de">follow_line_detector</a> (const cv::Mat &amp;input, int boxes, int box_height, int boxes_bottom_margin, int boxes_horizontal_margin, double min_contour_area, double max_contour_area)</td></tr>
+<tr class="separator:a8b62c2e552689d204615612b4366d0de"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa3e8ebf9ddcc9629e5142dcd0d805ef9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa3e8ebf9ddcc9629e5142dcd0d805ef9"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1vision_1_1follow__line__detector.html#aa3e8ebf9ddcc9629e5142dcd0d805ef9">follow_line_detector</a> (const <a class="el" href="classgoliath_1_1vision_1_1follow__line__detector.html">follow_line_detector</a> &amp;other)</td></tr>
 <tr class="memdesc:aa3e8ebf9ddcc9629e5142dcd0d805ef9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy constructor. <br/></td></tr>
@@ -129,14 +129,14 @@ Public Member Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pro_attribs_classgoliath_1_1vision_1_1detector"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classgoliath_1_1vision_1_1detector')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classgoliath_1_1vision_1_1detector.html">goliath::vision::detector</a></td></tr>
-<tr class="memitem:a8b3b9711858b0738188570ed106d33a9 inherit pro_attribs_classgoliath_1_1vision_1_1detector"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8b3b9711858b0738188570ed106d33a9"></a>
-const cv::Mat&#160;</td><td class="memItemRight" valign="bottom"><b>input</b></td></tr>
-<tr class="separator:a8b3b9711858b0738188570ed106d33a9 inherit pro_attribs_classgoliath_1_1vision_1_1detector"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41a861a5f95c9b11129e9d0e752c5287 inherit pro_attribs_classgoliath_1_1vision_1_1detector"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a41a861a5f95c9b11129e9d0e752c5287"></a>
+cv::Mat&#160;</td><td class="memItemRight" valign="bottom"><b>input</b></td></tr>
+<tr class="separator:a41a861a5f95c9b11129e9d0e752c5287 inherit pro_attribs_classgoliath_1_1vision_1_1detector"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Takes in an input image, splits it up into "boxes". Within those boxes it checks if there is a single contour, if so take the center of that contour and compare it to the center of the box. This will return an offset. Take the average of all offsets to determine if the robot should go straight, left or right. </p>
+<div class="textblock"><p>Takes in an input image, splits it up into "boxes". Within those boxes it checks if there is a single contour, if so take the center of that contour and compare it to the center of the box. This will return an offset. Take the average of all offsets to determine if the robot should go straight, left or right. The second value will be the distance from the edge of the box (percentage) the robot will have to turn. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a84eba1472cd3467a67b5002c28f9802d"></a>
+<a class="anchor" id="a8b62c2e552689d204615612b4366d0de"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -168,7 +168,19 @@ const cv::Mat&#160;</td><td class="memItemRight" valign="bottom"><b>input</b></t
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>boxes_horizontal_margin</em>&#160;</td>
+          <td class="paramname"><em>boxes_horizontal_margin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>min_contour_area</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>max_contour_area</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -184,6 +196,8 @@ const cv::Mat&#160;</td><td class="memItemRight" valign="bottom"><b>input</b></t
     <tr><td class="paramname">box_height</td><td>The height of each of the boxes </td></tr>
     <tr><td class="paramname">boxes_bottom_margin</td><td>Margin to start bottom-most box from </td></tr>
     <tr><td class="paramname">boxes_horizontal_margin</td><td>Margins on both sides of the boxes </td></tr>
+    <tr><td class="paramname">min_contour_area</td><td>Minimal area of the contour within a box to be considered part of a line </td></tr>
+    <tr><td class="paramname">max_contour_area</td><td>Maximal area of the contour within a box to be considered part of a line </td></tr>
   </table>
   </dd>
 </dl>
@@ -211,7 +225,7 @@ const cv::Mat&#160;</td><td class="memItemRight" valign="bottom"><b>input</b></t
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>Only value [0][0] has a value. Containing a value whether the robot should continue going straight, or go left/right. This value is defined in the follow_line_direction enum </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Value [0][0] contains whether the robot should continue going straight, or go left/right. This value is defined in the follow_line_direction enum. Value [0][1] contains the percentage from the edge of the current box the camera is located. Can be used to determine the strength of the caterpillars. </dd></dl>
 
 <p>Implements <a class="el" href="classgoliath_1_1vision_1_1detector.html#a7f73e432d55cccfafc3a50542a43deea">goliath::vision::detector</a>.</p>
 

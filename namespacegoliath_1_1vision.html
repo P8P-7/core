@@ -25,7 +25,7 @@
   <td style="padding-left: 0.5em;">
    <div id="projectname">Goliath II
    </div>
-   <div id="projectbrief">Group 7</div>
+   <div id="projectbrief">Core</div>
   </td>
  </tr>
  </tbody>
@@ -100,11 +100,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1vision_1_1color__region__detector.html">color_region_detector</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1vision_1_1detector.html">detector</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Base class of detectors that take an input and detect a vector of shapes, colors or sizes.  <a href="classgoliath_1_1vision_1_1detector.html#details">More...</a><br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1vision_1_1follow__line__detector.html">follow_line_detector</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Takes in an input image, splits it up into "boxes". Within those boxes it checks if there is a single contour, if so take the center of that contour and compare it to the center of the box. This will return an offset. Take the average of all offsets to determine if the robot should go straight, left or right.  <a href="classgoliath_1_1vision_1_1follow__line__detector.html#details">More...</a><br/></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Takes in an input image, splits it up into "boxes". Within those boxes it checks if there is a single contour, if so take the center of that contour and compare it to the center of the box. This will return an offset. Take the average of all offsets to determine if the robot should go straight, left or right. The second value will be the distance from the edge of the box (percentage) the robot will have to turn.  <a href="classgoliath_1_1vision_1_1follow__line__detector.html#details">More...</a><br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1vision_1_1line__detector.html">line_detector</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Takes in an image and detects all lines in the image.  <a href="classgoliath_1_1vision_1_1line__detector.html#details">More...</a><br/></td></tr>
@@ -121,6 +123,9 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Base class of processors that take in an input and manipulate in some way returning the output from the virtual <a class="el" href="classgoliath_1_1vision_1_1processor.html#aa66473730c35e3db89ee3d73e0d82c6a">process()</a> method.  <a href="classgoliath_1_1vision_1_1processor.html#details">More...</a><br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1vision_1_1roi__processor.html">roi_processor</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Takes an input and returns a ROI selection from that image.  <a href="classgoliath_1_1vision_1_1roi__processor.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1vision_1_1vision__utilities.html">vision_utilities</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1vision_1_1webcam.html">webcam</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wrapper class around VideoCapture.  <a href="classgoliath_1_1vision_1_1webcam.html#details">More...</a><br/></td></tr>
