@@ -19,6 +19,10 @@ namespace goliath::vision {
          * @param input Input Image
          */
         explicit detector(const cv::Mat &input);
+        /**
+         * @param other Copy constructor
+         */
+        explicit detector(const detector &other);
 
         /**
          * @return A vector of vectors representing different objects that can be referenced from other detectors or

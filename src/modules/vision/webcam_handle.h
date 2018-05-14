@@ -1,6 +1,6 @@
 #pragma once
 
-#include <goliath/handle.h>
+#include "../core/handle.h"
 
 /**
  * @file webcam_handle.h

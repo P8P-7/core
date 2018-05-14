@@ -28,7 +28,7 @@ namespace goliath::vision {
          * @param max_low_treshold Canny max threshold
          */
         explicit canny_processor(const cv::Mat &input, int min_low_threshold, int max_low_threshold);
-        explicit canny_processor(processor &other);
+        explicit canny_processor(processor &other, int min_low_threshold, int max_low_threshold);
 
         /**
          * @return Canny image

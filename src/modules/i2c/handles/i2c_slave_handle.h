@@ -1,7 +1,7 @@
 #pragma once
 
 #include <goliath/i2c.h>
-#include <goliath/handle.h>
+#include "../../core/handle.h"
 
 #include "../i2c_error.h"
 

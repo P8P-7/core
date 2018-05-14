@@ -3,7 +3,6 @@
 #include <boost/test/included/unit_test.hpp>
 #include <boost/format.hpp>
 #include <goliath/vision.h>
-#include "../src/modules/vision/detectors/within_box_detector.h"
 
 using namespace goliath;
 
@@ -16,10 +15,10 @@ public:
 BOOST_FIXTURE_TEST_SUITE(BOOST_TEST_MODULE, test_vision_fixture)
     BOOST_AUTO_TEST_CASE(test_line_detection) {
         BOOST_TEST_CHECKPOINT("Loading image");
-        cv::Mat image = cv::imread(image_path + "highway.jpg", CV_BGR2GRAY);
+        cv::Mat input = cv::imread(image_path + "highway.jpg", CV_BGR2GRAY);
 
         BOOST_TEST_CHECKPOINT("Creating a canny");
-        vision::canny_processor canny_processor(image, 200, 50);
+        vision::canny_processor canny_processor(input, 200, 50);
         cv::Mat canny_image = canny_processor.process();
 
         BOOST_TEST_CHECKPOINT("Detecting lines");
@@ -31,11 +30,11 @@ BOOST_FIXTURE_TEST_SUITE(BOOST_TEST_MODULE, test_vision_fixture)
 
     BOOST_AUTO_TEST_CASE(test_color_detection) {
         BOOST_TEST_CHECKPOINT("Loading image");
-        cv::Mat image = cv::imread(image_path + "mondriaan.jpg");
-        cv::cvtColor(image, image, CV_BGR2HSV);
+        cv::Mat input = cv::imread(image_path + "mondriaan.jpg");
+        cv::cvtColor(input, input, CV_BGR2HSV);
 
         BOOST_TEST_CHECKPOINT("Processing image too only keep reds");
-        vision::color_processor color_processor(image, cv::Scalar(160, 100, 100), cv::Scalar(179, 255, 255));
+        vision::color_processor color_processor(input, cv::Scalar(160, 100, 100), cv::Scalar(179, 255, 255));
         cv::Mat red = color_processor.process();
 
         BOOST_TEST_CHECKPOINT("Check if there is any red in image");
@@ -52,6 +51,25 @@ BOOST_FIXTURE_TEST_SUITE(BOOST_TEST_MODULE, test_vision_fixture)
         BOOST_ASSERT(false);
     }
 
+    BOOST_AUTO_TEST_CASE(test_roi) {
+        BOOST_TEST_CHECKPOINT("Loading image");
+        cv::Mat input = cv::imread(image_path + "mondriaan.jpg");
 
+        BOOST_TEST_CHECKPOINT("Create a ROI");
+        vision::roi_processor roi(input, 10, 10, 200, 200);
 
+        cv::Mat output = roi.process();
+        BOOST_CHECK_EQUAL(output.cols, 200);
+        BOOST_CHECK_EQUAL(output.rows, 200);
+    }
+
+    BOOST_AUTO_TEST_CASE(test_line_following) {
+        BOOST_TEST_CHECKPOINT("Loading image");
+        cv::Mat input = cv::imread(image_path + "line.jpg");
+
+        vision::follow_line_detector follow_line_detector(input, 4, 100, 100, 50);
+        follow_line_detector.detect();
+
+        cv::waitKey();
+    }
 BOOST_AUTO_TEST_SUITE_END()

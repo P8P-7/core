@@ -3,5 +3,9 @@
 using namespace goliath::vision;
 
 detector::detector(const cv::Mat& input)
-    : input(input) {
+        : input(input) {
+}
+
+detector::detector(const detector& other)
+        : detector(other.input) {
 }

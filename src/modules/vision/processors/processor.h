@@ -18,7 +18,7 @@ namespace goliath::vision {
         /**
          * @param input Input image
          */
-        explicit processor(const cv::Mat &input);
+        explicit processor(const cv::Mat& input);
 
         /**
          * @return Output image

@@ -1,7 +1,7 @@
 #pragma once
 
 #include <string>
-#include <goliath/handle.h>
+#include "../../core/handle.h"
 
 namespace goliath::handles {
     class i2c_bus_handle: public handle {

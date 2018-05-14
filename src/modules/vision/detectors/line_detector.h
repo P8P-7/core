@@ -34,6 +34,7 @@ namespace goliath::vision {
          * @param max_line_gap Maximum gap (pixels) between points on a line
          */
         line_detector(const cv::Mat &input, int threshold, double min_line_length, double max_line_gap);
+        line_detector(const line_detector &other);
 
         /**
          * @return Vector of all detected lines
@@ -43,10 +44,12 @@ namespace goliath::vision {
         /**
          * @return The longest lines in detected lines
          */
-        std::vector<cv::Vec4d> longest_lines() const;
+        std::vector<cv::Vec4d> longest_lines(std::shared_ptr<detector> detector) const;
+        std::vector<cv::Vec4d> longest_lines();
 
-    private:
-        int threshold;
-        double rho, theta, min_line_length, max_line_gap;
+
+    protected:
+        const int threshold;
+        const double rho, theta, min_line_length, max_line_gap;
     };
 }

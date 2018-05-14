@@ -10,6 +10,11 @@ line_detector::line_detector(const cv::Mat& input, int threshold, double min_lin
         : line_detector(input, DEFAULT_LINE_DETECTOR_RHO, DEFAULT_LINE_DETECTOR_THETA, threshold, min_line_length, max_line_gap) {
 }
 
+line_detector::line_detector(const line_detector &other)
+        : line_detector(other.input, other.rho, other.theta, other.threshold, other.min_line_length, other.max_line_gap) {
+}
+
+
 std::vector<cv::Vec4d> line_detector::detect() const {
     std::vector<cv::Vec4d> lines;
     cv::HoughLinesP(input, lines, rho, theta, threshold, min_line_length, max_line_gap);
@@ -17,12 +22,16 @@ std::vector<cv::Vec4d> line_detector::detect() const {
     return lines;
 }
 
-std::vector<cv::Vec4d> line_detector::longest_lines() const {
-    std::vector<cv::Vec4d> lines = detect();
+std::vector<cv::Vec4d> line_detector::longest_lines(std::shared_ptr<detector> detector) const {
+    std::vector<cv::Vec4d> lines = detector->detect();
 
     std::sort(lines.begin(), lines.end(), [](cv::Vec4d a, cv::Vec4d b){
         return cv::norm(a) > cv::norm(b);
     });
 
     return lines;
+}
+
+std::vector<cv::Vec4d> line_detector::longest_lines()  {
+    return longest_lines(std::make_shared<line_detector>(*this));
 }
