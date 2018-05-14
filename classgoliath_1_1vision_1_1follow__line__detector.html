@@ -73,7 +73,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -95,6 +95,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">goliath::vision::follow_line_detector Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Takes in an input image, splits it up into "boxes". Within those boxes it checks if there is a single contour, if so take the center of that contour and compare it to the center of the box. This will return an offset. Take the average of all offsets to determine if the robot should go straight, left or right.  
+ <a href="classgoliath_1_1vision_1_1follow__line__detector.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="follow__line__detector_8h_source.html">follow_line_detector.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for goliath::vision::follow_line_detector:</div>
 <div class="dyncontent">
@@ -107,11 +112,12 @@ Inheritance diagram for goliath::vision::follow_line_detector:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aeece8bcf12229159ee4395a6bc9913b5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1vision_1_1follow__line__detector.html#aeece8bcf12229159ee4395a6bc9913b5">follow_line_detector</a> (const cv::Mat &amp;input, int boxes, int box_height, int boxes_bottom_padding, int boxes_horizontal_padding)</td></tr>
-<tr class="separator:aeece8bcf12229159ee4395a6bc9913b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab43c02c8b395214b3f2e7c237f1add63"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab43c02c8b395214b3f2e7c237f1add63"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>follow_line_detector</b> (const <a class="el" href="classgoliath_1_1vision_1_1follow__line__detector.html">follow_line_detector</a> &amp;other, int boxes, int box_height, int boxes_bottom_padding, int boxes_horizontal_padding)</td></tr>
-<tr class="separator:ab43c02c8b395214b3f2e7c237f1add63"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84eba1472cd3467a67b5002c28f9802d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1vision_1_1follow__line__detector.html#a84eba1472cd3467a67b5002c28f9802d">follow_line_detector</a> (const cv::Mat &amp;input, int boxes, int box_height, int boxes_bottom_margin, int boxes_horizontal_margin)</td></tr>
+<tr class="separator:a84eba1472cd3467a67b5002c28f9802d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa3e8ebf9ddcc9629e5142dcd0d805ef9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa3e8ebf9ddcc9629e5142dcd0d805ef9"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1vision_1_1follow__line__detector.html#aa3e8ebf9ddcc9629e5142dcd0d805ef9">follow_line_detector</a> (const <a class="el" href="classgoliath_1_1vision_1_1follow__line__detector.html">follow_line_detector</a> &amp;other)</td></tr>
+<tr class="memdesc:aa3e8ebf9ddcc9629e5142dcd0d805ef9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy constructor. <br/></td></tr>
+<tr class="separator:aa3e8ebf9ddcc9629e5142dcd0d805ef9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a24e0ded92542e678a4bbe6c0c42137a5"><td class="memItemLeft" align="right" valign="top">std::vector&lt; cv::Vec4d &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1vision_1_1follow__line__detector.html#a24e0ded92542e678a4bbe6c0c42137a5">detect</a> () const override</td></tr>
 <tr class="separator:a24e0ded92542e678a4bbe6c0c42137a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classgoliath_1_1vision_1_1detector"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classgoliath_1_1vision_1_1detector')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classgoliath_1_1vision_1_1detector.html">goliath::vision::detector</a></td></tr>
@@ -127,8 +133,10 @@ Additional Inherited Members</h2></td></tr>
 const cv::Mat&#160;</td><td class="memItemRight" valign="bottom"><b>input</b></td></tr>
 <tr class="separator:a8b3b9711858b0738188570ed106d33a9 inherit pro_attribs_classgoliath_1_1vision_1_1detector"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="aeece8bcf12229159ee4395a6bc9913b5"></a>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Takes in an input image, splits it up into "boxes". Within those boxes it checks if there is a single contour, if so take the center of that contour and compare it to the center of the box. This will return an offset. Take the average of all offsets to determine if the robot should go straight, left or right. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a84eba1472cd3467a67b5002c28f9802d"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -154,13 +162,13 @@ const cv::Mat&#160;</td><td class="memItemRight" valign="bottom"><b>input</b></t
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>boxes_bottom_padding</em>, </td>
+          <td class="paramname"><em>boxes_bottom_margin</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>boxes_horizontal_padding</em>&#160;</td>
+          <td class="paramname"><em>boxes_horizontal_margin</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -172,7 +180,10 @@ const cv::Mat&#160;</td><td class="memItemRight" valign="bottom"><b>input</b></t
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">input</td><td>Input Image </td></tr>
-    <tr><td class="paramname">boxes</td><td>Amount of ROI's to check </td></tr>
+    <tr><td class="paramname">boxes</td><td>Amount of boxes to create a ROI from </td></tr>
+    <tr><td class="paramname">box_height</td><td>The height of each of the boxes </td></tr>
+    <tr><td class="paramname">boxes_bottom_margin</td><td>Margin to start bottom-most box from </td></tr>
+    <tr><td class="paramname">boxes_horizontal_margin</td><td>Margins on both sides of the boxes </td></tr>
   </table>
   </dd>
 </dl>
@@ -200,7 +211,7 @@ const cv::Mat&#160;</td><td class="memItemRight" valign="bottom"><b>input</b></t
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>Only value [0] has values. Containing a offset from the center for each of the boxes </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Only value [0][0] has a value. Containing a value whether the robot should continue going straight, or go left/right. This value is defined in the follow_line_direction enum </dd></dl>
 
 <p>Implements <a class="el" href="classgoliath_1_1vision_1_1detector.html#a7f73e432d55cccfafc3a50542a43deea">goliath::vision::detector</a>.</p>
 
