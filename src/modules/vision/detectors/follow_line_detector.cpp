@@ -4,23 +4,23 @@ using namespace goliath::vision;
 using namespace goliath::exceptions;
 
 follow_line_detector::follow_line_detector(const cv::Mat& input, int boxes, int box_height, int boxes_bottom_margin,
-                                           int boxes_horizontal_margin, double min_contour_area, double max_contour_area)
-        : detector(input), boxes(boxes), box_height(box_height), boxes_bottom_margin(boxes_bottom_margin),
-          boxes_horizontal_margin(boxes_horizontal_margin), min_contour_area(min_contour_area), max_contour_area(max_contour_area) {
-    if(boxes > 4 || boxes < 0) {
-        throw vision_error("The max amount of ROI boxes must be between 1 and 4");
+                                           int boxes_horizontal_margin, double min_contour_area,
+                                           double max_contour_area)
+    : detector(input), boxes(boxes), box_height(box_height), boxes_bottom_margin(boxes_bottom_margin),
+      boxes_horizontal_margin(boxes_horizontal_margin), min_contour_area(min_contour_area),
+      max_contour_area(max_contour_area) {
+    if (boxes > 4 || boxes < 0) {
+        throw vision_error("The amount of ROI boxes must be between 1 and 4");
     }
 }
 
 follow_line_detector::follow_line_detector(const follow_line_detector& other)
-        : follow_line_detector(other.input, other.boxes, other.box_height, other.boxes_bottom_margin,
-                               other.boxes_horizontal_margin, other.min_contour_area, other.max_contour_area) {
+    : follow_line_detector(other.input, other.boxes, other.box_height, other.boxes_bottom_margin,
+                           other.boxes_horizontal_margin, other.min_contour_area, other.max_contour_area) {
 }
 
 std::vector<cv::Vec4d> follow_line_detector::detect() const {
-    cv::Mat test = input;
-
-    for(int box_index = 0; box_index < boxes; ++box_index) {
+    for (int box_index = 0; box_index < boxes; ++box_index) {
         const int x = boxes_horizontal_margin;
         const int y = (input.rows - 1 - boxes_bottom_margin) - (box_height * (box_index + 1));
         const int w = (input.cols - 1) - (boxes_horizontal_margin * 2);
@@ -41,41 +41,31 @@ std::vector<cv::Vec4d> follow_line_detector::detect() const {
         std::vector<std::vector<cv::Point>> contours;
         cv::findContours(box, contours, cv::RETR_LIST, cv::CHAIN_APPROX_SIMPLE);
 
-        if(contours.size() > 1 || contours.empty()) {
+        if (contours.size() > 1 || contours.empty()) {
             continue;
         }
 
         std::vector<cv::Point> contour = contours[0];
 
-        if(cv::contourArea(contour) < min_contour_area || cv::contourArea(contour) > max_contour_area) {
+        if (cv::contourArea(contour) < min_contour_area || cv::contourArea(contour) > max_contour_area) {
             continue;
         }
 
         cv::Moments moments = cv::moments(contour, false);
 
         double contour_center_x = moments.m10 / moments.m00;
-        double offset = (box_center_x - contour_center_x) * -1;
+        double offset = (box_center_x - contour_center_x) * -1;\
 
-        cv::rectangle(test, cv::Rect(x, y, w, h), cv::Scalar(0, 255, 0), 3);
-        cv::circle(test, cv::Point(contour_center_x, 100), 4, cv::Scalar(255, 0, 0));
-        cv::circle(test, cv::Point(box_center_x, 100), 4, cv::Scalar(0, 0, 255));
+        double norm_distance = cv::abs(vision_utilities::map(offset, static_cast<double>((box.cols - 1)) / 2, 1.0));
 
-        cv::imshow("Test", test);
-        //cv::waitKey();
-
-
-        if(offset == 0) {
-            return {{ follow_line_direction::ON_COURSE, offset, 0, 0 }};
-        }
-        else if(offset < 0) {
-            return {{ follow_line_direction::LEFT, vision_utilities::map(contour_center_x, (double) box_center_x,
-                                                                         (double) box_left_edge, 0.0, 1.0), 0, 0 }};
-        }
-        else if(offset > 0) {
-            return {{ follow_line_direction::RIGHT, vision_utilities::map(contour_center_x, (double) box_center_x,
-                                                                          (double) box_right_edge, 0.0, 1.0), 0, 0}};
+        if (offset == 0) {
+            return {{follow_line_direction::ON_COURSE, offset, 0, 0}};
+        } else if (offset < 0) {
+            return {{follow_line_direction::LEFT, norm_distance, static_cast<double>(box_index), 0}};
+        } else if (offset > 0) {
+            return {{follow_line_direction::RIGHT, norm_distance, static_cast<double>(box_index), 0}};
         }
     }
 
-    return {{ follow_line_direction::ERROR, 0, 0, 0 }};
+    return {{follow_line_direction::NO_LINE, 0, 0, 0}};
 }

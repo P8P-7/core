@@ -8,7 +8,6 @@
 
 /**
  * @file command.h
- * @brief Command base class
  * @author Group 7 - Informatica
  */
 

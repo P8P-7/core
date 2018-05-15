@@ -2,7 +2,6 @@
 
 /**
  * @file handles.h
- * @brief Defines all handles
  * @author Group 7 - Informatica
  */
 

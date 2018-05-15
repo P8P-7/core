@@ -3,6 +3,11 @@
 #include "detector.h"
 #include "line_detector.h"
 
+/**
+ * @file within_box_detector.h
+ * @author Group 7 - Informatica
+ */
+
 namespace goliath::vision {
     const int DISTANCE_FROM_EDGE_THRESHOLD = 5;
     const int DISTANCE_FOR_CORNER_THRESHOLD = 5;

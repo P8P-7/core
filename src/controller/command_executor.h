@@ -9,7 +9,6 @@
 
 /**
  * @file command_executor.h
- * @brief Contains a class that executes a command
  * @author Group 7 - Informatica
  */
 

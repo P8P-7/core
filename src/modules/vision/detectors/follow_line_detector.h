@@ -18,10 +18,10 @@ namespace goliath::vision {
      * @brief Represents a direction the robot should go in, outputted from the follow_line_detector.
      */
     enum follow_line_direction {
-        ON_COURSE = 0,
-        LEFT = 1,
-        RIGHT = 2,
-        ERROR = 3
+        ON_COURSE = 0, /**< Robot should continue going straight */
+        LEFT = 1, /**< Robot should go left */
+        RIGHT = 2, /**< Robot should go right */
+        NO_LINE = 3 /**< No single line detected */
     };
 
     /**
@@ -33,21 +33,22 @@ namespace goliath::vision {
      */
     class follow_line_detector : public detector {
     public:
-         /**
-          * @param input Input Image
-          * @param boxes Amount of boxes to create a ROI from
-          * @param box_height The height of each of the boxes
-          * @param boxes_bottom_margin Margin to start bottom-most box from
-          * @param boxes_horizontal_margin Margins on both sides of the boxes
-          * @param min_contour_area Minimal area of the contour within a box to be considered part of a line
-          * @param max_contour_area Maximal area of the contour within a box to be considered part of a line
-          */
-        follow_line_detector(const cv::Mat &input, int boxes, int box_height, int boxes_bottom_margin,
+        /**
+         * @param input Input Image
+         * @param boxes Amount of boxes to create a ROI from
+         * @param box_height The height of each of the boxes
+         * @param boxes_bottom_margin Margin to start bottom-most box from
+         * @param boxes_horizontal_margin Margins on both sides of the boxes
+         * @param min_contour_area Minimal area of the contour within a box to be considered part of a line
+         * @param max_contour_area Maximal area of the contour within a box to be considered part of a line
+         */
+        follow_line_detector(const cv::Mat& input, int boxes, int box_height, int boxes_bottom_margin,
                              int boxes_horizontal_margin, double min_contour_area, double max_contour_area);
+
         /**
          * @brief Copy constructor
          */
-        follow_line_detector(const follow_line_detector &other);
+        follow_line_detector(const follow_line_detector& other);
 
         /**
          * @return Value [0][0] contains whether the robot should continue going straight, or go left/right. This value

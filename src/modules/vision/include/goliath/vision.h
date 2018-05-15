@@ -1,7 +1,7 @@
 #pragma once
 
 /**
- * @file webcam.h
+ * @file vision.h
  * @author Group 7 - Informatica
  */
 

@@ -7,7 +7,6 @@
 
 /**
  * @file handle_map.h
- * @brief A map of all handles
  * @author Group 7 - Informatica
  */
 

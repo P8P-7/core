@@ -4,7 +4,7 @@
 #include <string>
 
 /**
- * @file processor.h
+ * @file vision_error.h
  * @author Group 7 - Informatica
  */
 

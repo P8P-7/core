@@ -26,15 +26,18 @@ namespace goliath::vision {
      */
     class line_detector : public detector {
     public:
-        line_detector(const cv::Mat &input, double rho, double theta, int threshold, double min_line_length, double max_line_gap);
+        line_detector(const cv::Mat& input, double rho, double theta, int threshold, double min_line_length,
+                      double max_line_gap);
+
         /**
          * @param input Input image
          * @param threshold Variable that changes how straight a line must be to be detected.
          * @param min_line_length Minimum length of the line
          * @param max_line_gap Maximum gap (pixels) between points on a line
          */
-        line_detector(const cv::Mat &input, int threshold, double min_line_length, double max_line_gap);
-        line_detector(const line_detector &other);
+        line_detector(const cv::Mat& input, int threshold, double min_line_length, double max_line_gap);
+
+        line_detector(const line_detector& other);
 
         /**
          * @return Vector of all detected lines
@@ -45,6 +48,7 @@ namespace goliath::vision {
          * @return The longest lines in detected lines
          */
         std::vector<cv::Vec4d> longest_lines(std::shared_ptr<detector> detector) const;
+
         std::vector<cv::Vec4d> longest_lines();
 
 

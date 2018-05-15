@@ -72,4 +72,5 @@ BOOST_FIXTURE_TEST_SUITE(BOOST_TEST_MODULE, test_vision_fixture)
 
         BOOST_CHECK_EQUAL(output[0][0], vision::follow_line_direction::RIGHT);
      }
+    }
 BOOST_AUTO_TEST_SUITE_END()

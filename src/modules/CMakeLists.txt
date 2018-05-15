@@ -1,3 +1,4 @@
+add_subdirectory(openal)
 add_subdirectory(core)
 add_subdirectory(dynamixel)
 add_subdirectory(gpio)

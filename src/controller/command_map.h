@@ -8,15 +8,18 @@
 
 /**
  * @file command_map.h
- * @brief Contains a map to connect a integer value to a command instance
  * @author Group 7 - Informatica
  */
 
 namespace goliath::commands {
+    /**
+     * @enum goliath::commands_command_status
+     * @brief Defines the status of a specific command
+     */
     enum class command_status {
-        STARTING,
-        STARTED,
-        STALE
+        STARTING, /**< Command is just getting started */
+        STARTED, /**< Command has already started */
+        STALE /**< Command is doing nothing (idle) */
     };
 
     struct command_item {

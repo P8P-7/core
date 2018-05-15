@@ -11,7 +11,7 @@ namespace goliath::vision {
     /**
      * @class goliath::vision::processor
      * @brief Base class of processors that take in an input and manipulate in some way returning the output from the
-     * virtual process() method.
+     * virtual @see goliath::vision::processor#process method.
      */
     class processor {
     public:
