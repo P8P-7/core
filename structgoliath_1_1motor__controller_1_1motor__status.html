@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Goliath II: goliath::vision::vision_utilities Class Reference</title>
+<title>Goliath II: goliath::motor_controller::motor_status Struct Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -25,7 +25,7 @@
   <td style="padding-left: 0.5em;">
    <div id="projectname">Goliath II
    </div>
-   <div id="projectbrief">Core</div>
+   <div id="projectbrief">Group 7</div>
   </td>
  </tr>
  </tbody>
@@ -73,7 +73,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -84,31 +84,36 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="namespacegoliath.html">goliath</a></li><li class="navelem"><a class="el" href="namespacegoliath_1_1vision.html">vision</a></li><li class="navelem"><a class="el" href="classgoliath_1_1vision_1_1vision__utilities.html">vision_utilities</a></li>  </ul>
+<li class="navelem"><a class="el" href="namespacegoliath.html">goliath</a></li><li class="navelem"><b>motor_controller</b></li><li class="navelem"><a class="el" href="structgoliath_1_1motor__controller_1_1motor__status.html">motor_status</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
-<a href="classgoliath_1_1vision_1_1vision__utilities-members.html">List of all members</a>  </div>
+<a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="structgoliath_1_1motor__controller_1_1motor__status-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">goliath::vision::vision_utilities Class Reference</div>  </div>
+<div class="title">goliath::motor_controller::motor_status Struct Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="motor__controller_8h_source.html">motor_controller.h</a>&gt;</code></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
-Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a1726fe247a7dcd59b40180c16f6467d3"><td class="memTemplParams" colspan="2"><a class="anchor" id="a1726fe247a7dcd59b40180c16f6467d3"></a>
-template&lt;typename T &gt; </td></tr>
-<tr class="memitem:a1726fe247a7dcd59b40180c16f6467d3"><td class="memTemplItemLeft" align="right" valign="top">static T&#160;</td><td class="memTemplItemRight" valign="bottom"><b>map</b> (T input, T input_min, T input_max, T output_min, T output_max)</td></tr>
-<tr class="separator:a1726fe247a7dcd59b40180c16f6467d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a38aa5bf7efa31fb7335effd67463f783"><td class="memTemplParams" colspan="2"><a class="anchor" id="a38aa5bf7efa31fb7335effd67463f783"></a>
-template&lt;typename T &gt; </td></tr>
-<tr class="memitem:a38aa5bf7efa31fb7335effd67463f783"><td class="memTemplItemLeft" align="right" valign="top">static T&#160;</td><td class="memTemplItemRight" valign="bottom"><b>map</b> (T input, T input_max, T output_max)</td></tr>
-<tr class="separator:a38aa5bf7efa31fb7335effd67463f783"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:ae000ee688507b0c8663ef820a5f4d849"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae000ee688507b0c8663ef820a5f4d849"></a>
+motor_id&#160;</td><td class="memItemRight" valign="bottom"><b>id</b></td></tr>
+<tr class="separator:ae000ee688507b0c8663ef820a5f4d849"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a450037a97679f7abc15dfc8e88be7c76"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a450037a97679f7abc15dfc8e88be7c76"></a>
+motor_direction&#160;</td><td class="memItemRight" valign="bottom"><b>direction</b></td></tr>
+<tr class="separator:a450037a97679f7abc15dfc8e88be7c76"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af943f2a79cf1e970f52cf8a21df44895"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af943f2a79cf1e970f52cf8a21df44895"></a>
+motor_speed&#160;</td><td class="memItemRight" valign="bottom"><b>speed</b></td></tr>
+<tr class="separator:af943f2a79cf1e970f52cf8a21df44895"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/>The documentation for this class was generated from the following file:<ul>
-<li>/home/travis/build/P8P-7/core/src/modules/vision/util/<a class="el" href="vision__utilities_8h_source.html">vision_utilities.h</a></li>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Struct representing a current, or new motor status. </p>
+</div><hr/>The documentation for this struct was generated from the following file:<ul>
+<li>/home/travis/build/P8P-7/core/src/modules/motor-controller/include/goliath/<a class="el" href="motor__controller_8h_source.html">motor_controller.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

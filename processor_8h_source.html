@@ -25,7 +25,7 @@
   <td style="padding-left: 0.5em;">
    <div id="projectname">Goliath II
    </div>
-   <div id="projectbrief">Core</div>
+   <div id="projectbrief">Group 7</div>
   </td>
  </tr>
  </tbody>
@@ -70,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -89,27 +89,22 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">processor.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="processor_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;opencv2/opencv.hpp&gt;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">namespace </span>goliath::vision {</div>
-<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="classgoliath_1_1vision_1_1processor.html">   16</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classgoliath_1_1vision_1_1processor.html">processor</a> {</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="keyword">explicit</span> <a class="code" href="classgoliath_1_1vision_1_1processor.html#a15347f446a956628c29578cc6e4e0607">processor</a>(<span class="keyword">const</span> cv::Mat&amp; <a class="code" href="classgoliath_1_1vision_1_1processor.html#ab666c7206d12889dbf89c1d0e0fa038b">input</a>);</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keyword">virtual</span> ~<a class="code" href="classgoliath_1_1vision_1_1processor.html">processor</a>();</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="keyword">virtual</span> cv::Mat <a class="code" href="classgoliath_1_1vision_1_1processor.html#aa66473730c35e3db89ee3d73e0d82c6a">process</a>() <span class="keyword">const</span> = 0;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="classgoliath_1_1vision_1_1processor.html#ab666c7206d12889dbf89c1d0e0fa038b">   34</a></span>&#160;        cv::Mat <a class="code" href="classgoliath_1_1vision_1_1processor.html#ab666c7206d12889dbf89c1d0e0fa038b">input</a>;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    };</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;}</div>
-<div class="ttc" id="classgoliath_1_1vision_1_1processor_html_a15347f446a956628c29578cc6e4e0607"><div class="ttname"><a href="classgoliath_1_1vision_1_1processor.html#a15347f446a956628c29578cc6e4e0607">goliath::vision::processor::processor</a></div><div class="ttdeci">processor(const cv::Mat &amp;input)</div><div class="ttdef"><b>Definition:</b> processor.cpp:5</div></div>
-<div class="ttc" id="classgoliath_1_1vision_1_1processor_html_aa66473730c35e3db89ee3d73e0d82c6a"><div class="ttname"><a href="classgoliath_1_1vision_1_1processor.html#aa66473730c35e3db89ee3d73e0d82c6a">goliath::vision::processor::process</a></div><div class="ttdeci">virtual cv::Mat process() const =0</div></div>
-<div class="ttc" id="classgoliath_1_1vision_1_1processor_html"><div class="ttname"><a href="classgoliath_1_1vision_1_1processor.html">goliath::vision::processor</a></div><div class="ttdoc">Base class of processors that take in an input and manipulate in some way returning the output from t...</div><div class="ttdef"><b>Definition:</b> processor.h:16</div></div>
-<div class="ttc" id="classgoliath_1_1vision_1_1processor_html_ab666c7206d12889dbf89c1d0e0fa038b"><div class="ttname"><a href="classgoliath_1_1vision_1_1processor.html#ab666c7206d12889dbf89c1d0e0fa038b">goliath::vision::processor::input</a></div><div class="ttdeci">cv::Mat input</div><div class="ttdoc">Input image. </div><div class="ttdef"><b>Definition:</b> processor.h:34</div></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">namespace </span>goliath::vision {</div>
+<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="classgoliath_1_1vision_1_1processor.html">    6</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classgoliath_1_1vision_1_1processor.html">processor</a> {</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;        <span class="keyword">explicit</span> <a class="code" href="classgoliath_1_1vision_1_1processor.html">processor</a>(<span class="keyword">const</span> cv::Mat &amp;input);</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        <span class="keyword">virtual</span> cv::Mat process() <span class="keyword">const</span> = 0;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <span class="keyword">const</span> cv::Mat input;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    };</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;}</div>
+<div class="ttc" id="classgoliath_1_1vision_1_1processor_html"><div class="ttname"><a href="classgoliath_1_1vision_1_1processor.html">goliath::vision::processor</a></div><div class="ttdef"><b>Definition:</b> processor.h:6</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

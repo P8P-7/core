@@ -25,7 +25,7 @@
   <td style="padding-left: 0.5em;">
    <div id="projectname">Goliath II
    </div>
-   <div id="projectbrief">Core</div>
+   <div id="projectbrief">Group 7</div>
   </td>
  </tr>
  </tbody>
@@ -70,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -99,26 +99,31 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <a class="code" href="classgoliath_1_1i2c_1_1i2c__slave.html#aad60d064131e44f29ff059de22cedd2d">i2c_slave</a>(<span class="keyword">const</span> <a class="code" href="classgoliath_1_1handles_1_1i2c__bus__handle.html">handles::i2c_bus_handle</a> &amp;bus_handle, <span class="keyword">const</span> <a class="code" href="classgoliath_1_1handles_1_1i2c__slave__handle.html">handles::i2c_slave_handle</a> &amp;slave_handle);</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <a class="code" href="classgoliath_1_1i2c_1_1i2c__slave.html#aad60d064131e44f29ff059de22cedd2d">i2c_slave</a>(<span class="keyword">const</span> <a class="code" href="classgoliath_1_1handles_1_1i2c__bus__handle.html">handles::i2c_bus_handle</a> &amp;bus_handle, <span class="keyword">const</span> i2c_address &amp;slave_address);</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> iterator_type&gt;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classgoliath_1_1i2c_1_1i2c__slave.html#a07ba4458fcb9a0350aa3c73f89bd2aa4">write</a>(iterator_type begin, iterator_type end);</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <a class="code" href="classgoliath_1_1i2c_1_1i2c__slave.html">i2c_slave</a>&amp; <a class="code" href="classgoliath_1_1i2c_1_1i2c__slave.html#ad1f27fa71b34c6b2f197be69ced16eb3">operator&lt;&lt;</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> &amp;value);</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        std::string device;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        std::uint8_t address;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        ssize_t <a class="code" href="classgoliath_1_1i2c_1_1i2c__slave.html#a07ba4458fcb9a0350aa3c73f89bd2aa4">write</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *buffer, <span class="keywordtype">size_t</span> length);</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    };</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;}</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#include &quot;i2c_slave.tpp&quot;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        ~<a class="code" href="classgoliath_1_1i2c_1_1i2c__slave.html">i2c_slave</a>();</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> iterator_type&gt;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classgoliath_1_1i2c_1_1i2c__slave.html#a07ba4458fcb9a0350aa3c73f89bd2aa4">write</a>(iterator_type begin, iterator_type end);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <a class="code" href="classgoliath_1_1i2c_1_1i2c__slave.html">i2c_slave</a>&amp; <a class="code" href="classgoliath_1_1i2c_1_1i2c__slave.html#ad1f27fa71b34c6b2f197be69ced16eb3">operator&lt;&lt;</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> &amp;value);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        ssize_t <a class="code" href="classgoliath_1_1i2c_1_1i2c__slave.html#a07ba4458fcb9a0350aa3c73f89bd2aa4">write</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *buffer, <span class="keywordtype">size_t</span> length);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        ssize_t <a class="code" href="classgoliath_1_1i2c_1_1i2c__slave.html#a6af9e25ec15b04e98ec631c2c9694d3d">read</a>(<span class="keywordtype">char</span> *buffer, <span class="keywordtype">size_t</span> length);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        std::string device;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        std::uint8_t address;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keywordtype">int</span> file_descriptor;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    };</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;}</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="preprocessor">#include &quot;i2c_slave.tpp&quot;</span></div>
 <div class="ttc" id="classgoliath_1_1handles_1_1i2c__slave__handle_html"><div class="ttname"><a href="classgoliath_1_1handles_1_1i2c__slave__handle.html">goliath::handles::i2c_slave_handle</a></div><div class="ttdef"><b>Definition:</b> i2c_slave_handle.h:9</div></div>
 <div class="ttc" id="classgoliath_1_1handles_1_1i2c__bus__handle_html"><div class="ttname"><a href="classgoliath_1_1handles_1_1i2c__bus__handle.html">goliath::handles::i2c_bus_handle</a></div><div class="ttdef"><b>Definition:</b> i2c_bus_handle.h:7</div></div>
-<div class="ttc" id="classgoliath_1_1i2c_1_1i2c__slave_html_aad60d064131e44f29ff059de22cedd2d"><div class="ttname"><a href="classgoliath_1_1i2c_1_1i2c__slave.html#aad60d064131e44f29ff059de22cedd2d">goliath::i2c::i2c_slave::i2c_slave</a></div><div class="ttdeci">i2c_slave(const handles::i2c_bus_handle &amp;bus_handle, const handles::i2c_slave_handle &amp;slave_handle)</div><div class="ttdef"><b>Definition:</b> i2c_slave.cpp:18</div></div>
+<div class="ttc" id="classgoliath_1_1i2c_1_1i2c__slave_html_aad60d064131e44f29ff059de22cedd2d"><div class="ttname"><a href="classgoliath_1_1i2c_1_1i2c__slave.html#aad60d064131e44f29ff059de22cedd2d">goliath::i2c::i2c_slave::i2c_slave</a></div><div class="ttdeci">i2c_slave(const handles::i2c_bus_handle &amp;bus_handle, const handles::i2c_slave_handle &amp;slave_handle)</div><div class="ttdef"><b>Definition:</b> i2c_slave.cpp:29</div></div>
 <div class="ttc" id="classgoliath_1_1i2c_1_1i2c__slave_html"><div class="ttname"><a href="classgoliath_1_1i2c_1_1i2c__slave.html">goliath::i2c::i2c_slave</a></div><div class="ttdef"><b>Definition:</b> i2c_slave.h:6</div></div>
+<div class="ttc" id="classgoliath_1_1i2c_1_1i2c__slave_html_a6af9e25ec15b04e98ec631c2c9694d3d"><div class="ttname"><a href="classgoliath_1_1i2c_1_1i2c__slave.html#a6af9e25ec15b04e98ec631c2c9694d3d">goliath::i2c::i2c_slave::read</a></div><div class="ttdeci">ssize_t read(char *buffer, size_t length)</div><div class="ttdef"><b>Definition:</b> i2c_slave.cpp:42</div></div>
 <div class="ttc" id="classgoliath_1_1i2c_1_1i2c__slave_html_a07ba4458fcb9a0350aa3c73f89bd2aa4"><div class="ttname"><a href="classgoliath_1_1i2c_1_1i2c__slave.html#a07ba4458fcb9a0350aa3c73f89bd2aa4">goliath::i2c::i2c_slave::write</a></div><div class="ttdeci">void write(iterator_type begin, iterator_type end)</div></div>
-<div class="ttc" id="classgoliath_1_1i2c_1_1i2c__slave_html_ad1f27fa71b34c6b2f197be69ced16eb3"><div class="ttname"><a href="classgoliath_1_1i2c_1_1i2c__slave.html#ad1f27fa71b34c6b2f197be69ced16eb3">goliath::i2c::i2c_slave::operator&lt;&lt;</a></div><div class="ttdeci">i2c_slave &amp; operator&lt;&lt;(const char &amp;value)</div><div class="ttdef"><b>Definition:</b> i2c_slave.cpp:47</div></div>
+<div class="ttc" id="classgoliath_1_1i2c_1_1i2c__slave_html_ad1f27fa71b34c6b2f197be69ced16eb3"><div class="ttname"><a href="classgoliath_1_1i2c_1_1i2c__slave.html#ad1f27fa71b34c6b2f197be69ced16eb3">goliath::i2c::i2c_slave::operator&lt;&lt;</a></div><div class="ttdeci">i2c_slave &amp; operator&lt;&lt;(const char &amp;value)</div><div class="ttdef"><b>Definition:</b> i2c_slave.cpp:51</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

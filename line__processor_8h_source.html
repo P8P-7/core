@@ -70,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -89,26 +89,25 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">line_processor.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="line__processor_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;opencv2/imgproc.hpp&gt;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="processor_8h.html">processor.h</a>&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;processor.h&quot;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">namespace </span>goliath::vision {</div>
-<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="classgoliath_1_1vision_1_1line__processor.html">   17</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classgoliath_1_1vision_1_1line__processor.html">line_processor</a> : <span class="keyword">public</span> <a class="code" href="classgoliath_1_1vision_1_1processor.html">processor</a> {</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keyword">explicit</span> <a class="code" href="classgoliath_1_1vision_1_1line__processor.html">line_processor</a>(<span class="keyword">const</span> cv::Mat &amp;<a class="code" href="classgoliath_1_1vision_1_1processor.html#a86b0cb14da444bb69671799531f87d1b">input</a>);</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="keyword">explicit</span> <a class="code" href="classgoliath_1_1vision_1_1line__processor.html">line_processor</a>(<a class="code" href="classgoliath_1_1vision_1_1processor.html">processor</a> &amp;other);</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        cv::Mat <a class="code" href="classgoliath_1_1vision_1_1line__processor.html#a7439eea7049f856d8567f82f186cf288">process</a>() <span class="keyword">const override</span>;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    };</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;}</div>
-<div class="ttc" id="classgoliath_1_1vision_1_1line__processor_html"><div class="ttname"><a href="classgoliath_1_1vision_1_1line__processor.html">goliath::vision::line_processor</a></div><div class="ttdoc">Processor that returns a canny image of the input. </div><div class="ttdef"><b>Definition:</b> line_processor.h:17</div></div>
-<div class="ttc" id="classgoliath_1_1vision_1_1line__processor_html_a7439eea7049f856d8567f82f186cf288"><div class="ttname"><a href="classgoliath_1_1vision_1_1line__processor.html#a7439eea7049f856d8567f82f186cf288">goliath::vision::line_processor::process</a></div><div class="ttdeci">cv::Mat process() const override</div><div class="ttdef"><b>Definition:</b> line_processor.cpp:13</div></div>
-<div class="ttc" id="classgoliath_1_1vision_1_1processor_html_a86b0cb14da444bb69671799531f87d1b"><div class="ttname"><a href="classgoliath_1_1vision_1_1processor.html#a86b0cb14da444bb69671799531f87d1b">goliath::vision::processor::input</a></div><div class="ttdeci">const cv::Mat input</div><div class="ttdoc">Input image. </div><div class="ttdef"><b>Definition:</b> processor.h:32</div></div>
-<div class="ttc" id="classgoliath_1_1vision_1_1processor_html"><div class="ttname"><a href="classgoliath_1_1vision_1_1processor.html">goliath::vision::processor</a></div><div class="ttdoc">Base class of processors that take in an input and manipulate in some way returning the output from t...</div><div class="ttdef"><b>Definition:</b> processor.h:16</div></div>
-<div class="ttc" id="processor_8h_html"><div class="ttname"><a href="processor_8h.html">processor.h</a></div></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">namespace </span>goliath::vision {</div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="classgoliath_1_1vision_1_1line__processor.html">    8</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classgoliath_1_1vision_1_1line__processor.html">line_processor</a> : <span class="keyword">public</span> <a class="code" href="classgoliath_1_1vision_1_1processor.html">processor</a> {</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        <span class="keyword">explicit</span> <a class="code" href="classgoliath_1_1vision_1_1line__processor.html">line_processor</a>(<span class="keyword">const</span> cv::Mat &amp;input);</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        <span class="comment">// Detector chaining</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <span class="keyword">explicit</span> <a class="code" href="classgoliath_1_1vision_1_1line__processor.html">line_processor</a>(<a class="code" href="classgoliath_1_1vision_1_1processor.html">processor</a> &amp;other);</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        cv::Mat process() <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    };</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;}</div>
+<div class="ttc" id="classgoliath_1_1vision_1_1line__processor_html"><div class="ttname"><a href="classgoliath_1_1vision_1_1line__processor.html">goliath::vision::line_processor</a></div><div class="ttdef"><b>Definition:</b> line_processor.h:8</div></div>
+<div class="ttc" id="classgoliath_1_1vision_1_1processor_html"><div class="ttname"><a href="classgoliath_1_1vision_1_1processor.html">goliath::vision::processor</a></div><div class="ttdef"><b>Definition:</b> processor.h:6</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

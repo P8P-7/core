@@ -25,7 +25,7 @@
   <td style="padding-left: 0.5em;">
    <div id="projectname">Goliath II
    </div>
-   <div id="projectbrief">Core</div>
+   <div id="projectbrief">Group 7</div>
   </td>
  </tr>
  </tbody>
@@ -73,7 +73,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -107,6 +107,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a07ba4458fcb9a0350aa3c73f89bd2aa4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad1f27fa71b34c6b2f197be69ced16eb3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgoliath_1_1i2c_1_1i2c__slave.html">i2c_slave</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1i2c_1_1i2c__slave.html#ad1f27fa71b34c6b2f197be69ced16eb3">operator&lt;&lt;</a> (const char &amp;value)</td></tr>
 <tr class="separator:ad1f27fa71b34c6b2f197be69ced16eb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e55a13c4d55b78d3a5393bfb637da47"><td class="memItemLeft" align="right" valign="top">ssize_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1i2c_1_1i2c__slave.html#a9e55a13c4d55b78d3a5393bfb637da47">write</a> (const char *buffer, size_t length)</td></tr>
+<tr class="separator:a9e55a13c4d55b78d3a5393bfb637da47"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6af9e25ec15b04e98ec631c2c9694d3d"><td class="memItemLeft" align="right" valign="top">ssize_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1i2c_1_1i2c__slave.html#a6af9e25ec15b04e98ec631c2c9694d3d">read</a> (char *buffer, size_t length)</td></tr>
+<tr class="separator:a6af9e25ec15b04e98ec631c2c9694d3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="aad60d064131e44f29ff059de22cedd2d"></a>
@@ -202,6 +206,41 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a6af9e25ec15b04e98ec631c2c9694d3d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ssize_t i2c_slave::read </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>length</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Request the slave to send something. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buffer</td><td>pointer to start writing </td></tr>
+    <tr><td class="paramname">length</td><td>size of buffer </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>total number of bytes read </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="a07ba4458fcb9a0350aa3c73f89bd2aa4"></a>
 <div class="memitem">
 <div class="memproto">
@@ -242,6 +281,41 @@ template&lt;typename iterator_type &gt; </div>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a class="anchor" id="a9e55a13c4d55b78d3a5393bfb637da47"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ssize_t i2c_slave::write </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>length</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Writes anything at buffer with size length to the slave. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buffer</td><td>pointer to start </td></tr>
+    <tr><td class="paramname">length</td><td>length of message </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>number of written bytes </dd></dl>
 
 </div>
 </div>

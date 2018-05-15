@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['operator_3c_3c',['operator&lt;&lt;',['../classgoliath_1_1i2c_1_1i2c__slave.html#ad1f27fa71b34c6b2f197be69ced16eb3',1,'goliath::i2c::i2c_slave']]]
+  ['send_5fcommand',['send_command',['../classgoliath_1_1motor__controller_1_1motor__controller.html#a2462c18526f7eccd44e77e788e6f64fc',1,'goliath::motor_controller::motor_controller']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['unlock',['unlock',['../classgoliath_1_1handles_1_1handle.html#ae31bb86a6a3cac45f7e228bdc87a22c8',1,'goliath::handles::handle']]]
+  ['send_5fcommand',['send_command',['../classgoliath_1_1motor__controller_1_1motor__controller.html#a2462c18526f7eccd44e77e788e6f64fc',1,'goliath::motor_controller::motor_controller']]]
 ];

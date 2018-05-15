@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Goliath II: /home/travis/build/P8P-7/core/src/modules/gpio/gpio.h Source File</title>
+<title>Goliath II: /home/travis/build/P8P-7/core/src/modules/gpio/include/goliath/gpio.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -25,7 +25,7 @@
   <td style="padding-left: 0.5em;">
    <div id="projectname">Goliath II
    </div>
-   <div id="projectbrief">Core</div>
+   <div id="projectbrief">Group 7</div>
   </td>
  </tr>
  </tbody>
@@ -70,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -81,7 +81,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_ddb4d7e95cc2d6c8e1ade10a20d7247d.html">modules</a></li><li class="navelem"><a class="el" href="dir_31458193538be28ed5b93cfbb2dfc50e.html">gpio</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_ddb4d7e95cc2d6c8e1ade10a20d7247d.html">modules</a></li><li class="navelem"><a class="el" href="dir_31458193538be28ed5b93cfbb2dfc50e.html">gpio</a></li><li class="navelem"><a class="el" href="dir_14d62293fc42d68555f336e4becb9d97.html">include</a></li><li class="navelem"><a class="el" href="dir_6de7a6f2e5da74c8f4a3b70f00aa27ae.html">goliath</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -94,18 +94,18 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">enum</span> GPIO_MAP_PIN {</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    GPIO2 = 2, GPIO14 = 14,</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    GPIO3 = 3, GPIO15 = 15,</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    GPIO4 = 4, GPIO18 = 18,</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    GPIO17 = 17, GPIO23 = 23,</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    GPIO27 = 27, GPIO24 = 24,</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    GPIO22 = 22, GPIO25 = 25,</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    GPIO10 = 10, GPIO8 = 8,</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    GPIO9 = 9, GPIO7 = 7,</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    GPIO11 = 11, GPIO12 = 12,</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    GPIO5 = 5, GPIO16 = 16,</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    GPIO6 = 6, GPIO20 = 20,</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    GPIO13 = 13, GPIO21 = 21,</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    GPIO2 = 2,      GPIO14 = 14,</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    GPIO3 = 3,      GPIO15 = 15,</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    GPIO4 = 4,      GPIO18 = 18,</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    GPIO17 = 17,    GPIO23 = 23,</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    GPIO27 = 27,    GPIO24 = 24,</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    GPIO22 = 22,    GPIO25 = 25,</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    GPIO10 = 10,    GPIO8 = 8,</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    GPIO9 = 9,      GPIO7 = 7,</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    GPIO11 = 11,    GPIO12 = 12,</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    GPIO5 = 5,      GPIO16 = 16,</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    GPIO6 = 6,      GPIO20 = 20,</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    GPIO13 = 13,    GPIO21 = 21,</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    GPIO19 = 19,</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    GPIO26 = 26,</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;};</div>
@@ -117,7 +117,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    IN = 1</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;};</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
-<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="namespacegoliath_1_1gpio.html">   29</a></span>&#160;<span class="keyword">namespace </span>goliath::gpio {</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">namespace </span>goliath::gpio {</div>
 <div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="classgoliath_1_1gpio_1_1GPIO.html">   30</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classgoliath_1_1gpio_1_1GPIO.html">GPIO</a> {</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keyword">public</span>:</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <a class="code" href="classgoliath_1_1gpio_1_1GPIO.html">GPIO</a>();</div>
@@ -154,9 +154,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="keywordtype">int</span> set(<span class="keywordtype">int</span> val);</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keywordtype">int</span> getval_gpio(std::string&amp; val);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keywordtype">int</span> getval_gpio(std::string &amp;val);</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keywordtype">int</span> getval_gpio(<span class="keywordtype">int</span>&amp; val);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keywordtype">int</span> getval_gpio(<span class="keywordtype">int</span> &amp;val);</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="keywordtype">int</span> <span class="keyword">get</span>();</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
