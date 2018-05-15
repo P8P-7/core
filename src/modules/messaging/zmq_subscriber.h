@@ -5,7 +5,7 @@
 
 #include "zmq_io.h"
 
-namespace goliath::io {
+namespace goliath::messaging {
     class zmq_subscriber : public zmq_io {
     public:
         zmq_subscriber(zmq::context_t &context, const std::string &host,

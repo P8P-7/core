@@ -1,7 +1,7 @@
 #pragma once
 
 /**
- * @namespace goliath::io
+ * @namespace goliath::messaging
  * @brief Module for receiving and sending messages
  */
 

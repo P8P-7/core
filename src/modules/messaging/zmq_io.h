@@ -1,15 +1,14 @@
 #pragma once
 
-#include "iostream"
-
-#include "string"
-#include "zmq.hpp"
+#include <iostream>
+#include <string>
+#include <zmq.hpp>
 
 #include <Message.pb.h>
 
 const std::string PROTOCOL = "tcp";
 
-namespace goliath::io {
+namespace goliath::messaging {
     class zmq_io {
     public:
         zmq_io(zmq::context_t &context, const std::string &host, const int port)

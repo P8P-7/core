@@ -1,6 +1,6 @@
 #include "zmq_publisher.h"
 
-using namespace goliath::io;
+using namespace goliath::messaging;
 
 zmq_publisher::zmq_publisher(zmq::context_t &context, const std::string &host, const int port)
         : zmq_io(context, host, port, ZMQ_PUB) {

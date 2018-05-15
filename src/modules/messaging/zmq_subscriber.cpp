@@ -3,7 +3,7 @@
 
 #include "zmq_subscriber.h"
 
-using namespace goliath::io;
+using namespace goliath::messaging;
 
 zmq_subscriber::zmq_subscriber(zmq::context_t &context, const std::string &host, const int port,
                                const std::string &topic, std::function<void(size_t, const Message&)> callback)

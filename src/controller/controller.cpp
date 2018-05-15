@@ -1,5 +1,5 @@
 #include <goliath/vision.h>
-#include <goliath/io.h>
+#include <goliath/messaging.h>
 
 #include "command_map.h"
 #include "commands/move_command.h"
@@ -40,7 +40,7 @@ int main(int argc, char *argv[]) {
     commands::command_executor runner(command_map, handle_map);
 
     zmq::context_t context(1);
-    io::zmq_subscriber subscriber(context, "localhost", 5555, "commands", [&runner](size_t command_id, const Message &message){
+    messaging::zmq_subscriber subscriber(context, "localhost", 5555, "commands", [&runner](size_t command_id, const Message &message){
         runner.run(command_id, message);
     });
 
