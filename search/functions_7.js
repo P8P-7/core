@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['send_5fcommand',['send_command',['../classgoliath_1_1motor__controller_1_1motor__controller.html#a2462c18526f7eccd44e77e788e6f64fc',1,'goliath::motor_controller::motor_controller']]]
+  ['map',['map',['../classgoliath_1_1vision_1_1vision__utilities.html#a1726fe247a7dcd59b40180c16f6467d3',1,'goliath::vision::vision_utilities']]]
 ];

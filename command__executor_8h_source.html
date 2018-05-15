@@ -25,7 +25,7 @@
   <td style="padding-left: 0.5em;">
    <div id="projectname">Goliath II
    </div>
-   <div id="projectbrief">Group 7</div>
+   <div id="projectbrief">Core</div>
   </td>
  </tr>
  </tbody>
@@ -70,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -98,32 +98,32 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="command__map_8h.html">command_map.h</a>&quot;</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="handle__map_8h.html">handle_map.h</a>&quot;</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">using namespace </span>goliath::handles;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
-<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="namespacegoliath_1_1commands.html">   18</a></span>&#160;<span class="keyword">namespace </span>goliath::commands {</div>
-<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="classgoliath_1_1commands_1_1command__executor.html">   19</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classgoliath_1_1commands_1_1command__executor.html">command_executor</a> {</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <a class="code" href="classgoliath_1_1commands_1_1command__executor.html">command_executor</a>(<a class="code" href="classgoliath_1_1commands_1_1command__map.html">command_map</a>&amp; commands, <a class="code" href="classgoliath_1_1handles_1_1handle__map.html">handle_map</a> &amp;handles);</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        ~<a class="code" href="classgoliath_1_1commands_1_1command__executor.html">command_executor</a>();</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="keywordtype">void</span> run(<span class="keywordtype">size_t</span> command_id, <span class="keyword">const</span> Message &amp;message);</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keywordtype">void</span> try_execute(<span class="keyword">const</span> <span class="keywordtype">size_t</span> &amp;command_id, <span class="keyword">const</span> Message &amp;message);</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="keywordtype">bool</span> can_start(<span class="keyword">const</span> <a class="code" href="classgoliath_1_1commands_1_1command.html">command</a> &amp;<a class="code" href="classgoliath_1_1commands_1_1command.html">command</a>) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        std::vector&lt;std::thread&gt; threads;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <a class="code" href="classgoliath_1_1commands_1_1command__map.html">command_map</a>&amp; commands;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <a class="code" href="classgoliath_1_1handles_1_1handle__map.html">handle_map</a>&amp; handles;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        std::mutex mutex;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    };</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;}</div>
-<div class="ttc" id="command__map_8h_html"><div class="ttname"><a href="command__map_8h.html">command_map.h</a></div><div class="ttdoc">Contains a map to connect a integer value to a command instance. </div></div>
-<div class="ttc" id="classgoliath_1_1commands_1_1command__executor_html"><div class="ttname"><a href="classgoliath_1_1commands_1_1command__executor.html">goliath::commands::command_executor</a></div><div class="ttdef"><b>Definition:</b> command_executor.h:19</div></div>
-<div class="ttc" id="classgoliath_1_1commands_1_1command__map_html"><div class="ttname"><a href="classgoliath_1_1commands_1_1command__map.html">goliath::commands::command_map</a></div><div class="ttdef"><b>Definition:</b> command_map.h:31</div></div>
-<div class="ttc" id="classgoliath_1_1handles_1_1handle__map_html"><div class="ttname"><a href="classgoliath_1_1handles_1_1handle__map.html">goliath::handles::handle_map</a></div><div class="ttdef"><b>Definition:</b> handle_map.h:16</div></div>
-<div class="ttc" id="classgoliath_1_1commands_1_1command_html"><div class="ttname"><a href="classgoliath_1_1commands_1_1command.html">goliath::commands::command</a></div><div class="ttdoc">Command base class. </div><div class="ttdef"><b>Definition:</b> command.h:26</div></div>
-<div class="ttc" id="handle__map_8h_html"><div class="ttname"><a href="handle__map_8h.html">handle_map.h</a></div><div class="ttdoc">A map of all handles. </div></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">using namespace </span>goliath::handles;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="namespacegoliath_1_1commands.html">   17</a></span>&#160;<span class="keyword">namespace </span>goliath::commands {</div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="classgoliath_1_1commands_1_1command__executor.html">   18</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classgoliath_1_1commands_1_1command__executor.html">command_executor</a> {</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <a class="code" href="classgoliath_1_1commands_1_1command__executor.html">command_executor</a>(<a class="code" href="classgoliath_1_1commands_1_1command__map.html">command_map</a>&amp; commands, <a class="code" href="classgoliath_1_1handles_1_1handle__map.html">handle_map</a> &amp;handles);</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        ~<a class="code" href="classgoliath_1_1commands_1_1command__executor.html">command_executor</a>();</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keywordtype">void</span> run(<span class="keywordtype">size_t</span> command_id, <span class="keyword">const</span> Message &amp;message);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="keywordtype">void</span> try_execute(<span class="keyword">const</span> <span class="keywordtype">size_t</span> &amp;command_id, <span class="keyword">const</span> Message &amp;message);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keywordtype">bool</span> can_start(<span class="keyword">const</span> <a class="code" href="classgoliath_1_1commands_1_1command.html">command</a> &amp;<a class="code" href="classgoliath_1_1commands_1_1command.html">command</a>) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        std::vector&lt;std::thread&gt; threads;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <a class="code" href="classgoliath_1_1commands_1_1command__map.html">command_map</a>&amp; commands;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <a class="code" href="classgoliath_1_1handles_1_1handle__map.html">handle_map</a>&amp; handles;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        std::mutex mutex;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    };</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;}</div>
+<div class="ttc" id="command__map_8h_html"><div class="ttname"><a href="command__map_8h.html">command_map.h</a></div></div>
+<div class="ttc" id="classgoliath_1_1commands_1_1command__executor_html"><div class="ttname"><a href="classgoliath_1_1commands_1_1command__executor.html">goliath::commands::command_executor</a></div><div class="ttdef"><b>Definition:</b> command_executor.h:18</div></div>
+<div class="ttc" id="classgoliath_1_1commands_1_1command__map_html"><div class="ttname"><a href="classgoliath_1_1commands_1_1command__map.html">goliath::commands::command_map</a></div><div class="ttdef"><b>Definition:</b> command_map.h:34</div></div>
+<div class="ttc" id="classgoliath_1_1handles_1_1handle__map_html"><div class="ttname"><a href="classgoliath_1_1handles_1_1handle__map.html">goliath::handles::handle_map</a></div><div class="ttdef"><b>Definition:</b> handle_map.h:15</div></div>
+<div class="ttc" id="classgoliath_1_1commands_1_1command_html"><div class="ttname"><a href="classgoliath_1_1commands_1_1command.html">goliath::commands::command</a></div><div class="ttdoc">Command base class. </div><div class="ttdef"><b>Definition:</b> command.h:25</div></div>
+<div class="ttc" id="handle__map_8h_html"><div class="ttname"><a href="handle__map_8h.html">handle_map.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
