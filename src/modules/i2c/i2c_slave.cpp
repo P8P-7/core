@@ -13,14 +13,8 @@ using namespace goliath::i2c;
 
 i2c_slave::i2c_slave(const handles::i2c_bus_handle &bus_handle,
                      const std::uint8_t &slave_address) : device(bus_handle.get_device_path()),
-                                                          address(slave_address) {}
-
-i2c_slave::i2c_slave(const handles::i2c_bus_handle &bus_handle,
-                     const handles::i2c_slave_handle &slave_handle) : i2c_slave(bus_handle,
-                                                                                slave_handle.get_slave_address()) {}
-
-ssize_t i2c_slave::write(const char *buffer, size_t length) {
-    int file_descriptor = ::open(device.c_str(), O_RDWR);
+                                                          address(slave_address) {
+    file_descriptor = ::open(device.c_str(), O_RDWR);
     if (file_descriptor == -1) {
         throw exceptions::i2c_error(device, "Couldn't open device");
     }
@@ -30,22 +24,38 @@ ssize_t i2c_slave::write(const char *buffer, size_t length) {
         throw exceptions::i2c_error(device, str(boost::format("Could not set slave address to %1$#x")
                                                 % static_cast<int>(address)));
     }
+}
 
+i2c_slave::i2c_slave(const handles::i2c_bus_handle &bus_handle,
+                     const handles::i2c_slave_handle &slave_handle) : i2c_slave(bus_handle,
+                                                                                slave_handle.get_slave_address()) { }
+
+ssize_t i2c_slave::write(const char *buffer, size_t length) {
     ssize_t write_result = ::write(file_descriptor, buffer, length);
     if (write_result == -1) {
         throw exceptions::i2c_error(device, str(boost::format("Could not write to %1$#x") % static_cast<int>(address)));
     }
 
-    int close_result = ::close(file_descriptor);
-    if (close_result == -1) {
-        throw exceptions::i2c_error(device, "Failed to close device");
+    return write_result;
+}
+
+ssize_t i2c_slave::read(char *buffer, size_t length) {
+    ssize_t read_result = ::read(file_descriptor, buffer, length);
+    if (read_result == -1) {
+        throw exceptions::i2c_error(device, str(boost::format("Could read from %1$#x") % static_cast<int>(address)));
     }
 
-    return write_result;
+    return read_result;
 }
 
 i2c_slave &i2c_slave::operator<<(const char &value) {
     write(&value, 1);
 
     return *this;
+}
+
+i2c_slave::~i2c_slave() {
+    if (file_descriptor != -1) {
+        ::close(file_descriptor);
+    }
 }
