@@ -53,7 +53,8 @@ namespace goliath::vision {
         /**
          * @return Value [0][0] contains whether the robot should continue going straight, or go left/right. This value
          * is defined in the follow_line_direction enum. Value [0][1] contains the percentage from the edge of the
-         * current box the camera is located. Can be used to determine the strength of the caterpillars.
+         * current box the camera is located. Can be used to determine the strength of the caterpillars. [0][2] Contains
+         * the box used from the bottom up. [1] Contains the box represented as a Vec4b.
          */
         std::vector<cv::Vec4d> detect() const override;
 

@@ -1,6 +1,6 @@
 #include "microphone.h"
 
-using namespace goliath::audio;
+using namespace goliath::openal;
 using namespace goliath::exceptions;
 
 microphone::microphone(ALCuint frequency, ALCenum format, ALCsizei buffer_size, ALchar* devicename) {

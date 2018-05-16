@@ -9,8 +9,12 @@ follow_line_detector::follow_line_detector(const cv::Mat& input, int boxes, int 
     : detector(input), boxes(boxes), box_height(box_height), boxes_bottom_margin(boxes_bottom_margin),
       boxes_horizontal_margin(boxes_horizontal_margin), min_contour_area(min_contour_area),
       max_contour_area(max_contour_area) {
-    if (boxes > 4 || boxes < 0) {
+    if(boxes > 4 || boxes < 0) {
         throw vision_error("The amount of ROI boxes must be between 1 and 4");
+    }
+
+    if(box_height * boxes + boxes_bottom_margin > (input.rows - 1)) {
+        throw vision_error("Can't fit all boxes in image");
     }
 }
 
@@ -58,12 +62,14 @@ std::vector<cv::Vec4d> follow_line_detector::detect() const {
 
         double norm_distance = cv::abs(vision_utilities::map(offset, static_cast<double>((box.cols - 1)) / 2, 1.0));
 
+        cv::Vec4d rect{static_cast<double>(x), static_cast<double>(y), static_cast<double>(w), static_cast<double>(h)};
+
         if (offset == 0) {
-            return {{follow_line_direction::ON_COURSE, offset, 0, 0}};
+            return {{follow_line_direction::ON_COURSE, offset, 0, 0}, rect};
         } else if (offset < 0) {
-            return {{follow_line_direction::LEFT, norm_distance, static_cast<double>(box_index), 0}};
+            return {{follow_line_direction::LEFT, norm_distance, static_cast<double>(box_index), 0}, rect};
         } else if (offset > 0) {
-            return {{follow_line_direction::RIGHT, norm_distance, static_cast<double>(box_index), 0}};
+            return {{follow_line_direction::RIGHT, norm_distance, static_cast<double>(box_index), 0}, rect};
         }
     }
 

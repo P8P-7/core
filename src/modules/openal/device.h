@@ -12,9 +12,16 @@
  * @author Group 7 - Informatica
  */
 
-namespace goliath::audio {
+namespace goliath::openal {
+    /**
+     * @class goliath::openal::device
+     * @brief Base class for any audio device
+     */
     class device {
     public:
+        /**
+         * @param devicename Location of device (Default NULL)
+         */
         device(ALchar *devicename = NULL);
         virtual ~device();
 

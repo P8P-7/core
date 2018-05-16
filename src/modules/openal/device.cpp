@@ -1,6 +1,6 @@
 #include "device.h"
 
-using namespace goliath::audio;
+using namespace goliath::openal;
 using namespace goliath::exceptions;
 
 device::device(ALchar *devicename) {

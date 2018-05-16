@@ -18,3 +18,4 @@
 #include "../../detectors/detector.h"
 #include "../../detectors/line_detector.h"
 #include "../../detectors/follow_line_detector.h"
+#include "../../detectors/color_region_detector.h"

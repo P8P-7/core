@@ -15,7 +15,7 @@
  * @author Group 7 - Informatica
  */
 
-namespace goliath::audio {
+namespace goliath::openal {
     class microphone : public device {
     public:
         microphone(ALCuint frequency, ALCenum format, ALCsizei buffer_size, ALchar* devicename = NULL);

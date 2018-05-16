@@ -1,6 +1,6 @@
 #include "context.h"
 
-using namespace goliath::audio;
+using namespace goliath::openal;
 using namespace goliath::exceptions;
 
 context::context(const device &device, const ALCint *context) {

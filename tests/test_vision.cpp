@@ -71,6 +71,19 @@ BOOST_FIXTURE_TEST_SUITE(BOOST_TEST_MODULE, test_vision_fixture)
         std::vector<cv::Vec4d> output = follow_line_detector.detect();
 
         BOOST_CHECK_EQUAL(output[0][0], vision::follow_line_direction::RIGHT);
-     }
+    }
+
+    BOOST_AUTO_TEST_CASE(test_line_following_2) {
+        vision::webcam camera(2);
+
+        while(true) {
+            cv::Mat frame = camera.get_frame();
+            vision::color_region_detector color_region_detector(frame, 360, 100, 0, 180, 0, 256);
+            color_region_detector.detect();
+
+            cv::imshow("Frame", frame);
+            cv::waitKey(1);
+
+        }
     }
 BOOST_AUTO_TEST_SUITE_END()
