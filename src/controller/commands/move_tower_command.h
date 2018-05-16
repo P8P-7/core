@@ -8,7 +8,7 @@ namespace goliath::commands {
         move_tower_command();
 
     private:
-        void execute(const handles::handle_map& handles, const Message &message) override ;
+        void execute(const handles::handle_map& handles, const CommandMessage &message) override ;
 
     };
 }

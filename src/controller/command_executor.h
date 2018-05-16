@@ -20,8 +20,8 @@ namespace goliath::commands {
         command_executor(command_map& commands, handle_map &handles);
         ~command_executor();
 
-        void run(size_t command_id, const Message &message);
-        void try_execute(const size_t &command_id, const Message &message);
+        void run(size_t command_id, const CommandMessage &message);
+        void try_execute(const size_t &command_id, const CommandMessage &message);
         bool can_start(const command &command) const;
     private:
         std::vector<std::thread> threads;

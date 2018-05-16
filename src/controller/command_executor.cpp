@@ -12,7 +12,7 @@ command_executor::~command_executor() {
     }
 }
 
-void command_executor::run(const size_t command_id, const Message &message) {
+void command_executor::run(const size_t command_id, const CommandMessage &message) {
     std::lock_guard<std::mutex> lock_guard(mutex);
 
     if (!commands.command_exists(command_id)) {
@@ -31,7 +31,7 @@ void command_executor::run(const size_t command_id, const Message &message) {
     threads.emplace_back(std::thread(&command_executor::try_execute, this, command_id, std::ref(message)));
 }
 
-void command_executor::try_execute(const size_t &command_id, const Message &message) {
+void command_executor::try_execute(const size_t &command_id, const CommandMessage &message) {
     std::unique_lock<std::mutex> lock(mutex);
 
     command_item& item = commands[command_id];

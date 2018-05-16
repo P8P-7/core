@@ -1,7 +1,8 @@
 cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
 
 IF(NOT CMAKE_BUILD_TYPE)
-    set(CMAKE_BUILD_TYPE Debug)
+    message(STATUS "Build type not set - defaulting to Debug")
+    set(CMAKE_BUILD_TYPE "Debug" CACHE STRING "Choose the type of build from: Debug Release" FORCE)
 ENDIF()
 
 project(goliath-core
