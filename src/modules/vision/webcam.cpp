@@ -2,19 +2,19 @@
 
 using namespace goliath::vision;
 
-webcam::webcam(const int cap_id)
-    : cap_id(cap_id), cap(cap_id) {
+Webcam::Webcam(const int capId)
+    : capId(capId), cap(capId) {
 }
 
-webcam::webcam(const int cap_id, const int color)
-    : cap_id(cap_id), cap(cap_id), color(color) {
+Webcam::Webcam(const int capId, const int color)
+    : capId(capId), cap(capId), color(color) {
 }
 
-webcam::~webcam() {
+Webcam::~Webcam() {
     cap.release();
 }
 
-void webcam::get_frame(cv::Mat& frame) {
+void Webcam::getFrame(cv::Mat& frame) {
     if (cap.isOpened()) {
         cap >> frame;
     }
@@ -24,9 +24,9 @@ void webcam::get_frame(cv::Mat& frame) {
     }
 }
 
-cv::Mat webcam::get_frame() {
+cv::Mat Webcam::getFrame() {
     cv::Mat mat;
-    get_frame(mat);
+    getFrame(mat);
 
     return mat;
 }

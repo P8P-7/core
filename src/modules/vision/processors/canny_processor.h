@@ -17,18 +17,18 @@ namespace goliath::vision {
     const int DEFAULT_CANNY_KERNEL = 3;
 
     /**
-     * @class goliath::vision::canny_processor
+     * @class goliath::vision::CannyProcessor
      * @brief Processor that returns a canny image of the input
      */
-    class canny_processor : public processor {
+    class CannyProcessor : public Processor {
     public:
         /**
          * @param input Source image
-         * @param min_low_treshold Canny min threshold
-         * @param max_low_treshold Canny max threshold
+         * @param minLowThreshold Canny min threshold
+         * @param maxLowThreshold Canny max threshold
          */
-        explicit canny_processor(const cv::Mat &input, int min_low_threshold, int max_low_threshold);
-        explicit canny_processor(processor &other, int min_low_threshold, int max_low_threshold);
+        explicit CannyProcessor(const cv::Mat &input, int minLowThreshold, int maxLowThreshold);
+        explicit CannyProcessor(Processor &other, int minLowThreshold, int maxLowThreshold);
 
         /**
          * @return Canny image
@@ -36,6 +36,6 @@ namespace goliath::vision {
         cv::Mat process() const override;
 
     private:
-        int min_low_threshold, max_low_threshold;
+        int minLowThreshold, maxLowThreshold;
     };
 }

@@ -2,10 +2,10 @@
 
 using namespace goliath::handles;
 
-webcam_handle::webcam_handle(const int &device)
+WebcamHandle::WebcamHandle(const int &device)
         : device(device) {
 }
 
-const int& webcam_handle::get_device() const {
+const int& WebcamHandle::getDevice() const {
     return device;
 }

@@ -3,26 +3,26 @@
 using namespace goliath::openal;
 using namespace goliath::exceptions;
 
-microphone::microphone(ALCuint frequency, ALCenum format, ALCsizei buffer_size, ALchar* devicename) {
-    alc_device = alcCaptureOpenDevice(devicename, frequency, format, buffer_size);
+Microphone::Microphone(ALCuint frequency, ALCenum format, ALCsizei bufferSize, ALchar* deviceName) {
+    alcDevice = alcCaptureOpenDevice(deviceName, frequency, format, bufferSize);
 
-    if(alc_device == NULL) {
+    if(alcDevice == NULL) {
         throw openal_error("Unable to create microphone");
     }
 }
 
-void microphone::record(ALubyte *capture_buffer, std::chrono::microseconds duration, std::chrono::microseconds interval) {
+void Microphone::record(ALubyte *capture_buffer, std::chrono::microseconds duration, std::chrono::microseconds interval) {
     auto start = std::chrono::high_resolution_clock::now();
     auto finish = start + duration;
 
-    alcCaptureStart(alc_device);
+    alcCaptureStart(alcDevice);
 
     while(std::chrono::high_resolution_clock::now() < finish) {
         ALint samples_available;
-        alcGetIntegerv(alc_device, ALC_CAPTURE_SAMPLES, 1, &samples_available);
+        alcGetIntegerv(alcDevice, ALC_CAPTURE_SAMPLES, 1, &samples_available);
 
         if (samples_available > 0) {
-            alcCaptureSamples(alc_device, capture_buffer, samples_available);
+            alcCaptureSamples(alcDevice, capture_buffer, samples_available);
             capture_buffer += samples_available * 2;
 
             std::cout << samples_available << std::endl;
@@ -31,5 +31,5 @@ void microphone::record(ALubyte *capture_buffer, std::chrono::microseconds durat
         std::this_thread::sleep_for(interval);
     }
 
-    alcCaptureStop(alc_device);
+    alcCaptureStop(alcDevice);
 }

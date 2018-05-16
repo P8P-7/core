@@ -12,7 +12,7 @@ namespace goliath::vision {
     /**
      * @brief Takes an input and returns a ROI selection from that image
      */
-    class roi_processor : public processor {
+    class RoiProcessor : public Processor {
     public:
         /**
          * @param input Input image
@@ -21,8 +21,9 @@ namespace goliath::vision {
          * @param w Width of ROI
          * @param h Height of ROI
          */
-        roi_processor(const cv::Mat &input, int x, int y, int w, int h);
-        roi_processor(processor &other, int x, int y, int w, int h);
+        RoiProcessor(const cv::Mat &input, int x, int y, int w, int h);
+
+        RoiProcessor(Processor &other, int x, int y, int w, int h);
 
         /**
          * @return ROI Selection of the input

@@ -23,8 +23,8 @@ using namespace goliath;
 
 int main(int argc, char *argv[]) {
     handles::handle_map handle_map;
-    handle_map.add(HANDLE_LEFT_EYE_CAM, std::make_shared<handles::webcam_handle>(handles::webcam_handle(0)));
-    handle_map.add(HANDLE_RIGHT_EYE_CAM, std::make_shared<handles::webcam_handle>(handles::webcam_handle(0)));
+    handle_map.add(HANDLE_LEFT_EYE_CAM, std::make_shared<handles::WebcamHandle>(handles::WebcamHandle(0)));
+    handle_map.add(HANDLE_RIGHT_EYE_CAM, std::make_shared<handles::WebcamHandle>(handles::WebcamHandle(0)));
 
     commands::command_map command_map;
     command_map.add(Message::kMoveCommand, std::make_shared<commands::move_command>(commands::move_command()));

@@ -14,20 +14,20 @@
 
 namespace goliath::openal {
     /**
-     * @class goliath::openal::device
+     * @class goliath::openal::Device
      * @brief Base class for any audio device
      */
-    class device {
+    class Device {
     public:
         /**
-         * @param devicename Location of device (Default NULL)
+         * @param deviceName Location of device (Default NULL)
          */
-        device(ALchar *devicename = NULL);
-        virtual ~device();
+        Device(ALchar *deviceName = NULL);
+        virtual ~Device();
 
-        ALCdevice* get_device() const;
+        ALCdevice* getDevice() const;
 
     protected:
-        ALCdevice *alc_device;
+        ALCdevice *alcDevice;
     };
 }

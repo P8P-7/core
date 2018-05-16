@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../core/handle.h"
+#include <goliath/core.h>
 
 /**
  * @file webcam_handle.h
@@ -9,20 +9,20 @@
 
 namespace goliath::handles {
     /**
-     * @class goliath::handles::webcam_handle
+     * @class goliath::handles::WebcamHandle
      * @brief Handle that locks webcams, passes the device to be used as VideoCapture
      */
-    class webcam_handle: public handle {
+    class WebcamHandle : public handle {
     public:
         /**
          * @param device The recording device
          */
-        explicit webcam_handle(const int& device);
+        explicit WebcamHandle(const int& device);
 
         /**
          * @return Currently set device
          */
-        const int& get_device() const;
+        const int& getDevice() const;
 
     private:
         const int device;

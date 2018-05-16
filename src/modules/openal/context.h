@@ -9,17 +9,18 @@
 
  namespace goliath::openal {
      /**
+      * @class goliath::openal::Context
       * @brief Context to be passed to different devices
       */
-     class context {
+     class Context {
      public:
          /**
           * @param device Device to set as main device within context
           * @param context Context address (Default NULL)
           */
-         context(const device &device, const ALCint *context);
+         Context(const Device &device, const ALCint *context);
 
      private:
-        ALCcontext* alc_context;
+        ALCcontext* alcContext;
      };
  }

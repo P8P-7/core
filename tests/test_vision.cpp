@@ -6,36 +6,36 @@
 
 using namespace goliath;
 
-class test_vision_fixture {
+class TestVisionFixture {
 public:
-    test_vision_fixture() : image_path(GOLIATH_TEST_IMAGE_DIR) {}
-    std::string image_path;
+    TestVisionFixture() : imagePath(GOLIATH_TEST_IMAGE_DIR) {}
+    std::string imagePath;
 };
 
-BOOST_FIXTURE_TEST_SUITE(BOOST_TEST_MODULE, test_vision_fixture)
+BOOST_FIXTURE_TEST_SUITE(BOOST_TEST_MODULE, TestVisionFixture)
     BOOST_AUTO_TEST_CASE(test_line_detection) {
         BOOST_TEST_CHECKPOINT("Loading image");
-        cv::Mat input = cv::imread(image_path + "highway.jpg", CV_BGR2GRAY);
+        cv::Mat input = cv::imread(imagePath + "highway.jpg", CV_BGR2GRAY);
 
         BOOST_TEST_CHECKPOINT("Creating a canny");
-        vision::canny_processor canny_processor(input, 200, 50);
-        cv::Mat canny_image = canny_processor.process();
+        vision::CannyProcessor cannyProcessor(input, 200, 50);
+        cv::Mat cannyImage = cannyProcessor.process();
 
         BOOST_TEST_CHECKPOINT("Detecting lines");
-        vision::line_detector line_detector(canny_image, 125, 50, 2);
-        std::vector<cv::Vec4d> lines = line_detector.detect();
+        vision::LineDetector lineDetector(cannyImage, 125, 50, 2);
+        std::vector<cv::Vec4d> lines = lineDetector.detect();
 
         BOOST_ASSERT(!lines.empty());
     }
 
     BOOST_AUTO_TEST_CASE(test_color_detection) {
         BOOST_TEST_CHECKPOINT("Loading image");
-        cv::Mat input = cv::imread(image_path + "mondriaan.jpg");
+        cv::Mat input = cv::imread(imagePath + "mondriaan.jpg");
         cv::cvtColor(input, input, CV_BGR2HSV);
 
         BOOST_TEST_CHECKPOINT("Processing image too only keep reds");
-        vision::color_processor color_processor(input, cv::Scalar(160, 100, 100), cv::Scalar(179, 255, 255));
-        cv::Mat red = color_processor.process();
+        vision::ColorProcessor colorProcessor(input, cv::Scalar(160, 100, 100), cv::Scalar(179, 255, 255));
+        cv::Mat red = colorProcessor.process();
 
         BOOST_TEST_CHECKPOINT("Check if there is any red in image");
         for(int row = 0; row < red.rows; ++row) {
@@ -53,10 +53,10 @@ BOOST_FIXTURE_TEST_SUITE(BOOST_TEST_MODULE, test_vision_fixture)
 
     BOOST_AUTO_TEST_CASE(test_roi) {
         BOOST_TEST_CHECKPOINT("Loading image");
-        cv::Mat input = cv::imread(image_path + "mondriaan.jpg");
+        cv::Mat input = cv::imread(imagePath + "mondriaan.jpg");
 
         BOOST_TEST_CHECKPOINT("Create a ROI");
-        vision::roi_processor roi(input, 10, 10, 200, 200);
+        vision::RoiProcessor roi(input, 10, 10, 200, 200);
 
         cv::Mat output = roi.process();
         BOOST_CHECK_EQUAL(output.cols, 200);
@@ -65,25 +65,11 @@ BOOST_FIXTURE_TEST_SUITE(BOOST_TEST_MODULE, test_vision_fixture)
 
     BOOST_AUTO_TEST_CASE(test_line_following) {
         BOOST_TEST_CHECKPOINT("Loading image");
-        cv::Mat input = cv::imread(image_path + "line.jpg");
+        cv::Mat input = cv::imread(imagePath + "line.jpg");
 
-        vision::follow_line_detector follow_line_detector(input, 4, 100, 100, 50, 20, 10000);
+        vision::FollowLineDetector follow_line_detector(input, 4, 100, 100, 50, 10, 10000);
         std::vector<cv::Vec4d> output = follow_line_detector.detect();
 
-        BOOST_CHECK_EQUAL(output[0][0], vision::follow_line_direction::RIGHT);
-    }
-
-    BOOST_AUTO_TEST_CASE(test_line_following_2) {
-        vision::webcam camera(2);
-
-        while(true) {
-            cv::Mat frame = camera.get_frame();
-            vision::color_region_detector color_region_detector(frame, 360, 100, 0, 180, 0, 256);
-            color_region_detector.detect();
-
-            cv::imshow("Frame", frame);
-            cv::waitKey(1);
-
-        }
+        BOOST_CHECK_EQUAL(output[0][0], vision::FollowLineDirection::RIGHT);
     }
 BOOST_AUTO_TEST_SUITE_END()
