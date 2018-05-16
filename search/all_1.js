@@ -1,12 +1,22 @@
 var searchData=
 [
-  ['default_5fcanny_5fkernel',['DEFAULT_CANNY_KERNEL',['../namespacegoliath_1_1vision.html#a385b4117f013bea50419e57df6c980f5',1,'goliath::vision']]],
-  ['default_5fline_5fdetector_5frho',['DEFAULT_LINE_DETECTOR_RHO',['../namespacegoliath_1_1vision.html#a7e252e4581a0e7f460632530d298056d',1,'goliath::vision']]],
-  ['default_5fline_5fdetector_5ftheta',['DEFAULT_LINE_DETECTOR_THETA',['../namespacegoliath_1_1vision.html#ab54eb23513b99eeccf10c04ea285f0cb',1,'goliath::vision']]],
-  ['detect',['detect',['../classgoliath_1_1vision_1_1detector.html#a7f73e432d55cccfafc3a50542a43deea',1,'goliath::vision::detector::detect()'],['../classgoliath_1_1vision_1_1follow__line__detector.html#a24e0ded92542e678a4bbe6c0c42137a5',1,'goliath::vision::follow_line_detector::detect()'],['../classgoliath_1_1vision_1_1line__detector.html#a84fc340934cf6a632d09265fc7e45c7e',1,'goliath::vision::line_detector::detect()'],['../classgoliath_1_1vision_1_1within__box__detector.html#a3bc1ba6b3fe0a01953699547aa764ba9',1,'goliath::vision::within_box_detector::detect()']]],
-  ['detector',['detector',['../classgoliath_1_1vision_1_1detector.html',1,'goliath::vision']]],
-  ['detector',['detector',['../classgoliath_1_1vision_1_1detector.html#adce7fa9ba7bcfc94ec31265972271fdd',1,'goliath::vision::detector::detector(const cv::Mat &amp;input)'],['../classgoliath_1_1vision_1_1detector.html#a7c36469bdd06efd4caa18661bcb85f99',1,'goliath::vision::detector::detector(const detector &amp;other)']]],
-  ['detector_2eh',['detector.h',['../detector_8h.html',1,'']]],
-  ['device',['device',['../classgoliath_1_1audio_1_1device.html',1,'goliath::audio']]],
-  ['device_2eh',['device.h',['../device_8h.html',1,'']]]
+  ['canny_5fprocessor',['canny_processor',['../classgoliath_1_1vision_1_1canny__processor.html',1,'goliath::vision']]],
+  ['canny_5fprocessor',['canny_processor',['../classgoliath_1_1vision_1_1canny__processor.html#a1391dba6409b7ab261f875e9ab78e3f1',1,'goliath::vision::canny_processor']]],
+  ['canny_5fprocessor_2eh',['canny_processor.h',['../canny__processor_8h.html',1,'']]],
+  ['color_5fprocessor',['color_processor',['../classgoliath_1_1vision_1_1color__processor.html',1,'goliath::vision']]],
+  ['color_5fprocessor',['color_processor',['../classgoliath_1_1vision_1_1color__processor.html#a058cc1c3fbddcde17e0fce0733310e1b',1,'goliath::vision::color_processor']]],
+  ['color_5fprocessor_2eh',['color_processor.h',['../color__processor_8h.html',1,'']]],
+  ['color_5fregion_5fdetector',['color_region_detector',['../classgoliath_1_1vision_1_1color__region__detector.html',1,'goliath::vision']]],
+  ['color_5fregion_5fdetector_2eh',['color_region_detector.h',['../color__region__detector_8h.html',1,'']]],
+  ['command',['command',['../classgoliath_1_1commands_1_1command.html',1,'goliath::commands']]],
+  ['command_2eh',['command.h',['../command_8h.html',1,'']]],
+  ['command_5fexecutor',['command_executor',['../classgoliath_1_1commands_1_1command__executor.html',1,'goliath::commands']]],
+  ['command_5fexecutor_2eh',['command_executor.h',['../command__executor_8h.html',1,'']]],
+  ['command_5fitem',['command_item',['../structgoliath_1_1commands_1_1command__item.html',1,'goliath::commands']]],
+  ['command_5fmap',['command_map',['../classgoliath_1_1commands_1_1command__map.html',1,'goliath::commands']]],
+  ['command_5fmap_2eh',['command_map.h',['../command__map_8h.html',1,'']]],
+  ['command_5fstatus',['command_status',['../namespacegoliath_1_1commands.html#a8391dfc045545efc3f652d4f6f83173e',1,'goliath::commands']]],
+  ['context',['context',['../classgoliath_1_1audio_1_1context.html',1,'goliath::audio']]],
+  ['context_2eh',['context.h',['../context_8h.html',1,'']]],
+  ['controller_2ecpp',['controller.cpp',['../controller_8cpp.html',1,'']]]
 ];

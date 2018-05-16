@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['process',['process',['../classgoliath_1_1vision_1_1canny__processor.html#a95e9cb6a75cfd738474f0dab8ba74ea2',1,'goliath::vision::canny_processor::process()'],['../classgoliath_1_1vision_1_1color__processor.html#a78720596a8bdfe9276cea1593cf42f54',1,'goliath::vision::color_processor::process()'],['../classgoliath_1_1vision_1_1processor.html#aa66473730c35e3db89ee3d73e0d82c6a',1,'goliath::vision::processor::process()'],['../classgoliath_1_1vision_1_1roi__processor.html#a99bdaf4666878c77056319101d89ed6e',1,'goliath::vision::roi_processor::process()']]],
-  ['processor',['processor',['../classgoliath_1_1vision_1_1processor.html#a15347f446a956628c29578cc6e4e0607',1,'goliath::vision::processor']]],
-  ['processor',['processor',['../classgoliath_1_1vision_1_1processor.html',1,'goliath::vision']]],
-  ['processor_2eh',['processor.h',['../processor_8h.html',1,'']]]
+  ['on_5fcourse',['ON_COURSE',['../namespacegoliath_1_1vision.html#a39b046cc4cce5466d69e5841de9c9eddae8a32fc921abc668f7fd61a3cbb3a5c4',1,'goliath::vision']]],
+  ['openal_5ferror',['openal_error',['../classgoliath_1_1exceptions_1_1openal__error.html#a01872bd98177fc6908352ab669425307',1,'goliath::exceptions::openal_error']]],
+  ['openal_5ferror',['openal_error',['../classgoliath_1_1exceptions_1_1openal__error.html',1,'goliath::exceptions']]],
+  ['operator_3c_3c',['operator&lt;&lt;',['../classgoliath_1_1i2c_1_1i2c__slave.html#ad1f27fa71b34c6b2f197be69ced16eb3',1,'goliath::i2c::i2c_slave']]]
 ];

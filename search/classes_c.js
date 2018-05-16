@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['webcam',['webcam',['../classgoliath_1_1vision_1_1webcam.html',1,'goliath::vision']]],
-  ['webcam_5fhandle',['webcam_handle',['../classgoliath_1_1handles_1_1webcam__handle.html',1,'goliath::handles']]],
-  ['within_5fbox_5fdetector',['within_box_detector',['../classgoliath_1_1vision_1_1within__box__detector.html',1,'goliath::vision']]]
+  ['vision_5ferror',['vision_error',['../classgoliath_1_1exceptions_1_1vision__error.html',1,'goliath::exceptions']]],
+  ['vision_5futilities',['vision_utilities',['../classgoliath_1_1vision_1_1vision__utilities.html',1,'goliath::vision']]]
 ];

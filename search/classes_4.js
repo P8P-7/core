@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['handle',['handle',['../classgoliath_1_1handles_1_1handle.html',1,'goliath::handles']]],
-  ['handle_5fmap',['handle_map',['../classgoliath_1_1handles_1_1handle__map.html',1,'goliath::handles']]]
+  ['gpio',['GPIO',['../classgoliath_1_1gpio_1_1GPIO.html',1,'goliath::gpio']]]
 ];

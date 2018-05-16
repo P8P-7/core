@@ -91,18 +91,21 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;zmq_io.h&quot;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">namespace </span>goliath::messaging {</div>
-<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="classgoliath_1_1messaging_1_1zmq__publisher.html">    6</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classgoliath_1_1messaging_1_1zmq__publisher.html">zmq_publisher</a> : <span class="keyword">public</span> <a class="code" href="classgoliath_1_1messaging_1_1zmq__io.html">zmq_io</a> {</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;        <a class="code" href="classgoliath_1_1messaging_1_1zmq__publisher.html">zmq_publisher</a>(zmq::context_t&amp; context, <span class="keyword">const</span> std::string&amp; host, <span class="keywordtype">int</span> port);</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        <span class="keywordtype">bool</span> publish(<span class="keyword">const</span> Message&amp; message);</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    };</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;}</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;goliath/core.h&gt;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;zmq_io.h&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">namespace </span>goliath::messaging {</div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="classgoliath_1_1messaging_1_1zmq__publisher.html">    7</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classgoliath_1_1messaging_1_1zmq__publisher.html">zmq_publisher</a> : <span class="keyword">public</span> <a class="code" href="classgoliath_1_1messaging_1_1zmq__io.html">zmq_io</a>, <span class="keyword">public</span> <a class="code" href="classgoliath_1_1core_1_1interfaces_1_1publisher__service.html">core::interfaces::publisher_service</a> {</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;        <a class="code" href="classgoliath_1_1messaging_1_1zmq__publisher.html">zmq_publisher</a>(zmq::context_t&amp; context, <span class="keyword">const</span> std::string&amp; host, <span class="keywordtype">int</span> port);</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="classgoliath_1_1messaging_1_1zmq__publisher.html#a29e08207ac14536f53de4d79a5b871b4">publish</a>(<span class="keyword">const</span> MessageCarrier&amp; carrier) <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    };</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;}</div>
+<div class="ttc" id="classgoliath_1_1core_1_1interfaces_1_1publisher__service_html"><div class="ttname"><a href="classgoliath_1_1core_1_1interfaces_1_1publisher__service.html">goliath::core::interfaces::publisher_service</a></div><div class="ttdef"><b>Definition:</b> publisher_service.h:6</div></div>
+<div class="ttc" id="classgoliath_1_1messaging_1_1zmq__publisher_html_a29e08207ac14536f53de4d79a5b871b4"><div class="ttname"><a href="classgoliath_1_1messaging_1_1zmq__publisher.html#a29e08207ac14536f53de4d79a5b871b4">goliath::messaging::zmq_publisher::publish</a></div><div class="ttdeci">bool publish(const MessageCarrier &amp;carrier) override</div><div class="ttdef"><b>Definition:</b> zmq_publisher.cpp:10</div></div>
 <div class="ttc" id="classgoliath_1_1messaging_1_1zmq__io_html"><div class="ttname"><a href="classgoliath_1_1messaging_1_1zmq__io.html">goliath::messaging::zmq_io</a></div><div class="ttdef"><b>Definition:</b> zmq_io.h:12</div></div>
-<div class="ttc" id="classgoliath_1_1messaging_1_1zmq__publisher_html"><div class="ttname"><a href="classgoliath_1_1messaging_1_1zmq__publisher.html">goliath::messaging::zmq_publisher</a></div><div class="ttdef"><b>Definition:</b> zmq_publisher.h:6</div></div>
+<div class="ttc" id="classgoliath_1_1messaging_1_1zmq__publisher_html"><div class="ttname"><a href="classgoliath_1_1messaging_1_1zmq__publisher.html">goliath::messaging::zmq_publisher</a></div><div class="ttdef"><b>Definition:</b> zmq_publisher.h:7</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

@@ -89,6 +89,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="classgoliath_1_1messaging_1_1zmq__subscriber-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -105,14 +106,29 @@ Inheritance diagram for goliath::messaging::zmq_subscriber:</div>
 </map>
  </div></div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:aedfbae7388847b70479faad982957656"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aedfbae7388847b70479faad982957656"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>zmq_message_topic</b> = MessageCarrier::MessageCase</td></tr>
+<tr class="separator:aedfbae7388847b70479faad982957656"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a67d7f606ac7ed4c99cd8e5383f4c935d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a67d7f606ac7ed4c99cd8e5383f4c935d"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>zmq_message_callback</b> = std::function&lt; void(const MessageCarrier &amp;)&gt;</td></tr>
+<tr class="separator:a67d7f606ac7ed4c99cd8e5383f4c935d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a9996c2cd7fd34a9240ebc41697b0a9c6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9996c2cd7fd34a9240ebc41697b0a9c6"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>zmq_subscriber</b> (zmq::context_t &amp;context, const std::string &amp;host, const int port, const std::string &amp;topic, std::function&lt; void(size_t, const Message &amp;)&gt; callback)</td></tr>
-<tr class="separator:a9996c2cd7fd34a9240ebc41697b0a9c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aedf037a428c8a9c92132620936a6e8aa"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aedf037a428c8a9c92132620936a6e8aa"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>receive</b> ()</td></tr>
-<tr class="separator:aedf037a428c8a9c92132620936a6e8aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68454d5ebc20a92cb56d6e0d304c89f3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a68454d5ebc20a92cb56d6e0d304c89f3"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>zmq_subscriber</b> (zmq::context_t &amp;context, const std::string &amp;host, const int port)</td></tr>
+<tr class="separator:a68454d5ebc20a92cb56d6e0d304c89f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeed89ed8e5c9c737b90560058f40dbfe"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aeed89ed8e5c9c737b90560058f40dbfe"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>bind</b> (const zmq_message_topic &amp;topic, zmq_message_callback callback)</td></tr>
+<tr class="separator:aeed89ed8e5c9c737b90560058f40dbfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af8b6753208f41dacd2a57aba1f638ac4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af8b6753208f41dacd2a57aba1f638ac4"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>start</b> ()</td></tr>
+<tr class="separator:af8b6753208f41dacd2a57aba1f638ac4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26a2e48516edaeb6fb0bed2cd918b0da"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a26a2e48516edaeb6fb0bed2cd918b0da"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>stop</b> ()</td></tr>
+<tr class="separator:a26a2e48516edaeb6fb0bed2cd918b0da"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classgoliath_1_1messaging_1_1zmq__io"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classgoliath_1_1messaging_1_1zmq__io')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classgoliath_1_1messaging_1_1zmq__io.html">goliath::messaging::zmq_io</a></td></tr>
 <tr class="memitem:ac9679d40d2e5e27afc41be260544e93e inherit pub_methods_classgoliath_1_1messaging_1_1zmq__io"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac9679d40d2e5e27afc41be260544e93e"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>zmq_io</b> (zmq::context_t &amp;context, const std::string &amp;host, const int port)</td></tr>
@@ -123,16 +139,19 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>receive</b> ()</td></
 <tr class="memitem:a8fb0520cd7c17e0ac23e0cb77ce4b57c inherit pub_methods_classgoliath_1_1messaging_1_1zmq__io"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8fb0520cd7c17e0ac23e0cb77ce4b57c"></a>
 std::string&#160;</td><td class="memItemRight" valign="bottom"><b>address</b> () const </td></tr>
 <tr class="separator:a8fb0520cd7c17e0ac23e0cb77ce4b57c inherit pub_methods_classgoliath_1_1messaging_1_1zmq__io"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a941daab511270ac57e106e3afba1ae8d inherit pub_methods_classgoliath_1_1messaging_1_1zmq__io"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a941daab511270ac57e106e3afba1ae8d"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>connect</b> (const std::string &amp;address)</td></tr>
-<tr class="separator:a941daab511270ac57e106e3afba1ae8d inherit pub_methods_classgoliath_1_1messaging_1_1zmq__io"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3256ab48dc6d48ddaac814ad8b547866 inherit pub_methods_classgoliath_1_1messaging_1_1zmq__io"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3256ab48dc6d48ddaac814ad8b547866"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>bind</b> (const std::string &amp;address)</td></tr>
-<tr class="separator:a3256ab48dc6d48ddaac814ad8b547866 inherit pub_methods_classgoliath_1_1messaging_1_1zmq__io"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00e18ddba366521e237c68e5d4200ea0 inherit pub_methods_classgoliath_1_1messaging_1_1zmq__io"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a00e18ddba366521e237c68e5d4200ea0"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>connect</b> ()</td></tr>
+<tr class="separator:a00e18ddba366521e237c68e5d4200ea0 inherit pub_methods_classgoliath_1_1messaging_1_1zmq__io"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa571a0acd2654a55744ba03b4e8858cf inherit pub_methods_classgoliath_1_1messaging_1_1zmq__io"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa571a0acd2654a55744ba03b4e8858cf"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>bind</b> ()</td></tr>
+<tr class="separator:aa571a0acd2654a55744ba03b4e8858cf inherit pub_methods_classgoliath_1_1messaging_1_1zmq__io"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pro_attribs_classgoliath_1_1messaging_1_1zmq__io"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classgoliath_1_1messaging_1_1zmq__io')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classgoliath_1_1messaging_1_1zmq__io.html">goliath::messaging::zmq_io</a></td></tr>
+<tr class="memitem:a527d8c58fd523f7e11c5783ed4599a25 inherit pro_attribs_classgoliath_1_1messaging_1_1zmq__io"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a527d8c58fd523f7e11c5783ed4599a25"></a>
+zmq::context_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>context</b></td></tr>
+<tr class="separator:a527d8c58fd523f7e11c5783ed4599a25 inherit pro_attribs_classgoliath_1_1messaging_1_1zmq__io"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8fda0a26fae071ea03877141a016c4fb inherit pro_attribs_classgoliath_1_1messaging_1_1zmq__io"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8fda0a26fae071ea03877141a016c4fb"></a>
 const std::string&#160;</td><td class="memItemRight" valign="bottom"><b>host</b></td></tr>
 <tr class="separator:a8fda0a26fae071ea03877141a016c4fb inherit pro_attribs_classgoliath_1_1messaging_1_1zmq__io"><td class="memSeparator" colspan="2">&#160;</td></tr>
