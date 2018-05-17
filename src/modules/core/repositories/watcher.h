@@ -8,8 +8,14 @@
 #include "repository.h"
 #include "../publisher_service.h"
 
+/**
+ * @file watcher.h
+ * @author Group 7 - Informatica
+ */
+
 namespace goliath::repositories {
     /**
+     * @class goliath::repositories::Watcher
      * @brief watches multiple repositories for changes and sends them to the publisher service
      */
     class Watcher {
@@ -20,12 +26,12 @@ namespace goliath::repositories {
          */
         Watcher(int pollingRate, core::interfaces::PublisherService &publisher);
         /**
-         * Destructs the watcher and calls stop()
+         * @brief Destructs the watcher and calls stop()
          */
         ~Watcher();
 
         /**
-         * Invalidates all repositories watched by this watcher
+         * @brief Invalidates all repositories watched by this watcher
          */
         void invalidateAll();
 
@@ -35,7 +41,7 @@ namespace goliath::repositories {
         bool shouldSynchronize() const;
 
         /**
-         * Adds a repository to the watchlist
+         * @brief Adds a repository to the watchlist
          * @param repo repository to be watched
          */
         void watch(std::shared_ptr<Repository> repo);
@@ -46,12 +52,12 @@ namespace goliath::repositories {
         std::vector<std::shared_ptr<Repository>> getRepositories();
 
         /**
-         * Start the watcher thread
+         * @brief Start the watcher thread
          */
         void start();
 
         /**
-         * Stops the watcher thread
+         * @brief Stops the watcher thread
          */
         void stop();
     private:

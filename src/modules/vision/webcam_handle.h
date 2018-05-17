@@ -2,6 +2,8 @@
 
 #include <goliath/core.h>
 
+#include "webcam.h"
+
 /**
  * @file webcam_handle.h
  * @author Group 7 - Informatica
@@ -22,10 +24,10 @@ namespace goliath::handles {
         /**
          * @return Currently set device
          */
-        const int& getDevice() const;
+        const vision::Webcam& getDevice() const;
 
     private:
-        const int device;
+        const vision::Webcam device;
 
     };
 }

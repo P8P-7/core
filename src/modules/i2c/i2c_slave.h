@@ -5,6 +5,12 @@
 #include "handles/i2c_bus_handle.h"
 #include "handles/i2c_slave_handle.h"
 
+/**
+ * @file i2c_slave.h
+ * @author Group 7 - Informatica
+ */
+
+
 namespace goliath::i2c {
     class I2cSlave {
     public:

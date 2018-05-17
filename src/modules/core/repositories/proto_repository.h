@@ -4,10 +4,15 @@
 
 /**
  * @file vision_repo.h
- * @brief repository for accessing proto objects.
  * @author Group 7 - Informatica
  */
+
 namespace goliath::repositories {
+    /**
+     * @class goliath::repositories::ProtoRepository
+     * @brief Repository for accessing proto objects
+     * @tparam T Proto
+     */
     template<typename T>
     class ProtoRepository : public Repository {
     public:

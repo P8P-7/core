@@ -3,6 +3,11 @@
 #include <string>
 #include <exception>
 
+/**
+ * @file i2c_error.h
+ * @author Group 7 - Informatica
+ */
+
 namespace goliath::exceptions {
     class I2cError : public std::exception {
     public:

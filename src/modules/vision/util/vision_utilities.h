@@ -7,7 +7,7 @@
 
 namespace goliath::util {
     /**
-     * @class goliath::vision::VisionUtilities
+     * @class goliath::util::VisionUtilities
      * @brief Contains useful utility function for vision calculations
      */
     class VisionUtilities {

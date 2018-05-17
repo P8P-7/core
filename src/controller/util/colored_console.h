@@ -38,7 +38,7 @@
 #define CONSOLE_STYLE_UNDERLINE "\033[4m"
 
 const std::string LOG_COLOR_TRACE = CONSOLE_COLOR_MAGENTA;
-const std::string LOG_COLOR_DEBUG = CONSOLE_COLOR_YELLOW;
+const std::string LOG_COLOR_DEBUG = (boost::format("%1%%2%") % CONSOLE_STYLE_BOLD % CONSOLE_COLOR_YELLOW).str();
 const std::string LOG_COLOR_INFO = CONSOLE_COLOR_BLUE;
 const std::string LOG_COLOR_WARNING = CONSOLE_COLOR_LIGHT_RED;
 const std::string LOG_COLOR_ERROR = (boost::format("%1%%2%") % CONSOLE_STYLE_BOLD % CONSOLE_COLOR_RED).str();

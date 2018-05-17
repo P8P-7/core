@@ -13,6 +13,7 @@ set(SOURCES
         repositories/watcher.cpp
         repositories/battery_repository.h
         repositories/battery_repository.cpp
+        publisher_service.h
         )
 
 include_directories(${Boost_INCLUDE_DIR})

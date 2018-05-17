@@ -2,6 +2,12 @@
 
 #include <string>
 
+/**
+ * @file gpio.h
+ * @author Group 7 - Informatica
+ */
+
+
 enum GPIO_MAP_PIN {
     GPIO2 = 2, GPIO14 = 14,
     GPIO3 = 3, GPIO15 = 15,

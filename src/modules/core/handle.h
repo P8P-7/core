@@ -4,6 +4,12 @@
 #include <condition_variable>
 #include <boost/optional.hpp>
 
+/**
+ * @file handle.h
+ * @author Group 7 - Informatica
+ */
+
+
 namespace goliath::handles {
     class Handle {
     public:
@@ -11,18 +17,18 @@ namespace goliath::handles {
         Handle(const Handle &other);
 
         /**
-         * Lock the handle.
+         * @brief Lock the handle.
          * @param commandId the owning command @headerfile handle.h
          */
         void lock(const size_t& commandId);
 
         /**
-         * Release the handle.
+         * @brief Release the handle.
          */
         void unlock();
 
         /**
-         * Wait for the lock to become available and acquire the lock.
+         * @brief Wait for the lock to become available and acquire the lock.
          * @param commandId the owning command @headerfile handle.h
          */
         void waitAndLock(const size_t &commandId);
@@ -33,7 +39,7 @@ namespace goliath::handles {
         const size_t getOwnerId() const;
 
         /**
-         * Indicates whether or not this handle has been locked.
+         * @brief Indicates whether or not this handle has been locked.
          * @return true if this handle has been locked
          */
         bool isLocked() const;
