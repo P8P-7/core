@@ -8,18 +8,18 @@
  * @author Group 7 - Informatica
  */
 namespace goliath::repositories {
-    class repository {
+    class Repository {
     public:
         /**
          * Compiles the fields of this repository to an instance of ::google::protobuf::Message.
          * @return instance of ::google::protobuf::Message with all information
          */
-        virtual std::unique_ptr<::google::protobuf::Message> get_message() = 0;
+        virtual std::unique_ptr<::google::protobuf::Message> getMessage() = 0;
 
         /**
          * @return true if this repository has been changed
          */
-        virtual bool is_invalidated() {
+        virtual bool isInvalidated() {
             return invalidated;
         }
 
@@ -30,7 +30,7 @@ namespace goliath::repositories {
             invalidated = true;
         }
     private:
-        friend class watcher;
+        friend class Watcher;
 
         void validate() {
             invalidated = false;

@@ -1,28 +1,30 @@
 #include "roi_processor.h"
 
+#include "../util/vision_error.h"
+
 using namespace goliath::vision;
 using namespace goliath::exceptions;
 
-roi_processor::roi_processor(const cv::Mat& input, int x, int y, int w, int h)
-    : processor(input), x(x), y(y), w(w), h(h) {
-    if(x >= input.cols) {
-        throw vision_error("X is outside image");
+RoiProcessor::RoiProcessor(const cv::Mat& input, int x, int y, int w, int h)
+    : Processor(input), x(x), y(y), w(w), h(h) {
+    if (x >= input.cols) {
+        throw VisionError("X is outside image");
     }
-    if(x + w >= input.cols) {
-        throw vision_error("X + Width is outside image");
+    if (x + w >= input.cols) {
+        throw VisionError("X + Width is outside image");
     }
-    if(y >= input.rows) {
-        throw vision_error("Y is outside image");
+    if (y >= input.rows) {
+        throw VisionError("Y is outside image");
     }
-    if(y + h >= input.rows) {
-        throw vision_error("Y + Height is outside image");
+    if (y + h >= input.rows) {
+        throw VisionError("Y + Height is outside image");
     }
 }
 
-roi_processor::roi_processor(processor& other, int x, int y, int w, int h)
-    : processor(other.process()), x(x), y(y), w(w), h(h){
+RoiProcessor::RoiProcessor(Processor& other, int x, int y, int w, int h)
+    : Processor(other.process()), x(x), y(y), w(w), h(h) {
 }
 
-cv::Mat roi_processor::process() const {
+cv::Mat RoiProcessor::process() const {
     return cv::Mat(input, cv::Rect(x, y, w, h));
 }

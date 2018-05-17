@@ -1,9 +1,5 @@
 #pragma once
 
-#include <atomic>
-#include <map>
-#include <memory>
-
 #include "commands/command.h"
 
 /**
@@ -16,32 +12,32 @@ namespace goliath::commands {
      * @enum goliath::commands_command_status
      * @brief Defines the status of a specific command
      */
-    enum class command_status {
+    enum class CommandStatus {
         STARTING, /**< Command is just getting started */
         STARTED, /**< Command has already started */
         STALE /**< Command is doing nothing (idle) */
     };
 
-    struct command_item {
-        command_item();
-        command_item(std::shared_ptr<command> command, command_status status);
+    struct CommandItem {
+        CommandItem();
+        CommandItem(std::shared_ptr<Command> commandInstance, CommandStatus status);
 
-        std::shared_ptr<command> instance;
-        command_status status;
+        std::shared_ptr<Command> instance;
+        CommandStatus status;
     };
 
     // TODO: make thread-safe?
-    class command_map {
+    class CommandMap {
     public:
-        command_map();
-        explicit command_map(std::map<size_t, command_item> commands);
+        CommandMap();
+        explicit CommandMap(std::map<size_t, CommandItem> commands);
 
-        void add(size_t command_id, std::shared_ptr<command> command);
+        void add(size_t commandId, std::shared_ptr<Command> command);
 
-        command_item& operator[](size_t id);
-        const command_item& operator[](size_t id) const;
-        bool command_exists(size_t id) const;
+        CommandItem& operator[](size_t id);
+        const CommandItem& operator[](size_t id) const;
+        bool commandExists(size_t id) const;
     private:
-        std::map<size_t, command_item> map;
+        std::map<size_t, CommandItem> map;
     };
 }

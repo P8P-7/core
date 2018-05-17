@@ -2,29 +2,31 @@
 
 using namespace goliath::commands;
 
-command_item::command_item()
-        : status(command_status::STALE) { }
-command_item::command_item(std::shared_ptr<command> command_instance, command_status status)
-        : instance(command_instance), status(status) { }
+CommandItem::CommandItem()
+        : status(CommandStatus::STALE) {
+}
+CommandItem::CommandItem(std::shared_ptr<Command> commandInstance, CommandStatus status)
+        : instance(commandInstance), status(status) {
+}
 
-command_map::command_map() {}
-command_map::command_map(const std::map<size_t, command_item> commands)
+CommandMap::CommandMap() {}
+CommandMap::CommandMap(const std::map<size_t, CommandItem> commands)
         : map(commands) {
 }
 
-void command_map::add(const size_t command_id, std::shared_ptr<command> command) {
-    map[command_id] = { command, command_status::STALE };
+void CommandMap::add(const size_t commandId, std::shared_ptr<Command> command) {
+    map[commandId] = { command, CommandStatus::STALE };
 }
 
-const command_item& command_map::operator[](const size_t id) const {
+const CommandItem& CommandMap::operator[](const size_t id) const {
     return map.at(id);
 }
 
-command_item& command_map::operator[](const size_t id) {
+CommandItem& CommandMap::operator[](const size_t id) {
     return map.at(id);
 }
 
-bool command_map::command_exists(const size_t id) const {
+bool CommandMap::commandExists(const size_t id) const {
     return map.find(id) != map.end();
 }
 

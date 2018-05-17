@@ -4,13 +4,13 @@
 #include <exception>
 
 namespace goliath::exceptions {
-    class i2c_error: public std::exception {
+    class I2cError : public std::exception {
     public:
         /**
          * @param device i2c device for which the exception occurred
          * @param reason reason the exception occurred
          */
-        i2c_error(std::string device, std::string reason);
+        I2cError(std::string device, std::string reason);
 
         /**
          * @see std::exception
@@ -20,4 +20,3 @@ namespace goliath::exceptions {
         const std::string reason;
     };
 }
-

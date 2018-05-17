@@ -1,20 +1,22 @@
 #include "device.h"
 
-using namespace goliath::audio;
+#include "util/openal_error.h"
+
+using namespace goliath::openal;
 using namespace goliath::exceptions;
 
-device::device(ALchar *devicename) {
-    alc_device = alcOpenDevice(devicename);
+Device::Device(ALchar *deviceName) {
+    alcDevice = alcOpenDevice(deviceName);
 
-    if(alc_device == NULL) {
-        throw new openal_error("Unable to open device");
+    if(alcDevice == NULL) {
+        throw openal_error("Unable to open device");
     }
 }
 
-device::~device() {
-    alcCaptureCloseDevice(alc_device);
+Device::~Device() {
+    alcCaptureCloseDevice(alcDevice);
 }
 
-ALCdevice* device::get_device() const {
-    return alc_device;
+ALCdevice* Device::getDevice() const {
+    return alcDevice;
 }

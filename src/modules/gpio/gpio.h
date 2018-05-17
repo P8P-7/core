@@ -32,46 +32,36 @@ namespace goliath::gpio {
         GPIO();
 
         explicit GPIO(std::string x);
-
         explicit GPIO(int x);
-
         GPIO(std::string x, std::string dir, std::string val);
-
         GPIO(int x, int dir, int val);
 
         void setup(std::string x);
-
         void setup(int x);
-
         void setup(std::string x, std::string dir, std::string val);
-
         void setup(int x, int dir, int val);
 
-        int export_gpio();
+        int exportGpio();
 
-        int unexport_gpio();
+        int unexportGpio();
 
         int close();
 
-        int setdir_gpio(std::string dir);
+        int setdirGpio(std::string dir);
+        int setdirGpio(int dir);
 
-        int setdir_gpio(int dir);
-
-        int setval_gpio(std::string val);
-
-        int setval_gpio(int val);
+        int setvalGpio(std::string val);
+        int setvalGpio(int val);
 
         int set(int val);
 
-        int getval_gpio(std::string& val);
-
-        int getval_gpio(int& val);
+        int getvalGpio(std::string& val);
+        int getvalGpio(int& val);
 
         int get();
 
-        std::string get_gpionum();
-
-        int get_igpionum();
+        std::string getGpionum();
+        int getiGpionum();
 
     private:
         std::string gpionum;

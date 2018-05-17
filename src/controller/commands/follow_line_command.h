@@ -1,14 +1,15 @@
 #pragma once
 
+#include "../handles.h"
 #include "command.h"
 
 namespace goliath::commands {
-    class follow_line_command: public command {
+    class FollowLineCommand : public Command {
     public:
-        follow_line_command();
+        FollowLineCommand();
 
     private:
-        void execute(const handles::handle_map &handles, const CommandMessage &message) override;
+        void execute(const handles::HandleMap &handles, const CommandMessage &message) override;
     };
 }
 

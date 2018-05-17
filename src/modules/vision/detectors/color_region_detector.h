@@ -8,8 +8,17 @@
  */
 
 namespace goliath::vision {
-    class color_region_detector : public detector {
+    /**
+     * @class goliath::vision::ColorRegionDetector
+     * @brief
+     */
+    class ColorRegionDetector : public Detector {
     public:
-        color_region_detector(const cv::Mat &input);
+        ColorRegionDetector(const cv::Mat& input, int hMin, int hMax, int sMin, int sMax);
+
+        std::vector<cv::Vec4d> detect() const override;
+
+    private:
+        int hMin, hMax, sMin, sMax;
     };
 }

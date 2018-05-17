@@ -3,10 +3,9 @@
 #include <string>
 
 /**
- * @file audio_error.h
+ * @file openal_error.h
  * @author Group 7 - Informatica
  */
-
 
 namespace goliath::exceptions {
     /**

@@ -2,10 +2,10 @@
 
 using namespace goliath::vision;
 
-processor::processor(const cv::Mat& input)
+Processor::Processor(const cv::Mat& input)
         : input(input) {
 }
 
-processor::~processor() {
+Processor::~Processor() {
     input.release();
 }

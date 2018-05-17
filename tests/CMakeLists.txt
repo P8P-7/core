@@ -1,13 +1,13 @@
 IF(${CMAKE_BUILD_TYPE} MATCHES "Debug")
     MACRO(add_goliath_test NAME DEPENDENCIES)
-        add_executable(test_${NAME} test_${NAME}.cpp)
-        add_test(NAME test_${NAME} COMMAND $<TARGET_FILE:test_${NAME}>)
-        target_include_directories(test_${NAME}
+        add_executable(goliath-${NAME}-test test_${NAME}.cpp)
+        add_test(NAME goliath-${NAME}-test COMMAND $<TARGET_FILE:goliath-${NAME}-test>)
+        target_include_directories(goliath-${NAME}-test
                 PUBLIC
                     ${DEPENDENCIES}
                     ${Boost_INCLUDE_DIR}
                 )
-        target_link_libraries(test_${NAME}
+        target_link_libraries(goliath-${NAME}-test
                 PUBLIC
                     ${DEPENDENCIES}
                     ${Boost_LIBRARY}
@@ -18,7 +18,7 @@ IF(${CMAKE_BUILD_TYPE} MATCHES "Debug")
     add_goliath_test(i2c goliath-i2c-module)
 
     add_goliath_test(vision goliath-vision-module)
-    target_compile_definitions(test_vision PRIVATE GOLIATH_TEST_IMAGE_DIR="${CMAKE_CURRENT_SOURCE_DIR}/test_vision_images/")
+    target_compile_definitions(goliath-vision-test PRIVATE GOLIATH_TEST_IMAGE_DIR="${CMAKE_CURRENT_SOURCE_DIR}/test_vision_images/")
 
     add_goliath_test(openal goliath-openal-module)
 

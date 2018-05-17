@@ -27,33 +27,33 @@ int main(int argc, char *argv[]) {
 
     BOOST_LOG_TRIVIAL(info) << "Setting up subscriber";
     zmq::context_t context(1);
-    messaging::zmq_subscriber subscriber(context, "localhost", 5555);
+    messaging::ZmqSubscriber subscriber(context, "localhost", 5555);
     BOOST_LOG_TRIVIAL(info) << "Setting up publisher";
-    messaging::zmq_publisher publisher(context, "localhost", 5556);
+    messaging::ZmqPublisher publisher(context, "localhost", 5556);
 
     BOOST_LOG_TRIVIAL(info) << "Setting up watcher";
-    repositories::watcher watcher(500, publisher);
-    auto battery_repo = std::make_shared<repositories::battery_repository>();
+    repositories::Watcher watcher(500, publisher);
+    auto battery_repo = std::make_shared<repositories::BatteryRepository>();
     watcher.watch(battery_repo);
 
     BOOST_LOG_TRIVIAL(info) << "Setting up handles";
-    handles::handle_map handle_map;
-    handle_map.add(HANDLE_LEFT_EYE_CAM, std::make_shared<handles::webcam_handle>(handles::webcam_handle(0)));
-    handle_map.add(HANDLE_RIGHT_EYE_CAM, std::make_shared<handles::webcam_handle>(handles::webcam_handle(0)));
+    handles::HandleMap handleMap;
+    handleMap.add(HANDLE_LEFT_EYE_CAM, std::make_shared<handles::WebcamHandle>(handles::WebcamHandle(0)));
+    handleMap.add(HANDLE_RIGHT_EYE_CAM, std::make_shared<handles::WebcamHandle>(handles::WebcamHandle(0)));
 
     BOOST_LOG_TRIVIAL(info) << "Setting up commands";
-    commands::command_map command_map;
-    command_map.add(CommandMessage::kMoveCommand, std::make_shared<commands::move_command>(commands::move_command()));
-    command_map.add(
+    commands::CommandMap commandMap;
+    commandMap.add(CommandMessage::kMoveCommand, std::make_shared<commands::MoveCommand>(commands::MoveCommand()));
+    commandMap.add(
             CommandMessage::kFollowLineCommand,
-            std::make_shared<commands::follow_line_command>(commands::follow_line_command())
+            std::make_shared<commands::FollowLineCommand>(commands::FollowLineCommand())
     );
-    command_map.add(
+    commandMap.add(
             CommandMessage::kMoveTowerCommand,
-            std::make_shared<commands::move_tower_command>(commands::move_tower_command())
+            std::make_shared<commands::MoveTowerCommand>(commands::MoveTowerCommand())
     );
 
-    commands::command_executor runner(command_map, handle_map);
+    commands::CommandExecutor runner(commandMap, handleMap);
 
     subscriber.bind(MessageCarrier::MessageCase::kCommandMessage,
                      [&runner](const MessageCarrier &carrier) {

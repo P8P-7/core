@@ -1,13 +1,14 @@
 #pragma once
 
+#include "../handles.h"
 #include "command.h"
 
 namespace goliath::commands {
-    class move_command: public command {
+    class MoveCommand : public Command {
     public:
-        move_command();
+        MoveCommand();
 
     private:
-        void execute(const handles::handle_map &handles, const CommandMessage &message) override;
+        void execute(const handles::HandleMap &handles, const CommandMessage &message) override;
     };
 }

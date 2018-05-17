@@ -9,9 +9,10 @@
  */
 namespace goliath::repositories {
     template<typename T>
-    class proto_repository : public repository {
+    class ProtoRepository : public Repository {
     public:
-        explicit proto_repository(T *proto) : proto(proto) { }
+        explicit ProtoRepository(T *proto)
+            : proto(proto) { }
 
         /**
          * Merges a protobuf into this repository.
@@ -22,13 +23,13 @@ namespace goliath::repositories {
         /**
          * @return the protobuf contained in this repository
          */
-        std::unique_ptr<::google::protobuf::Message> get_message() override;
+        std::unique_ptr<::google::protobuf::Message> getMessage() override;
     protected:
         T *proto;
     };
 
     template<typename T>
-    std::unique_ptr<::google::protobuf::Message> proto_repository<T>::get_message() {
+    std::unique_ptr<::google::protobuf::Message> ProtoRepository<T>::getMessage() {
         return std::make_unique<T>(*proto);
     }
 }

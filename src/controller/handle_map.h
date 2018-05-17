@@ -1,8 +1,5 @@
 #pragma once
 
-#include <map>
-#include <vector>
-
 #include <goliath/core.h>
 
 /**
@@ -12,21 +9,21 @@
 
 namespace goliath::handles {
     // TODO: add iterator
-    class handle_map {
+    class HandleMap {
     public:
-        handle_map();
-        explicit handle_map(const std::map<size_t, std::shared_ptr<handle>> &map);
-        ~handle_map();
+        HandleMap();
+        explicit HandleMap(const std::map<size_t, std::shared_ptr<Handle>> &map);
+        ~HandleMap();
 
-        void add(const size_t& index, std::shared_ptr<handle> handle);
+        void add(const size_t& index, std::shared_ptr<Handle> handle);
 
-        handle_map get_handles(const std::vector<size_t> &handles) const;
+        HandleMap getHandles(const std::vector<size_t> &handles) const;
 
-        void lock_all(const size_t &command_id);
+        void lockAll(const size_t &command_id);
 
-        std::shared_ptr<handle>& operator[](const size_t &index);
-        const std::shared_ptr<handle>& operator[](const size_t &index) const;
+        std::shared_ptr<Handle>& operator[](const size_t &index);
+        const std::shared_ptr<Handle>& operator[](const size_t &index) const;
     private:
-        std::map<size_t, std::shared_ptr<handle>> map;
+        std::map<size_t, std::shared_ptr<Handle>> map;
     };
 }

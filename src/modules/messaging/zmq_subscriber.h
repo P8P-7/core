@@ -1,28 +1,28 @@
 #pragma once
 
 #include <thread>
-#include <atomic>
+#include <MessageCarrier.pb.h>
 
 #include "zmq_io.h"
 
 namespace goliath::messaging {
-    class zmq_subscriber : public zmq_io {
+    class ZmqSubscriber : public ZmqIo {
     public:
-        using zmq_message_topic = MessageCarrier::MessageCase;
-        using zmq_message_callback = std::function<void(const MessageCarrier&)>;
+        using zmqMessageTopic = MessageCarrier::MessageCase;
+        using zmqMessageCallback = std::function<void(const MessageCarrier&)>;
 
-        zmq_subscriber(zmq::context_t &context, const std::string &host, const int port);
-        ~zmq_subscriber();
+        ZmqSubscriber(zmq::context_t &context, const std::string &host, const int port);
+        ~ZmqSubscriber();
 
-        void bind(const zmq_message_topic &topic, zmq_message_callback callback);
+        void bind(const zmqMessageTopic &topic, zmqMessageCallback callback);
         void start();
         void stop();
     private:
-        const std::string interrupter_address = "inproc://interrupt";
-        zmq::socket_t *interrupt_socket;
+        const std::string interrupterAddress = "inproc://interrupt";
+        zmq::socket_t *interruptSocket;
 
         std::vector<zmq::pollitem_t> poll;
-        std::map<zmq_message_topic, zmq_message_callback> callbacks;
+        std::map<zmqMessageTopic, zmqMessageCallback> callbacks;
 
         bool running = false;
         std::thread thread;

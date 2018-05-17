@@ -1,13 +1,15 @@
+#include "i2c_error.h"
+
 namespace goliath::i2c {
-    template<typename iterator_type>
-    void i2c_slave::write(iterator_type begin, iterator_type end) {
-        auto temp_length = std::distance(begin, end);
-        if (temp_length < std::numeric_limits<size_t>::min()
-            || temp_length > std::numeric_limits<size_t>::max()) {
-            throw exceptions::i2c_error(device, "Buffer too large");
+    template<typename IteratorType>
+    void I2cSlave::write(IteratorType begin, IteratorType end) {
+        auto tempLength = std::distance(begin, end);
+        if (tempLength < std::numeric_limits<size_t>::min()
+            || tempLength > std::numeric_limits<size_t>::max()) {
+            throw exceptions::I2cError(device, "Buffer too large");
         }
 
-        auto length = (size_t)(temp_length);
+        auto length = (size_t)(tempLength);
         write(begin, length);
     }
 }

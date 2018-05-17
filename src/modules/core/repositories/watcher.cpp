@@ -1,22 +1,20 @@
-#include <thread>
-#include <boost/log/trivial.hpp>
-#include <MessageCarrier.pb.h>
 #include "watcher.h"
-#include "repository.h"
-#include "../publisher_service.h"
+
+#include <MessageCarrier.pb.h>
+#include <boost/log/trivial.hpp>
 
 using namespace goliath::repositories;
 
-void watcher::synchronize() {
+void Watcher::synchronize() {
     MessageCarrier carrier;
     SynchronizeMessage *message = new SynchronizeMessage;
     for (auto repo : repositories) {
-        if (!repo->is_invalidated()) {
+        if (!repo->isInvalidated()) {
             continue;
         }
 
-        auto repo_package = repo->get_message();
-        message->add_messages()->PackFrom(*repo_package);
+        auto repoPackage = repo->getMessage();
+        message->add_messages()->PackFrom(*repoPackage);
 
         repo->validate();
     }
@@ -25,15 +23,15 @@ void watcher::synchronize() {
     publisher.publish(carrier);
 }
 
-void watcher::invalidate_all() {
+void Watcher::invalidateAll() {
     for (auto repo : repositories) {
         repo->invalidate();
     }
 }
 
-bool watcher::should_synchronize() const {
+bool Watcher::shouldSynchronize() const {
     for (auto repo : repositories) {
-        if (repo->is_invalidated()) {
+        if (repo->isInvalidated()) {
             return true;
         }
     }
@@ -41,35 +39,35 @@ bool watcher::should_synchronize() const {
     return false;
 }
 
-void watcher::watch(std::shared_ptr<repository> repo) {
+void Watcher::watch(std::shared_ptr<Repository> repo) {
     repositories.emplace_back(repo);
 }
 
-std::vector<std::shared_ptr<repository>> watcher::get_repositories() {
+std::vector<std::shared_ptr<Repository>> Watcher::getRepositories() {
     return repositories;
 }
 
-watcher::watcher(int polling_rate, core::interfaces::publisher_service &publisher) : polling_rate(polling_rate),
-                                                                                     publisher(publisher),
-                                                                                     running(false) { }
+Watcher::Watcher(int polling_rate, core::interfaces::PublisherService &publisher)
+    : pollingRate(polling_rate), publisher(publisher), running(false) {
+}
 
-watcher::~watcher() {
+Watcher::~Watcher() {
     if (running) {
         stop();
     }
 }
 
-void watcher::start() {
+void Watcher::start() {
     if (running) {
         throw std::runtime_error("Watcher has already been started");
     }
 
     running = true;
-    invalidate_all();
-    thread = std::thread(&watcher::run, this);
+    invalidateAll();
+    thread = std::thread(&Watcher::run, this);
 }
 
-void watcher::stop() {
+void Watcher::stop() {
     if (!running) {
         throw std::runtime_error("Watcher isn't running");
     }
@@ -78,11 +76,11 @@ void watcher::stop() {
     thread.join();
 }
 
-void watcher::run() {
+void Watcher::run() {
     while (running) {
-        std::this_thread::sleep_for(std::chrono::milliseconds(polling_rate));
+        std::this_thread::sleep_for(std::chrono::milliseconds(pollingRate));
 
-        if (should_synchronize()) {
+        if (shouldSynchronize()) {
             BOOST_LOG_TRIVIAL(debug) << "Broadcasting synchronize message";
             synchronize();
         }

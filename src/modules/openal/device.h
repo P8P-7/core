@@ -1,26 +1,30 @@
 #pragma once
 
 #include <iostream>
-#include <memory>
 #include <AL/al.h>
 #include <AL/alc.h>
-
-#include "util/openal_error.h"
 
 /**
  * @file device.h
  * @author Group 7 - Informatica
  */
 
-namespace goliath::audio {
-    class device {
+namespace goliath::openal {
+    /**
+     * @class goliath::openal::Device
+     * @brief Base class for any audio device
+     */
+    class Device {
     public:
-        device(ALchar *devicename = NULL);
-        virtual ~device();
+        /**
+         * @param deviceName Location of device (Default NULL)
+         */
+        Device(ALchar *deviceName = NULL);
+        virtual ~Device();
 
-        ALCdevice* get_device() const;
+        ALCdevice* getDevice() const;
 
     protected:
-        ALCdevice *alc_device;
+        ALCdevice *alcDevice;
     };
 }

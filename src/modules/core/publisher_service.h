@@ -3,7 +3,7 @@
 #include <MessageCarrier.pb.h>
 
 namespace goliath::core::interfaces {
-    class publisher_service {
+    class PublisherService {
     public:
         /**
          * @param carrier message to send

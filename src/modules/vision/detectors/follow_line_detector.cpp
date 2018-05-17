@@ -1,35 +1,42 @@
 #include "follow_line_detector.h"
 
+#include <cmath>
+
+#include "../util/vision_error.h"
+#include "../util/vision_utilities.h"
+#include "../processors/roi_processor.h"
+
 using namespace goliath::vision;
 using namespace goliath::exceptions;
 
-follow_line_detector::follow_line_detector(const cv::Mat& input, int boxes, int box_height, int boxes_bottom_margin,
-                                           int boxes_horizontal_margin, double min_contour_area,
-                                           double max_contour_area)
-    : detector(input), boxes(boxes), box_height(box_height), boxes_bottom_margin(boxes_bottom_margin),
-      boxes_horizontal_margin(boxes_horizontal_margin), min_contour_area(min_contour_area),
-      max_contour_area(max_contour_area) {
+FollowLineDetector::FollowLineDetector(const cv::Mat& input, int boxes, int boxHeight, int boxesBottomMargin,
+                                       int boxesHorizontalMargin, double minContourArea, double maxContourArea)
+    : Detector(input), boxes(boxes), boxHeight(boxHeight), boxesBottomMargin(boxesBottomMargin),
+      boxesHorizontalMargin(boxesHorizontalMargin), minContourArea(minContourArea), maxContourArea(maxContourArea) {
     if (boxes > 4 || boxes < 0) {
-        throw vision_error("The amount of ROI boxes must be between 1 and 4");
+        throw VisionError("The amount of ROI boxes must be between 1 and 4");
+    }
+
+    if (boxHeight * boxes + boxesBottomMargin > (input.rows - 1)) {
+        throw VisionError("Can't fit all boxes in image");
     }
 }
 
-follow_line_detector::follow_line_detector(const follow_line_detector& other)
-    : follow_line_detector(other.input, other.boxes, other.box_height, other.boxes_bottom_margin,
-                           other.boxes_horizontal_margin, other.min_contour_area, other.max_contour_area) {
+FollowLineDetector::FollowLineDetector(const FollowLineDetector& other)
+    : FollowLineDetector(other.input, other.boxes, other.boxHeight, other.boxesBottomMargin,
+                         other.boxesHorizontalMargin, other.minContourArea, other.maxContourArea) {
 }
 
-std::vector<cv::Vec4d> follow_line_detector::detect() const {
+std::vector<cv::Vec4d> FollowLineDetector::detect() const {
+    // Loop through all the boxes, from bottom up
     for (int box_index = 0; box_index < boxes; ++box_index) {
-        const int x = boxes_horizontal_margin;
-        const int y = (input.rows - 1 - boxes_bottom_margin) - (box_height * (box_index + 1));
-        const int w = (input.cols - 1) - (boxes_horizontal_margin * 2);
-        const int h = box_height;
+        const int x = boxesHorizontalMargin;
+        const int y = (input.rows - 1 - boxesBottomMargin) - (boxHeight * (box_index + 1));
+        const int w = (input.cols - 1) - (boxesHorizontalMargin * 2);
+        const int h = boxHeight;
 
-        const int box_left_edge = boxes_horizontal_margin;
-        const int box_right_edge = (input.cols - 1) - boxes_horizontal_margin;
-
-        roi_processor roi_processor(input, x, y, w, h);
+        // Create box roi
+        RoiProcessor roi_processor(input, x, y, w, h);
         cv::Mat box = roi_processor.process();
 
         const int box_center_x = (box.cols - 1) / 2;
@@ -47,25 +54,28 @@ std::vector<cv::Vec4d> follow_line_detector::detect() const {
 
         std::vector<cv::Point> contour = contours[0];
 
-        if (cv::contourArea(contour) < min_contour_area || cv::contourArea(contour) > max_contour_area) {
+        if (cv::contourArea(contour) < minContourArea || cv::contourArea(contour) > maxContourArea) {
             continue;
         }
 
         cv::Moments moments = cv::moments(contour, false);
 
+        // Get contour center and compare it to the box center
         double contour_center_x = moments.m10 / moments.m00;
         double offset = (box_center_x - contour_center_x) * -1;\
 
-        double norm_distance = cv::abs(vision_utilities::map(offset, static_cast<double>((box.cols - 1)) / 2, 1.0));
+        double norm_distance = cv::abs(VisionUtilities::map(offset, static_cast<double>((box.cols - 1)) / 2, 1.0));
+
+        cv::Vec4d rect{static_cast<double>(x), static_cast<double>(y), static_cast<double>(w), static_cast<double>(h)};
 
         if (offset == 0) {
-            return {{follow_line_direction::ON_COURSE, offset, 0, 0}};
+            return {{FollowLineDirection::ON_COURSE, offset, 0, 0}, rect};
         } else if (offset < 0) {
-            return {{follow_line_direction::LEFT, norm_distance, static_cast<double>(box_index), 0}};
+            return {{FollowLineDirection::LEFT, norm_distance, static_cast<double>(box_index), 0}, rect};
         } else if (offset > 0) {
-            return {{follow_line_direction::RIGHT, norm_distance, static_cast<double>(box_index), 0}};
+            return {{FollowLineDirection::RIGHT, norm_distance, static_cast<double>(box_index), 0}, rect};
         }
     }
 
-    return {{follow_line_direction::NO_LINE, 0, 0, 0}};
+    return {{FollowLineDirection::NO_LINE, 0, 0, 0}};
 }

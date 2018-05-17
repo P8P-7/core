@@ -2,22 +2,23 @@
 
 using namespace goliath::commands;
 
-command::command(const std::vector<size_t> &required_handles)
-        : required_handles(required_handles) {}
+Command::Command(const std::vector<size_t> &requiredHandles)
+        : requiredHandles(requiredHandles) {
+}
 
-void command::interrupt() {
+void Command::interrupt() {
     interrupted = true;
 }
 
-bool command::is_interrupted() const {
+bool Command::isInterrupted() const {
     return interrupted;
 }
 
-const std::vector<size_t>& command::get_required_handles() const {
-    return required_handles;
+const std::vector<size_t>& Command::getRequiredHandles() const {
+    return requiredHandles;
 }
 
-void command::run(const goliath::handles::handle_map &handles, const CommandMessage& message) {
+void Command::run(const goliath::handles::HandleMap &handles, const CommandMessage& message) {
     running = true;
     execute(handles, message);
     running = false;
