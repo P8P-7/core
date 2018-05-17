@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Goliath II: goliath::vision::VisionUtilities Class Reference</title>
+<title>Goliath II: goliath::util::VisionUtilities Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -84,22 +84,104 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="namespacegoliath.html">goliath</a></li><li class="navelem"><a class="el" href="namespacegoliath_1_1vision.html">vision</a></li><li class="navelem"><a class="el" href="classgoliath_1_1vision_1_1VisionUtilities.html">VisionUtilities</a></li>  </ul>
+<li class="navelem"><a class="el" href="namespacegoliath.html">goliath</a></li><li class="navelem"><a class="el" href="namespacegoliath_1_1util.html">util</a></li><li class="navelem"><a class="el" href="classgoliath_1_1util_1_1VisionUtilities.html">VisionUtilities</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
+  <div class="summary">
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="classgoliath_1_1util_1_1VisionUtilities-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">goliath::vision::VisionUtilities Class Reference</div>  </div>
+<div class="title">goliath::util::VisionUtilities Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:a4b4d3400de62c00ca1ccad3212bc08ee"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a4b4d3400de62c00ca1ccad3212bc08ee"><td class="memTemplItemLeft" align="right" valign="top">static T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classgoliath_1_1util_1_1VisionUtilities.html#a4b4d3400de62c00ca1ccad3212bc08ee">map</a> (T input, T inputMin, T inputMax, T outputMin, T outputMax)</td></tr>
+<tr class="memdesc:a4b4d3400de62c00ca1ccad3212bc08ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maps a numeric value in a range to a the same position in another range.  <a href="#a4b4d3400de62c00ca1ccad3212bc08ee">More...</a><br/></td></tr>
+<tr class="separator:a4b4d3400de62c00ca1ccad3212bc08ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf3570a7f84dba7e1c41d9ba44a69ec0"><td class="memTemplParams" colspan="2"><a class="anchor" id="abf3570a7f84dba7e1c41d9ba44a69ec0"></a>
+template&lt;typename T &gt; </td></tr>
+<tr class="memitem:abf3570a7f84dba7e1c41d9ba44a69ec0"><td class="memTemplItemLeft" align="right" valign="top">static T&#160;</td><td class="memTemplItemRight" valign="bottom"><b>map</b> (T input, T inputMax, T outputMax)</td></tr>
+<tr class="separator:abf3570a7f84dba7e1c41d9ba44a69ec0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a4b4d3400de62c00ca1ccad3212bc08ee"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static T goliath::util::VisionUtilities::map </td>
+          <td>(</td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>inputMin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>inputMax</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>outputMin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>outputMax</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
-<p>Contains useful utility function for vision calculations.  
- <a href="classgoliath_1_1vision_1_1VisionUtilities.html#details">More...</a></p>
+<p>Maps a numeric value in a range to a the same position in another range. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>Numeric value </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">input</td><td>Input value </td></tr>
+    <tr><td class="paramname">inputMin</td><td>Input range lower bound </td></tr>
+    <tr><td class="paramname">inputMax</td><td>Input range upper bound </td></tr>
+    <tr><td class="paramname">outputMin</td><td>Output range lower bound </td></tr>
+    <tr><td class="paramname">outputMax</td><td>Output range upper bound </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Numeric value mapped to new range </dd></dl>
 
-<p><code>#include &lt;<a class="el" href="vision__utilities_8h_source.html">vision_utilities.h</a>&gt;</code></p>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Contains useful utility function for vision calculations. </p>
-</div><hr/>The documentation for this class was generated from the following file:<ul>
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
 <li>/home/travis/build/P8P-7/core/src/modules/vision/util/<a class="el" href="vision__utilities_8h_source.html">vision_utilities.h</a></li>
 </ul>
 </div><!-- contents -->

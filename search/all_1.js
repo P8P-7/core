@@ -5,6 +5,7 @@ var searchData=
   ['cannyprocessor',['CannyProcessor',['../classgoliath_1_1vision_1_1CannyProcessor.html#a3810bb792f931797ad2a9c27ca3d6533',1,'goliath::vision::CannyProcessor']]],
   ['color_5fprocessor_2eh',['color_processor.h',['../color__processor_8h.html',1,'']]],
   ['color_5fregion_5fdetector_2eh',['color_region_detector.h',['../color__region__detector_8h.html',1,'']]],
+  ['colored_5fconsole_2eh',['colored_console.h',['../colored__console_8h.html',1,'']]],
   ['colorprocessor',['ColorProcessor',['../classgoliath_1_1vision_1_1ColorProcessor.html',1,'goliath::vision']]],
   ['colorprocessor',['ColorProcessor',['../classgoliath_1_1vision_1_1ColorProcessor.html#ad5b26395e885a83ee5ae185033fe6095',1,'goliath::vision::ColorProcessor']]],
   ['colorregiondetector',['ColorRegionDetector',['../classgoliath_1_1vision_1_1ColorRegionDetector.html',1,'goliath::vision']]],
