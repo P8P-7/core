@@ -13,7 +13,6 @@
 
 /**
  * @file controller.cpp
- * @brief Application entry point
  * @author Group 7 - Informatica
  */
 
@@ -23,6 +22,10 @@
 */
 using namespace goliath;
 
+/**
+ * @fn main(int argc, char *argv[])
+ * @brief Application entry point
+ */
 int main(int argc, char *argv[]) {
     goliath::util::init();
 

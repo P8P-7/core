@@ -49,9 +49,22 @@ const std::string LOG_COLOR_DEFAULT = CONSOLE_COLOR_DEFAULT;
 namespace goliath::util {
     namespace blog = boost::log;
 
+    /**
+     * @fn std::string getColor(const boost::log::trivial::severity_level& severityLevel)
+     * @brief Returns a specific color based on the severity of the log
+     * @param severityLevel Level of severity to display
+     * @return Linux terminal color string
+     */
     std::string getColor(const blog::trivial::severity_level& severityLevel);
 
+    /**
+     * @fn void colorConsoleFormatter(const boost::log::record_view& recordView, boost::log::formatting_ostream& formatStream)
+     * @brief Formatter that takes in a message, applies data, thread, severity and a color
+     */
     void colorConsoleFormatter(const blog::record_view& recordView, blog::formatting_ostream& formatStream);
 
+    /**
+     * @brief Initialize a sink with the formatter and sets it as default
+     */
     void init();
 }

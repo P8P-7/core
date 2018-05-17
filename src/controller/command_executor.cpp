@@ -18,8 +18,6 @@ CommandExecutor::~CommandExecutor() {
 }
 
 void CommandExecutor::run(const size_t commandId, const CommandMessage &message) {
-    std::lock_guard<std::mutex> lockGuard(mutex);
-
     if (!commands.commandExists(commandId)) {
         throw std::runtime_error("Command does not exist"); // TODO: Own exception class?
     }
@@ -31,7 +29,7 @@ void CommandExecutor::run(const size_t commandId, const CommandMessage &message)
     }
     item.status = CommandStatus::STARTING;
 
-    threads.emplace_back(std::thread(&CommandExecutor::tryExecute, this, commandId, std::ref(message)));
+    threads.push_back(std::thread(&CommandExecutor::tryExecute, this, commandId, std::ref(message)));
 }
 
 void CommandExecutor::tryExecute(const size_t &commandId, const CommandMessage &message) {

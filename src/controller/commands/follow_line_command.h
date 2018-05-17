@@ -3,6 +3,11 @@
 #include "../handles.h"
 #include "command.h"
 
+/**
+ * @file follow_line_command.h
+ * @author Group 7 - Informatica
+ */
+
 namespace goliath::commands {
     class FollowLineCommand : public Command {
     public:
