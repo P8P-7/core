@@ -5,7 +5,7 @@
  * @author Group 7 - Informatica
  */
 
-namespace goliath::vision {
+namespace goliath::util {
     /**
      * @class goliath::vision::VisionUtilities
      * @brief Contains useful utility function for vision calculations

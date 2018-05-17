@@ -8,6 +8,7 @@
 
 using namespace goliath::vision;
 using namespace goliath::exceptions;
+using namespace goliath::util;
 
 FollowLineDetector::FollowLineDetector(const cv::Mat& input, int boxes, int boxHeight, int boxesBottomMargin,
                                        int boxesHorizontalMargin, double minContourArea, double maxContourArea)

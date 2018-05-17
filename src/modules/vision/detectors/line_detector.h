@@ -20,7 +20,7 @@ namespace goliath::vision {
     const double DEFAULT_LINE_DETECTOR_THETA = CV_PI / 180;
 
     /**
-     * @class goliath::vision::line_detector
+     * @class goliath::vision::LineDetector
      * @brief Takes in an image and detects all lines in the image
      */
     class LineDetector : public Detector {

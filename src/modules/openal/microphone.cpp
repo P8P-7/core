@@ -11,7 +11,7 @@ Microphone::Microphone(ALCuint frequency, ALCenum format, ALCsizei bufferSize, A
     alcDevice = alcCaptureOpenDevice(deviceName, frequency, format, bufferSize);
 
     if(alcDevice == NULL) {
-        throw openal_error("Unable to create microphone");
+        throw OpenalError("Unable to create microphone");
     }
 }
 
@@ -22,14 +22,14 @@ void Microphone::record(ALubyte *capture_buffer, std::chrono::microseconds durat
     alcCaptureStart(alcDevice);
 
     while(std::chrono::high_resolution_clock::now() < finish) {
-        ALint samples_available;
-        alcGetIntegerv(alcDevice, ALC_CAPTURE_SAMPLES, 1, &samples_available);
+        ALint samplesAvailable;
+        alcGetIntegerv(alcDevice, ALC_CAPTURE_SAMPLES, 1, &samplesAvailable);
 
-        if (samples_available > 0) {
-            alcCaptureSamples(alcDevice, capture_buffer, samples_available);
-            capture_buffer += samples_available * 2;
+        if (samplesAvailable > 0) {
+            alcCaptureSamples(alcDevice, capture_buffer, samplesAvailable);
+            capture_buffer += samplesAvailable * 2;
 
-            std::cout << samples_available << std::endl;
+            std::cout << samplesAvailable << std::endl;
         }
 
         std::this_thread::sleep_for(interval);

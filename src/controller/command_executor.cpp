@@ -26,9 +26,7 @@ void CommandExecutor::run(const size_t commandId, const CommandMessage &message)
 
     auto& item = commands[commandId];
     if (item.status != CommandStatus::STALE) {
-        BOOST_LOG_TRIVIAL(warning) << "Command "
-                                   << commandId
-                                   << " has been dropped because was it was already running";
+        BOOST_LOG_TRIVIAL(warning) << "Command " << commandId << " was dropped because it was already running";
         return;
     }
     item.status = CommandStatus::STARTING;

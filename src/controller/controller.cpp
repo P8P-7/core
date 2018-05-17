@@ -8,6 +8,7 @@
 #include "command_executor.h"
 #include "commands/follow_line_command.h"
 #include "commands/move_tower_command.h"
+#include "util/colored_console.h"
 #include "handles.h"
 
 /**
@@ -23,6 +24,8 @@
 using namespace goliath;
 
 int main(int argc, char *argv[]) {
+    goliath::util::init();
+
     BOOST_LOG_TRIVIAL(info) << "Controller is starting";
 
     BOOST_LOG_TRIVIAL(info) << "Setting up subscriber";

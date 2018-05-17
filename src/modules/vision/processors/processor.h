@@ -9,7 +9,7 @@
 
 namespace goliath::vision {
     /**
-     * @class goliath::vision::processor
+     * @class goliath::vision::Processor
      * @brief Base class of processors that take in an input and manipulate in some way returning the output from the
      * virtual @see goliath::vision::processor#process method.
      */

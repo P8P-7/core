@@ -9,7 +9,7 @@ Device::Device(ALchar *deviceName) {
     alcDevice = alcOpenDevice(deviceName);
 
     if(alcDevice == NULL) {
-        throw openal_error("Unable to open device");
+        throw OpenalError("Unable to open device");
     }
 }
 

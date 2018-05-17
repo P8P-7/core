@@ -9,15 +9,15 @@
 
 namespace goliath::exceptions {
     /**
-     * @class goliath::exceptions::openal_error
+     * @class goliath::exceptions::OpenalError
      * @brief All errors related to the audio module
      */
-    class openal_error : public std::exception {
+    class OpenalError : public std::exception {
     public:
         /**
          * @param reason Reason for exception
          */
-        openal_error(const std::string reason);
+        OpenalError(const std::string reason);
 
         const char* what() const noexcept override;
 

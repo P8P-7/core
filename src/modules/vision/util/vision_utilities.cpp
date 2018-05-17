@@ -1,3 +1,3 @@
 #include "vision_utilities.h"
 
-using namespace goliath::vision;
+using namespace goliath::util;
