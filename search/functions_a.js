@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['openalerror',['OpenalError',['../classgoliath_1_1exceptions_1_1OpenalError.html#a57fd3f64e3bcc3ea9caf39b23e144bee',1,'goliath::exceptions::OpenalError']]],
-  ['operator_3c_3c',['operator&lt;&lt;',['../classgoliath_1_1i2c_1_1I2cSlave.html#a1ff1c287fabfbbc86d0c86b0e94f2789',1,'goliath::i2c::I2cSlave']]]
+  ['main',['main',['../controller_8cpp.html#ae0665038b72011f5c680c660fcb59459',1,'controller.cpp']]],
+  ['map',['map',['../classgoliath_1_1util_1_1VisionUtilities.html#a4b4d3400de62c00ca1ccad3212bc08ee',1,'goliath::util::VisionUtilities']]],
+  ['merge_5ffrom_5fmessage',['merge_from_message',['../classgoliath_1_1repositories_1_1ProtoRepository.html#ac1db9166738b372d0d759e46f6c30e55',1,'goliath::repositories::ProtoRepository']]]
 ];

@@ -96,11 +96,15 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">goliath::commands::CommandItem Struct Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Tuple storing both the status of the command and the command instance itself.  
+ <a href="structgoliath_1_1commands_1_1CommandItem.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="command__map_8h_source.html">command_map.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a83b105af2cd00052c77ae1bd295875a0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a83b105af2cd00052c77ae1bd295875a0"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>CommandItem</b> (std::shared_ptr&lt; <a class="el" href="classgoliath_1_1commands_1_1Command.html">Command</a> &gt; commandInstance, <a class="el" href="namespacegoliath_1_1commands.html#ad04221b592714b06a85a6415a475981b">CommandStatus</a> status)</td></tr>
+<tr class="memitem:a83b105af2cd00052c77ae1bd295875a0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgoliath_1_1commands_1_1CommandItem.html#a83b105af2cd00052c77ae1bd295875a0">CommandItem</a> (std::shared_ptr&lt; <a class="el" href="classgoliath_1_1commands_1_1Command.html">Command</a> &gt; commandInstance, <a class="el" href="namespacegoliath_1_1commands.html#ad04221b592714b06a85a6415a475981b">CommandStatus</a> status)</td></tr>
 <tr class="separator:a83b105af2cd00052c77ae1bd295875a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
@@ -112,6 +116,42 @@ std::shared_ptr&lt; <a class="el" href="classgoliath_1_1commands_1_1Command.html
 <a class="el" href="namespacegoliath_1_1commands.html#ad04221b592714b06a85a6415a475981b">CommandStatus</a>&#160;</td><td class="memItemRight" valign="bottom"><b>status</b></td></tr>
 <tr class="separator:aa6c86023e580e23af8327d636be3927e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Tuple storing both the status of the command and the command instance itself. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a83b105af2cd00052c77ae1bd295875a0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CommandItem::CommandItem </td>
+          <td>(</td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classgoliath_1_1commands_1_1Command.html">Command</a> &gt;&#160;</td>
+          <td class="paramname"><em>commandInstance</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacegoliath_1_1commands.html#ad04221b592714b06a85a6415a475981b">CommandStatus</a>&#160;</td>
+          <td class="paramname"><em>status</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">commandInstance</td><td>Instance of a command </td></tr>
+    <tr><td class="paramname">status</td><td>Starting status </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this struct was generated from the following files:<ul>
 <li>/home/travis/build/P8P-7/core/src/controller/<a class="el" href="command__map_8h_source.html">command_map.h</a></li>
 <li>/home/travis/build/P8P-7/core/src/controller/command_map.cpp</li>

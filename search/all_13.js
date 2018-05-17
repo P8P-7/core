@@ -1,12 +1,18 @@
 var searchData=
 [
-  ['zmq_5fio_2eh',['zmq_io.h',['../zmq__io_8h.html',1,'']]],
-  ['zmq_5fpublisher_2eh',['zmq_publisher.h',['../zmq__publisher_8h.html',1,'']]],
-  ['zmq_5fsubscriber_2eh',['zmq_subscriber.h',['../zmq__subscriber_8h.html',1,'']]],
-  ['zmqio',['ZmqIo',['../classgoliath_1_1messaging_1_1ZmqIo.html',1,'goliath::messaging']]],
-  ['zmqio',['ZmqIo',['../classgoliath_1_1messaging_1_1ZmqIo.html#aedf3107755e6271db71038e86744fdac',1,'goliath::messaging::ZmqIo::ZmqIo(zmq::context_t &amp;context, const std::string &amp;host, const int port)'],['../classgoliath_1_1messaging_1_1ZmqIo.html#aa16664d70efd2765b8a0f45b0bb7b8e8',1,'goliath::messaging::ZmqIo::ZmqIo(zmq::context_t &amp;context, const std::string &amp;host, const int port, const int socketType)']]],
-  ['zmqpublisher',['ZmqPublisher',['../classgoliath_1_1messaging_1_1ZmqPublisher.html#a37c4999b044cac860abd8a580586f40e',1,'goliath::messaging::ZmqPublisher']]],
-  ['zmqpublisher',['ZmqPublisher',['../classgoliath_1_1messaging_1_1ZmqPublisher.html',1,'goliath::messaging']]],
-  ['zmqsubscriber',['ZmqSubscriber',['../classgoliath_1_1messaging_1_1ZmqSubscriber.html',1,'goliath::messaging']]],
-  ['zmqsubscriber',['ZmqSubscriber',['../classgoliath_1_1messaging_1_1ZmqSubscriber.html#a0c2ee9431939a15cd5741d834d88b77c',1,'goliath::messaging::ZmqSubscriber']]]
+  ['waitandlock',['waitAndLock',['../classgoliath_1_1handles_1_1Handle.html#a20cb0b4d91c945dd35a4a3cfa970e613',1,'goliath::handles::Handle']]],
+  ['watch',['watch',['../classgoliath_1_1repositories_1_1Watcher.html#ab496ec3e1cd6417e7bb968d228115665',1,'goliath::repositories::Watcher']]],
+  ['watcher',['Watcher',['../classgoliath_1_1repositories_1_1Watcher.html',1,'goliath::repositories']]],
+  ['watcher',['Watcher',['../classgoliath_1_1repositories_1_1Watcher.html#a757936bbdabe123014164f3ae799dc7c',1,'goliath::repositories::Watcher']]],
+  ['watcher_2eh',['watcher.h',['../watcher_8h.html',1,'']]],
+  ['webcam',['Webcam',['../classgoliath_1_1vision_1_1Webcam.html',1,'goliath::vision']]],
+  ['webcam',['Webcam',['../classgoliath_1_1vision_1_1Webcam.html#a002cbdf9be45b2f382610af812d011df',1,'goliath::vision::Webcam::Webcam(const int capId)'],['../classgoliath_1_1vision_1_1Webcam.html#ad4cba289bc1522b6ce2fc027175ab216',1,'goliath::vision::Webcam::Webcam(const int capId, const int color)']]],
+  ['webcam_2eh',['webcam.h',['../webcam_8h.html',1,'']]],
+  ['webcam_5fhandle_2eh',['webcam_handle.h',['../webcam__handle_8h.html',1,'']]],
+  ['webcamhandle',['WebcamHandle',['../classgoliath_1_1handles_1_1WebcamHandle.html#a5768404ebca1a695042c47842586c766',1,'goliath::handles::WebcamHandle']]],
+  ['webcamhandle',['WebcamHandle',['../classgoliath_1_1handles_1_1WebcamHandle.html',1,'goliath::handles']]],
+  ['what',['what',['../classgoliath_1_1exceptions_1_1I2cError.html#a21d1caf1efaec20efb1f4ce8e9cd39d8',1,'goliath::exceptions::I2cError']]],
+  ['within_5fbox_5fdetector_2eh',['within_box_detector.h',['../within__box__detector_8h.html',1,'']]],
+  ['withinboxdetector',['WithinBoxDetector',['../classgoliath_1_1vision_1_1WithinBoxDetector.html',1,'goliath::vision']]],
+  ['write',['write',['../classgoliath_1_1i2c_1_1I2cSlave.html#ad0b44622c4cc56b48f5a7a39291bde36',1,'goliath::i2c::I2cSlave']]]
 ];

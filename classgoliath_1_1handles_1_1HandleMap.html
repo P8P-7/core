@@ -95,20 +95,24 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">goliath::handles::HandleMap Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Map of all handles mapped to an integer.  
+ <a href="classgoliath_1_1handles_1_1HandleMap.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="handle__map_8h_source.html">handle_map.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a6e91b02157f297c8195105ac01deca30"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6e91b02157f297c8195105ac01deca30"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>HandleMap</b> (const std::map&lt; size_t, std::shared_ptr&lt; <a class="el" href="classgoliath_1_1handles_1_1Handle.html">Handle</a> &gt;&gt; &amp;map)</td></tr>
+<tr class="memitem:a6e91b02157f297c8195105ac01deca30"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1handles_1_1HandleMap.html#a6e91b02157f297c8195105ac01deca30">HandleMap</a> (const std::map&lt; size_t, std::shared_ptr&lt; <a class="el" href="classgoliath_1_1handles_1_1Handle.html">Handle</a> &gt;&gt; &amp;map)</td></tr>
 <tr class="separator:a6e91b02157f297c8195105ac01deca30"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a308bf141653b9cc88357db95235eb525"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a308bf141653b9cc88357db95235eb525"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>add</b> (const size_t &amp;index, std::shared_ptr&lt; <a class="el" href="classgoliath_1_1handles_1_1Handle.html">Handle</a> &gt; handle)</td></tr>
+<tr class="memitem:a308bf141653b9cc88357db95235eb525"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1handles_1_1HandleMap.html#a308bf141653b9cc88357db95235eb525">add</a> (const size_t &amp;index, std::shared_ptr&lt; <a class="el" href="classgoliath_1_1handles_1_1Handle.html">Handle</a> &gt; handle)</td></tr>
+<tr class="memdesc:a308bf141653b9cc88357db95235eb525"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a handle pair.  <a href="#a308bf141653b9cc88357db95235eb525">More...</a><br/></td></tr>
 <tr class="separator:a308bf141653b9cc88357db95235eb525"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a59295e9ce2913c22c18f21dd61b0cf9c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a59295e9ce2913c22c18f21dd61b0cf9c"></a>
-<a class="el" href="classgoliath_1_1handles_1_1HandleMap.html">HandleMap</a>&#160;</td><td class="memItemRight" valign="bottom"><b>getHandles</b> (const std::vector&lt; size_t &gt; &amp;handles) const </td></tr>
+<tr class="memitem:a59295e9ce2913c22c18f21dd61b0cf9c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgoliath_1_1handles_1_1HandleMap.html">HandleMap</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1handles_1_1HandleMap.html#a59295e9ce2913c22c18f21dd61b0cf9c">getHandles</a> (const std::vector&lt; size_t &gt; &amp;handles) const </td></tr>
+<tr class="memdesc:a59295e9ce2913c22c18f21dd61b0cf9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get handles for a specific selecion of ID's.  <a href="#a59295e9ce2913c22c18f21dd61b0cf9c">More...</a><br/></td></tr>
 <tr class="separator:a59295e9ce2913c22c18f21dd61b0cf9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acf7ff9c9d21255acdb2704218ad3cd57"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acf7ff9c9d21255acdb2704218ad3cd57"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>lockAll</b> (const size_t &amp;command_id)</td></tr>
+<tr class="memitem:acf7ff9c9d21255acdb2704218ad3cd57"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1handles_1_1HandleMap.html#acf7ff9c9d21255acdb2704218ad3cd57">lockAll</a> (const size_t &amp;command_id)</td></tr>
+<tr class="memdesc:acf7ff9c9d21255acdb2704218ad3cd57"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lock all handles for a specific command.  <a href="#acf7ff9c9d21255acdb2704218ad3cd57">More...</a><br/></td></tr>
 <tr class="separator:acf7ff9c9d21255acdb2704218ad3cd57"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3e45ec139c6a139fcd46f32c5df2fded"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3e45ec139c6a139fcd46f32c5df2fded"></a>
 std::shared_ptr&lt; <a class="el" href="classgoliath_1_1handles_1_1Handle.html">Handle</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator[]</b> (const size_t &amp;index)</td></tr>
@@ -117,6 +121,124 @@ std::shared_ptr&lt; <a class="el" href="classgoliath_1_1handles_1_1Handle.html">
 const std::shared_ptr&lt; <a class="el" href="classgoliath_1_1handles_1_1Handle.html">Handle</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator[]</b> (const size_t &amp;index) const </td></tr>
 <tr class="separator:a924cc4f84e12fba1ea10283d2a08ebab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Map of all handles mapped to an integer. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a6e91b02157f297c8195105ac01deca30"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">HandleMap::HandleMap </td>
+          <td>(</td>
+          <td class="paramtype">const std::map&lt; size_t, std::shared_ptr&lt; <a class="el" href="classgoliath_1_1handles_1_1Handle.html">Handle</a> &gt;&gt; &amp;&#160;</td>
+          <td class="paramname"><em>map</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">map</td><td>Starting map </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a308bf141653b9cc88357db95235eb525"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HandleMap::add </td>
+          <td>(</td>
+          <td class="paramtype">const size_t &amp;&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classgoliath_1_1handles_1_1Handle.html">Handle</a> &gt;&#160;</td>
+          <td class="paramname"><em>handle</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Add a handle pair. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>New index of handle </td></tr>
+    <tr><td class="paramname">handle</td><td>Pointer to the handle itself </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a59295e9ce2913c22c18f21dd61b0cf9c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classgoliath_1_1handles_1_1HandleMap.html">HandleMap</a> HandleMap::getHandles </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; size_t &gt; &amp;&#160;</td>
+          <td class="paramname"><em>handles</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get handles for a specific selecion of ID's. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">handles</td><td>Vector of ID's you want to gather </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classgoliath_1_1handles_1_1HandleMap.html" title="Map of all handles mapped to an integer. ">HandleMap</a> Selection </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="acf7ff9c9d21255acdb2704218ad3cd57"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HandleMap::lockAll </td>
+          <td>(</td>
+          <td class="paramtype">const size_t &amp;&#160;</td>
+          <td class="paramname"><em>command_id</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Lock all handles for a specific command. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">command_id</td><td>Command ID for the handle's to be locked on </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>/home/travis/build/P8P-7/core/src/controller/<a class="el" href="handle__map_8h_source.html">handle_map.h</a></li>
 <li>/home/travis/build/P8P-7/core/src/controller/handle_map.cpp</li>

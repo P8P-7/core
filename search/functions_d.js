@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['shouldsynchronize',['shouldSynchronize',['../classgoliath_1_1repositories_1_1Watcher.html#aace3462ef22158e3844046653d2189a2',1,'goliath::repositories::Watcher']]],
-  ['start',['start',['../classgoliath_1_1repositories_1_1Watcher.html#a5474ded0da07eb99166c6376bdd73b85',1,'goliath::repositories::Watcher::start()'],['../classgoliath_1_1messaging_1_1ZmqSubscriber.html#a539e2c1be4f787bc31c16043a008dd26',1,'goliath::messaging::ZmqSubscriber::start()']]],
-  ['stop',['stop',['../classgoliath_1_1repositories_1_1Watcher.html#afd174ac54c2b26148217d3e2593d3cfc',1,'goliath::repositories::Watcher::stop()'],['../classgoliath_1_1messaging_1_1ZmqSubscriber.html#ae3fd22868c3094fde0981ae266314194',1,'goliath::messaging::ZmqSubscriber::stop()']]]
+  ['record',['record',['../classgoliath_1_1openal_1_1Microphone.html#a1caa46002738316b8ca98e020fc0619a',1,'goliath::openal::Microphone']]],
+  ['roiprocessor',['RoiProcessor',['../classgoliath_1_1vision_1_1RoiProcessor.html#ace4336cddf11631c508e14c85d49bb43',1,'goliath::vision::RoiProcessor']]],
+  ['run',['run',['../classgoliath_1_1commands_1_1CommandExecutor.html#a39ca77c30431a9d49dcd8604b2837f7d',1,'goliath::commands::CommandExecutor::run()'],['../classgoliath_1_1commands_1_1Command.html#a8eb185c3cd08fadefa4f0437a10364b5',1,'goliath::commands::Command::run()']]]
 ];

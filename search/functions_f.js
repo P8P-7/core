@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['visionerror',['VisionError',['../classgoliath_1_1exceptions_1_1VisionError.html#a70c36eb8c8bc2a26d37e7f2dc96549d3',1,'goliath::exceptions::VisionError']]]
+  ['tryexecute',['tryExecute',['../classgoliath_1_1commands_1_1CommandExecutor.html#a0aaef174120f829645b9192f1fe6f6fc',1,'goliath::commands::CommandExecutor']]]
 ];

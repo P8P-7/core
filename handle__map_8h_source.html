@@ -96,26 +96,29 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div>
 <div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="namespacegoliath_1_1handles.html">   10</a></span>&#160;<span class="keyword">namespace </span>goliath::handles {</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="comment">// TODO: add iterator</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="classgoliath_1_1handles_1_1HandleMap.html">   12</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classgoliath_1_1handles_1_1HandleMap.html">HandleMap</a> {</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <a class="code" href="classgoliath_1_1handles_1_1HandleMap.html">HandleMap</a>();</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        <span class="keyword">explicit</span> <a class="code" href="classgoliath_1_1handles_1_1HandleMap.html">HandleMap</a>(<span class="keyword">const</span> std::map&lt;<span class="keywordtype">size_t</span>, std::shared_ptr&lt;Handle&gt;&gt; &amp;map);</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        ~<a class="code" href="classgoliath_1_1handles_1_1HandleMap.html">HandleMap</a>();</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <span class="keywordtype">void</span> add(<span class="keyword">const</span> <span class="keywordtype">size_t</span>&amp; index, std::shared_ptr&lt;Handle&gt; handle);</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <a class="code" href="classgoliath_1_1handles_1_1HandleMap.html">HandleMap</a> getHandles(<span class="keyword">const</span> std::vector&lt;size_t&gt; &amp;handles) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keywordtype">void</span> lockAll(<span class="keyword">const</span> <span class="keywordtype">size_t</span> &amp;command_id);</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        std::shared_ptr&lt;Handle&gt;&amp; operator[](<span class="keyword">const</span> <span class="keywordtype">size_t</span> &amp;index);</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keyword">const</span> std::shared_ptr&lt;Handle&gt;&amp; operator[](<span class="keyword">const</span> <span class="keywordtype">size_t</span> &amp;index) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        std::map&lt;size_t, std::shared_ptr&lt;Handle&gt;&gt; map;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    };</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;}</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="classgoliath_1_1handles_1_1HandleMap.html">   16</a></span>&#160;<span class="comment"></span>    <span class="keyword">class </span><a class="code" href="classgoliath_1_1handles_1_1HandleMap.html">HandleMap</a> {</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <a class="code" href="classgoliath_1_1handles_1_1HandleMap.html">HandleMap</a>();</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keyword">explicit</span> <a class="code" href="classgoliath_1_1handles_1_1HandleMap.html">HandleMap</a>(<span class="keyword">const</span> std::map&lt;<span class="keywordtype">size_t</span>, std::shared_ptr&lt;Handle&gt;&gt; &amp;map);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        ~<a class="code" href="classgoliath_1_1handles_1_1HandleMap.html">HandleMap</a>();</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classgoliath_1_1handles_1_1HandleMap.html#a308bf141653b9cc88357db95235eb525">add</a>(<span class="keyword">const</span> <span class="keywordtype">size_t</span>&amp; index, std::shared_ptr&lt;Handle&gt; handle);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <a class="code" href="classgoliath_1_1handles_1_1HandleMap.html">HandleMap</a> <a class="code" href="classgoliath_1_1handles_1_1HandleMap.html#a59295e9ce2913c22c18f21dd61b0cf9c">getHandles</a>(<span class="keyword">const</span> std::vector&lt;size_t&gt; &amp;handles) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classgoliath_1_1handles_1_1HandleMap.html#acf7ff9c9d21255acdb2704218ad3cd57">lockAll</a>(<span class="keyword">const</span> <span class="keywordtype">size_t</span> &amp;command_id);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        std::shared_ptr&lt;Handle&gt;&amp; operator[](<span class="keyword">const</span> <span class="keywordtype">size_t</span> &amp;index);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="keyword">const</span> std::shared_ptr&lt;Handle&gt;&amp; operator[](<span class="keyword">const</span> <span class="keywordtype">size_t</span> &amp;index) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        std::map&lt;size_t, std::shared_ptr&lt;Handle&gt;&gt; map;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    };</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;}</div>
+<div class="ttc" id="classgoliath_1_1handles_1_1HandleMap_html_a59295e9ce2913c22c18f21dd61b0cf9c"><div class="ttname"><a href="classgoliath_1_1handles_1_1HandleMap.html#a59295e9ce2913c22c18f21dd61b0cf9c">goliath::handles::HandleMap::getHandles</a></div><div class="ttdeci">HandleMap getHandles(const std::vector&lt; size_t &gt; &amp;handles) const </div><div class="ttdoc">Get handles for a specific selecion of ID&#39;s. </div><div class="ttdef"><b>Definition:</b> handle_map.cpp:23</div></div>
 <div class="ttc" id="core_8h_html"><div class="ttname"><a href="core_8h.html">core.h</a></div></div>
-<div class="ttc" id="classgoliath_1_1handles_1_1HandleMap_html"><div class="ttname"><a href="classgoliath_1_1handles_1_1HandleMap.html">goliath::handles::HandleMap</a></div><div class="ttdef"><b>Definition:</b> handle_map.h:12</div></div>
+<div class="ttc" id="classgoliath_1_1handles_1_1HandleMap_html_acf7ff9c9d21255acdb2704218ad3cd57"><div class="ttname"><a href="classgoliath_1_1handles_1_1HandleMap.html#acf7ff9c9d21255acdb2704218ad3cd57">goliath::handles::HandleMap::lockAll</a></div><div class="ttdeci">void lockAll(const size_t &amp;command_id)</div><div class="ttdoc">Lock all handles for a specific command. </div><div class="ttdef"><b>Definition:</b> handle_map.cpp:44</div></div>
+<div class="ttc" id="classgoliath_1_1handles_1_1HandleMap_html_a308bf141653b9cc88357db95235eb525"><div class="ttname"><a href="classgoliath_1_1handles_1_1HandleMap.html#a308bf141653b9cc88357db95235eb525">goliath::handles::HandleMap::add</a></div><div class="ttdeci">void add(const size_t &amp;index, std::shared_ptr&lt; Handle &gt; handle)</div><div class="ttdoc">Add a handle pair. </div><div class="ttdef"><b>Definition:</b> handle_map.cpp:19</div></div>
+<div class="ttc" id="classgoliath_1_1handles_1_1HandleMap_html"><div class="ttname"><a href="classgoliath_1_1handles_1_1HandleMap.html">goliath::handles::HandleMap</a></div><div class="ttdoc">Map of all handles mapped to an integer. </div><div class="ttdef"><b>Definition:</b> handle_map.h:16</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
