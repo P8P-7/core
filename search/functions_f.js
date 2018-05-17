@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['_7ewatcher',['~watcher',['../classgoliath_1_1repositories_1_1watcher.html#a66a088586cc6e195adee83f2d0a7f63b',1,'goliath::repositories::watcher']]]
+  ['_7ewatcher',['~Watcher',['../classgoliath_1_1repositories_1_1Watcher.html#a84db4a7c7f7c7d3a62104713920678c8',1,'goliath::repositories::Watcher']]]
 ];

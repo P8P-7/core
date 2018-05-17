@@ -94,13 +94,19 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="detector_8h.html">detector.h</a>&quot;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div>
 <div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="namespacegoliath_1_1vision.html">   10</a></span>&#160;<span class="keyword">namespace </span>goliath::vision {</div>
-<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="classgoliath_1_1vision_1_1color__region__detector.html">   11</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classgoliath_1_1vision_1_1color__region__detector.html">color_region_detector</a> : <span class="keyword">public</span> <a class="code" href="classgoliath_1_1vision_1_1detector.html">detector</a> {</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <a class="code" href="classgoliath_1_1vision_1_1color__region__detector.html">color_region_detector</a>(<span class="keyword">const</span> cv::Mat &amp;input);</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    };</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;}</div>
-<div class="ttc" id="classgoliath_1_1vision_1_1color__region__detector_html"><div class="ttname"><a href="classgoliath_1_1vision_1_1color__region__detector.html">goliath::vision::color_region_detector</a></div><div class="ttdef"><b>Definition:</b> color_region_detector.h:11</div></div>
-<div class="ttc" id="classgoliath_1_1vision_1_1detector_html"><div class="ttname"><a href="classgoliath_1_1vision_1_1detector.html">goliath::vision::detector</a></div><div class="ttdoc">Base class of detectors that take an input and detect a vector of shapes, colors or sizes...</div><div class="ttdef"><b>Definition:</b> detector.h:16</div></div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="classgoliath_1_1vision_1_1ColorRegionDetector.html">   15</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classgoliath_1_1vision_1_1ColorRegionDetector.html">ColorRegionDetector</a> : <span class="keyword">public</span> <a class="code" href="classgoliath_1_1vision_1_1Detector.html">Detector</a> {</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <a class="code" href="classgoliath_1_1vision_1_1ColorRegionDetector.html">ColorRegionDetector</a>(<span class="keyword">const</span> cv::Mat&amp; input, <span class="keywordtype">int</span> hMin, <span class="keywordtype">int</span> hMax, <span class="keywordtype">int</span> sMin, <span class="keywordtype">int</span> sMax);</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        std::vector&lt;cv::Vec4d&gt; <a class="code" href="classgoliath_1_1vision_1_1ColorRegionDetector.html#a25474e1dd6c48847a89f488469bf81dd">detect</a>() <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keywordtype">int</span> hMin, hMax, sMin, sMax;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    };</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;}</div>
+<div class="ttc" id="classgoliath_1_1vision_1_1ColorRegionDetector_html_a25474e1dd6c48847a89f488469bf81dd"><div class="ttname"><a href="classgoliath_1_1vision_1_1ColorRegionDetector.html#a25474e1dd6c48847a89f488469bf81dd">goliath::vision::ColorRegionDetector::detect</a></div><div class="ttdeci">std::vector&lt; cv::Vec4d &gt; detect() const override</div><div class="ttdef"><b>Definition:</b> color_region_detector.cpp:12</div></div>
+<div class="ttc" id="classgoliath_1_1vision_1_1ColorRegionDetector_html"><div class="ttname"><a href="classgoliath_1_1vision_1_1ColorRegionDetector.html">goliath::vision::ColorRegionDetector</a></div><div class="ttdef"><b>Definition:</b> color_region_detector.h:15</div></div>
+<div class="ttc" id="classgoliath_1_1vision_1_1Detector_html"><div class="ttname"><a href="classgoliath_1_1vision_1_1Detector.html">goliath::vision::Detector</a></div><div class="ttdoc">Base class of detectors that take an input and detect a vector of shapes, colors or sizes...</div><div class="ttdef"><b>Definition:</b> detector.h:15</div></div>
 <div class="ttc" id="detector_8h_html"><div class="ttname"><a href="detector_8h.html">detector.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

@@ -1,11 +1,12 @@
 var searchData=
 [
-  ['canny_5fprocessor',['canny_processor',['../classgoliath_1_1vision_1_1canny__processor.html',1,'goliath::vision']]],
-  ['color_5fprocessor',['color_processor',['../classgoliath_1_1vision_1_1color__processor.html',1,'goliath::vision']]],
-  ['color_5fregion_5fdetector',['color_region_detector',['../classgoliath_1_1vision_1_1color__region__detector.html',1,'goliath::vision']]],
-  ['command',['command',['../classgoliath_1_1commands_1_1command.html',1,'goliath::commands']]],
-  ['command_5fexecutor',['command_executor',['../classgoliath_1_1commands_1_1command__executor.html',1,'goliath::commands']]],
-  ['command_5fitem',['command_item',['../structgoliath_1_1commands_1_1command__item.html',1,'goliath::commands']]],
-  ['command_5fmap',['command_map',['../classgoliath_1_1commands_1_1command__map.html',1,'goliath::commands']]],
-  ['context',['context',['../classgoliath_1_1audio_1_1context.html',1,'goliath::audio']]]
+  ['cannyprocessor',['CannyProcessor',['../classgoliath_1_1vision_1_1CannyProcessor.html',1,'goliath::vision']]],
+  ['colorprocessor',['ColorProcessor',['../classgoliath_1_1vision_1_1ColorProcessor.html',1,'goliath::vision']]],
+  ['colorregiondetector',['ColorRegionDetector',['../classgoliath_1_1vision_1_1ColorRegionDetector.html',1,'goliath::vision']]],
+  ['command',['Command',['../classgoliath_1_1commands_1_1Command.html',1,'goliath::commands']]],
+  ['command',['Command',['../classgoliath_1_1commmands_1_1Command.html',1,'goliath::commmands']]],
+  ['commandexecutor',['CommandExecutor',['../classgoliath_1_1commands_1_1CommandExecutor.html',1,'goliath::commands']]],
+  ['commanditem',['CommandItem',['../structgoliath_1_1commands_1_1CommandItem.html',1,'goliath::commands']]],
+  ['commandmap',['CommandMap',['../classgoliath_1_1commands_1_1CommandMap.html',1,'goliath::commands']]],
+  ['context',['Context',['../classgoliath_1_1openal_1_1Context.html',1,'goliath::openal']]]
 ];

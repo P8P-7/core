@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['line_5fdetector',['line_detector',['../classgoliath_1_1vision_1_1line__detector.html#a2887cb878ada8fdcd536522e9095d11d',1,'goliath::vision::line_detector']]],
-  ['lock',['lock',['../classgoliath_1_1handles_1_1handle.html#abc045776e41489a3b1235a6dd0413295',1,'goliath::handles::handle']]],
-  ['longest_5flines',['longest_lines',['../classgoliath_1_1vision_1_1line__detector.html#ad5a9b64d79c3e896c40319dd2dc62cab',1,'goliath::vision::line_detector']]]
+  ['linedetector',['LineDetector',['../classgoliath_1_1vision_1_1LineDetector.html#ab129d04b18f54f9f50a7855167f5e06d',1,'goliath::vision::LineDetector']]],
+  ['lock',['lock',['../classgoliath_1_1handles_1_1Handle.html#ada0713e8f0701f4a295d009b4d26125e',1,'goliath::handles::Handle']]],
+  ['longestlines',['longestLines',['../classgoliath_1_1vision_1_1LineDetector.html#a41190a1d46f56ae0fb6a9588b17ce49a',1,'goliath::vision::LineDetector']]]
 ];

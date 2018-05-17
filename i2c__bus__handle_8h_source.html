@@ -92,22 +92,22 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;../../core/handle.h&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;goliath/core.h&gt;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">namespace </span>goliath::handles {</div>
-<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="classgoliath_1_1handles_1_1i2c__bus__handle.html">    7</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classgoliath_1_1handles_1_1i2c__bus__handle.html">i2c_bus_handle</a>: <span class="keyword">public</span> <a class="code" href="classgoliath_1_1handles_1_1handle.html">handle</a> {</div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="classgoliath_1_1handles_1_1I2cBusHandle.html">    7</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classgoliath_1_1handles_1_1I2cBusHandle.html">I2cBusHandle</a> : <span class="keyword">public</span> <a class="code" href="classgoliath_1_1handles_1_1Handle.html">Handle</a> {</div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;        <a class="code" href="classgoliath_1_1handles_1_1i2c__bus__handle.html">i2c_bus_handle</a>(<span class="keyword">const</span> std::string&amp; device);</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;        <a class="code" href="classgoliath_1_1handles_1_1I2cBusHandle.html">I2cBusHandle</a>(<span class="keyword">const</span> std::string&amp; device);</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <span class="keyword">const</span> std::string&amp; <a class="code" href="classgoliath_1_1handles_1_1i2c__bus__handle.html#a8eb25e39d7985bc4ed71b742f9641364">get_device_path</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <span class="keyword">const</span> std::string&amp; <a class="code" href="classgoliath_1_1handles_1_1I2cBusHandle.html#a6980d87408eca7c6e537d12c75fa9716">getDevicePath</a>() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keyword">private</span>:</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        std::string device;</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    };</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;}</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
-<div class="ttc" id="classgoliath_1_1handles_1_1handle_html"><div class="ttname"><a href="classgoliath_1_1handles_1_1handle.html">goliath::handles::handle</a></div><div class="ttdef"><b>Definition:</b> handle.h:9</div></div>
-<div class="ttc" id="classgoliath_1_1handles_1_1i2c__bus__handle_html"><div class="ttname"><a href="classgoliath_1_1handles_1_1i2c__bus__handle.html">goliath::handles::i2c_bus_handle</a></div><div class="ttdef"><b>Definition:</b> i2c_bus_handle.h:7</div></div>
-<div class="ttc" id="classgoliath_1_1handles_1_1i2c__bus__handle_html_a8eb25e39d7985bc4ed71b742f9641364"><div class="ttname"><a href="classgoliath_1_1handles_1_1i2c__bus__handle.html#a8eb25e39d7985bc4ed71b742f9641364">goliath::handles::i2c_bus_handle::get_device_path</a></div><div class="ttdeci">const std::string &amp; get_device_path() const </div><div class="ttdef"><b>Definition:</b> i2c_bus_handle.cpp:7</div></div>
+<div class="ttc" id="classgoliath_1_1handles_1_1I2cBusHandle_html_a6980d87408eca7c6e537d12c75fa9716"><div class="ttname"><a href="classgoliath_1_1handles_1_1I2cBusHandle.html#a6980d87408eca7c6e537d12c75fa9716">goliath::handles::I2cBusHandle::getDevicePath</a></div><div class="ttdeci">const std::string &amp; getDevicePath() const </div><div class="ttdef"><b>Definition:</b> i2c_bus_handle.cpp:9</div></div>
+<div class="ttc" id="classgoliath_1_1handles_1_1Handle_html"><div class="ttname"><a href="classgoliath_1_1handles_1_1Handle.html">goliath::handles::Handle</a></div><div class="ttdef"><b>Definition:</b> handle.h:8</div></div>
+<div class="ttc" id="classgoliath_1_1handles_1_1I2cBusHandle_html"><div class="ttname"><a href="classgoliath_1_1handles_1_1I2cBusHandle.html">goliath::handles::I2cBusHandle</a></div><div class="ttdef"><b>Definition:</b> i2c_bus_handle.h:7</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

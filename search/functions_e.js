@@ -1,10 +1,10 @@
 var searchData=
 [
-  ['wait_5fand_5flock',['wait_and_lock',['../classgoliath_1_1handles_1_1handle.html#a80bd5b72ecb561514723472ef960d9b1',1,'goliath::handles::handle']]],
-  ['watch',['watch',['../classgoliath_1_1repositories_1_1watcher.html#a4fb8c9aa3068f74af3d2501cef0ccead',1,'goliath::repositories::watcher']]],
-  ['watcher',['watcher',['../classgoliath_1_1repositories_1_1watcher.html#a73e76f6a8d68478bb7513533d31f5bbd',1,'goliath::repositories::watcher']]],
-  ['webcam',['webcam',['../classgoliath_1_1vision_1_1webcam.html#a4226f1618fa97774f9b72beb8b1a1f89',1,'goliath::vision::webcam::webcam(const int cap_id)'],['../classgoliath_1_1vision_1_1webcam.html#a67c910a1696436f4d49b0cb27a838f58',1,'goliath::vision::webcam::webcam(const int cap_id, const int color)']]],
-  ['webcam_5fhandle',['webcam_handle',['../classgoliath_1_1handles_1_1webcam__handle.html#a6680e9528b4043de918c93d1c7a134c2',1,'goliath::handles::webcam_handle']]],
-  ['what',['what',['../classgoliath_1_1exceptions_1_1i2c__error.html#a09eda44e988d59cf113d4449c63ca4bf',1,'goliath::exceptions::i2c_error']]],
-  ['write',['write',['../classgoliath_1_1i2c_1_1i2c__slave.html#a07ba4458fcb9a0350aa3c73f89bd2aa4',1,'goliath::i2c::i2c_slave']]]
+  ['waitandlock',['waitAndLock',['../classgoliath_1_1handles_1_1Handle.html#a20cb0b4d91c945dd35a4a3cfa970e613',1,'goliath::handles::Handle']]],
+  ['watch',['watch',['../classgoliath_1_1repositories_1_1Watcher.html#ab496ec3e1cd6417e7bb968d228115665',1,'goliath::repositories::Watcher']]],
+  ['watcher',['Watcher',['../classgoliath_1_1repositories_1_1Watcher.html#a757936bbdabe123014164f3ae799dc7c',1,'goliath::repositories::Watcher']]],
+  ['webcam',['Webcam',['../classgoliath_1_1vision_1_1Webcam.html#a002cbdf9be45b2f382610af812d011df',1,'goliath::vision::Webcam::Webcam(const int capId)'],['../classgoliath_1_1vision_1_1Webcam.html#ad4cba289bc1522b6ce2fc027175ab216',1,'goliath::vision::Webcam::Webcam(const int capId, const int color)']]],
+  ['webcamhandle',['WebcamHandle',['../classgoliath_1_1handles_1_1WebcamHandle.html#a5768404ebca1a695042c47842586c766',1,'goliath::handles::WebcamHandle']]],
+  ['what',['what',['../classgoliath_1_1exceptions_1_1I2cError.html#a21d1caf1efaec20efb1f4ce8e9cd39d8',1,'goliath::exceptions::I2cError']]],
+  ['write',['write',['../classgoliath_1_1i2c_1_1I2cSlave.html#ad0b44622c4cc56b48f5a7a39291bde36',1,'goliath::i2c::I2cSlave']]]
 ];

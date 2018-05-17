@@ -100,47 +100,51 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1vision_1_1color__region__detector.html">color_region_detector</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1vision_1_1ColorRegionDetector.html">ColorRegionDetector</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1vision_1_1detector.html">detector</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Base class of detectors that take an input and detect a vector of shapes, colors or sizes.  <a href="classgoliath_1_1vision_1_1detector.html#details">More...</a><br/></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1vision_1_1Detector.html">Detector</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Base class of detectors that take an input and detect a vector of shapes, colors or sizes.  <a href="classgoliath_1_1vision_1_1Detector.html#details">More...</a><br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1vision_1_1follow__line__detector.html">follow_line_detector</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Takes in an input image, splits it up into "boxes". Within those boxes it checks if there is a single contour, if so take the center of that contour and compare it to the center of the box. This will return an offset. Take the average of all offsets to determine if the robot should go straight, left or right. The second value will be the distance from the edge of the box (percentage) the robot will have to turn.  <a href="classgoliath_1_1vision_1_1follow__line__detector.html#details">More...</a><br/></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1vision_1_1FollowLineDetector.html">FollowLineDetector</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Takes in an input image, splits it up into "boxes". Within those boxes it checks if there is a single contour, if so take the center of that contour and compare it to the center of the box. This will return an offset. Take the average of all offsets to determine if the robot should go straight, left or right. The second value will be the distance from the edge of the box (percentage) the robot will have to turn.  <a href="classgoliath_1_1vision_1_1FollowLineDetector.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1vision_1_1LineDetector.html">LineDetector</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1vision_1_1WithinBoxDetector.html">WithinBoxDetector</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1vision_1_1CannyProcessor.html">CannyProcessor</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classgoliath_1_1vision_1_1Processor.html">Processor</a> that returns a canny image of the input.  <a href="classgoliath_1_1vision_1_1CannyProcessor.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1vision_1_1ColorProcessor.html">ColorProcessor</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classgoliath_1_1vision_1_1Processor.html">Processor</a> that returns an image with only colors within a specific range.  <a href="classgoliath_1_1vision_1_1ColorProcessor.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1vision_1_1Processor.html">Processor</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1vision_1_1RoiProcessor.html">RoiProcessor</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Takes an input and returns a ROI selection from that image.  <a href="classgoliath_1_1vision_1_1RoiProcessor.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1vision_1_1VisionUtilities.html">VisionUtilities</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains useful utility function for vision calculations.  <a href="classgoliath_1_1vision_1_1VisionUtilities.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1vision_1_1Webcam.html">Webcam</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wrapper class around VideoCapture.  <a href="classgoliath_1_1vision_1_1Webcam.html#details">More...</a><br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1vision_1_1line__detector.html">line_detector</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Takes in an image and detects all lines in the image.  <a href="classgoliath_1_1vision_1_1line__detector.html#details">More...</a><br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1vision_1_1within__box__detector.html">within_box_detector</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1vision_1_1canny__processor.html">canny_processor</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processor that returns a canny image of the input.  <a href="classgoliath_1_1vision_1_1canny__processor.html#details">More...</a><br/></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1vision_1_1color__processor.html">color_processor</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processor that returns an image with only colors within a specific range.  <a href="classgoliath_1_1vision_1_1color__processor.html#details">More...</a><br/></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1vision_1_1processor.html">processor</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Base class of processors that take in an input and manipulate in some way returning the output from the virtual.  <a href="classgoliath_1_1vision_1_1processor.html#details">More...</a><br/></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1vision_1_1roi__processor.html">roi_processor</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Takes an input and returns a ROI selection from that image.  <a href="classgoliath_1_1vision_1_1roi__processor.html#details">More...</a><br/></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1vision_1_1vision__utilities.html">vision_utilities</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains useful utility function for vision calculations.  <a href="classgoliath_1_1vision_1_1vision__utilities.html#details">More...</a><br/></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1vision_1_1webcam.html">webcam</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wrapper class around VideoCapture.  <a href="classgoliath_1_1vision_1_1webcam.html#details">More...</a><br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:a39b046cc4cce5466d69e5841de9c9edd"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegoliath_1_1vision.html#a39b046cc4cce5466d69e5841de9c9edd">follow_line_direction</a> { <a class="el" href="namespacegoliath_1_1vision.html#a39b046cc4cce5466d69e5841de9c9eddae8a32fc921abc668f7fd61a3cbb3a5c4">ON_COURSE</a> = 0, 
-<a class="el" href="namespacegoliath_1_1vision.html#a39b046cc4cce5466d69e5841de9c9edda8e5a344cdb8c9c49cc633dd45dd1efb5">LEFT</a> = 1, 
-<a class="el" href="namespacegoliath_1_1vision.html#a39b046cc4cce5466d69e5841de9c9edda294b5e67eb57ded229b3a77efb295232">RIGHT</a> = 2, 
-<a class="el" href="namespacegoliath_1_1vision.html#a39b046cc4cce5466d69e5841de9c9eddabdbf81c7770d68bbb577464178080918">NO_LINE</a> = 3
+<tr class="memitem:ab57b7fa0d8bdbecbaa361caf5050b9b5"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegoliath_1_1vision.html#ab57b7fa0d8bdbecbaa361caf5050b9b5">FollowLineDirection</a> { <a class="el" href="namespacegoliath_1_1vision.html#ab57b7fa0d8bdbecbaa361caf5050b9b5ae8a32fc921abc668f7fd61a3cbb3a5c4">ON_COURSE</a> = 0, 
+<a class="el" href="namespacegoliath_1_1vision.html#ab57b7fa0d8bdbecbaa361caf5050b9b5a8e5a344cdb8c9c49cc633dd45dd1efb5">LEFT</a> = 1, 
+<a class="el" href="namespacegoliath_1_1vision.html#ab57b7fa0d8bdbecbaa361caf5050b9b5a294b5e67eb57ded229b3a77efb295232">RIGHT</a> = 2, 
+<a class="el" href="namespacegoliath_1_1vision.html#ab57b7fa0d8bdbecbaa361caf5050b9b5abdbf81c7770d68bbb577464178080918">NO_LINE</a> = 3
  }</td></tr>
-<tr class="memdesc:a39b046cc4cce5466d69e5841de9c9edd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a direction the robot should go in, outputted from the follow_line_detector.  <a href="namespacegoliath_1_1vision.html#a39b046cc4cce5466d69e5841de9c9edd">More...</a><br/></td></tr>
-<tr class="separator:a39b046cc4cce5466d69e5841de9c9edd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memdesc:ab57b7fa0d8bdbecbaa361caf5050b9b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a direction the robot should go in, outputted from the follow_line_detector.  <a href="namespacegoliath_1_1vision.html#ab57b7fa0d8bdbecbaa361caf5050b9b5">More...</a><br/></td></tr>
+<tr class="separator:ab57b7fa0d8bdbecbaa361caf5050b9b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
@@ -166,28 +170,28 @@ const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href=
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Module for all things vision-related. </p>
 </div><h2 class="groupheader">Enumeration Type Documentation</h2>
-<a class="anchor" id="a39b046cc4cce5466d69e5841de9c9edd"></a>
+<a class="anchor" id="ab57b7fa0d8bdbecbaa361caf5050b9b5"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">enum <a class="el" href="namespacegoliath_1_1vision.html#a39b046cc4cce5466d69e5841de9c9edd">goliath::vision::follow_line_direction</a></td>
+          <td class="memname">enum <a class="el" href="namespacegoliath_1_1vision.html#ab57b7fa0d8bdbecbaa361caf5050b9b5">goliath::vision::FollowLineDirection</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Represents a direction the robot should go in, outputted from the <a class="el" href="classgoliath_1_1vision_1_1follow__line__detector.html" title="Takes in an input image, splits it up into &quot;boxes&quot;. Within those boxes it checks if there is a single...">follow_line_detector</a>. </p>
+<p>Represents a direction the robot should go in, outputted from the follow_line_detector. </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><em><a class="anchor" id="a39b046cc4cce5466d69e5841de9c9eddae8a32fc921abc668f7fd61a3cbb3a5c4"></a>ON_COURSE</em>&#160;</td><td class="fielddoc">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><em><a class="anchor" id="ab57b7fa0d8bdbecbaa361caf5050b9b5ae8a32fc921abc668f7fd61a3cbb3a5c4"></a>ON_COURSE</em>&#160;</td><td class="fielddoc">
 <p>Robot should continue going straight </p>
 </td></tr>
-<tr><td class="fieldname"><em><a class="anchor" id="a39b046cc4cce5466d69e5841de9c9edda8e5a344cdb8c9c49cc633dd45dd1efb5"></a>LEFT</em>&#160;</td><td class="fielddoc">
+<tr><td class="fieldname"><em><a class="anchor" id="ab57b7fa0d8bdbecbaa361caf5050b9b5a8e5a344cdb8c9c49cc633dd45dd1efb5"></a>LEFT</em>&#160;</td><td class="fielddoc">
 <p>Robot should go left </p>
 </td></tr>
-<tr><td class="fieldname"><em><a class="anchor" id="a39b046cc4cce5466d69e5841de9c9edda294b5e67eb57ded229b3a77efb295232"></a>RIGHT</em>&#160;</td><td class="fielddoc">
+<tr><td class="fieldname"><em><a class="anchor" id="ab57b7fa0d8bdbecbaa361caf5050b9b5a294b5e67eb57ded229b3a77efb295232"></a>RIGHT</em>&#160;</td><td class="fielddoc">
 <p>Robot should go right </p>
 </td></tr>
-<tr><td class="fieldname"><em><a class="anchor" id="a39b046cc4cce5466d69e5841de9c9eddabdbf81c7770d68bbb577464178080918"></a>NO_LINE</em>&#160;</td><td class="fielddoc">
+<tr><td class="fieldname"><em><a class="anchor" id="ab57b7fa0d8bdbecbaa361caf5050b9b5abdbf81c7770d68bbb577464178080918"></a>NO_LINE</em>&#160;</td><td class="fielddoc">
 <p>No single line detected </p>
 </td></tr>
 </table>

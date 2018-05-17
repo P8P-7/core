@@ -92,22 +92,23 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="command_8h.html">command.h</a>&quot;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">namespace </span>goliath::commands {</div>
-<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="classgoliath_1_1commands_1_1move__tower__command.html">    6</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classgoliath_1_1commands_1_1move__tower__command.html">move_tower_command</a>: <span class="keyword">public</span> <a class="code" href="classgoliath_1_1commands_1_1command.html">command</a> {</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;        <a class="code" href="classgoliath_1_1commands_1_1move__tower__command.html">move_tower_command</a>();</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        <span class="keywordtype">void</span> execute(<span class="keyword">const</span> <a class="code" href="classgoliath_1_1handles_1_1handle__map.html">handles::handle_map</a>&amp; handles, <span class="keyword">const</span> CommandMessage &amp;message) <span class="keyword">override</span> ;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    };</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;}</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;../handles.h&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">namespace </span>goliath::commands {</div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="classgoliath_1_1commands_1_1MoveTowerCommand.html">    7</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classgoliath_1_1commands_1_1MoveTowerCommand.html">MoveTowerCommand</a> : <span class="keyword">public</span> <a class="code" href="classgoliath_1_1commands_1_1Command.html">Command</a> {</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;        <a class="code" href="classgoliath_1_1commands_1_1MoveTowerCommand.html">MoveTowerCommand</a>();</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        <span class="keywordtype">void</span> execute(<span class="keyword">const</span> <a class="code" href="classgoliath_1_1handles_1_1HandleMap.html">handles::HandleMap</a>&amp; handles, <span class="keyword">const</span> CommandMessage &amp;message) <span class="keyword">override</span> ;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    };</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;}</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
 <div class="ttc" id="command_8h_html"><div class="ttname"><a href="command_8h.html">command.h</a></div></div>
-<div class="ttc" id="classgoliath_1_1commands_1_1move__tower__command_html"><div class="ttname"><a href="classgoliath_1_1commands_1_1move__tower__command.html">goliath::commands::move_tower_command</a></div><div class="ttdef"><b>Definition:</b> move_tower_command.h:6</div></div>
-<div class="ttc" id="classgoliath_1_1handles_1_1handle__map_html"><div class="ttname"><a href="classgoliath_1_1handles_1_1handle__map.html">goliath::handles::handle_map</a></div><div class="ttdef"><b>Definition:</b> handle_map.h:15</div></div>
-<div class="ttc" id="classgoliath_1_1commands_1_1command_html"><div class="ttname"><a href="classgoliath_1_1commands_1_1command.html">goliath::commands::command</a></div><div class="ttdoc">Command base class. </div><div class="ttdef"><b>Definition:</b> command.h:25</div></div>
+<div class="ttc" id="classgoliath_1_1commands_1_1MoveTowerCommand_html"><div class="ttname"><a href="classgoliath_1_1commands_1_1MoveTowerCommand.html">goliath::commands::MoveTowerCommand</a></div><div class="ttdef"><b>Definition:</b> move_tower_command.h:7</div></div>
+<div class="ttc" id="classgoliath_1_1commands_1_1Command_html"><div class="ttname"><a href="classgoliath_1_1commands_1_1Command.html">goliath::commands::Command</a></div><div class="ttdef"><b>Definition:</b> command.h:23</div></div>
+<div class="ttc" id="classgoliath_1_1handles_1_1HandleMap_html"><div class="ttname"><a href="classgoliath_1_1handles_1_1HandleMap.html">goliath::handles::HandleMap</a></div><div class="ttdef"><b>Definition:</b> handle_map.h:12</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

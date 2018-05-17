@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['follow_5fline_5fcommand',['follow_line_command',['../classgoliath_1_1commands_1_1follow__line__command.html',1,'goliath::commands']]],
-  ['follow_5fline_5fdetector',['follow_line_detector',['../classgoliath_1_1vision_1_1follow__line__detector.html',1,'goliath::vision']]],
-  ['follow_5fline_5fdetector',['follow_line_detector',['../classgoliath_1_1vision_1_1follow__line__detector.html#a8b62c2e552689d204615612b4366d0de',1,'goliath::vision::follow_line_detector::follow_line_detector(const cv::Mat &amp;input, int boxes, int box_height, int boxes_bottom_margin, int boxes_horizontal_margin, double min_contour_area, double max_contour_area)'],['../classgoliath_1_1vision_1_1follow__line__detector.html#aa3e8ebf9ddcc9629e5142dcd0d805ef9',1,'goliath::vision::follow_line_detector::follow_line_detector(const follow_line_detector &amp;other)']]],
   ['follow_5fline_5fdetector_2eh',['follow_line_detector.h',['../follow__line__detector_8h.html',1,'']]],
-  ['follow_5fline_5fdirection',['follow_line_direction',['../namespacegoliath_1_1vision.html#a39b046cc4cce5466d69e5841de9c9edd',1,'goliath::vision']]]
+  ['followlinecommand',['FollowLineCommand',['../classgoliath_1_1commands_1_1FollowLineCommand.html',1,'goliath::commands']]],
+  ['followlinedetector',['FollowLineDetector',['../classgoliath_1_1vision_1_1FollowLineDetector.html#a2f79bafbf63c6b0c00975dc1fce2a8b2',1,'goliath::vision::FollowLineDetector::FollowLineDetector(const cv::Mat &amp;input, int boxes, int boxHeight, int boxesBottomMargin, int boxesHorizontalMargin, double minContourArea, double maxContourArea)'],['../classgoliath_1_1vision_1_1FollowLineDetector.html#a2a163ec1f74133e3bed3df13708c25be',1,'goliath::vision::FollowLineDetector::FollowLineDetector(const FollowLineDetector &amp;other)']]],
+  ['followlinedetector',['FollowLineDetector',['../classgoliath_1_1vision_1_1FollowLineDetector.html',1,'goliath::vision']]],
+  ['followlinedirection',['FollowLineDirection',['../namespacegoliath_1_1vision.html#ab57b7fa0d8bdbecbaa361caf5050b9b5',1,'goliath::vision']]]
 ];

@@ -91,30 +91,28 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="contents">
 <a href="within__box__detector_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="detector_8h.html">detector.h</a>&quot;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="line__detector_8h.html">line_detector.h</a>&quot;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">namespace </span>goliath::vision {</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">int</span> DISTANCE_FROM_EDGE_THRESHOLD = 5;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">int</span> DISTANCE_FOR_CORNER_THRESHOLD = 5;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
-<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="classgoliath_1_1vision_1_1within__box__detector.html">   15</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classgoliath_1_1vision_1_1within__box__detector.html">within_box_detector</a> : <span class="keyword">public</span> <a class="code" href="classgoliath_1_1vision_1_1line__detector.html">line_detector</a> {</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <a class="code" href="classgoliath_1_1vision_1_1within__box__detector.html">within_box_detector</a>(<span class="keyword">const</span> cv::Mat &amp;input, <span class="keywordtype">int</span> threshold, <span class="keywordtype">double</span> min_line_length, <span class="keywordtype">double</span> max_line_gap);</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        std::vector&lt;cv::Vec4d&gt; <a class="code" href="classgoliath_1_1vision_1_1within__box__detector.html#a3bc1ba6b3fe0a01953699547aa764ba9">detect</a>() <span class="keyword">const override</span>;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keywordtype">bool</span> point_at_edge(<span class="keywordtype">int</span> point, <span class="keywordtype">int</span> edge) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keywordtype">bool</span> line_is_corner(cv::Vec4d &amp;line, std::vector&lt;cv::Vec4d&gt; &amp;others);</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="keywordtype">bool</span> point_is_corner(cv::Vec4d &amp;line1, cv::Vec4d &amp;line2);</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    };</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;}</div>
-<div class="ttc" id="classgoliath_1_1vision_1_1within__box__detector_html"><div class="ttname"><a href="classgoliath_1_1vision_1_1within__box__detector.html">goliath::vision::within_box_detector</a></div><div class="ttdef"><b>Definition:</b> within_box_detector.h:15</div></div>
-<div class="ttc" id="classgoliath_1_1vision_1_1line__detector_html"><div class="ttname"><a href="classgoliath_1_1vision_1_1line__detector.html">goliath::vision::line_detector</a></div><div class="ttdoc">Takes in an image and detects all lines in the image. </div><div class="ttdef"><b>Definition:</b> line_detector.h:27</div></div>
-<div class="ttc" id="classgoliath_1_1vision_1_1within__box__detector_html_a3bc1ba6b3fe0a01953699547aa764ba9"><div class="ttname"><a href="classgoliath_1_1vision_1_1within__box__detector.html#a3bc1ba6b3fe0a01953699547aa764ba9">goliath::vision::within_box_detector::detect</a></div><div class="ttdeci">std::vector&lt; cv::Vec4d &gt; detect() const override</div><div class="ttdef"><b>Definition:</b> within_box_detector.cpp:9</div></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="line__detector_8h.html">line_detector.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">namespace </span>goliath::vision {</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">int</span> DISTANCE_FROM_EDGE_THRESHOLD = 5;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">int</span> DISTANCE_FOR_CORNER_THRESHOLD = 5;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="classgoliath_1_1vision_1_1WithinBoxDetector.html">   14</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classgoliath_1_1vision_1_1WithinBoxDetector.html">WithinBoxDetector</a> : <span class="keyword">public</span> <a class="code" href="classgoliath_1_1vision_1_1LineDetector.html">LineDetector</a> {</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <a class="code" href="classgoliath_1_1vision_1_1WithinBoxDetector.html">WithinBoxDetector</a>(<span class="keyword">const</span> cv::Mat &amp;input, <span class="keywordtype">int</span> threshold, <span class="keywordtype">double</span> minLineLength, <span class="keywordtype">double</span> maxLineGap);</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        std::vector&lt;cv::Vec4d&gt; <a class="code" href="classgoliath_1_1vision_1_1WithinBoxDetector.html#a24dddd545258791ea234005a4b73d1bc">detect</a>() <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="keywordtype">bool</span> pointAtEdge(<span class="keywordtype">int</span> point, <span class="keywordtype">int</span> edge) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keywordtype">bool</span> lineIsCorner(cv::Vec4d&amp; line, std::vector&lt;cv::Vec4d&gt;&amp; others);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keywordtype">bool</span> pointIsCorner(cv::Vec4d&amp; line1, cv::Vec4d&amp; line2);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    };</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;}</div>
+<div class="ttc" id="classgoliath_1_1vision_1_1WithinBoxDetector_html"><div class="ttname"><a href="classgoliath_1_1vision_1_1WithinBoxDetector.html">goliath::vision::WithinBoxDetector</a></div><div class="ttdef"><b>Definition:</b> within_box_detector.h:14</div></div>
+<div class="ttc" id="classgoliath_1_1vision_1_1LineDetector_html"><div class="ttname"><a href="classgoliath_1_1vision_1_1LineDetector.html">goliath::vision::LineDetector</a></div><div class="ttdef"><b>Definition:</b> line_detector.h:26</div></div>
+<div class="ttc" id="classgoliath_1_1vision_1_1WithinBoxDetector_html_a24dddd545258791ea234005a4b73d1bc"><div class="ttname"><a href="classgoliath_1_1vision_1_1WithinBoxDetector.html#a24dddd545258791ea234005a4b73d1bc">goliath::vision::WithinBoxDetector::detect</a></div><div class="ttdeci">std::vector&lt; cv::Vec4d &gt; detect() const override</div><div class="ttdef"><b>Definition:</b> within_box_detector.cpp:9</div></div>
 <div class="ttc" id="line__detector_8h_html"><div class="ttname"><a href="line__detector_8h.html">line_detector.h</a></div></div>
-<div class="ttc" id="detector_8h_html"><div class="ttname"><a href="detector_8h.html">detector.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

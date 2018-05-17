@@ -93,18 +93,19 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="device_8h.html">device.h</a>&quot;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; <span class="keyword">namespace </span>goliath::audio {</div>
-<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="classgoliath_1_1audio_1_1context.html">   11</a></span>&#160;     <span class="keyword">class </span><a class="code" href="classgoliath_1_1audio_1_1context.html">context</a> {</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;     <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;         <a class="code" href="classgoliath_1_1audio_1_1context.html">context</a>(<span class="keyword">const</span> <a class="code" href="classgoliath_1_1audio_1_1device.html">device</a> &amp;<a class="code" href="classgoliath_1_1audio_1_1device.html">device</a>, <span class="keyword">const</span> ALCint *<a class="code" href="classgoliath_1_1audio_1_1context.html">context</a>);</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;     <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        ALCcontext* alc_context;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;     };</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; }</div>
-<div class="ttc" id="classgoliath_1_1audio_1_1device_html"><div class="ttname"><a href="classgoliath_1_1audio_1_1device.html">goliath::audio::device</a></div><div class="ttdef"><b>Definition:</b> device.h:16</div></div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="namespacegoliath_1_1openal.html">   10</a></span>&#160; <span class="keyword">namespace </span>goliath::openal {</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="classgoliath_1_1openal_1_1Context.html">   15</a></span>&#160;     <span class="keyword">class </span><a class="code" href="classgoliath_1_1openal_1_1Context.html">Context</a> {</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;     <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;         <a class="code" href="classgoliath_1_1openal_1_1Context.html#adbd52d5a7c9937624417b1e8ffbbc1e9">Context</a>(<span class="keyword">const</span> <a class="code" href="classgoliath_1_1openal_1_1Device.html">Device</a> &amp;device, <span class="keyword">const</span> ALCint *context);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;     <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        ALCcontext* alcContext;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;     };</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; }</div>
+<div class="ttc" id="classgoliath_1_1openal_1_1Context_html"><div class="ttname"><a href="classgoliath_1_1openal_1_1Context.html">goliath::openal::Context</a></div><div class="ttdoc">Context to be passed to different devices. </div><div class="ttdef"><b>Definition:</b> context.h:15</div></div>
+<div class="ttc" id="classgoliath_1_1openal_1_1Context_html_adbd52d5a7c9937624417b1e8ffbbc1e9"><div class="ttname"><a href="classgoliath_1_1openal_1_1Context.html#adbd52d5a7c9937624417b1e8ffbbc1e9">goliath::openal::Context::Context</a></div><div class="ttdeci">Context(const Device &amp;device, const ALCint *context)</div><div class="ttdef"><b>Definition:</b> context.cpp:8</div></div>
 <div class="ttc" id="device_8h_html"><div class="ttname"><a href="device_8h.html">device.h</a></div></div>
-<div class="ttc" id="classgoliath_1_1audio_1_1context_html"><div class="ttname"><a href="classgoliath_1_1audio_1_1context.html">goliath::audio::context</a></div><div class="ttdef"><b>Definition:</b> context.h:11</div></div>
+<div class="ttc" id="classgoliath_1_1openal_1_1Device_html"><div class="ttname"><a href="classgoliath_1_1openal_1_1Device.html">goliath::openal::Device</a></div><div class="ttdoc">Base class for any audio device. </div><div class="ttdef"><b>Definition:</b> device.h:17</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

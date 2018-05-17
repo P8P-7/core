@@ -91,28 +91,27 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="contents">
 <a href="color__processor_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;opencv2/opencv.hpp&gt;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="processor_8h.html">processor.h</a>&quot;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="processor_8h.html">processor.h</a>&quot;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">namespace </span>goliath::vision {</div>
-<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="classgoliath_1_1vision_1_1color__processor.html">   17</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classgoliath_1_1vision_1_1color__processor.html">color_processor</a> : <span class="keyword">public</span> <a class="code" href="classgoliath_1_1vision_1_1processor.html">processor</a> {</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <a class="code" href="classgoliath_1_1vision_1_1color__processor.html#a058cc1c3fbddcde17e0fce0733310e1b">color_processor</a>(<span class="keyword">const</span> cv::Mat &amp;input_bgr, <span class="keyword">const</span> cv::Scalar &amp;min, <span class="keyword">const</span> cv::Scalar &amp;max);</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <a class="code" href="classgoliath_1_1vision_1_1color__processor.html#a058cc1c3fbddcde17e0fce0733310e1b">color_processor</a>(<a class="code" href="classgoliath_1_1vision_1_1processor.html">processor</a>&amp; other, <span class="keyword">const</span> cv::Scalar &amp;min, <span class="keyword">const</span> cv::Scalar &amp;max);</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        cv::Mat <a class="code" href="classgoliath_1_1vision_1_1color__processor.html#a78720596a8bdfe9276cea1593cf42f54">process</a>() <span class="keyword">const override</span>;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="keyword">const</span> cv::Scalar min;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keyword">const</span> cv::Scalar max;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    };</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;}</div>
-<div class="ttc" id="classgoliath_1_1vision_1_1color__processor_html"><div class="ttname"><a href="classgoliath_1_1vision_1_1color__processor.html">goliath::vision::color_processor</a></div><div class="ttdoc">Processor that returns an image with only colors within a specific range. </div><div class="ttdef"><b>Definition:</b> color_processor.h:17</div></div>
-<div class="ttc" id="classgoliath_1_1vision_1_1color__processor_html_a78720596a8bdfe9276cea1593cf42f54"><div class="ttname"><a href="classgoliath_1_1vision_1_1color__processor.html#a78720596a8bdfe9276cea1593cf42f54">goliath::vision::color_processor::process</a></div><div class="ttdeci">cv::Mat process() const override</div><div class="ttdef"><b>Definition:</b> color_processor.cpp:13</div></div>
-<div class="ttc" id="classgoliath_1_1vision_1_1processor_html"><div class="ttname"><a href="classgoliath_1_1vision_1_1processor.html">goliath::vision::processor</a></div><div class="ttdoc">Base class of processors that take in an input and manipulate in some way returning the output from t...</div><div class="ttdef"><b>Definition:</b> processor.h:16</div></div>
-<div class="ttc" id="classgoliath_1_1vision_1_1color__processor_html_a058cc1c3fbddcde17e0fce0733310e1b"><div class="ttname"><a href="classgoliath_1_1vision_1_1color__processor.html#a058cc1c3fbddcde17e0fce0733310e1b">goliath::vision::color_processor::color_processor</a></div><div class="ttdeci">color_processor(const cv::Mat &amp;input_bgr, const cv::Scalar &amp;min, const cv::Scalar &amp;max)</div><div class="ttdef"><b>Definition:</b> color_processor.cpp:5</div></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">namespace </span>goliath::vision {</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="classgoliath_1_1vision_1_1ColorProcessor.html">   15</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classgoliath_1_1vision_1_1ColorProcessor.html">ColorProcessor</a> : <span class="keyword">public</span> <a class="code" href="classgoliath_1_1vision_1_1Processor.html">Processor</a> {</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <a class="code" href="classgoliath_1_1vision_1_1ColorProcessor.html#ad5b26395e885a83ee5ae185033fe6095">ColorProcessor</a>(<span class="keyword">const</span> cv::Mat &amp;inputBgr, <span class="keyword">const</span> cv::Scalar &amp;min, <span class="keyword">const</span> cv::Scalar &amp;max);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <a class="code" href="classgoliath_1_1vision_1_1ColorProcessor.html#ad5b26395e885a83ee5ae185033fe6095">ColorProcessor</a>(<a class="code" href="classgoliath_1_1vision_1_1Processor.html">Processor</a>&amp; other, <span class="keyword">const</span> cv::Scalar &amp;min, <span class="keyword">const</span> cv::Scalar &amp;max);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        cv::Mat <a class="code" href="classgoliath_1_1vision_1_1ColorProcessor.html#a90811bcb0e3a3a51cdeba36d8224ef1d">process</a>() <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keyword">const</span> cv::Scalar min;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="keyword">const</span> cv::Scalar max;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    };</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;}</div>
+<div class="ttc" id="classgoliath_1_1vision_1_1ColorProcessor_html_a90811bcb0e3a3a51cdeba36d8224ef1d"><div class="ttname"><a href="classgoliath_1_1vision_1_1ColorProcessor.html#a90811bcb0e3a3a51cdeba36d8224ef1d">goliath::vision::ColorProcessor::process</a></div><div class="ttdeci">cv::Mat process() const override</div><div class="ttdef"><b>Definition:</b> color_processor.cpp:13</div></div>
+<div class="ttc" id="classgoliath_1_1vision_1_1ColorProcessor_html"><div class="ttname"><a href="classgoliath_1_1vision_1_1ColorProcessor.html">goliath::vision::ColorProcessor</a></div><div class="ttdoc">Processor that returns an image with only colors within a specific range. </div><div class="ttdef"><b>Definition:</b> color_processor.h:15</div></div>
+<div class="ttc" id="classgoliath_1_1vision_1_1Processor_html"><div class="ttname"><a href="classgoliath_1_1vision_1_1Processor.html">goliath::vision::Processor</a></div><div class="ttdef"><b>Definition:</b> processor.h:16</div></div>
 <div class="ttc" id="processor_8h_html"><div class="ttname"><a href="processor_8h.html">processor.h</a></div></div>
+<div class="ttc" id="classgoliath_1_1vision_1_1ColorProcessor_html_ad5b26395e885a83ee5ae185033fe6095"><div class="ttname"><a href="classgoliath_1_1vision_1_1ColorProcessor.html#ad5b26395e885a83ee5ae185033fe6095">goliath::vision::ColorProcessor::ColorProcessor</a></div><div class="ttdeci">ColorProcessor(const cv::Mat &amp;inputBgr, const cv::Scalar &amp;min, const cv::Scalar &amp;max)</div><div class="ttdef"><b>Definition:</b> color_processor.cpp:5</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

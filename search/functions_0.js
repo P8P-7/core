@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['canny_5fprocessor',['canny_processor',['../classgoliath_1_1vision_1_1canny__processor.html#a1391dba6409b7ab261f875e9ab78e3f1',1,'goliath::vision::canny_processor']]],
-  ['color_5fprocessor',['color_processor',['../classgoliath_1_1vision_1_1color__processor.html#a058cc1c3fbddcde17e0fce0733310e1b',1,'goliath::vision::color_processor']]]
+  ['cannyprocessor',['CannyProcessor',['../classgoliath_1_1vision_1_1CannyProcessor.html#a3810bb792f931797ad2a9c27ca3d6533',1,'goliath::vision::CannyProcessor']]],
+  ['colorprocessor',['ColorProcessor',['../classgoliath_1_1vision_1_1ColorProcessor.html#ad5b26395e885a83ee5ae185033fe6095',1,'goliath::vision::ColorProcessor']]],
+  ['context',['Context',['../classgoliath_1_1openal_1_1Context.html#adbd52d5a7c9937624417b1e8ffbbc1e9',1,'goliath::openal::Context']]]
 ];

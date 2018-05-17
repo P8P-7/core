@@ -88,10 +88,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 </div><!-- top -->
 <div class="header">
-  <div class="summary">
-<a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pro-attribs">Protected Attributes</a> &#124;
-<a href="classgoliath_1_1vision_1_1line__detector-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">goliath::vision::line_detector Class Reference</div>  </div>
 </div><!--header-->
@@ -101,161 +97,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
  <a href="classgoliath_1_1vision_1_1line__detector.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="line__detector_8h_source.html">line_detector.h</a>&gt;</code></p>
-<div class="dynheader">
-Inheritance diagram for goliath::vision::line_detector:</div>
-<div class="dyncontent">
- <div class="center">
-  <img src="classgoliath_1_1vision_1_1line__detector.png" usemap="#goliath::vision::line_detector_map" alt=""/>
-  <map id="goliath::vision::line_detector_map" name="goliath::vision::line_detector_map">
-<area href="classgoliath_1_1vision_1_1detector.html" title="Base class of detectors that take an input and detect a vector of shapes, colors or sizes..." alt="goliath::vision::detector" shape="rect" coords="0,0,206,24"/>
-<area href="classgoliath_1_1vision_1_1within__box__detector.html" alt="goliath::vision::within_box_detector" shape="rect" coords="0,112,206,136"/>
-</map>
- </div></div>
-<table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
-Public Member Functions</h2></td></tr>
-<tr class="memitem:a552b827adf2b978eb8d1db488b5d1795"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a552b827adf2b978eb8d1db488b5d1795"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>line_detector</b> (const cv::Mat &amp;input, double rho, double theta, int threshold, double min_line_length, double max_line_gap)</td></tr>
-<tr class="separator:a552b827adf2b978eb8d1db488b5d1795"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2887cb878ada8fdcd536522e9095d11d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1vision_1_1line__detector.html#a2887cb878ada8fdcd536522e9095d11d">line_detector</a> (const cv::Mat &amp;input, int threshold, double min_line_length, double max_line_gap)</td></tr>
-<tr class="separator:a2887cb878ada8fdcd536522e9095d11d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5b5012f9524321381983701d8a2b8e12"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5b5012f9524321381983701d8a2b8e12"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>line_detector</b> (const <a class="el" href="classgoliath_1_1vision_1_1line__detector.html">line_detector</a> &amp;other)</td></tr>
-<tr class="separator:a5b5012f9524321381983701d8a2b8e12"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a84fc340934cf6a632d09265fc7e45c7e"><td class="memItemLeft" align="right" valign="top">std::vector&lt; cv::Vec4d &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1vision_1_1line__detector.html#a84fc340934cf6a632d09265fc7e45c7e">detect</a> () const override</td></tr>
-<tr class="separator:a84fc340934cf6a632d09265fc7e45c7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad5a9b64d79c3e896c40319dd2dc62cab"><td class="memItemLeft" align="right" valign="top">std::vector&lt; cv::Vec4d &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1vision_1_1line__detector.html#ad5a9b64d79c3e896c40319dd2dc62cab">longest_lines</a> (std::shared_ptr&lt; <a class="el" href="classgoliath_1_1vision_1_1detector.html">detector</a> &gt; <a class="el" href="classgoliath_1_1vision_1_1detector.html">detector</a>) const </td></tr>
-<tr class="separator:ad5a9b64d79c3e896c40319dd2dc62cab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aee2bd394d9cba324e4bd48f6b33267a2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aee2bd394d9cba324e4bd48f6b33267a2"></a>
-std::vector&lt; cv::Vec4d &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>longest_lines</b> ()</td></tr>
-<tr class="separator:aee2bd394d9cba324e4bd48f6b33267a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_methods_classgoliath_1_1vision_1_1detector"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classgoliath_1_1vision_1_1detector')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classgoliath_1_1vision_1_1detector.html">goliath::vision::detector</a></td></tr>
-<tr class="memitem:adce7fa9ba7bcfc94ec31265972271fdd inherit pub_methods_classgoliath_1_1vision_1_1detector"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1vision_1_1detector.html#adce7fa9ba7bcfc94ec31265972271fdd">detector</a> (const cv::Mat &amp;input)</td></tr>
-<tr class="separator:adce7fa9ba7bcfc94ec31265972271fdd inherit pub_methods_classgoliath_1_1vision_1_1detector"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7c36469bdd06efd4caa18661bcb85f99 inherit pub_methods_classgoliath_1_1vision_1_1detector"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1vision_1_1detector.html#a7c36469bdd06efd4caa18661bcb85f99">detector</a> (const <a class="el" href="classgoliath_1_1vision_1_1detector.html">detector</a> &amp;other)</td></tr>
-<tr class="separator:a7c36469bdd06efd4caa18661bcb85f99 inherit pub_methods_classgoliath_1_1vision_1_1detector"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
-Protected Attributes</h2></td></tr>
-<tr class="memitem:a3b530f9e33716a3722e5e038823cf2df"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3b530f9e33716a3722e5e038823cf2df"></a>
-const int&#160;</td><td class="memItemRight" valign="bottom"><b>threshold</b></td></tr>
-<tr class="separator:a3b530f9e33716a3722e5e038823cf2df"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab2caffe7e9fa2ccaecd1394385ee2ee3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab2caffe7e9fa2ccaecd1394385ee2ee3"></a>
-const double&#160;</td><td class="memItemRight" valign="bottom"><b>rho</b></td></tr>
-<tr class="separator:ab2caffe7e9fa2ccaecd1394385ee2ee3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae1135605fe5d923a9b8a731c807a9daf"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae1135605fe5d923a9b8a731c807a9daf"></a>
-const double&#160;</td><td class="memItemRight" valign="bottom"><b>theta</b></td></tr>
-<tr class="separator:ae1135605fe5d923a9b8a731c807a9daf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a30ccf3428523ab15fb485b2d3653a4c7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a30ccf3428523ab15fb485b2d3653a4c7"></a>
-const double&#160;</td><td class="memItemRight" valign="bottom"><b>min_line_length</b></td></tr>
-<tr class="separator:a30ccf3428523ab15fb485b2d3653a4c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac58ee70c8da69c6097a95e97e89195c6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac58ee70c8da69c6097a95e97e89195c6"></a>
-const double&#160;</td><td class="memItemRight" valign="bottom"><b>max_line_gap</b></td></tr>
-<tr class="separator:ac58ee70c8da69c6097a95e97e89195c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pro_attribs_classgoliath_1_1vision_1_1detector"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classgoliath_1_1vision_1_1detector')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classgoliath_1_1vision_1_1detector.html">goliath::vision::detector</a></td></tr>
-<tr class="memitem:a41a861a5f95c9b11129e9d0e752c5287 inherit pro_attribs_classgoliath_1_1vision_1_1detector"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a41a861a5f95c9b11129e9d0e752c5287"></a>
-cv::Mat&#160;</td><td class="memItemRight" valign="bottom"><b>input</b></td></tr>
-<tr class="separator:a41a861a5f95c9b11129e9d0e752c5287 inherit pro_attribs_classgoliath_1_1vision_1_1detector"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Takes in an image and detects all lines in the image. </p>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a2887cb878ada8fdcd536522e9095d11d"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">line_detector::line_detector </td>
-          <td>(</td>
-          <td class="paramtype">const cv::Mat &amp;&#160;</td>
-          <td class="paramname"><em>input</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>threshold</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>min_line_length</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>max_line_gap</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">input</td><td>Input image </td></tr>
-    <tr><td class="paramname">threshold</td><td>Variable that changes how straight a line must be to be detected. </td></tr>
-    <tr><td class="paramname">min_line_length</td><td>Minimum length of the line </td></tr>
-    <tr><td class="paramname">max_line_gap</td><td>Maximum gap (pixels) between points on a line </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a84fc340934cf6a632d09265fc7e45c7e"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::vector&lt; cv::Vec4d &gt; line_detector::detect </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>Vector of all detected lines </dd></dl>
-
-<p>Implements <a class="el" href="classgoliath_1_1vision_1_1detector.html#a7f73e432d55cccfafc3a50542a43deea">goliath::vision::detector</a>.</p>
-
-<p>Reimplemented in <a class="el" href="classgoliath_1_1vision_1_1within__box__detector.html#a3bc1ba6b3fe0a01953699547aa764ba9">goliath::vision::within_box_detector</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="ad5a9b64d79c3e896c40319dd2dc62cab"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::vector&lt; cv::Vec4d &gt; line_detector::longest_lines </td>
-          <td>(</td>
-          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classgoliath_1_1vision_1_1detector.html">detector</a> &gt;&#160;</td>
-          <td class="paramname"><em>detector</em></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>The longest lines in detected lines </dd></dl>
-
-</div>
-</div>
-<hr/>The documentation for this class was generated from the following files:<ul>
+</div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>/home/travis/build/P8P-7/core/src/modules/vision/detectors/<a class="el" href="line__detector_8h_source.html">line_detector.h</a></li>
-<li>/home/travis/build/P8P-7/core/src/modules/vision/detectors/line_detector.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

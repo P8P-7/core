@@ -1,16 +1,16 @@
 var searchData=
 [
-  ['i2c_5fbus_5fhandle',['i2c_bus_handle',['../classgoliath_1_1handles_1_1i2c__bus__handle.html',1,'goliath::handles']]],
-  ['i2c_5ferror',['i2c_error',['../classgoliath_1_1exceptions_1_1i2c__error.html',1,'goliath::exceptions']]],
-  ['i2c_5ferror',['i2c_error',['../classgoliath_1_1exceptions_1_1i2c__error.html#ab87296f7ddf5e0620174aa84f928e2e1',1,'goliath::exceptions::i2c_error']]],
-  ['i2c_5fslave',['i2c_slave',['../classgoliath_1_1i2c_1_1i2c__slave.html',1,'goliath::i2c']]],
-  ['i2c_5fslave',['i2c_slave',['../classgoliath_1_1i2c_1_1i2c__slave.html#aad60d064131e44f29ff059de22cedd2d',1,'goliath::i2c::i2c_slave::i2c_slave(const handles::i2c_bus_handle &amp;bus_handle, const handles::i2c_slave_handle &amp;slave_handle)'],['../classgoliath_1_1i2c_1_1i2c__slave.html#a511edbdab536e53138cb28f1ac426c56',1,'goliath::i2c::i2c_slave::i2c_slave(const handles::i2c_bus_handle &amp;bus_handle, const i2c_address &amp;slave_address)']]],
-  ['i2c_5fslave_5fhandle',['i2c_slave_handle',['../classgoliath_1_1handles_1_1i2c__slave__handle.html',1,'goliath::handles']]],
-  ['input',['input',['../classgoliath_1_1vision_1_1processor.html#ab666c7206d12889dbf89c1d0e0fa038b',1,'goliath::vision::processor']]],
-  ['interrupt',['interrupt',['../classgoliath_1_1commands_1_1command.html#a53393b5e9918340528219f0cd7d1aaac',1,'goliath::commands::command']]],
-  ['invalidate',['invalidate',['../classgoliath_1_1repositories_1_1repository.html#a66904543a12c37d40a4a50cb50959d08',1,'goliath::repositories::repository']]],
-  ['invalidate_5fall',['invalidate_all',['../classgoliath_1_1repositories_1_1watcher.html#a0436cbde79f0e259a8744c2d76a38e7e',1,'goliath::repositories::watcher']]],
-  ['is_5finterrupted',['is_interrupted',['../classgoliath_1_1commands_1_1command.html#a39591a7239cbfe899d6c438936fd50ce',1,'goliath::commands::command']]],
-  ['is_5finvalidated',['is_invalidated',['../classgoliath_1_1repositories_1_1repository.html#a4dfbb1a5145b23ef9c94668fa5f5eda3',1,'goliath::repositories::repository']]],
-  ['is_5flocked',['is_locked',['../classgoliath_1_1handles_1_1handle.html#a8e628f30e89e4e4b0d8066564a510fc8',1,'goliath::handles::handle']]]
+  ['i2cbushandle',['I2cBusHandle',['../classgoliath_1_1handles_1_1I2cBusHandle.html',1,'goliath::handles']]],
+  ['i2cerror',['I2cError',['../classgoliath_1_1exceptions_1_1I2cError.html',1,'goliath::exceptions']]],
+  ['i2cerror',['I2cError',['../classgoliath_1_1exceptions_1_1I2cError.html#a315182c00b0f448451a276be4dba537c',1,'goliath::exceptions::I2cError']]],
+  ['i2cslave',['I2cSlave',['../classgoliath_1_1i2c_1_1I2cSlave.html',1,'goliath::i2c']]],
+  ['i2cslave',['I2cSlave',['../classgoliath_1_1i2c_1_1I2cSlave.html#a1114291a60c08714a4a8e91ce6e05b1c',1,'goliath::i2c::I2cSlave::I2cSlave(const handles::I2cBusHandle &amp;busHandle, const handles::I2cSlaveHandle &amp;slaveHandle)'],['../classgoliath_1_1i2c_1_1I2cSlave.html#ab19a6a49f0a06aeb9ace3113c4928e47',1,'goliath::i2c::I2cSlave::I2cSlave(const handles::I2cBusHandle &amp;busHandle, const i2cAddress &amp;slaveAddress)']]],
+  ['i2cslavehandle',['I2cSlaveHandle',['../classgoliath_1_1handles_1_1I2cSlaveHandle.html',1,'goliath::handles']]],
+  ['input',['input',['../classgoliath_1_1vision_1_1Processor.html#ae222c502670255e6d078b57eec6a6be5',1,'goliath::vision::Processor']]],
+  ['interrupt',['interrupt',['../classgoliath_1_1commands_1_1Command.html#a0de018f805398f4af72233ec82b06b94',1,'goliath::commands::Command']]],
+  ['invalidate',['invalidate',['../classgoliath_1_1repositories_1_1Repository.html#a8b1845da32fb728bc72dca2252f44814',1,'goliath::repositories::Repository']]],
+  ['invalidateall',['invalidateAll',['../classgoliath_1_1repositories_1_1Watcher.html#abf9b09177f4c425caa1361644854c362',1,'goliath::repositories::Watcher']]],
+  ['isinterrupted',['isInterrupted',['../classgoliath_1_1commands_1_1Command.html#a8d71ea88720e648bc5f102c940671136',1,'goliath::commands::Command']]],
+  ['isinvalidated',['isInvalidated',['../classgoliath_1_1repositories_1_1Repository.html#afbccd222beba76a654bf01d7794c5c2d',1,'goliath::repositories::Repository']]],
+  ['islocked',['isLocked',['../classgoliath_1_1handles_1_1Handle.html#a0e7c7e830cbf1bfb6e9aae5e4d898738',1,'goliath::handles::Handle']]]
 ];

@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['detector',['detector',['../classgoliath_1_1vision_1_1detector.html',1,'goliath::vision']]],
-  ['device',['device',['../classgoliath_1_1audio_1_1device.html',1,'goliath::audio']]]
+  ['detector',['Detector',['../classgoliath_1_1vision_1_1Detector.html',1,'goliath::vision']]],
+  ['device',['Device',['../classgoliath_1_1openal_1_1Device.html',1,'goliath::openal']]]
 ];

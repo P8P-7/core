@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['input',['input',['../classgoliath_1_1vision_1_1processor.html#ab666c7206d12889dbf89c1d0e0fa038b',1,'goliath::vision::processor']]]
+  ['input',['input',['../classgoliath_1_1vision_1_1Processor.html#ae222c502670255e6d078b57eec6a6be5',1,'goliath::vision::Processor']]]
 ];

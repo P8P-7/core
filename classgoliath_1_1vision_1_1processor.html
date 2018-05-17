@@ -88,12 +88,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 </div><!-- top -->
 <div class="header">
-  <div class="summary">
-<a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pro-attribs">Protected Attributes</a> &#124;
-<a href="classgoliath_1_1vision_1_1processor-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">goliath::vision::processor Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
+<div class="title">goliath::vision::processor Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
@@ -101,96 +97,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
  <a href="classgoliath_1_1vision_1_1processor.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="processor_8h_source.html">processor.h</a>&gt;</code></p>
-<div class="dynheader">
-Inheritance diagram for goliath::vision::processor:</div>
-<div class="dyncontent">
- <div class="center">
-  <img src="classgoliath_1_1vision_1_1processor.png" usemap="#goliath::vision::processor_map" alt=""/>
-  <map id="goliath::vision::processor_map" name="goliath::vision::processor_map">
-<area href="classgoliath_1_1vision_1_1canny__processor.html" title="Processor that returns a canny image of the input. " alt="goliath::vision::canny_processor" shape="rect" coords="0,56,193,80"/>
-<area href="classgoliath_1_1vision_1_1color__processor.html" title="Processor that returns an image with only colors within a specific range. " alt="goliath::vision::color_processor" shape="rect" coords="203,56,396,80"/>
-<area href="classgoliath_1_1vision_1_1roi__processor.html" title="Takes an input and returns a ROI selection from that image. " alt="goliath::vision::roi_processor" shape="rect" coords="406,56,599,80"/>
-</map>
- </div></div>
-<table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
-Public Member Functions</h2></td></tr>
-<tr class="memitem:a15347f446a956628c29578cc6e4e0607"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1vision_1_1processor.html#a15347f446a956628c29578cc6e4e0607">processor</a> (const cv::Mat &amp;<a class="el" href="classgoliath_1_1vision_1_1processor.html#ab666c7206d12889dbf89c1d0e0fa038b">input</a>)</td></tr>
-<tr class="separator:a15347f446a956628c29578cc6e4e0607"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa66473730c35e3db89ee3d73e0d82c6a"><td class="memItemLeft" align="right" valign="top">virtual cv::Mat&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1vision_1_1processor.html#aa66473730c35e3db89ee3d73e0d82c6a">process</a> () const =0</td></tr>
-<tr class="separator:aa66473730c35e3db89ee3d73e0d82c6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
-Protected Attributes</h2></td></tr>
-<tr class="memitem:ab666c7206d12889dbf89c1d0e0fa038b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab666c7206d12889dbf89c1d0e0fa038b"></a>
-cv::Mat&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1vision_1_1processor.html#ab666c7206d12889dbf89c1d0e0fa038b">input</a></td></tr>
-<tr class="memdesc:ab666c7206d12889dbf89c1d0e0fa038b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Input image. <br/></td></tr>
-<tr class="separator:ab666c7206d12889dbf89c1d0e0fa038b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Base class of processors that take in an input and manipulate in some way returning the output from the virtual. </p>
-<dl class="section see"><dt>See Also</dt><dd><a class="el" href="classgoliath_1_1vision_1_1processor.html#aa66473730c35e3db89ee3d73e0d82c6a">goliath::vision::processor::process</a> method. </dd></dl>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a15347f446a956628c29578cc6e4e0607"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">processor::processor </td>
-          <td>(</td>
-          <td class="paramtype">const cv::Mat &amp;&#160;</td>
-          <td class="paramname"><em>input</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">input</td><td>Input image </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="aa66473730c35e3db89ee3d73e0d82c6a"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual cv::Mat goliath::vision::processor::process </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>Output image </dd></dl>
-
-<p>Implemented in <a class="el" href="classgoliath_1_1vision_1_1canny__processor.html#a95e9cb6a75cfd738474f0dab8ba74ea2">goliath::vision::canny_processor</a>, <a class="el" href="classgoliath_1_1vision_1_1color__processor.html#a78720596a8bdfe9276cea1593cf42f54">goliath::vision::color_processor</a>, and <a class="el" href="classgoliath_1_1vision_1_1roi__processor.html#a99bdaf4666878c77056319101d89ed6e">goliath::vision::roi_processor</a>.</p>
-
-</div>
-</div>
-<hr/>The documentation for this class was generated from the following files:<ul>
+<dl class="section see"><dt>See Also</dt><dd>goliath::vision::processor::process method. </dd></dl>
+</div><hr/>The documentation for this class was generated from the following file:<ul>
 <li>/home/travis/build/P8P-7/core/src/modules/vision/processors/<a class="el" href="processor_8h_source.html">processor.h</a></li>
-<li>/home/travis/build/P8P-7/core/src/modules/vision/processors/processor.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
