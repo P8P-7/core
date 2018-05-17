@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['_7ewatcher',['~Watcher',['../classgoliath_1_1repositories_1_1Watcher.html#a84db4a7c7f7c7d3a62104713920678c8',1,'goliath::repositories::Watcher']]]
+  ['visionerror',['VisionError',['../classgoliath_1_1exceptions_1_1VisionError.html#a70c36eb8c8bc2a26d37e7f2dc96549d3',1,'goliath::exceptions::VisionError']]]
 ];

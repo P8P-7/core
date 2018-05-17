@@ -1,9 +1,11 @@
 var searchData=
 [
-  ['shouldsynchronize',['shouldSynchronize',['../classgoliath_1_1repositories_1_1Watcher.html#aace3462ef22158e3844046653d2189a2',1,'goliath::repositories::Watcher']]],
-  ['stale',['STALE',['../namespacegoliath_1_1commands.html#ad04221b592714b06a85a6415a475981ba4d855a061b3066dc14a3b12ed26b5456',1,'goliath::commands']]],
-  ['start',['start',['../classgoliath_1_1repositories_1_1Watcher.html#a5474ded0da07eb99166c6376bdd73b85',1,'goliath::repositories::Watcher']]],
-  ['started',['STARTED',['../namespacegoliath_1_1commands.html#ad04221b592714b06a85a6415a475981ba17130e6c806885e23770df1519b18eb7',1,'goliath::commands']]],
-  ['starting',['STARTING',['../namespacegoliath_1_1commands.html#ad04221b592714b06a85a6415a475981ba034312d8adc8099c1c6f53aaff745e26',1,'goliath::commands']]],
-  ['stop',['stop',['../classgoliath_1_1repositories_1_1Watcher.html#afd174ac54c2b26148217d3e2593d3cfc',1,'goliath::repositories::Watcher']]]
+  ['record',['record',['../classgoliath_1_1openal_1_1Microphone.html#a1caa46002738316b8ca98e020fc0619a',1,'goliath::openal::Microphone']]],
+  ['repository',['Repository',['../classgoliath_1_1repositories_1_1Repository.html',1,'goliath::repositories']]],
+  ['repository_2eh',['repository.h',['../repository_8h.html',1,'']]],
+  ['right',['RIGHT',['../namespacegoliath_1_1vision.html#ab57b7fa0d8bdbecbaa361caf5050b9b5a294b5e67eb57ded229b3a77efb295232',1,'goliath::vision']]],
+  ['roi_5fprocessor_2eh',['roi_processor.h',['../roi__processor_8h.html',1,'']]],
+  ['roiprocessor',['RoiProcessor',['../classgoliath_1_1vision_1_1RoiProcessor.html',1,'goliath::vision']]],
+  ['roiprocessor',['RoiProcessor',['../classgoliath_1_1vision_1_1RoiProcessor.html#ace4336cddf11631c508e14c85d49bb43',1,'goliath::vision::RoiProcessor']]],
+  ['run',['run',['../classgoliath_1_1commands_1_1Command.html#a8eb185c3cd08fadefa4f0437a10364b5',1,'goliath::commands::Command']]]
 ];

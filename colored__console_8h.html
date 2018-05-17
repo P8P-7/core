@@ -63,6 +63,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
+      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -186,7 +187,7 @@ Variables</h2></td></tr>
 const std::string&#160;</td><td class="memItemRight" valign="bottom"><b>LOG_COLOR_TRACE</b> = CONSOLE_COLOR_MAGENTA</td></tr>
 <tr class="separator:ab7376823a9c736e4e820ba53c3b338a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aae7dff9e524da41cded3276e13dcff00"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aae7dff9e524da41cded3276e13dcff00"></a>
-const std::string&#160;</td><td class="memItemRight" valign="bottom"><b>LOG_COLOR_DEBUG</b> = CONSOLE_COLOR_YELLOW</td></tr>
+const std::string&#160;</td><td class="memItemRight" valign="bottom"><b>LOG_COLOR_DEBUG</b> = (boost::format(&quot;%1%%2%&quot;) % CONSOLE_STYLE_BOLD % CONSOLE_COLOR_YELLOW).str()</td></tr>
 <tr class="separator:aae7dff9e524da41cded3276e13dcff00"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5b7d76e3ec46706d794672a15569a877"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5b7d76e3ec46706d794672a15569a877"></a>
 const std::string&#160;</td><td class="memItemRight" valign="bottom"><b>LOG_COLOR_INFO</b> = CONSOLE_COLOR_BLUE</td></tr>

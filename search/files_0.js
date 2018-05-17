@@ -1,12 +1,4 @@
 var searchData=
 [
-  ['canny_5fprocessor_2eh',['canny_processor.h',['../canny__processor_8h.html',1,'']]],
-  ['color_5fprocessor_2eh',['color_processor.h',['../color__processor_8h.html',1,'']]],
-  ['color_5fregion_5fdetector_2eh',['color_region_detector.h',['../color__region__detector_8h.html',1,'']]],
-  ['colored_5fconsole_2eh',['colored_console.h',['../colored__console_8h.html',1,'']]],
-  ['command_2eh',['command.h',['../command_8h.html',1,'']]],
-  ['command_5fexecutor_2eh',['command_executor.h',['../command__executor_8h.html',1,'']]],
-  ['command_5fmap_2eh',['command_map.h',['../command__map_8h.html',1,'']]],
-  ['context_2eh',['context.h',['../context_8h.html',1,'']]],
-  ['controller_2ecpp',['controller.cpp',['../controller_8cpp.html',1,'']]]
+  ['battery_5frepository_2eh',['battery_repository.h',['../battery__repository_8h.html',1,'']]]
 ];

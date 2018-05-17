@@ -63,6 +63,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
+      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -119,7 +120,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define CONSOLE_STYLE_UNDERLINE &quot;\033[4m&quot;</span></div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keyword">const</span> std::string LOG_COLOR_TRACE = CONSOLE_COLOR_MAGENTA;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keyword">const</span> std::string LOG_COLOR_DEBUG = CONSOLE_COLOR_YELLOW;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keyword">const</span> std::string LOG_COLOR_DEBUG = (boost::format(<span class="stringliteral">&quot;%1%%2%&quot;</span>) % CONSOLE_STYLE_BOLD % CONSOLE_COLOR_YELLOW).str();</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keyword">const</span> std::string LOG_COLOR_INFO = CONSOLE_COLOR_BLUE;</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keyword">const</span> std::string LOG_COLOR_WARNING = CONSOLE_COLOR_LIGHT_RED;</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keyword">const</span> std::string LOG_COLOR_ERROR = (boost::format(<span class="stringliteral">&quot;%1%%2%&quot;</span>) % CONSOLE_STYLE_BOLD % CONSOLE_COLOR_RED).str();</div>

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['batteryrepository',['BatteryRepository',['../classgoliath_1_1repositories_1_1BatteryRepository.html',1,'goliath::repositories']]]
+  ['address',['address',['../classgoliath_1_1messaging_1_1ZmqIo.html#a987503917974ed9aa830424fa3bb3ca6',1,'goliath::messaging::ZmqIo']]]
 ];

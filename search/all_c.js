@@ -1,10 +1,9 @@
 var searchData=
 [
-  ['process',['process',['../classgoliath_1_1vision_1_1CannyProcessor.html#a5ac2cc9e9180ac542636ac05cfd8045e',1,'goliath::vision::CannyProcessor::process()'],['../classgoliath_1_1vision_1_1ColorProcessor.html#a90811bcb0e3a3a51cdeba36d8224ef1d',1,'goliath::vision::ColorProcessor::process()'],['../classgoliath_1_1vision_1_1Processor.html#ab0e9d4d69dcf10170a40fa6d36e291eb',1,'goliath::vision::Processor::process()'],['../classgoliath_1_1vision_1_1RoiProcessor.html#a5272dc92d105d9b1017a50e76ca4d465',1,'goliath::vision::RoiProcessor::process()']]],
-  ['processor',['Processor',['../classgoliath_1_1vision_1_1Processor.html',1,'goliath::vision']]],
-  ['processor',['Processor',['../classgoliath_1_1vision_1_1Processor.html#a2ef3fa7bdf3d3ef512de1f89032d733f',1,'goliath::vision::Processor']]],
-  ['processor_2eh',['processor.h',['../processor_8h.html',1,'']]],
-  ['protorepository',['ProtoRepository',['../classgoliath_1_1repositories_1_1ProtoRepository.html',1,'goliath::repositories']]],
-  ['publish',['publish',['../classgoliath_1_1core_1_1interfaces_1_1PublisherService.html#a7396e15aed211c3570d61adcd56b35ae',1,'goliath::core::interfaces::PublisherService::publish()'],['../classgoliath_1_1messaging_1_1ZmqPublisher.html#ac88469990306f8774a5b5607ba6e7c32',1,'goliath::messaging::ZmqPublisher::publish()']]],
-  ['publisherservice',['PublisherService',['../classgoliath_1_1core_1_1interfaces_1_1PublisherService.html',1,'goliath::core::interfaces']]]
+  ['on_5fcourse',['ON_COURSE',['../namespacegoliath_1_1vision.html#ab57b7fa0d8bdbecbaa361caf5050b9b5ae8a32fc921abc668f7fd61a3cbb3a5c4',1,'goliath::vision']]],
+  ['openal_2eh',['openal.h',['../openal_8h.html',1,'']]],
+  ['openal_5ferror_2eh',['openal_error.h',['../openal__error_8h.html',1,'']]],
+  ['openalerror',['OpenalError',['../classgoliath_1_1exceptions_1_1OpenalError.html#a57fd3f64e3bcc3ea9caf39b23e144bee',1,'goliath::exceptions::OpenalError']]],
+  ['openalerror',['OpenalError',['../classgoliath_1_1exceptions_1_1OpenalError.html',1,'goliath::exceptions']]],
+  ['operator_3c_3c',['operator&lt;&lt;',['../classgoliath_1_1i2c_1_1I2cSlave.html#a1ff1c287fabfbbc86d0c86b0e94f2789',1,'goliath::i2c::I2cSlave']]]
 ];

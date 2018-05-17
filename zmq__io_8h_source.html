@@ -63,6 +63,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
+      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -89,36 +90,41 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">zmq_io.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<a href="zmq__io_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;zmq.hpp&gt;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">const</span> std::string PROTOCOL = <span class="stringliteral">&quot;tcp&quot;</span>;</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">namespace </span>goliath::messaging {</div>
-<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="classgoliath_1_1messaging_1_1ZmqIo.html">    9</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classgoliath_1_1messaging_1_1ZmqIo.html">ZmqIo</a> {</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        <a class="code" href="classgoliath_1_1messaging_1_1ZmqIo.html">ZmqIo</a>(zmq::context_t &amp;context, <span class="keyword">const</span> std::string &amp;host, <span class="keyword">const</span> <span class="keywordtype">int</span> port)</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;                : <a class="code" href="classgoliath_1_1messaging_1_1ZmqIo.html">ZmqIo</a>(context, host, port, 0) {}</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <a class="code" href="classgoliath_1_1messaging_1_1ZmqIo.html">ZmqIo</a>(zmq::context_t &amp;context, <span class="keyword">const</span> std::string &amp;host, <span class="keyword">const</span> <span class="keywordtype">int</span> port, <span class="keyword">const</span> <span class="keywordtype">int</span> socketType)</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;                : context(context), host(host), port(port), socket(context, socketType) {}</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        std::string address() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keywordtype">void</span> connect();</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="keywordtype">void</span> bind();</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        zmq::context_t&amp; context;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keyword">const</span> std::string host;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="keyword">const</span> <span class="keywordtype">int</span> port;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        zmq::socket_t socket;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    };</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;}</div>
-<div class="ttc" id="classgoliath_1_1messaging_1_1ZmqIo_html"><div class="ttname"><a href="classgoliath_1_1messaging_1_1ZmqIo.html">goliath::messaging::ZmqIo</a></div><div class="ttdef"><b>Definition:</b> zmq_io.h:9</div></div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="zmq__io_8h.html#aa094b1356e3aa576d3e292b8d63dd1fc">   14</a></span>&#160;<span class="keyword">const</span> std::string <a class="code" href="zmq__io_8h.html#aa094b1356e3aa576d3e292b8d63dd1fc">PROTOCOL</a> = <span class="stringliteral">&quot;tcp&quot;</span>;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">namespace </span>goliath::messaging {</div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="classgoliath_1_1messaging_1_1ZmqIo.html">   21</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classgoliath_1_1messaging_1_1ZmqIo.html">ZmqIo</a> {</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="classgoliath_1_1messaging_1_1ZmqIo.html#aedf3107755e6271db71038e86744fdac">   28</a></span>&#160;        <a class="code" href="classgoliath_1_1messaging_1_1ZmqIo.html#aedf3107755e6271db71038e86744fdac">ZmqIo</a>(zmq::context_t &amp;context, <span class="keyword">const</span> std::string &amp;host, <span class="keyword">const</span> <span class="keywordtype">int</span> port)</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                : <a class="code" href="classgoliath_1_1messaging_1_1ZmqIo.html">ZmqIo</a>(context, host, port, 0) {}</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="classgoliath_1_1messaging_1_1ZmqIo.html#aa16664d70efd2765b8a0f45b0bb7b8e8">   37</a></span>&#160;        <a class="code" href="classgoliath_1_1messaging_1_1ZmqIo.html#aa16664d70efd2765b8a0f45b0bb7b8e8">ZmqIo</a>(zmq::context_t &amp;context, <span class="keyword">const</span> std::string &amp;host, <span class="keyword">const</span> <span class="keywordtype">int</span> port, <span class="keyword">const</span> <span class="keywordtype">int</span> socketType)</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                : context(context), host(host), port(port), socket(context, socketType) {}</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        std::string <a class="code" href="classgoliath_1_1messaging_1_1ZmqIo.html#a987503917974ed9aa830424fa3bb3ca6">address</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classgoliath_1_1messaging_1_1ZmqIo.html#a74cd7fb581cba80d725269183612cf2b">connect</a>();</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classgoliath_1_1messaging_1_1ZmqIo.html#a51776980746b4fe0e021929e48b6e986">bind</a>();</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        zmq::context_t&amp; context;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keyword">const</span> std::string host;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keyword">const</span> <span class="keywordtype">int</span> port;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        zmq::socket_t socket;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    };</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;}</div>
+<div class="ttc" id="zmq__io_8h_html_aa094b1356e3aa576d3e292b8d63dd1fc"><div class="ttname"><a href="zmq__io_8h.html#aa094b1356e3aa576d3e292b8d63dd1fc">PROTOCOL</a></div><div class="ttdeci">const std::string PROTOCOL</div><div class="ttdoc">Protocol to be used for message transmission. </div><div class="ttdef"><b>Definition:</b> zmq_io.h:14</div></div>
+<div class="ttc" id="classgoliath_1_1messaging_1_1ZmqIo_html"><div class="ttname"><a href="classgoliath_1_1messaging_1_1ZmqIo.html">goliath::messaging::ZmqIo</a></div><div class="ttdoc">Base class for zmq objects. </div><div class="ttdef"><b>Definition:</b> zmq_io.h:21</div></div>
+<div class="ttc" id="classgoliath_1_1messaging_1_1ZmqIo_html_a74cd7fb581cba80d725269183612cf2b"><div class="ttname"><a href="classgoliath_1_1messaging_1_1ZmqIo.html#a74cd7fb581cba80d725269183612cf2b">goliath::messaging::ZmqIo::connect</a></div><div class="ttdeci">void connect()</div><div class="ttdoc">Connect to address. </div><div class="ttdef"><b>Definition:</b> zmq_io.cpp:12</div></div>
+<div class="ttc" id="classgoliath_1_1messaging_1_1ZmqIo_html_aedf3107755e6271db71038e86744fdac"><div class="ttname"><a href="classgoliath_1_1messaging_1_1ZmqIo.html#aedf3107755e6271db71038e86744fdac">goliath::messaging::ZmqIo::ZmqIo</a></div><div class="ttdeci">ZmqIo(zmq::context_t &amp;context, const std::string &amp;host, const int port)</div><div class="ttdef"><b>Definition:</b> zmq_io.h:28</div></div>
+<div class="ttc" id="classgoliath_1_1messaging_1_1ZmqIo_html_a51776980746b4fe0e021929e48b6e986"><div class="ttname"><a href="classgoliath_1_1messaging_1_1ZmqIo.html#a51776980746b4fe0e021929e48b6e986">goliath::messaging::ZmqIo::bind</a></div><div class="ttdeci">void bind()</div><div class="ttdoc">Bind to port. </div><div class="ttdef"><b>Definition:</b> zmq_io.cpp:16</div></div>
+<div class="ttc" id="classgoliath_1_1messaging_1_1ZmqIo_html_a987503917974ed9aa830424fa3bb3ca6"><div class="ttname"><a href="classgoliath_1_1messaging_1_1ZmqIo.html#a987503917974ed9aa830424fa3bb3ca6">goliath::messaging::ZmqIo::address</a></div><div class="ttdeci">std::string address() const </div><div class="ttdef"><b>Definition:</b> zmq_io.cpp:7</div></div>
+<div class="ttc" id="classgoliath_1_1messaging_1_1ZmqIo_html_aa16664d70efd2765b8a0f45b0bb7b8e8"><div class="ttname"><a href="classgoliath_1_1messaging_1_1ZmqIo.html#aa16664d70efd2765b8a0f45b0bb7b8e8">goliath::messaging::ZmqIo::ZmqIo</a></div><div class="ttdeci">ZmqIo(zmq::context_t &amp;context, const std::string &amp;host, const int port, const int socketType)</div><div class="ttdef"><b>Definition:</b> zmq_io.h:37</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

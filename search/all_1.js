@@ -1,25 +1,6 @@
 var searchData=
 [
-  ['canny_5fprocessor_2eh',['canny_processor.h',['../canny__processor_8h.html',1,'']]],
-  ['cannyprocessor',['CannyProcessor',['../classgoliath_1_1vision_1_1CannyProcessor.html',1,'goliath::vision']]],
-  ['cannyprocessor',['CannyProcessor',['../classgoliath_1_1vision_1_1CannyProcessor.html#a3810bb792f931797ad2a9c27ca3d6533',1,'goliath::vision::CannyProcessor']]],
-  ['color_5fprocessor_2eh',['color_processor.h',['../color__processor_8h.html',1,'']]],
-  ['color_5fregion_5fdetector_2eh',['color_region_detector.h',['../color__region__detector_8h.html',1,'']]],
-  ['colored_5fconsole_2eh',['colored_console.h',['../colored__console_8h.html',1,'']]],
-  ['colorprocessor',['ColorProcessor',['../classgoliath_1_1vision_1_1ColorProcessor.html',1,'goliath::vision']]],
-  ['colorprocessor',['ColorProcessor',['../classgoliath_1_1vision_1_1ColorProcessor.html#ad5b26395e885a83ee5ae185033fe6095',1,'goliath::vision::ColorProcessor']]],
-  ['colorregiondetector',['ColorRegionDetector',['../classgoliath_1_1vision_1_1ColorRegionDetector.html',1,'goliath::vision']]],
-  ['command',['Command',['../classgoliath_1_1commands_1_1Command.html',1,'goliath::commands']]],
-  ['command',['Command',['../classgoliath_1_1commmands_1_1Command.html',1,'goliath::commmands']]],
-  ['command_2eh',['command.h',['../command_8h.html',1,'']]],
-  ['command_5fexecutor_2eh',['command_executor.h',['../command__executor_8h.html',1,'']]],
-  ['command_5fmap_2eh',['command_map.h',['../command__map_8h.html',1,'']]],
-  ['commandexecutor',['CommandExecutor',['../classgoliath_1_1commands_1_1CommandExecutor.html',1,'goliath::commands']]],
-  ['commanditem',['CommandItem',['../structgoliath_1_1commands_1_1CommandItem.html',1,'goliath::commands']]],
-  ['commandmap',['CommandMap',['../classgoliath_1_1commands_1_1CommandMap.html',1,'goliath::commands']]],
-  ['commandstatus',['CommandStatus',['../namespacegoliath_1_1commands.html#ad04221b592714b06a85a6415a475981b',1,'goliath::commands']]],
-  ['context',['Context',['../classgoliath_1_1openal_1_1Context.html',1,'goliath::openal']]],
-  ['context',['Context',['../classgoliath_1_1openal_1_1Context.html#adbd52d5a7c9937624417b1e8ffbbc1e9',1,'goliath::openal::Context']]],
-  ['context_2eh',['context.h',['../context_8h.html',1,'']]],
-  ['controller_2ecpp',['controller.cpp',['../controller_8cpp.html',1,'']]]
+  ['battery_5frepository_2eh',['battery_repository.h',['../battery__repository_8h.html',1,'']]],
+  ['batteryrepository',['BatteryRepository',['../classgoliath_1_1repositories_1_1BatteryRepository.html',1,'goliath::repositories']]],
+  ['bind',['bind',['../classgoliath_1_1messaging_1_1ZmqIo.html#a51776980746b4fe0e021929e48b6e986',1,'goliath::messaging::ZmqIo::bind()'],['../classgoliath_1_1messaging_1_1ZmqSubscriber.html#a83d00e026ca7e07da48fe1206639589b',1,'goliath::messaging::ZmqSubscriber::bind()']]]
 ];

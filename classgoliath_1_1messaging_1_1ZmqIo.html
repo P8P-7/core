@@ -96,33 +96,37 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">goliath::messaging::ZmqIo Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Base class for zmq objects.  
+ <a href="classgoliath_1_1messaging_1_1ZmqIo.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="zmq__io_8h_source.html">zmq_io.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for goliath::messaging::ZmqIo:</div>
 <div class="dyncontent">
  <div class="center">
   <img src="classgoliath_1_1messaging_1_1ZmqIo.png" usemap="#goliath::messaging::ZmqIo_map" alt=""/>
   <map id="goliath::messaging::ZmqIo_map" name="goliath::messaging::ZmqIo_map">
-<area href="classgoliath_1_1messaging_1_1ZmqPublisher.html" alt="goliath::messaging::ZmqPublisher" shape="rect" coords="0,56,206,80"/>
-<area href="classgoliath_1_1messaging_1_1ZmqSubscriber.html" alt="goliath::messaging::ZmqSubscriber" shape="rect" coords="216,56,422,80"/>
+<area href="classgoliath_1_1messaging_1_1ZmqPublisher.html" title="Publishes messages. " alt="goliath::messaging::ZmqPublisher" shape="rect" coords="0,56,206,80"/>
+<area href="classgoliath_1_1messaging_1_1ZmqSubscriber.html" title="Subscribes to host to receive message and process them in a callback. " alt="goliath::messaging::ZmqSubscriber" shape="rect" coords="216,56,422,80"/>
 </map>
  </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aedf3107755e6271db71038e86744fdac"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aedf3107755e6271db71038e86744fdac"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>ZmqIo</b> (zmq::context_t &amp;context, const std::string &amp;host, const int port)</td></tr>
+<tr class="memitem:aedf3107755e6271db71038e86744fdac"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1messaging_1_1ZmqIo.html#aedf3107755e6271db71038e86744fdac">ZmqIo</a> (zmq::context_t &amp;context, const std::string &amp;host, const int port)</td></tr>
 <tr class="separator:aedf3107755e6271db71038e86744fdac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa16664d70efd2765b8a0f45b0bb7b8e8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa16664d70efd2765b8a0f45b0bb7b8e8"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>ZmqIo</b> (zmq::context_t &amp;context, const std::string &amp;host, const int port, const int socketType)</td></tr>
+<tr class="memitem:aa16664d70efd2765b8a0f45b0bb7b8e8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1messaging_1_1ZmqIo.html#aa16664d70efd2765b8a0f45b0bb7b8e8">ZmqIo</a> (zmq::context_t &amp;context, const std::string &amp;host, const int port, const int socketType)</td></tr>
 <tr class="separator:aa16664d70efd2765b8a0f45b0bb7b8e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a987503917974ed9aa830424fa3bb3ca6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a987503917974ed9aa830424fa3bb3ca6"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>address</b> () const </td></tr>
+<tr class="memitem:a987503917974ed9aa830424fa3bb3ca6"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1messaging_1_1ZmqIo.html#a987503917974ed9aa830424fa3bb3ca6">address</a> () const </td></tr>
 <tr class="separator:a987503917974ed9aa830424fa3bb3ca6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a74cd7fb581cba80d725269183612cf2b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a74cd7fb581cba80d725269183612cf2b"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>connect</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1messaging_1_1ZmqIo.html#a74cd7fb581cba80d725269183612cf2b">connect</a> ()</td></tr>
+<tr class="memdesc:a74cd7fb581cba80d725269183612cf2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Connect to address. <br/></td></tr>
 <tr class="separator:a74cd7fb581cba80d725269183612cf2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a51776980746b4fe0e021929e48b6e986"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a51776980746b4fe0e021929e48b6e986"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>bind</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1messaging_1_1ZmqIo.html#a51776980746b4fe0e021929e48b6e986">bind</a> ()</td></tr>
+<tr class="memdesc:a51776980746b4fe0e021929e48b6e986"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bind to port. <br/></td></tr>
 <tr class="separator:a51776980746b4fe0e021929e48b6e986"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
@@ -140,6 +144,129 @@ const int&#160;</td><td class="memItemRight" valign="bottom"><b>port</b></td></t
 zmq::socket_t&#160;</td><td class="memItemRight" valign="bottom"><b>socket</b></td></tr>
 <tr class="separator:a516c1d9f8f47c9c0e5460753a3bcb839"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Base class for zmq objects. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="aedf3107755e6271db71038e86744fdac"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">goliath::messaging::ZmqIo::ZmqIo </td>
+          <td>(</td>
+          <td class="paramtype">zmq::context_t &amp;&#160;</td>
+          <td class="paramname"><em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>host</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>port</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context</td><td>Zmq context </td></tr>
+    <tr><td class="paramname">host</td><td>Connect/bind host </td></tr>
+    <tr><td class="paramname">port</td><td>Connect/bind port </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="aa16664d70efd2765b8a0f45b0bb7b8e8"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">goliath::messaging::ZmqIo::ZmqIo </td>
+          <td>(</td>
+          <td class="paramtype">zmq::context_t &amp;&#160;</td>
+          <td class="paramname"><em>context</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>host</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>port</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>socketType</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">context</td><td>Zmq context </td></tr>
+    <tr><td class="paramname">host</td><td>Connect/bind host </td></tr>
+    <tr><td class="paramname">port</td><td>Connect/bind port </td></tr>
+    <tr><td class="paramname">socketType</td><td>ZMQ type of socket e.g. PUB/SUB </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a987503917974ed9aa830424fa3bb3ca6"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string ZmqIo::address </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>Formatted address </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>/home/travis/build/P8P-7/core/src/modules/messaging/<a class="el" href="zmq__io_8h_source.html">zmq_io.h</a></li>
 <li>/home/travis/build/P8P-7/core/src/modules/messaging/zmq_io.cpp</li>

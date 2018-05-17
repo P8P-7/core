@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['line_5fdetector_2eh',['line_detector.h',['../line__detector_8h.html',1,'']]]
+  ['handle_2eh',['handle.h',['../handle_8h.html',1,'']]],
+  ['handle_5fmap_2eh',['handle_map.h',['../handle__map_8h.html',1,'']]],
+  ['handles_2eh',['handles.h',['../handles_8h.html',1,'']]]
 ];

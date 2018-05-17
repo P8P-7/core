@@ -1,6 +1,7 @@
 var searchData=
 [
   ['commands',['commands',['../namespacegoliath_1_1commands.html',1,'goliath']]],
+  ['core',['core',['../namespacegoliath_1_1core.html',1,'goliath']]],
   ['exceptions',['exceptions',['../namespacegoliath_1_1exceptions.html',1,'goliath']]],
   ['goliath',['goliath',['../namespacegoliath.html',1,'']]],
   ['gpio',['gpio',['../namespacegoliath_1_1gpio.html',1,'goliath']]],
