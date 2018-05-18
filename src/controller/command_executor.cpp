@@ -53,10 +53,7 @@ void CommandExecutor::tryExecute(const size_t &commandId, const CommandMessage &
     for(size_t handleId : item.instance->getRequiredHandles()) {
         size_t lockerId = handles[handleId]->getOwnerId();
         commands[lockerId].instance->interrupt();
-    }
-
-    for(size_t handle_id : item.instance->getRequiredHandles()) {
-        requiredHandles[handle_id]->waitAndLock(commandId);
+        requiredHandles[handleId]->waitAndLock(commandId);
     }
 
     item.status = CommandStatus::STARTED;
