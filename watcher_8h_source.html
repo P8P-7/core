@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Goliath II: /home/travis/build/P8P-7/core/src/modules/core/repositories/watcher.h Source File</title>
+<title>Goliath II: /home/travis/build/P8P-7/core/src/modules/foundation/src/repositories/watcher.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -82,7 +82,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_ddb4d7e95cc2d6c8e1ade10a20d7247d.html">modules</a></li><li class="navelem"><a class="el" href="dir_48bd54dcd86210a131d5bab7b05ef6d7.html">core</a></li><li class="navelem"><a class="el" href="dir_9862ec604a8962eb5b118df779f02954.html">repositories</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_ddb4d7e95cc2d6c8e1ade10a20d7247d.html">modules</a></li><li class="navelem"><a class="el" href="dir_4603191f9e206e2defeb0afef7932c97.html">foundation</a></li><li class="navelem"><a class="el" href="dir_e58bbb7e1550fb91e3dba9bc96481f08.html">src</a></li><li class="navelem"><a class="el" href="dir_5e28493a2e83b7653feeafbb808f9351.html">repositories</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -103,7 +103,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">namespace </span>goliath::repositories {</div>
 <div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="classgoliath_1_1repositories_1_1Watcher.html">   21</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classgoliath_1_1repositories_1_1Watcher.html">Watcher</a> {</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <a class="code" href="classgoliath_1_1repositories_1_1Watcher.html#a757936bbdabe123014164f3ae799dc7c">Watcher</a>(<span class="keywordtype">int</span> pollingRate, <a class="code" href="classgoliath_1_1core_1_1interfaces_1_1PublisherService.html">core::interfaces::PublisherService</a> &amp;publisher);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <a class="code" href="classgoliath_1_1repositories_1_1Watcher.html#a8bce0e16b2e07cd8798359b756dcaffd">Watcher</a>(<span class="keywordtype">int</span> pollingRate, <a class="code" href="classgoliath_1_1foundation_1_1PublisherService.html">foundation::PublisherService</a> &amp;publisher);</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <a class="code" href="classgoliath_1_1repositories_1_1Watcher.html#a84db4a7c7f7c7d3a62104713920678c8">~Watcher</a>();</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classgoliath_1_1repositories_1_1Watcher.html#abf9b09177f4c425caa1361644854c362">invalidateAll</a>();</div>
@@ -119,7 +119,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classgoliath_1_1repositories_1_1Watcher.html#afd174ac54c2b26148217d3e2593d3cfc">stop</a>();</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keyword">private</span>:</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="keywordtype">int</span> pollingRate;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <a class="code" href="classgoliath_1_1core_1_1interfaces_1_1PublisherService.html">core::interfaces::PublisherService</a> &amp;publisher;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <a class="code" href="classgoliath_1_1foundation_1_1PublisherService.html">foundation::PublisherService</a> &amp;publisher;</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        std::vector&lt;std::shared_ptr&lt;Repository&gt;&gt; repositories;</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        std::atomic&lt;bool&gt; running;</div>
@@ -129,10 +129,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keywordtype">void</span> run();</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    };</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;}</div>
+<div class="ttc" id="classgoliath_1_1foundation_1_1PublisherService_html"><div class="ttname"><a href="classgoliath_1_1foundation_1_1PublisherService.html">goliath::foundation::PublisherService</a></div><div class="ttdef"><b>Definition:</b> publisher_service.h:12</div></div>
 <div class="ttc" id="classgoliath_1_1repositories_1_1Watcher_html_aace3462ef22158e3844046653d2189a2"><div class="ttname"><a href="classgoliath_1_1repositories_1_1Watcher.html#aace3462ef22158e3844046653d2189a2">goliath::repositories::Watcher::shouldSynchronize</a></div><div class="ttdeci">bool shouldSynchronize() const </div><div class="ttdef"><b>Definition:</b> watcher.cpp:32</div></div>
+<div class="ttc" id="classgoliath_1_1repositories_1_1Watcher_html_a8bce0e16b2e07cd8798359b756dcaffd"><div class="ttname"><a href="classgoliath_1_1repositories_1_1Watcher.html#a8bce0e16b2e07cd8798359b756dcaffd">goliath::repositories::Watcher::Watcher</a></div><div class="ttdeci">Watcher(int pollingRate, foundation::PublisherService &amp;publisher)</div><div class="ttdef"><b>Definition:</b> watcher.cpp:50</div></div>
 <div class="ttc" id="classgoliath_1_1repositories_1_1Watcher_html_a596442cf89ea2d9d5cedd754691efc76"><div class="ttname"><a href="classgoliath_1_1repositories_1_1Watcher.html#a596442cf89ea2d9d5cedd754691efc76">goliath::repositories::Watcher::getRepositories</a></div><div class="ttdeci">std::vector&lt; std::shared_ptr&lt; Repository &gt; &gt; getRepositories()</div><div class="ttdef"><b>Definition:</b> watcher.cpp:46</div></div>
-<div class="ttc" id="classgoliath_1_1core_1_1interfaces_1_1PublisherService_html"><div class="ttname"><a href="classgoliath_1_1core_1_1interfaces_1_1PublisherService.html">goliath::core::interfaces::PublisherService</a></div><div class="ttdef"><b>Definition:</b> publisher_service.h:12</div></div>
-<div class="ttc" id="classgoliath_1_1repositories_1_1Watcher_html_a757936bbdabe123014164f3ae799dc7c"><div class="ttname"><a href="classgoliath_1_1repositories_1_1Watcher.html#a757936bbdabe123014164f3ae799dc7c">goliath::repositories::Watcher::Watcher</a></div><div class="ttdeci">Watcher(int pollingRate, core::interfaces::PublisherService &amp;publisher)</div><div class="ttdef"><b>Definition:</b> watcher.cpp:50</div></div>
 <div class="ttc" id="repository_8h_html"><div class="ttname"><a href="repository_8h.html">repository.h</a></div></div>
 <div class="ttc" id="classgoliath_1_1repositories_1_1Watcher_html_afd174ac54c2b26148217d3e2593d3cfc"><div class="ttname"><a href="classgoliath_1_1repositories_1_1Watcher.html#afd174ac54c2b26148217d3e2593d3cfc">goliath::repositories::Watcher::stop</a></div><div class="ttdeci">void stop()</div><div class="ttdoc">Stops the watcher thread. </div><div class="ttdef"><b>Definition:</b> watcher.cpp:70</div></div>
 <div class="ttc" id="classgoliath_1_1repositories_1_1Watcher_html_a84db4a7c7f7c7d3a62104713920678c8"><div class="ttname"><a href="classgoliath_1_1repositories_1_1Watcher.html#a84db4a7c7f7c7d3a62104713920678c8">goliath::repositories::Watcher::~Watcher</a></div><div class="ttdeci">~Watcher()</div><div class="ttdoc">Destructs the watcher and calls stop() </div><div class="ttdef"><b>Definition:</b> watcher.cpp:54</div></div>

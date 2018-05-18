@@ -39,7 +39,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
@@ -74,7 +73,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -100,7 +99,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <p>watches multiple repositories for changes and sends them to the publisher service  
  <a href="classgoliath_1_1repositories_1_1Watcher.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="foundation_2src_2repositories_2watcher_8h_source.html">watcher.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="watcher_8h_source.html">watcher.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -130,32 +129,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1repositories_1_1Watcher.html#afd174ac54c2b26148217d3e2593d3cfc">stop</a> ()</td></tr>
 <tr class="memdesc:afd174ac54c2b26148217d3e2593d3cfc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stops the watcher thread. <br/></td></tr>
 <tr class="separator:afd174ac54c2b26148217d3e2593d3cfc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa0fe781faef4c11c3ced04d70361322d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1repositories_1_1Watcher.html#aa0fe781faef4c11c3ced04d70361322d">Watcher</a> (int pollingRate, <a class="el" href="classgoliath_1_1foundation_1_1PublisherService.html">foundation::PublisherService</a> &amp;publisher)</td></tr>
-<tr class="separator:aa0fe781faef4c11c3ced04d70361322d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae9d197102134e6ebed40e8eb9f15a6db"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae9d197102134e6ebed40e8eb9f15a6db"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1repositories_1_1Watcher.html#ae9d197102134e6ebed40e8eb9f15a6db">~Watcher</a> ()</td></tr>
-<tr class="memdesc:ae9d197102134e6ebed40e8eb9f15a6db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructs the watcher and calls <a class="el" href="classgoliath_1_1repositories_1_1Watcher.html#afd174ac54c2b26148217d3e2593d3cfc" title="Stops the watcher thread. ">stop()</a> <br/></td></tr>
-<tr class="separator:ae9d197102134e6ebed40e8eb9f15a6db"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a181dc76a30cfadf6ac1b0b2d090e89ed"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a181dc76a30cfadf6ac1b0b2d090e89ed"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1repositories_1_1Watcher.html#a181dc76a30cfadf6ac1b0b2d090e89ed">invalidateAll</a> ()</td></tr>
-<tr class="memdesc:a181dc76a30cfadf6ac1b0b2d090e89ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Invalidates all repositories watched by this watcher. <br/></td></tr>
-<tr class="separator:a181dc76a30cfadf6ac1b0b2d090e89ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a90345a51c824573651eb5507b154805e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1repositories_1_1Watcher.html#a90345a51c824573651eb5507b154805e">shouldSynchronize</a> () const </td></tr>
-<tr class="separator:a90345a51c824573651eb5507b154805e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa106ff0e3e7d631b4042e3b4b6e3182e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1repositories_1_1Watcher.html#aa106ff0e3e7d631b4042e3b4b6e3182e">watch</a> (std::shared_ptr&lt; <a class="el" href="classgoliath_1_1repositories_1_1Repository.html">Repository</a> &gt; repo)</td></tr>
-<tr class="memdesc:aa106ff0e3e7d631b4042e3b4b6e3182e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a repository to the watchlist.  <a href="#aa106ff0e3e7d631b4042e3b4b6e3182e">More...</a><br/></td></tr>
-<tr class="separator:aa106ff0e3e7d631b4042e3b4b6e3182e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a729a3f78fbf05a3327a6c1bc4d0ad5ff"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::shared_ptr<br class="typebreak"/>
-&lt; <a class="el" href="classgoliath_1_1repositories_1_1Repository.html">Repository</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1repositories_1_1Watcher.html#a729a3f78fbf05a3327a6c1bc4d0ad5ff">getRepositories</a> ()</td></tr>
-<tr class="separator:a729a3f78fbf05a3327a6c1bc4d0ad5ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a06b4951ccebcb34a40c85cce139d1d2b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a06b4951ccebcb34a40c85cce139d1d2b"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1repositories_1_1Watcher.html#a06b4951ccebcb34a40c85cce139d1d2b">start</a> ()</td></tr>
-<tr class="memdesc:a06b4951ccebcb34a40c85cce139d1d2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start the watcher thread. <br/></td></tr>
-<tr class="separator:a06b4951ccebcb34a40c85cce139d1d2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a39efd9960caffabfff2330f43e98fdfc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a39efd9960caffabfff2330f43e98fdfc"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1repositories_1_1Watcher.html#a39efd9960caffabfff2330f43e98fdfc">stop</a> ()</td></tr>
-<tr class="memdesc:a39efd9960caffabfff2330f43e98fdfc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stops the watcher thread. <br/></td></tr>
-<tr class="separator:a39efd9960caffabfff2330f43e98fdfc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>watches multiple repositories for changes and sends them to the publisher service </p>
@@ -166,40 +139,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
       <table class="memname">
         <tr>
           <td class="memname">Watcher::Watcher </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>pollingRate</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="classgoliath_1_1foundation_1_1PublisherService.html">foundation::PublisherService</a> &amp;&#160;</td>
-          <td class="paramname"><em>publisher</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">pollingRate</td><td>rate at which the watcher thread polls each repository </td></tr>
-    <tr><td class="paramname">publisher</td><td>service to which the watcher should publish a </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section see"><dt>See Also</dt><dd>SynchronizeMessage </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="aa0fe781faef4c11c3ced04d70361322d"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">goliath::repositories::Watcher::Watcher </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>pollingRate</em>, </td>
@@ -245,22 +184,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 
 </div>
 </div>
-<a class="anchor" id="a729a3f78fbf05a3327a6c1bc4d0ad5ff"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::vector&lt;std::shared_ptr&lt;<a class="el" href="classgoliath_1_1repositories_1_1Repository.html">Repository</a>&gt; &gt; goliath::repositories::Watcher::getRepositories </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>all repositories watched by this watcher </dd></dl>
-
-</div>
-</div>
 <a class="anchor" id="aace3462ef22158e3844046653d2189a2"></a>
 <div class="memitem">
 <div class="memproto">
@@ -274,46 +197,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
       </table>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>true when any of the repositories is invalidated </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="a90345a51c824573651eb5507b154805e"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool goliath::repositories::Watcher::shouldSynchronize </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>true when any of the repositories is invalidated </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="aa106ff0e3e7d631b4042e3b4b6e3182e"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void goliath::repositories::Watcher::watch </td>
-          <td>(</td>
-          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classgoliath_1_1repositories_1_1Repository.html">Repository</a> &gt;&#160;</td>
-          <td class="paramname"><em>repo</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Adds a repository to the watchlist. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">repo</td><td>repository to be watched </td></tr>
-  </table>
-  </dd>
-</dl>
 
 </div>
 </div>
@@ -342,7 +225,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>/home/travis/build/P8P-7/core/src/modules/foundation/src/repositories/<a class="el" href="foundation_2src_2repositories_2watcher_8h_source.html">watcher.h</a></li>
+<li>/home/travis/build/P8P-7/core/src/modules/foundation/src/repositories/<a class="el" href="watcher_8h_source.html">watcher.h</a></li>
 <li>/home/travis/build/P8P-7/core/src/modules/foundation/src/repositories/watcher.cpp</li>
 </ul>
 </div><!-- contents -->

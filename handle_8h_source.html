@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Goliath II: /home/travis/build/P8P-7/core/src/modules/core/handle.h Source File</title>
+<title>Goliath II: /home/travis/build/P8P-7/core/src/modules/foundation/src/handle.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -82,7 +82,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_ddb4d7e95cc2d6c8e1ade10a20d7247d.html">modules</a></li><li class="navelem"><a class="el" href="dir_48bd54dcd86210a131d5bab7b05ef6d7.html">core</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_ddb4d7e95cc2d6c8e1ade10a20d7247d.html">modules</a></li><li class="navelem"><a class="el" href="dir_4603191f9e206e2defeb0afef7932c97.html">foundation</a></li><li class="navelem"><a class="el" href="dir_e58bbb7e1550fb91e3dba9bc96481f08.html">src</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -96,37 +96,37 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;condition_variable&gt;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;boost/optional.hpp&gt;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">namespace </span>goliath::handles {</div>
-<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="classgoliath_1_1handles_1_1Handle.html">   14</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classgoliath_1_1handles_1_1Handle.html">Handle</a> {</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <a class="code" href="classgoliath_1_1handles_1_1Handle.html">Handle</a>(<span class="keyword">const</span> <span class="keywordtype">size_t</span> &amp;handleId);</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <a class="code" href="classgoliath_1_1handles_1_1Handle.html">Handle</a>(<span class="keyword">const</span> <a class="code" href="classgoliath_1_1handles_1_1Handle.html">Handle</a> &amp;other);</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classgoliath_1_1handles_1_1Handle.html#ada0713e8f0701f4a295d009b4d26125e">lock</a>(<span class="keyword">const</span> <span class="keywordtype">size_t</span> &amp;commandId);</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classgoliath_1_1handles_1_1Handle.html#a4c9f0ac77380e119586aa13f8ea0a18e">unlock</a>();</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classgoliath_1_1handles_1_1Handle.html#a20cb0b4d91c945dd35a4a3cfa970e613">waitAndLock</a>(<span class="keyword">const</span> <span class="keywordtype">size_t</span> &amp;commandId);</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="keyword">const</span> <span class="keywordtype">size_t</span> <a class="code" href="classgoliath_1_1handles_1_1Handle.html#a8683d9b35fbc2f5644778625fa70fc20">getOwnerId</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keyword">const</span> <span class="keywordtype">size_t</span> getHandleId() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="classgoliath_1_1handles_1_1Handle.html#a0e7c7e830cbf1bfb6e9aae5e4d898738">isLocked</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="keyword">const</span> <span class="keywordtype">size_t</span> handleId;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        boost::optional&lt;size_t&gt; ownerId;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        std::mutex mutex;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        std::condition_variable var;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    };</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;}</div>
-<div class="ttc" id="classgoliath_1_1handles_1_1Handle_html_a8683d9b35fbc2f5644778625fa70fc20"><div class="ttname"><a href="classgoliath_1_1handles_1_1Handle.html#a8683d9b35fbc2f5644778625fa70fc20">goliath::handles::Handle::getOwnerId</a></div><div class="ttdeci">const size_t getOwnerId() const </div><div class="ttdef"><b>Definition:</b> handle.cpp:43</div></div>
-<div class="ttc" id="classgoliath_1_1handles_1_1Handle_html_a4c9f0ac77380e119586aa13f8ea0a18e"><div class="ttname"><a href="classgoliath_1_1handles_1_1Handle.html#a4c9f0ac77380e119586aa13f8ea0a18e">goliath::handles::Handle::unlock</a></div><div class="ttdeci">void unlock()</div><div class="ttdoc">Release the handle. </div><div class="ttdef"><b>Definition:</b> handle.cpp:25</div></div>
-<div class="ttc" id="classgoliath_1_1handles_1_1Handle_html"><div class="ttname"><a href="classgoliath_1_1handles_1_1Handle.html">goliath::handles::Handle</a></div><div class="ttdef"><b>Definition:</b> handle.h:14</div></div>
-<div class="ttc" id="classgoliath_1_1handles_1_1Handle_html_a20cb0b4d91c945dd35a4a3cfa970e613"><div class="ttname"><a href="classgoliath_1_1handles_1_1Handle.html#a20cb0b4d91c945dd35a4a3cfa970e613">goliath::handles::Handle::waitAndLock</a></div><div class="ttdeci">void waitAndLock(const size_t &amp;commandId)</div><div class="ttdoc">Wait for the lock to become available and acquire the lock. </div><div class="ttdef"><b>Definition:</b> handle.cpp:36</div></div>
-<div class="ttc" id="classgoliath_1_1handles_1_1Handle_html_a0e7c7e830cbf1bfb6e9aae5e4d898738"><div class="ttname"><a href="classgoliath_1_1handles_1_1Handle.html#a0e7c7e830cbf1bfb6e9aae5e4d898738">goliath::handles::Handle::isLocked</a></div><div class="ttdeci">bool isLocked() const </div><div class="ttdoc">Indicates whether or not this handle has been locked. </div><div class="ttdef"><b>Definition:</b> handle.cpp:55</div></div>
-<div class="ttc" id="classgoliath_1_1handles_1_1Handle_html_ada0713e8f0701f4a295d009b4d26125e"><div class="ttname"><a href="classgoliath_1_1handles_1_1Handle.html#ada0713e8f0701f4a295d009b4d26125e">goliath::handles::Handle::lock</a></div><div class="ttdeci">void lock(const size_t &amp;commandId)</div><div class="ttdoc">Lock the handle. </div><div class="ttdef"><b>Definition:</b> handle.cpp:16</div></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">namespace </span>goliath::handles {</div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="classgoliath_1_1handles_1_1Handle.html">   13</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classgoliath_1_1handles_1_1Handle.html">Handle</a> {</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        <a class="code" href="classgoliath_1_1handles_1_1Handle.html">Handle</a>(<span class="keyword">const</span> <span class="keywordtype">size_t</span> &amp;handleId);</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <a class="code" href="classgoliath_1_1handles_1_1Handle.html">Handle</a>(<span class="keyword">const</span> <a class="code" href="classgoliath_1_1handles_1_1Handle.html">Handle</a> &amp;other);</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classgoliath_1_1handles_1_1Handle.html#ada0713e8f0701f4a295d009b4d26125e">lock</a>(<span class="keyword">const</span> <span class="keywordtype">size_t</span> &amp;commandId);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classgoliath_1_1handles_1_1Handle.html#a4c9f0ac77380e119586aa13f8ea0a18e">unlock</a>();</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classgoliath_1_1handles_1_1Handle.html#a20cb0b4d91c945dd35a4a3cfa970e613">waitAndLock</a>(<span class="keyword">const</span> <span class="keywordtype">size_t</span> &amp;commandId);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="keyword">const</span> <span class="keywordtype">size_t</span> <a class="code" href="classgoliath_1_1handles_1_1Handle.html#a8683d9b35fbc2f5644778625fa70fc20">getOwnerId</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="keyword">const</span> <span class="keywordtype">size_t</span> getHandleId() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="classgoliath_1_1handles_1_1Handle.html#a0e7c7e830cbf1bfb6e9aae5e4d898738">isLocked</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keyword">const</span> <span class="keywordtype">size_t</span> handleId;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        boost::optional&lt;size_t&gt; ownerId;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        std::mutex mutex;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        std::condition_variable var;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    };</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;}</div>
+<div class="ttc" id="classgoliath_1_1handles_1_1Handle_html_a8683d9b35fbc2f5644778625fa70fc20"><div class="ttname"><a href="classgoliath_1_1handles_1_1Handle.html#a8683d9b35fbc2f5644778625fa70fc20">goliath::handles::Handle::getOwnerId</a></div><div class="ttdeci">const size_t getOwnerId() const </div><div class="ttdef"><b>Definition:</b> handle.cpp:44</div></div>
+<div class="ttc" id="classgoliath_1_1handles_1_1Handle_html_a4c9f0ac77380e119586aa13f8ea0a18e"><div class="ttname"><a href="classgoliath_1_1handles_1_1Handle.html#a4c9f0ac77380e119586aa13f8ea0a18e">goliath::handles::Handle::unlock</a></div><div class="ttdeci">void unlock()</div><div class="ttdoc">Release the handle. </div><div class="ttdef"><b>Definition:</b> handle.cpp:26</div></div>
+<div class="ttc" id="classgoliath_1_1handles_1_1Handle_html"><div class="ttname"><a href="classgoliath_1_1handles_1_1Handle.html">goliath::handles::Handle</a></div><div class="ttdef"><b>Definition:</b> handle.h:13</div></div>
+<div class="ttc" id="classgoliath_1_1handles_1_1Handle_html_a20cb0b4d91c945dd35a4a3cfa970e613"><div class="ttname"><a href="classgoliath_1_1handles_1_1Handle.html#a20cb0b4d91c945dd35a4a3cfa970e613">goliath::handles::Handle::waitAndLock</a></div><div class="ttdeci">void waitAndLock(const size_t &amp;commandId)</div><div class="ttdoc">Wait for the lock to become available and acquire the lock. </div><div class="ttdef"><b>Definition:</b> handle.cpp:37</div></div>
+<div class="ttc" id="classgoliath_1_1handles_1_1Handle_html_a0e7c7e830cbf1bfb6e9aae5e4d898738"><div class="ttname"><a href="classgoliath_1_1handles_1_1Handle.html#a0e7c7e830cbf1bfb6e9aae5e4d898738">goliath::handles::Handle::isLocked</a></div><div class="ttdeci">bool isLocked() const </div><div class="ttdoc">Indicates whether or not this handle has been locked. </div><div class="ttdef"><b>Definition:</b> handle.cpp:56</div></div>
+<div class="ttc" id="classgoliath_1_1handles_1_1Handle_html_ada0713e8f0701f4a295d009b4d26125e"><div class="ttname"><a href="classgoliath_1_1handles_1_1Handle.html#ada0713e8f0701f4a295d009b4d26125e">goliath::handles::Handle::lock</a></div><div class="ttdeci">void lock(const size_t &amp;commandId)</div><div class="ttdoc">Lock the handle. </div><div class="ttdef"><b>Definition:</b> handle.cpp:17</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

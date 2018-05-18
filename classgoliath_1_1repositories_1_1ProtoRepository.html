@@ -39,7 +39,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
@@ -74,7 +73,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -101,7 +100,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <p><a class="el" href="classgoliath_1_1repositories_1_1Repository.html" title="Repository base class. ">Repository</a> for accessing proto objects.  
  <a href="classgoliath_1_1repositories_1_1ProtoRepository.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="foundation_2src_2repositories_2proto__repository_8h_source.html">proto_repository.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="proto__repository_8h_source.html">proto_repository.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for goliath::repositories::ProtoRepository&lt; T &gt;:</div>
 <div class="dyncontent">
@@ -109,7 +108,6 @@ Inheritance diagram for goliath::repositories::ProtoRepository&lt; T &gt;:</div>
   <img src="classgoliath_1_1repositories_1_1ProtoRepository.png" usemap="#goliath::repositories::ProtoRepository&lt; T &gt;_map" alt=""/>
   <map id="goliath::repositories::ProtoRepository&lt; T &gt;_map" name="goliath::repositories::ProtoRepository&lt; T &gt;_map">
 <area href="classgoliath_1_1repositories_1_1Repository.html" title="Repository base class. " alt="goliath::repositories::Repository" shape="rect" coords="0,0,248,24"/>
-<area href="classgoliath_1_1repositories_1_1Repository.html" title="Repository base class. " alt="goliath::repositories::Repository" shape="rect" coords="258,0,506,24"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -123,21 +121,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a4b6ec7503f46039ce590a46c70e4b5dd"><td class="memItemLeft" align="right" valign="top">std::unique_ptr<br class="typebreak"/>
 &lt;::google::protobuf::Message &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1repositories_1_1ProtoRepository.html#a4b6ec7503f46039ce590a46c70e4b5dd">getMessage</a> () override</td></tr>
 <tr class="separator:a4b6ec7503f46039ce590a46c70e4b5dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac4997273bd24923d5414304fe3f68bd5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac4997273bd24923d5414304fe3f68bd5"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>ProtoRepository</b> (T *proto)</td></tr>
-<tr class="separator:ac4997273bd24923d5414304fe3f68bd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac1db9166738b372d0d759e46f6c30e55"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1repositories_1_1ProtoRepository.html#ac1db9166738b372d0d759e46f6c30e55">merge_from_message</a> (T *proto)=0</td></tr>
-<tr class="separator:ac1db9166738b372d0d759e46f6c30e55"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a083ec64cdb49ac1d91bf1a5cb32f010b"><td class="memItemLeft" align="right" valign="top">std::unique_ptr<br class="typebreak"/>
-&lt;::google::protobuf::Message &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1repositories_1_1ProtoRepository.html#a083ec64cdb49ac1d91bf1a5cb32f010b">getMessage</a> () override</td></tr>
-<tr class="separator:a083ec64cdb49ac1d91bf1a5cb32f010b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classgoliath_1_1repositories_1_1Repository"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classgoliath_1_1repositories_1_1Repository')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classgoliath_1_1repositories_1_1Repository.html">goliath::repositories::Repository</a></td></tr>
-<tr class="memitem:afbccd222beba76a654bf01d7794c5c2d inherit pub_methods_classgoliath_1_1repositories_1_1Repository"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1repositories_1_1Repository.html#afbccd222beba76a654bf01d7794c5c2d">isInvalidated</a> ()</td></tr>
-<tr class="separator:afbccd222beba76a654bf01d7794c5c2d inherit pub_methods_classgoliath_1_1repositories_1_1Repository"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8b1845da32fb728bc72dca2252f44814 inherit pub_methods_classgoliath_1_1repositories_1_1Repository"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8b1845da32fb728bc72dca2252f44814"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1repositories_1_1Repository.html#a8b1845da32fb728bc72dca2252f44814">invalidate</a> ()</td></tr>
-<tr class="memdesc:a8b1845da32fb728bc72dca2252f44814 inherit pub_methods_classgoliath_1_1repositories_1_1Repository"><td class="mdescLeft">&#160;</td><td class="mdescRight">Forces the repository to be synchronized. <br/></td></tr>
-<tr class="separator:a8b1845da32fb728bc72dca2252f44814 inherit pub_methods_classgoliath_1_1repositories_1_1Repository"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afbccd222beba76a654bf01d7794c5c2d inherit pub_methods_classgoliath_1_1repositories_1_1Repository"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1repositories_1_1Repository.html#afbccd222beba76a654bf01d7794c5c2d">isInvalidated</a> ()</td></tr>
 <tr class="separator:afbccd222beba76a654bf01d7794c5c2d inherit pub_methods_classgoliath_1_1repositories_1_1Repository"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8b1845da32fb728bc72dca2252f44814 inherit pub_methods_classgoliath_1_1repositories_1_1Repository"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8b1845da32fb728bc72dca2252f44814"></a>
@@ -147,9 +131,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:a617fa6edcea8ee35b100c35ba07f013c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a617fa6edcea8ee35b100c35ba07f013c"></a>
+<tr class="memitem:aebfdb22f2672b25ce745397d298ae3ba"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aebfdb22f2672b25ce745397d298ae3ba"></a>
 T *&#160;</td><td class="memItemRight" valign="bottom"><b>proto</b></td></tr>
-<tr class="separator:a617fa6edcea8ee35b100c35ba07f013c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:aebfdb22f2672b25ce745397d298ae3ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;typename T&gt;<br/>
@@ -191,67 +175,6 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a083ec64cdb49ac1d91bf1a5cb32f010b"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::unique_ptr&lt;::google::protobuf::Message&gt; <a class="el" href="classgoliath_1_1repositories_1_1ProtoRepository.html">goliath::repositories::ProtoRepository</a>&lt; T &gt;::getMessage </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>the protobuf contained in this repository </dd></dl>
-
-<p>Implements <a class="el" href="classgoliath_1_1repositories_1_1Repository.html#acaac526575f19832ff2a954fee3fb527">goliath::repositories::Repository</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="ac1db9166738b372d0d759e46f6c30e55"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual void <a class="el" href="classgoliath_1_1repositories_1_1ProtoRepository.html">goliath::repositories::ProtoRepository</a>&lt; T &gt;::merge_from_message </td>
-          <td>(</td>
-          <td class="paramtype">T *&#160;</td>
-          <td class="paramname"><em>proto</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Merges a protobuf into this repository. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">proto</td><td>proto to merge from into this repo </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
 <a class="anchor" id="ac1db9166738b372d0d759e46f6c30e55"></a>
 <div class="memitem">
 <div class="memproto">
@@ -286,7 +209,7 @@ template&lt;typename T &gt; </div>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>/home/travis/build/P8P-7/core/src/modules/foundation/src/repositories/<a class="el" href="foundation_2src_2repositories_2proto__repository_8h_source.html">proto_repository.h</a></li>
+<li>/home/travis/build/P8P-7/core/src/modules/foundation/src/repositories/<a class="el" href="proto__repository_8h_source.html">proto_repository.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
