@@ -39,6 +39,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
@@ -73,7 +74,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -100,7 +101,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <p><a class="el" href="classgoliath_1_1repositories_1_1Repository.html" title="Repository base class. ">Repository</a> base class.  
  <a href="classgoliath_1_1repositories_1_1Repository.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="repository_8h_source.html">repository.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="foundation_2src_2repositories_2repository_8h_source.html">repository.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for goliath::repositories::Repository:</div>
 <div class="dyncontent">
@@ -108,7 +109,9 @@ Inheritance diagram for goliath::repositories::Repository:</div>
   <img src="classgoliath_1_1repositories_1_1Repository.png" usemap="#goliath::repositories::Repository_map" alt=""/>
   <map id="goliath::repositories::Repository_map" name="goliath::repositories::Repository_map">
 <area href="classgoliath_1_1repositories_1_1BatteryRepository.html" title="Repository containing battery level. " alt="goliath::repositories::BatteryRepository" shape="rect" coords="0,56,248,80"/>
-<area href="classgoliath_1_1repositories_1_1ProtoRepository.html" title="Repository for accessing proto objects. " alt="goliath::repositories::ProtoRepository&lt; T &gt;" shape="rect" coords="258,56,506,80"/>
+<area href="classgoliath_1_1repositories_1_1BatteryRepository.html" title="Repository containing battery level. " alt="goliath::repositories::BatteryRepository" shape="rect" coords="258,56,506,80"/>
+<area href="classgoliath_1_1repositories_1_1ProtoRepository.html" title="Repository for accessing proto objects. " alt="goliath::repositories::ProtoRepository&lt; T &gt;" shape="rect" coords="516,56,764,80"/>
+<area href="classgoliath_1_1repositories_1_1ProtoRepository.html" title="Repository for accessing proto objects. " alt="goliath::repositories::ProtoRepository&lt; T &gt;" shape="rect" coords="774,56,1022,80"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -124,12 +127,22 @@ Public Member Functions</h2></td></tr>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1repositories_1_1Repository.html#a8b1845da32fb728bc72dca2252f44814">invalidate</a> ()</td></tr>
 <tr class="memdesc:a8b1845da32fb728bc72dca2252f44814"><td class="mdescLeft">&#160;</td><td class="mdescRight">Forces the repository to be synchronized. <br/></td></tr>
 <tr class="separator:a8b1845da32fb728bc72dca2252f44814"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acaac526575f19832ff2a954fee3fb527"><td class="memItemLeft" align="right" valign="top">virtual std::unique_ptr<br class="typebreak"/>
+&lt;::google::protobuf::Message &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1repositories_1_1Repository.html#acaac526575f19832ff2a954fee3fb527">getMessage</a> ()=0</td></tr>
+<tr class="memdesc:acaac526575f19832ff2a954fee3fb527"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compiles the fields of this repository to an instance of ::google::protobuf::Message.  <a href="#acaac526575f19832ff2a954fee3fb527">More...</a><br/></td></tr>
+<tr class="separator:acaac526575f19832ff2a954fee3fb527"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afbccd222beba76a654bf01d7794c5c2d"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1repositories_1_1Repository.html#afbccd222beba76a654bf01d7794c5c2d">isInvalidated</a> ()</td></tr>
+<tr class="separator:afbccd222beba76a654bf01d7794c5c2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b1845da32fb728bc72dca2252f44814"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8b1845da32fb728bc72dca2252f44814"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1repositories_1_1Repository.html#a8b1845da32fb728bc72dca2252f44814">invalidate</a> ()</td></tr>
+<tr class="memdesc:a8b1845da32fb728bc72dca2252f44814"><td class="mdescLeft">&#160;</td><td class="mdescRight">Forces the repository to be synchronized. <br/></td></tr>
+<tr class="separator:a8b1845da32fb728bc72dca2252f44814"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
 Friends</h2></td></tr>
-<tr class="memitem:a690615bdea92909c47db0bad1a6ec847"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a690615bdea92909c47db0bad1a6ec847"></a>
+<tr class="memitem:ad356eb63d3d93433695f2d40f91c92b3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad356eb63d3d93433695f2d40f91c92b3"></a>
 class&#160;</td><td class="memItemRight" valign="bottom"><b>Watcher</b></td></tr>
-<tr class="separator:a690615bdea92909c47db0bad1a6ec847"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:ad356eb63d3d93433695f2d40f91c92b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="classgoliath_1_1repositories_1_1Repository.html" title="Repository base class. ">Repository</a> base class. </p>
@@ -158,7 +171,59 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>Watcher</b></td></tr
 <p>Compiles the fields of this repository to an instance of ::google::protobuf::Message. </p>
 <dl class="section return"><dt>Returns</dt><dd>instance of ::google::protobuf::Message with all information </dd></dl>
 
-<p>Implemented in <a class="el" href="classgoliath_1_1repositories_1_1ProtoRepository.html#a4b6ec7503f46039ce590a46c70e4b5dd">goliath::repositories::ProtoRepository&lt; T &gt;</a>, and <a class="el" href="classgoliath_1_1repositories_1_1BatteryRepository.html#a65019f94f32e6b4e2ecb16022948bd32">goliath::repositories::BatteryRepository</a>.</p>
+<p>Implemented in <a class="el" href="classgoliath_1_1repositories_1_1ProtoRepository.html#a4b6ec7503f46039ce590a46c70e4b5dd">goliath::repositories::ProtoRepository&lt; T &gt;</a>, <a class="el" href="classgoliath_1_1repositories_1_1ProtoRepository.html#a083ec64cdb49ac1d91bf1a5cb32f010b">goliath::repositories::ProtoRepository&lt; T &gt;</a>, <a class="el" href="classgoliath_1_1repositories_1_1BatteryRepository.html#a65019f94f32e6b4e2ecb16022948bd32">goliath::repositories::BatteryRepository</a>, and <a class="el" href="classgoliath_1_1repositories_1_1BatteryRepository.html#a1c334c7f517ed724baaf08308d3d0db3">goliath::repositories::BatteryRepository</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="acaac526575f19832ff2a954fee3fb527"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual std::unique_ptr&lt;::google::protobuf::Message&gt; goliath::repositories::Repository::getMessage </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Compiles the fields of this repository to an instance of ::google::protobuf::Message. </p>
+<dl class="section return"><dt>Returns</dt><dd>instance of ::google::protobuf::Message with all information </dd></dl>
+
+<p>Implemented in <a class="el" href="classgoliath_1_1repositories_1_1ProtoRepository.html#a4b6ec7503f46039ce590a46c70e4b5dd">goliath::repositories::ProtoRepository&lt; T &gt;</a>, <a class="el" href="classgoliath_1_1repositories_1_1ProtoRepository.html#a083ec64cdb49ac1d91bf1a5cb32f010b">goliath::repositories::ProtoRepository&lt; T &gt;</a>, <a class="el" href="classgoliath_1_1repositories_1_1BatteryRepository.html#a65019f94f32e6b4e2ecb16022948bd32">goliath::repositories::BatteryRepository</a>, and <a class="el" href="classgoliath_1_1repositories_1_1BatteryRepository.html#a1c334c7f517ed724baaf08308d3d0db3">goliath::repositories::BatteryRepository</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="afbccd222beba76a654bf01d7794c5c2d"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool goliath::repositories::Repository::isInvalidated </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>true if this repository has been changed </dd></dl>
 
 </div>
 </div>
@@ -187,7 +252,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>Watcher</b></td></tr
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>/home/travis/build/P8P-7/core/src/modules/core/repositories/<a class="el" href="repository_8h_source.html">repository.h</a></li>
+<li>/home/travis/build/P8P-7/core/src/modules/foundation/src/repositories/<a class="el" href="foundation_2src_2repositories_2repository_8h_source.html">repository.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
