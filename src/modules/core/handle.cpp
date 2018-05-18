@@ -6,11 +6,11 @@
 using namespace goliath::handles;
 
 Handle::Handle(const size_t &handle_id)
-        : handleId(handle_id), ownerId(0) {
+        : handleId(handle_id) {
 }
 
 Handle::Handle(const Handle &other)
-        : handleId(other.getHandleId()), ownerId(other.getOwnerId()) {
+        : handleId(other.getHandleId()), ownerId(other.ownerId) {
 }
 
 void Handle::lock(const size_t& commandId) {
