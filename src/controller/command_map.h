@@ -48,13 +48,13 @@ namespace goliath::commands {
         explicit CommandMap(std::map<size_t, CommandItem> commands);
 
         /**
-         * @brief Add a @see goliath::commands::CommandItem to the map
+         * @brief Add a goliath::commands::CommandItem to the map
          * @param command Pointer to @see goliath::commmands::Command instance
          */
         CommandItem& add(std::shared_ptr<Command> command);
 
         /**
-         * @brief Add a @see goliath::commands::CommandItem to the map.
+         * @brief Add a goliath::commands::CommandItem to the map.
          * Creates an instance of CommandType with handleId and args passed to it as arguments. CommandType's constructor should accept an commandId as its first argument.
          *
          * @tparam CommandType type to create an Command of
@@ -67,14 +67,14 @@ namespace goliath::commands {
         CommandItem& add(size_t commandId, Targs... args);
 
         /**
-         * @brief Get @see goliath::commands::CommandItem at id
+         * @brief Get goliath::commands::CommandItem at id
          * @param id ID
          * @return @see goliath::commands::CommandItem
          */
         CommandItem& operator[](size_t id);
         const CommandItem& operator[](size_t id) const;
         /**
-         * @brief Check if a @see goliath::commmands::Command exists
+         * @brief Check if a goliath::commmands::Command exists
          * @param id ID to check
          * @return Status
          */
