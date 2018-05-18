@@ -18,7 +18,7 @@ target_include_directories(${PROJECT_NAME}
 
 target_link_libraries(${PROJECT_NAME}
         PUBLIC
-        goliath-core-module
+        goliath-foundation-module
         ${CMAKE_THREAD_LIBS_INIT}
         ${Boost_LIBRARIES}
         )

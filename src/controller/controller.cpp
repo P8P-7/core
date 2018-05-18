@@ -1,6 +1,6 @@
-#include <goliath/core.h>
+#include <goliath/foundation.h>
 #include <goliath/vision.h>
-#include <goliath/messaging.h>
+#include <goliath/zmq_messaging.h>
 #include <boost/log/trivial.hpp>
 
 #include "command_map.h"

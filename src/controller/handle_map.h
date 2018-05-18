@@ -1,6 +1,6 @@
 #pragma once
 
-#include <goliath/core.h>
+#include <goliath/foundation.h>
 
 /**
  * @file handle_map.h
