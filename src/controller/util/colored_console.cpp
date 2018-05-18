@@ -31,16 +31,22 @@ void goliath::util::colorConsoleFormatter(const blog::record_view &recordView, b
     auto mic = std::chrono::duration_cast<std::chrono::microseconds>(now.time_since_epoch()) % 1000;
     auto nowC = std::chrono::high_resolution_clock::to_time_t(now);
 
-    std::stringstream ss;
-    ss << std::put_time(std::localtime(&nowC), "%F %T") << ':' << mil.count() << ':' << mic.count();
+    std::stringstream timeStream;
+    timeStream << std::put_time(std::localtime(&nowC), "%F %T") << ':' << mil.count() << ':' << mic.count();
 
-    formatStream << '[' << CONSOLE_COLOR_GREEN << ss.str() << LOG_COLOR_DEFAULT << "] ";
+    formatStream << '[' << CONSOLE_COLOR_GREEN << std::left << std::setw(27) << timeStream.str() << LOG_COLOR_DEFAULT << "] ";
     formatStream << '<' << CONSOLE_COLOR_CYAN << std::this_thread::get_id() << LOG_COLOR_DEFAULT << "> ";
 
     auto severity = recordView.attribute_values()["Severity"].extract<boost::log::trivial::severity_level>();
     if (severity) {
-        formatStream << '(' << severity << ")\t├ ";
+        std::stringstream severityStream;
+        severityStream << '(' << severity << ')';
+
+        formatStream << std::left << std::setw(9) << severityStream.str() << "├ ";
         formatStream << getColor(severity.get());
+    }
+    else {
+        formatStream << "├ ";
     }
 
     formatStream  << recordView[boost::log::expressions::smessage];
@@ -57,4 +63,16 @@ void goliath::util::init() {
     sink->set_formatter(&goliath::util::colorConsoleFormatter);
 
     boost::log::core::get()->add_sink(sink);
+
+    for(int i = 0; i < 57; ++i) {
+        std::cout << "─";
+    }
+
+    std::cout << "┬";
+
+    for(int i = 0; i < 57; ++i) {
+        std::cout << "─";
+    }
+
+    std::cout << std::endl;
 }
