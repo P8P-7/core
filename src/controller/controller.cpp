@@ -43,23 +43,22 @@ int main(int argc, char *argv[]) {
     watcher.watch(battery_repo);
 
     BOOST_LOG_TRIVIAL(info) << "Setting up handles";
-    handles::HandleMap handleMap;
-    handleMap.add(HANDLE_LEFT_EYE_CAM, std::make_shared<handles::WebcamHandle>(handles::WebcamHandle(0)));
-    handleMap.add(HANDLE_RIGHT_EYE_CAM, std::make_shared<handles::WebcamHandle>(handles::WebcamHandle(0)));
+    handles::HandleMap handles;
+    handles.add<handles::WebcamHandle>(HANDLE_CAM, 0);
 
     BOOST_LOG_TRIVIAL(info) << "Setting up commands";
-    commands::CommandMap commandMap;
-    commandMap.add(CommandMessage::kMoveCommand, std::make_shared<commands::MoveCommand>(commands::MoveCommand()));
-    commandMap.add(
+    commands::CommandMap commands;
+    commands.add(CommandMessage::kMoveCommand, std::make_shared<commands::MoveCommand>(commands::MoveCommand()));
+    commands.add(
             CommandMessage::kFollowLineCommand,
             std::make_shared<commands::FollowLineCommand>(commands::FollowLineCommand())
     );
-    commandMap.add(
+    commands.add(
             CommandMessage::kMoveTowerCommand,
             std::make_shared<commands::MoveTowerCommand>(commands::MoveTowerCommand())
     );
 
-    commands::CommandExecutor runner(commandMap, handleMap);
+    commands::CommandExecutor runner(commands, handles);
 
     subscriber.bind(MessageCarrier::MessageCase::kCommandMessage,
                      [&runner](const MessageCarrier &carrier) {

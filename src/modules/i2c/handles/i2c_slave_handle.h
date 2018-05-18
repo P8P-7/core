@@ -9,20 +9,20 @@
 
 
 namespace goliath::i2c {
-    using i2cAddress = std::uint8_t;
+    using I2cAddress = std::uint8_t;
 }
 
 namespace goliath::handles {
     class I2cSlaveHandle : public Handle {
     public:
-        I2cSlaveHandle(const i2c::i2cAddress& address);
+        I2cSlaveHandle(const size_t &id, const i2c::I2cAddress &address);
 
         /**
          * @return slave address
          */
-        const i2c::i2cAddress& getSlaveAddress() const;
+        const i2c::I2cAddress& getSlaveAddress() const;
     private:
         std::string device;
-        i2c::i2cAddress address;
+        i2c::I2cAddress address;
     };
 }

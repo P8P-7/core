@@ -1,9 +1,8 @@
-project(goliath-i2c-module CXX)
+project(goliath-i2c-module)
 
 set(SOURCES
         handles/i2c_slave_handle.cpp
         handles/i2c_bus_handle.cpp
-        i2c_slave.cpp
         i2c_slave.cpp
         i2c_error.cpp
         )

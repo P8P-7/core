@@ -27,7 +27,10 @@ namespace goliath::handles {
          * @param index New index of handle
          * @param handle Pointer to the handle itself
          */
-        void add(const size_t& index, std::shared_ptr<Handle> handle);
+        template<typename HandleType>
+        std::shared_ptr<HandleType> add(std::shared_ptr<HandleType> handle);
+        template<typename HandleType, typename... Targs>
+        std::shared_ptr<HandleType> add(const size_t &index, Targs... args);
 
         /**
          * @brief Get handles for a specific selecion of ID's
@@ -38,9 +41,9 @@ namespace goliath::handles {
 
         /**
          * @brief Lock all handles for a specific command
-         * @param command_id Command ID for the handle's to be locked on
+         * @param commandId Command ID for the handle's to be locked on
          */
-        void lockAll(const size_t &command_id);
+        void lockAll(const size_t &commandId);
 
         std::shared_ptr<Handle>& operator[](const size_t &index);
         const std::shared_ptr<Handle>& operator[](const size_t &index) const;
@@ -50,4 +53,17 @@ namespace goliath::handles {
          */
         std::map<size_t, std::shared_ptr<Handle>> map;
     };
+
+    template<typename HandleType>
+    std::shared_ptr<HandleType> HandleMap::add(std::shared_ptr<HandleType> handle) {
+        map[handle->getHandleId()] = handle;
+    }
+
+    template<typename HandleType, typename... HandleArgs>
+    std::shared_ptr<HandleType> HandleMap::add(const size_t &index, HandleArgs... args) {
+        auto handle = std::make_shared<HandleType>(index, args...);
+        map[index] = handle;
+
+        return handle;
+    }
 }

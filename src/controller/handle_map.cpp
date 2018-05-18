@@ -16,17 +16,13 @@ HandleMap::~HandleMap() {
     }
 }
 
-void HandleMap::add(const size_t &index, std::shared_ptr<Handle> handle) {
-    map[index] = handle;
-}
-
 HandleMap HandleMap::getHandles(const std::vector<size_t> &handles) const {
     HandleMap selection{};
 
     for (auto kvp : map) {
         auto result = std::find(handles.begin(), handles.end(), kvp.first);
         if (result != handles.end()) {
-            selection.add(kvp.first, kvp.second);
+            selection.add(kvp.second);
         }
     }
 

@@ -8,7 +8,7 @@ using namespace goliath::handles;
 using namespace goliath;
 
 commands::FollowLineCommand::FollowLineCommand()
-    : Command({ HANDLE_RIGHT_EYE_CAM, HANDLE_LEFT_EYE_CAM }) {
+    : Command({ HANDLE_CAM }) {
 }
 
 void commands::FollowLineCommand::execute(const HandleMap &handles, const CommandMessage &message) {

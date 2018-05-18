@@ -3,10 +3,10 @@
 using namespace goliath::handles;
 using namespace goliath::i2c;
 
-I2cSlaveHandle::I2cSlaveHandle(const i2cAddress& address)
-    : address(address) {
+I2cSlaveHandle::I2cSlaveHandle(const size_t &id, const I2cAddress& address)
+    : Handle(id), address(address) {
 }
 
-const i2cAddress& I2cSlaveHandle::getSlaveAddress() const {
+const I2cAddress& I2cSlaveHandle::getSlaveAddress() const {
     return address;
 }

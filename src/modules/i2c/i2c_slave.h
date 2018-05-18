@@ -25,7 +25,9 @@ namespace goliath::i2c {
          * @param busHandle
          * @param slaveAddress
          */
-        I2cSlave(const handles::I2cBusHandle &busHandle, const i2cAddress &slaveAddress);
+        I2cSlave(const handles::I2cBusHandle &busHandle, const I2cAddress &slaveAddress);
+
+        ~I2cSlave();
 
         /**
          * @warning Length of iterator should not be larger than the max value of @see I2cAddress.
@@ -44,11 +46,25 @@ namespace goliath::i2c {
          */
         I2cSlave& operator<<(const char &value);
 
+        /**
+         * Writes anything at buffer with size length to the slave.
+         * @param buffer pointer to start
+         * @param length length of message
+         * @return number of written bytes
+         */
+        ssize_t write(const char *buffer, size_t length);
+        /**
+         * Request the slave to send something.
+         * @param buffer pointer to start writing
+         * @param length size of buffer
+         * @return total number of bytes read
+         */
+        ssize_t read(char *buffer, size_t length);
     private:
         std::string device;
-        i2c::i2cAddress address;
+        i2c::I2cAddress address;
 
-        ssize_t write(const char *buffer, size_t length);
+        int file_descriptor;
     };
 }
 
