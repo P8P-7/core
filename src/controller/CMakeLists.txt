@@ -27,8 +27,8 @@ add_definitions(-DBOOST_LOG_DYN_LINK)
 
 target_link_libraries(${PROJECT_NAME}
         PUBLIC
-            goliath-core-module
-            goliath-messaging-module
+            goliath-foundation-module
+            goliath-zmq-messaging-module
             goliath-vision-module
             ${Boost_LIBRARIES}
             ${CMAKE_THREAD_LIBS_INIT}

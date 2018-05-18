@@ -1,7 +1,7 @@
 #pragma once
 
 #include <string>
-#include <goliath/core.h>
+#include <goliath/foundation.h>
 
 /**
  * @file i2c_bus_handle.h

@@ -1,6 +1,6 @@
 #pragma once
 
-#include <goliath/core.h>
+#include <goliath/foundation.h>
 
 #include "webcam.h"
 
