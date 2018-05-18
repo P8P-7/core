@@ -65,6 +65,8 @@ namespace goliath::i2c {
         i2c::I2cAddress address;
 
         int file_descriptor;
+
+        void setActiveSlaveOnBus(const i2c::I2cAddress &address);
     };
 }
 
