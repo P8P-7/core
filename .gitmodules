@@ -6,7 +6,7 @@
 	url = git://github.com/P8P-7/lib-dynamixel.git
 [submodule "src/modules/zmq-messaging"]
 	path = src/modules/zmq-messaging
-	url = git@github.com:P8P-7/zmq-messaging.git
+	url = git://github.com/P8P-7/zmq-messaging.git
 [submodule "src/modules/foundation"]
 	path = src/modules/foundation
-	url = git@github.com:P8P-7/foundation.git
+	url = git://github.com/P8P-7/foundation.git
