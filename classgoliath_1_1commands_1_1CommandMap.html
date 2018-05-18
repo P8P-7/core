@@ -106,9 +106,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ab3db81ba2af4066dac95a4cb529c5a29"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1commands_1_1CommandMap.html#ab3db81ba2af4066dac95a4cb529c5a29">CommandMap</a> (std::map&lt; size_t, <a class="el" href="structgoliath_1_1commands_1_1CommandItem.html">CommandItem</a> &gt; commands)</td></tr>
 <tr class="separator:ab3db81ba2af4066dac95a4cb529c5a29"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a05e662fada42a195d1064365004c9706"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1commands_1_1CommandMap.html#a05e662fada42a195d1064365004c9706">add</a> (size_t commandId, std::shared_ptr&lt; <a class="el" href="classgoliath_1_1commands_1_1Command.html">Command</a> &gt; command)</td></tr>
-<tr class="memdesc:a05e662fada42a195d1064365004c9706"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a.  <a href="#a05e662fada42a195d1064365004c9706">More...</a><br/></td></tr>
-<tr class="separator:a05e662fada42a195d1064365004c9706"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24b7eaaf96c3fca72d995ef3d457d69e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgoliath_1_1commands_1_1CommandItem.html">CommandItem</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1commands_1_1CommandMap.html#a24b7eaaf96c3fca72d995ef3d457d69e">add</a> (std::shared_ptr&lt; <a class="el" href="classgoliath_1_1commands_1_1Command.html">Command</a> &gt; command)</td></tr>
+<tr class="memdesc:a24b7eaaf96c3fca72d995ef3d457d69e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a.  <a href="#a24b7eaaf96c3fca72d995ef3d457d69e">More...</a><br/></td></tr>
+<tr class="separator:a24b7eaaf96c3fca72d995ef3d457d69e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31b84a2b440ba2a71036ab8fe9be8219"><td class="memTemplParams" colspan="2">template&lt;typename CommandType , typename... Targs&gt; </td></tr>
+<tr class="memitem:a31b84a2b440ba2a71036ab8fe9be8219"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="structgoliath_1_1commands_1_1CommandItem.html">CommandItem</a> &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classgoliath_1_1commands_1_1CommandMap.html#a31b84a2b440ba2a71036ab8fe9be8219">add</a> (size_t commandId, Targs...args)</td></tr>
+<tr class="memdesc:a31b84a2b440ba2a71036ab8fe9be8219"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a.  <a href="#a31b84a2b440ba2a71036ab8fe9be8219">More...</a><br/></td></tr>
+<tr class="separator:a31b84a2b440ba2a71036ab8fe9be8219"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae8206097879c8139ca35d2c3199219d1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgoliath_1_1commands_1_1CommandItem.html">CommandItem</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1commands_1_1CommandMap.html#ae8206097879c8139ca35d2c3199219d1">operator[]</a> (size_t id)</td></tr>
 <tr class="memdesc:ae8206097879c8139ca35d2c3199219d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get.  <a href="#ae8206097879c8139ca35d2c3199219d1">More...</a><br/></td></tr>
 <tr class="separator:ae8206097879c8139ca35d2c3199219d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -154,12 +158,40 @@ const <a class="el" href="structgoliath_1_1commands_1_1CommandItem.html">Command
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a05e662fada42a195d1064365004c9706"></a>
+<a class="anchor" id="a24b7eaaf96c3fca72d995ef3d457d69e"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void CommandMap::add </td>
+          <td class="memname"><a class="el" href="structgoliath_1_1commands_1_1CommandItem.html">CommandItem</a> &amp; CommandMap::add </td>
+          <td>(</td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classgoliath_1_1commands_1_1Command.html">Command</a> &gt;&#160;</td>
+          <td class="paramname"><em>command</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Add a. </p>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="structgoliath_1_1commands_1_1CommandItem.html" title="Tuple storing both the status of the command and the command instance itself. ">goliath::commands::CommandItem</a> to the map </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">command</td><td>Pointer to </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="classgoliath_1_1commmands_1_1Command.html" title="Command base class. ">goliath::commmands::Command</a> instance </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a31b84a2b440ba2a71036ab8fe9be8219"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename CommandType , typename... Targs&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structgoliath_1_1commands_1_1CommandItem.html">CommandItem</a> &amp; goliath::commands::CommandMap::add </td>
           <td>(</td>
           <td class="paramtype">size_t&#160;</td>
           <td class="paramname"><em>commandId</em>, </td>
@@ -167,8 +199,8 @@ const <a class="el" href="structgoliath_1_1commands_1_1CommandItem.html">Command
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classgoliath_1_1commands_1_1Command.html">Command</a> &gt;&#160;</td>
-          <td class="paramname"><em>command</em>&#160;</td>
+          <td class="paramtype">Targs...&#160;</td>
+          <td class="paramname"><em>args</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -179,21 +211,22 @@ const <a class="el" href="structgoliath_1_1commands_1_1CommandItem.html">Command
 </div><div class="memdoc">
 
 <p>Add a. </p>
-<dl class="section see"><dt>See Also</dt><dd><a class="el" href="structgoliath_1_1commands_1_1CommandItem.html" title="Tuple storing both the status of the command and the command instance itself. ">goliath::commands::CommandItem</a> to the map </dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">commandId</td><td>Preferred ID of the new </td></tr>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="structgoliath_1_1commands_1_1CommandItem.html" title="Tuple storing both the status of the command and the command instance itself. ">goliath::commands::CommandItem</a> to the map. Creates an instance of CommandType with handleId and args passed to it as arguments. CommandType's constructor should accept an commandId as its first argument.</dd></dl>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">CommandType</td><td>type to create an <a class="el" href="classgoliath_1_1commands_1_1Command.html">Command</a> of </td></tr>
+    <tr><td class="paramname">Targs</td><td>types of arguments passed to </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section see"><dt>See Also</dt><dd><a class="el" href="classgoliath_1_1commmands_1_1Command.html" title="Command base class. ">goliath::commmands::Command</a> </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">command</td><td>Pointer to </td></tr>
+    <tr><td class="paramname">commandId</td><td>passed to the command created </td></tr>
+    <tr><td class="paramname">args</td><td>arguments passed the command in the constructor afther the commandId </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section see"><dt>See Also</dt><dd><a class="el" href="classgoliath_1_1commmands_1_1Command.html" title="Command base class. ">goliath::commmands::Command</a> instance </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="structgoliath_1_1commands_1_1CommandItem.html" title="Tuple storing both the status of the command and the command instance itself. ">goliath::commands::CommandItem</a> with </dd></dl>
 
 </div>
 </div>

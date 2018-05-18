@@ -111,9 +111,11 @@ Inheritance diagram for goliath::commands::Command:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a598e6dd3dde44041871680dc165b6bc8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a598e6dd3dde44041871680dc165b6bc8"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Command</b> (const std::vector&lt; size_t &gt; &amp;requiredHandles)</td></tr>
-<tr class="separator:a598e6dd3dde44041871680dc165b6bc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aedcb0c5f613062f2b30132baad887e21"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aedcb0c5f613062f2b30132baad887e21"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Command</b> (const size_t &amp;id, const std::vector&lt; size_t &gt; &amp;requiredHandles)</td></tr>
+<tr class="separator:aedcb0c5f613062f2b30132baad887e21"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaeab277bf9a30a80a517030d56d9e1e9"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1commands_1_1Command.html#aaeab277bf9a30a80a517030d56d9e1e9">getId</a> () const </td></tr>
+<tr class="separator:aaeab277bf9a30a80a517030d56d9e1e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8eb185c3cd08fadefa4f0437a10364b5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1commands_1_1Command.html#a8eb185c3cd08fadefa4f0437a10364b5">run</a> (const <a class="el" href="classgoliath_1_1handles_1_1HandleMap.html">handles::HandleMap</a> &amp;handles, const CommandMessage &amp;message)</td></tr>
 <tr class="memdesc:a8eb185c3cd08fadefa4f0437a10364b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Execute a command whilst also setting its running property.  <a href="#a8eb185c3cd08fadefa4f0437a10364b5">More...</a><br/></td></tr>
 <tr class="separator:a8eb185c3cd08fadefa4f0437a10364b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -175,6 +177,22 @@ Protected Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a class="anchor" id="aaeab277bf9a30a80a517030d56d9e1e9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t Command::getId </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>id by which the command is known in a goliath::commmands::CommandMap </dd></dl>
 
 </div>
 </div>
