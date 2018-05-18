@@ -119,7 +119,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> HandleType&gt;</div>
 <div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="classgoliath_1_1handles_1_1HandleMap.html#a735a565b8fdb8fe861dc6507377c49d4">   57</a></span>&#160;    std::shared_ptr&lt;HandleType&gt; <a class="code" href="classgoliath_1_1handles_1_1HandleMap.html#a735a565b8fdb8fe861dc6507377c49d4">HandleMap::add</a>(std::shared_ptr&lt;HandleType&gt; handle) {</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        map[handle-&gt;getHandleId()] = handle;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        map[handle-&gt;getId()] = handle;</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keywordflow">return</span> handle;</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    }</div>
