@@ -1,6 +1,6 @@
 add_subdirectory(foundation)
 add_subdirectory(openal)
-add_subdirectory(dynamixel)
+add_subdirectory(servo)
 add_subdirectory(gpio)
 add_subdirectory(zmq-messaging)
 add_subdirectory(i2c)

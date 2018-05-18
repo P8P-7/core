@@ -1,7 +1,7 @@
-project(goliath-dynamixel-module LANGUAGES CXX)
+project(goliath-servo-module LANGUAGES CXX)
 
 set(SOURCES
-        test.cpp
+        servo_handle.cpp
         )
 
 add_library(${PROJECT_NAME} ${SOURCES})
@@ -13,17 +13,12 @@ target_include_directories(${PROJECT_NAME}
 
 target_link_libraries(${PROJECT_NAME}
         PUBLIC
-            goliath-gpio-module
+            goliath-proto
             goliath-dynamixel
-        )
-
-add_executable(dynamixel-test
-        test.cpp
-        )
-
-target_link_libraries(dynamixel-test
-        PUBLIC
             goliath-gpio-module
-            goliath-dynamixel
+            goliath-foundation-module
+        PRIVATE
+            ${Protobuf_LIBRARY}
             ${CMAKE_THREAD_LIBS_INIT}
+            ${Boost_LIBRARIES}
         )

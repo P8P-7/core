@@ -8,7 +8,7 @@ set(SOURCES
         detectors/color_region_detector.cpp
         processors/processor.cpp
         processors/color_processor.cpp
-    processors/canny_processor.cpp
+        processors/canny_processor.cpp
         processors/roi_processor.cpp
         util/vision_error.cpp
         util/vision_utilities.cpp
