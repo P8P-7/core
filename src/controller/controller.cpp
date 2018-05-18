@@ -44,8 +44,7 @@ int main(int argc, char *argv[]) {
 
     BOOST_LOG_TRIVIAL(info) << "Setting up handles";
     handles::HandleMap handles;
-    handles.add<handles::WebcamHandle>(HANDLE_LEFT_EYE_CAM, 0);
-    handles.add<handles::WebcamHandle>(HANDLE_RIGHT_EYE_CAM, 0);
+    handles.add<handles::WebcamHandle>(HANDLE_CAM, 0);
 
     BOOST_LOG_TRIVIAL(info) << "Setting up commands";
     commands::CommandMap commands;

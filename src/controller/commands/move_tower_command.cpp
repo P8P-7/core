@@ -7,7 +7,7 @@ using namespace goliath::handles;
 using namespace goliath;
 
 commands::MoveTowerCommand::MoveTowerCommand()
-        : Command({ HANDLE_RIGHT_EYE_CAM, HANDLE_LEFT_EYE_CAM }) {
+        : Command({ HANDLE_CAM }) {
 }
 
 void commands::MoveTowerCommand::execute(const HandleMap &handles, const CommandMessage &message) {
