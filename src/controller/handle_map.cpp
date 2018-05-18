@@ -6,8 +6,9 @@
 using namespace goliath::handles;
 
 HandleMap::HandleMap() {}
+
 HandleMap::HandleMap(const std::map<size_t, std::shared_ptr<Handle>> &map)
-    : map(map) {
+        : map(map) {
 }
 
 HandleMap::~HandleMap() {
@@ -31,11 +32,11 @@ HandleMap HandleMap::getHandles(const std::vector<size_t> &handles) const {
     return selection;
 }
 
-std::shared_ptr<Handle>& HandleMap::operator[](const size_t &index) {
+std::shared_ptr<Handle> &HandleMap::operator[](const size_t &index) {
     return map.at(index);
 }
 
-const std::shared_ptr<Handle>& HandleMap::operator[](const size_t &index) const {
+const std::shared_ptr<Handle> &HandleMap::operator[](const size_t &index) const {
     return map.at(index);
 }
 
