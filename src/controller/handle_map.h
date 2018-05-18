@@ -55,7 +55,7 @@ namespace goliath::handles {
 
     template<typename HandleType>
     std::shared_ptr<HandleType> HandleMap::add(std::shared_ptr<HandleType> handle) {
-        map[handle->getHandleId()] = handle;
+        map[handle->getId()] = handle;
 
         return handle;
     }
