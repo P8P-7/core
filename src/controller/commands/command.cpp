@@ -2,8 +2,8 @@
 
 using namespace goliath::commands;
 
-Command::Command(const std::vector<size_t> &requiredHandles)
-        : requiredHandles(requiredHandles) {
+Command::Command(const size_t &id, const std::vector<size_t> &requiredHandles)
+        : id(id), requiredHandles(requiredHandles) {
 }
 
 void Command::interrupt() {
@@ -22,4 +22,8 @@ void Command::run(const goliath::handles::HandleMap &handles, const CommandMessa
     running = true;
     execute(handles, message);
     running = false;
+}
+
+size_t Command::getId() const {
+    return id;
 }

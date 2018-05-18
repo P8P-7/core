@@ -24,7 +24,6 @@ namespace goliath::handles {
 
         /**
          * @brief Add a handle pair
-         * @param index New index of handle
          * @param handle Pointer to the handle itself
          */
         template<typename HandleType>
@@ -57,9 +56,11 @@ namespace goliath::handles {
     template<typename HandleType>
     std::shared_ptr<HandleType> HandleMap::add(std::shared_ptr<HandleType> handle) {
         map[handle->getHandleId()] = handle;
+
+        return handle;
     }
 
-    template<typename HandleType, typename... HandleArgs>
+    template<typename HandleType, typename ...HandleArgs>
     std::shared_ptr<HandleType> HandleMap::add(const size_t &index, HandleArgs... args) {
         auto handle = std::make_shared<HandleType>(index, args...);
         map[index] = handle;

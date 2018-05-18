@@ -7,8 +7,8 @@
 using namespace goliath::handles;
 using namespace goliath;
 
-commands::MoveCommand::MoveCommand()
-        : Command({}) {
+commands::MoveCommand::MoveCommand(const size_t &id)
+        : Command(id, {}) {
 }
 
 void commands::MoveCommand::execute(const HandleMap &handles, const CommandMessage &message) {

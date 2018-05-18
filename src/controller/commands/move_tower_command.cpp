@@ -6,8 +6,8 @@
 using namespace goliath::handles;
 using namespace goliath;
 
-commands::MoveTowerCommand::MoveTowerCommand()
-        : Command({ HANDLE_CAM }) {
+commands::MoveTowerCommand::MoveTowerCommand(const size_t &id)
+        : Command(id, { HANDLE_CAM }) {
 }
 
 void commands::MoveTowerCommand::execute(const HandleMap &handles, const CommandMessage &message) {

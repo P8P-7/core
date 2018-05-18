@@ -2,6 +2,7 @@
 #include <goliath/vision.h>
 #include <goliath/zmq_messaging.h>
 #include <boost/log/trivial.hpp>
+#include <csignal>
 
 #include "command_map.h"
 #include "commands/move_command.h"
@@ -21,6 +22,20 @@
 * @brief Main project namespace
 */
 using namespace goliath;
+
+static bool running = true;
+static void signal_handler(int signal) {
+    running = false;
+}
+
+static void add_signal_handler() {
+    struct sigaction action;
+    action.sa_handler = signal_handler;
+    action.sa_flags = 0;
+    sigemptyset (&action.sa_mask);
+    sigaction (SIGINT, &action, NULL);
+    sigaction (SIGTERM, &action, NULL);
+}
 
 /**
  * @fn main(int argc, char *argv[])
@@ -48,15 +63,9 @@ int main(int argc, char *argv[]) {
 
     BOOST_LOG_TRIVIAL(info) << "Setting up commands";
     commands::CommandMap commands;
-    commands.add(CommandMessage::kMoveCommand, std::make_shared<commands::MoveCommand>(commands::MoveCommand()));
-    commands.add(
-            CommandMessage::kFollowLineCommand,
-            std::make_shared<commands::FollowLineCommand>(commands::FollowLineCommand())
-    );
-    commands.add(
-            CommandMessage::kMoveTowerCommand,
-            std::make_shared<commands::MoveTowerCommand>(commands::MoveTowerCommand())
-    );
+    commands.add<commands::MoveCommand>(CommandMessage::kMoveCommand);
+    commands.add<commands::FollowLineCommand>(CommandMessage::kFollowLineCommand);
+    commands.add<commands::MoveTowerCommand>(CommandMessage::kMoveTowerCommand);
 
     commands::CommandExecutor runner(commands, handles);
 
@@ -71,8 +80,14 @@ int main(int argc, char *argv[]) {
     BOOST_LOG_TRIVIAL(info) << "Starting watcher";
     watcher.start();
 
-    BOOST_LOG_TRIVIAL(info) << "Press any key to stop the controller";
-    getchar();
+    BOOST_LOG_TRIVIAL(info) << "Press CTR+C to stop the controller";
+
+    add_signal_handler();
+    while (running)
+        ;
+    std::cout << std::endl;
+
+    BOOST_LOG_TRIVIAL(warning) << "Controller is shutting down...";
 
     BOOST_LOG_TRIVIAL(info) << "Stopping watcher";
     watcher.stop();
@@ -80,7 +95,7 @@ int main(int argc, char *argv[]) {
     BOOST_LOG_TRIVIAL(info) << "Stopping subscriber";
     subscriber.stop();
 
-    BOOST_LOG_TRIVIAL(info) << "Controller has been stopped";
+    BOOST_LOG_TRIVIAL(fatal) << "Controller has been shut down";
 
     return 0;
 }
