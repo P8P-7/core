@@ -1,7 +1,7 @@
 var searchData=
 [
   ['getbatterylevel',['getBatteryLevel',['../classgoliath_1_1repositories_1_1BatteryRepository.html#a44b56fc844b7351bbfa342c1968474d1',1,'goliath::repositories::BatteryRepository']]],
-  ['getdevice',['getDevice',['../classgoliath_1_1handles_1_1WebcamHandle.html#a628afaccfa01f90560060d3bb2d7c383',1,'goliath::handles::WebcamHandle']]],
+  ['getdevice',['getDevice',['../classgoliath_1_1handles_1_1ServoHandle.html#a2f0edc603df77ac6e40c671c4b67bf5f',1,'goliath::handles::ServoHandle::getDevice()'],['../classgoliath_1_1handles_1_1WebcamHandle.html#a628afaccfa01f90560060d3bb2d7c383',1,'goliath::handles::WebcamHandle::getDevice()']]],
   ['getdevicepath',['getDevicePath',['../classgoliath_1_1handles_1_1I2cBusHandle.html#a6980d87408eca7c6e537d12c75fa9716',1,'goliath::handles::I2cBusHandle']]],
   ['getframe',['getFrame',['../classgoliath_1_1vision_1_1Webcam.html#a49d6bcd9f379755ec45702e7eae2f125',1,'goliath::vision::Webcam::getFrame(cv::Mat &amp;frame)'],['../classgoliath_1_1vision_1_1Webcam.html#a801e45de991b8850d7bf4548ab6e7ada',1,'goliath::vision::Webcam::getFrame()']]],
   ['gethandles',['getHandles',['../classgoliath_1_1handles_1_1HandleMap.html#a59295e9ce2913c22c18f21dd61b0cf9c',1,'goliath::handles::HandleMap']]],

@@ -1,6 +1,10 @@
 var searchData=
 [
   ['sendcommand',['sendCommand',['../classgoliath_1_1controller_1_1MotorController.html#a36c83357651e0db21c4ca28bebc6c533',1,'goliath::controller::MotorController']]],
+  ['servo_5fhandle',['servo_handle',['../classgoliath_1_1handles_1_1servo__handle.html',1,'goliath::handles']]],
+  ['servo_5fhandle_2eh',['servo_handle.h',['../servo__handle_8h.html',1,'']]],
+  ['servohandle',['ServoHandle',['../classgoliath_1_1handles_1_1ServoHandle.html',1,'goliath::handles']]],
+  ['servohandle',['ServoHandle',['../classgoliath_1_1handles_1_1ServoHandle.html#a26c25cd476708562cae36dfbc2d89cb6',1,'goliath::handles::ServoHandle']]],
   ['shouldsynchronize',['shouldSynchronize',['../classgoliath_1_1repositories_1_1Watcher.html#aace3462ef22158e3844046653d2189a2',1,'goliath::repositories::Watcher']]],
   ['stale',['STALE',['../namespacegoliath_1_1commands.html#ad04221b592714b06a85a6415a475981ba4d855a061b3066dc14a3b12ed26b5456',1,'goliath::commands']]],
   ['start',['start',['../classgoliath_1_1repositories_1_1Watcher.html#a5474ded0da07eb99166c6376bdd73b85',1,'goliath::repositories::Watcher::start()'],['../classgoliath_1_1messaging_1_1ZmqSubscriber.html#a539e2c1be4f787bc31c16043a008dd26',1,'goliath::messaging::ZmqSubscriber::start()']]],

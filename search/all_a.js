@@ -11,5 +11,6 @@ var searchData=
   ['move_5fcommand_2eh',['move_command.h',['../move__command_8h.html',1,'']]],
   ['move_5ftower_5fcommand_2eh',['move_tower_command.h',['../move__tower__command_8h.html',1,'']]],
   ['movecommand',['MoveCommand',['../classgoliath_1_1commands_1_1MoveCommand.html',1,'goliath::commands']]],
-  ['movetowercommand',['MoveTowerCommand',['../classgoliath_1_1commands_1_1MoveTowerCommand.html',1,'goliath::commands']]]
+  ['movetowercommand',['MoveTowerCommand',['../classgoliath_1_1commands_1_1MoveTowerCommand.html',1,'goliath::commands']]],
+  ['movewingcommand',['MoveWingCommand',['../classgoliath_1_1commands_1_1MoveWingCommand.html',1,'goliath::commands']]]
 ];
