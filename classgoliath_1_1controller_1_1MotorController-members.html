@@ -84,24 +84,21 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="namespacegoliath.html">goliath</a></li><li class="navelem"><b>i2c</b></li><li class="navelem"><a class="el" href="classgoliath_1_1i2c_1_1I2cSlave.html">I2cSlave</a></li>  </ul>
+<li class="navelem"><a class="el" href="namespacegoliath.html">goliath</a></li><li class="navelem"><b>controller</b></li><li class="navelem"><a class="el" href="classgoliath_1_1controller_1_1MotorController.html">MotorController</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="headertitle">
-<div class="title">goliath::i2c::I2cSlave Member List</div>  </div>
+<div class="title">goliath::controller::MotorController Member List</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>This is the complete list of members for <a class="el" href="classgoliath_1_1i2c_1_1I2cSlave.html">goliath::i2c::I2cSlave</a>, including all inherited members.</p>
+<p>This is the complete list of members for <a class="el" href="classgoliath_1_1controller_1_1MotorController.html">goliath::controller::MotorController</a>, including all inherited members.</p>
 <table class="directory">
-  <tr class="even"><td class="entry"><a class="el" href="classgoliath_1_1i2c_1_1I2cSlave.html#a1114291a60c08714a4a8e91ce6e05b1c">I2cSlave</a>(const handles::I2cBusHandle &amp;busHandle, const handles::I2cSlaveHandle &amp;slaveHandle)</td><td class="entry"><a class="el" href="classgoliath_1_1i2c_1_1I2cSlave.html">goliath::i2c::I2cSlave</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="classgoliath_1_1i2c_1_1I2cSlave.html#a4b73852c2979b2cc06de761e65b273d8">I2cSlave</a>(const handles::I2cBusHandle &amp;busHandle, const I2cAddress &amp;slaveAddress)</td><td class="entry"><a class="el" href="classgoliath_1_1i2c_1_1I2cSlave.html">goliath::i2c::I2cSlave</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classgoliath_1_1i2c_1_1I2cSlave.html#a1ff1c287fabfbbc86d0c86b0e94f2789">operator&lt;&lt;</a>(const char &amp;value)</td><td class="entry"><a class="el" href="classgoliath_1_1i2c_1_1I2cSlave.html">goliath::i2c::I2cSlave</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="classgoliath_1_1i2c_1_1I2cSlave.html#a04de50e5742f181db500c0f190699bec">read</a>(char *buffer, size_t length)</td><td class="entry"><a class="el" href="classgoliath_1_1i2c_1_1I2cSlave.html">goliath::i2c::I2cSlave</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classgoliath_1_1i2c_1_1I2cSlave.html#ad0b44622c4cc56b48f5a7a39291bde36">write</a>(IteratorType begin, IteratorType end)</td><td class="entry"><a class="el" href="classgoliath_1_1i2c_1_1I2cSlave.html">goliath::i2c::I2cSlave</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="classgoliath_1_1i2c_1_1I2cSlave.html#a0376c7d99e421409d28e4d574acb5862">write</a>(const char *buffer, size_t length)</td><td class="entry"><a class="el" href="classgoliath_1_1i2c_1_1I2cSlave.html">goliath::i2c::I2cSlave</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>~I2cSlave</b>() (defined in <a class="el" href="classgoliath_1_1i2c_1_1I2cSlave.html">goliath::i2c::I2cSlave</a>)</td><td class="entry"><a class="el" href="classgoliath_1_1i2c_1_1I2cSlave.html">goliath::i2c::I2cSlave</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classgoliath_1_1controller_1_1MotorController.html#a6c9d4a30c882c68fbfc8a884efe2f20f">getMotors</a>()</td><td class="entry"><a class="el" href="classgoliath_1_1controller_1_1MotorController.html">goliath::controller::MotorController</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classgoliath_1_1controller_1_1MotorController.html#a04d5c2496f46c18ed1a81a2f6dbea2b5">getNumberOfMotors</a>()</td><td class="entry"><a class="el" href="classgoliath_1_1controller_1_1MotorController.html">goliath::controller::MotorController</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classgoliath_1_1controller_1_1MotorController.html#a91020b53b8dac97ed3166c3470f1b6fe">MotorController</a>(i2c::I2cSlave &amp;slave)</td><td class="entry"><a class="el" href="classgoliath_1_1controller_1_1MotorController.html">goliath::controller::MotorController</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classgoliath_1_1controller_1_1MotorController.html#a36c83357651e0db21c4ca28bebc6c533">sendCommand</a>(const MotorStatus &amp;message)</td><td class="entry"><a class="el" href="classgoliath_1_1controller_1_1MotorController.html">goliath::controller::MotorController</a></td><td class="entry"></td></tr>
 </table></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

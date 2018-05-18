@@ -8,7 +8,7 @@ var searchData=
   ['i2cbushandle',['I2cBusHandle',['../classgoliath_1_1handles_1_1I2cBusHandle.html',1,'goliath::handles']]],
   ['i2cerror',['I2cError',['../classgoliath_1_1exceptions_1_1I2cError.html',1,'goliath::exceptions']]],
   ['i2cerror',['I2cError',['../classgoliath_1_1exceptions_1_1I2cError.html#a315182c00b0f448451a276be4dba537c',1,'goliath::exceptions::I2cError']]],
-  ['i2cslave',['I2cSlave',['../classgoliath_1_1i2c_1_1I2cSlave.html#a1114291a60c08714a4a8e91ce6e05b1c',1,'goliath::i2c::I2cSlave::I2cSlave(const handles::I2cBusHandle &amp;busHandle, const handles::I2cSlaveHandle &amp;slaveHandle)'],['../classgoliath_1_1i2c_1_1I2cSlave.html#ab19a6a49f0a06aeb9ace3113c4928e47',1,'goliath::i2c::I2cSlave::I2cSlave(const handles::I2cBusHandle &amp;busHandle, const i2cAddress &amp;slaveAddress)']]],
+  ['i2cslave',['I2cSlave',['../classgoliath_1_1i2c_1_1I2cSlave.html#a1114291a60c08714a4a8e91ce6e05b1c',1,'goliath::i2c::I2cSlave::I2cSlave(const handles::I2cBusHandle &amp;busHandle, const handles::I2cSlaveHandle &amp;slaveHandle)'],['../classgoliath_1_1i2c_1_1I2cSlave.html#a4b73852c2979b2cc06de761e65b273d8',1,'goliath::i2c::I2cSlave::I2cSlave(const handles::I2cBusHandle &amp;busHandle, const I2cAddress &amp;slaveAddress)']]],
   ['i2cslave',['I2cSlave',['../classgoliath_1_1i2c_1_1I2cSlave.html',1,'goliath::i2c']]],
   ['i2cslavehandle',['I2cSlaveHandle',['../classgoliath_1_1handles_1_1I2cSlaveHandle.html',1,'goliath::handles']]],
   ['init',['init',['../namespacegoliath_1_1util.html#a7cebe1acc2ee4d19708b4d3365cc394f',1,'goliath::util']]],

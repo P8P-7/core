@@ -14,5 +14,5 @@ var searchData=
   ['what',['what',['../classgoliath_1_1exceptions_1_1I2cError.html#a21d1caf1efaec20efb1f4ce8e9cd39d8',1,'goliath::exceptions::I2cError']]],
   ['within_5fbox_5fdetector_2eh',['within_box_detector.h',['../within__box__detector_8h.html',1,'']]],
   ['withinboxdetector',['WithinBoxDetector',['../classgoliath_1_1vision_1_1WithinBoxDetector.html',1,'goliath::vision']]],
-  ['write',['write',['../classgoliath_1_1i2c_1_1I2cSlave.html#ad0b44622c4cc56b48f5a7a39291bde36',1,'goliath::i2c::I2cSlave']]]
+  ['write',['write',['../classgoliath_1_1i2c_1_1I2cSlave.html#ad0b44622c4cc56b48f5a7a39291bde36',1,'goliath::i2c::I2cSlave::write(IteratorType begin, IteratorType end)'],['../classgoliath_1_1i2c_1_1I2cSlave.html#a0376c7d99e421409d28e4d574acb5862',1,'goliath::i2c::I2cSlave::write(const char *buffer, size_t length)']]]
 ];

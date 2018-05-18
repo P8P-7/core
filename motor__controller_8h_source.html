@@ -25,7 +25,7 @@
   <td style="padding-left: 0.5em;">
    <div id="projectname">Goliath II
    </div>
-   <div id="projectbrief">Group 7</div>
+   <div id="projectbrief">Core</div>
   </td>
  </tr>
  </tbody>
@@ -63,6 +63,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
+      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -70,7 +71,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerator</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -92,50 +93,51 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;cstdint&gt;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;goliath/i2c.h&gt;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="i2c_8h.html">goliath/i2c.h</a>&gt;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">namespace </span>goliath::motor_controller {</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <span class="keyword">using</span> motor_id = std::uint8_t;</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="keyword">using</span> motor_speed = std::uint8_t;</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">namespace </span>goliath::controller {</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <span class="keyword">using</span> MotorId = std::uint8_t;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="keyword">using</span> MotorSpeed = std::uint8_t;</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keyword">enum class</span> motor_direction: std::uint8_t {</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keyword">enum class</span> MotorDirection: std::uint8_t {</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        FORWARDS = 0,</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        BACKWARDS = 1,</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        FREE = 2,</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        LOCKED = 3</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    };</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
-<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="structgoliath_1_1motor__controller_1_1motor__status.html">   39</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structgoliath_1_1motor__controller_1_1motor__status.html">motor_status</a> {</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        motor_id id;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        motor_direction direction;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        motor_speed speed;</div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="structgoliath_1_1controller_1_1MotorStatus.html">   39</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structgoliath_1_1controller_1_1MotorStatus.html">MotorStatus</a> {</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        MotorId id;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        MotorDirection direction;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        MotorSpeed speed;</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    };</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
-<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="classgoliath_1_1motor__controller_1_1motor__controller.html">   48</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classgoliath_1_1motor__controller_1_1motor__controller.html">motor_controller</a> {</div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="classgoliath_1_1controller_1_1MotorController.html">   48</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classgoliath_1_1controller_1_1MotorController.html">MotorController</a> {</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <a class="code" href="classgoliath_1_1motor__controller_1_1motor__controller.html#a9f035e4222b2347340953763ef1d8201">motor_controller</a>(<a class="code" href="classgoliath_1_1i2c_1_1i2c__slave.html">i2c::i2c_slave</a> &amp;slave);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <a class="code" href="classgoliath_1_1controller_1_1MotorController.html#a91020b53b8dac97ed3166c3470f1b6fe">MotorController</a>(<a class="code" href="classgoliath_1_1i2c_1_1I2cSlave.html">i2c::I2cSlave</a> &amp;slave);</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classgoliath_1_1motor__controller_1_1motor__controller.html#a2462c18526f7eccd44e77e788e6f64fc">send_command</a>(<span class="keyword">const</span> <a class="code" href="structgoliath_1_1motor__controller_1_1motor__status.html">motor_status</a> &amp;message);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classgoliath_1_1controller_1_1MotorController.html#a36c83357651e0db21c4ca28bebc6c533">sendCommand</a>(<span class="keyword">const</span> <a class="code" href="structgoliath_1_1controller_1_1MotorStatus.html">MotorStatus</a> &amp;message);</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="keywordtype">size_t</span> <a class="code" href="classgoliath_1_1motor__controller_1_1motor__controller.html#a10c34860dc5cb0dbd2cb06742c684704">get_number_of_motors</a>();</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="keywordtype">size_t</span> <a class="code" href="classgoliath_1_1controller_1_1MotorController.html#a04d5c2496f46c18ed1a81a2f6dbea2b5">getNumberOfMotors</a>();</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        std::vector&lt;motor_status&gt; <a class="code" href="classgoliath_1_1motor__controller_1_1motor__controller.html#a2d307e34367d10f6ca3c1abdeec8b06d">get_motors</a>();</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        std::vector&lt;MotorStatus&gt; <a class="code" href="classgoliath_1_1controller_1_1MotorController.html#a6c9d4a30c882c68fbfc8a884efe2f20f">getMotors</a>();</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <span class="keyword">const</span> <span class="keyword">static</span> <span class="keywordtype">size_t</span> max_number_of_motors = 4;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <span class="keyword">const</span> <span class="keyword">static</span> <span class="keywordtype">size_t</span> motor_buffer_size = 1 + <span class="keyword">sizeof</span>(<a class="code" href="structgoliath_1_1motor__controller_1_1motor__status.html">motor_status</a>) * max_number_of_motors;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <span class="keyword">const</span> <span class="keyword">static</span> <span class="keywordtype">size_t</span> maxNumberOfMotors = 4;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <span class="keyword">const</span> <span class="keyword">static</span> <span class="keywordtype">size_t</span> motorBufferSize = 1 + <span class="keyword">sizeof</span>(<a class="code" href="structgoliath_1_1controller_1_1MotorStatus.html">MotorStatus</a>) * maxNumberOfMotors;</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <a class="code" href="classgoliath_1_1i2c_1_1i2c__slave.html">i2c::i2c_slave</a>&amp; slave;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <a class="code" href="classgoliath_1_1i2c_1_1I2cSlave.html">i2c::I2cSlave</a>&amp; slave;</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    };</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;}</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
-<div class="ttc" id="structgoliath_1_1motor__controller_1_1motor__status_html"><div class="ttname"><a href="structgoliath_1_1motor__controller_1_1motor__status.html">goliath::motor_controller::motor_status</a></div><div class="ttdef"><b>Definition:</b> motor_controller.h:39</div></div>
-<div class="ttc" id="classgoliath_1_1motor__controller_1_1motor__controller_html"><div class="ttname"><a href="classgoliath_1_1motor__controller_1_1motor__controller.html">goliath::motor_controller::motor_controller</a></div><div class="ttdef"><b>Definition:</b> motor_controller.h:48</div></div>
-<div class="ttc" id="classgoliath_1_1motor__controller_1_1motor__controller_html_a2d307e34367d10f6ca3c1abdeec8b06d"><div class="ttname"><a href="classgoliath_1_1motor__controller_1_1motor__controller.html#a2d307e34367d10f6ca3c1abdeec8b06d">goliath::motor_controller::motor_controller::get_motors</a></div><div class="ttdeci">std::vector&lt; motor_status &gt; get_motors()</div><div class="ttdef"><b>Definition:</b> motor_controller.cpp:24</div></div>
-<div class="ttc" id="classgoliath_1_1i2c_1_1i2c__slave_html"><div class="ttname"><a href="classgoliath_1_1i2c_1_1i2c__slave.html">goliath::i2c::i2c_slave</a></div><div class="ttdef"><b>Definition:</b> i2c_slave.h:6</div></div>
-<div class="ttc" id="classgoliath_1_1motor__controller_1_1motor__controller_html_a2462c18526f7eccd44e77e788e6f64fc"><div class="ttname"><a href="classgoliath_1_1motor__controller_1_1motor__controller.html#a2462c18526f7eccd44e77e788e6f64fc">goliath::motor_controller::motor_controller::send_command</a></div><div class="ttdeci">void send_command(const motor_status &amp;message)</div><div class="ttdef"><b>Definition:</b> motor_controller.cpp:10</div></div>
-<div class="ttc" id="classgoliath_1_1motor__controller_1_1motor__controller_html_a10c34860dc5cb0dbd2cb06742c684704"><div class="ttname"><a href="classgoliath_1_1motor__controller_1_1motor__controller.html#a10c34860dc5cb0dbd2cb06742c684704">goliath::motor_controller::motor_controller::get_number_of_motors</a></div><div class="ttdeci">size_t get_number_of_motors()</div><div class="ttdef"><b>Definition:</b> motor_controller.cpp:14</div></div>
-<div class="ttc" id="classgoliath_1_1motor__controller_1_1motor__controller_html_a9f035e4222b2347340953763ef1d8201"><div class="ttname"><a href="classgoliath_1_1motor__controller_1_1motor__controller.html#a9f035e4222b2347340953763ef1d8201">goliath::motor_controller::motor_controller::motor_controller</a></div><div class="ttdeci">motor_controller(i2c::i2c_slave &amp;slave)</div><div class="ttdef"><b>Definition:</b> motor_controller.cpp:8</div></div>
+<div class="ttc" id="classgoliath_1_1controller_1_1MotorController_html_a6c9d4a30c882c68fbfc8a884efe2f20f"><div class="ttname"><a href="classgoliath_1_1controller_1_1MotorController.html#a6c9d4a30c882c68fbfc8a884efe2f20f">goliath::controller::MotorController::getMotors</a></div><div class="ttdeci">std::vector&lt; MotorStatus &gt; getMotors()</div><div class="ttdef"><b>Definition:</b> motor_controller.cpp:24</div></div>
+<div class="ttc" id="classgoliath_1_1controller_1_1MotorController_html_a91020b53b8dac97ed3166c3470f1b6fe"><div class="ttname"><a href="classgoliath_1_1controller_1_1MotorController.html#a91020b53b8dac97ed3166c3470f1b6fe">goliath::controller::MotorController::MotorController</a></div><div class="ttdeci">MotorController(i2c::I2cSlave &amp;slave)</div><div class="ttdef"><b>Definition:</b> motor_controller.cpp:8</div></div>
+<div class="ttc" id="classgoliath_1_1controller_1_1MotorController_html_a36c83357651e0db21c4ca28bebc6c533"><div class="ttname"><a href="classgoliath_1_1controller_1_1MotorController.html#a36c83357651e0db21c4ca28bebc6c533">goliath::controller::MotorController::sendCommand</a></div><div class="ttdeci">void sendCommand(const MotorStatus &amp;message)</div><div class="ttdef"><b>Definition:</b> motor_controller.cpp:10</div></div>
+<div class="ttc" id="classgoliath_1_1controller_1_1MotorController_html"><div class="ttname"><a href="classgoliath_1_1controller_1_1MotorController.html">goliath::controller::MotorController</a></div><div class="ttdef"><b>Definition:</b> motor_controller.h:48</div></div>
+<div class="ttc" id="structgoliath_1_1controller_1_1MotorStatus_html"><div class="ttname"><a href="structgoliath_1_1controller_1_1MotorStatus.html">goliath::controller::MotorStatus</a></div><div class="ttdef"><b>Definition:</b> motor_controller.h:39</div></div>
+<div class="ttc" id="classgoliath_1_1controller_1_1MotorController_html_a04d5c2496f46c18ed1a81a2f6dbea2b5"><div class="ttname"><a href="classgoliath_1_1controller_1_1MotorController.html#a04d5c2496f46c18ed1a81a2f6dbea2b5">goliath::controller::MotorController::getNumberOfMotors</a></div><div class="ttdeci">size_t getNumberOfMotors()</div><div class="ttdef"><b>Definition:</b> motor_controller.cpp:14</div></div>
+<div class="ttc" id="classgoliath_1_1i2c_1_1I2cSlave_html"><div class="ttname"><a href="classgoliath_1_1i2c_1_1I2cSlave.html">goliath::i2c::I2cSlave</a></div><div class="ttdef"><b>Definition:</b> i2c_slave.h:15</div></div>
+<div class="ttc" id="i2c_8h_html"><div class="ttname"><a href="i2c_8h.html">i2c.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
