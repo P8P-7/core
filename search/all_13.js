@@ -9,7 +9,7 @@ var searchData=
   ['webcam',['Webcam',['../classgoliath_1_1vision_1_1Webcam.html#a002cbdf9be45b2f382610af812d011df',1,'goliath::vision::Webcam::Webcam(const int capId)'],['../classgoliath_1_1vision_1_1Webcam.html#ad4cba289bc1522b6ce2fc027175ab216',1,'goliath::vision::Webcam::Webcam(const int capId, const int color)']]],
   ['webcam_2eh',['webcam.h',['../webcam_8h.html',1,'']]],
   ['webcam_5fhandle_2eh',['webcam_handle.h',['../webcam__handle_8h.html',1,'']]],
-  ['webcamhandle',['WebcamHandle',['../classgoliath_1_1handles_1_1WebcamHandle.html#a5768404ebca1a695042c47842586c766',1,'goliath::handles::WebcamHandle']]],
+  ['webcamhandle',['WebcamHandle',['../classgoliath_1_1handles_1_1WebcamHandle.html#a9f2355c478a473ae74796f3b3f0c690b',1,'goliath::handles::WebcamHandle']]],
   ['webcamhandle',['WebcamHandle',['../classgoliath_1_1handles_1_1WebcamHandle.html',1,'goliath::handles']]],
   ['what',['what',['../classgoliath_1_1exceptions_1_1I2cError.html#a21d1caf1efaec20efb1f4ce8e9cd39d8',1,'goliath::exceptions::I2cError']]],
   ['within_5fbox_5fdetector_2eh',['within_box_detector.h',['../within__box__detector_8h.html',1,'']]],
