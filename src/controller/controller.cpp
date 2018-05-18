@@ -2,6 +2,8 @@
 #include <goliath/vision.h>
 #include <goliath/zmq_messaging.h>
 #include <boost/log/trivial.hpp>
+#include <boost/asio/signal_set.hpp>
+#include <boost/asio/io_service.hpp>
 
 #include "command_map.h"
 #include "commands/move_command.h"
@@ -22,26 +24,20 @@
 */
 using namespace goliath;
 
-static bool running = true;
-static void signal_handler(int signal) {
-    running = false;
-}
-
-static void add_signal_handler() {
-    struct sigaction action;
-    action.sa_handler = signal_handler;
-    action.sa_flags = 0;
-    sigemptyset (&action.sa_mask);
-    sigaction (SIGINT, &action, NULL);
-    sigaction (SIGTERM, &action, NULL);
-}
-
 /**
  * @fn main(int argc, char *argv[])
  * @brief Application entry point
  */
 int main(int argc, char *argv[]) {
     goliath::util::init();
+
+    boost::asio::io_service ioService;
+
+    boost::asio::signal_set signals(ioService, SIGINT, SIGTERM);
+    signals.async_wait([&ioService](const boost::system::error_code &errorCode, int signalNumber) {
+        BOOST_LOG_TRIVIAL(info) << "Got signal " << signalNumber << " stopping io_service.";
+        ioService.stop();
+    });
 
     BOOST_LOG_TRIVIAL(info) << "Controller is starting";
 
@@ -62,7 +58,10 @@ int main(int argc, char *argv[]) {
 
     BOOST_LOG_TRIVIAL(info) << "Setting up commands";
     commands::CommandMap commands;
-    commands.add(CommandMessage::kMoveCommand, std::make_shared<commands::MoveCommand>(commands::MoveCommand()));
+    commands.add(
+            CommandMessage::kMoveCommand,
+            std::make_shared<commands::MoveCommand>(commands::MoveCommand())
+    );
     commands.add(
             CommandMessage::kFollowLineCommand,
             std::make_shared<commands::FollowLineCommand>(commands::FollowLineCommand())
@@ -74,11 +73,10 @@ int main(int argc, char *argv[]) {
 
     commands::CommandExecutor runner(commands, handles);
 
-    subscriber.bind(MessageCarrier::MessageCase::kCommandMessage,
-                     [&runner](const MessageCarrier &carrier) {
-                         CommandMessage message = carrier.commandmessage();
-                         runner.run(message.command_case(), message);
-                     });
+    subscriber.bind(MessageCarrier::MessageCase::kCommandMessage, [&runner](const MessageCarrier &carrier) {
+        CommandMessage message = carrier.commandmessage();
+        runner.run(message.command_case(), message);
+    });
 
     BOOST_LOG_TRIVIAL(info) << "Launching subscriber";
     subscriber.start();
@@ -87,10 +85,7 @@ int main(int argc, char *argv[]) {
 
     BOOST_LOG_TRIVIAL(info) << "Press CTR+C to stop the controller";
 
-    add_signal_handler();
-    while (running)
-        ;
-    std::cout << std::endl;
+    ioService.run();
 
     BOOST_LOG_TRIVIAL(warning) << "Controller is shutting down...";
 
