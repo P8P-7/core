@@ -12,7 +12,9 @@ HandleMap::HandleMap(const std::map<size_t, std::shared_ptr<Handle>> &map)
 
 HandleMap::~HandleMap() {
     for (auto kvp : map) {
-        kvp.second->unlock();
+        if (kvp.second->isLocked()) {
+            kvp.second->unlock();
+        }
     }
 }
 

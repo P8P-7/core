@@ -22,6 +22,20 @@
 */
 using namespace goliath;
 
+static bool running = true;
+static void signal_handler(int signal) {
+    running = false;
+}
+
+static void add_signal_handler() {
+    struct sigaction action;
+    action.sa_handler = signal_handler;
+    action.sa_flags = 0;
+    sigemptyset (&action.sa_mask);
+    sigaction (SIGINT, &action, NULL);
+    sigaction (SIGTERM, &action, NULL);
+}
+
 /**
  * @fn main(int argc, char *argv[])
  * @brief Application entry point
@@ -71,8 +85,14 @@ int main(int argc, char *argv[]) {
     BOOST_LOG_TRIVIAL(info) << "Starting watcher";
     watcher.start();
 
-    BOOST_LOG_TRIVIAL(info) << "Press any key to stop the controller";
-    getchar();
+    BOOST_LOG_TRIVIAL(info) << "Press CTR+C to stop the controller";
+
+    add_signal_handler();
+    while (running)
+        ;
+    std::cout << std::endl;
+
+    BOOST_LOG_TRIVIAL(warning) << "Controller is shutting down...";
 
     BOOST_LOG_TRIVIAL(info) << "Stopping watcher";
     watcher.stop();
@@ -80,7 +100,7 @@ int main(int argc, char *argv[]) {
     BOOST_LOG_TRIVIAL(info) << "Stopping subscriber";
     subscriber.stop();
 
-    BOOST_LOG_TRIVIAL(info) << "Controller has been stopped";
+    BOOST_LOG_TRIVIAL(fatal) << "Controller has been shut down";
 
     return 0;
 }

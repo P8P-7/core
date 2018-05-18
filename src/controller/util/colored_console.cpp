@@ -52,7 +52,7 @@ void goliath::util::colorConsoleFormatter(const blog::record_view &recordView, b
     formatStream  << recordView[boost::log::expressions::smessage];
 
     if(severity) {
-        formatStream << LOG_COLOR_DEFAULT;
+        formatStream << LOG_COLOR_DEFAULT << CONSOLE_STYLE_RESET;
     }
 }
 
