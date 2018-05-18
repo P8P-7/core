@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../../handle.h"
+#include "../../handle_error.h"
 #include "../../repositories/repository.h"
 #include "../../repositories/proto_repository.h"
 #include "../../repositories/battery_repository.h"

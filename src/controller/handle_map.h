@@ -18,7 +18,10 @@ namespace goliath::handles {
         explicit handle_map(const std::map<size_t, std::shared_ptr<handle>> &map);
         ~handle_map();
 
-        void add(const size_t& index, std::shared_ptr<handle> handle);
+        template<typename HandleType>
+        std::shared_ptr<HandleType> add(std::shared_ptr<HandleType> handle);
+        template<typename HandleType, typename... Targs>
+        std::shared_ptr<HandleType> add(const size_t &index, Targs... args);
 
         handle_map get_handles(const std::vector<size_t> &handles) const;
 
@@ -29,4 +32,17 @@ namespace goliath::handles {
     private:
         std::map<size_t, std::shared_ptr<handle>> map;
     };
+
+    template<typename HandleType>
+    std::shared_ptr<HandleType> handle_map::add(std::shared_ptr<HandleType> handle) {
+        map[handle->get_handle_id()] = handle;
+    }
+
+    template<typename HandleType, typename... HandleArgs>
+    std::shared_ptr<HandleType> handle_map::add(const size_t &index, HandleArgs... args) {
+        auto handle = std::make_shared<HandleType>(index, args...);
+        map[index] = handle;
+
+        return handle;
+    }
 }

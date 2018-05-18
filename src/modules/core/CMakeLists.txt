@@ -7,7 +7,7 @@ set(SOURCES
         repositories/watcher.cpp
         repositories/battery_repository.h
         repositories/battery_repository.cpp
-        )
+        handle_error.cpp handle_error.h)
 
 add_library(${PROJECT_NAME} ${SOURCES})
 

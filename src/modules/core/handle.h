@@ -8,14 +8,14 @@
 namespace goliath::handles {
     class handle {
     public:
-        handle();
+        handle(const size_t &handle_id);
         handle(const handle &other);
 
         /**
          * Lock the handle.
          * @param command_id the owning command @headerfile handle.h
          */
-        void lock(const size_t& command_id);
+        void lock(const size_t &command_id);
 
         /**
          * Release the handle.
@@ -33,13 +33,15 @@ namespace goliath::handles {
          */
         const size_t get_owner_id() const;
 
+        const size_t get_handle_id() const;
+
         /**
          * Indicates whether or not this handle has been locked.
          * @return true if this handle has been locked
          */
         bool is_locked() const;
     private:
-        bool locked = false;
+        const size_t handle_id;
 
         boost::optional<size_t> owner_id;
         std::mutex mutex;

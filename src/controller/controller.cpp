@@ -38,8 +38,8 @@ int main(int argc, char *argv[]) {
 
     BOOST_LOG_TRIVIAL(info) << "Setting up handles";
     handles::handle_map handle_map;
-    handle_map.add(HANDLE_LEFT_EYE_CAM, std::make_shared<handles::webcam_handle>(handles::webcam_handle(0)));
-    handle_map.add(HANDLE_RIGHT_EYE_CAM, std::make_shared<handles::webcam_handle>(handles::webcam_handle(0)));
+    handle_map.add<handles::webcam_handle>(HANDLE_LEFT_EYE_CAM, 0);
+    handle_map.add<handles::webcam_handle>(HANDLE_RIGHT_EYE_CAM, 0);
 
     BOOST_LOG_TRIVIAL(info) << "Setting up commands";
     commands::command_map command_map;

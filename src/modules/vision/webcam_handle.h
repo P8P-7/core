@@ -17,7 +17,7 @@ namespace goliath::handles {
         /**
          * @param device The recording device
          */
-        explicit webcam_handle(const int& device);
+        explicit webcam_handle(const size_t &id, const int &device);
 
         /**
          * @return Currently set device
