@@ -2,6 +2,7 @@
 #include <goliath/vision.h>
 #include <goliath/zmq_messaging.h>
 #include <boost/log/trivial.hpp>
+#include <csignal>
 
 #include "command_map.h"
 #include "commands/move_command.h"
@@ -62,15 +63,9 @@ int main(int argc, char *argv[]) {
 
     BOOST_LOG_TRIVIAL(info) << "Setting up commands";
     commands::CommandMap commands;
-    commands.add(CommandMessage::kMoveCommand, std::make_shared<commands::MoveCommand>(commands::MoveCommand()));
-    commands.add(
-            CommandMessage::kFollowLineCommand,
-            std::make_shared<commands::FollowLineCommand>(commands::FollowLineCommand())
-    );
-    commands.add(
-            CommandMessage::kMoveTowerCommand,
-            std::make_shared<commands::MoveTowerCommand>(commands::MoveTowerCommand())
-    );
+    commands.add<commands::MoveCommand>(CommandMessage::kMoveCommand);
+    commands.add<commands::FollowLineCommand>(CommandMessage::kFollowLineCommand);
+    commands.add<commands::MoveTowerCommand>(CommandMessage::kMoveTowerCommand);
 
     commands::CommandExecutor runner(commands, handles);
 
