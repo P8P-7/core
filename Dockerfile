@@ -19,6 +19,8 @@ ENV PKG="build-base \
          zeromq-dev \
          protobuf \
          protobuf-dev \
+         openal-soft \
+         openal-soft-dev \
          opencv \
          opencv-libs \
          opencv-dev"
