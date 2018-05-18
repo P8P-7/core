@@ -2,14 +2,14 @@
 
 using namespace goliath::vision;
 
-detector::detector(const cv::Mat& input)
+Detector::Detector(const cv::Mat& input)
         : input(input) {
 }
 
-detector::detector(const detector& other)
-        : detector(other.input) {
+Detector::Detector(const Detector& other)
+        : Detector(other.input) {
 }
 
-detector::~detector() {
+Detector::~Detector() {
     input.release();
 }

@@ -1,11 +1,12 @@
 #include "webcam_handle.h"
 
 using namespace goliath::handles;
+using namespace goliath::vision;
 
-webcam_handle::webcam_handle(const size_t &id, const int &device)
-        : handle(id), device(device) {
+WebcamHandle::WebcamHandle(const size_t &id, const int &device)
+        : Handle(id), device(device) {
+
 }
-
-const int& webcam_handle::get_device() const {
+const Webcam& WebcamHandle::getDevice() const {
     return device;
 }

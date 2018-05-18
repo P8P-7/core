@@ -7,12 +7,20 @@
  * @author Group 7 - Informatica
  */
 
- namespace goliath::audio {
-     class context {
+ namespace goliath::openal {
+     /**
+      * @class goliath::openal::Context
+      * @brief Context to be passed to different devices
+      */
+     class Context {
      public:
-         context(const device &device, const ALCint *context);
+         /**
+          * @param device Device to set as main device within context
+          * @param context Context address (Default NULL)
+          */
+         Context(const Device &device, const ALCint *context);
 
      private:
-        ALCcontext* alc_context;
+        ALCcontext* alcContext;
      };
  }

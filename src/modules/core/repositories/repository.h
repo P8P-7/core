@@ -4,33 +4,37 @@
 
 /**
  * @file repository.h
- * @brief repository base class
  * @author Group 7 - Informatica
  */
+
 namespace goliath::repositories {
-    class repository {
+    /**
+     * @class goliath::repositories::Repository
+     * @brief Repository base class
+     */
+    class Repository {
     public:
         /**
-         * Compiles the fields of this repository to an instance of ::google::protobuf::Message.
+         * @brief Compiles the fields of this repository to an instance of ::google::protobuf::Message.
          * @return instance of ::google::protobuf::Message with all information
          */
-        virtual std::unique_ptr<::google::protobuf::Message> get_message() = 0;
+        virtual std::unique_ptr<::google::protobuf::Message> getMessage() = 0;
 
         /**
          * @return true if this repository has been changed
          */
-        virtual bool is_invalidated() {
+        virtual bool isInvalidated() {
             return invalidated;
         }
 
         /**
-         * Forces the repository to be synchronized
+         * @brief Forces the repository to be synchronized
          */
         void invalidate() {
             invalidated = true;
         }
     private:
-        friend class watcher;
+        friend class Watcher;
 
         void validate() {
             invalidated = false;

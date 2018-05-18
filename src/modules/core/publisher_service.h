@@ -2,8 +2,14 @@
 
 #include <MessageCarrier.pb.h>
 
+/**
+ * @file publisher_service.h
+ * @author Group 7 - Informatica
+ */
+
+
 namespace goliath::core::interfaces {
-    class publisher_service {
+    class PublisherService {
     public:
         /**
          * @param carrier message to send

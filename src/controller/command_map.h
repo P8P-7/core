@@ -1,9 +1,5 @@
 #pragma once
 
-#include <atomic>
-#include <map>
-#include <memory>
-
 #include "commands/command.h"
 
 /**
@@ -16,32 +12,62 @@ namespace goliath::commands {
      * @enum goliath::commands_command_status
      * @brief Defines the status of a specific command
      */
-    enum class command_status {
+    enum class CommandStatus {
         STARTING, /**< Command is just getting started */
         STARTED, /**< Command has already started */
         STALE /**< Command is doing nothing (idle) */
     };
 
-    struct command_item {
-        command_item();
-        command_item(std::shared_ptr<command> command, command_status status);
+    /**
+     * @struct goliath::commands::CommandItem
+     * @brief Tuple storing both the status of the command and the command instance itself
+     */
+    struct CommandItem {
+        CommandItem();
+        /**
+         * @param commandInstance Instance of a command
+         * @param status Starting status
+         */
+        CommandItem(std::shared_ptr<Command> commandInstance, CommandStatus status);
 
-        std::shared_ptr<command> instance;
-        command_status status;
+        std::shared_ptr<Command> instance;
+        CommandStatus status;
     };
 
     // TODO: make thread-safe?
-    class command_map {
+    /**
+     * @class goliath::commands::CommandMap
+     * @brief Wrapper around a map storing indexes (Command ID's) and @see goliath::commands::CommandItem
+     */
+    class CommandMap {
     public:
-        command_map();
-        explicit command_map(std::map<size_t, command_item> commands);
+        CommandMap();
+        /**
+         * @param commands Initial map
+         */
+        explicit CommandMap(std::map<size_t, CommandItem> commands);
 
-        void add(size_t command_id, std::shared_ptr<command> command);
+        /**
+         * @brief Add a @see goliath::commands::CommandItem to the map
+         * @param commandId Preferred ID of the new @see goliath::commmands::Command
+         * @param command Pointer to @see goliath::commmands::Command instance
+         */
+        void add(size_t commandId, std::shared_ptr<Command> command);
 
-        command_item& operator[](size_t id);
-        const command_item& operator[](size_t id) const;
-        bool command_exists(size_t id) const;
+        /**
+         * @brief Get @see goliath::commands::CommandItem at id
+         * @param id ID
+         * @return @see goliath::commands::CommandItem
+         */
+        CommandItem& operator[](size_t id);
+        const CommandItem& operator[](size_t id) const;
+        /**
+         * @brief Check if a @see goliath::commmands::Command exists
+         * @param id ID to check
+         * @return Status
+         */
+        bool commandExists(size_t id) const;
     private:
-        std::map<size_t, command_item> map;
+        std::map<size_t, CommandItem> map;
     };
 }

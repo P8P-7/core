@@ -10,34 +10,34 @@
 
 namespace goliath::vision {
     /**
-     * @class goliath::vision::webcam
+     * @class goliath::vision::Webcam
      * @brief Wrapper class around VideoCapture
      */
-    class webcam {
+    class Webcam {
     public:
         /**
          * @param cap_id VideoCapture to be used
          */
-        explicit webcam(const int cap_id);
+        explicit Webcam(const int capId);
         /**
          * @param cap_id VideoCapture to be used
          * @param color Convert incoming image to a specific format, must always start with CV_BGR2<color>
          */
-        webcam(const int cap_id, const int color);
-        ~webcam();
+        Webcam(const int capId, const int color);
+        ~Webcam();
 
         /**
          * @brief Capture a frame and assign it to argument
          * @param frame Frame to be assigned with captured frame
          */
-        void get_frame(cv::Mat& frame);
+        void getFrame(cv::Mat& frame);
         /**
          * @return Captured frame
          */
-        cv::Mat get_frame();
+        cv::Mat getFrame();
 
     private:
-        const int cap_id;
+        const int capId;
         /**
          * @brief Unset if not converted to specific color, else set to a CV_BGR2<color>
          */

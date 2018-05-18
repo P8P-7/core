@@ -6,8 +6,10 @@ IF(NOT CMAKE_BUILD_TYPE)
 ENDIF()
 
 project(goliath-core
+        VERSION 1.0.0
         DESCRIPTION "Core of the Goliath II bot"
-        LANGUAGES CXX
+        LANGUAGES
+            CXX
         )
 
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)

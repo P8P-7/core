@@ -1,14 +1,30 @@
 #pragma once
 
 #include <google/protobuf/message.h>
+
 #include "repository.h"
 
-namespace goliath::repositories {
-    class battery_repository : public repository {
-    public:
-        int get_battery_level() const;
+/**
+ * @file battery_repository.h
+ * @author Group 7 - Informatica
+ */
 
-        std::unique_ptr<::google::protobuf::Message> get_message() override;
+namespace goliath::repositories {
+    /**
+     * @class goliath::repositories::BatteryRepository
+     * @brief Repository containing battery level
+     */
+    class BatteryRepository : public Repository {
+    public:
+        /**
+         * @return Battery level
+         */
+        int getBatteryLevel() const;
+
+        /**
+         * @return Protobuf
+         */
+        std::unique_ptr<::google::protobuf::Message> getMessage() override;
     };
 }
 

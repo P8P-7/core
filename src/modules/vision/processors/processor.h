@@ -9,18 +9,18 @@
 
 namespace goliath::vision {
     /**
-     * @class goliath::vision::processor
+     * @class goliath::vision::Processor
      * @brief Base class of processors that take in an input and manipulate in some way returning the output from the
      * virtual @see goliath::vision::processor#process method.
      */
-    class processor {
+    class Processor {
     public:
         /**
          * @param input Input image
          */
-        explicit processor(const cv::Mat& input);
+        explicit Processor(const cv::Mat& input);
 
-        virtual ~processor();
+        virtual ~Processor();
 
         /**
          * @return Output image

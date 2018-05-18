@@ -1,5 +1,15 @@
 #pragma once
 
+/**
+ * @file core.h
+ * @author Group 7 - Informatica
+ */
+
+ /**
+  * @namespace goliath::core
+  * @brief Contains base-defenitions every module (and controller) needs
+  */
+
 #include "../../handle.h"
 #include "../../handle_error.h"
 #include "../../repositories/repository.h"

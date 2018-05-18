@@ -1,7 +1,5 @@
 #pragma once
 
-#include <vector>
-
 #include <CommandMessage.pb.h>
 
 #include "../handle_map.h"
@@ -19,19 +17,19 @@
 namespace goliath::commands {
 
     /**
-     * @class command
+     * @class goliath::commmands::Command
      * @brief Command base class
      */
-    class command {
+    class Command {
     public:
-        explicit command(const std::vector<size_t> &required_handles);
+        explicit Command(const std::vector<size_t> &requiredHandles);
 
         /**
          * @brief Execute a command whilst also setting its running property
          * @param handles Handle map to be passed to implementation to be unlocked dynamically
          * @param message Arguments to be passed
          */
-        void run(const handles::handle_map &handles, const CommandMessage &message);
+        void run(const handles::HandleMap &handles, const CommandMessage &message);
 
         /**
          * @brief Interrupt a command by setting the interrupted property
@@ -41,13 +39,13 @@ namespace goliath::commands {
          * @brief Method to check wether a command is already interrupted
          * @return The value of interrupted
          */
-        bool is_interrupted() const;
+        bool isInterrupted() const;
 
         /**
          * @brief Handle getter
          * @return The handles this specific command requires
          */
-        const std::vector<size_t>& get_required_handles() const;
+        const std::vector<size_t>& getRequiredHandles() const;
 
     protected:
         /**
@@ -55,7 +53,7 @@ namespace goliath::commands {
          * @param handles Handle map to be passed to implementation to be unlocked dynamically
          * @param message Arguments to be passed to implementers
          */
-        virtual void execute(const handles::handle_map &handles, const CommandMessage &message) = 0;
+        virtual void execute(const handles::HandleMap &handles, const CommandMessage &message) = 0;
 
     private:
         /**
@@ -69,6 +67,6 @@ namespace goliath::commands {
         /**
          * @brief Handle this command requires
          */
-        const std::vector<size_t> required_handles;
+        const std::vector<size_t> requiredHandles;
     };
 }

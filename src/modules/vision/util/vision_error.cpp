@@ -2,10 +2,10 @@
 
 using namespace goliath::exceptions;
 
-vision_error::vision_error(const std::string reason)
+VisionError::VisionError(const std::string reason)
         : reason(reason) {
 }
 
-const char* vision_error::what() const noexcept {
+const char* VisionError::what() const noexcept {
     return reason.c_str();
 }

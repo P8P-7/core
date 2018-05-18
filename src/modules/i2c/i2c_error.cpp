@@ -1,14 +1,13 @@
-#include <cerrno>
-#include <boost/format.hpp>
-
 #include "i2c_error.h"
+
+#include <boost/format.hpp>
 
 using namespace goliath::exceptions;
 
-i2c_error::i2c_error(std::string device, std::string reason)
+I2cError::I2cError(std::string device, std::string reason)
         : reason((boost::format("Device %1%: %2% (%3%)") % device % reason % errno).str()) {
 }
 
-const char *i2c_error::what() const noexcept {
+const char *I2cError::what() const noexcept {
     return reason.c_str();
 }

@@ -2,12 +2,12 @@
 
 using namespace goliath::messaging;
 
-zmq_publisher::zmq_publisher(zmq::context_t &context, const std::string &host, const int port)
-        : zmq_io(context, host, port, ZMQ_PUB) {
+ZmqPublisher::ZmqPublisher(zmq::context_t &context, const std::string &host, const int port)
+        : ZmqIo(context, host, port, ZMQ_PUB) {
     connect();
 }
 
-bool zmq_publisher::publish(const MessageCarrier &carrier) {
+bool ZmqPublisher::publish(const MessageCarrier &carrier) {
     try {
         std::string channel = std::to_string(carrier.message_case());
 

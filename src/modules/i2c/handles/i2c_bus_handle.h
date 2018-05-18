@@ -1,17 +1,23 @@
 #pragma once
 
 #include <string>
-#include "../../core/handle.h"
+#include <goliath/core.h>
+
+/**
+ * @file i2c_bus_handle.h
+ * @author Group 7 - Informatica
+ */
+
 
 namespace goliath::handles {
-    class i2c_bus_handle: public handle {
+    class I2cBusHandle : public Handle {
     public:
-        i2c_bus_handle(const std::string& device);
+        I2cBusHandle(const std::string& device);
 
         /**
          * @return path to i2c device
          */
-        const std::string& get_device_path() const;
+        const std::string& getDevicePath() const;
     private:
         std::string device;
     };

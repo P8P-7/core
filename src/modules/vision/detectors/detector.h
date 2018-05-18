@@ -1,6 +1,5 @@
 #pragma once
 
-#include <boost/variant.hpp>
 #include <opencv2/opencv.hpp>
 
 /**
@@ -10,21 +9,21 @@
 
 namespace goliath::vision {
     /**
-     * @class goliath::vision::detector
+     * @class goliath::vision::Detector
      * @brief Base class of detectors that take an input and detect a vector of shapes, colors or sizes.
      */
-    class detector {
+    class Detector {
     public:
         /**
          * @param input Input Image
          */
-        explicit detector(const cv::Mat &input);
+        explicit Detector(const cv::Mat &input);
         /**
          * @param other Copy constructor
          */
-        explicit detector(const detector &other);
+        explicit Detector(const Detector &other);
 
-        virtual ~detector();
+        virtual ~Detector();
 
         /**
          * @return A vector of vectors representing different objects that can be referenced from other detectors or

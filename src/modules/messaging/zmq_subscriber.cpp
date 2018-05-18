@@ -1,66 +1,66 @@
+#include "zmq_subscriber.h"
+
 #include <unistd.h>
 #include <functional>
 #include <boost/log/trivial.hpp>
 #include <boost/format.hpp>
 
-#include "zmq_subscriber.h"
-
 using namespace goliath::messaging;
 
-zmq_subscriber::zmq_subscriber(zmq::context_t &context, const std::string &host, const int port)
-        : zmq_io(context, host, port, ZMQ_SUB) {
+ZmqSubscriber::ZmqSubscriber(zmq::context_t &context, const std::string &host, const int port)
+        : ZmqIo(context, host, port, ZMQ_SUB) {
     connect();
     BOOST_LOG_TRIVIAL(info) << "Subscriber is listening to " << address();
 
-    interrupt_socket = new zmq::socket_t(context, ZMQ_PAIR);
-    interrupt_socket->bind(interrupter_address);
+    interruptSocket = new zmq::socket_t(context, ZMQ_PAIR);
+    interruptSocket->bind(interrupterAddress);
 
     // To use zmq_poll correctly, we construct this vector of poll items
     poll = {
-            { *interrupt_socket, 0, ZMQ_POLLIN, 0 },
+            { *interruptSocket, 0, ZMQ_POLLIN, 0 },
             { socket,  0, ZMQ_POLLIN, 0 } // Polling on a ZMQ socket
     };
 }
-zmq_subscriber::~zmq_subscriber() {
+ZmqSubscriber::~ZmqSubscriber() {
     if (thread.joinable()) {
         stop();
     }
 
-    delete interrupt_socket;
+    delete interruptSocket;
 }
 
-void zmq_subscriber::bind(const MessageCarrier::MessageCase &message_type, std::function<void(const MessageCarrier &)> callback) {
-    if (callbacks.find(message_type) == callbacks.end()) {
-        std::string topic = std::to_string(message_type);
+void ZmqSubscriber::bind(const MessageCarrier::MessageCase &messageType, std::function<void(const MessageCarrier&)> callback) {
+    if (callbacks.find(messageType) == callbacks.end()) {
+        std::string topic = std::to_string(messageType);
         socket.setsockopt(ZMQ_SUBSCRIBE, topic.c_str(), topic.length());
     }
 
-    callbacks[message_type] = callback;
+    callbacks[messageType] = callback;
 }
 
-void zmq_subscriber::start() {
+void ZmqSubscriber::start() {
     if (running) {
         throw std::runtime_error("Subscriber is already running");
     }
 
     running = true;
-    thread = std::thread(&zmq_subscriber::run, this);
+    thread = std::thread(&ZmqSubscriber::run, this);
 }
 
-void zmq_subscriber::stop() {
+void ZmqSubscriber::stop() {
     if (!running) {
         throw std::runtime_error("Subscriber needs to be started before it can be stopped");
     }
 
     zmq::socket_t interrupter(context, ZMQ_PAIR);
-    interrupter.connect(interrupter_address);
+    interrupter.connect(interrupterAddress);
     interrupter.send("42", 2);
 
     thread.join();
     running = false;
 }
 
-void zmq_subscriber::run() {
+void ZmqSubscriber::run() {
     while (true) {
         zmq::message_t address;
         zmq::message_t data;

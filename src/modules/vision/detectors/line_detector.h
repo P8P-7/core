@@ -1,9 +1,8 @@
 #pragma once
 
-#include <algorithm>
+#include <memory>
 
 #include "detector.h"
-#include "../processors/canny_processor.h"
 
 /**
  * @file line_detector.h
@@ -21,23 +20,23 @@ namespace goliath::vision {
     const double DEFAULT_LINE_DETECTOR_THETA = CV_PI / 180;
 
     /**
-     * @class goliath::vision::line_detector
+     * @class goliath::vision::LineDetector
      * @brief Takes in an image and detects all lines in the image
      */
-    class line_detector : public detector {
+    class LineDetector : public Detector {
     public:
-        line_detector(const cv::Mat& input, double rho, double theta, int threshold, double min_line_length,
-                      double max_line_gap);
+        LineDetector(const cv::Mat& input, double rho, double theta, int threshold, double minLineLength,
+                      double maxLineGap);
 
         /**
          * @param input Input image
          * @param threshold Variable that changes how straight a line must be to be detected.
-         * @param min_line_length Minimum length of the line
-         * @param max_line_gap Maximum gap (pixels) between points on a line
+         * @param minLineLength Minimum length of the line
+         * @param maxLineGap Maximum gap (pixels) between points on a line
          */
-        line_detector(const cv::Mat& input, int threshold, double min_line_length, double max_line_gap);
+        LineDetector(const cv::Mat& input, int threshold, double minLineLength, double maxLineGap);
 
-        line_detector(const line_detector& other);
+        LineDetector(const LineDetector& other);
 
         /**
          * @return Vector of all detected lines
@@ -47,13 +46,12 @@ namespace goliath::vision {
         /**
          * @return The longest lines in detected lines
          */
-        std::vector<cv::Vec4d> longest_lines(std::shared_ptr<detector> detector) const;
-
-        std::vector<cv::Vec4d> longest_lines();
+        std::vector<cv::Vec4d> longestLines(std::shared_ptr<Detector> detector) const;
+        std::vector<cv::Vec4d> longestLines();
 
 
     protected:
         const int threshold;
-        const double rho, theta, min_line_length, max_line_gap;
+        const double rho, theta, minLineLength, maxLineGap;
     };
 }

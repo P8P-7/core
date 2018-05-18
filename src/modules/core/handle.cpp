@@ -1,54 +1,57 @@
 #include <goliath/core.h>
 #include "handle.h"
 
+#include <cstdlib>
+
 using namespace goliath::handles;
 
-handle::handle(const size_t &handle_id)
-        : handle_id(handle_id), owner_id(0) {
+Handle::Handle(const size_t &handle_id)
+        : handleId(handle_id), ownerId(0) {
 }
 
-handle::handle(const handle &other)
-        : handle_id(other.get_handle_id()), owner_id(other.get_owner_id()) {
+Handle::Handle(const Handle &other)
+        : handleId(other.getHandleId()), ownerId(other.getOwnerId()) {
 }
 
-void handle::lock(const size_t &command_id) {
+void Handle::lock(const size_t& commandId) {
     std::lock_guard<std::mutex> lock(mutex);
-    if (is_locked()) {
-        throw exceptions::HandleError(get_handle_id(), "Could not be locked because it was already in use.");
+    if (isLocked()) {
+        throw exceptions::HandleError(getHandleId(), "Could not be locked because it was already in use.");
     }
 
-    owner_id = command_id;
+    ownerId = commandId;
 }
 
-void handle::unlock() {
+void Handle::unlock() {
     std::lock_guard<std::mutex> lock(mutex);
-    if (!is_locked()) {
-        throw exceptions::HandleError(get_handle_id(), "Could not be unlocked because it wasn't locked.");
+    if (!isLocked()) {
+        throw exceptions::HandleError(getHandleId(), "Could not be unlocked because it wasn't locked.");
     }
 
-    owner_id.reset();
+    ownerId.reset();
+
     var.notify_one();
 }
 
-void handle::wait_and_lock(const size_t &command_id) {
+void Handle::waitAndLock(const size_t &commandId) {
     std::unique_lock<std::mutex> lock(mutex);
-    var.wait(lock, [&]() { return !is_locked(); });
+    var.wait(lock, [&]() { return !isLocked(); });
 
-    owner_id = command_id;
+    ownerId = commandId;
 }
 
-const size_t handle::get_owner_id() const {
-    if (owner_id.is_initialized()) {
-        return owner_id.get();
+const size_t Handle::getOwnerId() const {
+    if(ownerId.is_initialized()) {
+        return ownerId.get();
     }
 
     throw std::runtime_error("Owner is not set");
 }
 
-const size_t handle::get_handle_id() const {
-    return handle_id;
+const size_t Handle::getHandleId() const {
+    return handleId;
 }
 
-bool handle::is_locked() const {
-    return owner_id.is_initialized();
+bool Handle::isLocked() const {
+    return ownerId.is_initialized();
 }

@@ -4,14 +4,20 @@
 
 /**
  * @file vision_repo.h
- * @brief repository for accessing proto objects.
  * @author Group 7 - Informatica
  */
+
 namespace goliath::repositories {
+    /**
+     * @class goliath::repositories::ProtoRepository
+     * @brief Repository for accessing proto objects
+     * @tparam T Proto
+     */
     template<typename T>
-    class proto_repository : public repository {
+    class ProtoRepository : public Repository {
     public:
-        explicit proto_repository(T *proto) : proto(proto) { }
+        explicit ProtoRepository(T *proto)
+            : proto(proto) { }
 
         /**
          * Merges a protobuf into this repository.
@@ -22,13 +28,13 @@ namespace goliath::repositories {
         /**
          * @return the protobuf contained in this repository
          */
-        std::unique_ptr<::google::protobuf::Message> get_message() override;
+        std::unique_ptr<::google::protobuf::Message> getMessage() override;
     protected:
         T *proto;
     };
 
     template<typename T>
-    std::unique_ptr<::google::protobuf::Message> proto_repository<T>::get_message() {
+    std::unique_ptr<::google::protobuf::Message> ProtoRepository<T>::getMessage() {
         return std::make_unique<T>(*proto);
     }
 }

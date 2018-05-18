@@ -1,16 +1,18 @@
 #include "zmq_io.h"
 
+#include <iostream>
+
 using namespace goliath::messaging;
 
-std::string zmq_io::address() const {
+std::string ZmqIo::address() const {
     std::string address = PROTOCOL + "://" + host + ':' + std::to_string(port);
     return address;
 }
 
-void zmq_io::connect() {
+void ZmqIo::connect() {
     socket.connect(address());
 }
 
-void zmq_io::bind() {
+void ZmqIo::bind() {
     socket.bind(address());
 }

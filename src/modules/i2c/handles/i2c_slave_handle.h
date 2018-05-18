@@ -1,23 +1,28 @@
 #pragma once
 
-#include <goliath/i2c.h>
-#include "../../core/handle.h"
+#include <goliath/core.h>
 
-#include "../i2c_error.h"
+/**
+ * @file i2c_slave_handle.h
+ * @author Group 7 - Informatica
+ */
+
+
+namespace goliath::i2c {
+    using i2cAddress = std::uint8_t;
+}
 
 namespace goliath::handles {
-    class i2c_slave_handle: public handle {
+    class I2cSlaveHandle : public Handle {
     public:
-        i2c_slave_handle(const i2c::i2c_address& address);
+        I2cSlaveHandle(const i2c::i2cAddress& address);
 
         /**
          * @return slave address
          */
-        const i2c::i2c_address& get_slave_address() const;
+        const i2c::i2cAddress& getSlaveAddress() const;
     private:
         std::string device;
-        i2c::i2c_address address;
+        i2c::i2cAddress address;
     };
-
-
 }

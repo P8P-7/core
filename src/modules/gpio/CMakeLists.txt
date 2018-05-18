@@ -1,8 +1,13 @@
 project(goliath-gpio-module LANGUAGES CXX)
 
 set(SOURCES
-    gpio.h
         gpio.cpp
+        )
+
+find_package(Boost
+        COMPONENTS
+            log
+        REQUIRED
         )
 
 add_library(${PROJECT_NAME} ${SOURCES})
