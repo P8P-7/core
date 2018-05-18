@@ -2,7 +2,7 @@
 
 #define DEBUG
 #define ADDRESS 0x30
-#define CHANGE_DIRECTION_THRESHOLD 100
+#define CHANGE_DIRECTION_THRESHOLD 0
 
 enum class motor_direction: byte {
   FORWARDS = 0,

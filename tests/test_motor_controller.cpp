@@ -141,4 +141,42 @@ BOOST_AUTO_TEST_SUITE(BOOST_TEST_MODULE)
         bus_handle.unlock();
     }
 
+    BOOST_AUTO_TEST_CASE(stress_test) {
+        const std::string device = "/dev/i2c-1";
+        const i2c::I2cAddress address = 0x30;
+
+        handles::I2cBusHandle bus_handle(1, device);
+        handles::I2cSlaveHandle slave_handle(2, address);
+        bus_handle.lock(999);
+        slave_handle.lock(999);
+
+        i2c::I2cSlave slave(bus_handle, slave_handle);
+        controller::MotorController controller(slave);
+        controller::MotorStatus message = {
+                0,
+                controller::MotorDirection::FORWARDS,
+                255
+        };
+
+        for (int i = 0; i < 1200; i++) {
+            message.direction = controller::MotorDirection::FORWARDS;
+            controller.sendCommand(message);
+            std::this_thread::sleep_for(std::chrono::milliseconds(500));
+
+            message.direction = controller::MotorDirection::BACKWARDS;
+            controller.sendCommand(message);
+            std::this_thread::sleep_for(std::chrono::milliseconds(500));
+        }
+
+        BOOST_LOG_TRIVIAL(info) << "Stopping";
+        message.speed = 0;
+        message.direction = controller::MotorDirection::FORWARDS;
+        controller.sendCommand(message);
+
+        slave_handle.unlock();
+        bus_handle.unlock();
+
+        BOOST_CHECK(true);
+    }
+
 BOOST_AUTO_TEST_SUITE_END()

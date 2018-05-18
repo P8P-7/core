@@ -11,7 +11,7 @@
 namespace goliath::commands {
     class MoveCommand : public Command {
     public:
-        MoveCommand();
+        MoveCommand(const size_t &id);
 
     private:
         void execute(const handles::HandleMap &handles, const CommandMessage &message) override;

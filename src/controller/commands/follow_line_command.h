@@ -11,7 +11,7 @@
 namespace goliath::commands {
     class FollowLineCommand : public Command {
     public:
-        FollowLineCommand();
+        FollowLineCommand(const size_t &id);
 
     private:
         void execute(const handles::HandleMap &handles, const CommandMessage &message) override;

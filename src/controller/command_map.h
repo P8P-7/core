@@ -48,21 +48,33 @@ namespace goliath::commands {
         explicit CommandMap(std::map<size_t, CommandItem> commands);
 
         /**
-         * @brief Add a @see goliath::commands::CommandItem to the map
-         * @param commandId Preferred ID of the new @see goliath::commmands::Command
+         * @brief Add a goliath::commands::CommandItem to the map
          * @param command Pointer to @see goliath::commmands::Command instance
          */
-        void add(size_t commandId, std::shared_ptr<Command> command);
+        CommandItem& add(std::shared_ptr<Command> command);
 
         /**
-         * @brief Get @see goliath::commands::CommandItem at id
+         * @brief Add a goliath::commands::CommandItem to the map.
+         * Creates an instance of CommandType with handleId and args passed to it as arguments. CommandType's constructor should accept an commandId as its first argument.
+         *
+         * @tparam CommandType type to create an Command of
+         * @tparam Targs types of arguments passed to
+         * @param commandId passed to the command created
+         * @param args arguments passed the command in the constructor afther the commandId
+         * @return goliath::commands::CommandItem with
+         */
+        template<typename CommandType, typename ...Targs>
+        CommandItem& add(size_t commandId, Targs... args);
+
+        /**
+         * @brief Get goliath::commands::CommandItem at id
          * @param id ID
          * @return @see goliath::commands::CommandItem
          */
         CommandItem& operator[](size_t id);
         const CommandItem& operator[](size_t id) const;
         /**
-         * @brief Check if a @see goliath::commmands::Command exists
+         * @brief Check if a goliath::commmands::Command exists
          * @param id ID to check
          * @return Status
          */
@@ -70,4 +82,11 @@ namespace goliath::commands {
     private:
         std::map<size_t, CommandItem> map;
     };
+
+    template<typename CommandType, typename ...Targs>
+    CommandItem& CommandMap::add(size_t commandId, Targs... args) {
+        auto command = std::make_shared<CommandType>(commandId, args...);
+
+        return add(command);
+    }
 }

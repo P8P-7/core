@@ -22,7 +22,12 @@ namespace goliath::commands {
      */
     class Command {
     public:
-        explicit Command(const std::vector<size_t> &requiredHandles);
+        explicit Command(const size_t &id, const std::vector<size_t> &requiredHandles);
+
+        /**
+         * @return id by which the command is known in a goliath::commmands::CommandMap
+         */
+        size_t getId() const;
 
         /**
          * @brief Execute a command whilst also setting its running property
@@ -56,6 +61,8 @@ namespace goliath::commands {
         virtual void execute(const handles::HandleMap &handles, const CommandMessage &message) = 0;
 
     private:
+        const size_t id;
+
         /**
          * @brief Represents whether a command is interrupted or not
          */
