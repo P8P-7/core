@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Goliath II: /home/travis/build/P8P-7/core/src/modules/gpio/include/goliath/gpio.h File Reference</title>
+<title>Goliath II: goliath::i2c Namespace Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -39,9 +39,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
+      <li class="current"><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
-      <li class="current"><a href="files.html"><span>Files</span></a></li>
+      <li><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -62,8 +62,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
-      <li><a href="files.html"><span>File&#160;List</span></a></li>
-      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
+      <li><a href="namespaces.html"><span>Namespace&#160;List</span></a></li>
+      <li><a href="namespacemembers.html"><span>Namespace&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -82,28 +82,34 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_ddb4d7e95cc2d6c8e1ade10a20d7247d.html">modules</a></li><li class="navelem"><a class="el" href="dir_31458193538be28ed5b93cfbb2dfc50e.html">gpio</a></li><li class="navelem"><a class="el" href="dir_14d62293fc42d68555f336e4becb9d97.html">include</a></li><li class="navelem"><a class="el" href="dir_6de7a6f2e5da74c8f4a3b70f00aa27ae.html">goliath</a></li>  </ul>
+<li class="navelem"><a class="el" href="namespacegoliath.html">goliath</a></li><li class="navelem"><a class="el" href="namespacegoliath_1_1i2c.html">i2c</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#namespaces">Namespaces</a>  </div>
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#typedef-members">Typedefs</a>  </div>
   <div class="headertitle">
-<div class="title">gpio.h File Reference</div>  </div>
+<div class="title">goliath::i2c Namespace Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="gpio_8h_source.html">../../gpio.h</a>&quot;</code><br/>
-</div>
-<p><a href="include_2goliath_2gpio_8h_source.html">Go to the source code of this file.</a></p>
+
+<p>Contains I2C utilities for connecting the Pi with an Arduino.  
+<a href="#details">More...</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
-Namespaces</h2></td></tr>
-<tr class="memitem:namespacegoliath_1_1gpio"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegoliath_1_1gpio.html">goliath::gpio</a></td></tr>
-<tr class="memdesc:namespacegoliath_1_1gpio"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains all classes and function for interfacing the <a class="el" href="classgoliath_1_1gpio_1_1GPIO.html">GPIO</a> bus on the Raspberry Pi. <br/></td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1i2c_1_1I2cSlave.html">I2cSlave</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:ad1f28451a4425598b754666b016c087a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad1f28451a4425598b754666b016c087a"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>I2cAddress</b> = std::uint8_t</td></tr>
+<tr class="separator:ad1f28451a4425598b754666b016c087a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><dl class="section author"><dt>Author</dt><dd>Group 7 - Informatica </dd></dl>
+<div class="textblock"><p>Contains I2C utilities for connecting the Pi with an Arduino. </p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

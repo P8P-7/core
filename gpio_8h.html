@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Goliath II: /home/travis/build/P8P-7/core/src/controller/commands/move_tower_command.h Source File</title>
+<title>Goliath II: /home/travis/build/P8P-7/core/src/modules/gpio/gpio.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -82,35 +82,81 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_41ef5d8a90b9cc03a02949a5c062e6f0.html">controller</a></li><li class="navelem"><a class="el" href="dir_5f5f0d19de51b8fec9b5d9f3367e1bbf.html">commands</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_ddb4d7e95cc2d6c8e1ade10a20d7247d.html">modules</a></li><li class="navelem"><a class="el" href="dir_31458193538be28ed5b93cfbb2dfc50e.html">gpio</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
+  <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#namespaces">Namespaces</a> &#124;
+<a href="#enum-members">Enumerations</a>  </div>
   <div class="headertitle">
-<div class="title">move_tower_command.h</div>  </div>
+<div class="title">gpio.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="move__tower__command_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="command_8h.html">command.h</a>&quot;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;../handles.h&quot;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">namespace </span>goliath::commands {</div>
-<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="classgoliath_1_1commands_1_1MoveTowerCommand.html">   12</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classgoliath_1_1commands_1_1MoveTowerCommand.html">MoveTowerCommand</a> : <span class="keyword">public</span> <a class="code" href="classgoliath_1_1commands_1_1Command.html">Command</a> {</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <a class="code" href="classgoliath_1_1commands_1_1MoveTowerCommand.html">MoveTowerCommand</a>(<span class="keyword">const</span> <span class="keywordtype">size_t</span> &amp;<span class="keywordtype">id</span>);</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <span class="keywordtype">void</span> execute(<span class="keyword">const</span> <a class="code" href="classgoliath_1_1handles_1_1HandleMap.html">handles::HandleMap</a>&amp; handles, <span class="keyword">const</span> CommandMessage &amp;message) <span class="keyword">override</span> ;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    };</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;}</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
-<div class="ttc" id="command_8h_html"><div class="ttname"><a href="command_8h.html">command.h</a></div></div>
-<div class="ttc" id="classgoliath_1_1commands_1_1MoveTowerCommand_html"><div class="ttname"><a href="classgoliath_1_1commands_1_1MoveTowerCommand.html">goliath::commands::MoveTowerCommand</a></div><div class="ttdef"><b>Definition:</b> move_tower_command.h:12</div></div>
-<div class="ttc" id="classgoliath_1_1commands_1_1Command_html"><div class="ttname"><a href="classgoliath_1_1commands_1_1Command.html">goliath::commands::Command</a></div><div class="ttdoc">Command base class. </div><div class="ttdef"><b>Definition:</b> command.h:23</div></div>
-<div class="ttc" id="classgoliath_1_1handles_1_1HandleMap_html"><div class="ttname"><a href="classgoliath_1_1handles_1_1HandleMap.html">goliath::handles::HandleMap</a></div><div class="ttdoc">Map of all handles mapped to an integer. </div><div class="ttdef"><b>Definition:</b> handle_map.h:15</div></div>
-</div><!-- fragment --></div><!-- contents -->
+<div class="textblock"><code>#include &lt;string&gt;</code><br/>
+</div>
+<p><a href="gpio_8h_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1gpio_1_1GPIO.html">goliath::gpio::GPIO</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
+Namespaces</h2></td></tr>
+<tr class="memitem:namespacegoliath_1_1gpio"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegoliath_1_1gpio.html">goliath::gpio</a></td></tr>
+<tr class="memdesc:namespacegoliath_1_1gpio"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains all classes and function for interfacing the <a class="el" href="classgoliath_1_1gpio_1_1GPIO.html">GPIO</a> bus on the Raspberry Pi. <br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:aff5a61e1fd0bec81a561c38eda808d90"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><b>GPIO_MAP_PIN</b> { <br/>
+&#160;&#160;<b>GPIO2</b> = 2, 
+<b>GPIO14</b> = 14, 
+<b>GPIO3</b> = 3, 
+<b>GPIO15</b> = 15, 
+<br/>
+&#160;&#160;<b>GPIO4</b> = 4, 
+<b>GPIO18</b> = 18, 
+<b>GPIO17</b> = 17, 
+<b>GPIO23</b> = 23, 
+<br/>
+&#160;&#160;<b>GPIO27</b> = 27, 
+<b>GPIO24</b> = 24, 
+<b>GPIO22</b> = 22, 
+<b>GPIO25</b> = 25, 
+<br/>
+&#160;&#160;<b>GPIO10</b> = 10, 
+<b>GPIO8</b> = 8, 
+<b>GPIO9</b> = 9, 
+<b>GPIO7</b> = 7, 
+<br/>
+&#160;&#160;<b>GPIO11</b> = 11, 
+<b>GPIO12</b> = 12, 
+<b>GPIO5</b> = 5, 
+<b>GPIO16</b> = 16, 
+<br/>
+&#160;&#160;<b>GPIO6</b> = 6, 
+<b>GPIO20</b> = 20, 
+<b>GPIO13</b> = 13, 
+<b>GPIO21</b> = 21, 
+<br/>
+&#160;&#160;<b>GPIO19</b> = 19, 
+<b>GPIO26</b> = 26
+<br/>
+ }</td></tr>
+<tr class="separator:aff5a61e1fd0bec81a561c38eda808d90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af46bccc01faa564af88f7e4bb01d898d"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><b>INTERNAL_STATE</b> { <b>LOW</b> = 0, 
+<b>HIGH</b> = 1, 
+<b>OUT</b> = 0, 
+<b>IN</b> = 1
+ }</td></tr>
+<tr class="separator:af46bccc01faa564af88f7e4bb01d898d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><dl class="section author"><dt>Author</dt><dd>Group 7 - Informatica </dd></dl>
+</div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

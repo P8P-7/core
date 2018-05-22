@@ -6,6 +6,7 @@ var searchData=
   ['goliath',['goliath',['../namespacegoliath.html',1,'']]],
   ['gpio',['gpio',['../namespacegoliath_1_1gpio.html',1,'goliath']]],
   ['handles',['handles',['../namespacegoliath_1_1handles.html',1,'goliath']]],
+  ['i2c',['i2c',['../namespacegoliath_1_1i2c.html',1,'goliath']]],
   ['messaging',['messaging',['../namespacegoliath_1_1messaging.html',1,'goliath']]],
   ['openal',['openal',['../namespacegoliath_1_1openal.html',1,'goliath']]],
   ['util',['util',['../namespacegoliath_1_1util.html',1,'goliath']]],
