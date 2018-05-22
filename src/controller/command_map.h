@@ -9,7 +9,7 @@
 
 namespace goliath::commands {
     /**
-     * @enum goliath::commands::command_status
+     * @enum goliath::commands::CommandStatus
      * @brief Defines the status of a specific command
      */
     enum class CommandStatus {
@@ -49,7 +49,7 @@ namespace goliath::commands {
 
         /**
          * @brief Add a goliath::commands::CommandItem to the map
-         * @param command Pointer to @see goliath::commmands::Command instance
+         * @param command Pointer to @see goliath::commands::Command instance
          */
         CommandItem& add(std::shared_ptr<Command> command);
 
@@ -60,7 +60,7 @@ namespace goliath::commands {
          * @tparam CommandType type to create an Command of
          * @tparam Targs types of arguments passed to
          * @param commandId passed to the command created
-         * @param args arguments passed the command in the constructor afther the commandId
+         * @param args arguments passed the command in the constructor after the commandId
          * @return goliath::commands::CommandItem with
          */
         template<typename CommandType, typename ...Targs>
@@ -74,11 +74,22 @@ namespace goliath::commands {
         CommandItem& operator[](size_t id);
         const CommandItem& operator[](size_t id) const;
         /**
-         * @brief Check if a goliath::commmands::Command exists
+         * @brief Check if a goliath::commands::Command exists
          * @param id ID to check
          * @return Status
          */
         bool commandExists(size_t id) const;
+
+        /**
+         * @brief Begin iterator
+         * @return std::map iterator
+         */
+        std::map<size_t, CommandItem>::iterator begin();
+        /**
+         * @brief End iterator
+         * @return std::map iterator
+         */
+        std::map<size_t, CommandItem>::iterator end();
     private:
         std::map<size_t, CommandItem> map;
     };

@@ -1,7 +1,7 @@
 #pragma once
 
 /**
- * @file include/goliath/gpio.h
+ * @file gpio/include/goliath/gpio.h
  * @author Group 7 - Informatica
  */
 

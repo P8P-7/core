@@ -3,7 +3,7 @@
 #include <string>
 
 /**
- * @file gpio.h
+ * @file gpio/gpio.h
  * @author Group 7 - Informatica
  */
 

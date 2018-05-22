@@ -8,7 +8,6 @@
  */
 
 namespace goliath::handles {
-    // TODO: add iterator
     /**
      * @class goliath::handles::HandleMap
      * @brief Map of all handles mapped to an integer
@@ -46,6 +45,17 @@ namespace goliath::handles {
 
         std::shared_ptr<Handle>& operator[](const size_t &index);
         const std::shared_ptr<Handle>& operator[](const size_t &index) const;
+
+        /**
+         * @brief Begin iterator
+         * @return Map iterator
+         */
+        std::map<size_t, std::shared_ptr<Handle>>::iterator begin();
+        /**
+         * @brief End iterator
+         * @return Map iterator
+         */
+        std::map<size_t, std::shared_ptr<Handle>>::iterator end();
     private:
         /**
          * @brief The map itself
