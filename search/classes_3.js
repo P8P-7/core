@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['detector',['Detector',['../classgoliath_1_1vision_1_1Detector.html',1,'goliath::vision']]],
-  ['device',['Device',['../classgoliath_1_1openal_1_1Device.html',1,'goliath::openal']]]
+  ['followlinecommand',['FollowLineCommand',['../classgoliath_1_1commands_1_1FollowLineCommand.html',1,'goliath::commands']]],
+  ['followlinedetector',['FollowLineDetector',['../classgoliath_1_1vision_1_1FollowLineDetector.html',1,'goliath::vision']]]
 ];

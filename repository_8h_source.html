@@ -106,17 +106,18 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="classgoliath_1_1repositories_1_1Repository.html#a8b1845da32fb728bc72dca2252f44814">   33</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classgoliath_1_1repositories_1_1Repository.html#a8b1845da32fb728bc72dca2252f44814">invalidate</a>() {</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            invalidated = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        }</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="classgoliath_1_1repositories_1_1Watcher.html">Watcher</a>;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="keywordtype">void</span> validate() {</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            invalidated = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        }</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keywordtype">bool</span> invalidated = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    };</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;}</div>
-<div class="ttc" id="classgoliath_1_1repositories_1_1Repository_html_acaac526575f19832ff2a954fee3fb527"><div class="ttname"><a href="classgoliath_1_1repositories_1_1Repository.html#acaac526575f19832ff2a954fee3fb527">goliath::repositories::Repository::getMessage</a></div><div class="ttdeci">virtual std::unique_ptr&lt;::google::protobuf::Message &gt; getMessage()=0</div><div class="ttdoc">Compiles the fields of this repository to an instance of ::google::protobuf::Message. </div></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="classgoliath_1_1repositories_1_1Watcher.html">Watcher</a>;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="keywordtype">void</span> validate() {</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            invalidated = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        }</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keywordtype">bool</span> invalidated = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    };</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;}</div>
+<div class="ttc" id="classgoliath_1_1repositories_1_1Repository_html_acaac526575f19832ff2a954fee3fb527"><div class="ttname"><a href="classgoliath_1_1repositories_1_1Repository.html#acaac526575f19832ff2a954fee3fb527">goliath::repositories::Repository::getMessage</a></div><div class="ttdeci">virtual std::unique_ptr&lt;::google::protobuf::Message &gt; getMessage()=0</div><div class="ttdoc">Compiles the fields of this repository to an instance of Message </div></div>
 <div class="ttc" id="classgoliath_1_1repositories_1_1Repository_html"><div class="ttname"><a href="classgoliath_1_1repositories_1_1Repository.html">goliath::repositories::Repository</a></div><div class="ttdoc">Repository base class. </div><div class="ttdef"><b>Definition:</b> repository.h:15</div></div>
 <div class="ttc" id="classgoliath_1_1repositories_1_1Repository_html_afbccd222beba76a654bf01d7794c5c2d"><div class="ttname"><a href="classgoliath_1_1repositories_1_1Repository.html#afbccd222beba76a654bf01d7794c5c2d">goliath::repositories::Repository::isInvalidated</a></div><div class="ttdeci">virtual bool isInvalidated()</div><div class="ttdef"><b>Definition:</b> repository.h:26</div></div>
 <div class="ttc" id="classgoliath_1_1repositories_1_1Watcher_html"><div class="ttname"><a href="classgoliath_1_1repositories_1_1Watcher.html">goliath::repositories::Watcher</a></div><div class="ttdoc">watches multiple repositories for changes and sends them to the publisher service ...</div><div class="ttdef"><b>Definition:</b> watcher.h:21</div></div>

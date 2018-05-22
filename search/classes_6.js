@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['handle',['Handle',['../classgoliath_1_1handles_1_1Handle.html',1,'goliath::handles']]],
-  ['handleerror',['HandleError',['../classgoliath_1_1exceptions_1_1HandleError.html',1,'goliath::exceptions']]],
-  ['handlemap',['HandleMap',['../classgoliath_1_1handles_1_1HandleMap.html',1,'goliath::handles']]]
+  ['i2cbushandle',['I2cBusHandle',['../classgoliath_1_1handles_1_1I2cBusHandle.html',1,'goliath::handles']]],
+  ['i2cerror',['I2cError',['../classgoliath_1_1exceptions_1_1I2cError.html',1,'goliath::exceptions']]],
+  ['i2cslave',['I2cSlave',['../classgoliath_1_1i2c_1_1I2cSlave.html',1,'goliath::i2c']]],
+  ['i2cslavehandle',['I2cSlaveHandle',['../classgoliath_1_1handles_1_1I2cSlaveHandle.html',1,'goliath::handles']]]
 ];

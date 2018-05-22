@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Goliath II: /home/travis/build/P8P-7/core/src/controller/controller.cpp File Reference</title>
+<title>Goliath II: /home/travis/build/P8P-7/core/src/modules/foundation/src/repositories/proto_repository.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -82,50 +82,25 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_41ef5d8a90b9cc03a02949a5c062e6f0.html">controller</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_ddb4d7e95cc2d6c8e1ade10a20d7247d.html">modules</a></li><li class="navelem"><a class="el" href="dir_4603191f9e206e2defeb0afef7932c97.html">foundation</a></li><li class="navelem"><a class="el" href="dir_e58bbb7e1550fb91e3dba9bc96481f08.html">src</a></li><li class="navelem"><a class="el" href="dir_5e28493a2e83b7653feeafbb808f9351.html">repositories</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#namespaces">Namespaces</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#nested-classes">Classes</a>  </div>
   <div class="headertitle">
-<div class="title">controller.cpp File Reference</div>  </div>
+<div class="title">proto_repository.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;<a class="el" href="foundation_8h_source.html">goliath/foundation.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="include_2goliath_2gpio_8h_source.html">goliath/gpio.h</a>&gt;</code><br/>
-<code>#include &lt;goliath/servo.h&gt;</code><br/>
-<code>#include &lt;<a class="el" href="vision_8h_source.html">goliath/vision.h</a>&gt;</code><br/>
-<code>#include &lt;<a class="el" href="zmq__messaging_8h_source.html">goliath/zmq_messaging.h</a>&gt;</code><br/>
-<code>#include &lt;boost/log/trivial.hpp&gt;</code><br/>
-<code>#include &lt;boost/asio/signal_set.hpp&gt;</code><br/>
-<code>#include &lt;boost/asio/io_service.hpp&gt;</code><br/>
-<code>#include &lt;iostream&gt;</code><br/>
-<code>#include &lt;fstream&gt;</code><br/>
-<code>#include &lt;string&gt;</code><br/>
-<code>#include &quot;<a class="el" href="command__map_8h_source.html">command_map.h</a>&quot;</code><br/>
-<code>#include &quot;<a class="el" href="command__executor_8h_source.html">command_executor.h</a>&quot;</code><br/>
-<code>#include &quot;<a class="el" href="move__command_8h_source.html">commands/move_command.h</a>&quot;</code><br/>
-<code>#include &quot;commands/move_wing_command.h&quot;</code><br/>
-<code>#include &quot;<a class="el" href="follow__line__command_8h_source.html">commands/follow_line_command.h</a>&quot;</code><br/>
-<code>#include &quot;<a class="el" href="move__tower__command_8h_source.html">commands/move_tower_command.h</a>&quot;</code><br/>
-<code>#include &quot;<a class="el" href="handles_8h_source.html">handles.h</a>&quot;</code><br/>
-<code>#include &quot;dynamixel/Dynamixel.h&quot;</code><br/>
-<code>#include &quot;<a class="el" href="console_8h_source.html">util/console.h</a>&quot;</code><br/>
-</div><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
-Namespaces</h2></td></tr>
-<tr class="memitem:namespacegoliath"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegoliath.html">goliath</a></td></tr>
-<tr class="memdesc:namespacegoliath"><td class="mdescLeft">&#160;</td><td class="mdescRight">Main project namespace. <br/></td></tr>
+<div class="textblock"><code>#include &quot;<a class="el" href="repository_8h_source.html">repository.h</a>&quot;</code><br/>
+</div>
+<p><a href="proto__repository_8h_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1repositories_1_1ProtoRepository.html">goliath::repositories::ProtoRepository&lt; T &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classgoliath_1_1repositories_1_1Repository.html" title="Repository base class. ">Repository</a> for accessing proto objects.  <a href="classgoliath_1_1repositories_1_1ProtoRepository.html#details">More...</a><br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
-Functions</h2></td></tr>
-<tr class="memitem:ae0665038b72011f5c680c660fcb59459"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae0665038b72011f5c680c660fcb59459"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="controller_8cpp.html#ae0665038b72011f5c680c660fcb59459">main</a> (int argc, char *argv[])</td></tr>
-<tr class="memdesc:ae0665038b72011f5c680c660fcb59459"><td class="mdescLeft">&#160;</td><td class="mdescRight">Application entry point. <br/></td></tr>
-<tr class="separator:ae0665038b72011f5c680c660fcb59459"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><dl class="section author"><dt>Author</dt><dd>Group 7 - Informatica </dd></dl>
