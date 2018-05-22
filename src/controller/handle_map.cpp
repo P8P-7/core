@@ -45,3 +45,11 @@ void HandleMap::lockAll(const size_t &command_id) {
         handle.second->lock(command_id);
     }
 }
+
+std::map<size_t, std::shared_ptr<Handle>>::iterator HandleMap::begin() {
+    return map.begin();
+}
+
+std::map<size_t, std::shared_ptr<Handle>>::iterator HandleMap::end() {
+    return map.end();
+}
