@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['structure',['Structure',['../md__home_travis_build_P8P-7_core_doc_pages_structure.html',1,'']]],
   ['sendcommand',['sendCommand',['../classgoliath_1_1controller_1_1MotorController.html#a36c83357651e0db21c4ca28bebc6c533',1,'goliath::controller::MotorController']]],
   ['servo_5fhandle',['servo_handle',['../classgoliath_1_1handles_1_1servo__handle.html',1,'goliath::handles']]],
   ['servo_5fhandle_2eh',['servo_handle.h',['../servo__handle_8h.html',1,'']]],
