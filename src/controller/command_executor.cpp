@@ -29,7 +29,7 @@ void CommandExecutor::run(const size_t commandId, const CommandMessage &message)
     }
     item.status = CommandStatus::STARTING;
 
-    threads.push_back(std::thread(&CommandExecutor::tryExecute, this, commandId, std::ref(message)));
+    threads.push_back(std::thread(&CommandExecutor::tryExecute, this, commandId, message));
 }
 
 void CommandExecutor::tryExecute(const size_t &commandId, const CommandMessage &message) {
