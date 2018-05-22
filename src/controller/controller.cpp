@@ -20,7 +20,7 @@
 
 #include "handles.h"
 #include "dynamixel/Dynamixel.h"
-#include "util/colored_console.h"
+#include "util/console.h"
 
 /**
  * @file controller.cpp
@@ -34,44 +34,11 @@
 using namespace goliath;
 
 /**
- * @fn displayLogo(std::string textFile)
- * @brief Display ASCII logo
- */
-void displayLogo(std::string textFile) {
-    std::string line;
-    std::ifstream logo("logo.txt");
-    std::string line2;
-    std::ifstream text;
-
-    bool hasText = !textFile.empty();
-    if (hasText) {
-        text.open(textFile);
-        hasText = text.is_open();
-    }
-
-    if (logo.is_open()) {
-        while (getline(logo, line)) {
-            if (hasText && getline(text, line2)) {
-                std::cout << line << line2 << std::endl;
-            } else {
-                std::cout << line << std::endl;
-            }
-        }
-        logo.close();
-        if (hasText) {
-            text.close();
-        }
-    }
-}
-
-/**
  * @fn main(int argc, char *argv[])
  * @brief Application entry point
  */
 int main(int argc, char *argv[]) {
-    displayLogo("core-text.txt");
-
-    goliath::util::init();
+    util::Console console(&util::colorConsoleFormatter, "logo.txt", "core-text.txt");
 
     boost::asio::io_service ioService;
 
@@ -163,8 +130,6 @@ int main(int argc, char *argv[]) {
 
     BOOST_LOG_TRIVIAL(info) << "Stopping subscriber";
     subscriber.stop();
-
-    BOOST_LOG_TRIVIAL(fatal) << "Controller has been shut down";
 
     return 0;
 }

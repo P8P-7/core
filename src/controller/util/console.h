@@ -11,11 +11,6 @@
  * @author Group 7 - Informatica
  */
 
-/**
- * @namespace goliath::util
- * @brief Contains utilities
- */
-
 #define CONSOLE_COLOR_DEFAULT "\033[39m"
 #define CONSOLE_COLOR_BLACK "\033[30m"
 #define CONSOLE_COLOR_WHITE "\033[31m"
@@ -43,11 +38,35 @@ const std::string LOG_COLOR_INFO = CONSOLE_COLOR_BLUE;
 const std::string LOG_COLOR_WARNING = CONSOLE_COLOR_LIGHT_RED;
 const std::string LOG_COLOR_ERROR = (boost::format("%1%%2%") % CONSOLE_STYLE_BOLD % CONSOLE_COLOR_RED).str();
 const std::string LOG_COLOR_FATAL = (boost::format("%1%%2%%3%") % CONSOLE_STYLE_BOLD % CONSOLE_STYLE_UNDERLINE %
-                                         CONSOLE_COLOR_RED).str();
+                                     CONSOLE_COLOR_RED).str();
 const std::string LOG_COLOR_DEFAULT = CONSOLE_COLOR_DEFAULT;
 
+/**
+ * @namespace goliath::util
+ * @brief Contains utilities
+ */
 namespace goliath::util {
-    namespace blog = boost::log;
+    /**
+     * @class goliath::util::Console
+     * @brief Utility class for giving colors and banners to the terminal output
+     */
+    class Console {
+    public:
+        /**
+         * @brief Displays ASCII logo, creates a sink and starts the output table
+         * @param formatter Formatter for colors and layout to be used
+         * @param logoFile Path to logo (left)
+         * @param textFile Path to text (right)
+         */
+        Console(std::function<void(const boost::log::record_view&, boost::log::formatting_ostream&)> formatter,
+                std::string logoFile, std::string textFile);
+
+        ~Console();
+
+    private:
+        std::function<void(const boost::log::record_view&, boost::log::formatting_ostream&)> formatter;
+
+    };
 
     /**
      * @fn std::string getColor(const boost::log::trivial::severity_level& severityLevel)
@@ -55,16 +74,11 @@ namespace goliath::util {
      * @param severityLevel Level of severity to display
      * @return Linux terminal color string
      */
-    std::string getColor(const blog::trivial::severity_level& severityLevel);
+    std::string getColor(const boost::log::trivial::severity_level& severityLevel);
 
     /**
      * @fn void colorConsoleFormatter(const boost::log::record_view& recordView, boost::log::formatting_ostream& formatStream)
      * @brief Formatter that takes in a message, applies data, thread, severity and a color
      */
-    void colorConsoleFormatter(const blog::record_view& recordView, blog::formatting_ostream& formatStream);
-
-    /**
-     * @brief Initialize a sink with the formatter and sets it as default
-     */
-    void init();
+    void colorConsoleFormatter(const boost::log::record_view& recordView, boost::log::formatting_ostream& formatStream);
 }

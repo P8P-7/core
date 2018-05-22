@@ -14,7 +14,7 @@ set(SOURCES
         commands/follow_line_command.cpp
         commands/move_tower_command.cpp
         commands/move_wing_command.cpp
-        util/colored_console.cpp
+    util/console.cpp
         handles.h
         handle_map.cpp
         controller.cpp
