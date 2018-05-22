@@ -13,12 +13,12 @@ add_library(${PROJECT_NAME} ${SOURCES})
 
 target_include_directories(${PROJECT_NAME}
         PUBLIC
-        ${CMAKE_CURRENT_SOURCE_DIR}/include
+            ${CMAKE_CURRENT_SOURCE_DIR}/include
         )
 
 target_link_libraries(${PROJECT_NAME}
         PUBLIC
-        goliath-foundation-module
-        ${CMAKE_THREAD_LIBS_INIT}
-        ${Boost_LIBRARIES}
+            goliath-foundation-module
+            ${CMAKE_THREAD_LIBS_INIT}
+            ${Boost_LIBRARIES}
         )

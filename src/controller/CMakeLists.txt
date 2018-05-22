@@ -1,11 +1,5 @@
 project(goliath-controller LANGUAGES CXX)
 
-find_package(Boost ${BOOST_MIN_VERSION}
-    COMPONENTS
-        log
-    REQUIRED
-    )
-
 set(SOURCES
         command_map.cpp
         command_executor.cpp
@@ -14,7 +8,7 @@ set(SOURCES
         commands/follow_line_command.cpp
         commands/move_tower_command.cpp
         commands/move_wing_command.cpp
-    util/console.cpp
+        util/console.cpp
         handles.h
         handle_map.cpp
         controller.cpp
