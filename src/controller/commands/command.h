@@ -25,7 +25,7 @@ namespace goliath::commands {
         explicit Command(const size_t &id, const std::vector<size_t> &requiredHandles);
 
         /**
-         * @return id by which the command is known in a goliath::commmands::CommandMap
+         * @return id by which the command is known in a goliath::commands::CommandMap
          */
         size_t getId() const;
 
