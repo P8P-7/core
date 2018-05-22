@@ -9,16 +9,9 @@ int main(int argc, char *argv[]) {
     int numBytes = 2;
     short iData = 512;
     std::string command = "Set";
-    std::string address = "Goal";
+    std::string address = "MovingSpeed";
     std::string portName = "/dev/serial0";
     int baudRate = 1000000;
-
-    // motor objects
-    Dynamixel *motorManual;
-    Dynamixel *motor1;
-    Dynamixel *motor2;
-    Dynamixel *motor3;
-    Dynamixel *motor4;
 
     std::vector<byte> data;
     std::vector<byte> recvData;
@@ -58,106 +51,41 @@ int main(int argc, char *argv[]) {
     GPIO gpio;
     gpio.setup(GPIO18, OUT, LOW);
 
-    if (port.connect((char *) portName.c_str(), baudRate) != 0) {
+    if (port.connect(portName, baudRate) != 0) {
         std::cout << "Success\n";
+        std::function<void(bool)> callback = [&gpio](bool isTx) {
+            if (isTx) {
+                gpio.set(HIGH);
+            } else {
+                std::this_thread::sleep_for(std::chrono::microseconds(20));
+                gpio.set(LOW);
+            }
+        };
+
         // configure the motor object
-        motorManual = new AX12(motorId, &port);
-        motorManual->configure();
-        motor1 = new AX12(1, &port);
-        motor1->configure();
-        motor2 = new AX12(2, &port);
-        motor2->configure();
-        motor3 = new AX12(3, &port);
-        motor3->configure();
-        motor4 = new AX12(4, &port);
-        motor4->configure();
+        Dynamixel motor(motorId, &port);
+        motor.setDirectionCallback(callback);
 
-        motorManual->setDirectionCallback([&gpio](std::string direction) {
-            if (direction == "tx") {
-                gpio.set(HIGH);
-            } else {
-                usleep(20);
-                gpio.set(LOW);
-            }
-        });
-        motor1->setDirectionCallback([&gpio](std::string direction) {
-            if (direction == "tx") {
-                gpio.set(HIGH);
-            } else {
-                usleep(20);
-                gpio.set(LOW);
-            }
-        });
-        motor2->setDirectionCallback([&gpio](std::string direction) {
-            if (direction == "tx") {
-                gpio.set(HIGH);
-            } else {
-                usleep(20);
-                gpio.set(LOW);
-            }
-        });
-        motor3->setDirectionCallback([&gpio](std::string direction) {
-            if (direction == "tx") {
-                gpio.set(HIGH);
-            } else {
-                usleep(20);
-                gpio.set(LOW);
-            }
-        });
-        motor4->setDirectionCallback([&gpio](std::string direction) {
-            if (direction == "tx") {
-                gpio.set(HIGH);
-            } else {
-                usleep(20);
-                gpio.set(LOW);
-            }
-        });
+        // meeded for MovingSpeed
+        motor.setCWAngleLimit(0);
+        motor.setCCWAngleLimit(0);
 
-
-//        motorManual->setWheelMode(true);
-//        motorManual->turn(1023,true);
-//        motorManual->setWheelMode(false);
-        motor4->setWheelMode(false);
-//        motorManual->setGoalPosition(0);
-        motor4->setGoalPosition(0);
-        usleep(1000000);
-
-
-        std::cout << "manual motor mode: " << motorManual->getCurrentMode() << std::endl;
-//        std::cout << "motor" << 2 << " mode: " << motor2->getCurrentMode() << std::endl;
-        std::cout << "motor" << 4 << " mode: " << motor4->getCurrentMode() << std::endl;
-
-        motorManual->setWheelMode(true);
-        motor4->setWheelMode(true);
-
-        while (true) {
-            motorManual->turn(1023, true);
-            motor4->turn(128, true);
-            usleep(1000000);
-            motorManual->turn(0, true);
-            motor4->turn(0, true);
-            usleep(500000);
-            std::cout << "motor manual:" << motorManual->getCurrentLoad() << std::endl;
-            std::cout << "motor 4:" << motor4->getCurrentLoad() << std::endl;
-            usleep(250000);
-        }
-
-        // For debugging only
+        // for debugging only:
         byte buffer[1024];
-//        int length = motor->formatCommand(motor->getCommand(command),
-//                                          motor->getAddress(address),
-//                                          data,
-//                                          buffer);
+        int length = motor.formatCommand(motor.getCommand(command),
+                                         motor.getAddress(address),
+                                         data,
+                                         buffer);
 
-//        std::cout << "buffer: " <<
-//                  Utils::printBuffer(buffer, length) << std::endl;
-        // end of debugging
+        std::cout << "buffer: " <<
+                  Utils::printBuffer(buffer, length) << std::endl;
+        // end for debugging
 
         int retVal;
-        retVal = motorManual->sendReceiveCommand(command,
-                                                 address,
-                                                 data,
-                                                 &recvData);
+        retVal = motor.sendReceiveCommand(command,
+                                          address,
+                                          data,
+                                          &recvData);
 
         int recvVal = 0;
         if (recvData.size() == 1) {
@@ -165,12 +93,11 @@ int main(int argc, char *argv[]) {
         } else if (recvData.size() == 2) {
             recvVal = Utils::convertFromHL(recvData[0], recvData[1]);
         }
-
         std::cout << "received: " <<
                   retVal << " : " << recvVal << std::endl;
 
         std::cout << "position: " <<
-                  motorManual->getPosition() << std::endl;
+                  motor.getPosition() << std::endl;
     } else {
         std::cout << "Couldn't open " <<
                   portName << " at baudRate " <<
