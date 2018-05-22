@@ -22,3 +22,11 @@ target_link_libraries(${PROJECT_NAME}
             ${CMAKE_THREAD_LIBS_INIT}
             ${Boost_LIBRARIES}
         )
+
+add_executable(servo_test
+        test.cpp)
+
+target_link_libraries(servo_test
+        PUBLIC
+            ${PROJECT_NAME}
+        )
