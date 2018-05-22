@@ -17,6 +17,7 @@ namespace goliath::handles {
     class WebcamHandle : public Handle {
     public:
         /**
+         * @param id Handle ID
          * @param device The recording device
          */
         explicit WebcamHandle(const size_t &id, const int &device);

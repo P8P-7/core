@@ -17,7 +17,7 @@
 namespace goliath::commands {
 
     /**
-     * @class goliath::commmands::Command
+     * @class goliath::commands::Command
      * @brief Command base class
      */
     class Command {

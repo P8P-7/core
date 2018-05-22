@@ -7,7 +7,7 @@
 #include <boost/format.hpp>
 
 /**
- * @file colored_console.h
+ * @file console.h
  * @author Group 7 - Informatica
  */
 

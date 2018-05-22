@@ -9,7 +9,7 @@
 
 namespace goliath::commands {
     /**
-     * @enum goliath::commands_command_status
+     * @enum goliath::commands::command_status
      * @brief Defines the status of a specific command
      */
     enum class CommandStatus {
