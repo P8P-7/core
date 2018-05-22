@@ -99,26 +99,52 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1util_1_1Console.html">Console</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Utility class for giving colors and banners to the terminal output.  <a href="classgoliath_1_1util_1_1Console.html#details">More...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1util_1_1VisionUtilities.html">VisionUtilities</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains useful utility function for vision calculations.  <a href="classgoliath_1_1util_1_1VisionUtilities.html#details">More...</a><br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:aec88d8b6417346682d28dff135d577d1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aec88d8b6417346682d28dff135d577d1"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>getColor</b> (const blog::trivial::severity_level &amp;severityLevel)</td></tr>
-<tr class="separator:aec88d8b6417346682d28dff135d577d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a47696eb316cb1dfdec4c7335416ced3b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a47696eb316cb1dfdec4c7335416ced3b"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>colorConsoleFormatter</b> (const blog::record_view &amp;recordView, blog::formatting_ostream &amp;formatStream)</td></tr>
-<tr class="separator:a47696eb316cb1dfdec4c7335416ced3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7cebe1acc2ee4d19708b4d3365cc394f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7cebe1acc2ee4d19708b4d3365cc394f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegoliath_1_1util.html#a7cebe1acc2ee4d19708b4d3365cc394f">init</a> ()</td></tr>
-<tr class="memdesc:a7cebe1acc2ee4d19708b4d3365cc394f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize a sink with the formatter and sets it as default. <br/></td></tr>
-<tr class="separator:a7cebe1acc2ee4d19708b4d3365cc394f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b75618ebec9d2df7cefdf27df41dcea"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegoliath_1_1util.html#a5b75618ebec9d2df7cefdf27df41dcea">getColor</a> (const boost::log::trivial::severity_level &amp;severityLevel)</td></tr>
+<tr class="memdesc:a5b75618ebec9d2df7cefdf27df41dcea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a specific color based on the severity of the log.  <a href="#a5b75618ebec9d2df7cefdf27df41dcea">More...</a><br/></td></tr>
+<tr class="separator:a5b75618ebec9d2df7cefdf27df41dcea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a11dce7a7cd058d584389b1a5d0edbc2d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a11dce7a7cd058d584389b1a5d0edbc2d"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegoliath_1_1util.html#a11dce7a7cd058d584389b1a5d0edbc2d">colorConsoleFormatter</a> (const boost::log::record_view &amp;recordView, boost::log::formatting_ostream &amp;formatStream)</td></tr>
+<tr class="memdesc:a11dce7a7cd058d584389b1a5d0edbc2d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Formatter that takes in a message, applies data, thread, severity and a color. <br/></td></tr>
+<tr class="separator:a11dce7a7cd058d584389b1a5d0edbc2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Contains utilities. </p>
-</div></div><!-- contents -->
+</div><h2 class="groupheader">Function Documentation</h2>
+<a class="anchor" id="a5b75618ebec9d2df7cefdf27df41dcea"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string goliath::util::getColor </td>
+          <td>(</td>
+          <td class="paramtype">const boost::log::trivial::severity_level &amp;&#160;</td>
+          <td class="paramname"><em>severityLevel</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns a specific color based on the severity of the log. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">severityLevel</td><td>Level of severity to display </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Linux terminal color string </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

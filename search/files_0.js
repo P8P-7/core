@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['battery_5frepository_2eh',['battery_repository.h',['../battery__repository_8h.html',1,'']]]
+  ['audio_5ferror_2eh',['audio_error.h',['../audio__error_8h.html',1,'']]]
 ];

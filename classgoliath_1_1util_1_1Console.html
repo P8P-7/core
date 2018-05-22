@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Goliath II: /home/travis/build/P8P-7/core/src/modules/gpio Directory Reference</title>
+<title>Goliath II: goliath::util::Console Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -40,7 +40,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
-      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -60,6 +60,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       </li>
     </ul>
   </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
+      <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
+      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
+    </ul>
+  </div>
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -76,29 +84,78 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_ddb4d7e95cc2d6c8e1ade10a20d7247d.html">modules</a></li><li class="navelem"><a class="el" href="dir_31458193538be28ed5b93cfbb2dfc50e.html">gpio</a></li>  </ul>
+<li class="navelem"><a class="el" href="namespacegoliath.html">goliath</a></li><li class="navelem"><a class="el" href="namespacegoliath_1_1util.html">util</a></li><li class="navelem"><a class="el" href="classgoliath_1_1util_1_1Console.html">Console</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="classgoliath_1_1util_1_1Console-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">gpio Directory Reference</div>  </div>
+<div class="title">goliath::util::Console Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Utility class for giving colors and banners to the terminal output.  
+ <a href="classgoliath_1_1util_1_1Console.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="console_8h_source.html">console.h</a>&gt;</code></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="subdirs"></a>
-Directories</h2></td></tr>
-<tr class="memitem:dir_14d62293fc42d68555f336e4becb9d97"><td class="memItemLeft" align="right" valign="top">directory &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dir_14d62293fc42d68555f336e4becb9d97.html">include</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="files"></a>
-Files</h2></td></tr>
-<tr class="memitem:gpio_8cpp"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><b>gpio.cpp</b></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gpio_8h"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><b>gpio.h</b> <a href="gpio_8h_source.html">[code]</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gpio_2test_8cpp"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><b>test.cpp</b></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:af4420e407a29eef0b8d44ca7b1ef786f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1util_1_1Console.html#af4420e407a29eef0b8d44ca7b1ef786f">Console</a> (std::function&lt; void(const boost::log::record_view &amp;, boost::log::formatting_ostream &amp;)&gt; formatter, std::string logoFile, std::string textFile)</td></tr>
+<tr class="memdesc:af4420e407a29eef0b8d44ca7b1ef786f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displays ASCII logo, creates a sink and starts the output table.  <a href="#af4420e407a29eef0b8d44ca7b1ef786f">More...</a><br/></td></tr>
+<tr class="separator:af4420e407a29eef0b8d44ca7b1ef786f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Utility class for giving colors and banners to the terminal output. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="af4420e407a29eef0b8d44ca7b1ef786f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Console::Console </td>
+          <td>(</td>
+          <td class="paramtype">std::function&lt; void(const boost::log::record_view &amp;, boost::log::formatting_ostream &amp;)&gt;&#160;</td>
+          <td class="paramname"><em>formatter</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>logoFile</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>textFile</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Displays ASCII logo, creates a sink and starts the output table. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">formatter</td><td>Formatter for colors and layout to be used </td></tr>
+    <tr><td class="paramname">logoFile</td><td>Path to logo (left) </td></tr>
+    <tr><td class="paramname">textFile</td><td>Path to text (right) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
+<li>/home/travis/build/P8P-7/core/src/controller/util/<a class="el" href="console_8h_source.html">console.h</a></li>
+<li>/home/travis/build/P8P-7/core/src/controller/util/console.cpp</li>
+</ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

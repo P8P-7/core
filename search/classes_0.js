@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['batteryrepository',['BatteryRepository',['../classgoliath_1_1repositories_1_1BatteryRepository.html',1,'goliath::repositories']]]
+  ['audio_5ferror',['audio_error',['../classgoliath_1_1exceptions_1_1audio__error.html',1,'goliath::exceptions']]]
 ];

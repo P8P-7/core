@@ -9,6 +9,5 @@ var searchData=
   ['detector_2eh',['detector.h',['../detector_8h.html',1,'']]],
   ['device',['Device',['../classgoliath_1_1openal_1_1Device.html',1,'goliath::openal']]],
   ['device',['Device',['../classgoliath_1_1openal_1_1Device.html#a2a4aaeccecc68375aa87477b5f39ce2f',1,'goliath::openal::Device']]],
-  ['device_2eh',['device.h',['../device_8h.html',1,'']]],
-  ['displaylogo',['displayLogo',['../controller_8cpp.html#a96f0c9c4b5a9e3cea759ac77caee1014',1,'controller.cpp']]]
+  ['device_2eh',['device.h',['../device_8h.html',1,'']]]
 ];
