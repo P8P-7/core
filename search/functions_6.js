@@ -2,7 +2,7 @@ var searchData=
 [
   ['getbatterylevel',['getBatteryLevel',['../classgoliath_1_1repositories_1_1BatteryRepository.html#a6c4c5412e197fb11092b4e1c8bcbbe0e',1,'goliath::repositories::BatteryRepository']]],
   ['getcolor',['getColor',['../namespacegoliath_1_1util.html#a5b75618ebec9d2df7cefdf27df41dcea',1,'goliath::util']]],
-  ['getdevice',['getDevice',['../classgoliath_1_1handles_1_1ServoHandle.html#a2f0edc603df77ac6e40c671c4b67bf5f',1,'goliath::handles::ServoHandle::getDevice()'],['../classgoliath_1_1handles_1_1WebcamHandle.html#a4747a23d8633078f66161ad21ea8f53c',1,'goliath::handles::WebcamHandle::getDevice()']]],
+  ['getdevice',['getDevice',['../classgoliath_1_1handles_1_1ServoHandle.html#ac713ee5b49cbc1db0d7f262238efe70a',1,'goliath::handles::ServoHandle::getDevice()'],['../classgoliath_1_1handles_1_1WebcamHandle.html#a4747a23d8633078f66161ad21ea8f53c',1,'goliath::handles::WebcamHandle::getDevice()']]],
   ['getdevicepath',['getDevicePath',['../classgoliath_1_1handles_1_1I2cBusHandle.html#a4de15714e4e74e0180f39f7f19851ca5',1,'goliath::handles::I2cBusHandle']]],
   ['getframe',['getFrame',['../classgoliath_1_1vision_1_1Webcam.html#a49d6bcd9f379755ec45702e7eae2f125',1,'goliath::vision::Webcam::getFrame(cv::Mat &amp;frame)'],['../classgoliath_1_1vision_1_1Webcam.html#a801e45de991b8850d7bf4548ab6e7ada',1,'goliath::vision::Webcam::getFrame()']]],
   ['gethandles',['getHandles',['../classgoliath_1_1handles_1_1HandleMap.html#a2a71bd836b198159cf3671788fd57303',1,'goliath::handles::HandleMap']]],

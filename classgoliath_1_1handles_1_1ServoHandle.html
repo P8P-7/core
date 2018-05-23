@@ -86,10 +86,10 @@ Inheritance diagram for goliath::handles::ServoHandle:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a26c25cd476708562cae36dfbc2d89cb6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1handles_1_1ServoHandle.html#a26c25cd476708562cae36dfbc2d89cb6">ServoHandle</a> (const size_t &amp;id, Dynamixel &amp;device, std::function&lt; void(bool)&gt; txCallback)</td></tr>
-<tr class="separator:a26c25cd476708562cae36dfbc2d89cb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2f0edc603df77ac6e40c671c4b67bf5f"><td class="memItemLeft" align="right" valign="top">Dynamixel &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1handles_1_1ServoHandle.html#a2f0edc603df77ac6e40c671c4b67bf5f">getDevice</a> ()</td></tr>
-<tr class="separator:a2f0edc603df77ac6e40c671c4b67bf5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae12f4ec8e6ab4e38625e174f4294d886"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1handles_1_1ServoHandle.html#ae12f4ec8e6ab4e38625e174f4294d886">ServoHandle</a> (const size_t &amp;id, std::shared_ptr&lt; Dynamixel &gt; device, std::function&lt; void(bool)&gt; txCallback)</td></tr>
+<tr class="separator:ae12f4ec8e6ab4e38625e174f4294d886"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac713ee5b49cbc1db0d7f262238efe70a"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; Dynamixel &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1handles_1_1ServoHandle.html#ac713ee5b49cbc1db0d7f262238efe70a">getDevice</a> ()</td></tr>
+<tr class="separator:ac713ee5b49cbc1db0d7f262238efe70a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classgoliath_1_1handles_1_1Handle"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classgoliath_1_1handles_1_1Handle')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classgoliath_1_1handles_1_1Handle.html">goliath::handles::Handle</a></td></tr>
 <tr class="memitem:a31896a2ecdfa503814513165bbd19fbe inherit pub_methods_classgoliath_1_1handles_1_1Handle"><td class="memItemLeft" align="right" valign="top"><a id="a31896a2ecdfa503814513165bbd19fbe"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>Handle</b> (const size_t &amp;handleId)</td></tr>
@@ -116,14 +116,11 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="separator:a7b5f7f7d0dbb0ddf3252c664894da816 inherit pub_methods_classgoliath_1_1handles_1_1Handle"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a26c25cd476708562cae36dfbc2d89cb6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a26c25cd476708562cae36dfbc2d89cb6">&#9670;&nbsp;</a></span>ServoHandle()</h2>
+<a id="ae12f4ec8e6ab4e38625e174f4294d886"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae12f4ec8e6ab4e38625e174f4294d886">&#9670;&nbsp;</a></span>ServoHandle()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">ServoHandle::ServoHandle </td>
@@ -134,7 +131,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">Dynamixel &amp;&#160;</td>
+          <td class="paramtype">std::shared_ptr&lt; Dynamixel &gt;&#160;</td>
           <td class="paramname"><em>device</em>, </td>
         </tr>
         <tr>
@@ -149,11 +146,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
           <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -165,14 +157,14 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a2f0edc603df77ac6e40c671c4b67bf5f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2f0edc603df77ac6e40c671c4b67bf5f">&#9670;&nbsp;</a></span>getDevice()</h2>
+<a id="ac713ee5b49cbc1db0d7f262238efe70a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac713ee5b49cbc1db0d7f262238efe70a">&#9670;&nbsp;</a></span>getDevice()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">Dynamixel &amp; ServoHandle::getDevice </td>
+          <td class="memname">std::shared_ptr&lt; Dynamixel &gt; ServoHandle::getDevice </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
