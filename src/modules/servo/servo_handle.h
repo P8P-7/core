@@ -18,14 +18,14 @@ namespace goliath::handles {
         /**
          * @param device The dynamixel device.
          */
-        explicit ServoHandle(const size_t &id, Dynamixel &device, std::function<void(bool)> txCallback);
+        ServoHandle(const size_t &id, std::shared_ptr<Dynamixel> device, std::function<void(bool)> txCallback);
 
         /**
          * @return Currently set device
          */
-        Dynamixel &getDevice();
+        std::shared_ptr<Dynamixel> getDevice();
 
     private:
-        Dynamixel device;
+        std::shared_ptr<Dynamixel> device;
     };
 }

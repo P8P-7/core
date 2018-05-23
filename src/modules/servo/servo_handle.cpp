@@ -2,13 +2,13 @@
 
 using namespace goliath::handles;
 
-ServoHandle::ServoHandle(const size_t &id, Dynamixel &device, std::function<void(bool)> txCallback)
+ServoHandle::ServoHandle(const size_t &id, std::shared_ptr<Dynamixel> device, std::function<void(bool)> txCallback)
         : Handle(id), device(device) {
-    device.setDirectionCallback(txCallback);
-    device.setCWAngleLimit(0);
-    device.setCCWAngleLimit(0);
+    device->setDirectionCallback(txCallback);
+    device->setCWAngleLimit(0);
+    device->setCCWAngleLimit(0);
 }
 
-Dynamixel &ServoHandle::getDevice() {
+std::shared_ptr<Dynamixel> ServoHandle::getDevice() {
     return device;
 }

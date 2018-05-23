@@ -1,6 +1,5 @@
 #include "move_wing_command.h"
 
-#include <thread>
 #include <boost/log/trivial.hpp>
 
 using namespace goliath;
@@ -13,11 +12,6 @@ commands::MoveWingCommand::MoveWingCommand(const size_t &id)
 
 void commands::MoveWingCommand::execute(const HandleMap &handles, const CommandMessage &message) {
     BOOST_LOG_TRIVIAL(info) << "Execution of move wing command has started";
-    if (isInterrupted()) {
-        BOOST_LOG_TRIVIAL(warning) << "Move wing command was interrupted";
-        return;
-    }
-
     ::MoveWingCommand wingCommand = message.movewingcommand();
 
     std::vector<size_t> requiredHandles = getRequiredHandles();
@@ -46,13 +40,14 @@ void commands::MoveWingCommand::execute(const HandleMap &handles, const CommandM
 
 void commands::MoveWingCommand::executeServoCommand(std::shared_ptr<handles::ServoHandle> servoHandle,
                                                     const ServoCommand &servoCommand) {
-    Dynamixel servoDevice = servoHandle->getDevice();
+    auto servoDevice = servoHandle->getDevice();
+
     switch (servoCommand.direction()) {
         case ServoCommand_Direction_UP:
-            servoDevice.setMovingSpeed(servoCommand.speed() + 1024);
+            servoDevice->setMovingSpeed(servoCommand.speed() + 1024);
             break;
         case ServoCommand_Direction_DOWN:
-            servoDevice.setMovingSpeed(servoCommand.speed());
+            servoDevice->setMovingSpeed(servoCommand.speed());
             break;
     }
 }
