@@ -12,8 +12,6 @@
 #include "commands/follow_line_command.h"
 #include "commands/move_tower_command.h"
 
-#include "util/console.h"
-
 /**
  * @file controller.cpp
  * @author Group 7 - Informatica
@@ -30,7 +28,7 @@ using namespace goliath;
  * @brief Application entry point
  */
 int main(int argc, char *argv[]) {
-    util::Console console(&util::colorConsoleFormatter, "logo.txt", "core-text.txt");
+    util::Console console(&util::colorConsoleFormatter, "core-text.txt");
 
     boost::asio::io_service ioService;
 
