@@ -4,7 +4,7 @@ set -e # Exit with nonzero exit code if anything fails
 
 SOURCE_BRANCH="master"
 TARGET_BRANCH="gh-pages"
-OUT=html
+OUT="html-git"
 
 # Pull requests and commits to other branches shouldn't try to deploy
 if [ "$TRAVIS_PULL_REQUEST" != "false" -o "$TRAVIS_BRANCH" != "$SOURCE_BRANCH" ]; then
@@ -26,17 +26,8 @@ git config user.email "travis@travis-ci.org"
 
 cd ..
 
-# Create a clean working directory for this script.
-mkdir build_docs
-cd build_docs
-
-echo 'Generating Doxygen documentation...'
-cmake -DCMAKE_BUILD_TYPE=Release ..
-make
-cd ..
-
-if [ -d "build_docs/html" ] && [ -f "build_docs/html/index.html" ]; then
-    cp -r build_docs/html/* $OUT
+if [ -d "html" ] && [ -f "html/index.html" ]; then
+    cp -r html/* $OUT
     cd $OUT
 
     # If there are no changes (e.g. this is a README update) then just bail.
