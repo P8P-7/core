@@ -1,5 +1,7 @@
 #include "follow_line_command.h"
 
+#include <goliath/vision.h>
+
 #include <chrono>
 #include <thread>
 #include <boost/log/trivial.hpp>
@@ -12,12 +14,11 @@ commands::FollowLineCommand::FollowLineCommand(const size_t &id)
 }
 
 void commands::FollowLineCommand::execute(const HandleMap &handles, const CommandMessage &message) {
-    BOOST_LOG_TRIVIAL(info) << "Execution of follow line command has started";
-    std::this_thread::sleep_for(std::chrono::milliseconds(2000));
-    if (isInterrupted()) {
-        BOOST_LOG_TRIVIAL(warning) << "Follow line command was interrupted";
+    if(isInterrupted()) {
         return;
     }
-    std::this_thread::sleep_for(std::chrono::milliseconds(2000));
-    BOOST_LOG_TRIVIAL(info) << "Execution of follow line command has finished";
+
+    ::FollowLineCommand followLineCommand = message.followlinecommand();
+
+    vision::Webcam webcam = std::static_pointer_cast<WebcamHandle>(handles[HANDLE_CAM])->getDevice();
 }

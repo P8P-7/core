@@ -42,7 +42,12 @@ void CommandExecutor::tryExecute(const size_t &commandId, const CommandMessage &
 
         requiredHandles.lockAll(commandId);
         item.status = CommandStatus::STARTED;
+
+        BOOST_LOG_TRIVIAL(info) << "Execution of \"Command " << commandId << "\" has started";
         item.instance->run(requiredHandles, message);
+        BOOST_LOG_TRIVIAL(info) << "Execution of \"Command " << commandId << "\" has finished";
+
+        requiredHandles.unlockAll();
 
         lock.lock();
         item.status = CommandStatus::STALE;

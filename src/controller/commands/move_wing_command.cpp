@@ -22,11 +22,11 @@ void commands::MoveWingCommand::execute(const HandleMap &handles, const CommandM
 
     std::vector<size_t> requiredHandles = getRequiredHandles();
 
-    for (auto &servoCommand: wingCommand.commands()) {
+    for (auto &servoCommand : wingCommand.commands()) {
         int handle = enumToHandle(servoCommand.motor());
         if (handle == -1) {
             // All handles case
-            for (auto const &servoHandle: requiredHandles) {
+            for (auto const &servoHandle : requiredHandles) {
                 // Execute servo command
                 executeServoCommand(std::static_pointer_cast<ServoHandle>(handles[servoHandle]), servoCommand);
             }

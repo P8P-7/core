@@ -42,6 +42,10 @@ namespace goliath::handles {
          * @param commandId Command ID for the handle's to be locked on
          */
         void lockAll(const size_t &commandId);
+        /**
+         * @brief Unlock all handles associated with a speciifc command
+         */
+        void unlockAll();
 
         std::shared_ptr<Handle>& operator[](const size_t &index);
         const std::shared_ptr<Handle>& operator[](const size_t &index) const;

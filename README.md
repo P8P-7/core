@@ -1,5 +1,8 @@
 # Core
 
+## Overview
+_Goliath II_'s heart. Contains all actions, commands and handles. If a command is found, it will be executed within the core.
+
 ## Build steps
 
 ### Raspbian (based on Debian 9 "Stretch")
