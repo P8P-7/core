@@ -63,7 +63,7 @@ int main(int argc, char *argv[]) {
         };
 
         // configure the motor object
-        Dynamixel motor(motorId, &port);
+        Dynamixel motor(motorId, port);
         motor.setDirectionCallback(callback);
 
         // meeded for MovingSpeed
