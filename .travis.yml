@@ -15,13 +15,16 @@ env:
   global:
     - GH_REPO_REF: github.com/P8P-7/core
 
-addons:
-  apt:
-    packages:
-      - doxygen
-
 install:
   - docker build -t goliath .
+  - git clone https://github.com/doxygen/doxygen.git
+  - cd doxygen
+  - mkdir build
+  - cd build
+  - cmake -G "Unix Makefiles" ..
+  - make
+  - sudo make install
+
 
 script:
   - docker run -v $TRAVIS_BUILD_DIR:/core goliath
