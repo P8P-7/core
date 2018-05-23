@@ -26,6 +26,8 @@ target_link_libraries(${PROJECT_NAME}
             goliath-gpio-module
             goliath-servo-module
             goliath-vision-module
+            goliath-motor-controller-module
+            goliath-i2c-module
             ${Boost_LIBRARIES}
             ${CMAKE_THREAD_LIBS_INIT}
         )

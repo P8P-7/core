@@ -56,12 +56,20 @@ namespace goliath::handles {
          * @return Map iterator
          */
         std::map<size_t, std::shared_ptr<Handle>>::iterator end();
+
+        template<typename HandleType>
+        std::shared_ptr<HandleType> get(const size_t &index) const;
     private:
         /**
          * @brief The map itself
          */
         std::map<size_t, std::shared_ptr<Handle>> map;
     };
+
+    template<typename HandleType>
+    std::shared_ptr<HandleType> HandleMap::get(const size_t &index) const {
+        return std::static_pointer_cast<HandleType>(map.at(index));
+    }
 
     template<typename HandleType>
     std::shared_ptr<HandleType> HandleMap::add(std::shared_ptr<HandleType> handle) {

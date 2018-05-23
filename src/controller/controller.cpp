@@ -3,7 +3,9 @@
 #include <goliath/servo.h>
 #include <goliath/vision.h>
 #include <goliath/zmq_messaging.h>
+#include <goliath/i2c.h>
 #include <boost/log/trivial.hpp>
+#include <goliath/motor_handle.h>
 
 #include "command_map.h"
 #include "command_executor.h"
@@ -65,6 +67,9 @@ int main(int argc, char *argv[]) {
         }
     };
 
+    BOOST_LOG_TRIVIAL(info) << "Setting up handles";
+    handles::HandleMap handles;
+
     BOOST_LOG_TRIVIAL(info) << "Setting up serial port";
     std::string portName = "/dev/serial0";
     unsigned int baudRate = 1000000;
@@ -76,8 +81,7 @@ int main(int argc, char *argv[]) {
         BOOST_LOG_TRIVIAL(warning) << "Couldn't connect to serial port";
     }
 
-    BOOST_LOG_TRIVIAL(info) << "Setting up handles";
-    handles::HandleMap handles;
+
     handles.add<handles::WebcamHandle>(HANDLE_CAM, 0);
     if (connectSuccess) {
         BOOST_LOG_TRIVIAL(info) << "Setting up Dynamixel servo handles";
@@ -91,6 +95,10 @@ int main(int argc, char *argv[]) {
         handles.add<handles::ServoHandle>(HANDLE_RIGHT_FRONT_WING_SERVO, motor3, callback);
         handles.add<handles::ServoHandle>(HANDLE_RIGHT_BACK_WING_SERVO, motor4, callback);
     }
+
+    handles.add<handles::I2cBusHandle>(HANDLE_I2C_BUS, "/dev/i2c-1");
+    handles.add<handles::I2cSlaveHandle>(HANDLE_MOTOR_CONTROLLER, 0x30);
+    handles.add<handles::MotorHandle>(HANDLE_LEFT_FRONT_MOTOR, 0);
 
     BOOST_LOG_TRIVIAL(info) << "Setting up commands";
     commands::CommandMap commands;
