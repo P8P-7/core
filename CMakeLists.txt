@@ -40,7 +40,6 @@ find_package(Boost ${BOOST_MIN_VERSION}
         REQUIRED
         )
 
-
 add_subdirectory(third_party)
 add_subdirectory(src)
 
