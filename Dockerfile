@@ -9,6 +9,7 @@ ENV PKG="build-base \
          cmake \
          clang \
          clang-dev \
+         doxygen \
          libc-dev \
          libstdc++ \
          pkgconf \
