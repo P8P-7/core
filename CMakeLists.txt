@@ -19,6 +19,7 @@ set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules)
 
 include(flags)
 include(protobuf)
+include(test)
 
 # Library versions
 set(OPENCV_MIN_VERSION "3.4.0")
@@ -45,5 +46,6 @@ add_subdirectory(src)
 
 enable_testing()
 add_subdirectory(tests)
+add_subdirectory(autotests)
 
 add_subdirectory(doc)
