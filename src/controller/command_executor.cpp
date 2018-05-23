@@ -1,8 +1,4 @@
 #include "command_executor.h"
-
-#include <mutex>
-#include <thread>
-#include <utility>
 #include <boost/log/trivial.hpp>
 
 using namespace goliath::commands;
@@ -29,7 +25,7 @@ void CommandExecutor::run(const size_t commandId, const CommandMessage &message)
     }
     item.status = CommandStatus::STARTING;
 
-    threads.push_back(std::thread(&CommandExecutor::tryExecute, this, commandId, message));
+    threads.emplace_back(&CommandExecutor::tryExecute, this, commandId, message);
 }
 
 void CommandExecutor::tryExecute(const size_t &commandId, const CommandMessage &message) {

@@ -4,12 +4,6 @@
 #include <goliath/vision.h>
 #include <goliath/zmq_messaging.h>
 #include <boost/log/trivial.hpp>
-#include <boost/asio/signal_set.hpp>
-#include <boost/asio/io_service.hpp>
-
-#include <iostream>
-#include <fstream>
-#include <string>
 
 #include "command_map.h"
 #include "command_executor.h"
@@ -18,8 +12,6 @@
 #include "commands/follow_line_command.h"
 #include "commands/move_tower_command.h"
 
-#include "handles.h"
-#include "dynamixel/Dynamixel.h"
 #include "util/console.h"
 
 /**
@@ -89,10 +81,10 @@ int main(int argc, char *argv[]) {
     handles.add<handles::WebcamHandle>(HANDLE_CAM, 0);
     if (connectSuccess) {
         BOOST_LOG_TRIVIAL(info) << "Setting up Dynamixel servo handles";
-        Dynamixel motor1(1, &port);
-        Dynamixel motor2(2, &port);
-        Dynamixel motor3(3, &port);
-        Dynamixel motor4(4, &port);
+        auto motor1 = std::make_shared<Dynamixel>(1, port);
+        auto motor2 = std::make_shared<Dynamixel>(2, port);
+        auto motor3 = std::make_shared<Dynamixel>(3, port);
+        auto motor4 = std::make_shared<Dynamixel>(4, port);
 
         handles.add<handles::ServoHandle>(HANDLE_LEFT_FRONT_WING_SERVO, motor1, callback);
         handles.add<handles::ServoHandle>(HANDLE_LEFT_BACK_WING_SERVO, motor2, callback);
