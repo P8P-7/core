@@ -13,6 +13,8 @@ protobuf_version_latest=3.5.2
 boost_root="/usr/local"
 boost_version_latest=1.67.0
 
+openal_version_latest=1.18.2
+
 make_flags="-j4"
 
 if [ ! -z "$1" ]; then
@@ -106,12 +108,28 @@ install_boost_from_source() {
   tar -xvzf boost_${boost_version_latest//./\_}.tar.gz
   cd boost_${boost_version_latest//./\_}
   ./bootstrap.sh --prefix=$boost_root --with-libraries=coroutine,date_time,filesystem,iostreams,log,program_options,regex,serialization,system,test,thread
-  ./b2 $make_flags install 
+  ./b2 $make_flags install
   cd ..
   rm -rf boost_${boost_version_latest//./\_}
   rm boost_${boost_version_latest//./\_}.tar.gz
   ldconfig
   echo "Installed Boost $boost_version_latest from source"
+}
+
+install_openal_from_source() {
+  echo "Compiling OpenAL $openal_version_latest from source"
+  curl -O -L http://openal-soft.org/openal-releases/openal-soft-${openal_version_latest}.tar.bz2
+  tar -xvzf openal-soft-${openal_version_latest}.tar.bz2
+  cd openal-soft-${openal_version_latest}
+  mkdir build && cd build
+  cmake ..
+  make
+  make install
+  cd ../../
+  rm -rf openal-soft-${openal_version_latest}
+  rm openal-soft-${openal_version_latest}.tar.bz2
+  ldconfig
+  echo "Installed OpenAL $openal_version_latest from source"
 }
 
 pkg_config_path="$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig:/usr/lib/pkgconfig"
@@ -152,6 +170,9 @@ opencv_exists=$?
 check_if_library_exists "protobuf" "$protobuf_version_latest"
 protobuf_exists=$?
 
+check_if_library_exists "openal" "$openal_version_latest"
+openal_exists=$?
+
 # Verify root/sudo access
 if [ "$(id -u)" -ne "0" ]; then
   echo "Sorry, I need root/sudo access to continue"
@@ -169,12 +190,12 @@ if [ "$lsb_dist" != "raspbian" ] || [ "$dist_version" != 9 ]; then
 fi
 
 # https://stackoverflow.com/a/37939589/1480019
-version() { 
-  echo "$@" | awk -F. '{ printf("%d%03d%03d%03d\n", $1,$2,$3,$4); }'; 
+version() {
+  echo "$@" | awk -F. '{ printf("%d%03d%03d%03d\n", $1,$2,$3,$4); }';
 }
 
-format_version() { 
-  echo "$@" | awk -F. '{ printf("%d.%d.%d", $1,$2,$3); }'; 
+format_version() {
+  echo "$@" | awk -F. '{ printf("%d.%d.%d", $1,$2,$3); }';
 }
 
 # Check CMake
@@ -187,7 +208,7 @@ fi
 if [ $(version $cmake_version) -lt $(version $cmake_version_latest) ]; then
   if [ "$cmake_version" != "" ]; then
     echo "Found CMake $cmake_version but require $cmake_version_latest"
-  else 
+  else
     echo "Could not find CMake"
   fi
 
@@ -224,7 +245,7 @@ boost_version=`cat "${boost_root}/include/boost/version.hpp" 2>/dev/null | grep 
 if [ $(version $boost_version) -lt $(version $boost_version_latest) ]; then
   if [ "$boost_version" != "" ]; then
     echo "Found Boost $(format_version $boost_version) but require $boost_version_latest"
-  else 
+  else
     echo "Could not find Boost"
   fi
 
@@ -237,4 +258,8 @@ if [ $(version $boost_version) -lt $(version $boost_version_latest) ]; then
   install_boost_from_source
 else
   echo "Found Boost $(format_version $boost_version)"
+fi
+
+if [ $openal_exists -eq 0 ]; then
+    install_openal_from_source
 fi
