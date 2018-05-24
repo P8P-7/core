@@ -5,6 +5,7 @@ set(SOURCES
         handles/i2c_bus_handle.cpp
         i2c_slave.cpp
         i2c_error.cpp
+        i2c_slave.tpp
         )
 
 add_definitions(-DBOOST_LOG_DYN_LINK)

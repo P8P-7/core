@@ -2,6 +2,6 @@
 
 using namespace goliath;
 
-controller::MotorId handles::MotorHandle::getMotorId() const {
+motor_controller::MotorId handles::MotorHandle::getMotorId() const {
     return id;
 }

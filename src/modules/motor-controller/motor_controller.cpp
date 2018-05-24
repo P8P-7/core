@@ -3,7 +3,7 @@
 #include <vector>
 #include <boost/log/trivial.hpp>
 
-using namespace goliath::controller;
+using namespace goliath::motor_controller;
 
 MotorController::MotorController(i2c::I2cSlave &slave) : slave(slave) {}
 
