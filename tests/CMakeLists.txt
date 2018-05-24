@@ -6,4 +6,7 @@ add_goliath_normal_test(openal goliath-openal-module)
 
 add_goliath_test(motor-controller goliath-motor-controller-module test_motor_controller.cpp)
 
+add_goliath_test(led-control goliath-led-controller-module test_led_control.cpp)
+
 add_definitions(-DBOOST_LOG_DYN_LINK)
+

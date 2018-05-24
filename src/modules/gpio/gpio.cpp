@@ -9,70 +9,37 @@
 using namespace goliath::gpio;
 
 GPIO::GPIO() {
-    this->gpionum = "";
+    gpionum = "";
 }
 
-GPIO::GPIO(std::string gnum) {
-    this->gpionum = gnum;
+GPIO::GPIO(MapPin gnum) {
+    setup(gnum);
 }
 
-GPIO::GPIO(int gnum) {
-    this->gpionum = std::to_string(gnum);
+GPIO::GPIO(MapPin gnum, Direction dir, State val) {
+    setup(gnum, dir, val);
 }
 
-GPIO::GPIO(std::string gnum, std::string dir, std::string val) {
-    this->gpionum = gnum;
-    this->exportGpio();
-    this->setdirGpio(dir);
-    this->setvalGpio(val);
+void GPIO::setup(MapPin gnum) {
+    gpionum = std::to_string(static_cast<int>(gnum));
 }
 
-GPIO::GPIO(int gnum, int dir, int val) {
-    this->gpionum = std::to_string(gnum);
-    this->exportGpio();
-    std::string _dir = "out";
-    if (dir == 1) {
-        _dir = "in";
-    }
-    this->setdirGpio(_dir);
-    this->setvalGpio(std::to_string(val));
-}
-
-void GPIO::setup(std::string gnum) {
-    this->gpionum = gnum;
-}
-
-void GPIO::setup(int gnum) {
-    this->gpionum = std::to_string(gnum);
-}
-
-void GPIO::setup(std::string gnum, std::string dir, std::string val) {
-    this->gpionum = gnum;
-    this->exportGpio();
-    this->setdirGpio(dir);
-    this->setvalGpio(val);
-}
-
-void GPIO::setup(int gnum, int dir, int val) {
-    this->gpionum = std::to_string(gnum);
-    this->exportGpio();
-    std::string _dir = "out";
-    if (dir == 1) {
-        _dir = "in";
-    }
-    this->setdirGpio(_dir);
-    this->setvalGpio(std::to_string(val));
+void GPIO::setup(MapPin gnum, Direction dir, State val) {
+    gpionum = std::to_string(static_cast<int>(gnum));
+    exportGpio();
+    setdirGpio(dir == Direction::Out ? "out" : "in");
+    setvalGpio(std::to_string(static_cast<int>(val)));
 }
 
 int GPIO::exportGpio() {
     std::string exportStr = "/sys/class/gpio/export";
     std::ofstream exportgpio(exportStr.c_str());
     if (!exportgpio.is_open()) {
-        BOOST_LOG_TRIVIAL(warning) << "Unable to export GPIO" << this->gpionum.c_str();
+        BOOST_LOG_TRIVIAL(warning) << "Unable to export GPIO" << gpionum.c_str();
         return -1;
     }
 
-    exportgpio << this->gpionum;
+    exportgpio << gpionum;
     exportgpio.close();
     return 0;
 }
@@ -81,24 +48,24 @@ int GPIO::unexportGpio() {
     std::string unexportStr = "/sys/class/gpio/unexport";
     std::ofstream unexportgpio(unexportStr.c_str());
     if (!unexportgpio.is_open()) {
-        BOOST_LOG_TRIVIAL(warning) << "Unable to unexport GPIO" << this->gpionum.c_str();
+        BOOST_LOG_TRIVIAL(warning) << "Unable to unexport GPIO" << gpionum.c_str();
         return -1;
     }
 
-    unexportgpio << this->gpionum;
+    unexportgpio << gpionum;
     unexportgpio.close();
     return 0;
 }
 
 int GPIO::close() {
-    return this->unexportGpio();
+    return unexportGpio();
 }
 
 int GPIO::setdirGpio(std::string dir) {
-    std::string setdir_str = "/sys/class/gpio/gpio" + this->gpionum + "/direction";
+    std::string setdir_str = "/sys/class/gpio/gpio" + gpionum + "/direction";
     std::ofstream setdirgpio(setdir_str.c_str());
     if (!setdirgpio.is_open()) {
-        BOOST_LOG_TRIVIAL(warning) << "Unable to set direction of GPIO" << this->gpionum.c_str();
+        BOOST_LOG_TRIVIAL(warning) << "Unable to set direction of GPIO" << gpionum.c_str();
         return -1;
     }
     setdirgpio << dir;
@@ -107,10 +74,10 @@ int GPIO::setdirGpio(std::string dir) {
 }
 
 int GPIO::setdirGpio(int dir) {
-    std::string setdir_str = "/sys/class/gpio/gpio" + this->gpionum + "/direction";
+    std::string setdir_str = "/sys/class/gpio/gpio" + gpionum + "/direction";
     std::ofstream setdirgpio(setdir_str.c_str());
     if (!setdirgpio.is_open()) {
-        BOOST_LOG_TRIVIAL(warning) << "Unable to set direction of GPIO" << this->gpionum.c_str();
+        BOOST_LOG_TRIVIAL(warning) << "Unable to set direction of GPIO" << gpionum.c_str();
         return -1;
     }
     std::string _dir = "out";
@@ -123,10 +90,10 @@ int GPIO::setdirGpio(int dir) {
 }
 
 int GPIO::setvalGpio(std::string val) {
-    std::string setval_str = "/sys/class/gpio/gpio" + this->gpionum + "/value";
+    std::string setval_str = "/sys/class/gpio/gpio" + gpionum + "/value";
     std::ofstream setvalgpio(setval_str.c_str());
     if (!setvalgpio.is_open()) {
-        BOOST_LOG_TRIVIAL(warning) << "Unable to set value of GPIO" << this->gpionum.c_str();
+        BOOST_LOG_TRIVIAL(warning) << "Unable to set value of GPIO" << gpionum.c_str();
         return -1;
     }
     setvalgpio << val;
@@ -135,21 +102,21 @@ int GPIO::setvalGpio(std::string val) {
 }
 
 int GPIO::setvalGpio(int val) {
-    this->setvalGpio(std::to_string(val));
+    setvalGpio(std::to_string(val));
     return 0;
 }
 
-int GPIO::set(int val) {
-    this->setvalGpio(val);
+int GPIO::set(State val) {
+    setvalGpio(static_cast<int>(val));
     return 0;
 }
 
 int GPIO::get() {
     int val;
-    std::string getval_str = "/sys/class/gpio/gpio" + this->gpionum + "/value";
+    std::string getval_str = "/sys/class/gpio/gpio" + gpionum + "/value";
     std::ifstream getvalgpio(getval_str.c_str());
     if (!getvalgpio.is_open()) {
-        BOOST_LOG_TRIVIAL(warning) << "Unable to get value of GPIO" << this->gpionum.c_str();
+        BOOST_LOG_TRIVIAL(warning) << "Unable to get value of GPIO" << gpionum.c_str();
         return -1;
     }
     getvalgpio >> val;
@@ -164,11 +131,11 @@ int GPIO::get() {
     return val;
 }
 
-int GPIO::getvalGpio(std::string& val) {
-    std::string getval_str = "/sys/class/gpio/gpio" + this->gpionum + "/value";
+int GPIO::getvalGpio(std::string &val) {
+    std::string getval_str = "/sys/class/gpio/gpio" + gpionum + "/value";
     std::ifstream getvalgpio(getval_str.c_str());
     if (!getvalgpio.is_open()) {
-        BOOST_LOG_TRIVIAL(warning) << "Unable to get value of GPIO" << this->gpionum.c_str();
+        BOOST_LOG_TRIVIAL(warning) << "Unable to get value of GPIO" << gpionum.c_str();
         return -1;
     }
     getvalgpio >> val;
@@ -183,11 +150,11 @@ int GPIO::getvalGpio(std::string& val) {
     return 0;
 }
 
-int GPIO::getvalGpio(int& val) {
-    std::string getval_str = "/sys/class/gpio/gpio" + this->gpionum + "/value";
+int GPIO::getvalGpio(int &val) {
+    std::string getval_str = "/sys/class/gpio/gpio" + gpionum + "/value";
     std::ifstream getvalgpio(getval_str.c_str());
     if (!getvalgpio.is_open()) {
-        BOOST_LOG_TRIVIAL(warning) << "Unable to get value of GPIO" << this->gpionum.c_str();
+        BOOST_LOG_TRIVIAL(warning) << "Unable to get value of GPIO" << gpionum.c_str();
         return -1;
     }
     std::string get_val;
@@ -204,9 +171,9 @@ int GPIO::getvalGpio(int& val) {
 }
 
 std::string GPIO::getGpionum() {
-    return this->gpionum;
+    return gpionum;
 }
 
 int GPIO::getiGpionum() {
-    return atoi(this->gpionum.c_str());
+    return atoi(gpionum.c_str());
 }

@@ -38,11 +38,11 @@ namespace goliath::vision {
 
     private:
         const int capId;
+        cv::VideoCapture cap;
+
         /**
          * @brief Unset if not converted to specific color, else set to a CV_BGR2<color>
          */
         boost::optional<const int> color;
-
-        cv::VideoCapture cap;
     };
 }

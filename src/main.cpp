@@ -21,6 +21,26 @@
 */
 using namespace goliath;
 
+struct GPIOTranslator {
+    typedef std::string internal_type;
+    typedef gpio::GPIO::MapPin external_type;
+
+    boost::optional<external_type> get_value(internal_type const &v) {
+        int gpioVal = std::stoi(v);
+        if (gpioVal < 2 || gpioVal > 27) {
+            return boost::none;
+        }
+
+        return static_cast<external_type>(gpioVal);
+    }
+
+    boost::optional<internal_type> put_value(external_type const &v) {
+        return std::to_string(static_cast<int>(v));
+    }
+};
+
+static GPIOTranslator gpioTrans;
+
 /**
  * @fn main(int argc, char *argv[])
  * @brief Application entry point
@@ -56,14 +76,14 @@ int main(int argc, char *argv[]) {
     watcher.watch(battery_repo);
 
     BOOST_LOG_TRIVIAL(info) << "Setting up GPIO";
-    gpio::GPIO gpio;
-    gpio.setup(root.get<int>("gpio.pin"), OUT, LOW);
+    gpio::GPIO gpio(root.get<gpio::GPIO::MapPin>("gpio.pin", gpioTrans), gpio::GPIO::Direction::Out,
+                    gpio::GPIO::State::Low);
     std::function<void(bool)> callback = [&gpio](bool isTx) {
         if (isTx) {
-            gpio.set(HIGH);
+            gpio.set(gpio::GPIO::State::High);
         } else {
             std::this_thread::sleep_for(std::chrono::microseconds(20));
-            gpio.set(LOW);
+            gpio.set(gpio::GPIO::State::Low);
         }
     };
 
@@ -91,21 +111,21 @@ int main(int argc, char *argv[]) {
             servos[servo.first.data()] = std::stoi(servo.second.data());
         }
 
-        for(auto const &servo : servos) {
+        for (auto const &servo : servos) {
             std::shared_ptr<Dynamixel> dynamixel = std::make_shared<Dynamixel>(servo.second, port);
-
-            std::cout << servo.second << " " << servo.first << std::endl;
 
             int handle;
 
-            if(servo.first == "left_front") {
+            if (servo.first == "left_front") {
                 handle = HANDLE_LEFT_FRONT_WING_SERVO;
-            } else if(servo.first == "left_back") {
+            } else if (servo.first == "left_back") {
                 handle = HANDLE_LEFT_BACK_WING_SERVO;
-            } else if(servo.first == "right_front") {
+            } else if (servo.first == "right_front") {
                 handle = HANDLE_RIGHT_FRONT_WING_SERVO;
-            } else if(servo.first == "right_back") {
+            } else if (servo.first == "right_back") {
                 handle = HANDLE_RIGHT_BACK_WING_SERVO;
+            } else {
+                throw std::runtime_error("Servo position could not be handled");
             }
 
             handles.add<handles::ServoHandle>(handle, dynamixel, callback);
