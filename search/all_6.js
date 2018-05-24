@@ -20,6 +20,7 @@ var searchData=
   ['goliath',['goliath',['../namespacegoliath.html',1,'']]],
   ['gpio',['GPIO',['../classgoliath_1_1gpio_1_1GPIO.html',1,'goliath::gpio::GPIO'],['../namespacegoliath_1_1gpio.html',1,'goliath::gpio']]],
   ['gpio_2eh',['gpio.h',['../gpio_8h.html',1,'(Global Namespace)'],['../include_2goliath_2gpio_8h.html',1,'(Global Namespace)']]],
+  ['gpiotranslator',['GPIOTranslator',['../structGPIOTranslator.html',1,'']]],
   ['handles',['handles',['../namespacegoliath_1_1handles.html',1,'goliath']]],
   ['i2c',['i2c',['../namespacegoliath_1_1i2c.html',1,'goliath']]],
   ['messaging',['messaging',['../namespacegoliath_1_1messaging.html',1,'goliath']]],

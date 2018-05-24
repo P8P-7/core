@@ -68,6 +68,7 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="classgoliath_1_1gpio_1_1GPIO-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -75,32 +76,67 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a5860dd04e5960547db34c08e9bab7725"><td class="memItemLeft" align="right" valign="top"><a id="a5860dd04e5960547db34c08e9bab7725"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>MapPin</b> { <br />
+&#160;&#160;<b>GPIO2</b> = 2, 
+<b>GPIO3</b> = 3, 
+<b>GPIO4</b> = 4, 
+<b>GPIO5</b> = 5, 
+<br />
+&#160;&#160;<b>GPIO6</b> = 6, 
+<b>GPIO7</b> = 7, 
+<b>GPIO8</b> = 8, 
+<b>GPIO9</b> = 9, 
+<br />
+&#160;&#160;<b>GPIO10</b> = 10, 
+<b>GPIO11</b> = 11, 
+<b>GPIO12</b> = 12, 
+<b>GPIO13</b> = 13, 
+<br />
+&#160;&#160;<b>GPIO14</b> = 14, 
+<b>GPIO15</b> = 15, 
+<b>GPIO16</b> = 16, 
+<b>GPIO17</b> = 17, 
+<br />
+&#160;&#160;<b>GPIO18</b> = 18, 
+<b>GPIO19</b> = 19, 
+<b>GPIO20</b> = 20, 
+<b>GPIO21</b> = 21, 
+<br />
+&#160;&#160;<b>GPIO22</b> = 22, 
+<b>GPIO23</b> = 23, 
+<b>GPIO24</b> = 24, 
+<b>GPIO25</b> = 25, 
+<br />
+&#160;&#160;<b>GPIO26</b> = 26, 
+<b>GPIO27</b> = 27
+<br />
+ }</td></tr>
+<tr class="separator:a5860dd04e5960547db34c08e9bab7725"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe37bbe977a224cd94c76835df8cfc08"><td class="memItemLeft" align="right" valign="top"><a id="afe37bbe977a224cd94c76835df8cfc08"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>State</b> { <b>Low</b> = 0, 
+<b>High</b> = 1
+ }</td></tr>
+<tr class="separator:afe37bbe977a224cd94c76835df8cfc08"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1330846fbbd431f75f15f4f25a7a6bb5"><td class="memItemLeft" align="right" valign="top"><a id="a1330846fbbd431f75f15f4f25a7a6bb5"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>Direction</b> { <b>Out</b> = 0, 
+<b>In</b> = 1
+ }</td></tr>
+<tr class="separator:a1330846fbbd431f75f15f4f25a7a6bb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a83d8cee4fb9f8aa388e8ad5a8194db73"><td class="memItemLeft" align="right" valign="top"><a id="a83d8cee4fb9f8aa388e8ad5a8194db73"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>GPIO</b> (std::string x)</td></tr>
-<tr class="separator:a83d8cee4fb9f8aa388e8ad5a8194db73"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a808d06ca25a565cfecb82238faae8307"><td class="memItemLeft" align="right" valign="top"><a id="a808d06ca25a565cfecb82238faae8307"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>GPIO</b> (int x)</td></tr>
-<tr class="separator:a808d06ca25a565cfecb82238faae8307"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4bd946a00e525a5a94977990d28c8e47"><td class="memItemLeft" align="right" valign="top"><a id="a4bd946a00e525a5a94977990d28c8e47"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>GPIO</b> (std::string x, std::string dir, std::string val)</td></tr>
-<tr class="separator:a4bd946a00e525a5a94977990d28c8e47"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ada6832c970fb376cf8a6bd0a2384046a"><td class="memItemLeft" align="right" valign="top"><a id="ada6832c970fb376cf8a6bd0a2384046a"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>GPIO</b> (int x, int dir, int val)</td></tr>
-<tr class="separator:ada6832c970fb376cf8a6bd0a2384046a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3e804c2946ab52d6b401082bf165b2d2"><td class="memItemLeft" align="right" valign="top"><a id="a3e804c2946ab52d6b401082bf165b2d2"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setup</b> (std::string x)</td></tr>
-<tr class="separator:a3e804c2946ab52d6b401082bf165b2d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab73f1898fb0a24ca780b991016dd57e9"><td class="memItemLeft" align="right" valign="top"><a id="ab73f1898fb0a24ca780b991016dd57e9"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setup</b> (int x)</td></tr>
-<tr class="separator:ab73f1898fb0a24ca780b991016dd57e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab91dbc730111e26badb07c19519060df"><td class="memItemLeft" align="right" valign="top"><a id="ab91dbc730111e26badb07c19519060df"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setup</b> (std::string x, std::string dir, std::string val)</td></tr>
-<tr class="separator:ab91dbc730111e26badb07c19519060df"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3b0170fca8bda6671343158eeaefae32"><td class="memItemLeft" align="right" valign="top"><a id="a3b0170fca8bda6671343158eeaefae32"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setup</b> (int x, int dir, int val)</td></tr>
-<tr class="separator:a3b0170fca8bda6671343158eeaefae32"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a801fdfd605b3ba66b548d206701c3fa8"><td class="memItemLeft" align="right" valign="top"><a id="a801fdfd605b3ba66b548d206701c3fa8"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>GPIO</b> (MapPin x)</td></tr>
+<tr class="separator:a801fdfd605b3ba66b548d206701c3fa8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5290c5d2b536570cb7b66769f1ee581c"><td class="memItemLeft" align="right" valign="top"><a id="a5290c5d2b536570cb7b66769f1ee581c"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>GPIO</b> (MapPin x, Direction dir, State val)</td></tr>
+<tr class="separator:a5290c5d2b536570cb7b66769f1ee581c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acfe225bb7cfb5a4252f4147af7bf0ed2"><td class="memItemLeft" align="right" valign="top"><a id="acfe225bb7cfb5a4252f4147af7bf0ed2"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setup</b> (MapPin x)</td></tr>
+<tr class="separator:acfe225bb7cfb5a4252f4147af7bf0ed2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4207cacb771b1325ed6422e1acbbe5d2"><td class="memItemLeft" align="right" valign="top"><a id="a4207cacb771b1325ed6422e1acbbe5d2"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setup</b> (MapPin x, Direction dir, State val)</td></tr>
+<tr class="separator:a4207cacb771b1325ed6422e1acbbe5d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aff09aa7771b9af0466c6853d1f23a0dc"><td class="memItemLeft" align="right" valign="top"><a id="aff09aa7771b9af0466c6853d1f23a0dc"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>exportGpio</b> ()</td></tr>
 <tr class="separator:aff09aa7771b9af0466c6853d1f23a0dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -122,9 +158,9 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>setvalGpio</b> (std::s
 <tr class="memitem:a88e17c0e0adb7cba0a70dad304b3d858"><td class="memItemLeft" align="right" valign="top"><a id="a88e17c0e0adb7cba0a70dad304b3d858"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>setvalGpio</b> (int val)</td></tr>
 <tr class="separator:a88e17c0e0adb7cba0a70dad304b3d858"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab8a793d330872fd6b0abaa63d47a12f9"><td class="memItemLeft" align="right" valign="top"><a id="ab8a793d330872fd6b0abaa63d47a12f9"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>set</b> (int val)</td></tr>
-<tr class="separator:ab8a793d330872fd6b0abaa63d47a12f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8180e7d6753b032b896c122aff88b4b6"><td class="memItemLeft" align="right" valign="top"><a id="a8180e7d6753b032b896c122aff88b4b6"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>set</b> (State val)</td></tr>
+<tr class="separator:a8180e7d6753b032b896c122aff88b4b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad37790471fbcde6b0c8681902d77583a"><td class="memItemLeft" align="right" valign="top"><a id="ad37790471fbcde6b0c8681902d77583a"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>getvalGpio</b> (std::string &amp;val)</td></tr>
 <tr class="separator:ad37790471fbcde6b0c8681902d77583a"><td class="memSeparator" colspan="2">&#160;</td></tr>

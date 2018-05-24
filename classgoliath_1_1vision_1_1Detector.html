@@ -101,6 +101,9 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:abe4e1c93e93d641c67539c4fee0e13b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac5d637619798e93c06e9ebdc7e8e45b3"><td class="memItemLeft" align="right" valign="top">virtual std::vector&lt; cv::Vec4d &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1vision_1_1Detector.html#ac5d637619798e93c06e9ebdc7e8e45b3">detect</a> () const =0</td></tr>
 <tr class="separator:ac5d637619798e93c06e9ebdc7e8e45b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30b5efecf81525d8f473b74a71a42102"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1vision_1_1Detector.html#a30b5efecf81525d8f473b74a71a42102">update</a> (cv::Mat &amp;input)</td></tr>
+<tr class="memdesc:a30b5efecf81525d8f473b74a71a42102"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update input image.  <a href="#a30b5efecf81525d8f473b74a71a42102">More...</a><br /></td></tr>
+<tr class="separator:a30b5efecf81525d8f473b74a71a42102"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -201,6 +204,32 @@ cv::Mat&#160;</td><td class="memItemRight" valign="bottom"><b>input</b></td></tr
 <dl class="section return"><dt>Returns</dt><dd>A vector of vectors representing different objects that can be referenced from other detectors or commands. It is abstract and can represent anything the implementation desires. </dd></dl>
 
 <p>Implemented in <a class="el" href="classgoliath_1_1vision_1_1FollowLineDetector.html#aeb9e41141760aa5f7559ce8c3db02c21">goliath::vision::FollowLineDetector</a>, <a class="el" href="classgoliath_1_1vision_1_1LineDetector.html#a95b75a79a0723f743fb8277e910c710a">goliath::vision::LineDetector</a>, <a class="el" href="classgoliath_1_1vision_1_1ColorRegionDetector.html#a25474e1dd6c48847a89f488469bf81dd">goliath::vision::ColorRegionDetector</a>, and <a class="el" href="classgoliath_1_1vision_1_1WithinBoxDetector.html#a24dddd545258791ea234005a4b73d1bc">goliath::vision::WithinBoxDetector</a>.</p>
+
+</div>
+</div>
+<a id="a30b5efecf81525d8f473b74a71a42102"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a30b5efecf81525d8f473b74a71a42102">&#9670;&nbsp;</a></span>update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Detector::update </td>
+          <td>(</td>
+          <td class="paramtype">cv::Mat &amp;&#160;</td>
+          <td class="paramname"><em>input</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Update input image. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">input</td><td>New input image </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

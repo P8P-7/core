@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.14"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Goliath II: Member List</title>
+<title>Goliath II: GPIOTranslator Struct Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -61,26 +61,39 @@ $(function() {
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="namespacegoliath.html">goliath</a></li><li class="navelem"><a class="el" href="namespacegoliath_1_1vision.html">vision</a></li><li class="navelem"><a class="el" href="classgoliath_1_1vision_1_1Detector.html">Detector</a></li>  </ul>
-</div>
 </div><!-- top -->
 <div class="header">
+  <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="structGPIOTranslator-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">goliath::vision::Detector Member List</div>  </div>
+<div class="title">GPIOTranslator Struct Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-
-<p>This is the complete list of members for <a class="el" href="classgoliath_1_1vision_1_1Detector.html">goliath::vision::Detector</a>, including all inherited members.</p>
-<table class="directory">
-  <tr class="even"><td class="entry"><a class="el" href="classgoliath_1_1vision_1_1Detector.html#ac5d637619798e93c06e9ebdc7e8e45b3">detect</a>() const =0</td><td class="entry"><a class="el" href="classgoliath_1_1vision_1_1Detector.html">goliath::vision::Detector</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
-  <tr><td class="entry"><a class="el" href="classgoliath_1_1vision_1_1Detector.html#aa267ce350d6bbc77f3d9ea6cc5cecdaa">Detector</a>(const cv::Mat &amp;input)</td><td class="entry"><a class="el" href="classgoliath_1_1vision_1_1Detector.html">goliath::vision::Detector</a></td><td class="entry"><span class="mlabel">explicit</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classgoliath_1_1vision_1_1Detector.html#abe4e1c93e93d641c67539c4fee0e13b6">Detector</a>(const Detector &amp;other)</td><td class="entry"><a class="el" href="classgoliath_1_1vision_1_1Detector.html">goliath::vision::Detector</a></td><td class="entry"><span class="mlabel">explicit</span></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>input</b> (defined in <a class="el" href="classgoliath_1_1vision_1_1Detector.html">goliath::vision::Detector</a>)</td><td class="entry"><a class="el" href="classgoliath_1_1vision_1_1Detector.html">goliath::vision::Detector</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classgoliath_1_1vision_1_1Detector.html#a30b5efecf81525d8f473b74a71a42102">update</a>(cv::Mat &amp;input)</td><td class="entry"><a class="el" href="classgoliath_1_1vision_1_1Detector.html">goliath::vision::Detector</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>~Detector</b>() (defined in <a class="el" href="classgoliath_1_1vision_1_1Detector.html">goliath::vision::Detector</a>)</td><td class="entry"><a class="el" href="classgoliath_1_1vision_1_1Detector.html">goliath::vision::Detector</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
-</table></div><!-- contents -->
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a0ce28b0961c58133c0c4c3a7737ce2f8"><td class="memItemLeft" align="right" valign="top"><a id="a0ce28b0961c58133c0c4c3a7737ce2f8"></a>
+typedef std::string&#160;</td><td class="memItemRight" valign="bottom"><b>internal_type</b></td></tr>
+<tr class="separator:a0ce28b0961c58133c0c4c3a7737ce2f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf8d2e13f482aa6733105b03e28d8579"><td class="memItemLeft" align="right" valign="top"><a id="abf8d2e13f482aa6733105b03e28d8579"></a>
+typedef gpio::GPIO::MapPin&#160;</td><td class="memItemRight" valign="bottom"><b>external_type</b></td></tr>
+<tr class="separator:abf8d2e13f482aa6733105b03e28d8579"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a78b4c7e2170d286a64a360fbc02813e6"><td class="memItemLeft" align="right" valign="top"><a id="a78b4c7e2170d286a64a360fbc02813e6"></a>
+boost::optional&lt; external_type &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>get_value</b> (internal_type const &amp;v)</td></tr>
+<tr class="separator:a78b4c7e2170d286a64a360fbc02813e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a59ed86fa3f149d49c479f034ed7257a8"><td class="memItemLeft" align="right" valign="top"><a id="a59ed86fa3f149d49c479f034ed7257a8"></a>
+boost::optional&lt; internal_type &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>put_value</b> (external_type const &amp;v)</td></tr>
+<tr class="separator:a59ed86fa3f149d49c479f034ed7257a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<hr/>The documentation for this struct was generated from the following file:<ul>
+<li>/core/src/<a class="el" href="main_8cpp.html">main.cpp</a></li>
+</ul>
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">
