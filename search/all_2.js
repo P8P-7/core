@@ -22,6 +22,6 @@ var searchData=
   ['console_2eh',['console.h',['../console_8h.html',1,'']]],
   ['context',['Context',['../classgoliath_1_1openal_1_1Context.html',1,'goliath::openal::Context'],['../classgoliath_1_1openal_1_1Context.html#adbd52d5a7c9937624417b1e8ffbbc1e9',1,'goliath::openal::Context::Context()']]],
   ['context_2eh',['context.h',['../context_8h.html',1,'']]],
-  ['controller_2ecpp',['controller.cpp',['../controller_8cpp.html',1,'']]],
+  ['controller_2eh',['controller.h',['../controller_8h.html',1,'']]],
   ['core',['Core',['../index.html',1,'']]]
 ];

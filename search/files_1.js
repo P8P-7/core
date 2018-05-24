@@ -8,5 +8,5 @@ var searchData=
   ['command_5fmap_2eh',['command_map.h',['../command__map_8h.html',1,'']]],
   ['console_2eh',['console.h',['../console_8h.html',1,'']]],
   ['context_2eh',['context.h',['../context_8h.html',1,'']]],
-  ['controller_2ecpp',['controller.cpp',['../controller_8cpp.html',1,'']]]
+  ['controller_2eh',['controller.h',['../controller_8h.html',1,'']]]
 ];
