@@ -1,0 +1,11 @@
+{
+    "commands": {
+        "follow_line": {
+            "max_line_errors": 20,
+            "area_min_h": 0,
+            "area_max_h": 0,
+            "area_min_s": 0,
+            "area_max_s": 0
+        }
+    }
+}

@@ -6,6 +6,10 @@ Command::Command(const size_t &id, const std::vector<size_t> &requiredHandles)
         : id(id), requiredHandles(requiredHandles) {
 }
 
+Command::Command(const size_t& id, const std::vector<size_t>& requiredHandles, const boost::property_tree::ptree &config)
+        : id(id), requiredHandles(requiredHandles), config(config) {
+}
+
 void Command::interrupt() {
     interrupted = true;
 }

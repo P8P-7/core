@@ -13,3 +13,7 @@ Detector::Detector(const Detector& other)
 Detector::~Detector() {
     input.release();
 }
+
+void Detector::update(cv::Mat& input) {
+    this->input = input;
+}

@@ -33,4 +33,4 @@ target_include_directories(${PROJECT_NAME}
             ${CMAKE_CURRENT_SOURCE_DIR}/include
         )
 
-configure_file(resources/core-text.txt ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/core-text.txt COPYONLY)
+add_configuration(resources/controller-config.json)
