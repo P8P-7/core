@@ -1,19 +1,14 @@
+#include <boost/log/trivial.hpp>
+
 #include <goliath/foundation.h>
 #include <goliath/gpio.h>
 #include <goliath/servo.h>
 #include <goliath/vision.h>
 #include <goliath/zmq_messaging.h>
-#include <boost/log/trivial.hpp>
-
-#include "command_map.h"
-#include "command_executor.h"
-#include "commands/move_command.h"
-#include "commands/move_wing_command.h"
-#include "commands/follow_line_command.h"
-#include "commands/move_tower_command.h"
+#include <goliath/controller.h>
 
 /**
- * @file controller.cpp
+ * @file main.cpp
  * @author Group 7 - Informatica
  */
 

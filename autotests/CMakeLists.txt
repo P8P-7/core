@@ -1,4 +1,2 @@
-IF(${CMAKE_BUILD_TYPE} MATCHES "Debug")
-    add_goliath_auto_test(vision goliath-vision-module)
-    target_compile_definitions(goliath-vision-auto-test PRIVATE GOLIATH_TEST_IMAGE_DIR="${CMAKE_CURRENT_SOURCE_DIR}/autotest_vision_images/")
-ENDIF()
+add_goliath_auto_test(vision goliath-vision-module)
+target_compile_definitions(goliath-vision-auto-test PRIVATE GOLIATH_TEST_IMAGE_DIR="${CMAKE_CURRENT_SOURCE_DIR}/autotest_vision_images/")

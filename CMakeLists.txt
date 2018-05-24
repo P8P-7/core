@@ -7,7 +7,7 @@ ENDIF()
 
 project(goliath-core
         VERSION 1.0.0
-        DESCRIPTION "Core of the Goliath II bot"
+        DESCRIPTION "Core of the Goliath II robot"
         LANGUAGES
             CXX
         )
@@ -44,8 +44,10 @@ find_package(Boost ${BOOST_MIN_VERSION}
 add_subdirectory(third_party)
 add_subdirectory(src)
 
-enable_testing()
-add_subdirectory(tests)
-add_subdirectory(autotests)
+IF(${CMAKE_BUILD_TYPE} MATCHES "Debug")
+    enable_testing()
+    add_subdirectory(tests)
+    add_subdirectory(autotests)
+ENDIF()
 
 add_subdirectory(doc)
