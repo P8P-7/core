@@ -49,6 +49,8 @@ void commands::MoveWingCommand::executeServoCommand(std::shared_ptr<handles::Ser
         case ServoCommand_Direction_DOWN:
             servoDevice->setMovingSpeed(servoCommand.speed());
             break;
+        default:
+            throw std::runtime_error("Direction could not be handled");
     }
 }
 

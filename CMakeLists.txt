@@ -22,6 +22,8 @@ option(BUILD_TESTS "Build test programs" ON)
 option(BUILD_AUTO_TESTS "Build auto test programs" OFF)
 
 include(flags)
+compiler_flags(4)
+
 include(protobuf)
 include(test)
 include(config)
