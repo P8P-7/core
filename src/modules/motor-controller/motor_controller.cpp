@@ -32,7 +32,7 @@ std::vector<MotorStatus> MotorController::getMotors() {
                              << "Controller has " << std::to_string(number_of_motors) << " motors.";
 
     std::vector<MotorStatus> result;
-    for (int i = 0; i < number_of_motors; i++) {
+    for (size_t i = 0; i < number_of_motors; i++) {
         MotorStatus motor{};
         std::memcpy(&motor, buffer + 1 + i * sizeof(MotorStatus), sizeof(MotorStatus));
         result.emplace_back(motor);
