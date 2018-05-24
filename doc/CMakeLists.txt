@@ -1,4 +1,4 @@
-IF(${CMAKE_BUILD_TYPE} MATCHES "Release")
+IF(BUILD_DOCS)
     project(goliath-documentation LANGUAGES NONE)
 
     IF(${CMAKE_PROJECT_NAME} MATCHES ${PROJECT_NAME})
