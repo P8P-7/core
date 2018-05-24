@@ -1,4 +1,7 @@
+#include <boost/property_tree/ptree.hpp>
+#include <boost/property_tree/json_parser.hpp>
 #include <boost/log/trivial.hpp>
+#include <memory>
 
 #include <goliath/foundation.h>
 #include <goliath/gpio.h>
@@ -25,6 +28,9 @@ using namespace goliath;
 int main(int argc, char *argv[]) {
     util::Console console(&util::colorConsoleFormatter, "core-text.txt");
 
+    boost::property_tree::ptree root;
+    boost::property_tree::read_json("config/core-config.json", root);
+
     boost::asio::io_service ioService;
 
     boost::asio::signal_set signals(ioService, SIGINT, SIGTERM);
@@ -37,9 +43,9 @@ int main(int argc, char *argv[]) {
 
     BOOST_LOG_TRIVIAL(info) << "Setting up subscriber";
     zmq::context_t context(1);
-    messaging::ZmqSubscriber subscriber(context, "localhost", 5555);
+    messaging::ZmqSubscriber subscriber(context, "localhost", root.get<int>("zmq.subscribe_port"));
     BOOST_LOG_TRIVIAL(info) << "Setting up publisher";
-    messaging::ZmqPublisher publisher(context, "localhost", 5556);
+    messaging::ZmqPublisher publisher(context, "localhost", root.get<int>("zmq.publish_port"));
 
     BOOST_LOG_TRIVIAL(info) << "Setting up watcher";
     repositories::Watcher watcher(500, publisher);
@@ -48,7 +54,7 @@ int main(int argc, char *argv[]) {
 
     BOOST_LOG_TRIVIAL(info) << "Setting up GPIO";
     gpio::GPIO gpio;
-    gpio.setup(GPIO18, OUT, LOW);
+    gpio.setup(root.get<int>("gpio.pin"), OUT, LOW);
     std::function<void(bool)> callback = [&gpio](bool isTx) {
         if (isTx) {
             gpio.set(HIGH);
@@ -59,8 +65,8 @@ int main(int argc, char *argv[]) {
     };
 
     BOOST_LOG_TRIVIAL(info) << "Setting up serial port";
-    std::string portName = "/dev/serial0";
-    unsigned int baudRate = 1000000;
+    std::string portName = root.get<std::string>("serial.port");
+    unsigned int baudRate = root.get<int>("serial.baud_rate");
 
     SerialPort port;
     bool connectSuccess = port.connect(portName, baudRate) != 0;
@@ -71,18 +77,36 @@ int main(int argc, char *argv[]) {
 
     BOOST_LOG_TRIVIAL(info) << "Setting up handles";
     handles::HandleMap handles;
-    handles.add<handles::WebcamHandle>(HANDLE_CAM, 0);
-    if (connectSuccess) {
-        BOOST_LOG_TRIVIAL(info) << "Setting up Dynamixel servo handles";
-        auto motor1 = std::make_shared<Dynamixel>(1, port);
-        auto motor2 = std::make_shared<Dynamixel>(2, port);
-        auto motor3 = std::make_shared<Dynamixel>(3, port);
-        auto motor4 = std::make_shared<Dynamixel>(4, port);
+    handles.add<handles::WebcamHandle>(HANDLE_CAM, root.get<int>("vision.camera"));
 
-        handles.add<handles::ServoHandle>(HANDLE_LEFT_FRONT_WING_SERVO, motor1, callback);
-        handles.add<handles::ServoHandle>(HANDLE_LEFT_BACK_WING_SERVO, motor2, callback);
-        handles.add<handles::ServoHandle>(HANDLE_RIGHT_FRONT_WING_SERVO, motor3, callback);
-        handles.add<handles::ServoHandle>(HANDLE_RIGHT_BACK_WING_SERVO, motor4, callback);
+    if (true) {
+        BOOST_LOG_TRIVIAL(info) << "Setting up Dynamixel servo handles";
+
+        std::map<std::string, int> servos;
+
+        for(boost::property_tree::ptree::value_type &servo : root.get_child("servos")) {
+            servos[servo.second.get<std::string>("position")] = servo.second.get<int>("id");
+        }
+
+        for(auto const &servo : servos) {
+            std::shared_ptr<Dynamixel> dynamixel = std::make_shared<Dynamixel>(servo.second, port);
+
+            std::cout << servo.second << " " << servo.first << std::endl;
+
+            int handle;
+
+            if(servo.first == "left_front") {
+                handle = HANDLE_LEFT_FRONT_WING_SERVO;
+            } else if(servo.first == "left_back") {
+                handle = HANDLE_LEFT_BACK_WING_SERVO;
+            } else if(servo.first == "right_front") {
+                handle = HANDLE_RIGHT_FRONT_WING_SERVO;
+            } else if(servo.first == "right_back") {
+                handle = HANDLE_RIGHT_BACK_WING_SERVO;
+            }
+
+            handles.add<handles::ServoHandle>(handle, dynamixel, callback);
+        }
     }
 
     BOOST_LOG_TRIVIAL(info) << "Setting up commands";

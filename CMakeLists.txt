@@ -20,6 +20,7 @@ set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules)
 include(flags)
 include(protobuf)
 include(test)
+include(config)
 
 # Library versions
 set(OPENCV_MIN_VERSION "3.4.0")
@@ -44,7 +45,7 @@ find_package(Boost ${BOOST_MIN_VERSION}
 add_subdirectory(third_party)
 add_subdirectory(src)
 
-IF(${CMAKE_BUILD_TYPE} MATCHES "Debug")
+IF(${CMAKE_BUILD_TYPE} MATCHES "Release")
     enable_testing()
     add_subdirectory(tests)
     add_subdirectory(autotests)

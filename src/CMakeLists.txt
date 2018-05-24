@@ -7,4 +7,6 @@ target_link_libraries(${CMAKE_PROJECT_NAME}
         goliath-controller
     )
 
+add_configuration(resources/core-config.json)
+
 add_definitions(-DBOOST_LOG_DYN_LINK)

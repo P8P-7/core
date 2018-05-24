@@ -1,0 +1,6 @@
+MACRO(add_configuration CONFIG_FILE)
+    get_filename_component(CONFIG_FILE_NAME ${CONFIG_FILE} NAME_WE)
+    get_filename_component(CONFIG_FILE_EXT ${CONFIG_FILE} EXT)
+    file(MAKE_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/config)
+    configure_file(${CONFIG_FILE} ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/config/${CONFIG_FILE_NAME}${CONFIG_FILE_EXT} COPYONLY)
+ENDMACRO()
