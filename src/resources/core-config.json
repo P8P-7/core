@@ -13,22 +13,24 @@
     "vision": {
         "camera": 0
     },
-    "servos": [
-        {
-            "position": "left_front",
-            "id": 1
-        },
-        {
-            "position": "left_back",
-            "id": 2
-        },
-        {
-            "position": "right_front",
-            "id": 3
-        },
-        {
-            "position": "right_back",
-            "id": 4
+    "servos": {
+        "wings": {
+            "left_front": 1,
+            "left_back": 2,
+            "right_front": 3,
+            "right_back": 4
         }
-    ]
+    },
+    "i2c": {
+        "device": "/dev/i2c-1"
+    },
+    "motor_controller": {
+        "address": "0x30",
+        "motors": {
+            "left_front": 0,
+            "left_back": 1,
+            "right_front": 2,
+            "right_back": 3
+        }
+    }
 }

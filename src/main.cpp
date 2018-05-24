@@ -51,6 +51,9 @@ int main(int argc, char *argv[]) {
     boost::property_tree::ptree root;
     boost::property_tree::read_json("config/core-config.json", root);
 
+    boost::property_tree::ptree controller_root;
+    boost::property_tree::read_json("config/controller-config.json", controller_root);
+
     boost::asio::io_service ioService;
 
     boost::asio::signal_set signals(ioService, SIGINT, SIGTERM);
@@ -104,8 +107,8 @@ int main(int argc, char *argv[]) {
 
         std::map<std::string, int> servos;
 
-        for (boost::property_tree::ptree::value_type &servo : root.get_child("servos")) {
-            servos[servo.second.get<std::string>("position")] = servo.second.get<int>("id");
+        for(boost::property_tree::ptree::value_type &servo : root.get_child("servos.wings")) {
+            servos[servo.first.data()] = std::stoi(servo.second.data());
         }
 
         for (auto const &servo : servos) {
@@ -133,7 +136,8 @@ int main(int argc, char *argv[]) {
     commands::CommandMap commands;
     commands.add<commands::MoveCommand>(CommandMessage::kMoveCommand);
     commands.add<commands::MoveWingCommand>(CommandMessage::kMoveWingCommand);
-    commands.add<commands::FollowLineCommand>(CommandMessage::kFollowLineCommand);
+    commands.add<commands::FollowLineCommand>(CommandMessage::kFollowLineCommand,
+                                              controller_root.get_child("commands.follow_line"));
     commands.add<commands::MoveTowerCommand>(CommandMessage::kMoveTowerCommand);
 
     commands::CommandExecutor runner(commands, handles);
