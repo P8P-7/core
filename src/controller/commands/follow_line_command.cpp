@@ -5,8 +5,6 @@
 #include <thread>
 #include <boost/log/trivial.hpp>
 
-#include <goliath/vision.h>
-
 using namespace goliath::handles;
 using namespace goliath;
 

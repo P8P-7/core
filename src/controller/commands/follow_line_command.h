@@ -1,5 +1,7 @@
 #pragma once
 
+#include <goliath/vision.h>
+
 #include "../handles.h"
 #include "command.h"
 
