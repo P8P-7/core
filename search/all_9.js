@@ -1,5 +1,7 @@
 var searchData=
 [
+  ['ledcontroller',['LedController',['../classgoliath_1_1controller_1_1LedController.html',1,'goliath::controller']]],
+  ['ledstatus',['LedStatus',['../structgoliath_1_1controller_1_1LedStatus.html',1,'goliath::controller']]],
   ['left',['LEFT',['../namespacegoliath_1_1vision.html#ab57b7fa0d8bdbecbaa361caf5050b9b5a8e5a344cdb8c9c49cc633dd45dd1efb5',1,'goliath::vision']]],
   ['line_5fdetector_2eh',['line_detector.h',['../line__detector_8h.html',1,'']]],
   ['linedetector',['LineDetector',['../classgoliath_1_1vision_1_1LineDetector.html',1,'goliath::vision::LineDetector'],['../classgoliath_1_1vision_1_1LineDetector.html#ab129d04b18f54f9f50a7855167f5e06d',1,'goliath::vision::LineDetector::LineDetector()']]],
