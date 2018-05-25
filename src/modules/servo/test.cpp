@@ -2,14 +2,14 @@
 #include "dynamixel/Dynamixel.h"
 #include <goliath/gpio.h>
 
-using namespace goliath::gpio;
+using namespace goliath;
 
 int main(int argc, char *argv[]) {
     byte motorId = 4;
     int numBytes = 2;
     short iData = 512;
-    std::string command = "Set";
-    std::string address = "MovingSpeed";
+    Dynamixel::Commands command = Dynamixel::Commands::Set;
+    Dynamixel::Addresses address = Dynamixel::Addresses::MovingSpeed;
     std::string portName = "/dev/serial0";
     int baudRate = 1000000;
 
@@ -19,15 +19,15 @@ int main(int argc, char *argv[]) {
     // parse command line args
     for (int i = 1; i < argc; i++) {
         if (!strcmp(argv[i], "--baudRate")) {
-            baudRate = atoi(argv[++i]);
+            baudRate = std::stoi(argv[++i]);
         } else if (!strcmp(argv[i], "--motorId")) {
-            motorId = atoi(argv[++i]);
+            motorId = std::stoi(argv[++i]);
         } else if (!strcmp(argv[i], "--numBytes")) {
-            numBytes = atoi(argv[++i]);
+            numBytes = std::stoi(argv[++i]);
         } else if (!strcmp(argv[i], "--command")) {
-            command = argv[++i];
+            command = static_cast<Dynamixel::Commands>(std::stoi(argv[++i]));
         } else if (!strcmp(argv[i], "--address")) {
-            address = argv[++i];
+            address = static_cast<Dynamixel::Addresses>(std::stoi(argv[++i]));
         } else if (!strcmp(argv[i], "--portName")) {
             portName = argv[++i];
         } else if (!strcmp(argv[i], "--data")) {
@@ -48,17 +48,16 @@ int main(int argc, char *argv[]) {
     std::cout << "Connecting to: " <<
               portName << ":" << baudRate << std::endl;
 
-    GPIO gpio;
-    gpio.setup(GPIO18, OUT, LOW);
-
+    gpio::GPIO gpio(gpio::GPIO::MapPin::GPIO18, gpio::GPIO::Direction::Out,
+                    gpio::GPIO::State::Low);
     if (port.connect(portName, baudRate) != 0) {
         std::cout << "Success\n";
         std::function<void(bool)> callback = [&gpio](bool isTx) {
             if (isTx) {
-                gpio.set(HIGH);
+                gpio.set(gpio::GPIO::State::High);
             } else {
                 std::this_thread::sleep_for(std::chrono::microseconds(20));
-                gpio.set(LOW);
+                gpio.set(gpio::GPIO::State::Low);
             }
         };
 
@@ -72,8 +71,8 @@ int main(int argc, char *argv[]) {
 
         // for debugging only:
         byte buffer[1024];
-        int length = motor.formatCommand(motor.getCommand(command),
-                                         motor.getAddress(address),
+        int length = motor.formatCommand(command,
+                                         address,
                                          data,
                                          buffer);
 
