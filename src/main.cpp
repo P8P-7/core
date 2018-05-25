@@ -1,5 +1,3 @@
-#include <boost/property_tree/ptree.hpp>
-#include <boost/property_tree/json_parser.hpp>
 #include <boost/log/trivial.hpp>
 #include <memory>
 
@@ -46,13 +44,12 @@ static GPIOTranslator gpioTrans;
  * @brief Application entry point
  */
 int main(int argc, char *argv[]) {
-    util::Console console(&util::colorConsoleFormatter, "core-text.txt");
+    util::Console console(&util::colorConsoleFormatter, argv[0], "core-text.txt");
 
-    boost::property_tree::ptree root;
-    boost::property_tree::read_json("config/core-config.json", root);
+    std::string configFile = util::FoundationUtilities::executableToFile(argv[0], "config/core-config.json");
+    repositories::ConfigRepository configRepository(configFile);
 
-    boost::property_tree::ptree controller_root;
-    boost::property_tree::read_json("config/controller-config.json", controller_root);
+    std::shared_ptr<::ConfigRepository> config = configRepository.getConfig();
 
     boost::asio::io_service ioService;
 
@@ -66,9 +63,9 @@ int main(int argc, char *argv[]) {
 
     BOOST_LOG_TRIVIAL(info) << "Setting up subscriber";
     zmq::context_t context(1);
-    messaging::ZmqSubscriber subscriber(context, "localhost", root.get<int>("zmq.subscribe_port"));
+    messaging::ZmqSubscriber subscriber(context, "localhost", config->zmq().subscriber_port());
     BOOST_LOG_TRIVIAL(info) << "Setting up publisher";
-    messaging::ZmqPublisher publisher(context, "localhost", root.get<int>("zmq.publish_port"));
+    messaging::ZmqPublisher publisher(context, "localhost", config->zmq().publisher_port());
 
     BOOST_LOG_TRIVIAL(info) << "Setting up watcher";
     repositories::Watcher watcher(500, publisher);
@@ -76,8 +73,7 @@ int main(int argc, char *argv[]) {
     watcher.watch(battery_repo);
 
     BOOST_LOG_TRIVIAL(info) << "Setting up GPIO";
-    gpio::GPIO gpio(root.get<gpio::GPIO::MapPin>("gpio.pin", gpioTrans), gpio::GPIO::Direction::Out,
-                    gpio::GPIO::State::Low);
+    gpio::GPIO gpio(static_cast<gpio::GPIO::MapPin>(config->gpio().pin()), gpio::GPIO::Direction::Out, gpio::GPIO::State::Low);
     std::function<void(bool)> callback = [&gpio](bool isTx) {
         if (isTx) {
             gpio.set(gpio::GPIO::State::High);
@@ -88,8 +84,8 @@ int main(int argc, char *argv[]) {
     };
 
     BOOST_LOG_TRIVIAL(info) << "Setting up serial port";
-    std::string portName = root.get<std::string>("serial.port");
-    unsigned int baudRate = root.get<int>("serial.baud_rate");
+    std::string portName = config->serial().port();
+    unsigned int baudRate = config->serial().baudrate();
 
     SerialPort port;
     bool connectSuccess = port.connect(portName, baudRate) != 0;
@@ -100,29 +96,25 @@ int main(int argc, char *argv[]) {
 
     BOOST_LOG_TRIVIAL(info) << "Setting up handles";
     handles::HandleMap handles;
-    handles.add<handles::WebcamHandle>(HANDLE_CAM, root.get<int>("vision.camera"));
+    handles.add<handles::WebcamHandle>(HANDLE_CAM, 0);
 
     if (connectSuccess) {
         BOOST_LOG_TRIVIAL(info) << "Setting up Dynamixel servo handles";
 
         std::map<std::string, int> servos;
 
-        for(boost::property_tree::ptree::value_type &servo : root.get_child("servos.wings")) {
-            servos[servo.first.data()] = std::stoi(servo.second.data());
-        }
-
-        for (auto const &servo : servos) {
-            std::shared_ptr<Dynamixel> dynamixel = std::make_shared<Dynamixel>(servo.second, port);
+        for(Wing wing : config->servos().wings()) {
+            std::shared_ptr<Dynamixel> dynamixel = std::make_shared<Dynamixel>(wing.id(), port);
 
             int handle;
 
-            if (servo.first == "left_front") {
+            if (wing.position() == Position::LEFT_FRONT) {
                 handle = HANDLE_LEFT_FRONT_WING_SERVO;
-            } else if (servo.first == "left_back") {
+            } else if (wing.position() == Position::LEFT_BACK) {
                 handle = HANDLE_LEFT_BACK_WING_SERVO;
-            } else if (servo.first == "right_front") {
+            } else if (wing.position() == Position::RIGHT_FRONT) {
                 handle = HANDLE_RIGHT_FRONT_WING_SERVO;
-            } else if (servo.first == "right_back") {
+            } else if (wing.position() == Position::RIGHT_BACK) {
                 handle = HANDLE_RIGHT_BACK_WING_SERVO;
             } else {
                 throw std::runtime_error("Servo position could not be handled");
@@ -136,8 +128,7 @@ int main(int argc, char *argv[]) {
     commands::CommandMap commands;
     commands.add<commands::MoveCommand>(CommandMessage::kMoveCommand);
     commands.add<commands::MoveWingCommand>(CommandMessage::kMoveWingCommand);
-    commands.add<commands::FollowLineCommand>(CommandMessage::kFollowLineCommand,
-                                              controller_root.get_child("commands.follow_line"));
+    commands.add<commands::WunderhornCommand>(CommandMessage::kWunderhornCommand);
     commands.add<commands::MoveTowerCommand>(CommandMessage::kMoveTowerCommand);
 
     commands::CommandExecutor runner(commands, handles);

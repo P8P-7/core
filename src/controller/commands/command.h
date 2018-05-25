@@ -24,7 +24,6 @@ namespace goliath::commands {
     class Command {
     public:
         Command(const size_t &id, const std::vector<size_t> &requiredHandles);
-        Command(const size_t &id, const std::vector<size_t> &requiredHandles, const boost::property_tree::ptree &config);
 
         /**
          * @return id by which the command is known in a goliath::commands::CommandMap
@@ -61,7 +60,6 @@ namespace goliath::commands {
          * @param message Arguments to be passed to implementers
          */
         virtual void execute(const handles::HandleMap &handles, const CommandMessage &message) = 0;
-        boost::property_tree::ptree config;
 
     private:
         const size_t id;

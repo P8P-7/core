@@ -6,7 +6,7 @@
  */
 
 #include "../../commands/command.h"
-#include "../../commands/follow_line_command.h"
+#include "../../commands/wunderhorn_command.h"
 #include "../../commands/move_command.h"
 #include "../../commands/move_tower_command.h"
 #include "../../commands/move_wing_command.h"

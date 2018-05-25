@@ -1,4 +1,4 @@
-#include "follow_line_command.h"
+#include "wunderhorn_command.h"
 
 #include <vector>
 #include <chrono>
@@ -8,19 +8,17 @@
 using namespace goliath::handles;
 using namespace goliath;
 
-commands::FollowLineCommand::FollowLineCommand(const size_t& id, const boost::property_tree::ptree& config)
-    : Command(id, {HANDLE_CAM}, config) {
+commands::WunderhornCommand::WunderhornCommand(const size_t& id)
+    : Command(id, {HANDLE_CAM}) {
 }
 
-void commands::FollowLineCommand::execute(const HandleMap& handles, const CommandMessage& message) {
+void commands::WunderhornCommand::execute(const HandleMap& handles, const CommandMessage& message) {
     vision::Webcam webcam = std::static_pointer_cast<WebcamHandle>(handles[HANDLE_CAM])->getDevice();
     vision::FollowLineDetector followLineDetector(webcam.getFrame(), 4, 80, 20, 20, 10, 10000);
 
     follow_line(followLineDetector, webcam);
 
-    vision::ColorRegionDetector colorRegionDetector(webcam.getFrame(), config.get<int>("area_min_h"),
-                                                    config.get<int>("area_max_h"), config.get<int>("area_min_s"),
-                                                    config.get<int>("area_max_s"));
+    vision::ColorRegionDetector colorRegionDetector(webcam.getFrame(), 0, 0, 0, 0);
     while (true) {
         if (isInterrupted()) {
             return;
@@ -47,11 +45,11 @@ void commands::FollowLineCommand::execute(const HandleMap& handles, const Comman
     handles[HANDLE_CAM]->unlock();
 }
 
-void commands::FollowLineCommand::follow_line(vision::FollowLineDetector& followLineDetector, vision::Webcam &camera) {
+void commands::WunderhornCommand::follow_line(vision::FollowLineDetector& followLineDetector, vision::Webcam &camera) {
     std::vector<cv::Vec4d> lines = followLineDetector.detect();
     int noLinesCount = 0;
 
-    while (noLinesCount < config.get<int>("max_line_errors")) {
+    while (noLinesCount < 20) {
         if (isInterrupted()) {
             return;
         }

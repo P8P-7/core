@@ -3,7 +3,7 @@ project(goliath-controller LANGUAGES CXX)
 set(SOURCES
         commands/command.cpp
         commands/move_command.cpp
-        commands/follow_line_command.cpp
+        commands/wunderhorn_command.cpp
         commands/move_tower_command.cpp
         commands/move_wing_command.cpp
         command_map.cpp
@@ -32,5 +32,3 @@ target_include_directories(${PROJECT_NAME}
         PUBLIC
             ${CMAKE_CURRENT_SOURCE_DIR}/include
         )
-
-add_configuration(resources/controller-config.json)
