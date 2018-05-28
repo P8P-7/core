@@ -23,7 +23,7 @@ BOOST_AUTO_TEST_SUITE(BOOST_TEST_MODULE)
                         controller::LightingType::SPECIFIC, controller::ColourType::HSV
                 },
                 {
-                        0,                                  0, 255, 255
+                        0,                                  0, 255, 0
                 }
         };
         controller::AllLedsMessage allLedsMessage{
@@ -47,11 +47,35 @@ BOOST_AUTO_TEST_SUITE(BOOST_TEST_MODULE)
                         controller::LightingType::CIRCLE, controller::ColourType::HSV
                 },
                 {
-                        0,                                4, true, 180, 255
+                        0,                                4, false, 180, 255
                 }
         };
 
-        for (controller::LedId j = 0; j < 5; ++j) {
+        for (controller::LedId j = 0; j < controller::LedController::numberOfPixels; ++j) {
+            specRainMessage.specificRainbow.led_id = j;
+            specRainMessage.specificRainbow.start_hue = static_cast<controller::Hue>(255 /
+                                                                                     controller::LedController::numberOfPixels *
+                                                                                     j);
+            controller.sendCommand(specRainMessage);
+        }
+
+        std::this_thread::sleep_for(std::chrono::seconds(3));
+        controller.sendCommand(circleMessage);
+        std::this_thread::sleep_for(std::chrono::seconds(4));
+
+        for (controller::LedId j = 0; j < controller::LedController::numberOfPixels; ++j) {
+            specRainMessage.specificRainbow.led_id = j;
+            specRainMessage.specificRainbow.start_hue = static_cast<controller::Hue>(0);
+            controller.sendCommand(specRainMessage);
+        }
+
+        std::this_thread::sleep_for(std::chrono::seconds(3));
+        for (controller::LedId j = 0; j < controller::LedController::numberOfPixels; ++j) {
+            specColMessage.specificColour.led_id = j;
+            controller.sendCommand(specColMessage);
+        }
+
+        for (controller::LedId j = 0; j < controller::LedController::numberOfPixels; ++j) {
             specColMessage.specificColour.value = 255;
             specColMessage.specificColour.led_id = j;
             for (controller::Hue i = 0;; i++) {
@@ -65,17 +89,14 @@ BOOST_AUTO_TEST_SUITE(BOOST_TEST_MODULE)
             }
             specRainMessage.specificRainbow.led_id = j;
             controller.sendCommand(specRainMessage);
-            std::this_thread::sleep_for(std::chrono::seconds(2));
+            std::this_thread::sleep_for(std::chrono::seconds(3));
 
             specColMessage.specificColour.value = 0;
             controller.sendCommand(specColMessage);
         }
 
-        controller.sendCommand(circleMessage);
-        std::this_thread::sleep_for(std::chrono::seconds(5));
-
         controller.sendCommand(allLedsMessage);
-        std::this_thread::sleep_for(std::chrono::seconds(5));
+        std::this_thread::sleep_for(std::chrono::seconds(4));
         allLedsMessage.allLeds.value = 0;
         controller.sendCommand(allLedsMessage);
 

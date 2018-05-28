@@ -88,8 +88,9 @@ namespace goliath::controller {
 
         void sendCommand(const CircleMessage &message);
 
-    private:
         const static size_t numberOfPixels = 5;
+
+    private:
         i2c::I2cSlave &slave;
     };
 }
