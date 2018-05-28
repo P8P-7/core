@@ -17,38 +17,71 @@ BOOST_AUTO_TEST_SUITE(BOOST_TEST_MODULE)
         slave_handle.lock(999);
         i2c::I2cSlave slave(bus_handle, slave_handle);
         controller::LedController controller(slave);
-        controller::LedStatus message = {
-                1,
-                0,
-                255,
-                255,
+
+        controller::SpecColMessage specColMessage{
+                {
+                        controller::LightingType::SPECIFIC, controller::ColourType::HSV
+                },
+                {
+                        0,                                  0, 255, 255
+                }
         };
+        controller::AllLedsMessage allLedsMessage{
+                {
+                        controller::LightingType::ALL, controller::ColourType::HSV
+                },
+                {
+                        90,                            255, 255
+                }
+        };
+        controller::SpecRainMessage specRainMessage{
+                {
+                        controller::LightingType::SPECIFIC, controller::ColourType::RAINBOW
+                },
+                {
+                        0,                                  0
+                }
+        };
+        controller::CircleMessage circleMessage{
+                {
+                        controller::LightingType::CIRCLE, controller::ColourType::HSV
+                },
+                {
+                        0,                                4, true, 180, 255
+                }
+        };
+
         for (controller::LedId j = 0; j < 5; ++j) {
-            message.value = 255;
-            message.led_id = j;
+            specColMessage.specificColour.value = 255;
+            specColMessage.specificColour.led_id = j;
             for (controller::Hue i = 0;; i++) {
-                message.hue = i;
-                controller.sendCommand(message);
-                std::this_thread::sleep_for(std::chrono::milliseconds(4));
+                specColMessage.specificColour.hue = static_cast<controller::Hue>(i * 25);
+                controller.sendCommand(specColMessage);
+                std::this_thread::sleep_for(std::chrono::milliseconds(250));
 
-                if (i == 255) {
+                if (i == 10) {
                     break;
                 }
             }
-            for (controller::Hue i = 254;; i--) {
-                message.hue = i;
-                controller.sendCommand(message);
-                std::this_thread::sleep_for(std::chrono::milliseconds(4));
+            specRainMessage.specificRainbow.led_id = j;
+            controller.sendCommand(specRainMessage);
+            std::this_thread::sleep_for(std::chrono::seconds(2));
 
-                if (i == 0) {
-                    break;
-                }
-            }
-
-            message.value = 0;
-
-            controller.sendCommand(message);
+            specColMessage.specificColour.value = 0;
+            controller.sendCommand(specColMessage);
         }
+
+        controller.sendCommand(circleMessage);
+        std::this_thread::sleep_for(std::chrono::seconds(5));
+
+        controller.sendCommand(allLedsMessage);
+        std::this_thread::sleep_for(std::chrono::seconds(5));
+        allLedsMessage.allLeds.value = 0;
+        controller.sendCommand(allLedsMessage);
+
+
+        circleMessage.circle.end_id = 0;
+        controller.sendCommand(circleMessage);
 
         slave_handle.unlock();
         bus_handle.unlock();
