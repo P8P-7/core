@@ -8,13 +8,13 @@
 int calculateTimeNeededForSpeedTransition(int maxTime, int maxDistance, int distance);
 int interpolateSpeed(int prevSpeed, int nextSpeed, int startTime, int endTime, int currentTime);
 
-enum class motor_direction: byte {
+enum class MotorDirection : byte {
   FORWARDS = 0,
   BACKWARDS = 1,
   FREE = 2,
   LOCKED = 3
 };
-struct transition {
+struct Transition {
   int from = 0;
   int to = 0;
 
@@ -47,33 +47,33 @@ struct transition {
     return millis() > timeStarted + timeNeeded;
   }
 };
-struct motor {
-  char forwards_pin;
-  char backwards_pin;
-  char pwm_pin;
+struct Motor {
+  char forwardsPin;
+  char backwardsPin;
+  char pwmPin;
   
-  motor_direction direction = motor_direction::FORWARDS;
+  MotorDirection direction = MotorDirection::FORWARDS;
   byte speed = 0;
   bool isStalling = false;
-  transition speedTransition;
+  Transition speedTransition;
   
-  volatile long time_of_direction_change = 0;
-  volatile motor_direction target_direction = motor_direction::FORWARDS;
-  volatile byte target_speed = 0;
+  volatile long timeOfDirectionChange = 0;
+  volatile MotorDirection targetDirection = MotorDirection::FORWARDS;
+  volatile byte targetSpeed = 0;
 
-  motor() { }
-  motor(byte forwards_pin, byte backwards_pin, byte pwm_pin) : forwards_pin(forwards_pin), 
-                                                               backwards_pin(backwards_pin), 
-                                                               pwm_pin(pwm_pin) { }
+  Motor() { }
+  Motor(byte forwardsPin, byte backwardsPin, byte pwmPin) : forwardsPin(forwardsPin), 
+                                                               backwardsPin(backwardsPin), 
+                                                               pwmPin(pwmPin) { }
   bool hasChangedDirection() {
-    return direction != target_direction;
+    return direction != targetDirection;
   }
   bool isTransitioningDirection() {
-    return time_of_direction_change > 0;
+    return timeOfDirectionChange > 0;
   }
   
   bool hasChangedSpeed() {
-    return speed != target_speed;
+    return speed != targetSpeed;
   }
   bool isTransitioningSpeed() {
     return speedTransition.isStarted() && !speedTransition.isFinished();
@@ -89,7 +89,13 @@ struct motor {
   void startTransitionSpeedTo(int target) {
     speedTransition.from = speed;
     speedTransition.to = target;
-    speedTransition.start(calculateTimeNeededForSpeedTransition(CHANGE_DIRECTION_TIME_SPAN, MAX_SPEED, abs(speedTransition.to - speedTransition.from)));
+    int timeNeeded = calculateTimeNeededForSpeedTransition(CHANGE_DIRECTION_TIME_SPAN, MAX_SPEED, abs(speedTransition.to - speedTransition.from));
+    
+    if (speedTransition.isStarted() && !speedTransition.isFinished()) {
+      speedTransition.timeNeeded = timeNeeded;
+    } else {
+      speedTransition.start(timeNeeded);
+    }
   }
   
   bool needsTransitioning() {
@@ -99,19 +105,19 @@ struct motor {
     return isTransitioningDirection() || isTransitioningSpeed();
   }
 };
-struct motor_status {
-  byte motor_id;
-  motor_direction direction;
+struct MotorStatus {
+  byte motorId;
+  MotorDirection direction;
   byte speed;
 };
 
-const byte number_of_motors = 1;
-motor motors[number_of_motors];
+const byte numberOfMotors = 1;
+Motor motors[numberOfMotors];
 
 void setup() {
   Wire.begin(ADDRESS);
-  Wire.onRequest(on_request_status);
-  Wire.onReceive(on_receive_message);
+  Wire.onRequest(onRequestStatus);
+  Wire.onReceive(onReceiveMessage);
 
 #ifdef DEBUG
   Serial.begin(9600);
@@ -123,8 +129,8 @@ void setup() {
 }
 
 void loop() {
-  for (int motor_id = 0; motor_id < number_of_motors; motor_id++) {
-    motor& m = motors[motor_id];
+  for (int motorId = 0; motorId < numberOfMotors; motorId++) {
+    Motor& m = motors[motorId];
 
     if (!m.needsTransitioning() && !m.isTransitioning()) {
       continue;
@@ -138,19 +144,19 @@ void loop() {
       if (m.hasChangedDirection()) {
         m.isStalling = true;
         m.startTransitionSpeedTo(0);
-      } else if (!m.isStalling && m.hasChangedSpeed() && m.speedTransition.to != m.target_speed) {
-        m.startTransitionSpeedTo(m.target_speed);
+      } else if (m.hasChangedSpeed() && m.speedTransition.to != m.targetSpeed) {
+        m.startTransitionSpeedTo(m.targetSpeed);
       }
     }
     m.updateSpeed();
 
     if (m.speed == 0) {
       m.isStalling = false;
-      m.direction = m.target_direction;
+      m.direction = m.targetDirection;
     }
     
-    analogWrite(m.pwm_pin, m.speed);
-    set_direction(m, m.direction);
+    analogWrite(m.pwmPin, m.speed);
+    setDirection(m, m.direction);
   }
 }
 
@@ -170,124 +176,124 @@ int calculateTimeNeededForSpeedTransition(int maxTime, int maxDistance, int dist
 }
 
 void setup_motors() {
-  motors[0] = motor(
-    8, // forwards_pin / linksom
-    7, // backwards_pin / rechtsom
-    3 // pwm_pin
+  motors[0] = Motor(
+    8, // forwardsPin / linksom
+    7, // backwardsPin / rechtsom
+    3 // pwmPin
   );
 
-  for (int i = 0; i < number_of_motors; i++) {
-    pinMode(motors[i].forwards_pin, OUTPUT);
-    pinMode(motors[i].backwards_pin, OUTPUT);
+  for (int i = 0; i < numberOfMotors; i++) {
+    pinMode(motors[i].forwardsPin, OUTPUT);
+    pinMode(motors[i].backwardsPin, OUTPUT);
   }
 }
 
-void set_direction(const motor &motor, const motor_direction &direction) {
+void setDirection(const Motor &motor, const MotorDirection &direction) {
   bool forwards = HIGH;
   bool backwards = HIGH;
   
   switch (direction) {
-    case motor_direction::FORWARDS:
+    case MotorDirection::FORWARDS:
       forwards = HIGH;
       backwards = LOW;
     break;
-    case motor_direction::BACKWARDS:
+    case MotorDirection::BACKWARDS:
       forwards = LOW;
       backwards = HIGH;
     break;
-    case motor_direction::FREE:
+    case MotorDirection::FREE:
       forwards = backwards = LOW;
     break;
-    case motor_direction::LOCKED:
+    case MotorDirection::LOCKED:
       forwards = backwards = HIGH;
     break;
     default:
       return;
   }
   
-  digitalWrite(motor.forwards_pin, forwards);
-  digitalWrite(motor.backwards_pin, backwards);
+  digitalWrite(motor.forwardsPin, forwards);
+  digitalWrite(motor.backwardsPin, backwards);
 }
 
-void clear_wire() {
+void clearWire() {
   while (Wire.available() > 0) {
     Wire.read();
   }
 }
 
-void on_request_status() {
+void onRequestStatus() {
 #ifdef DEBUG
   Serial.println("Received a status request");
 #endif
-  Wire.write(number_of_motors);
+  Wire.write(numberOfMotors);
   
-  for (byte i = 0; i < number_of_motors; i++) {
-    const motor& m = motors[i];
-    motor_status status{ i, m.direction, m.speed };
+  for (byte i = 0; i < numberOfMotors; i++) {
+    const Motor& m = motors[i];
+    MotorStatus status{ i, m.direction, m.speed };
     
 #ifdef DEBUG
   Serial.println("Writing motor status: ");
   Serial.print("- id: ");
-  Serial.println(status.motor_id, DEC);
+  Serial.println(status.motorId, DEC);
   Serial.print("- direction: ");
   Serial.println((char)status.direction, DEC);
   Serial.print("- speed: ");
   Serial.println(status.speed, DEC);
 #endif
 
-    Wire.write((char*)&status, sizeof(motor_status));
+    Wire.write((char*)&status, sizeof(MotorStatus));
   }
 }
 
-void on_receive_message(int length) {
-  if (length % sizeof(motor_status) != 0) {
+void onReceiveMessage(int length) {
+  if (length % sizeof(MotorStatus) != 0) {
 #ifdef DEBUG
     Serial.print("Received message was of an invalid size. (");
     Serial.print(length, DEC);
     Serial.println(")");
 #endif
 
-    clear_wire();
+    clearWire();
     return;
   }
   
-  unsigned char buffer[length];
+  uint8_t buffer[length];
   for (int i = 0; Wire.available(); i++) {
     buffer[i] = Wire.read();
   }
 
-  int number_of_commands = length / sizeof(motor_status);
-  motor_status *commands = (motor_status*)buffer;
+  int numberOfCommands = length / sizeof(MotorStatus);
+  MotorStatus *commands = (MotorStatus*)buffer;
 #ifdef DEBUG
   Serial.print("Received ");
-  Serial.print(number_of_commands);
+  Serial.print(numberOfCommands);
   Serial.println(" commands");
 #endif  
-  for (int i = 0; i < number_of_commands; i++) {
-    motor_status &command = commands[i];
+  for (int i = 0; i < numberOfCommands; i++) {
+    MotorStatus &command = commands[i];
+    
 #ifdef DEBUG
-
     Serial.println("Received: ");
     Serial.print("- id: ");
-    Serial.println(command.motor_id, DEC);
+    Serial.println(command.motorId, DEC);
     Serial.print("- direction: ");
     Serial.println((char)command.direction, DEC);
     Serial.print("- speed: ");
     Serial.println(command.speed, DEC);
 #endif
   
-    if (command.motor_id > number_of_motors - 1) {
+    if (command.motorId > numberOfMotors - 1) {
 #ifdef DEBUG
-    Serial.println("Received command was invalid. Discarding command.");
+      Serial.println("Received command was invalid. Discarding command.");
 #endif
-      clear_wire();
+      clearWire();
       return;
     }
     
-    motor& m = motors[command.motor_id];
+    Motor& m = motors[command.motorId];
 
-    m.target_direction = command.direction;
-    m.target_speed = command.speed;
+    m.targetDirection = command.direction;
+    m.targetSpeed = command.speed;
   }
 }
 

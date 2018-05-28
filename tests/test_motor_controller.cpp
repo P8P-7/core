@@ -10,7 +10,7 @@ using namespace goliath;
 
 BOOST_AUTO_TEST_SUITE(BOOST_TEST_MODULE)
 
-    BOOST_AUTO_TEST_CASE(accelerate) {
+    BOOST_AUTO_TEST_CASE(accelerate_and_switch_direction) {
         const std::string device = "/dev/i2c-1";
         const i2c::I2cAddress address = 0x30;
 
@@ -32,6 +32,47 @@ BOOST_AUTO_TEST_SUITE(BOOST_TEST_MODULE)
 
         message.direction = motor_controller::MotorDirection::BACKWARDS;
         controller.sendCommand(message);
+
+        slave_handle.unlock();
+        bus_handle.unlock();
+
+        BOOST_CHECK(true);
+    }
+
+    BOOST_AUTO_TEST_CASE(accelerate_and_switch_direction_decellerate) {
+        const std::string device = "/dev/i2c-1";
+        const i2c::I2cAddress address = 0x30;
+
+        handles::I2cBusHandle bus_handle(1, device);
+        handles::I2cSlaveHandle slave_handle(2, address);
+        bus_handle.lock(999);
+        slave_handle.lock(999);
+
+        i2c::I2cSlave slave(bus_handle, slave_handle);
+        motor_controller::MotorController controller(slave);
+        motor_controller::MotorStatus message = {
+                0,
+                motor_controller::MotorDirection::FORWARDS,
+                255
+        };
+
+        controller.sendCommand(message);
+        std::this_thread::sleep_for(std::chrono::milliseconds(2000));
+
+        message.direction = motor_controller::MotorDirection::BACKWARDS;
+        controller.sendCommand(message);
+
+        std::this_thread::sleep_for(std::chrono::milliseconds(2000));
+        message.direction = motor_controller::MotorDirection::FORWARDS;
+        for (motor_controller::MotorSpeed i = 255;; i--) {
+            BOOST_LOG_TRIVIAL(info) << "Speed: " << std::to_string(i);
+            message.speed = i;
+            controller.sendCommand(message);
+
+            if (i == 0) {
+                break;
+            }
+        }
 
         slave_handle.unlock();
         bus_handle.unlock();
