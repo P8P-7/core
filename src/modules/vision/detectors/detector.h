@@ -32,6 +32,12 @@ namespace goliath::vision {
          */
         virtual std::vector<cv::Vec4d> detect() const = 0;
 
+        /**
+         * @brief Update input image
+         * @param input New input image
+         */
+        void update(cv::Mat &input);
+
     protected:
         cv::Mat input;
 

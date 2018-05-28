@@ -7,8 +7,8 @@
 
 using namespace goliath::vision;
 
-LineDetector::LineDetector(const cv::Mat &input, double rho, double theta, int threshold, double minLineLength, double maxLineGap)
-        : Detector(input), rho(rho), theta(theta), threshold(threshold), minLineLength(minLineLength), maxLineGap(maxLineGap) {
+LineDetector::LineDetector(const cv::Mat &input, int threshold, double rho, double theta, double minLineLength, double maxLineGap)
+        : Detector(input), threshold(threshold), rho(rho), theta(theta), minLineLength(minLineLength), maxLineGap(maxLineGap) {
 }
 
 LineDetector::LineDetector(const cv::Mat& input, int threshold, double minLineLength, double maxLineGap)
