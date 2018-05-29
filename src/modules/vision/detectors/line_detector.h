@@ -25,7 +25,7 @@ namespace goliath::vision {
      */
     class LineDetector : public Detector {
     public:
-        LineDetector(const cv::Mat& input, double rho, double theta, int threshold, double minLineLength,
+        LineDetector(const cv::Mat& input, int threshold, double rho, double theta, double minLineLength,
                       double maxLineGap);
 
         /**

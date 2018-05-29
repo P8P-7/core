@@ -6,10 +6,14 @@
  */
 
 #include "../../commands/command.h"
-#include "../../commands/follow_line_command.h"
+#include "../../commands/wunderhorn_command.h"
 #include "../../commands/move_command.h"
 #include "../../commands/move_tower_command.h"
 #include "../../commands/move_wing_command.h"
+#include "../../commands/dance_command.h"
+#include "../../commands/line_dance_command.h"
+#include "../../commands/obstacle_course_command.h"
+#include "../../commands/transport_rebuild_command.h"
 #include "../../command_executor.h"
 #include "../../command_map.h"
 #include "../../handles.h"

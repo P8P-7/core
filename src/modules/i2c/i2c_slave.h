@@ -20,6 +20,7 @@ namespace goliath::i2c {
          * @param slaveHandle
          */
         I2cSlave(const handles::I2cBusHandle &busHandle, const handles::I2cSlaveHandle &slaveHandle);
+
         /**
          * @brief Initializes an instance with a bus handle and an address corresponding to a slave on that bus.
          * @param busHandle
@@ -44,7 +45,7 @@ namespace goliath::i2c {
          * @param value byte to write
          * @return the same instance of @see I2cSlave
          */
-        I2cSlave& operator<<(const char &value);
+        I2cSlave &operator<<(const char &value);
 
         /**
          * Writes anything at buffer with size length to the slave.
@@ -53,6 +54,7 @@ namespace goliath::i2c {
          * @return number of written bytes
          */
         ssize_t write(const char *buffer, size_t length);
+
         /**
          * Request the slave to send something.
          * @param buffer pointer to start writing
@@ -60,6 +62,7 @@ namespace goliath::i2c {
          * @return total number of bytes read
          */
         ssize_t read(char *buffer, size_t length);
+
     private:
         std::string device;
         i2c::I2cAddress address;

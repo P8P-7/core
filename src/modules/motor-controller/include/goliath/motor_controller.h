@@ -4,7 +4,7 @@
 #include <goliath/i2c.h>
 #include <vector>
 
-namespace goliath::controller {
+namespace goliath::motor_controller {
     using MotorId = std::uint8_t;
     using MotorSpeed = std::uint8_t;
 
@@ -53,10 +53,12 @@ namespace goliath::controller {
         MotorController(i2c::I2cSlave &slave);
 
         /**
-         * Sends the \param message to the physical controller to process.
-         * @param message new motor status to process
+         * Sends a message to the physical controller to process.
+         * @param command new motor status to process
          */
-        void sendCommand(const MotorStatus &message);
+        void sendCommand(const MotorStatus &command);
+        template<typename IteratorType>
+        void sendCommands(const IteratorType &begin, const IteratorType &end);
 
         /**
          * Retrieves all motors from the motor controller, but only uses the first byte to determine the number of motors.
@@ -81,5 +83,10 @@ namespace goliath::controller {
 
         i2c::I2cSlave& slave;
     };
+
+    template<typename IteratorType>
+    void MotorController::sendCommands(const IteratorType &begin, const IteratorType &end) {
+        slave.write(begin, end);
+    }
 }
 

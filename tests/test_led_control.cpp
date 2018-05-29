@@ -2,7 +2,7 @@
 
 #include <boost/test/included/unit_test.hpp>
 #include <goliath/i2c.h>
-#include <goliath/led_controller.h>
+#include <goliath/led_strip_controller.h>
 
 using namespace goliath;
 
@@ -16,7 +16,7 @@ BOOST_AUTO_TEST_SUITE(BOOST_TEST_MODULE)
         bus_handle.lock(999);
         slave_handle.lock(999);
         i2c::I2cSlave slave(bus_handle, slave_handle);
-        controller::LedController controller(slave);
+        controller::LedStripController controller(slave);
 
         controller::SpecColMessage specColMessage{
                 {
@@ -51,10 +51,10 @@ BOOST_AUTO_TEST_SUITE(BOOST_TEST_MODULE)
                 }
         };
 
-        for (controller::LedId j = 0; j < controller::LedController::numberOfPixels; ++j) {
+        for (controller::LedId j = 0; j < controller::LedStripController::numberOfPixels; ++j) {
             specRainMessage.specificRainbow.led_id = j;
             specRainMessage.specificRainbow.start_hue = static_cast<controller::Hue>(255 /
-                                                                                     controller::LedController::numberOfPixels *
+                                                                                     controller::LedStripController::numberOfPixels *
                                                                                      j);
             controller.sendCommand(specRainMessage);
         }
@@ -63,19 +63,19 @@ BOOST_AUTO_TEST_SUITE(BOOST_TEST_MODULE)
         controller.sendCommand(circleMessage);
         std::this_thread::sleep_for(std::chrono::seconds(4));
 
-        for (controller::LedId j = 0; j < controller::LedController::numberOfPixels; ++j) {
+        for (controller::LedId j = 0; j < controller::LedStripController::numberOfPixels; ++j) {
             specRainMessage.specificRainbow.led_id = j;
             specRainMessage.specificRainbow.start_hue = static_cast<controller::Hue>(0);
             controller.sendCommand(specRainMessage);
         }
 
         std::this_thread::sleep_for(std::chrono::seconds(3));
-        for (controller::LedId j = 0; j < controller::LedController::numberOfPixels; ++j) {
+        for (controller::LedId j = 0; j < controller::LedStripController::numberOfPixels; ++j) {
             specColMessage.specificColour.led_id = j;
             controller.sendCommand(specColMessage);
         }
 
-        for (controller::LedId j = 0; j < controller::LedController::numberOfPixels; ++j) {
+        for (controller::LedId j = 0; j < controller::LedStripController::numberOfPixels; ++j) {
             specColMessage.specificColour.value = 255;
             specColMessage.specificColour.led_id = j;
             for (controller::Hue i = 0;; i++) {

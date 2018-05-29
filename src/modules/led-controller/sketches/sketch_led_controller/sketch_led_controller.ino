@@ -12,44 +12,44 @@ FASTLED_USING_NAMESPACE
 #define FRAMES_PER_SECOND 60
 #define HUE_OFFSET 4
 
-enum class lightingType : uint8_t {
+enum class LightingType : uint8_t {
     SPECIFIC = 0,
     ALL = 1,
     CIRCLE = 2,
 };
 
-enum class colourType : uint8_t {
+enum class ColorType : uint8_t {
     HSV = 0,
     RAINBOW = 1,
 };
 
-struct led_status {
-    lightingType lightingType;
-    colourType colourType;
+struct LedStatus {
+    LightingType lightingType;
+    ColorType colorType;
 };
 
-struct specific_colour {
-    uint8_t led_id;
+struct SpecificColor {
+    uint8_t ledId;
     uint8_t hue;
     uint8_t saturation;
     uint8_t value;
 };
 
-struct all_leds {
+struct AllLeds {
     uint8_t hue;
     uint8_t saturation;
     uint8_t value;
     bool rainbow;
 };
 
-struct specific_rainbow {
-    uint8_t led_id;
-    uint8_t start_hue;
+struct SpecificRainbow {
+    uint8_t ledId;
+    uint8_t startHue;
 };
 
-struct circle {
-    uint8_t start_id;
-    uint8_t end_id;
+struct Circle {
+    uint8_t startId;
+    uint8_t endId;
     bool cw;
     uint8_t hue;
     uint8_t saturation;
@@ -66,8 +66,8 @@ bool cycle = false;
 bool individual = true;
 bool rainbowLEDS[NUM_LEDS];
 uint8_t gHue = 0;
-int led_id = 0;
-circle circleInfo;
+int ledId = 0;
+Circle circleInfo;
 
 void setup() {
     Wire.begin(ADDRESS);
@@ -107,25 +107,23 @@ void loop() {
 
     if (cycle) {
         hsv2rgb_rainbow(CHSV(circleInfo.hue, circleInfo.saturation, 255), rgbVals);
-        leds[led_id] = rgbVals;
-        EVERY_N_MILLISECONDS(250)
-        {
+        leds[ledId] = rgbVals;
+        EVERY_N_MILLISECONDS(250) {
             if (circleInfo.cw) {
-                if (led_id < circleInfo.end_id) {
-                    led_id++;
+                if (ledId < circleInfo.endId) {
+                    ledId++;
                 } else {
-                    led_id = circleInfo.start_id;
+                    ledId = circleInfo.startId;
                 }
             } else {
-                if (led_id > circleInfo.start_id) {
-                    led_id--;
+                if (ledId > circleInfo.startId) {
+                    ledId--;
                 } else {
-                    led_id = circleInfo.end_id;
+                    ledId = circleInfo.endId;
                 }
             }
         }
     }
-
 
     FastLED.show();
     FastLED.delay(1000 / FRAMES_PER_SECOND);
@@ -137,62 +135,62 @@ void clear_wire() {
 }
 
 void on_receive_message(int length) {
-    if (Wire.available() <= sizeof(led_status)) {
+    if (Wire.available() <= sizeof(LedStatus)) {
 
         clear_wire();
         return;
     }
 
-    unsigned char buffer[sizeof(led_status)];
+    unsigned char buffer[sizeof(LedStatus)];
 
     buffer[0] = Wire.read();
     buffer[1] = Wire.read();
 
-    led_status *packetType = (led_status *) buffer;
+    LedStatus* packetType = (LedStatus*) buffer;
 
-    if (packetType->lightingType == lightingType::SPECIFIC) {
+    if (packetType->lightingType == LightingType::SPECIFIC) {
         rainbow = false;
-        if (packetType->colourType == colourType::HSV) {
-            unsigned char ledBuffer[sizeof(specific_colour)];
+        if (packetType->colorType == ColorType::HSV) {
+            unsigned char ledBuffer[sizeof(SpecificColor)];
             for (int i = 0; Wire.available(); i++) {
                 ledBuffer[i] = Wire.read();
             }
-            specific_colour *command = (specific_colour *) ledBuffer;
-            rainbowLEDS[command->led_id] = false;
-            hsv[command->led_id] = CHSV(command->hue, command->saturation, command->value);
-        } else if (packetType->colourType == colourType::RAINBOW) {
-            unsigned char ledBuffer[sizeof(specific_rainbow)];
+            SpecificColor* command = (SpecificColor*) ledBuffer;
+            rainbowLEDS[command->ledId] = false;
+            hsv[command->ledId] = CHSV(command->hue, command->saturation, command->value);
+        } else if (packetType->colorType == ColorType::RAINBOW) {
+            unsigned char ledBuffer[sizeof(SpecificRainbow)];
             for (int i = 0; Wire.available(); i++) {
                 ledBuffer[i] = Wire.read();
             }
-            specific_rainbow *command = (specific_rainbow *) ledBuffer;
-            hsv[command->led_id] = CHSV(command->start_hue, 255, 255);
-            rainbowLEDS[command->led_id] = true;
+            SpecificRainbow* command = (SpecificRainbow*) ledBuffer;
+            hsv[command->ledId] = CHSV(command->startHue, 255, 255);
+            rainbowLEDS[command->ledId] = true;
         }
-    } else if (packetType->lightingType == lightingType::CIRCLE) {
+    } else if (packetType->lightingType == LightingType::CIRCLE) {
         rainbow = false;
-        unsigned char ledBuffer[sizeof(circle)];
+        unsigned char ledBuffer[sizeof(Circle)];
         for (int i = 0; Wire.available(); i++) {
             ledBuffer[i] = Wire.read();
         }
-        circle *command = (circle *) ledBuffer;
+        Circle* command = (Circle*) ledBuffer;
 
-        if (command->start_id == command->end_id) {
+        if (command->startId == command->endId) {
             cycle = false;
         } else {
-            circleInfo.start_id = command->start_id;
-            circleInfo.end_id = command->end_id;
+            circleInfo.startId = command->startId;
+            circleInfo.endId = command->endId;
             circleInfo.cw = command->cw;
             circleInfo.hue = command->hue;
             circleInfo.saturation = command->saturation;
             cycle = true;
         }
-    } else if (packetType->lightingType == lightingType::ALL) {
-        unsigned char ledBuffer[sizeof(all_leds)];
+    } else if (packetType->lightingType == LightingType::ALL) {
+        unsigned char ledBuffer[sizeof(AllLeds)];
         for (int i = 0; Wire.available(); i++) {
             ledBuffer[i] = Wire.read();
         }
-        all_leds *command = (all_leds *) ledBuffer;
+        AllLeds* command = (AllLeds*) ledBuffer;
         if (rainbow) {
             rainbow = true;
         } else {

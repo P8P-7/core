@@ -16,5 +16,5 @@ BOOST_AUTO_TEST_SUITE(BOOST_TEST_MODULE)
         handleMap[0]->unlock();
         BOOST_CHECK_EQUAL(handleMap[0]->isLocked(), false);
     }
-    
+
 BOOST_AUTO_TEST_SUITE_END()

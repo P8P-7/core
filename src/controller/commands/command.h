@@ -1,5 +1,6 @@
 #pragma once
 
+#include <boost/property_tree/ptree.hpp>
 #include <CommandMessage.pb.h>
 
 #include "../handle_map.h"
@@ -22,7 +23,7 @@ namespace goliath::commands {
      */
     class Command {
     public:
-        explicit Command(const size_t &id, const std::vector<size_t> &requiredHandles);
+        Command(const size_t &id, const std::vector<size_t> &requiredHandles);
 
         /**
          * @return id by which the command is known in a goliath::commands::CommandMap

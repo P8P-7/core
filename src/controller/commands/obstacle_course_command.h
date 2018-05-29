@@ -1,20 +1,19 @@
 #pragma once
 
-#include "../handles.h"
 #include "command.h"
+#include "../handles.h"
 
 /**
- * @file follow_line_command.h
+ * @file obstacle_course_command.h
  * @author Group 7 - Informatica
  */
 
 namespace goliath::commands {
-    class FollowLineCommand : public Command {
+    class ObstacleCourseCommand : public Command {
     public:
-        FollowLineCommand(const size_t &id);
+        explicit ObstacleCourseCommand(const size_t &id);
 
     private:
         void execute(const handles::HandleMap &handles, const CommandMessage &message) override;
     };
 }
-

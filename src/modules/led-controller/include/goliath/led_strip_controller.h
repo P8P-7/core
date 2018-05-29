@@ -16,18 +16,18 @@ namespace goliath::controller {
         CIRCLE = 2,
     };
 
-    enum class ColourType : std::uint8_t {
+    enum class ColorType : std::uint8_t {
         HSV = 0,
         RAINBOW = 1,
     };
 
     struct LedStatus {
         LightingType lightingType;
-        ColourType colourType;
+        ColorType colorType;
     };
 
     struct SpecificColour {
-        LedId led_id;
+        LedId ledId;
         Hue hue;
         Saturation saturation;
         Value value;
@@ -41,12 +41,12 @@ namespace goliath::controller {
     };
 
     struct SpecificRainbow {
-        LedId led_id;
-        Hue start_hue;
+        LedId ledId;
+        Hue startHue;
     };
     struct Circle {
-        LedId start_id;
-        LedId end_id;
+        LedId startId;
+        LedId endId;
         bool cw;
         Hue hue;
         Saturation saturation;
@@ -72,20 +72,17 @@ namespace goliath::controller {
         Circle circle;
     };
 
-    class LedController {
+    class LedStripController {
     public:
-        LedController(i2c::I2cSlave &slave);
+        LedStripController(i2c::I2cSlave &slave);
 
         /**
-         * Sends the \param message to the physical controller to process.
+         * Sends the @param message to the physical controller to process.
          * @param message new led status to process
          */
         void sendCommand(const SpecColMessage &message);
-
         void sendCommand(const AllLedsMessage &message);
-
         void sendCommand(const SpecRainMessage &message);
-
         void sendCommand(const CircleMessage &message);
 
         const static size_t numberOfPixels = 5;

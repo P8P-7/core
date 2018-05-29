@@ -3,9 +3,13 @@ project(goliath-controller LANGUAGES CXX)
 set(SOURCES
         commands/command.cpp
         commands/move_command.cpp
-        commands/follow_line_command.cpp
+        commands/wunderhorn_command.cpp
         commands/move_tower_command.cpp
         commands/move_wing_command.cpp
+        commands/dance_command.cpp
+        commands/line_dance_command.cpp
+        commands/obstacle_course_command.cpp
+        commands/transport_rebuild_command.cpp
         command_map.cpp
         command_executor.cpp
         handles.h
@@ -24,6 +28,9 @@ target_link_libraries(${PROJECT_NAME}
             goliath-gpio-module
             goliath-servo-module
             goliath-vision-module
+            goliath-emotions-module
+            goliath-motor-controller-module
+            goliath-i2c-module
             ${Boost_LIBRARIES}
             ${CMAKE_THREAD_LIBS_INIT}
         )
@@ -32,5 +39,3 @@ target_include_directories(${PROJECT_NAME}
         PUBLIC
             ${CMAKE_CURRENT_SOURCE_DIR}/include
         )
-
-configure_file(resources/core-text.txt ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/core-text.txt COPYONLY)
