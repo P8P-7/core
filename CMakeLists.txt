@@ -44,6 +44,7 @@ find_package(Threads REQUIRED)
 find_package(Boost ${BOOST_MIN_VERSION}
         COMPONENTS
             log
+            system
         REQUIRED
         )
 

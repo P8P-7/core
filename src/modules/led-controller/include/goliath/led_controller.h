@@ -22,7 +22,7 @@ namespace goliath::controller {
         LedController(i2c::I2cSlave &slave);
 
         /**
-         * Sends the \param message to the physical controller to process.
+         * Sends the @param message to the physical controller to process.
          * @param message new led status to process
          */
         void sendCommand(const LedStatus &message);
