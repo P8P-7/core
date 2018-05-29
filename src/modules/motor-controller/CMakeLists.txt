@@ -1,10 +1,9 @@
 project(goliath-motor-controller-module LANGUAGES CXX)
 
 set(SOURCES
-        include/goliath/motor_controller.h
         motor_controller.cpp
-        include/goliath/motor_handle.h
-        motor_handle.cpp)
+        motor_handle.cpp
+        )
 
 add_library(${PROJECT_NAME} ${SOURCES})
 
