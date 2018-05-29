@@ -1,7 +1,7 @@
 var searchData=
 [
   ['structure',['Structure',['../md_pages_structure.html',1,'']]],
-  ['sendcommand',['sendCommand',['../classgoliath_1_1controller_1_1LedController.html#a8e2769d6813044dc212b407e1f428b0c',1,'goliath::controller::LedController::sendCommand()'],['../classgoliath_1_1controller_1_1MotorController.html#a36c83357651e0db21c4ca28bebc6c533',1,'goliath::controller::MotorController::sendCommand()']]],
+  ['sendcommand',['sendCommand',['../classgoliath_1_1controller_1_1LedController.html#a8e2769d6813044dc212b407e1f428b0c',1,'goliath::controller::LedController::sendCommand()'],['../classgoliath_1_1motor__controller_1_1MotorController.html#aa6a728c6ba23204e42b552bcf42b99bc',1,'goliath::motor_controller::MotorController::sendCommand()']]],
   ['servo_5fhandle',['servo_handle',['../classgoliath_1_1handles_1_1servo__handle.html',1,'goliath::handles']]],
   ['servo_5fhandle_2eh',['servo_handle.h',['../servo__handle_8h.html',1,'']]],
   ['servohandle',['ServoHandle',['../classgoliath_1_1handles_1_1ServoHandle.html',1,'goliath::handles::ServoHandle'],['../classgoliath_1_1handles_1_1ServoHandle.html#ae12f4ec8e6ab4e38625e174f4294d886',1,'goliath::handles::ServoHandle::ServoHandle()']]],
