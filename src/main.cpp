@@ -6,7 +6,9 @@
 #include <goliath/servo.h>
 #include <goliath/vision.h>
 #include <goliath/zmq_messaging.h>
+#include <goliath/emotions.h>
 #include <goliath/controller.h>
+#include "modules/emotions/emotion_handle.h"
 
 /**
  * @file main.cpp
@@ -66,6 +68,8 @@ int main(int argc, char *argv[]) {
     messaging::ZmqSubscriber subscriber(context, "localhost", config->zmq().subscriber_port());
     BOOST_LOG_TRIVIAL(info) << "Setting up publisher";
     messaging::ZmqPublisher publisher(context, "localhost", config->zmq().publisher_port());
+    BOOST_LOG_TRIVIAL(info) << "Setting up emotion publisher";
+    emotions::EmotionPublisher emotionPublisher(context, config->emotions().host(), config->emotions().port());
 
     BOOST_LOG_TRIVIAL(info) << "Setting up watcher";
     repositories::Watcher watcher(500, publisher);
@@ -97,6 +101,7 @@ int main(int argc, char *argv[]) {
     BOOST_LOG_TRIVIAL(info) << "Setting up handles";
     handles::HandleMap handles;
     handles.add<handles::WebcamHandle>(HANDLE_CAM, 0);
+    handles.add<handles::EmotionHandle>(HANDLE_EMOTIONS, emotionPublisher);
 
     if (connectSuccess) {
         BOOST_LOG_TRIVIAL(info) << "Setting up Dynamixel servo handles";

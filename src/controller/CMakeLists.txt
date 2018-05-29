@@ -6,6 +6,7 @@ set(SOURCES
         commands/wunderhorn_command.cpp
         commands/move_tower_command.cpp
         commands/move_wing_command.cpp
+        commands/dance_command.cpp
         command_map.cpp
         command_executor.cpp
         handles.h
@@ -24,6 +25,7 @@ target_link_libraries(${PROJECT_NAME}
             goliath-gpio-module
             goliath-servo-module
             goliath-vision-module
+            goliath-emotions-module
             ${Boost_LIBRARIES}
             ${CMAKE_THREAD_LIBS_INIT}
         )

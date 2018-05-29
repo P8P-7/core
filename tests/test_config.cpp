@@ -72,6 +72,10 @@ BOOST_AUTO_TEST_SUITE(BOOST_TEST_MODULE)
         rightBackMotor->set_position(Position::RIGHT_BACK);
         rightBackMotor->set_id(3);
 
+        auto *emotionsConfig = new EmotionConfig;
+        emotionsConfig->set_host("localhost");
+        emotionsConfig->set_port(5558);
+
         configRepository.set_allocated_zmq(zmqConfig);
         configRepository.set_allocated_serial(serialConfig);
         configRepository.set_allocated_gpio(gpioConfig);
@@ -79,6 +83,7 @@ BOOST_AUTO_TEST_SUITE(BOOST_TEST_MODULE)
         configRepository.set_allocated_servos(servoConfig);
         configRepository.set_allocated_i2c(i2cConfig);
         configRepository.set_allocated_motor_controller(motorControllerConfig);
+        configRepository.set_allocated_emotions(emotionsConfig);
 
         google::protobuf::util::MessageToJsonString(configRepository, &jsonString, options);
 
