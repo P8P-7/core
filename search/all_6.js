@@ -2,6 +2,7 @@ var searchData=
 [
   ['commands',['commands',['../namespacegoliath_1_1commands.html',1,'goliath']]],
   ['core',['core',['../namespacegoliath_1_1core.html',1,'goliath']]],
+  ['emotions',['emotions',['../namespacegoliath_1_1emotions.html',1,'goliath']]],
   ['exceptions',['exceptions',['../namespacegoliath_1_1exceptions.html',1,'goliath']]],
   ['getbatterylevel',['getBatteryLevel',['../classgoliath_1_1repositories_1_1BatteryRepository.html#a6c4c5412e197fb11092b4e1c8bcbbe0e',1,'goliath::repositories::BatteryRepository']]],
   ['getcolor',['getColor',['../namespacegoliath_1_1util.html#a5b75618ebec9d2df7cefdf27df41dcea',1,'goliath::util']]],

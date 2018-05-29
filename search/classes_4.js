@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['gpio',['GPIO',['../classgoliath_1_1gpio_1_1GPIO.html',1,'goliath::gpio']]],
-  ['gpiotranslator',['GPIOTranslator',['../structGPIOTranslator.html',1,'']]]
+  ['followlinedetector',['FollowLineDetector',['../classgoliath_1_1vision_1_1FollowLineDetector.html',1,'goliath::vision']]],
+  ['foundationutilities',['FoundationUtilities',['../classgoliath_1_1util_1_1FoundationUtilities.html',1,'goliath::util']]]
 ];
