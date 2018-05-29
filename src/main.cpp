@@ -23,26 +23,6 @@
 */
 using namespace goliath;
 
-struct GPIOTranslator {
-    typedef std::string internal_type;
-    typedef gpio::GPIO::MapPin external_type;
-
-    boost::optional<external_type> get_value(internal_type const &v) {
-        int gpioVal = std::stoi(v);
-        if (gpioVal < 2 || gpioVal > 27) {
-            return boost::none;
-        }
-
-        return static_cast<external_type>(gpioVal);
-    }
-
-    boost::optional<internal_type> put_value(external_type const &v) {
-        return std::to_string(static_cast<int>(v));
-    }
-};
-
-static GPIOTranslator gpioTrans;
-
 /**
  * @fn main(int argc, char *argv[])
  * @brief Application entry point
