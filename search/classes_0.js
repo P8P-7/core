@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['batteryrepository',['BatteryRepository',['../classgoliath_1_1repositories_1_1BatteryRepository.html',1,'goliath::repositories']]]
+  ['allleds',['AllLeds',['../structgoliath_1_1controller_1_1AllLeds.html',1,'goliath::controller']]],
+  ['allledsmessage',['AllLedsMessage',['../structgoliath_1_1controller_1_1AllLedsMessage.html',1,'goliath::controller']]]
 ];

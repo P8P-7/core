@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['emotionhandle',['EmotionHandle',['../classgoliath_1_1handles_1_1EmotionHandle.html',1,'goliath::handles']]],
-  ['emotionpublisher',['EmotionPublisher',['../classgoliath_1_1emotions_1_1EmotionPublisher.html',1,'goliath::emotions']]]
+  ['dancecommand',['DanceCommand',['../classgoliath_1_1commands_1_1DanceCommand.html',1,'goliath::commands']]],
+  ['detector',['Detector',['../classgoliath_1_1vision_1_1Detector.html',1,'goliath::vision']]],
+  ['device',['Device',['../classgoliath_1_1openal_1_1Device.html',1,'goliath::openal']]]
 ];
