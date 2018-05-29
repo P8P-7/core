@@ -1,10 +1,13 @@
 #include "command_executor.h"
+
 #include <boost/log/trivial.hpp>
+#include <cmath>
 
 using namespace goliath::commands;
 
 CommandExecutor::CommandExecutor(size_t numberOfThreads, CommandMap &commands, HandleMap &handles)
-        : numberOfThreads(numberOfThreads), commands(commands), handles(handles), pool(numberOfThreads) {}
+        : numberOfThreads(numberOfThreads), numberOfActiveCommands(0), commands(commands), handles(handles),
+          pool(numberOfThreads) {}
 
 CommandExecutor::~CommandExecutor() {
     pool.join();
@@ -24,6 +27,10 @@ void CommandExecutor::run(const size_t commandId, const CommandMessage &message)
     item.status = CommandStatus::STARTING;
 
     numberOfActiveCommands++;
+    if (numberOfActiveCommands >= std::ceil(numberOfThreads * 0.75)) {
+        BOOST_LOG_TRIVIAL(warning) << "Number of active commands is almost exceeding the number of command threads!"
+                                   << " Execution of commands may be postponed.";
+    }
     boost::asio::post(pool, std::bind(&CommandExecutor::tryExecute, this, commandId, message));
 }
 
