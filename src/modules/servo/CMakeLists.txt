@@ -1,10 +1,9 @@
 project(goliath-servo-module LANGUAGES CXX)
 
-set(SOURCES
-        servo_handle.cpp
-        )
+add_subdirectory(include/goliath)
+add_subdirectory(src)
 
-add_library(${PROJECT_NAME} ${SOURCES})
+add_library(${PROJECT_NAME} ${SOURCES} ${INCLUDES})
 
 target_include_directories(${PROJECT_NAME}
         PUBLIC

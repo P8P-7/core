@@ -1,10 +1,9 @@
 project(goliath-gpio-module LANGUAGES CXX)
 
-set(SOURCES
-        gpio.cpp
-        )
+add_subdirectory(include/goliath)
+add_subdirectory(src)
 
-add_library(${PROJECT_NAME} ${SOURCES})
+add_library(${PROJECT_NAME} ${SOURCES} ${INCLUDES})
 
 add_definitions(-DBOOST_LOG_DYN_LINK)
 

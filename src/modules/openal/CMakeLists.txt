@@ -1,13 +1,9 @@
 project(goliath-openal-module LANGUAGES CXX)
 
-set(SOURCES
-    util/openal_error.cpp
-    context.cpp
-    device.cpp
-    microphone.cpp
-    )
+add_subdirectory(include/goliath)
+add_subdirectory(src)
 
-add_library(${PROJECT_NAME} ${SOURCES})
+add_library(${PROJECT_NAME} ${SOURCES} ${INCLUDES})
 
 target_include_directories(${PROJECT_NAME}
     PUBLIC

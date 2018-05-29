@@ -27,6 +27,7 @@ compiler_flags(4)
 include(protobuf)
 include(test)
 include(config)
+include(prepend)
 
 # Library versions
 set(OPENCV_MIN_VERSION "3.4.0")

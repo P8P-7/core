@@ -10,4 +10,4 @@
   * @brief Contains all classes and function for interfacing the GPIO bus on the Raspberry Pi
   */
 
-#include "../../gpio.h"
+#include "gpio/gpio.h"

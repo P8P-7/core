@@ -7,10 +7,9 @@
 #include <goliath/vision.h>
 #include <goliath/zmq_messaging.h>
 #include <goliath/emotions.h>
-#include <goliath/controller.h>
 #include <goliath/i2c.h>
+#include <goliath/motor-controller.h>
 #include <goliath/controller.h>
-#include <goliath/motor_handle.h>
 
 /**
  * @file main.cpp
