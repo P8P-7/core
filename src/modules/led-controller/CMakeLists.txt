@@ -1,7 +1,7 @@
 project(goliath-led-controller-module LANGUAGES CXX)
 
 set(SOURCES
-        led_controller.cpp
+        led_strip_controller.cpp
         )
 
 add_library(${PROJECT_NAME} ${SOURCES})
