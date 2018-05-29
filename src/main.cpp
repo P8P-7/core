@@ -110,7 +110,7 @@ int main(int argc, char *argv[]) {
         for(Wing wing : config->servos().wings()) {
             std::shared_ptr<Dynamixel> dynamixel = std::make_shared<Dynamixel>(wing.id(), port);
 
-            int handle;
+            size_t handle;
 
             if (wing.position() == Position::LEFT_FRONT) {
                 handle = HANDLE_LEFT_FRONT_WING_SERVO;
