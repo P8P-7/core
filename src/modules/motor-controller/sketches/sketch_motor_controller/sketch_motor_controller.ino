@@ -2,7 +2,7 @@
 
 #define DEBUG
 #define ADDRESS 0x30
-#define CHANGE_DIRECTION_TIME_SPAN 1500
+#define CHANGE_DIRECTION_TIME_SPAN 100
 #define MAX_SPEED 255
 
 int calculateTimeNeededForSpeedTransition(int maxTime, int maxDistance, int distance);

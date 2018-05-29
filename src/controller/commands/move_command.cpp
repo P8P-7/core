@@ -9,8 +9,7 @@ using namespace goliath::handles;
 using namespace goliath;
 
 commands::MoveCommand::MoveCommand(const size_t &id)
-        : Command(id, {HANDLE_I2C_BUS, HANDLE_MOTOR_CONTROLLER, HANDLE_LEFT_FRONT_MOTOR, HANDLE_LEFT_BACK_MOTOR,
-                       HANDLE_RIGHT_FRONT_MOTOR, HANDLE_RIGHT_BACK_MOTOR}) {
+        : Command(id, {HANDLE_I2C_BUS, HANDLE_MOTOR_CONTROLLER, HANDLE_LEFT_FRONT_MOTOR}) {
 }
 
 void commands::MoveCommand::execute(const HandleMap &handles, const CommandMessage &message) {
@@ -30,6 +29,10 @@ void commands::MoveCommand::execute(const HandleMap &handles, const CommandMessa
         motorCommand.id = handle->getMotorId();
         motorCommand.direction = static_cast<motor_controller::MotorDirection>(command.gear());
         motorCommand.speed = static_cast<motor_controller::MotorSpeed>(command.speed());
+        if (command.speed() < 0 || command.speed() > 255) {
+            BOOST_LOG_TRIVIAL(fatal) << "Speed is out of range [0, 255] " << std::to_string(command.speed());
+            continue;
+        }
 
         commands.emplace_back(motorCommand);
     }

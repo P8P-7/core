@@ -280,7 +280,7 @@ BOOST_AUTO_TEST_SUITE(BOOST_TEST_MODULE)
 
         for (int time = startTime; time >= 0; time -= stepTime) {
             BOOST_LOG_TRIVIAL(info) << "Time: " << std::to_string(time);
-            for (int i = 0; i < iterations; i++) {
+            for (size_t i = 0; i < iterations; i++) {
                 message.direction = motor_controller::MotorDirection::FORWARDS;
                 controller.sendCommand(message);
                 std::this_thread::sleep_for(std::chrono::milliseconds(time));
@@ -295,6 +295,33 @@ BOOST_AUTO_TEST_SUITE(BOOST_TEST_MODULE)
         message.speed = 0;
         message.direction = motor_controller::MotorDirection::FORWARDS;
         controller.sendCommand(message);
+
+        slave_handle.unlock();
+        bus_handle.unlock();
+
+        BOOST_CHECK(true);
+    }
+
+    BOOST_AUTO_TEST_CASE(spam_test) {
+        const std::string device = "/dev/i2c-1";
+        const i2c::I2cAddress address = 0x30;
+
+        handles::I2cBusHandle bus_handle(1, device);
+        handles::I2cSlaveHandle slave_handle(2, address);
+        bus_handle.lock(999);
+        slave_handle.lock(999);
+
+        i2c::I2cSlave slave(bus_handle, slave_handle);
+        motor_controller::MotorController controller(slave);
+        motor_controller::MotorStatus message = {
+                0,
+                motor_controller::MotorDirection::FORWARDS,
+                255
+        };
+        for (int i = 0; i < 10000; i++) {
+            message.speed = rand();
+            controller.sendCommand(message);
+        }
 
         slave_handle.unlock();
         bus_handle.unlock();
