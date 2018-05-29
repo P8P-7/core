@@ -3,10 +3,12 @@
 
 using namespace goliath::commands;
 
-CommandExecutor::CommandExecutor(CommandMap &commands, HandleMap &handles)
-        : commands(commands), handles(handles) { }
+CommandExecutor::CommandExecutor(size_t numberOfThreads, CommandMap &commands, HandleMap &handles)
+        : numberOfThreads(numberOfThreads), commands(commands), handles(handles), pool(numberOfThreads) {}
 
-CommandExecutor::~CommandExecutor() { }
+CommandExecutor::~CommandExecutor() {
+    pool.join();
+}
 
 void CommandExecutor::run(const size_t commandId, const CommandMessage &message) {
     std::lock_guard<std::mutex> lock(mutex);
@@ -21,8 +23,8 @@ void CommandExecutor::run(const size_t commandId, const CommandMessage &message)
     }
     item.status = CommandStatus::STARTING;
 
-    std::thread thread(&CommandExecutor::tryExecute, this, commandId, message);
-    thread.detach();
+    numberOfActiveCommands++;
+    boost::asio::post(pool, std::bind(&CommandExecutor::tryExecute, this, commandId, message));
 }
 
 void CommandExecutor::tryExecute(const size_t &commandId, const CommandMessage &message) {
@@ -38,7 +40,7 @@ void CommandExecutor::tryExecute(const size_t &commandId, const CommandMessage &
         BOOST_LOG_TRIVIAL(info) << "Execution of \"Command " << commandId << "\" has started";
         try {
             item.instance->run(requiredHandles, message);
-        } catch (std::exception& ex) {
+        } catch (std::exception &ex) {
             BOOST_LOG_TRIVIAL(fatal) << "Error executing command \"" << commandId << "\" what(): " << ex.what();
         }
         BOOST_LOG_TRIVIAL(info) << "Execution of \"Command " << commandId << "\" has finished";
@@ -46,6 +48,7 @@ void CommandExecutor::tryExecute(const size_t &commandId, const CommandMessage &
         lock.lock();
         requiredHandles.unlockAll();
         item.status = CommandStatus::STALE;
+        numberOfActiveCommands--;
         return;
     }
 
@@ -62,7 +65,7 @@ void CommandExecutor::tryExecute(const size_t &commandId, const CommandMessage &
     BOOST_LOG_TRIVIAL(info) << "* Execution of \"Command " << commandId << "\" has started";
     try {
         item.instance->run(requiredHandles, message);
-    } catch (std::exception& ex) {
+    } catch (std::exception &ex) {
         BOOST_LOG_TRIVIAL(fatal) << "Error executing command \"" << commandId << "\" what(): " << ex.what();
     }
     BOOST_LOG_TRIVIAL(info) << "* Execution of \"Command " << commandId << "\" has finished";
@@ -70,6 +73,7 @@ void CommandExecutor::tryExecute(const size_t &commandId, const CommandMessage &
     lock.lock();
     requiredHandles.unlockAll();
     item.status = CommandStatus::STALE;
+    numberOfActiveCommands--;
 }
 
 bool CommandExecutor::canStart(const Command &command) const {

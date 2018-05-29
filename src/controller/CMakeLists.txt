@@ -17,6 +17,8 @@ set(SOURCES
         )
 
 add_library(${PROJECT_NAME} ${SOURCES})
+
+find_package(Boost COMPONENTS system REQUIRED)
 include_directories(${Boost_INCLUDE_DIRS})
 
 add_definitions(-DBOOST_LOG_DYN_LINK)

@@ -1,64 +1,70 @@
 {
-    "zmq": {
-        "subscriber_port": 5555,
-        "publisher_port": 5556
-    },
-    "serial": {
-        "port": "/dev/serial0",
-        "baudrate": "1000000"
-    },
-    "gpio": {
-        "pin": 18
-    },
-    "vision": {
-        "webcam": 0
-    },
-    "servos": {
-        "wings": [
-            {
-                "position": "LEFT_FRONT",
-                "id": "1"
-            },
-            {
-                "position": "LEFT_BACK",
-                "id": "2"
-            },
-            {
-                "position": "RIGHT_FRONT",
-                "id": "3"
-            },
-            {
-                "position": "RIGHT_BACK",
-                "id": "4"
-            }
-        ]
-    },
-    "i2c": {
-        "device": "/dev/i2c-1"
-    },
-    "motor_controller": {
-        "address": "0x30",
-        "motors": [
-            {
-                "position": "LEFT_FRONT",
-                "id": "0"
-            },
-            {
-                "position": "LEFT_BACK",
-                "id": "1"
-            },
-            {
-                "position": "RIGHT_FRONT",
-                "id": "2"
-            },
-            {
-                "position": "RIGHT_BACK",
-                "id": "3"
-            }
-        ]
-    },
-    "emotions": {
-        "host": "localhost",
-        "port": 5558
-    }
+  "zmq": {
+    "subscriber_port": 5555,
+    "publisher_port": 5556
+  },
+  "serial": {
+    "port": "/dev/serial0",
+    "baudrate": "1000000"
+  },
+  "gpio": {
+    "pin": 18
+  },
+  "vision": {
+    "webcam": 0
+  },
+  "servos": {
+    "wings": [
+      {
+        "position": "LEFT_FRONT",
+        "id": "1"
+      },
+      {
+        "position": "LEFT_BACK",
+        "id": "2"
+      },
+      {
+        "position": "RIGHT_FRONT",
+        "id": "3"
+      },
+      {
+        "position": "RIGHT_BACK",
+        "id": "4"
+      }
+    ]
+  },
+  "i2c": {
+    "device": "/dev/i2c-1"
+  },
+  "motor_controller": {
+    "address": "0x30",
+    "motors": [
+      {
+        "position": "LEFT_FRONT",
+        "id": "0"
+      },
+      {
+        "position": "LEFT_BACK",
+        "id": "1"
+      },
+      {
+        "position": "RIGHT_FRONT",
+        "id": "2"
+      },
+      {
+        "position": "RIGHT_BACK",
+        "id": "3"
+      }
+    ]
+  },
+  "emotions": {
+    "host": "localhost",
+    "port": 5558
+  },
+  "command_executor": {
+    "number_of_executors": 4
+  },
+  "watcher": {
+    "polling_rate": 250
+  }
 }
