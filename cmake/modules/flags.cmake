@@ -10,8 +10,6 @@ MACRO(compiler_flags WARNING_LEVEL)
                         "-fexceptions"
                         "-fpic"
                         "-shared"
-                        "-fstack-clash-protection"
-                        "-fstack-protector-strong"
                         "-g"
                         "-O2"
                         "-pipe"

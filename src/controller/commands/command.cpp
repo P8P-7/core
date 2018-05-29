@@ -1,3 +1,4 @@
+#include <boost/log/trivial.hpp>
 #include "command.h"
 
 using namespace goliath::commands;
@@ -20,7 +21,9 @@ const std::vector<size_t>& Command::getRequiredHandles() const {
 
 void Command::run(const goliath::handles::HandleMap &handles, const CommandMessage& message) {
     running = true;
+    BOOST_LOG_TRIVIAL(debug) << "Command " << std::to_string(getId()) << " is being executed";
     execute(handles, message);
+    BOOST_LOG_TRIVIAL(debug) << "Command " << std::to_string(getId()) << " has finished";
     running = false;
 }
 

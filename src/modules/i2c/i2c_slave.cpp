@@ -20,6 +20,12 @@ I2cSlave::I2cSlave(const handles::I2cBusHandle &busHandle, const i2c::I2cAddress
 I2cSlave::I2cSlave(const handles::I2cBusHandle &busHandle, const handles::I2cSlaveHandle &slaveHandle)
         : I2cSlave(busHandle, slaveHandle.getSlaveAddress()) { }
 
+I2cSlave::~I2cSlave() {
+    if (file_descriptor != -1) {
+        ::close(file_descriptor);
+    }
+}
+
 void I2cSlave::setActiveSlaveOnBus(const i2c::I2cAddress &address) {
     int set_slave_result = ::ioctl(file_descriptor, I2C_SLAVE, address);
     if (set_slave_result == -1) {
@@ -55,10 +61,4 @@ I2cSlave &I2cSlave::operator<<(const char &value) {
     write(&value, 1);
 
     return *this;
-}
-
-I2cSlave::~I2cSlave() {
-    if (file_descriptor != -1) {
-        ::close(file_descriptor);
-    }
 }

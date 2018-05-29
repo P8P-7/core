@@ -8,7 +8,9 @@
 #include <goliath/zmq_messaging.h>
 #include <goliath/emotions.h>
 #include <goliath/controller.h>
-#include "modules/emotions/emotion_handle.h"
+#include <goliath/i2c.h>
+#include <goliath/controller.h>
+#include <goliath/motor_handle.h>
 
 /**
  * @file main.cpp
@@ -87,6 +89,9 @@ int main(int argc, char *argv[]) {
         }
     };
 
+    BOOST_LOG_TRIVIAL(info) << "Setting up handles";
+    handles::HandleMap handles;
+
     BOOST_LOG_TRIVIAL(info) << "Setting up serial port";
     std::string portName = config->serial().port();
     unsigned int baudRate = config->serial().baudrate();
@@ -98,8 +103,6 @@ int main(int argc, char *argv[]) {
         BOOST_LOG_TRIVIAL(warning) << "Couldn't connect to serial port";
     }
 
-    BOOST_LOG_TRIVIAL(info) << "Setting up handles";
-    handles::HandleMap handles;
     handles.add<handles::WebcamHandle>(HANDLE_CAM, 0);
     handles.add<handles::EmotionHandle>(HANDLE_EMOTIONS, emotionPublisher);
 
@@ -111,7 +114,7 @@ int main(int argc, char *argv[]) {
         for(Wing wing : config->servos().wings()) {
             std::shared_ptr<Dynamixel> dynamixel = std::make_shared<Dynamixel>(wing.id(), port);
 
-            int handle;
+            size_t handle;
 
             if (wing.position() == Position::LEFT_FRONT) {
                 handle = HANDLE_LEFT_FRONT_WING_SERVO;
@@ -128,6 +131,10 @@ int main(int argc, char *argv[]) {
             handles.add<handles::ServoHandle>(handle, dynamixel, callback);
         }
     }
+
+    handles.add<handles::I2cBusHandle>(HANDLE_I2C_BUS, "/dev/i2c-1");
+    handles.add<handles::I2cSlaveHandle>(HANDLE_MOTOR_CONTROLLER, 0x30);
+    handles.add<handles::MotorHandle>(HANDLE_LEFT_FRONT_MOTOR, 0);
 
     BOOST_LOG_TRIVIAL(info) << "Setting up commands";
     commands::CommandMap commands;

@@ -24,6 +24,7 @@ namespace goliath::commands {
      */
     struct CommandItem {
         CommandItem();
+
         /**
          * @param commandInstance Instance of a command
          * @param status Starting status
@@ -34,7 +35,6 @@ namespace goliath::commands {
         CommandStatus status;
     };
 
-    // TODO: make thread-safe?
     /**
      * @class goliath::commands::CommandMap
      * @brief Wrapper around a map storing indexes (Command ID's) and @see goliath::commands::CommandItem
@@ -42,6 +42,7 @@ namespace goliath::commands {
     class CommandMap {
     public:
         CommandMap();
+
         /**
          * @param commands Initial map
          */
@@ -51,7 +52,7 @@ namespace goliath::commands {
          * @brief Add a goliath::commands::CommandItem to the map
          * @param command Pointer to @see goliath::commands::Command instance
          */
-        CommandItem& add(std::shared_ptr<Command> command);
+        CommandItem &add(std::shared_ptr<Command> command);
 
         /**
          * @brief Add a goliath::commands::CommandItem to the map.
@@ -64,15 +65,17 @@ namespace goliath::commands {
          * @return goliath::commands::CommandItem with
          */
         template<typename CommandType, typename ...Targs>
-        CommandItem& add(size_t commandId, Targs... args);
+        CommandItem &add(size_t commandId, Targs... args);
 
         /**
          * @brief Get goliath::commands::CommandItem at id
          * @param id ID
          * @return @see goliath::commands::CommandItem
          */
-        CommandItem& operator[](size_t id);
-        const CommandItem& operator[](size_t id) const;
+        CommandItem &operator[](size_t id);
+
+        const CommandItem &operator[](size_t id) const;
+
         /**
          * @brief Check if a goliath::commands::Command exists
          * @param id ID to check
@@ -85,17 +88,19 @@ namespace goliath::commands {
          * @return std::map iterator
          */
         std::map<size_t, CommandItem>::iterator begin();
+
         /**
          * @brief End iterator
          * @return std::map iterator
          */
         std::map<size_t, CommandItem>::iterator end();
+
     private:
         std::map<size_t, CommandItem> map;
     };
 
     template<typename CommandType, typename ...Targs>
-    CommandItem& CommandMap::add(size_t commandId, Targs... args) {
+    CommandItem &CommandMap::add(size_t commandId, Targs... args) {
         auto command = std::make_shared<CommandType>(commandId, args...);
 
         return add(command);
