@@ -18,6 +18,7 @@ CommandItem &CommandMap::add(std::shared_ptr<Command> command) {
     BOOST_LOG_TRIVIAL(debug) << "Added an instance of "
                              << std::string(boost::core::demangled_name(BOOST_CORE_TYPEID(*command))) << " with id "
                              << std::to_string(command->getId());
+
     return (map[command->getId()] = {command, CommandStatus::STALE});
 }
 

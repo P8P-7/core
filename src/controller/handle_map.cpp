@@ -22,11 +22,12 @@ HandleMap::~HandleMap() {
 HandleMap HandleMap::getHandles(const std::vector<size_t> &handles) const {
     HandleMap selection{};
 
-    for (auto kvp : map) {
-        auto result = std::find(handles.begin(), handles.end(), kvp.first);
-        if (result != handles.end()) {
-            selection.add(kvp.second);
+    for (auto &key : handles) {
+        auto result = map.find(key);
+        if (result == map.end()) {
+            throw std::runtime_error("Missing handle " + std::to_string(key));
         }
+        selection.add<handles::Handle>(result->second);
     }
 
     return selection;
