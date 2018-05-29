@@ -3,7 +3,7 @@
 #include <goliath/vision.h>
 
 #include "../handles.h"
-#include "command.h"
+#include "basic_command.h"
 
 /**
  * @file follow_line_command.h
@@ -15,7 +15,7 @@ namespace goliath::commands {
      * @class goliath::commands::WunderhornCommand
      * @brief Command that follows a line and pauses on a coled area in the center
      */
-    class WunderhornCommand : public Command {
+    class WunderhornCommand : public BasicCommand {
     public:
         /**
          * @param id Command ID
@@ -24,7 +24,7 @@ namespace goliath::commands {
         WunderhornCommand(const size_t &id);
 
     private:
-        void execute(const handles::HandleMap &handles, const CommandMessage &message) override;
+        void execute(handles::HandleMap &handles, const CommandMessage &message) override;
         /**
          * @brief Follows a straight line until it stops
          * @param followLineDetector Detector

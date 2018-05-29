@@ -7,10 +7,10 @@ using namespace goliath::handles;
 using namespace goliath;
 
 commands::MoveTowerCommand::MoveTowerCommand(const size_t &id)
-        : Command(id, { HANDLE_CAM }) {
+        : BasicCommand(id, { HANDLE_CAM }) {
 }
 
-void commands::MoveTowerCommand::execute(const HandleMap &handles, const CommandMessage &message) {
+void commands::MoveTowerCommand::execute(HandleMap &handles, const CommandMessage &message) {
     BOOST_LOG_TRIVIAL(info) << "Execution of move tower command has started";
     std::this_thread::sleep_for(std::chrono::milliseconds(2000));
     if (isInterrupted()) {

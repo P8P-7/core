@@ -10,10 +10,10 @@
  * @author Group 7 - Informatica
  */
 
- /**
-  * @namespace goliath::commands
-  * @brief Contains all command and command utilities
-  */
+/**
+ * @namespace goliath::commands
+ * @brief Contains all command and command utilities
+ */
 
 namespace goliath::commands {
 
@@ -35,12 +35,13 @@ namespace goliath::commands {
          * @param handles Handle map to be passed to implementation to be unlocked dynamically
          * @param message Arguments to be passed
          */
-        void run(const handles::HandleMap &handles, const CommandMessage &message);
+        virtual void run(handles::HandleMap &handles, const CommandMessage &message) = 0;
 
         /**
          * @brief Interrupt a command by setting the interrupted property
          */
         void interrupt();
+
         /**
          * @brief Method to check wether a command is already interrupted
          * @return The value of interrupted
@@ -51,15 +52,13 @@ namespace goliath::commands {
          * @brief Handle getter
          * @return The handles this specific command requires
          */
-        const std::vector<size_t>& getRequiredHandles() const;
+        const std::vector<size_t> &getRequiredHandles() const;
 
     protected:
         /**
-         * @brief The actual execute method implemented by underlying commands
-         * @param handles Handle map to be passed to implementation to be unlocked dynamically
-         * @param message Arguments to be passed to implementers
+         * @brief Represents whether a command is currently running
          */
-        virtual void execute(const handles::HandleMap &handles, const CommandMessage &message) = 0;
+        bool running = false;
 
     private:
         const size_t id;
@@ -68,10 +67,7 @@ namespace goliath::commands {
          * @brief Represents whether a command is interrupted or not
          */
         bool interrupted = false;
-        /**
-         * @brief Represents whether a command is currently running
-         */
-        bool running = false;
+
         /**
          * @brief Handle this command requires
          */

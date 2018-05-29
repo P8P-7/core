@@ -10,11 +10,12 @@ set(SOURCES
         commands/line_dance_command.cpp
         commands/obstacle_course_command.cpp
         commands/transport_rebuild_command.cpp
+        commands/queue_command.cpp
+        commands/basic_command.cpp
         command_map.cpp
         command_executor.cpp
         handles.h
-        handle_map.cpp
-        )
+        handle_map.cpp)
 
 add_library(${PROJECT_NAME} ${SOURCES})
 include_directories(${Boost_INCLUDE_DIRS})

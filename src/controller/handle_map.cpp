@@ -43,7 +43,9 @@ const std::shared_ptr<Handle> &HandleMap::operator[](const size_t &index) const 
 
 void HandleMap::lockAll(const size_t &commandId) {
     for (auto handle : map) {
-        handle.second->lock(commandId);
+        if (!handle.second->isLocked(commandId)) {
+            handle.second->lock(commandId);
+        }
     }
 }
 
@@ -62,3 +64,5 @@ std::map<size_t, std::shared_ptr<Handle>>::iterator HandleMap::begin() {
 std::map<size_t, std::shared_ptr<Handle>>::iterator HandleMap::end() {
     return map.end();
 }
+
+HandleMap::HandleMap(const HandleMap &other) : map(other.map) { }

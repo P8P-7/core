@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../handles.h"
-#include "command.h"
+#include "basic_command.h"
 
 /**
  * @file dance_command.h
@@ -9,11 +9,11 @@
  */
 
 namespace goliath::commands {
-    class DanceCommand : public Command {
+    class DanceCommand : public BasicCommand {
     public:
         DanceCommand(const size_t &id);
 
     private:
-        void execute(const handles::HandleMap &handles, const CommandMessage &message) override;
+        void execute(handles::HandleMap &handles, const CommandMessage &message) override;
     };
 }

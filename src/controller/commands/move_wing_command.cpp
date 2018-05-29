@@ -6,11 +6,11 @@ using namespace goliath;
 using namespace goliath::handles;
 
 commands::MoveWingCommand::MoveWingCommand(const size_t &id)
-        : Command(id, {HANDLE_LEFT_FRONT_WING_SERVO, HANDLE_LEFT_BACK_WING_SERVO,
+        : BasicCommand(id, {HANDLE_LEFT_FRONT_WING_SERVO, HANDLE_LEFT_BACK_WING_SERVO,
                        HANDLE_RIGHT_FRONT_WING_SERVO, HANDLE_RIGHT_BACK_WING_SERVO}) {
 }
 
-void commands::MoveWingCommand::execute(const HandleMap &handles, const CommandMessage &message) {
+void commands::MoveWingCommand::execute(HandleMap &handles, const CommandMessage &message) {
     BOOST_LOG_TRIVIAL(info) << "Execution of move wing command has started";
     ::MoveWingCommand wingCommand = message.movewingcommand();
 
