@@ -76,6 +76,12 @@ BOOST_AUTO_TEST_SUITE(BOOST_TEST_MODULE)
         emotionsConfig->set_host("localhost");
         emotionsConfig->set_port(5558);
 
+        auto *commandExecutorConfig = new CommandExecutorConfig;
+        commandExecutorConfig->set_number_of_executors(4);
+
+        auto *watcherConfig = new WatcherConfig;
+        watcherConfig->set_polling_rate(250);
+
         configRepository.set_allocated_zmq(zmqConfig);
         configRepository.set_allocated_serial(serialConfig);
         configRepository.set_allocated_gpio(gpioConfig);
@@ -84,6 +90,8 @@ BOOST_AUTO_TEST_SUITE(BOOST_TEST_MODULE)
         configRepository.set_allocated_i2c(i2cConfig);
         configRepository.set_allocated_motor_controller(motorControllerConfig);
         configRepository.set_allocated_emotions(emotionsConfig);
+        configRepository.set_allocated_command_executor(commandExecutorConfig);
+        configRepository.set_allocated_watcher(watcherConfig);
 
         google::protobuf::util::MessageToJsonString(configRepository, &jsonString, options);
 

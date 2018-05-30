@@ -4,6 +4,7 @@ add_subdirectory(include/goliath)
 add_subdirectory(src)
 
 add_library(${PROJECT_NAME} ${SOURCES} ${INCLUDES})
+
 include_directories(${Boost_INCLUDE_DIRS})
 
 add_definitions(-DBOOST_LOG_DYN_LINK)
