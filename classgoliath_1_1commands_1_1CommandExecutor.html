@@ -87,9 +87,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a39ca77c30431a9d49dcd8604b2837f7d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1commands_1_1CommandExecutor.html#a39ca77c30431a9d49dcd8604b2837f7d">run</a> (size_t commandId, const CommandMessage &amp;message)</td></tr>
 <tr class="memdesc:a39ca77c30431a9d49dcd8604b2837f7d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a command is already running, if so drop it else execute it's instance by running.  <a href="#a39ca77c30431a9d49dcd8604b2837f7d">More...</a><br /></td></tr>
 <tr class="separator:a39ca77c30431a9d49dcd8604b2837f7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab619dc84804050ec29911d18057d9596"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1commands_1_1CommandExecutor.html#ab619dc84804050ec29911d18057d9596">canStart</a> (const <a class="el" href="classgoliath_1_1commands_1_1Command.html">Command</a> &amp;command) const</td></tr>
-<tr class="memdesc:ab619dc84804050ec29911d18057d9596"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a command can start by checking all the handles it occupies.  <a href="#ab619dc84804050ec29911d18057d9596">More...</a><br /></td></tr>
-<tr class="separator:ab619dc84804050ec29911d18057d9596"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Takes in a command id, and executes is. Also checks handles and interrupts commands. </p>
@@ -136,33 +133,6 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="ab619dc84804050ec29911d18057d9596"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab619dc84804050ec29911d18057d9596">&#9670;&nbsp;</a></span>canStart()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool CommandExecutor::canStart </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="classgoliath_1_1commands_1_1Command.html">Command</a> &amp;&#160;</td>
-          <td class="paramname"><em>command</em></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Checks if a command can start by checking all the handles it occupies. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">command</td><td><a class="el" href="classgoliath_1_1commands_1_1Command.html" title="Command base class. ">Command</a> to check the occupying handles of </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Whether or not all handles are free or not </dd></dl>
-
-</div>
-</div>
 <a id="a39ca77c30431a9d49dcd8604b2837f7d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a39ca77c30431a9d49dcd8604b2837f7d">&#9670;&nbsp;</a></span>run()</h2>
 

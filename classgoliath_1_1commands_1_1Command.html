@@ -70,6 +70,7 @@ $(function() {
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="classgoliath_1_1commands_1_1Command-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">goliath::commands::Command Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
@@ -86,14 +87,16 @@ Inheritance diagram for goliath::commands::Command:</div>
  <div class="center">
   <img src="classgoliath_1_1commands_1_1Command.png" usemap="#goliath::commands::Command_map" alt=""/>
   <map id="goliath::commands::Command_map" name="goliath::commands::Command_map">
-<area href="classgoliath_1_1commands_1_1DanceCommand.html" alt="goliath::commands::DanceCommand" shape="rect" coords="281,56,552,80"/>
-<area href="classgoliath_1_1commands_1_1LineDanceCommand.html" alt="goliath::commands::LineDanceCommand" shape="rect" coords="281,112,552,136"/>
-<area href="classgoliath_1_1commands_1_1MoveCommand.html" alt="goliath::commands::MoveCommand" shape="rect" coords="281,168,552,192"/>
+<area href="classgoliath_1_1commands_1_1BasicCommand.html" alt="goliath::commands::BasicCommand" shape="rect" coords="0,56,271,80"/>
+<area href="classgoliath_1_1commands_1_1QueueCommand.html" alt="goliath::commands::QueueCommand" shape="rect" coords="562,56,833,80"/>
+<area href="classgoliath_1_1commands_1_1DanceCommand.html" alt="goliath::commands::DanceCommand" shape="rect" coords="281,112,552,136"/>
+<area href="classgoliath_1_1commands_1_1LineDanceCommand.html" alt="goliath::commands::LineDanceCommand" shape="rect" coords="281,168,552,192"/>
 <area href="classgoliath_1_1commands_1_1MoveTowerCommand.html" alt="goliath::commands::MoveTowerCommand" shape="rect" coords="281,224,552,248"/>
 <area href="classgoliath_1_1commands_1_1MoveWingCommand.html" alt="goliath::commands::MoveWingCommand" shape="rect" coords="281,280,552,304"/>
 <area href="classgoliath_1_1commands_1_1ObstacleCourseCommand.html" alt="goliath::commands::ObstacleCourseCommand" shape="rect" coords="281,336,552,360"/>
 <area href="classgoliath_1_1commands_1_1TransportRebuildCommand.html" alt="goliath::commands::TransportRebuildCommand" shape="rect" coords="281,392,552,416"/>
 <area href="classgoliath_1_1commands_1_1WunderhornCommand.html" title="Command that follows a line and pauses on a coled area in the center. " alt="goliath::commands::WunderhornCommand" shape="rect" coords="281,448,552,472"/>
+<area href="classgoliath_1_1commands_1_1MoveCommand.html" alt="goliath::commands::MoveCommand" shape="rect" coords="562,112,833,136"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -104,9 +107,9 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aedcb0c5f613062f2b30132baad887e21"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acd1a6a6e17f1d51f962126168f80aa32"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1commands_1_1Command.html#acd1a6a6e17f1d51f962126168f80aa32">getId</a> () const</td></tr>
 <tr class="separator:acd1a6a6e17f1d51f962126168f80aa32"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8eb185c3cd08fadefa4f0437a10364b5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1commands_1_1Command.html#a8eb185c3cd08fadefa4f0437a10364b5">run</a> (const <a class="el" href="classgoliath_1_1handles_1_1HandleMap.html">handles::HandleMap</a> &amp;handles, const CommandMessage &amp;message)</td></tr>
-<tr class="memdesc:a8eb185c3cd08fadefa4f0437a10364b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Execute a command whilst also setting its running property.  <a href="#a8eb185c3cd08fadefa4f0437a10364b5">More...</a><br /></td></tr>
-<tr class="separator:a8eb185c3cd08fadefa4f0437a10364b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7f726e67f054d71788ca41680cd0d5a"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1commands_1_1Command.html#ad7f726e67f054d71788ca41680cd0d5a">run</a> (<a class="el" href="classgoliath_1_1handles_1_1HandleMap.html">handles::HandleMap</a> &amp;handles, const CommandMessage &amp;message)=0</td></tr>
+<tr class="memdesc:ad7f726e67f054d71788ca41680cd0d5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Execute a command whilst also setting its running property.  <a href="#ad7f726e67f054d71788ca41680cd0d5a">More...</a><br /></td></tr>
+<tr class="separator:ad7f726e67f054d71788ca41680cd0d5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0de018f805398f4af72233ec82b06b94"><td class="memItemLeft" align="right" valign="top"><a id="a0de018f805398f4af72233ec82b06b94"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1commands_1_1Command.html#a0de018f805398f4af72233ec82b06b94">interrupt</a> ()</td></tr>
 <tr class="memdesc:a0de018f805398f4af72233ec82b06b94"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interrupt a command by setting the interrupted property. <br /></td></tr>
@@ -117,18 +120,31 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memitem:ad3dff4d11b544719909998c021201349"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; size_t &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1commands_1_1Command.html#ad3dff4d11b544719909998c021201349">getRequiredHandles</a> () const</td></tr>
 <tr class="memdesc:ad3dff4d11b544719909998c021201349"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle getter.  <a href="#ad3dff4d11b544719909998c021201349">More...</a><br /></td></tr>
 <tr class="separator:ad3dff4d11b544719909998c021201349"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74ffadb13c20ccc0d6cbadf975fb6a85"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1commands_1_1Command.html#a74ffadb13c20ccc0d6cbadf975fb6a85">canStart</a> (const <a class="el" href="classgoliath_1_1handles_1_1HandleMap.html">handles::HandleMap</a> &amp;handles) const</td></tr>
+<tr class="memdesc:a74ffadb13c20ccc0d6cbadf975fb6a85"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a command can start by checking all the handles it occupies.  <a href="#a74ffadb13c20ccc0d6cbadf975fb6a85">More...</a><br /></td></tr>
+<tr class="separator:a74ffadb13c20ccc0d6cbadf975fb6a85"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01acaa0c9b5f507e6cddcf5780496d7d"><td class="memItemLeft" align="right" valign="top"><a id="a01acaa0c9b5f507e6cddcf5780496d7d"></a>
+virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>canRunParallel</b> () const</td></tr>
+<tr class="separator:a01acaa0c9b5f507e6cddcf5780496d7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:af219fed4ab7a715d4b5c43f627507d6b"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1commands_1_1Command.html#af219fed4ab7a715d4b5c43f627507d6b">execute</a> (const <a class="el" href="classgoliath_1_1handles_1_1HandleMap.html">handles::HandleMap</a> &amp;handles, const CommandMessage &amp;message)=0</td></tr>
-<tr class="memdesc:af219fed4ab7a715d4b5c43f627507d6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">The actual execute method implemented by underlying commands.  <a href="#af219fed4ab7a715d4b5c43f627507d6b">More...</a><br /></td></tr>
-<tr class="separator:af219fed4ab7a715d4b5c43f627507d6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74b5d64816f9ab25a96e60004595bb19"><td class="memItemLeft" align="right" valign="top"><a id="a74b5d64816f9ab25a96e60004595bb19"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>onInterrupt</b> ()</td></tr>
+<tr class="separator:a74b5d64816f9ab25a96e60004595bb19"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:a82b9acae7feb096c203efd219b408c94"><td class="memItemLeft" align="right" valign="top"><a id="a82b9acae7feb096c203efd219b408c94"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1commands_1_1Command.html#a82b9acae7feb096c203efd219b408c94">running</a></td></tr>
+<tr class="memdesc:a82b9acae7feb096c203efd219b408c94"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents whether a command is currently running. <br /></td></tr>
+<tr class="separator:a82b9acae7feb096c203efd219b408c94"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="classgoliath_1_1commands_1_1Command.html" title="Command base class. ">Command</a> base class. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="af219fed4ab7a715d4b5c43f627507d6b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af219fed4ab7a715d4b5c43f627507d6b">&#9670;&nbsp;</a></span>execute()</h2>
+<a id="a74ffadb13c20ccc0d6cbadf975fb6a85"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a74ffadb13c20ccc0d6cbadf975fb6a85">&#9670;&nbsp;</a></span>canStart()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -137,38 +153,28 @@ Protected Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual void goliath::commands::Command::execute </td>
+          <td class="memname">bool Command::canStart </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="classgoliath_1_1handles_1_1HandleMap.html">handles::HandleMap</a> &amp;&#160;</td>
-          <td class="paramname"><em>handles</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const CommandMessage &amp;&#160;</td>
-          <td class="paramname"><em>message</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramname"><em>handles</em></td><td>)</td>
+          <td> const</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">pure virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>The actual execute method implemented by underlying commands. </p>
+<p>Checks if a command can start by checking all the handles it occupies. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">handles</td><td>Handle map to be passed to implementation to be unlocked dynamically </td></tr>
-    <tr><td class="paramname">message</td><td>Arguments to be passed to implementers </td></tr>
+    <tr><td class="paramname">command</td><td><a class="el" href="classgoliath_1_1commands_1_1Command.html" title="Command base class. ">Command</a> to check the occupying handles of </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>Whether or not all handles are free or not </dd></dl>
 
 </div>
 </div>
@@ -230,16 +236,19 @@ Protected Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a8eb185c3cd08fadefa4f0437a10364b5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8eb185c3cd08fadefa4f0437a10364b5">&#9670;&nbsp;</a></span>run()</h2>
+<a id="ad7f726e67f054d71788ca41680cd0d5a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7f726e67f054d71788ca41680cd0d5a">&#9670;&nbsp;</a></span>run()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void Command::run </td>
+          <td class="memname">virtual void goliath::commands::Command::run </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="classgoliath_1_1handles_1_1HandleMap.html">handles::HandleMap</a> &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="classgoliath_1_1handles_1_1HandleMap.html">handles::HandleMap</a> &amp;&#160;</td>
           <td class="paramname"><em>handles</em>, </td>
         </tr>
         <tr>
@@ -254,6 +263,11 @@ Protected Member Functions</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Execute a command whilst also setting its running property. </p>
@@ -264,6 +278,8 @@ Protected Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+<p>Implemented in <a class="el" href="classgoliath_1_1commands_1_1QueueCommand.html#a4dfe9a74a65329ee138130eec08a3276">goliath::commands::QueueCommand</a>, and <a class="el" href="classgoliath_1_1commands_1_1BasicCommand.html#ac8a538c66e5fd4c19ec6845a9ff2ad46">goliath::commands::BasicCommand</a>.</p>
 
 </div>
 </div>

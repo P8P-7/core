@@ -1,18 +1,12 @@
 var searchData=
 [
-  ['structure',['Structure',['../md_pages_structure.html',1,'']]],
-  ['sendcommand',['sendCommand',['../classgoliath_1_1controller_1_1LedStripController.html#a0b4237701e84d7a6ec5306aa7f78fd18',1,'goliath::controller::LedStripController::sendCommand()'],['../classgoliath_1_1motor__controller_1_1MotorController.html#aa6a728c6ba23204e42b552bcf42b99bc',1,'goliath::motor_controller::MotorController::sendCommand()']]],
-  ['servo_5fhandle',['servo_handle',['../classgoliath_1_1handles_1_1servo__handle.html',1,'goliath::handles']]],
-  ['servo_5fhandle_2eh',['servo_handle.h',['../servo__handle_8h.html',1,'']]],
-  ['servohandle',['ServoHandle',['../classgoliath_1_1handles_1_1ServoHandle.html',1,'goliath::handles::ServoHandle'],['../classgoliath_1_1handles_1_1ServoHandle.html#ae12f4ec8e6ab4e38625e174f4294d886',1,'goliath::handles::ServoHandle::ServoHandle()']]],
-  ['shouldsynchronize',['shouldSynchronize',['../classgoliath_1_1repositories_1_1Watcher.html#a60695e6b04fbae2d48480f3239e24175',1,'goliath::repositories::Watcher']]],
-  ['speccolmessage',['SpecColMessage',['../structgoliath_1_1controller_1_1SpecColMessage.html',1,'goliath::controller']]],
-  ['specificcolour',['SpecificColour',['../structgoliath_1_1controller_1_1SpecificColour.html',1,'goliath::controller']]],
-  ['specificrainbow',['SpecificRainbow',['../structgoliath_1_1controller_1_1SpecificRainbow.html',1,'goliath::controller']]],
-  ['specrainmessage',['SpecRainMessage',['../structgoliath_1_1controller_1_1SpecRainMessage.html',1,'goliath::controller']]],
-  ['stale',['STALE',['../namespacegoliath_1_1commands.html#ad04221b592714b06a85a6415a475981ba4d855a061b3066dc14a3b12ed26b5456',1,'goliath::commands']]],
-  ['start',['start',['../classgoliath_1_1repositories_1_1Watcher.html#a5474ded0da07eb99166c6376bdd73b85',1,'goliath::repositories::Watcher::start()'],['../classgoliath_1_1messaging_1_1ZmqSubscriber.html#a539e2c1be4f787bc31c16043a008dd26',1,'goliath::messaging::ZmqSubscriber::start()']]],
-  ['started',['STARTED',['../namespacegoliath_1_1commands.html#ad04221b592714b06a85a6415a475981ba17130e6c806885e23770df1519b18eb7',1,'goliath::commands']]],
-  ['starting',['STARTING',['../namespacegoliath_1_1commands.html#ad04221b592714b06a85a6415a475981ba034312d8adc8099c1c6f53aaff745e26',1,'goliath::commands']]],
-  ['stop',['stop',['../classgoliath_1_1repositories_1_1Watcher.html#afd174ac54c2b26148217d3e2593d3cfc',1,'goliath::repositories::Watcher::stop()'],['../classgoliath_1_1messaging_1_1ZmqSubscriber.html#ae3fd22868c3094fde0981ae266314194',1,'goliath::messaging::ZmqSubscriber::stop()']]]
+  ['read',['read',['../classgoliath_1_1i2c_1_1I2cSlave.html#a04de50e5742f181db500c0f190699bec',1,'goliath::i2c::I2cSlave']]],
+  ['record',['record',['../classgoliath_1_1openal_1_1Microphone.html#a1caa46002738316b8ca98e020fc0619a',1,'goliath::openal::Microphone']]],
+  ['repository',['Repository',['../classgoliath_1_1repositories_1_1Repository.html',1,'goliath::repositories']]],
+  ['repository_2eh',['repository.h',['../repository_8h.html',1,'']]],
+  ['right',['RIGHT',['../namespacegoliath_1_1vision.html#ab57b7fa0d8bdbecbaa361caf5050b9b5a294b5e67eb57ded229b3a77efb295232',1,'goliath::vision']]],
+  ['roi_5fprocessor_2eh',['roi_processor.h',['../roi__processor_8h.html',1,'']]],
+  ['roiprocessor',['RoiProcessor',['../classgoliath_1_1vision_1_1RoiProcessor.html',1,'goliath::vision::RoiProcessor'],['../classgoliath_1_1vision_1_1RoiProcessor.html#ace4336cddf11631c508e14c85d49bb43',1,'goliath::vision::RoiProcessor::RoiProcessor()']]],
+  ['run',['run',['../classgoliath_1_1commands_1_1CommandExecutor.html#a39ca77c30431a9d49dcd8604b2837f7d',1,'goliath::commands::CommandExecutor::run()'],['../classgoliath_1_1commands_1_1BasicCommand.html#ac8a538c66e5fd4c19ec6845a9ff2ad46',1,'goliath::commands::BasicCommand::run()'],['../classgoliath_1_1commands_1_1Command.html#ad7f726e67f054d71788ca41680cd0d5a',1,'goliath::commands::Command::run()'],['../classgoliath_1_1commands_1_1QueueCommand.html#a4dfe9a74a65329ee138130eec08a3276',1,'goliath::commands::QueueCommand::run()']]],
+  ['running',['running',['../classgoliath_1_1commands_1_1Command.html#a82b9acae7feb096c203efd219b408c94',1,'goliath::commands::Command']]]
 ];

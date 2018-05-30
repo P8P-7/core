@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['visionerror',['VisionError',['../classgoliath_1_1exceptions_1_1VisionError.html',1,'goliath::exceptions']]],
-  ['visionutilities',['VisionUtilities',['../classgoliath_1_1util_1_1VisionUtilities.html',1,'goliath::util']]]
+  ['transportrebuildcommand',['TransportRebuildCommand',['../classgoliath_1_1commands_1_1TransportRebuildCommand.html',1,'goliath::commands']]]
 ];
