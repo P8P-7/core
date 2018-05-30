@@ -8,6 +8,7 @@ Command::Command(const size_t &id, const std::vector<size_t> &requiredHandles)
 
 void Command::interrupt() {
     interrupted = true;
+    onInterrupt();
 }
 
 bool Command::isInterrupted() const {
