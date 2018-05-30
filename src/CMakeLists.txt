@@ -1,7 +1,7 @@
 add_subdirectory(controller)
 add_subdirectory(modules)
 
-add_executable(${CMAKE_PROJECT_NAME} main.cpp)
+add_executable(${CMAKE_PROJECT_NAME} core.cpp)
 target_link_libraries(${CMAKE_PROJECT_NAME}
         PUBLIC
             goliath-controller
