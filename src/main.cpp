@@ -54,7 +54,7 @@ int main(int argc, char *argv[]) {
     emotions::EmotionPublisher emotionPublisher(context, config->emotions().host(), config->emotions().port());
 
     BOOST_LOG_TRIVIAL(info) << "Setting up watcher";
-    repositories::Watcher watcher(500, publisher);
+    repositories::Watcher watcher(config->watcher().polling_rate(), publisher);
     auto battery_repo = std::make_shared<repositories::BatteryRepository>();
     watcher.watch(battery_repo);
 
@@ -123,7 +123,7 @@ int main(int argc, char *argv[]) {
     commands.add<commands::WunderhornCommand>(CommandMessage::kWunderhornCommand);
     commands.add<commands::MoveTowerCommand>(CommandMessage::kMoveTowerCommand);
 
-    commands::CommandExecutor runner(commands, handles);
+    commands::CommandExecutor runner(config->command_executor().number_of_executors(), commands, handles);
 
     subscriber.bind(MessageCarrier::MessageCase::kCommandMessage, [&runner](const MessageCarrier &carrier) {
         CommandMessage message = carrier.commandmessage();

@@ -1,5 +1,6 @@
 #pragma once
 
+#include <boost/asio.hpp>
 #include "command_map.h"
 #include "handle_map.h"
 
@@ -21,7 +22,7 @@ namespace goliath::commands {
          * @param commands Command Map
          * @param handles Handle Map
          */
-        CommandExecutor(CommandMap& commands, HandleMap &handles);
+        CommandExecutor(size_t numberOfThreads, CommandMap& commands, HandleMap &handles);
         ~CommandExecutor();
 
         /**
@@ -31,15 +32,7 @@ namespace goliath::commands {
          * @param message Arguments gathered from the protobuf input
          */
         void run(size_t commandId, const CommandMessage &message);
-        /**
-         * @brief Running on it's own thread. Checks if the handles the command requires  are occupied. If so, call
-         * interrupt() on all command's currently using the handles the new command requires. After that waits for
-         * the condition variable to be triggered to then check again. If all handles are free, execute the command
-         * in the current thread. Sets status to started.
-         * @param commandId ID of the command to try to execute
-         * @param message Arguments gathered from the protobuf input
-         */
-        void tryExecute(const size_t &commandId, const CommandMessage &message);
+
         /**
          * @brief Checks if a command can start by checking all the handles it occupies
          * @param command Command to check the occupying handles of
@@ -47,11 +40,25 @@ namespace goliath::commands {
          */
         bool canStart(const Command &command) const;
     private:
-        std::vector<std::thread> threads;
+        const size_t numberOfThreads;
+        size_t numberOfActiveCommands;
 
         CommandMap& commands;
         HandleMap& handles;
 
+
+        boost::asio::thread_pool pool;
+
         std::mutex mutex;
+
+        /**
+         * Running on it's own thread. Checks if the handles the command requires  are occupied. If so, call
+         * interrupt() on all command's currently using the handles the new command requires. After that waits for
+         * the condition variable to be triggered to then check again. If all handles are free, execute the command
+         * in the current thread. Sets status to started.
+         * @param commandId ID of the command to try to execute
+         * @param message Arguments gathered from the protobuf input
+         */
+        void tryExecute(const size_t &commandId, const CommandMessage &message);
     };
 }
