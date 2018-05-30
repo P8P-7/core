@@ -1,6 +1,6 @@
 #pragma once
 
-#include "command.h"
+#include "basic_command.h"
 #include "../handles.h"
 
 /**
@@ -9,11 +9,11 @@
  */
 
 namespace goliath::commands {
-    class ObstacleCourseCommand : public Command {
+    class ObstacleCourseCommand : public BasicCommand {
     public:
         explicit ObstacleCourseCommand(const size_t &id);
 
     private:
-        void execute(const handles::HandleMap &handles, const CommandMessage &message) override;
+        void execute(handles::HandleMap &handles, const CommandMessage &message) override;
     };
 }

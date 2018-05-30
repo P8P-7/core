@@ -1,5 +1,7 @@
 set(RELATIVE_SOURCES
         commands/command.cpp
+        commands/basic_command.cpp
+        commands/queue_command.cpp
         commands/move_command.cpp
         commands/wunderhorn_command.cpp
         commands/move_tower_command.cpp

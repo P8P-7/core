@@ -10,10 +10,10 @@ using namespace goliath::handles;
 using namespace goliath;
 
 commands::DanceCommand::DanceCommand(const size_t& id)
-    : Command(id, {HANDLE_EMOTIONS}) {
+    : BasicCommand(id, {HANDLE_EMOTIONS}) {
 }
 
-void commands::DanceCommand::execute(const HandleMap& handles, const CommandMessage& message) {
+void commands::DanceCommand::execute(HandleMap& handles, const CommandMessage& message) {
     std::shared_ptr<emotions::EmotionPublisher> publisher = std::static_pointer_cast<EmotionHandle>(
         handles[HANDLE_CAM])->getPublisher();
 

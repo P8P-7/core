@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../handles.h"
-#include "command.h"
+#include "queue_command.h"
 
 /**
  * @file move_command.h
@@ -9,12 +9,12 @@
  */
 
 namespace goliath::commands {
-    class MoveCommand : public Command {
+    class MoveCommand : public QueueCommand {
     public:
         MoveCommand(const size_t &id);
 
     private:
-        void execute(const handles::HandleMap &handles, const CommandMessage &message) override;
+        void execute(handles::HandleMap &handles, const CommandMessage &message) override;
 
         const std::map<size_t, size_t> commandMotorToHandleMap = {{
                                                                     {::MotorCommand::Motor::MotorCommand_Motor_LEFT_FRONT, HANDLE_LEFT_FRONT_MOTOR},

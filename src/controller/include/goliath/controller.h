@@ -6,6 +6,8 @@
  */
 
 #include "controller/commands/command.h"
+#include "controller/commands/basic_command.h"
+#include "controller/commands/queue_command.h"
 #include "controller/commands/wunderhorn_command.h"
 #include "controller/commands/move_command.h"
 #include "controller/commands/move_tower_command.h"

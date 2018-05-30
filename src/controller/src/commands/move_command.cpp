@@ -9,10 +9,10 @@ using namespace goliath::handles;
 using namespace goliath;
 
 commands::MoveCommand::MoveCommand(const size_t &id)
-        : Command(id, {HANDLE_I2C_BUS, HANDLE_MOTOR_CONTROLLER, HANDLE_LEFT_FRONT_MOTOR}) {
+        : QueueCommand(id, {HANDLE_I2C_BUS, HANDLE_MOTOR_CONTROLLER, HANDLE_LEFT_FRONT_MOTOR}) {
 }
 
-void commands::MoveCommand::execute(const HandleMap &handles, const CommandMessage &message) {
+void commands::MoveCommand::execute(HandleMap &handles, const CommandMessage &message) {
     i2c::I2cSlave controllerSlave(*handles.get<handles::I2cBusHandle>(HANDLE_I2C_BUS),
                                   *handles.get<handles::I2cSlaveHandle>(HANDLE_MOTOR_CONTROLLER));
     motor_controller::MotorController motorController(controllerSlave);
@@ -37,8 +37,4 @@ void commands::MoveCommand::execute(const HandleMap &handles, const CommandMessa
         commands.emplace_back(motorCommand);
     }
     motorController.sendCommands(commands.begin(), commands.end());
-
-    for (auto const &lockedHandle: getRequiredHandles()) {
-        handles[lockedHandle]->unlock();
-    }
 }

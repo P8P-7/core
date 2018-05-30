@@ -9,10 +9,10 @@ using namespace goliath::handles;
 using namespace goliath;
 
 commands::WunderhornCommand::WunderhornCommand(const size_t& id)
-    : Command(id, {HANDLE_CAM}) {
+    : BasicCommand(id, {HANDLE_CAM}) {
 }
 
-void commands::WunderhornCommand::execute(const HandleMap& handles, const CommandMessage& message) {
+void commands::WunderhornCommand::execute(HandleMap& handles, const CommandMessage& message) {
     vision::Webcam webcam = std::static_pointer_cast<WebcamHandle>(handles[HANDLE_CAM])->getDevice();
     vision::FollowLineDetector followLineDetector(webcam.getFrame(), 4, 80, 20, 20, 10, 10000);
 

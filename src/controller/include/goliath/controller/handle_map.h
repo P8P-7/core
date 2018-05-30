@@ -19,6 +19,7 @@ namespace goliath::handles {
          * @param map Starting map
          */
         explicit HandleMap(const std::map<size_t, std::shared_ptr<Handle>> &map);
+        HandleMap(const HandleMap &other);
         ~HandleMap();
 
         /**

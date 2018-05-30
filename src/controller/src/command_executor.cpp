@@ -1,4 +1,5 @@
 #include <goliath/controller/command_executor.h>
+#include <goliath/controller/commands/queue_command.h>
 
 #include <boost/log/trivial.hpp>
 #include <cmath>
@@ -21,46 +22,64 @@ void CommandExecutor::run(const size_t commandId, const CommandMessage &message)
 
     auto &item = commands[commandId];
     if (item.status != CommandStatus::STALE) {
-        BOOST_LOG_TRIVIAL(warning) << "Command " << commandId << " was dropped because it was already running";
-        return;
+        if (!item.instance->canRunParallel()) {
+            BOOST_LOG_TRIVIAL(warning) << "Command " << commandId << " was dropped because it was already running: "
+                                       << (item.status == CommandStatus::STARTING ? "STARTING" : "STARTED");
+            return;
+        }
+
+        BOOST_LOG_TRIVIAL(warning) << "Command " << commandId << " was already running, running parallel.";
     }
     item.status = CommandStatus::STARTING;
 
-    numberOfActiveCommands++;
-    if (numberOfActiveCommands >= std::ceil(numberOfThreads * 0.75)) {
+    if (numberOfActiveCommands + 1 >= std::ceil(numberOfThreads * 0.75)) {
         BOOST_LOG_TRIVIAL(warning) << "Number of active commands is almost exceeding the number of command threads!"
                                    << " Execution of commands may be postponed.";
     }
-    boost::asio::post(pool, std::bind(&CommandExecutor::tryExecute, this, commandId, message));
+
+    auto requiredHandles = handles.getHandles(item.instance->getRequiredHandles());
+    auto starter = item.instance->canStart(requiredHandles) ? &CommandExecutor::start
+                                                            : &CommandExecutor::delayedStart;
+    boost::asio::post(pool, std::bind(starter, this, commandId, message));
 }
 
-void CommandExecutor::tryExecute(const size_t &commandId, const CommandMessage &message) {
+void CommandExecutor::start(const size_t &commandId, const CommandMessage &message) {
     std::unique_lock<std::mutex> lock(mutex);
-
+    numberOfActiveCommands++;
     CommandItem &item = commands[commandId];
+    item.status = CommandStatus::STARTED;
+
     auto requiredHandles = handles.getHandles(item.instance->getRequiredHandles());
-    if (canStart(*(item.instance))) {
-        requiredHandles.lockAll(commandId);
-        item.status = CommandStatus::STARTED;
-        lock.unlock();
-
-        BOOST_LOG_TRIVIAL(info) << "Execution of \"Command " << commandId << "\" has started";
-        try {
-            item.instance->run(requiredHandles, message);
-        } catch (std::exception &ex) {
-            BOOST_LOG_TRIVIAL(fatal) << "Error executing command \"" << commandId << "\" what(): " << ex.what();
-        }
-        BOOST_LOG_TRIVIAL(info) << "Execution of \"Command " << commandId << "\" has finished";
-
-        lock.lock();
-        requiredHandles.unlockAll();
-        item.status = CommandStatus::STALE;
-        numberOfActiveCommands--;
-        return;
-    }
+    requiredHandles.lockAll(commandId);
 
     lock.unlock();
+
+    BOOST_LOG_TRIVIAL(info) << "Execution of \"Command " << commandId << "\" has started";
+    try {
+        item.instance->run(requiredHandles, message);
+    } catch (std::exception &ex) {
+        BOOST_LOG_TRIVIAL(error) << "Error executing command \"" << commandId << "\" what(): " << ex.what();
+    }
+    BOOST_LOG_TRIVIAL(info) << "Execution of \"Command " << commandId << "\" has finished";
+
+    lock.lock();
+    item.status = CommandStatus::STALE;
+    numberOfActiveCommands--;
+}
+
+void CommandExecutor::delayedStart(const size_t &commandId, const CommandMessage &message) {
+    std::unique_lock<std::mutex> lock(mutex);
+    numberOfActiveCommands++;
+    CommandItem &item = commands[commandId];
+
+    lock.unlock();
+
+    auto requiredHandles = handles.getHandles(item.instance->getRequiredHandles());
     for (size_t handleId : item.instance->getRequiredHandles()) {
+        if (handles[handleId]->isLocked(commandId)) {
+            continue;
+        }
+
         size_t lockerId = handles[handleId]->getOwnerId();
         commands[lockerId].instance->interrupt();
         requiredHandles[handleId]->waitAndLock(commandId);
@@ -78,17 +97,6 @@ void CommandExecutor::tryExecute(const size_t &commandId, const CommandMessage &
     BOOST_LOG_TRIVIAL(info) << "* Execution of \"Command " << commandId << "\" has finished";
 
     lock.lock();
-    requiredHandles.unlockAll();
     item.status = CommandStatus::STALE;
     numberOfActiveCommands--;
-}
-
-bool CommandExecutor::canStart(const Command &command) const {
-    for (const size_t handleId : command.getRequiredHandles()) {
-        if (handles[handleId]->isLocked()) {
-            return false;
-        }
-    }
-
-    return true;
 }
