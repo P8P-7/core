@@ -14,6 +14,9 @@ namespace goliath::handles {
      */
     class HandleMap {
     public:
+        using iterator = std::map<size_t, std::shared_ptr<Handle>>::iterator;
+        using const_iterator = std::map<size_t, std::shared_ptr<Handle>>::const_iterator;
+
         HandleMap();
         /**
          * @param map Starting map
@@ -55,12 +58,23 @@ namespace goliath::handles {
          * @brief Begin iterator
          * @return Map iterator
          */
-        std::map<size_t, std::shared_ptr<Handle>>::iterator begin();
+        iterator begin();
         /**
          * @brief End iterator
          * @return Map iterator
          */
-        std::map<size_t, std::shared_ptr<Handle>>::iterator end();
+        iterator end();
+
+        /**
+         * @brief Begin iterator
+         * @return Constant map iterator
+         */
+        const_iterator begin() const;
+        /**
+         * @brief End constant iterator
+         * @return Constant map iterator
+         */
+        const_iterator end() const;
 
         template<typename HandleType>
         std::shared_ptr<HandleType> get(const size_t &index) const;

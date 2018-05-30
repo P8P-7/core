@@ -34,10 +34,18 @@ bool CommandMap::commandExists(const size_t id) const {
     return map.find(id) != map.end();
 }
 
-std::map<size_t, CommandItem>::iterator CommandMap::begin() {
+CommandMap::iterator CommandMap::begin() {
     return map.begin();
 }
 
-std::map<size_t, CommandItem>::iterator CommandMap::end() {
+CommandMap::iterator CommandMap::end() {
     return map.end();
+}
+
+CommandMap::const_iterator CommandMap::begin() const {
+    return map.cbegin();
+}
+
+CommandMap::const_iterator CommandMap::end() const {
+    return map.cend();
 }
