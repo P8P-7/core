@@ -26,7 +26,7 @@ using namespace goliath;
  * @fn main(int argc, char *argv[])
  * @brief Application entry point
  */
-int main(int argc, char* argv[]) {
+int main(int argc, char *argv[]) {
     util::Console console(&util::colorConsoleFormatter, argv[0], "core-text.txt");
 
     std::string configFile = util::FoundationUtilities::executableToFile(argv[0], "config/core-config.json");
@@ -39,7 +39,7 @@ int main(int argc, char* argv[]) {
     boost::asio::io_service ioService;
 
     boost::asio::signal_set signals(ioService, SIGINT, SIGTERM);
-    signals.async_wait([&ioService](const boost::system::error_code& errorCode, int signalNumber) {
+    signals.async_wait([&ioService](const boost::system::error_code &errorCode, int signalNumber) {
         BOOST_LOG_TRIVIAL(info) << "Got signal " << signalNumber << " stopping io_service.";
         ioService.stop();
     });
@@ -129,7 +129,7 @@ int main(int argc, char* argv[]) {
 
     commands::CommandExecutor runner(config->command_executor().number_of_executors(), commands, handles);
 
-    subscriber.bind(MessageCarrier::MessageCase::kCommandMessage, [&runner](const MessageCarrier& carrier) {
+    subscriber.bind(MessageCarrier::MessageCase::kCommandMessage, [&runner](const MessageCarrier &carrier) {
         CommandMessage message = carrier.commandmessage();
         runner.run(message.command_case(), message);
     });
