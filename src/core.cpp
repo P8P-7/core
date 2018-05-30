@@ -26,18 +26,20 @@ using namespace goliath;
  * @fn main(int argc, char *argv[])
  * @brief Application entry point
  */
-int main(int argc, char *argv[]) {
+int main(int argc, char* argv[]) {
     util::Console console(&util::colorConsoleFormatter, argv[0], "core-text.txt");
 
     std::string configFile = util::FoundationUtilities::executableToFile(argv[0], "config/core-config.json");
     repositories::ConfigRepository configRepository(configFile);
+
+    std::shared_ptr<repositories::EmotionRepository> emotionRepository = std::make_shared<repositories::EmotionRepository>();
 
     std::shared_ptr<::ConfigRepository> config = configRepository.getConfig();
 
     boost::asio::io_service ioService;
 
     boost::asio::signal_set signals(ioService, SIGINT, SIGTERM);
-    signals.async_wait([&ioService](const boost::system::error_code &errorCode, int signalNumber) {
+    signals.async_wait([&ioService](const boost::system::error_code& errorCode, int signalNumber) {
         BOOST_LOG_TRIVIAL(info) << "Got signal " << signalNumber << " stopping io_service.";
         ioService.stop();
     });
@@ -50,15 +52,18 @@ int main(int argc, char *argv[]) {
     BOOST_LOG_TRIVIAL(info) << "Setting up publisher";
     messaging::ZmqPublisher publisher(context, "localhost", config->zmq().publisher_port());
     BOOST_LOG_TRIVIAL(info) << "Setting up emotion publisher";
-    emotions::EmotionPublisher emotionPublisher(context, config->emotions().host(), config->emotions().port());
+    emotions::EmotionPublisher emotionPublisher(context, config->emotions().host(), config->emotions().port(),
+                                                emotionRepository);
 
     BOOST_LOG_TRIVIAL(info) << "Setting up watcher";
     repositories::Watcher watcher(config->watcher().polling_rate(), publisher);
-    auto battery_repo = std::make_shared<repositories::BatteryRepository>();
-    watcher.watch(battery_repo);
+    auto batteryRepo = std::make_shared<repositories::BatteryRepository>();
+    watcher.watch(batteryRepo);
+    watcher.watch(emotionRepository);
 
     BOOST_LOG_TRIVIAL(info) << "Setting up GPIO";
-    gpio::GPIO gpio(static_cast<gpio::GPIO::MapPin>(config->gpio().pin()), gpio::GPIO::Direction::Out, gpio::GPIO::State::Low);
+    gpio::GPIO gpio(static_cast<gpio::GPIO::MapPin>(config->gpio().pin()), gpio::GPIO::Direction::Out,
+                    gpio::GPIO::State::Low);
     std::function<void(bool)> callback = [&gpio](bool isTx) {
         if (isTx) {
             gpio.set(gpio::GPIO::State::High);
@@ -90,7 +95,7 @@ int main(int argc, char *argv[]) {
 
         std::map<std::string, int> servos;
 
-        for(Wing wing : config->servos().wings()) {
+        for (Wing wing : config->servos().wings()) {
             std::shared_ptr<Dynamixel> dynamixel = std::make_shared<Dynamixel>(wing.id(), port);
 
             size_t handle;
@@ -124,7 +129,7 @@ int main(int argc, char *argv[]) {
 
     commands::CommandExecutor runner(config->command_executor().number_of_executors(), commands, handles);
 
-    subscriber.bind(MessageCarrier::MessageCase::kCommandMessage, [&runner](const MessageCarrier &carrier) {
+    subscriber.bind(MessageCarrier::MessageCase::kCommandMessage, [&runner](const MessageCarrier& carrier) {
         CommandMessage message = carrier.commandmessage();
         runner.run(message.command_case(), message);
     });

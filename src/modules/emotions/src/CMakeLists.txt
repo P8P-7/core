@@ -1,4 +1,5 @@
 set(RELATIVE_SOURCES
+        repositories/emotion_repository.cpp
         emotion_handle.cpp
         emotion_publisher.cpp
         )
