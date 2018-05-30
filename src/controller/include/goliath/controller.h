@@ -13,6 +13,7 @@
 #include "controller/commands/move_tower_command.h"
 #include "controller/commands/move_wing_command.h"
 #include "controller/commands/dance_command.h"
+#include "controller/commands/invalidate_all_command.h"
 #include "controller/commands/line_dance_command.h"
 #include "controller/commands/obstacle_course_command.h"
 #include "controller/commands/transport_rebuild_command.h"

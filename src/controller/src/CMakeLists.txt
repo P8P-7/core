@@ -7,6 +7,7 @@ set(RELATIVE_SOURCES
         commands/move_tower_command.cpp
         commands/move_wing_command.cpp
         commands/dance_command.cpp
+        commands/invalidate_all_command.cpp
         commands/line_dance_command.cpp
         commands/obstacle_course_command.cpp
         commands/transport_rebuild_command.cpp
