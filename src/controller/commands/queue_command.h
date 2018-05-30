@@ -11,19 +11,22 @@ namespace goliath::commands {
 
         void run(handles::HandleMap &handles, const CommandMessage &message) override;
 
+        bool canRunParallel() const override;
+
     protected:
         virtual void execute(handles::HandleMap &handles, const CommandMessage &message) = 0;
 
+        void onInterrupt() override;
     private:
         void work();
 
         handles::HandleMap handles;
         std::queue<CommandMessage> queue;
 
-        bool isWorking;
-        std::thread worker;
-
         std::mutex mutex;
         std::condition_variable cv;
+
+        bool isWorking;
+        std::thread worker;
     };
 }

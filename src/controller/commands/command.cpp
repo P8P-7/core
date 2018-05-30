@@ -4,8 +4,7 @@
 using namespace goliath::commands;
 
 Command::Command(const size_t &id, const std::vector<size_t> &requiredHandles)
-        : id(id), requiredHandles(requiredHandles) {
-}
+        : running(false), id(id), interrupted(false), requiredHandles(requiredHandles) { }
 
 void Command::interrupt() {
     interrupted = true;
@@ -21,4 +20,20 @@ const std::vector<size_t>& Command::getRequiredHandles() const {
 
 size_t Command::getId() const {
     return id;
+}
+
+void Command::onInterrupt() { }
+
+bool Command::canStart(const goliath::handles::HandleMap &handles) const {
+    for (const size_t handleId : getRequiredHandles()) {
+        if (handles[handleId]->isLocked() && handles[handleId]->getOwnerId() != getId()) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+bool Command::canRunParallel() const {
+    return false;
 }

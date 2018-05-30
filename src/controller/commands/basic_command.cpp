@@ -10,5 +10,6 @@ void BasicCommand::run(goliath::handles::HandleMap &handles, const CommandMessag
     BOOST_LOG_TRIVIAL(debug) << "Command " << std::to_string(getId()) << " is being executed";
     execute(handles, message);
     BOOST_LOG_TRIVIAL(debug) << "Command " << std::to_string(getId()) << " has finished";
+    handles.unlockAll();
     running = false;
 }

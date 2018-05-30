@@ -22,7 +22,8 @@ namespace goliath::commands {
          * @param commands Command Map
          * @param handles Handle Map
          */
-        CommandExecutor(size_t numberOfThreads, CommandMap& commands, HandleMap &handles);
+        CommandExecutor(size_t numberOfThreads, CommandMap &commands, HandleMap &handles);
+
         ~CommandExecutor();
 
         /**
@@ -33,18 +34,12 @@ namespace goliath::commands {
          */
         void run(size_t commandId, const CommandMessage &message);
 
-        /**
-         * @brief Checks if a command can start by checking all the handles it occupies
-         * @param command Command to check the occupying handles of
-         * @return Whether or not all handles are free or not
-         */
-        bool canStart(const Command &command) const;
     private:
         const size_t numberOfThreads;
         size_t numberOfActiveCommands;
 
-        CommandMap& commands;
-        HandleMap& handles;
+        CommandMap &commands;
+        HandleMap &handles;
 
 
         boost::asio::thread_pool pool;
@@ -59,6 +54,8 @@ namespace goliath::commands {
          * @param commandId ID of the command to try to execute
          * @param message Arguments gathered from the protobuf input
          */
-        void tryExecute(const size_t &commandId, const CommandMessage &message);
+        void start(const size_t &commandId, const CommandMessage &message);
+
+        void delayedStart(const size_t &commandId, const CommandMessage &message);
     };
 }

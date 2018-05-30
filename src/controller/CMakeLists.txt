@@ -15,7 +15,8 @@ set(SOURCES
         command_map.cpp
         command_executor.cpp
         handles.h
-        handle_map.cpp)
+        handle_map.cpp
+        )
 
 add_library(${PROJECT_NAME} ${SOURCES})
 

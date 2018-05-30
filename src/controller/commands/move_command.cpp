@@ -37,8 +37,4 @@ void commands::MoveCommand::execute(HandleMap &handles, const CommandMessage &me
         commands.emplace_back(motorCommand);
     }
     motorController.sendCommands(commands.begin(), commands.end());
-
-    for (auto const &lockedHandle: getRequiredHandles()) {
-        handles[lockedHandle]->unlock();
-    }
 }

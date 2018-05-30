@@ -54,11 +54,22 @@ namespace goliath::commands {
          */
         const std::vector<size_t> &getRequiredHandles() const;
 
+        /**
+         * @brief Checks if a command can start by checking all the handles it occupies
+         * @param command Command to check the occupying handles of
+         * @return Whether or not all handles are free or not
+         */
+        virtual bool canStart(const handles::HandleMap &handles) const;
+
+        virtual bool canRunParallel() const;
+
     protected:
         /**
          * @brief Represents whether a command is currently running
          */
-        bool running = false;
+        bool running;
+
+        virtual void onInterrupt();
 
     private:
         const size_t id;
@@ -66,7 +77,7 @@ namespace goliath::commands {
         /**
          * @brief Represents whether a command is interrupted or not
          */
-        bool interrupted = false;
+        bool interrupted;
 
         /**
          * @brief Handle this command requires

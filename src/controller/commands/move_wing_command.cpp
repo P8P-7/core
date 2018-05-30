@@ -30,11 +30,6 @@ void commands::MoveWingCommand::execute(HandleMap &handles, const CommandMessage
         }
     }
 
-    // Unlock handles
-    for (auto const &lockedHandle: requiredHandles) {
-        handles[lockedHandle]->unlock();
-    }
-
     BOOST_LOG_TRIVIAL(info) << "Execution of move wing command has finished";
 }
 

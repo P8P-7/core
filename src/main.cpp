@@ -59,7 +59,8 @@ int main(int argc, char *argv[]) {
     watcher.watch(battery_repo);
 
     BOOST_LOG_TRIVIAL(info) << "Setting up GPIO";
-    gpio::GPIO gpio(static_cast<gpio::GPIO::MapPin>(config->gpio().pin()), gpio::GPIO::Direction::Out, gpio::GPIO::State::Low);
+    gpio::GPIO gpio(static_cast<gpio::GPIO::MapPin>(config->gpio().pin()), gpio::GPIO::Direction::Out,
+                    gpio::GPIO::State::Low);
     std::function<void(bool)> callback = [&gpio](bool isTx) {
         if (isTx) {
             gpio.set(gpio::GPIO::State::High);
@@ -91,7 +92,7 @@ int main(int argc, char *argv[]) {
 
         std::map<std::string, int> servos;
 
-        for(Wing wing : config->servos().wings()) {
+        for (Wing wing : config->servos().wings()) {
             std::shared_ptr<Dynamixel> dynamixel = std::make_shared<Dynamixel>(wing.id(), port);
 
             size_t handle;
