@@ -82,14 +82,11 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a8c628a79baaac86a3a43545783e47f29"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1commands_1_1CommandExecutor.html#a8c628a79baaac86a3a43545783e47f29">CommandExecutor</a> (<a class="el" href="classgoliath_1_1commands_1_1CommandMap.html">CommandMap</a> &amp;commands, <a class="el" href="classgoliath_1_1handles_1_1HandleMap.html">HandleMap</a> &amp;handles)</td></tr>
-<tr class="separator:a8c628a79baaac86a3a43545783e47f29"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac616d03dd1e107bc4245e60cdf53ad39"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1commands_1_1CommandExecutor.html#ac616d03dd1e107bc4245e60cdf53ad39">CommandExecutor</a> (size_t numberOfThreads, <a class="el" href="classgoliath_1_1commands_1_1CommandMap.html">CommandMap</a> &amp;commands, <a class="el" href="classgoliath_1_1handles_1_1HandleMap.html">HandleMap</a> &amp;handles)</td></tr>
+<tr class="separator:ac616d03dd1e107bc4245e60cdf53ad39"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a39ca77c30431a9d49dcd8604b2837f7d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1commands_1_1CommandExecutor.html#a39ca77c30431a9d49dcd8604b2837f7d">run</a> (size_t commandId, const CommandMessage &amp;message)</td></tr>
 <tr class="memdesc:a39ca77c30431a9d49dcd8604b2837f7d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a command is already running, if so drop it else execute it's instance by running.  <a href="#a39ca77c30431a9d49dcd8604b2837f7d">More...</a><br /></td></tr>
 <tr class="separator:a39ca77c30431a9d49dcd8604b2837f7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0aaef174120f829645b9192f1fe6f6fc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1commands_1_1CommandExecutor.html#a0aaef174120f829645b9192f1fe6f6fc">tryExecute</a> (const size_t &amp;commandId, const CommandMessage &amp;message)</td></tr>
-<tr class="memdesc:a0aaef174120f829645b9192f1fe6f6fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Running on it's own thread. Checks if the handles the command requires are occupied. If so, call interrupt() on all command's currently using the handles the new command requires. After that waits for the condition variable to be triggered to then check again. If all handles are free, execute the command in the current thread. Sets status to started.  <a href="#a0aaef174120f829645b9192f1fe6f6fc">More...</a><br /></td></tr>
-<tr class="separator:a0aaef174120f829645b9192f1fe6f6fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab619dc84804050ec29911d18057d9596"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1commands_1_1CommandExecutor.html#ab619dc84804050ec29911d18057d9596">canStart</a> (const <a class="el" href="classgoliath_1_1commands_1_1Command.html">Command</a> &amp;command) const</td></tr>
 <tr class="memdesc:ab619dc84804050ec29911d18057d9596"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a command can start by checking all the handles it occupies.  <a href="#ab619dc84804050ec29911d18057d9596">More...</a><br /></td></tr>
 <tr class="separator:ab619dc84804050ec29911d18057d9596"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -97,8 +94,8 @@ Public Member Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Takes in a command id, and executes is. Also checks handles and interrupts commands. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a8c628a79baaac86a3a43545783e47f29"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8c628a79baaac86a3a43545783e47f29">&#9670;&nbsp;</a></span>CommandExecutor()</h2>
+<a id="ac616d03dd1e107bc4245e60cdf53ad39"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac616d03dd1e107bc4245e60cdf53ad39">&#9670;&nbsp;</a></span>CommandExecutor()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -106,6 +103,12 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">CommandExecutor::CommandExecutor </td>
           <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>numberOfThreads</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype"><a class="el" href="classgoliath_1_1commands_1_1CommandMap.html">CommandMap</a> &amp;&#160;</td>
           <td class="paramname"><em>commands</em>, </td>
         </tr>
@@ -187,47 +190,10 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Checks if a command is already running, if so drop it else execute it's instance by running. </p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="classgoliath_1_1commands_1_1CommandExecutor.html#a0aaef174120f829645b9192f1fe6f6fc" title="Running on it&#39;s own thread. Checks if the handles the command requires are occupied. If so, call interrupt() on all command&#39;s currently using the handles the new command requires. After that waits for the condition variable to be triggered to then check again. If all handles are free, execute the command in the current thread. Sets status to started. ">tryExecute</a>. Sets status of command to running. </dd></dl>
+<dl class="section see"><dt>See also</dt><dd>tryExecute. Sets status of command to running. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">commandId</td><td>ID of the command to run </td></tr>
-    <tr><td class="paramname">message</td><td>Arguments gathered from the protobuf input </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a0aaef174120f829645b9192f1fe6f6fc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0aaef174120f829645b9192f1fe6f6fc">&#9670;&nbsp;</a></span>tryExecute()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void CommandExecutor::tryExecute </td>
-          <td>(</td>
-          <td class="paramtype">const size_t &amp;&#160;</td>
-          <td class="paramname"><em>commandId</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const CommandMessage &amp;&#160;</td>
-          <td class="paramname"><em>message</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Running on it's own thread. Checks if the handles the command requires are occupied. If so, call interrupt() on all command's currently using the handles the new command requires. After that waits for the condition variable to be triggered to then check again. If all handles are free, execute the command in the current thread. Sets status to started. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">commandId</td><td>ID of the command to try to execute </td></tr>
     <tr><td class="paramname">message</td><td>Arguments gathered from the protobuf input </td></tr>
   </table>
   </dd>
