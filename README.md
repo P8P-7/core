@@ -1,5 +1,7 @@
 # Core
 
+[![Build Status](https://travis-ci.org/P8P-7/core.svg?branch=master)](https://travis-ci.org/P8P-7/core)
+
 ## Overview
 _Goliath II_'s heart. Contains all actions, commands and handles. If a command is found, it will be executed within the core.
 
