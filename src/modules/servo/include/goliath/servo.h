@@ -10,4 +10,4 @@
  * @brief Contains all classes and function for interfacing a servo
  */
 
-#include "../../servo_handle.h"
+#include "servo/servo_handle.h"

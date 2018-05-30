@@ -10,13 +10,13 @@
  * @brief Module for all things vision-related
  */
 
-#include "../../webcam.h"
-#include "../../webcam_handle.h"
-#include "../../util/vision_error.h"
-#include "../../processors/canny_processor.h"
-#include "../../processors/color_processor.h"
-#include "../../processors/roi_processor.h"
-#include "../../detectors/detector.h"
-#include "../../detectors/line_detector.h"
-#include "../../detectors/follow_line_detector.h"
-#include "../../detectors/color_region_detector.h"
+#include "vision/webcam.h"
+#include "vision/webcam_handle.h"
+#include "vision/util/vision_error.h"
+#include "vision/processors/canny_processor.h"
+#include "vision/processors/color_processor.h"
+#include "vision/processors/roi_processor.h"
+#include "vision/detectors/detector.h"
+#include "vision/detectors/line_detector.h"
+#include "vision/detectors/follow_line_detector.h"
+#include "vision/detectors/color_region_detector.h"

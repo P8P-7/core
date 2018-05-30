@@ -2,7 +2,7 @@
 
 #include <boost/test/included/unit_test.hpp>
 #include <goliath/i2c.h>
-#include <goliath/motor_controller.h>
+#include <goliath/motor-controller.h>
 #include <thread>
 #include <boost/log/trivial.hpp>
 

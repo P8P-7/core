@@ -1,8 +1,7 @@
 #define BOOST_TEST_MODULE test_motor_controller
 
 #include <boost/test/included/unit_test.hpp>
-#include <goliath/i2c.h>
-#include <goliath/led_strip_controller.h>
+#include <goliath/led-strip-controller.h>
 
 using namespace goliath;
 

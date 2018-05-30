@@ -10,7 +10,7 @@
  * @brief OpenAL module to handle anything audio-related on the software side.
  */
 
-#include "../../util/openal_error.h"
-#include "../../device.h"
-#include "../../context.h"
-#include "../../microphone.h"
+#include "openal/util/openal_error.h"
+#include "openal/device.h"
+#include "openal/context.h"
+#include "openal/microphone.h"

@@ -1,22 +1,9 @@
 project(goliath-vision-module LANGUAGES CXX)
 
-set(SOURCES
-        detectors/detector.cpp
-        detectors/line_detector.cpp
-        detectors/within_box_detector.cpp
-        detectors/follow_line_detector.cpp
-        detectors/color_region_detector.cpp
-        processors/processor.cpp
-        processors/color_processor.cpp
-        processors/canny_processor.cpp
-        processors/roi_processor.cpp
-        util/vision_error.cpp
-        util/vision_utilities.cpp
-        webcam_handle.cpp
-        webcam.cpp
-        )
+add_subdirectory(src)
+add_subdirectory(include/goliath)
 
-add_library(${PROJECT_NAME} ${SOURCES})
+add_library(${PROJECT_NAME} ${INCLUDES} ${SOURCES})
 
 target_include_directories(${PROJECT_NAME}
         PUBLIC

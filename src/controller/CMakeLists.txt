@@ -1,22 +1,9 @@
 project(goliath-controller LANGUAGES CXX)
 
-set(SOURCES
-        commands/command.cpp
-        commands/move_command.cpp
-        commands/wunderhorn_command.cpp
-        commands/move_tower_command.cpp
-        commands/move_wing_command.cpp
-        commands/dance_command.cpp
-        commands/line_dance_command.cpp
-        commands/obstacle_course_command.cpp
-        commands/transport_rebuild_command.cpp
-        command_map.cpp
-        command_executor.cpp
-        handles.h
-        handle_map.cpp
-        )
+add_subdirectory(include/goliath)
+add_subdirectory(src)
 
-add_library(${PROJECT_NAME} ${SOURCES})
+add_library(${PROJECT_NAME} ${SOURCES} ${INCLUDES})
 include_directories(${Boost_INCLUDE_DIRS})
 
 add_definitions(-DBOOST_LOG_DYN_LINK)

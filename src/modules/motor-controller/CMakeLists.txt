@@ -1,11 +1,9 @@
 project(goliath-motor-controller-module LANGUAGES CXX)
 
-set(SOURCES
-        motor_controller.cpp
-        motor_handle.cpp
-        )
+add_subdirectory(include/goliath)
+add_subdirectory(src)
 
-add_library(${PROJECT_NAME} ${SOURCES})
+add_library(${PROJECT_NAME} ${SOURCES} ${INCLUDES})
 
 add_definitions(-DBOOST_LOG_DYN_LINK)
 

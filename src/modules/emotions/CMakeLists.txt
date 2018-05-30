@@ -1,11 +1,9 @@
 project(goliath-emotions-module LANGUAGES CXX)
 
-set(SOURCES
-        emotion_publisher.cpp
-        emotion_handle.cpp
-        )
+add_subdirectory(include/goliath)
+add_subdirectory(src)
 
-add_library(${PROJECT_NAME} ${SOURCES})
+add_library(${PROJECT_NAME} ${SOURCES} ${INCLUDES})
 
 target_include_directories(${PROJECT_NAME}
         PUBLIC
