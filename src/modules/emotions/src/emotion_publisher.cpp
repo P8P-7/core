@@ -2,18 +2,19 @@
 
 using namespace goliath::emotions;
 
-EmotionPublisher::EmotionPublisher(zmq::context_t& context, const std::string& host, int port)
-        : ZmqPublisher(context, host, port), current(Emotion::NEUTRAL) {
+EmotionPublisher::EmotionPublisher(zmq::context_t& context, const std::string& host, int port,
+                                   std::shared_ptr<repositories::EmotionRepository> repository)
+    : ZmqPublisher(context, host, port), repository(repository) {
 }
 
 EmotionPublisher::EmotionPublisher(const EmotionPublisher& other)
-        : ZmqPublisher(other.context, other.host, other.port), current(other.current) {
+    : ZmqPublisher(other.context, other.host, other.port), repository(other.repository) {
 }
 
 bool EmotionPublisher::publishEmotion(const Emotion& emotion) {
-    current = emotion;
+    repository->setCurrentEmotion(emotion);
 
-    auto *emotionMessage = new EmotionMessage;
+    auto* emotionMessage = new EmotionMessage;
     emotionMessage->set_emotion(emotion);
 
     MessageCarrier carrier;
@@ -22,6 +23,3 @@ bool EmotionPublisher::publishEmotion(const Emotion& emotion) {
     return publish(carrier);
 }
 
-Emotion EmotionPublisher::getCurrentEmotion() const {
-    return current;
-}

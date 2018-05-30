@@ -32,6 +32,8 @@ int main(int argc, char *argv[]) {
     std::string configFile = util::FoundationUtilities::executableToFile(argv[0], "config/core-config.json");
     repositories::ConfigRepository configRepository(configFile);
 
+    std::shared_ptr<repositories::EmotionRepository> emotionRepository = std::make_shared<repositories::EmotionRepository>();
+
     std::shared_ptr<::ConfigRepository> config = configRepository.getConfig();
 
     boost::asio::io_service ioService;
@@ -50,15 +52,18 @@ int main(int argc, char *argv[]) {
     BOOST_LOG_TRIVIAL(info) << "Setting up publisher";
     messaging::ZmqPublisher publisher(context, "localhost", config->zmq().publisher_port());
     BOOST_LOG_TRIVIAL(info) << "Setting up emotion publisher";
-    emotions::EmotionPublisher emotionPublisher(context, config->emotions().host(), config->emotions().port());
+    emotions::EmotionPublisher emotionPublisher(context, config->emotions().host(), config->emotions().port(),
+                                                emotionRepository);
 
     BOOST_LOG_TRIVIAL(info) << "Setting up watcher";
     repositories::Watcher watcher(config->watcher().polling_rate(), publisher);
-    auto battery_repo = std::make_shared<repositories::BatteryRepository>();
-    watcher.watch(battery_repo);
+    auto batteryRepo = std::make_shared<repositories::BatteryRepository>();
+    watcher.watch(batteryRepo);
+    watcher.watch(emotionRepository);
 
     BOOST_LOG_TRIVIAL(info) << "Setting up GPIO";
-    gpio::GPIO gpio(static_cast<gpio::GPIO::MapPin>(config->gpio().pin()), gpio::GPIO::Direction::Out, gpio::GPIO::State::Low);
+    gpio::GPIO gpio(static_cast<gpio::GPIO::MapPin>(config->gpio().pin()), gpio::GPIO::Direction::Out,
+                    gpio::GPIO::State::Low);
     std::function<void(bool)> callback = [&gpio](bool isTx) {
         if (isTx) {
             gpio.set(gpio::GPIO::State::High);
@@ -90,7 +95,7 @@ int main(int argc, char *argv[]) {
 
         std::map<std::string, int> servos;
 
-        for(Wing wing : config->servos().wings()) {
+        for (Wing wing : config->servos().wings()) {
             std::shared_ptr<Dynamixel> dynamixel = std::make_shared<Dynamixel>(wing.id(), port);
 
             size_t handle;
