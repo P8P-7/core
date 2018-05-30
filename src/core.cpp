@@ -5,7 +5,7 @@
 #include <goliath/gpio.h>
 #include <goliath/servo.h>
 #include <goliath/vision.h>
-#include <goliath/zmq_messaging.h>
+#include <goliath/zmq-messaging.h>
 #include <goliath/emotions.h>
 #include <goliath/i2c.h>
 #include <goliath/motor-controller.h>

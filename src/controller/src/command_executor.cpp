@@ -1,4 +1,3 @@
-<<<<<<< HEAD:src/controller/src/command_executor.cpp
 #include <goliath/controller/command_executor.h>
 
 #include <boost/log/trivial.hpp>

@@ -1,6 +1,6 @@
 #pragma once
 
-#include <goliath/zmq_messaging.h>
+#include <goliath/zmq-messaging.h>
 
 #include <EmotionMessage.pb.h>
 
