@@ -114,6 +114,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memitem:a7b5f7f7d0dbb0ddf3252c664894da816"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1handles_1_1Handle.html#a7b5f7f7d0dbb0ddf3252c664894da816">isLocked</a> () const</td></tr>
 <tr class="memdesc:a7b5f7f7d0dbb0ddf3252c664894da816"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates whether or not this handle has been locked.  <a href="#a7b5f7f7d0dbb0ddf3252c664894da816">More...</a><br /></td></tr>
 <tr class="separator:a7b5f7f7d0dbb0ddf3252c664894da816"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaec06a41509781839df3b54b1ccf6804"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1handles_1_1Handle.html#aaec06a41509781839df3b54b1ccf6804">isLocked</a> (size_t ownerId) const</td></tr>
+<tr class="memdesc:aaec06a41509781839df3b54b1ccf6804"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if this handle is locked for a specific owner.  <a href="#aaec06a41509781839df3b54b1ccf6804">More...</a><br /></td></tr>
+<tr class="separator:aaec06a41509781839df3b54b1ccf6804"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="ad6a4a4bc58fe01f5b05dd3711ba6a3bb"></a>
@@ -153,7 +156,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </div>
 </div>
 <a id="a7b5f7f7d0dbb0ddf3252c664894da816"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7b5f7f7d0dbb0ddf3252c664894da816">&#9670;&nbsp;</a></span>isLocked()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a7b5f7f7d0dbb0ddf3252c664894da816">&#9670;&nbsp;</a></span>isLocked() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -169,6 +172,33 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 
 <p>Indicates whether or not this handle has been locked. </p>
 <dl class="section return"><dt>Returns</dt><dd>true if this handle has been locked </dd></dl>
+
+</div>
+</div>
+<a id="aaec06a41509781839df3b54b1ccf6804"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaec06a41509781839df3b54b1ccf6804">&#9670;&nbsp;</a></span>isLocked() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Handle::isLocked </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>ownerId</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Checks if this handle is locked for a specific owner. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ownerId</td><td>owner to check for </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if this handle is locked for ownerId </dd></dl>
 
 </div>
 </div>
@@ -225,7 +255,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>/core/src/modules/foundation/src/<a class="el" href="handle_8h_source.html">handle.h</a></li>
+<li>/core/src/modules/foundation/include/goliath/foundation/<a class="el" href="handle_8h_source.html">handle.h</a></li>
 <li>/core/src/modules/foundation/src/handle.cpp</li>
 </ul>
 </div><!-- contents -->
