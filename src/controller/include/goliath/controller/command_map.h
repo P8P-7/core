@@ -41,6 +41,9 @@ namespace goliath::commands {
      */
     class CommandMap {
     public:
+        using iterator = std::map<size_t, CommandItem>::iterator;
+        using const_iterator = std::map<size_t, CommandItem>::const_iterator;
+
         CommandMap();
 
         /**
@@ -85,15 +88,27 @@ namespace goliath::commands {
 
         /**
          * @brief Begin iterator
-         * @return std::map iterator
+         * @return Map iterator
          */
-        std::map<size_t, CommandItem>::iterator begin();
+        iterator begin();
 
         /**
          * @brief End iterator
-         * @return std::map iterator
+         * @return Map iterator
          */
-        std::map<size_t, CommandItem>::iterator end();
+        iterator end();
+
+        /**
+         * @brief Begin iterator
+         * @return Constant map iterator
+         */
+        const_iterator begin() const;
+
+        /**
+         * @brief End iterator
+         * @return Constant map iterator
+         */
+        const_iterator end() const;
 
     private:
         std::map<size_t, CommandItem> map;
