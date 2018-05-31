@@ -27,13 +27,16 @@ using namespace goliath;
  * @brief Application entry point
  */
 int main(int argc, char *argv[]) {
-    util::Console console(&util::colorConsoleFormatter, argv[0], "core-text.txt");
-
     std::string configFile = util::FoundationUtilities::executableToFile(argv[0], "config/core-config.json");
     repositories::ConfigRepository configRepository(configFile);
+    std::shared_ptr<::ConfigRepository> config = configRepository.getConfig();
+
+    util::Console console(&util::colorConsoleFormatter,
+                          argv[0],
+                          "core-text.txt",
+                          static_cast<boost::log::trivial::severity_level>(config->logging().severity_level()));
 
     std::shared_ptr<repositories::EmotionRepository> emotionRepository = std::make_shared<repositories::EmotionRepository>();
-    std::shared_ptr<::ConfigRepository> config = configRepository.getConfig();
 
     boost::asio::io_service ioService;
 

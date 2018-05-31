@@ -82,6 +82,9 @@ BOOST_AUTO_TEST_SUITE(BOOST_TEST_MODULE)
         auto *watcherConfig = new WatcherConfig;
         watcherConfig->set_polling_rate(250);
 
+        auto *loggingConfig = new LoggingConfig;
+        loggingConfig->set_severity_level(LoggingConfig_Severity_TRACE);
+
         configRepository.set_allocated_zmq(zmqConfig);
         configRepository.set_allocated_serial(serialConfig);
         configRepository.set_allocated_gpio(gpioConfig);
@@ -92,6 +95,7 @@ BOOST_AUTO_TEST_SUITE(BOOST_TEST_MODULE)
         configRepository.set_allocated_emotions(emotionsConfig);
         configRepository.set_allocated_command_executor(commandExecutorConfig);
         configRepository.set_allocated_watcher(watcherConfig);
+        configRepository.set_allocated_logging(loggingConfig);
 
         google::protobuf::util::MessageToJsonString(configRepository, &jsonString, options);
 
