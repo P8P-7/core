@@ -10,7 +10,8 @@ HandleMap::HandleMap() {}
 HandleMap::HandleMap(const std::map<size_t, std::shared_ptr<Handle>> &map)
         : map(map) {}
 
-HandleMap::HandleMap(const HandleMap &other) : map(other.map) {}
+HandleMap::HandleMap(const HandleMap &other)
+        : map(other.map) {}
 
 HandleMap::~HandleMap() {
     for (auto kvp : map) {
