@@ -98,12 +98,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:acaac526575f19832ff2a954fee3fb527"><td class="memItemLeft" align="right" valign="top">virtual std::unique_ptr&lt;::google::protobuf::Message &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1repositories_1_1Repository.html#acaac526575f19832ff2a954fee3fb527">getMessage</a> ()=0</td></tr>
 <tr class="memdesc:acaac526575f19832ff2a954fee3fb527"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compiles the fields of this repository to an instance of <a href="https://developers.google.com/protocol-buffers/docs/reference/cpp/google.protobuf.message">Message</a>  <a href="#acaac526575f19832ff2a954fee3fb527">More...</a><br /></td></tr>
 <tr class="separator:acaac526575f19832ff2a954fee3fb527"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afbccd222beba76a654bf01d7794c5c2d"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1repositories_1_1Repository.html#afbccd222beba76a654bf01d7794c5c2d">isInvalidated</a> ()</td></tr>
-<tr class="separator:afbccd222beba76a654bf01d7794c5c2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8b1845da32fb728bc72dca2252f44814"><td class="memItemLeft" align="right" valign="top"><a id="a8b1845da32fb728bc72dca2252f44814"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1repositories_1_1Repository.html#a8b1845da32fb728bc72dca2252f44814">invalidate</a> ()</td></tr>
-<tr class="memdesc:a8b1845da32fb728bc72dca2252f44814"><td class="mdescLeft">&#160;</td><td class="mdescRight">Forces the repository to be synchronized. <br /></td></tr>
-<tr class="separator:a8b1845da32fb728bc72dca2252f44814"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a97f79f6167ee29783efc5be1d5029ed9"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1repositories_1_1Repository.html#a97f79f6167ee29783efc5be1d5029ed9">isInvalidated</a> () const</td></tr>
+<tr class="separator:a97f79f6167ee29783efc5be1d5029ed9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af24dfd78e809c4ff8e2522ff4a060880"><td class="memItemLeft" align="right" valign="top"><a id="af24dfd78e809c4ff8e2522ff4a060880"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1repositories_1_1Repository.html#af24dfd78e809c4ff8e2522ff4a060880">invalidate</a> ()</td></tr>
+<tr class="memdesc:af24dfd78e809c4ff8e2522ff4a060880"><td class="mdescLeft">&#160;</td><td class="mdescRight">Forces the repository to be synchronized. <br /></td></tr>
+<tr class="separator:af24dfd78e809c4ff8e2522ff4a060880"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
 Friends</h2></td></tr>
@@ -144,8 +144,8 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>Watcher</b></td></tr
 
 </div>
 </div>
-<a id="afbccd222beba76a654bf01d7794c5c2d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afbccd222beba76a654bf01d7794c5c2d">&#9670;&nbsp;</a></span>isInvalidated()</h2>
+<a id="a97f79f6167ee29783efc5be1d5029ed9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a97f79f6167ee29783efc5be1d5029ed9">&#9670;&nbsp;</a></span>isInvalidated()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -154,15 +154,15 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>Watcher</b></td></tr
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual bool goliath::repositories::Repository::isInvalidated </td>
+          <td class="memname">bool Repository::isInvalidated </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -170,8 +170,9 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>Watcher</b></td></tr
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following file:<ul>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>/core/src/modules/foundation/include/goliath/foundation/repositories/<a class="el" href="repository_8h_source.html">repository.h</a></li>
+<li>/core/src/modules/foundation/src/repositories/repository.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

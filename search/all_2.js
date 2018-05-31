@@ -19,7 +19,7 @@ var searchData=
   ['commanditem',['CommandItem',['../structgoliath_1_1commands_1_1CommandItem.html',1,'goliath::commands::CommandItem'],['../structgoliath_1_1commands_1_1CommandItem.html#a83b105af2cd00052c77ae1bd295875a0',1,'goliath::commands::CommandItem::CommandItem()']]],
   ['commandmap',['CommandMap',['../classgoliath_1_1commands_1_1CommandMap.html',1,'goliath::commands::CommandMap'],['../classgoliath_1_1commands_1_1CommandMap.html#ab3db81ba2af4066dac95a4cb529c5a29',1,'goliath::commands::CommandMap::CommandMap()']]],
   ['commandstatus',['CommandStatus',['../namespacegoliath_1_1commands.html#ad04221b592714b06a85a6415a475981b',1,'goliath::commands']]],
-  ['config_5frepo_2eh',['config_repo.h',['../config__repo_8h.html',1,'']]],
+  ['config_5frepository_2eh',['config_repository.h',['../config__repository_8h.html',1,'']]],
   ['configrepository',['ConfigRepository',['../classgoliath_1_1repositories_1_1ConfigRepository.html',1,'goliath::repositories']]],
   ['connect',['connect',['../classgoliath_1_1messaging_1_1ZmqIo.html#a74cd7fb581cba80d725269183612cf2b',1,'goliath::messaging::ZmqIo']]],
   ['console',['Console',['../classgoliath_1_1util_1_1Console.html',1,'goliath::util::Console'],['../classgoliath_1_1util_1_1Console.html#a3a6f2303fc0c6e2c79eac1e8498e7316',1,'goliath::util::Console::Console()']]],
