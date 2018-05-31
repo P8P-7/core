@@ -151,5 +151,7 @@ int main(int argc, char *argv[]) {
     BOOST_LOG_TRIVIAL(info) << "Stopping subscriber";
     subscriber.stop();
 
+    BOOST_LOG_TRIVIAL(fatal) << "Controller has been shut down";
+
     return 0;
 }
