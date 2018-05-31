@@ -15,6 +15,7 @@ MACRO(compiler_flags WARNING_LEVEL)
                         "-pipe"
                         "-Werror=format-security"
                         "-Werror=implicit-function-declaration"
+                        "-DDEBUG"
                         )
             ENDIF ()
             add_compile_options("-Wall")

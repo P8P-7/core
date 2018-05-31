@@ -27,7 +27,20 @@ using namespace goliath;
  * @brief Application entry point
  */
 int main(int argc, char *argv[]) {
-    util::Console console(&util::colorConsoleFormatter, argv[0], "core-text.txt");
+#ifdef DEBUG
+    boost::log::trivial::severity_level logLevel = boost::log::trivial::debug;
+#else
+    boost::log::trivial::severity_level logLevel = boost::log::trivial::info;
+#endif
+    if (argc > 2) {
+        std::string argType(argv[1]);
+
+        if (argType == "-l" || argType == "--log-level") {
+            logLevel = goliath::util::parseSeverityLevel(argv[2], logLevel); // TODO: use program_options?
+        }
+    }
+
+    util::Console console(&util::colorConsoleFormatter, argv[0], "core-text.txt", logLevel);
 
     std::string configFile = util::FoundationUtilities::executableToFile(argv[0], "config/core-config.json");
     repositories::ConfigRepository configRepository(configFile);
