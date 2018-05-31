@@ -15,7 +15,6 @@ MACRO(compiler_flags WARNING_LEVEL)
                         "-pipe"
                         "-Werror=format-security"
                         "-Werror=implicit-function-declaration"
-                        "-DDEBUG"
                         )
             ENDIF ()
             add_compile_options("-Wall")
@@ -29,7 +28,7 @@ MACRO(compiler_flags WARNING_LEVEL)
         ENDIF ()
     ELSEIF (${CMAKE_BUILD_TYPE} STREQUAL "Release")
         IF (CMAKE_COMPILER_IS_GNUCXX)
-            add_compile_options("-O1")
+            add_compile_options("-O3")
         ENDIF ()
     ENDIF ()
 ENDMACRO(compiler_flags)
