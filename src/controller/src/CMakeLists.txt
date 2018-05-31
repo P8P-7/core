@@ -1,4 +1,6 @@
 set(RELATIVE_SOURCES
+        repositories/battery_repository.cpp
+        repositories/config_repository.cpp
         commands/command.cpp
         commands/basic_command.cpp
         commands/queue_command.cpp

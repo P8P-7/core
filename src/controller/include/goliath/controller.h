@@ -5,6 +5,8 @@
  * @author Group 7 - Informatica
  */
 
+#include "controller/repositories/config_repository.h"
+#include "controller/repositories/battery_repository.h"
 #include "controller/commands/command.h"
 #include "controller/commands/basic_command.h"
 #include "controller/commands/queue_command.h"
