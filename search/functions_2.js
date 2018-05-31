@@ -9,6 +9,6 @@ var searchData=
   ['commanditem',['CommandItem',['../structgoliath_1_1commands_1_1CommandItem.html#a83b105af2cd00052c77ae1bd295875a0',1,'goliath::commands::CommandItem']]],
   ['commandmap',['CommandMap',['../classgoliath_1_1commands_1_1CommandMap.html#ab3db81ba2af4066dac95a4cb529c5a29',1,'goliath::commands::CommandMap']]],
   ['connect',['connect',['../classgoliath_1_1messaging_1_1ZmqIo.html#a74cd7fb581cba80d725269183612cf2b',1,'goliath::messaging::ZmqIo']]],
-  ['console',['Console',['../classgoliath_1_1util_1_1Console.html#a576f91b303d11375504f1811daa663fc',1,'goliath::util::Console']]],
+  ['console',['Console',['../classgoliath_1_1util_1_1Console.html#a3a6f2303fc0c6e2c79eac1e8498e7316',1,'goliath::util::Console']]],
   ['context',['Context',['../classgoliath_1_1openal_1_1Context.html#adbd52d5a7c9937624417b1e8ffbbc1e9',1,'goliath::openal::Context']]]
 ];

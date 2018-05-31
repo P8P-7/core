@@ -82,15 +82,15 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a576f91b303d11375504f1811daa663fc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1util_1_1Console.html#a576f91b303d11375504f1811daa663fc">Console</a> (std::function&lt; void(const boost::log::record_view &amp;, boost::log::formatting_ostream &amp;)&gt; formatter, std::string executableLocation, std::string projectTextFile)</td></tr>
-<tr class="memdesc:a576f91b303d11375504f1811daa663fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displays ASCII logo, creates a sink and starts the output table.  <a href="#a576f91b303d11375504f1811daa663fc">More...</a><br /></td></tr>
-<tr class="separator:a576f91b303d11375504f1811daa663fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a6f2303fc0c6e2c79eac1e8498e7316"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1util_1_1Console.html#a3a6f2303fc0c6e2c79eac1e8498e7316">Console</a> (std::function&lt; void(const boost::log::record_view &amp;, boost::log::formatting_ostream &amp;)&gt; formatter, std::string executableLocation, std::string projectTextFile, boost::log::trivial::severity_level severityLevel)</td></tr>
+<tr class="memdesc:a3a6f2303fc0c6e2c79eac1e8498e7316"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displays ASCII logo, creates a sink and starts the output table.  <a href="#a3a6f2303fc0c6e2c79eac1e8498e7316">More...</a><br /></td></tr>
+<tr class="separator:a3a6f2303fc0c6e2c79eac1e8498e7316"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Utility class for giving colors and banners to the terminal output. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a576f91b303d11375504f1811daa663fc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a576f91b303d11375504f1811daa663fc">&#9670;&nbsp;</a></span>Console()</h2>
+<a id="a3a6f2303fc0c6e2c79eac1e8498e7316"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a6f2303fc0c6e2c79eac1e8498e7316">&#9670;&nbsp;</a></span>Console()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -111,7 +111,13 @@ Public Member Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">std::string&#160;</td>
-          <td class="paramname"><em>projectTextFile</em>&#160;</td>
+          <td class="paramname"><em>projectTextFile</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">boost::log::trivial::severity_level&#160;</td>
+          <td class="paramname"><em>severityLevel</em> = <code>boost::log::trivial::severity_level::info</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
