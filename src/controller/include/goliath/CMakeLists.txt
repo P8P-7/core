@@ -1,5 +1,7 @@
 set(RELATIVE_INCLUDES
         controller.h
+        controller/repositories/battery_repository.h
+        controller/repositories/config_repository.h
         controller/commands/command.h
         controller/commands/dance_command.h
         controller/commands/invalidate_all_command.h
