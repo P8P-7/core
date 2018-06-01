@@ -3,24 +3,58 @@
 #include <memory>
 
 #include "phase.h"
+#include "tickable.h"
+
+/**
+ * @file reel.h
+ * @author Group 7 - Informatica
+ */
 
 namespace goliath::transitions {
-    class Reel {
+    /**
+     * @class goliath::transitions::Reel
+     * @brief Collection of phases that can be one after another
+     */
+    class Reel : public Tickable {
     public:
         using iterator = std::vector<double>::iterator;
         using const_iterator = std::vector<double>::const_iterator;
 
         Reel(const unsigned ticksPerSecond);
+        /**
+         * @param callback Update on every tick
+         */
+        Reel(const unsigned ticksPerSecond, std::function<void(double)> callback);
 
+        /**
+         * @brief Add a phase to this reel by creating a new one
+
+         */
         void addPhase(const std::chrono::milliseconds duration, double min, double max,
                       std::function<double(double)> method);
 
+        /**
+         * @brief Add a predefined phase to this reel
+         * @param phase The new phase to be added
+         */
         void addPhase(const std::shared_ptr<Phase> phase);
 
-        double tick();
-        void tick(std::function<void(double)> callback);
+        /**
+         * @brief Get the value at the current tick
+         * @return Value at current tick
+         */
+        double getTick();
+        void tick() override;
+        /**
+         * @brief Checks whether the reel is not out of bounds
+         * @return True if not out of bounds
+         */
+        bool canTick() const;
 
-        unsigned getTicksPerSecond() const;
+        /**
+         * @brief Get the amount of ticks in this reel
+         * @return Amount of ticks
+         */
         unsigned getTicks() const;
 
         iterator begin();
@@ -32,9 +66,10 @@ namespace goliath::transitions {
         std::vector<std::shared_ptr<Phase>> phases;
         std::vector<double> preCalculated;
 
-        const unsigned ticksPerSecond;
         unsigned ticks;
 
         unsigned currentTick;
+
+        std::unique_ptr<std::function<void(double)>> callback;
     };
 }

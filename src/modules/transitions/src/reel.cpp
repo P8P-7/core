@@ -5,8 +5,14 @@
 using namespace goliath::transitions;
 
 Reel::Reel(const unsigned ticksPerSecond)
-        : ticksPerSecond(ticksPerSecond), ticks(0), currentTick(0) {
+        : Tickable(ticksPerSecond), ticks(0), currentTick(0), callback(nullptr) {
 }
+
+Reel::Reel(const unsigned ticksPerSecond, std::function<void(double)> callback)
+        : Tickable(ticksPerSecond), ticks(0), currentTick(0),
+          callback(std::make_unique<std::function<void(double)>>(callback)) {
+}
+
 
 void Reel::addPhase(const std::chrono::milliseconds duration, double min, double max,
                     std::function<double(double)> method) {
@@ -21,27 +27,35 @@ void Reel::addPhase(const std::shared_ptr<Phase> phase) {
 
     phases.push_back(phase);
     ticks += phase->getTicks();
+    duration += phase->getDuration();
 
     for (double value : *phase) {
         preCalculated.push_back(value);
     }
 }
 
-unsigned Reel::getTicksPerSecond() const {
-    return ticksPerSecond;
-}
-
 unsigned Reel::getTicks() const {
     return ticks;
 }
 
-double Reel::tick() {
-    currentTick++;
+double Reel::getTick() {
+    if (currentTick > ticks) {
+        throw goliath::exceptions::TransitionError("Tick out of range");
+    }
+
     return preCalculated[currentTick];
 }
 
-void Reel::tick(std::function<void(double)> callback) {
-    callback(tick());
+void Reel::tick() {
+    if (callback != nullptr) {
+        (*callback)(getTick());
+    }
+
+    currentTick++;
+}
+
+bool Reel::canTick() const {
+    return currentTick < ticks;
 }
 
 Reel::iterator Reel::begin() {

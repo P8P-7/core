@@ -1,6 +1,15 @@
 #pragma once
 
+/**
+ * @file transition_utilities.h
+ * @author Group 7 - Informatica
+ */
+
 namespace goliath::util {
+    /**
+     * @class goliath::util::TransitionUtilities
+     * @brief Contains utilities for transitions
+     */
     class TransitionUtilities {
     public:
         template<typename T>

@@ -8,11 +8,6 @@
  * @author Group 7 - Informatica
  */
 
-/**
- * @namespace goliath::exceptions
- * @brief Contains all custom exceptions
- */
-
 namespace goliath::exceptions {
     /**
      * @class goliath::exceptions::TransitionError
