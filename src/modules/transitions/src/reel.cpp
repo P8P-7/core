@@ -4,11 +4,11 @@
 
 using namespace goliath::transitions;
 
-Reel::Reel(const unsigned ticksPerSecond)
+Reel::Reel(const size_t ticksPerSecond)
         : Tickable(ticksPerSecond), ticks(0), currentTick(0), callback(nullptr) {
 }
 
-Reel::Reel(const unsigned ticksPerSecond, std::function<void(double)> callback)
+Reel::Reel(const size_t ticksPerSecond, std::function<void(double)> callback)
         : Tickable(ticksPerSecond), ticks(0), currentTick(0),
           callback(std::make_unique<std::function<void(double)>>(callback)) {
 }
@@ -26,7 +26,7 @@ void Reel::addPhase(const std::shared_ptr<Phase> phase) {
     }
 
     phases.push_back(phase);
-    ticks += phase->getTicks();
+    ticks += phase->getNumberOfTicks();
     duration += phase->getDuration();
 
     for (double value : *phase) {
@@ -34,7 +34,7 @@ void Reel::addPhase(const std::shared_ptr<Phase> phase) {
     }
 }
 
-unsigned Reel::getTicks() const {
+size_t Reel::getTicks() const {
     return ticks;
 }
 

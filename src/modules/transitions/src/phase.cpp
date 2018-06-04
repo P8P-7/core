@@ -5,7 +5,7 @@
 
 using namespace goliath::transitions;
 
-Phase::Phase(const std::chrono::milliseconds duration, const unsigned ticksPerSecond, const double min,
+Phase::Phase(const std::chrono::milliseconds duration, const size_t ticksPerSecond, const double min,
              const double max, std::function<double(double)> method)
     : duration(duration), ticksPerSecond(ticksPerSecond), min(min), max(max),
       ticks(static_cast<unsigned>(std::ceil(duration.count() / (1.0 / ticksPerSecond * 1000)))) {
@@ -25,11 +25,11 @@ const std::chrono::milliseconds Phase::getDuration() const {
     return duration;
 }
 
-unsigned Phase::getTicksPerSecond() const {
+size_t Phase::getTicksPerSecond() const {
     return ticksPerSecond;
 }
 
-unsigned Phase::getTicks() const {
+size_t Phase::getNumberOfTicks() const {
     return ticks;
 }
 

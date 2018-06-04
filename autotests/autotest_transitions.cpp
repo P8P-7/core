@@ -1,5 +1,7 @@
 #define BOOST_TEST_MODULE autotest_transitions
 
+#include <thread>
+
 #include <boost/test/included/unit_test.hpp>
 #include <goliath/transitions.h>
 
@@ -9,7 +11,7 @@ BOOST_AUTO_TEST_SUITE(BOOST_TEST_MODULE)
     BOOST_AUTO_TEST_CASE(test_phases) {
         Phase phase(std::chrono::milliseconds(2000), 60, 30, 40, &methods::linear);
 
-        BOOST_CHECK_EQUAL(phase.getTicks(), 120);
+        BOOST_CHECK_EQUAL(phase.getNumberOfTicks(), 120);
     }
 
     BOOST_AUTO_TEST_CASE(test_reels) {
@@ -85,11 +87,34 @@ BOOST_AUTO_TEST_SUITE(BOOST_TEST_MODULE)
 
         reel->addPhase(phase);
 
-        std::shared_ptr<Tickable> tickable = std::static_pointer_cast<Tickable>(reel);
 
         TransitionExecutor::execute(std::static_pointer_cast<Tickable>(reel));
 
         BOOST_TEST_CHECK(tickCount, 10);
+    }
+
+    BOOST_AUTO_TEST_CASE(test_transition_executor_skip) {
+        auto phase = std::make_shared<Phase>(std::chrono::milliseconds(1000), 10, 0, 100, &methods::linear);
+
+        auto reel = std::make_shared<Reel>(10, [](double value){
+            std::this_thread::sleep_for(std::chrono::milliseconds(110));
+        });
+
+        reel->addPhase(phase);
+
+        BOOST_TEST_CHECK(TransitionExecutor::execute(std::static_pointer_cast<Tickable>(reel)), 5);
+    }
+
+    BOOST_AUTO_TEST_CASE(test_transition_executor_skip_multiple) {
+        auto phase = std::make_shared<Phase>(std::chrono::milliseconds(1000), 10, 0, 100, &methods::linear);
+
+        auto reel = std::make_shared<Reel>(10, [](double value){
+            std::this_thread::sleep_for(std::chrono::milliseconds(210));
+        });
+
+        reel->addPhase(phase);
+
+        BOOST_TEST_CHECK(TransitionExecutor::execute(std::static_pointer_cast<Tickable>(reel)), 3);
     }
 
 BOOST_AUTO_TEST_SUITE_END()

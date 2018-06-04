@@ -20,7 +20,6 @@ ParallelReel::ParallelReel(std::vector<std::shared_ptr<Reel>> reels)
 void ParallelReel::tick() {
     for (auto &reel : reels) {
         if (reel->canTick()) {
-            std::cout << "Tick";
             reel->tick();
         }
     }
@@ -38,6 +37,6 @@ std::chrono::milliseconds ParallelReel::getDuration() const {
     return longest;
 }
 
-const unsigned ParallelReel::getTicksPerSecond() const {
+const size_t ParallelReel::getTicksPerSecond() const {
     return reels[0]->getTicksPerSecond();
 }

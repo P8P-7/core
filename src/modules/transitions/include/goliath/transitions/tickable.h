@@ -8,6 +8,8 @@
  */
 
 namespace goliath::transitions {
+    using Tick = std::uint32_t;
+
     /**
      * @class goliath::transitions::Tickable
      * @brief Interface for defining whether a this transition can be executed or not
@@ -17,7 +19,7 @@ namespace goliath::transitions {
         /**
          * @param ticksPerSecond Speed of the transition
          */
-        Tickable(const unsigned ticksPerSecond);
+        Tickable(const size_t ticksPerSecond);
 
         /**
          * @brief Get the next tick value
@@ -30,7 +32,7 @@ namespace goliath::transitions {
         /**
          * @return Get the speed of this transition
          */
-        virtual const unsigned getTicksPerSecond() const;
+        virtual const size_t getTicksPerSecond() const;
 
 
     protected:

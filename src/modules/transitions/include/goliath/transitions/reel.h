@@ -20,11 +20,11 @@ namespace goliath::transitions {
         using iterator = std::vector<double>::iterator;
         using const_iterator = std::vector<double>::const_iterator;
 
-        Reel(const unsigned ticksPerSecond);
+        explicit Reel(const size_t ticksPerSecond);
         /**
          * @param callback Update on every tick
          */
-        Reel(const unsigned ticksPerSecond, std::function<void(double)> callback);
+        Reel(const size_t ticksPerSecond, std::function<void(double)> callback);
 
         /**
          * @brief Add a phase to this reel by creating a new one
@@ -55,7 +55,7 @@ namespace goliath::transitions {
          * @brief Get the amount of ticks in this reel
          * @return Amount of ticks
          */
-        unsigned getTicks() const;
+        size_t getTicks() const;
 
         iterator begin();
         iterator end();
@@ -66,9 +66,9 @@ namespace goliath::transitions {
         std::vector<std::shared_ptr<Phase>> phases;
         std::vector<double> preCalculated;
 
-        unsigned ticks;
+        size_t ticks;
 
-        unsigned currentTick;
+        Tick currentTick;
 
         std::unique_ptr<std::function<void(double)>> callback;
     };

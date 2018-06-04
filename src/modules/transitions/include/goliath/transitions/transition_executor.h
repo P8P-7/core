@@ -18,15 +18,16 @@ namespace goliath::transitions {
     public:
         using Clock = std::chrono::high_resolution_clock;
         using TimePoint = std::chrono::time_point<Clock>;
-        using Ms = std::chrono::milliseconds;
-        using Mis = std::chrono::microseconds;
+        using Milliseconds = std::chrono::milliseconds;
+        using Microseconds = std::chrono::microseconds;
 
         /**
          * @brief Executes a class implementing the tickable interface by taking their tps and duration and calling the
          * tick method within the specified duration
          * @param tickable Tickable to be run
+         * @return Amount of skipped ticks
          */
-        static void execute(std::shared_ptr<Tickable> tickable);
+        static size_t execute(std::shared_ptr<Tickable> tickable);
 
     };
 }

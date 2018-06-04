@@ -4,6 +4,8 @@
 #include <functional>
 #include <vector>
 
+#include "tickable.h"
+
 /**
  * @file phase.h
  * @author Group 7 - Informatica
@@ -26,7 +28,7 @@ namespace goliath::transitions {
          * @param max Upper bound of the phase (mapped to 1)
          * @param method Type of transition (e. g. linear, eases)
          */
-        Phase(const std::chrono::milliseconds duration, const unsigned ticksPerSecond, const double min,
+        Phase(const std::chrono::milliseconds duration, const size_t ticksPerSecond, const double min,
               const double max, std::function<double(double)> method);
 
         /**
@@ -34,7 +36,7 @@ namespace goliath::transitions {
          * @param tick Tick
          * @return Value at tick
          */
-        double get(const unsigned tick) const;
+        double get(const Tick tick) const;
         /**
          * @brief Get length of this phase
          * @return Duration
@@ -44,12 +46,12 @@ namespace goliath::transitions {
          * @brief Get speed of this phase
          * @return Ticks per Second
          */
-        unsigned getTicksPerSecond() const;
+        size_t getTicksPerSecond() const;
         /**
          * @brief Get total amount of ticks this phase uses
          * @return Total ticks
          */
-        unsigned getTicks() const;
+        size_t getNumberOfTicks() const;
 
         iterator begin();
         iterator end();
@@ -58,10 +60,10 @@ namespace goliath::transitions {
 
     private:
         const std::chrono::milliseconds duration;
-        const unsigned ticksPerSecond;
+        const size_t ticksPerSecond;
         const double min, max;
 
-        const unsigned ticks;
+        const size_t ticks;
 
         std::vector<double> preCalculated;
     };

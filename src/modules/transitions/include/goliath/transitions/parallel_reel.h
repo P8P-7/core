@@ -28,7 +28,7 @@ namespace goliath::transitions {
         /**
          * @return Speed of all reels
          */
-        const unsigned getTicksPerSecond() const override;
+        const size_t getTicksPerSecond() const override;
 
     private:
         const std::vector<std::shared_ptr<Reel>> reels;

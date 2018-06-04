@@ -2,13 +2,13 @@
 
 using namespace goliath::transitions;
 
-Tickable::Tickable(const unsigned ticksPerSecond)
+Tickable::Tickable(const size_t ticksPerSecond)
         : duration(0), ticksPerSecond(ticksPerSecond) {}
 
 std::chrono::milliseconds Tickable::getDuration() const {
     return duration;
 }
 
-const unsigned Tickable::getTicksPerSecond() const {
+const size_t Tickable::getTicksPerSecond() const {
     return ticksPerSecond;
 }
