@@ -27,14 +27,16 @@ using namespace goliath;
  * @brief Application entry point
  */
 int main(int argc, char *argv[]) {
-    util::Console console(&util::colorConsoleFormatter, argv[0], "core-text.txt");
-
     std::string configFile = util::FoundationUtilities::executableToFile(argv[0], "config/core-config.json");
     repositories::ConfigRepository configRepository(configFile);
+    std::shared_ptr<::ConfigRepository> config = configRepository.getConfig();
+
+    util::Console console(&util::colorConsoleFormatter,
+                          argv[0],
+                          "core-text.txt",
+                          static_cast<boost::log::trivial::severity_level>(config->logging().severity_level()));
 
     std::shared_ptr<repositories::EmotionRepository> emotionRepository = std::make_shared<repositories::EmotionRepository>();
-
-    std::shared_ptr<::ConfigRepository> config = configRepository.getConfig();
 
     boost::asio::io_service ioService;
 
@@ -56,10 +58,10 @@ int main(int argc, char *argv[]) {
                                                 emotionRepository);
 
     BOOST_LOG_TRIVIAL(info) << "Setting up watcher";
-    repositories::Watcher watcher(config->watcher().polling_rate(), publisher);
+    auto watcher = std::make_shared<repositories::Watcher>(config->watcher().polling_rate(), publisher);
     auto batteryRepo = std::make_shared<repositories::BatteryRepository>();
-    watcher.watch(batteryRepo);
-    watcher.watch(emotionRepository);
+    watcher->watch(batteryRepo);
+    watcher->watch(emotionRepository);
 
     BOOST_LOG_TRIVIAL(info) << "Setting up GPIO";
     gpio::GPIO gpio(static_cast<gpio::GPIO::MapPin>(config->gpio().pin()), gpio::GPIO::Direction::Out,
@@ -126,6 +128,7 @@ int main(int argc, char *argv[]) {
     commands.add<commands::MoveWingCommand>(CommandMessage::kMoveWingCommand);
     commands.add<commands::WunderhornCommand>(CommandMessage::kWunderhornCommand);
     commands.add<commands::MoveTowerCommand>(CommandMessage::kMoveTowerCommand);
+    commands.add<commands::InvalidateAllCommand>(CommandMessage::kInvalidateAllCommand, watcher);
 
     commands::CommandExecutor runner(config->command_executor().number_of_executors(), commands, handles);
 
@@ -137,7 +140,7 @@ int main(int argc, char *argv[]) {
     BOOST_LOG_TRIVIAL(info) << "Launching subscriber";
     subscriber.start();
     BOOST_LOG_TRIVIAL(info) << "Starting watcher";
-    watcher.start();
+    watcher->start();
 
     BOOST_LOG_TRIVIAL(info) << "Press CTR+C to stop the controller";
 
@@ -146,10 +149,12 @@ int main(int argc, char *argv[]) {
     BOOST_LOG_TRIVIAL(warning) << "Controller is shutting down...";
 
     BOOST_LOG_TRIVIAL(info) << "Stopping watcher";
-    watcher.stop();
+    watcher->stop();
 
     BOOST_LOG_TRIVIAL(info) << "Stopping subscriber";
     subscriber.stop();
+
+    BOOST_LOG_TRIVIAL(fatal) << "Controller has been shut down";
 
     return 0;
 }

@@ -8,8 +8,10 @@ using namespace goliath::handles;
 HandleMap::HandleMap() {}
 
 HandleMap::HandleMap(const std::map<size_t, std::shared_ptr<Handle>> &map)
-        : map(map) {
-}
+        : map(map) {}
+
+HandleMap::HandleMap(const HandleMap &other)
+        : map(other.map) {}
 
 HandleMap::~HandleMap() {
     for (auto kvp : map) {
@@ -51,18 +53,24 @@ void HandleMap::lockAll(const size_t &commandId) {
 
 void HandleMap::unlockAll() {
     for (auto handle : map) {
-        if(handle.second->isLocked()) {
+        if (handle.second->isLocked()) {
             handle.second->unlock();
         }
     }
 }
 
-std::map<size_t, std::shared_ptr<Handle>>::iterator HandleMap::begin() {
+HandleMap::iterator HandleMap::begin() {
     return map.begin();
 }
 
-std::map<size_t, std::shared_ptr<Handle>>::iterator HandleMap::end() {
+HandleMap::iterator HandleMap::end() {
     return map.end();
 }
 
-HandleMap::HandleMap(const HandleMap &other) : map(other.map) { }
+HandleMap::const_iterator HandleMap::begin() const {
+    return map.cbegin();
+}
+
+HandleMap::const_iterator HandleMap::end() const {
+    return map.cend();
+}
