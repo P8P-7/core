@@ -36,7 +36,8 @@ int main(int argc, char *argv[]) {
                           "core-text.txt",
                           static_cast<boost::log::trivial::severity_level>(config->logging().severity_level()));
 
-    std::shared_ptr<repositories::EmotionRepository> emotionRepository = std::make_shared<repositories::EmotionRepository>();
+    auto emotionRepository = std::make_shared<repositories::EmotionRepository>();
+    auto loggingRepository = std::make_shared<repositories::LogRepository>(config->logging().history_size());
 
     boost::asio::io_service ioService;
 
@@ -62,6 +63,7 @@ int main(int argc, char *argv[]) {
     auto batteryRepo = std::make_shared<repositories::BatteryRepository>();
     watcher->watch(batteryRepo);
     watcher->watch(emotionRepository);
+    watcher->watch(loggingRepository);
 
     BOOST_LOG_TRIVIAL(info) << "Setting up GPIO";
     gpio::GPIO gpio(static_cast<gpio::GPIO::MapPin>(config->gpio().pin()), gpio::GPIO::Direction::Out,

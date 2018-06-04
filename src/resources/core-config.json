@@ -68,6 +68,7 @@
   "polling_rate": 250
  },
  "logging": {
-  "severity_level": "TRACE"
+  "severity_level": "TRACE",
+  "history_size": 50
  }
 }
