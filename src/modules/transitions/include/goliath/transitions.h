@@ -11,7 +11,6 @@
   */
 
 #include "transitions/methods/eases.h"
-#include "transitions/methods/linear.h"
 #include "transitions/util/transition_error.h"
 #include "transitions/util/transition_utilities.h"
 #include "transitions/parallel_reel.h"

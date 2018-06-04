@@ -1,7 +1,6 @@
 set(RELATIVE_INCLUDES
         transitions.h
         transitions/methods/eases.h
-        transitions/methods/linear.h
         transitions/util/transition_error.h
         transitions/util/transition_utilities.h
         transitions/parallel_reel.h

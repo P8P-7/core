@@ -20,16 +20,16 @@ BOOST_AUTO_TEST_SUITE(BOOST_TEST_MODULE)
         Reel reel(60);
         reel.addPhase(phase);
 
-        BOOST_CHECK_EQUAL(reel.getTicks(), 4);
+        BOOST_CHECK_EQUAL(reel.getNumberOfTicks(), 4);
 
         reel.addPhase(phase);
 
-        BOOST_CHECK_EQUAL(reel.getTicks(), 8);
+        BOOST_CHECK_EQUAL(reel.getNumberOfTicks(), 8);
 
         reel.tick();
         reel.tick();
         reel.tick();
-        BOOST_CHECK_EQUAL(reel.getTick(), 36);
+        BOOST_CHECK_EQUAL(reel.getNumberOfTicks(), 36);
     }
 
     BOOST_AUTO_TEST_CASE(test_parallel_reels) {

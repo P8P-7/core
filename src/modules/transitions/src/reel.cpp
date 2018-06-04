@@ -34,7 +34,7 @@ void Reel::addPhase(const std::shared_ptr<Phase> phase) {
     }
 }
 
-size_t Reel::getTicks() const {
+size_t Reel::getNumberOfTicks() const {
     return ticks;
 }
 

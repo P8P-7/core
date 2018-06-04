@@ -55,7 +55,7 @@ namespace goliath::transitions {
          * @brief Get the amount of ticks in this reel
          * @return Amount of ticks
          */
-        size_t getTicks() const;
+        size_t getNumberOfTicks() const;
 
         iterator begin();
         iterator end();

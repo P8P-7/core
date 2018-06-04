@@ -1,6 +1,5 @@
 set(RELATIVE_SOURCES
         methods/eases.cpp
-        methods/linear.cpp
         util/transition_error.cpp
         parallel_reel.cpp
         phase.cpp

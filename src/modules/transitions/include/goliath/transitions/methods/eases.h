@@ -23,4 +23,6 @@ namespace goliath::transitions::methods {
     double easeInQuint(double value);
     double easeOutQuint(double value);
     double easeInOutQuint(double value);
+
+    double linear(double value);
 }

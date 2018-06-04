@@ -49,3 +49,7 @@ double goliath::transitions::methods::easeOutQuint(double value) {
 double goliath::transitions::methods::easeInOutQuint(double value) {
     return value < 0.5 ? 16 * std::pow(value, 5) : 1 + 16 * (value - 1) * std::pow(value, 4);
 }
+
+double goliath::transitions::methods::linear(double value) {
+    return value;
+}
