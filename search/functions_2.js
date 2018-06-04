@@ -2,6 +2,7 @@ var searchData=
 [
   ['cannyprocessor',['CannyProcessor',['../classgoliath_1_1vision_1_1CannyProcessor.html#a3810bb792f931797ad2a9c27ca3d6533',1,'goliath::vision::CannyProcessor']]],
   ['canstart',['canStart',['../classgoliath_1_1commands_1_1Command.html#a74ffadb13c20ccc0d6cbadf975fb6a85',1,'goliath::commands::Command']]],
+  ['cantick',['canTick',['../classgoliath_1_1transitions_1_1Reel.html#ad44ed20c7af18395f98863b85f1b1e13',1,'goliath::transitions::Reel']]],
   ['colorconsoleformatter',['colorConsoleFormatter',['../namespacegoliath_1_1util.html#a11dce7a7cd058d584389b1a5d0edbc2d',1,'goliath::util']]],
   ['colorprocessor',['ColorProcessor',['../classgoliath_1_1vision_1_1ColorProcessor.html#ad5b26395e885a83ee5ae185033fe6095',1,'goliath::vision::ColorProcessor']]],
   ['commandexecutor',['CommandExecutor',['../classgoliath_1_1commands_1_1CommandExecutor.html#ac616d03dd1e107bc4245e60cdf53ad39',1,'goliath::commands::CommandExecutor']]],

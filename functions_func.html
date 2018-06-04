@@ -70,6 +70,9 @@ $(function() {
 : <a class="el" href="classgoliath_1_1commands_1_1CommandMap.html#a24b7eaaf96c3fca72d995ef3d457d69e">goliath::commands::CommandMap</a>
 , <a class="el" href="classgoliath_1_1handles_1_1HandleMap.html#a735a565b8fdb8fe861dc6507377c49d4">goliath::handles::HandleMap</a>
 </li>
+<li>addPhase()
+: <a class="el" href="classgoliath_1_1transitions_1_1Reel.html#ae9afeb05c07d018a0cd1d7e62a87fb77">goliath::transitions::Reel</a>
+</li>
 <li>address()
 : <a class="el" href="classgoliath_1_1messaging_1_1ZmqIo.html#a12d32d4c22b4db3b2fa70f76ace8354f">goliath::messaging::ZmqIo</a>
 </li>
@@ -79,7 +82,7 @@ $(function() {
 <h3><a id="index_b"></a>- b -</h3><ul>
 <li>begin()
 : <a class="el" href="classgoliath_1_1commands_1_1CommandMap.html#a53b32e2e65e9b4154f3edc42021f31f6">goliath::commands::CommandMap</a>
-, <a class="el" href="classgoliath_1_1handles_1_1HandleMap.html#ae5e41ac908dc5664a7cd185510f58f33">goliath::handles::HandleMap</a>
+, <a class="el" href="classgoliath_1_1handles_1_1HandleMap.html#ae9d846669aba194648c19cccd701ef56">goliath::handles::HandleMap</a>
 </li>
 <li>bind()
 : <a class="el" href="classgoliath_1_1messaging_1_1ZmqIo.html#a51776980746b4fe0e021929e48b6e986">goliath::messaging::ZmqIo</a>
@@ -94,6 +97,9 @@ $(function() {
 </li>
 <li>canStart()
 : <a class="el" href="classgoliath_1_1commands_1_1Command.html#a74ffadb13c20ccc0d6cbadf975fb6a85">goliath::commands::Command</a>
+</li>
+<li>canTick()
+: <a class="el" href="classgoliath_1_1transitions_1_1Reel.html#ad44ed20c7af18395f98863b85f1b1e13">goliath::transitions::Reel</a>
 </li>
 <li>ColorProcessor()
 : <a class="el" href="classgoliath_1_1vision_1_1ColorProcessor.html#ad5b26395e885a83ee5ae185033fe6095">goliath::vision::ColorProcessor</a>
@@ -142,10 +148,11 @@ $(function() {
 <h3><a id="index_e"></a>- e -</h3><ul>
 <li>end()
 : <a class="el" href="classgoliath_1_1commands_1_1CommandMap.html#a57b20314d5567070ccfe0d4d7ef68b3c">goliath::commands::CommandMap</a>
-, <a class="el" href="classgoliath_1_1handles_1_1HandleMap.html#a8951c4d3fd08ceefbe6a8ed4c7f7cedc">goliath::handles::HandleMap</a>
+, <a class="el" href="classgoliath_1_1handles_1_1HandleMap.html#aac94e077195d7d0e952d36d872237518">goliath::handles::HandleMap</a>
 </li>
 <li>execute()
 : <a class="el" href="classgoliath_1_1commands_1_1BasicCommand.html#a52161bad366b6930cd9db7c86d0610ad">goliath::commands::BasicCommand</a>
+, <a class="el" href="classgoliath_1_1transitions_1_1TransitionExecutor.html#a1946de7455c8e71b7b7a79fff9733f0a">goliath::transitions::TransitionExecutor</a>
 </li>
 </ul>
 
@@ -158,6 +165,9 @@ $(function() {
 
 
 <h3><a id="index_g"></a>- g -</h3><ul>
+<li>get()
+: <a class="el" href="classgoliath_1_1transitions_1_1Phase.html#a46a2523e24f0d67f74ddf6537261eb9f">goliath::transitions::Phase</a>
+</li>
 <li>getBatteryLevel()
 : <a class="el" href="classgoliath_1_1repositories_1_1BatteryRepository.html#a6c4c5412e197fb11092b4e1c8bcbbe0e">goliath::repositories::BatteryRepository</a>
 </li>
@@ -167,6 +177,11 @@ $(function() {
 </li>
 <li>getDevicePath()
 : <a class="el" href="classgoliath_1_1handles_1_1I2cBusHandle.html#a4de15714e4e74e0180f39f7f19851ca5">goliath::handles::I2cBusHandle</a>
+</li>
+<li>getDuration()
+: <a class="el" href="classgoliath_1_1transitions_1_1ParallelReel.html#a815ab5ebfbea7d9005b9cdfc505f0b2a">goliath::transitions::ParallelReel</a>
+, <a class="el" href="classgoliath_1_1transitions_1_1Phase.html#ad234d76df91a32380fe6a04bafea7e38">goliath::transitions::Phase</a>
+, <a class="el" href="classgoliath_1_1transitions_1_1Tickable.html#a53f6d6fb9a701b412f865321e5edac54">goliath::transitions::Tickable</a>
 </li>
 <li>getFrame()
 : <a class="el" href="classgoliath_1_1vision_1_1Webcam.html#a49d6bcd9f379755ec45702e7eae2f125">goliath::vision::Webcam</a>
@@ -191,6 +206,10 @@ $(function() {
 <li>getNumberOfMotors()
 : <a class="el" href="classgoliath_1_1motor__controller_1_1MotorController.html#a04d5c2496f46c18ed1a81a2f6dbea2b5">goliath::motor_controller::MotorController</a>
 </li>
+<li>getNumberOfTicks()
+: <a class="el" href="classgoliath_1_1transitions_1_1Phase.html#afc9563db2c31d58a44d8d6194bd443ef">goliath::transitions::Phase</a>
+, <a class="el" href="classgoliath_1_1transitions_1_1Reel.html#ad15fb09bcf5db216d99cb024f2af90ad">goliath::transitions::Reel</a>
+</li>
 <li>getOwnerId()
 : <a class="el" href="classgoliath_1_1handles_1_1Handle.html#a00f7ab977ce67d0accb67247914e8ef8">goliath::handles::Handle</a>
 </li>
@@ -202,6 +221,14 @@ $(function() {
 </li>
 <li>getSlaveAddress()
 : <a class="el" href="classgoliath_1_1handles_1_1I2cSlaveHandle.html#a96cc9c70024d22e2e462c6c7d28a41b1">goliath::handles::I2cSlaveHandle</a>
+</li>
+<li>getTick()
+: <a class="el" href="classgoliath_1_1transitions_1_1Reel.html#af9f6d732f0146ea5350ac0dcad8a947b">goliath::transitions::Reel</a>
+</li>
+<li>getTicksPerSecond()
+: <a class="el" href="classgoliath_1_1transitions_1_1ParallelReel.html#aa9b4daca721ed2ab4b62013b40562e4d">goliath::transitions::ParallelReel</a>
+, <a class="el" href="classgoliath_1_1transitions_1_1Phase.html#a1b6972be791ebd0da43261504462594b">goliath::transitions::Phase</a>
+, <a class="el" href="classgoliath_1_1transitions_1_1Tickable.html#a7d1306f8c7e19e8b6ff60fba48a497ea">goliath::transitions::Tickable</a>
 </li>
 </ul>
 
@@ -284,6 +311,9 @@ $(function() {
 
 
 <h3><a id="index_p"></a>- p -</h3><ul>
+<li>Phase()
+: <a class="el" href="classgoliath_1_1transitions_1_1Phase.html#a756d7e3923c5d8a50e707295745e931b">goliath::transitions::Phase</a>
+</li>
 <li>process()
 : <a class="el" href="classgoliath_1_1vision_1_1CannyProcessor.html#a5ac2cc9e9180ac542636ac05cfd8045e">goliath::vision::CannyProcessor</a>
 , <a class="el" href="classgoliath_1_1vision_1_1ColorProcessor.html#a90811bcb0e3a3a51cdeba36d8224ef1d">goliath::vision::ColorProcessor</a>
@@ -306,6 +336,9 @@ $(function() {
 </li>
 <li>record()
 : <a class="el" href="classgoliath_1_1openal_1_1Microphone.html#a1caa46002738316b8ca98e020fc0619a">goliath::openal::Microphone</a>
+</li>
+<li>Reel()
+: <a class="el" href="classgoliath_1_1transitions_1_1Reel.html#a089738a9cd72231f1ca316ecf4a886de">goliath::transitions::Reel</a>
 </li>
 <li>RoiProcessor()
 : <a class="el" href="classgoliath_1_1vision_1_1RoiProcessor.html#ace4336cddf11631c508e14c85d49bb43">goliath::vision::RoiProcessor</a>
@@ -337,6 +370,21 @@ $(function() {
 <li>stop()
 : <a class="el" href="classgoliath_1_1messaging_1_1ZmqSubscriber.html#ae3fd22868c3094fde0981ae266314194">goliath::messaging::ZmqSubscriber</a>
 , <a class="el" href="classgoliath_1_1repositories_1_1Watcher.html#afd174ac54c2b26148217d3e2593d3cfc">goliath::repositories::Watcher</a>
+</li>
+</ul>
+
+
+<h3><a id="index_t"></a>- t -</h3><ul>
+<li>tick()
+: <a class="el" href="classgoliath_1_1transitions_1_1ParallelReel.html#ac7ef70e2ca43dec1de66119441520ea7">goliath::transitions::ParallelReel</a>
+, <a class="el" href="classgoliath_1_1transitions_1_1Reel.html#a6cc55ff963b7488ca2d701ec5fca6f27">goliath::transitions::Reel</a>
+, <a class="el" href="classgoliath_1_1transitions_1_1Tickable.html#a4553a9a9f8826608ba55f3559e1c751a">goliath::transitions::Tickable</a>
+</li>
+<li>Tickable()
+: <a class="el" href="classgoliath_1_1transitions_1_1Tickable.html#a76b531d472d01cdd9ac2a5c8b5bf8773">goliath::transitions::Tickable</a>
+</li>
+<li>TransitionError()
+: <a class="el" href="classgoliath_1_1exceptions_1_1TransitionError.html#a68cc0ee5a199b4df0a4820bec9be6e11">goliath::exceptions::TransitionError</a>
 </li>
 </ul>
 
