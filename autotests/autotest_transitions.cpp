@@ -29,7 +29,7 @@ BOOST_AUTO_TEST_SUITE(BOOST_TEST_MODULE)
         reel.tick();
         reel.tick();
         reel.tick();
-        BOOST_CHECK_EQUAL(reel.getNumberOfTicks(), 36);
+        BOOST_CHECK_EQUAL(reel.getTick(), 36);
     }
 
     BOOST_AUTO_TEST_CASE(test_parallel_reels) {
