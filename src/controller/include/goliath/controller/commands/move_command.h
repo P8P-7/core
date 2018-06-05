@@ -16,7 +16,7 @@ namespace goliath::commands {
     private:
         void execute(handles::HandleMap &handles, const CommandMessage &message) override;
 
-        const std::map<size_t, size_t> commandMotorToHandleMap = {{
+        const std::map<::MotorCommand_Motor, size_t> commandMotorToHandleMap = {{
                                                                     {::MotorCommand::Motor::MotorCommand_Motor_LEFT_FRONT, HANDLE_LEFT_FRONT_MOTOR},
                                                                     {::MotorCommand::Motor::MotorCommand_Motor_LEFT_BACK, HANDLE_LEFT_BACK_MOTOR},
                                                                     {::MotorCommand::Motor::MotorCommand_Motor_RIGHT_FRONT, HANDLE_RIGHT_FRONT_MOTOR},

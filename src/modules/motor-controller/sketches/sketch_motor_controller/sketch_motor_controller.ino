@@ -128,7 +128,7 @@ struct MotorStatus {
     byte speed;
 };
 
-const byte numberOfMotors = 1;
+const byte numberOfMotors = 4;
 Motor motors[numberOfMotors];
 
 void setup() {
@@ -196,7 +196,22 @@ void setupMotors() {
     motors[0] = Motor(
         8, // forwardsPin / linksom
         7, // backwardsPin / rechtsom
-        3 // pwmPin
+        10 // pwmPin
+    );
+    motors[1] = Motor(
+      13,
+      12,
+      11
+    );
+    motors[2] = Motor(
+      2,
+      4,
+      3
+    );
+    motors[3] = Motor(
+      5,
+      6,
+      9
     );
 
     for (int i = 0; i < numberOfMotors; i++) {

@@ -28,8 +28,8 @@ using namespace goliath;
  */
 int main(int argc, char *argv[]) {
     std::string configFile = util::FoundationUtilities::executableToFile(argv[0], "config/core-config.json");
-    repositories::ConfigRepository configRepository(configFile);
-    std::shared_ptr<::ConfigRepository> config = configRepository.getConfig();
+    auto configRepository = std::make_shared<repositories::ConfigRepository>(configFile);
+    std::shared_ptr<::ConfigRepository> config = configRepository->getConfig();
 
     util::Console console(&util::colorConsoleFormatter,
                           argv[0],
@@ -64,6 +64,7 @@ int main(int argc, char *argv[]) {
     watcher->watch(batteryRepo);
     watcher->watch(emotionRepository);
     watcher->watch(loggingRepository);
+    watcher->watch(configRepository);
 
     BOOST_LOG_TRIVIAL(info) << "Setting up GPIO";
     gpio::GPIO gpio(static_cast<gpio::GPIO::MapPin>(config->gpio().pin()), gpio::GPIO::Direction::Out,
@@ -123,6 +124,9 @@ int main(int argc, char *argv[]) {
     handles.add<handles::I2cBusHandle>(HANDLE_I2C_BUS, "/dev/i2c-1");
     handles.add<handles::I2cSlaveHandle>(HANDLE_MOTOR_CONTROLLER, 0x30);
     handles.add<handles::MotorHandle>(HANDLE_LEFT_FRONT_MOTOR, 0);
+    handles.add<handles::MotorHandle>(HANDLE_LEFT_BACK_MOTOR, 1);
+    handles.add<handles::MotorHandle>(HANDLE_RIGHT_FRONT_MOTOR, 2);
+    handles.add<handles::MotorHandle>(HANDLE_RIGHT_BACK_MOTOR, 3);
 
     BOOST_LOG_TRIVIAL(info) << "Setting up commands";
     commands::CommandMap commands;
