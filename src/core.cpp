@@ -36,7 +36,8 @@ int main(int argc, char *argv[]) {
                           "core-text.txt",
                           static_cast<boost::log::trivial::severity_level>(config->logging().severity_level()));
 
-    std::shared_ptr<repositories::EmotionRepository> emotionRepository = std::make_shared<repositories::EmotionRepository>();
+    auto emotionRepository = std::make_shared<repositories::EmotionRepository>();
+    auto loggingRepository = std::make_shared<repositories::LogRepository>(config->logging().history_size());
 
     boost::asio::io_service ioService;
 
@@ -46,7 +47,7 @@ int main(int argc, char *argv[]) {
         ioService.stop();
     });
 
-    BOOST_LOG_TRIVIAL(info) << "Controller is starting";
+    BOOST_LOG_TRIVIAL(info) << "Core is starting";
 
     BOOST_LOG_TRIVIAL(info) << "Setting up subscriber";
     zmq::context_t context(1);
@@ -62,6 +63,7 @@ int main(int argc, char *argv[]) {
     auto batteryRepo = std::make_shared<repositories::BatteryRepository>();
     watcher->watch(batteryRepo);
     watcher->watch(emotionRepository);
+    watcher->watch(loggingRepository);
 
     BOOST_LOG_TRIVIAL(info) << "Setting up GPIO";
     gpio::GPIO gpio(static_cast<gpio::GPIO::MapPin>(config->gpio().pin()), gpio::GPIO::Direction::Out,
@@ -146,7 +148,7 @@ int main(int argc, char *argv[]) {
 
     ioService.run();
 
-    BOOST_LOG_TRIVIAL(warning) << "Controller is shutting down...";
+    BOOST_LOG_TRIVIAL(warning) << "Core is shutting down...";
 
     BOOST_LOG_TRIVIAL(info) << "Stopping watcher";
     watcher->stop();
@@ -154,7 +156,7 @@ int main(int argc, char *argv[]) {
     BOOST_LOG_TRIVIAL(info) << "Stopping subscriber";
     subscriber.stop();
 
-    BOOST_LOG_TRIVIAL(fatal) << "Controller has been shut down";
+    BOOST_LOG_TRIVIAL(fatal) << "Core has been shut down";
 
     return 0;
 }

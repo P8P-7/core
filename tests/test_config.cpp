@@ -84,6 +84,7 @@ BOOST_AUTO_TEST_SUITE(BOOST_TEST_MODULE)
 
         auto *loggingConfig = new LoggingConfig;
         loggingConfig->set_severity_level(LogSeverity::TRACE);
+        loggingConfig->set_history_size(50);
 
         configRepository.set_allocated_zmq(zmqConfig);
         configRepository.set_allocated_serial(serialConfig);
