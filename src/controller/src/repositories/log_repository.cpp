@@ -50,17 +50,17 @@ void repositories::LogRepository::formatter(const logging::record_view &record, 
 
 std::unique_ptr<::google::protobuf::Message> repositories::LogRepository::getMessage() {
     std::lock_guard<std::mutex> lock(mutex);
-    ::LogRepository repo;
+    proto::repositories::LogRepository repo;
 
     for (const auto &entry : history) {
         auto *newEntry = repo.add_entries();
-        newEntry->set_severity(static_cast<LogSeverity>(entry.severity));
+        newEntry->set_severity(static_cast<proto::repositories::LogSeverity>(entry.severity));
         newEntry->set_message(entry.message);
         newEntry->set_thread_id(entry.thread_id);
         newEntry->set_timestamp(entry.timestamp);
     }
 
-    return std::make_unique<::LogRepository>(repo);
+    return std::make_unique<proto::repositories::LogRepository>(repo);
 }
 
 void repositories::LogRepository::addEntry(const repositories::LogRepository::LogEntry &entry) {

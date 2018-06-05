@@ -7,6 +7,6 @@ commands::TransportRebuildCommand::TransportRebuildCommand(const size_t& id)
                        HANDLE_RIGHT_BACK_WING_SERVO}) { // TODO: Add motor handles
 }
 
-void commands::TransportRebuildCommand::execute(handles::HandleMap& handles, const CommandMessage& message) {
+void commands::TransportRebuildCommand::execute(handles::HandleMap& handles, const proto::CommandMessage& message) {
     // TODO: Implement transport rebuild command
 }

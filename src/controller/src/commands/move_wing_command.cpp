@@ -10,9 +10,9 @@ commands::MoveWingCommand::MoveWingCommand(const size_t &id)
                        HANDLE_RIGHT_FRONT_WING_SERVO, HANDLE_RIGHT_BACK_WING_SERVO}) {
 }
 
-void commands::MoveWingCommand::execute(HandleMap &handles, const CommandMessage &message) {
+void commands::MoveWingCommand::execute(HandleMap &handles, const proto::CommandMessage &message) {
     BOOST_LOG_TRIVIAL(info) << "Execution of move wing command has started";
-    ::MoveWingCommand wingCommand = message.movewingcommand();
+    proto::commands::MoveWingCommand wingCommand = message.movewingcommand();
 
     std::vector<size_t> requiredHandles = getRequiredHandles();
 
@@ -34,14 +34,14 @@ void commands::MoveWingCommand::execute(HandleMap &handles, const CommandMessage
 }
 
 void commands::MoveWingCommand::executeServoCommand(std::shared_ptr<handles::ServoHandle> servoHandle,
-                                                    const ServoCommand &servoCommand) {
+                                                    const proto::commands::ServoCommand &servoCommand) {
     auto servoDevice = servoHandle->getDevice();
 
     switch (servoCommand.direction()) {
-        case ServoCommand_Direction_UP:
+        case proto::commands::ServoCommand_Direction_UP:
             servoDevice->setMovingSpeed(servoCommand.speed() + 1024);
             break;
-        case ServoCommand_Direction_DOWN:
+        case proto::commands::ServoCommand_Direction_DOWN:
             servoDevice->setMovingSpeed(servoCommand.speed());
             break;
         default:
@@ -49,17 +49,17 @@ void commands::MoveWingCommand::executeServoCommand(std::shared_ptr<handles::Ser
     }
 }
 
-int commands::MoveWingCommand::enumToHandle(ServoCommand_Motor motor) {
+int commands::MoveWingCommand::enumToHandle(proto::commands::ServoCommand_Motor motor) {
     switch (motor) {
-        case ServoCommand_Motor_LEFT_FRONT:
+        case proto::commands::ServoCommand_Motor_LEFT_FRONT:
             return HANDLE_LEFT_FRONT_WING_SERVO;
-        case ServoCommand_Motor_LEFT_BACK:
+        case proto::commands::ServoCommand_Motor_LEFT_BACK:
             return HANDLE_LEFT_BACK_WING_SERVO;
-        case ServoCommand_Motor_RIGHT_FRONT:
+        case proto::commands::ServoCommand_Motor_RIGHT_FRONT:
             return HANDLE_RIGHT_FRONT_WING_SERVO;
-        case ServoCommand_Motor_RIGHT_BACK:
+        case proto::commands::ServoCommand_Motor_RIGHT_BACK:
             return HANDLE_RIGHT_BACK_WING_SERVO;
-        case ServoCommand_Motor_ALL:
+        case proto::commands::ServoCommand_Motor_ALL:
         default:
             return -1;
     }

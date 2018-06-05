@@ -7,6 +7,6 @@ commands::InvalidateAllCommand::InvalidateAllCommand(const size_t &id,  std::sha
         : BasicCommand(id, {}), watcher(watcher) {
 }
 
-void commands::InvalidateAllCommand::execute(goliath::handles::HandleMap &handles, const CommandMessage &message) {
+void commands::InvalidateAllCommand::execute(goliath::handles::HandleMap &handles, const proto::CommandMessage &message) {
     watcher->invalidateAll();
 }

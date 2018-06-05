@@ -9,19 +9,19 @@ namespace goliath::commands {
 
         ~QueueCommand();
 
-        void run(handles::HandleMap &handles, const CommandMessage &message) override;
+        void run(handles::HandleMap &handles, const proto::CommandMessage &message) override;
 
         bool canRunParallel() const override;
 
     protected:
-        virtual void execute(handles::HandleMap &handles, const CommandMessage &message) = 0;
+        virtual void execute(handles::HandleMap &handles, const proto::CommandMessage &message) = 0;
 
         void onInterrupt() override;
     private:
         void work();
 
         handles::HandleMap handles;
-        std::queue<CommandMessage> queue;
+        std::queue<proto::CommandMessage> queue;
 
         std::mutex mutex;
         std::condition_variable cv;
