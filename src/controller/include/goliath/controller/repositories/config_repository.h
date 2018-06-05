@@ -15,8 +15,8 @@ namespace goliath::repositories {
     public:
         explicit ConfigRepository(std::string &configFile);
 
-        std::shared_ptr<::ConfigRepository> getConfig();
-        std::unique_ptr<::google::protobuf::Message> getMessage() override;
+        std::shared_ptr<proto::repositories::ConfigRepository> getConfig();
+        std::unique_ptr<google::protobuf::Message> getMessage() override;
 
     private:
         std::string jsonString;

@@ -5,10 +5,10 @@
 using namespace goliath;
 
 std::unique_ptr<::google::protobuf::Message> repositories::BatteryRepository::getMessage() {
-    ::BatteryRepository repo;
+    proto::repositories::BatteryRepository repo;
     repo.set_level(getBatteryLevel());
 
-    return std::make_unique<::BatteryRepository>(repo);
+    return std::make_unique<proto::repositories::BatteryRepository>(repo);
 }
 
 int repositories::BatteryRepository::getBatteryLevel() const {

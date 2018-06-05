@@ -7,7 +7,7 @@ using namespace goliath::commands;
 QueueCommand::QueueCommand(const size_t &id, const std::vector<size_t> &requiredHandles)
         : Command(id, requiredHandles), queue{}, isWorking(true), worker(&QueueCommand::work, this) {}
 
-void QueueCommand::run(goliath::handles::HandleMap &handles, const CommandMessage &message) {
+void QueueCommand::run(goliath::handles::HandleMap &handles, const proto::CommandMessage &message) {
     std::lock_guard<std::mutex> lock(mutex);
 
     if (!isWorking) {
@@ -16,7 +16,7 @@ void QueueCommand::run(goliath::handles::HandleMap &handles, const CommandMessag
     }
 
     this->handles = handles;
-    CommandMessage copy = message;
+    proto::CommandMessage copy = message;
     queue.emplace(copy);
 
     cv.notify_one();
@@ -40,7 +40,7 @@ void QueueCommand::work() {
         running = true;
         while (!queue.empty() && !isInterrupted()) {
             handles::HandleMap handles = this->handles;
-            CommandMessage message = queue.front();
+            proto::CommandMessage message = queue.front();
             queue.pop();
             lock.unlock();
 

@@ -21,10 +21,10 @@ namespace goliath::repositories {
 
         std::unique_ptr<::google::protobuf::Message> getMessage();
 
-        const Emotion &getCurrentEmotion() const;
-        void setCurrentEmotion(const Emotion &emotion);
+        const proto::Emotion &getCurrentEmotion() const;
+        void setCurrentEmotion(const proto::Emotion &emotion);
 
     private:
-        Emotion currentEmotion;
+        proto::Emotion currentEmotion;
     };
 }

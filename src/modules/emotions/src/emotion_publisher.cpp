@@ -11,13 +11,13 @@ EmotionPublisher::EmotionPublisher(const EmotionPublisher& other)
     : ZmqPublisher(other.context, other.host, other.port), repository(other.repository) {
 }
 
-bool EmotionPublisher::publishEmotion(const Emotion& emotion) {
+bool EmotionPublisher::publishEmotion(const proto::Emotion& emotion) {
     repository->setCurrentEmotion(emotion);
 
-    auto* emotionMessage = new EmotionMessage;
+    auto* emotionMessage = new proto::EmotionMessage;
     emotionMessage->set_emotion(emotion);
 
-    MessageCarrier carrier;
+    proto::MessageCarrier carrier;
     carrier.set_allocated_emotionmessage(emotionMessage);
 
     return publish(carrier);

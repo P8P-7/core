@@ -12,11 +12,12 @@ namespace goliath::commands {
         MoveWingCommand(const size_t &id);
 
     private:
-        void execute(handles::HandleMap &handles, const CommandMessage &message) override;
+        void execute(handles::HandleMap &handles, const proto::CommandMessage &message) override;
 
-        void executeServoCommand(std::shared_ptr<handles::ServoHandle> servoHandle, const ServoCommand &servoCommand);
+        void executeServoCommand(std::shared_ptr<handles::ServoHandle> servoHandle,
+                                 const proto::commands::ServoCommand &servoCommand);
 
-        int enumToHandle(ServoCommand_Motor motor);
+        int enumToHandle(proto::commands::ServoCommand_Motor motor);
     };
 }
 

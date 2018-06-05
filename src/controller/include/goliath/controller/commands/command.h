@@ -35,7 +35,7 @@ namespace goliath::commands {
          * @param handles Handle map to be passed to implementation to be unlocked dynamically
          * @param message Arguments to be passed
          */
-        virtual void run(handles::HandleMap &handles, const CommandMessage &message) = 0;
+        virtual void run(handles::HandleMap &handles, const proto::CommandMessage &message) = 0;
 
         /**
          * @brief Interrupt a command by setting the interrupted property

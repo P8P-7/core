@@ -18,7 +18,7 @@ namespace goliath::emotions {
 
         EmotionPublisher(const EmotionPublisher& other);
 
-        bool publishEmotion(const Emotion& emotion);
+        bool publishEmotion(const proto::Emotion& emotion);
 
     private:
         std::shared_ptr<repositories::EmotionRepository> repository;

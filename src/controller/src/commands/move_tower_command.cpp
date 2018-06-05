@@ -10,7 +10,7 @@ commands::MoveTowerCommand::MoveTowerCommand(const size_t &id)
         : BasicCommand(id, { HANDLE_CAM }) {
 }
 
-void commands::MoveTowerCommand::execute(HandleMap &handles, const CommandMessage &message) {
+void commands::MoveTowerCommand::execute(HandleMap &handles, const proto::CommandMessage &message) {
     BOOST_LOG_TRIVIAL(info) << "Execution of move tower command has started";
     std::this_thread::sleep_for(std::chrono::milliseconds(2000));
     if (isInterrupted()) {

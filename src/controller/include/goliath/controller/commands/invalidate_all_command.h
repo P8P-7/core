@@ -18,6 +18,6 @@ namespace goliath::commands {
     private:
         std::shared_ptr<repositories::Watcher> watcher;
 
-        void execute(handles::HandleMap &handles, const CommandMessage &message) override;
+        void execute(handles::HandleMap &handles, const proto::CommandMessage &message) override;
     };
 }

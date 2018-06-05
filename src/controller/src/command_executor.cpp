@@ -14,7 +14,7 @@ CommandExecutor::~CommandExecutor() {
     pool.join();
 }
 
-void CommandExecutor::run(const size_t commandId, const CommandMessage &message) {
+void CommandExecutor::run(const size_t commandId, const proto::CommandMessage &message) {
     std::lock_guard<std::mutex> lock(mutex);
     if (!commands.commandExists(commandId)) {
         throw std::runtime_error("Command does not exist"); // TODO: Own exception class?
@@ -43,7 +43,7 @@ void CommandExecutor::run(const size_t commandId, const CommandMessage &message)
     boost::asio::post(pool, std::bind(starter, this, commandId, message));
 }
 
-void CommandExecutor::start(const size_t &commandId, const CommandMessage &message) {
+void CommandExecutor::start(const size_t &commandId, const proto::CommandMessage &message) {
     std::unique_lock<std::mutex> lock(mutex);
     numberOfActiveCommands++;
     CommandItem &item = commands[commandId];
@@ -67,7 +67,7 @@ void CommandExecutor::start(const size_t &commandId, const CommandMessage &messa
     numberOfActiveCommands--;
 }
 
-void CommandExecutor::delayedStart(const size_t &commandId, const CommandMessage &message) {
+void CommandExecutor::delayedStart(const size_t &commandId, const proto::CommandMessage &message) {
     std::unique_lock<std::mutex> lock(mutex);
     numberOfActiveCommands++;
     CommandItem &item = commands[commandId];

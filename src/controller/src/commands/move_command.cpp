@@ -12,12 +12,12 @@ commands::MoveCommand::MoveCommand(const size_t &id)
         : QueueCommand(id, {HANDLE_I2C_BUS, HANDLE_MOTOR_CONTROLLER, HANDLE_LEFT_FRONT_MOTOR}) {
 }
 
-void commands::MoveCommand::execute(HandleMap &handles, const CommandMessage &message) {
+void commands::MoveCommand::execute(HandleMap &handles, const proto::CommandMessage &message) {
     i2c::I2cSlave controllerSlave(*handles.get<handles::I2cBusHandle>(HANDLE_I2C_BUS),
                                   *handles.get<handles::I2cSlaveHandle>(HANDLE_MOTOR_CONTROLLER));
     motor_controller::MotorController motorController(controllerSlave);
 
-    const ::MoveCommand &moveCommand = message.movecommand();
+    const proto::commands::MoveCommand &moveCommand = message.movecommand();
     std::vector<motor_controller::MotorStatus> commands{};
     for (auto &command : moveCommand.commands()) {
         if (commandMotorToHandleMap.find(command.motor()) == commandMotorToHandleMap.end()) {

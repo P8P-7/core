@@ -29,7 +29,7 @@ using namespace goliath;
 int main(int argc, char *argv[]) {
     std::string configFile = util::FoundationUtilities::executableToFile(argv[0], "config/core-config.json");
     repositories::ConfigRepository configRepository(configFile);
-    std::shared_ptr<::ConfigRepository> config = configRepository.getConfig();
+    std::shared_ptr<proto::repositories::ConfigRepository> config = configRepository.getConfig();
 
     util::Console console(&util::colorConsoleFormatter,
                           argv[0],
@@ -97,18 +97,18 @@ int main(int argc, char *argv[]) {
 
         std::map<std::string, int> servos;
 
-        for (Wing wing : config->servos().wings()) {
+        for (proto::repositories::Wing wing : config->servos().wings()) {
             std::shared_ptr<Dynamixel> dynamixel = std::make_shared<Dynamixel>(wing.id(), port);
 
             size_t handle;
 
-            if (wing.position() == Position::LEFT_FRONT) {
+            if (wing.position() == proto::repositories::Position::LEFT_FRONT) {
                 handle = HANDLE_LEFT_FRONT_WING_SERVO;
-            } else if (wing.position() == Position::LEFT_BACK) {
+            } else if (wing.position() == proto::repositories::Position::LEFT_BACK) {
                 handle = HANDLE_LEFT_BACK_WING_SERVO;
-            } else if (wing.position() == Position::RIGHT_FRONT) {
+            } else if (wing.position() == proto::repositories::Position::RIGHT_FRONT) {
                 handle = HANDLE_RIGHT_FRONT_WING_SERVO;
-            } else if (wing.position() == Position::RIGHT_BACK) {
+            } else if (wing.position() == proto::repositories::Position::RIGHT_BACK) {
                 handle = HANDLE_RIGHT_BACK_WING_SERVO;
             } else {
                 throw std::runtime_error("Servo position could not be handled");
@@ -124,16 +124,16 @@ int main(int argc, char *argv[]) {
 
     BOOST_LOG_TRIVIAL(info) << "Setting up commands";
     commands::CommandMap commands;
-    commands.add<commands::MoveCommand>(CommandMessage::kMoveCommand);
-    commands.add<commands::MoveWingCommand>(CommandMessage::kMoveWingCommand);
-    commands.add<commands::WunderhornCommand>(CommandMessage::kWunderhornCommand);
-    commands.add<commands::MoveTowerCommand>(CommandMessage::kMoveTowerCommand);
-    commands.add<commands::InvalidateAllCommand>(CommandMessage::kInvalidateAllCommand, watcher);
+    commands.add<commands::MoveCommand>(proto::CommandMessage::kMoveCommand);
+    commands.add<commands::MoveWingCommand>(proto::CommandMessage::kMoveWingCommand);
+    commands.add<commands::WunderhornCommand>(proto::CommandMessage::kWunderhornCommand);
+    commands.add<commands::MoveTowerCommand>(proto::CommandMessage::kMoveTowerCommand);
+    commands.add<commands::InvalidateAllCommand>(proto::CommandMessage::kInvalidateAllCommand, watcher);
 
     commands::CommandExecutor runner(config->command_executor().number_of_executors(), commands, handles);
 
-    subscriber.bind(MessageCarrier::MessageCase::kCommandMessage, [&runner](const MessageCarrier &carrier) {
-        CommandMessage message = carrier.commandmessage();
+    subscriber.bind(proto::MessageCarrier::MessageCase::kCommandMessage, [&runner](const proto::MessageCarrier &carrier) {
+        proto::CommandMessage message = carrier.commandmessage();
         runner.run(message.command_case(), message);
     });
 
