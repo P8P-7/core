@@ -108,9 +108,9 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aedcb0c5f613062f2b30132baad887e21"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acd1a6a6e17f1d51f962126168f80aa32"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1commands_1_1Command.html#acd1a6a6e17f1d51f962126168f80aa32">getId</a> () const</td></tr>
 <tr class="separator:acd1a6a6e17f1d51f962126168f80aa32"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad7f726e67f054d71788ca41680cd0d5a"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1commands_1_1Command.html#ad7f726e67f054d71788ca41680cd0d5a">run</a> (<a class="el" href="classgoliath_1_1handles_1_1HandleMap.html">handles::HandleMap</a> &amp;handles, const CommandMessage &amp;message)=0</td></tr>
-<tr class="memdesc:ad7f726e67f054d71788ca41680cd0d5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Execute a command whilst also setting its running property.  <a href="#ad7f726e67f054d71788ca41680cd0d5a">More...</a><br /></td></tr>
-<tr class="separator:ad7f726e67f054d71788ca41680cd0d5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a667d1fa5ed91aff4a6600fb41bac9273"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1commands_1_1Command.html#a667d1fa5ed91aff4a6600fb41bac9273">run</a> (<a class="el" href="classgoliath_1_1handles_1_1HandleMap.html">handles::HandleMap</a> &amp;handles, const proto::CommandMessage &amp;message)=0</td></tr>
+<tr class="memdesc:a667d1fa5ed91aff4a6600fb41bac9273"><td class="mdescLeft">&#160;</td><td class="mdescRight">Execute a command whilst also setting its running property.  <a href="#a667d1fa5ed91aff4a6600fb41bac9273">More...</a><br /></td></tr>
+<tr class="separator:a667d1fa5ed91aff4a6600fb41bac9273"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0de018f805398f4af72233ec82b06b94"><td class="memItemLeft" align="right" valign="top"><a id="a0de018f805398f4af72233ec82b06b94"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1commands_1_1Command.html#a0de018f805398f4af72233ec82b06b94">interrupt</a> ()</td></tr>
 <tr class="memdesc:a0de018f805398f4af72233ec82b06b94"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interrupt a command by setting the interrupted property. <br /></td></tr>
@@ -237,8 +237,8 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 
 </div>
 </div>
-<a id="ad7f726e67f054d71788ca41680cd0d5a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad7f726e67f054d71788ca41680cd0d5a">&#9670;&nbsp;</a></span>run()</h2>
+<a id="a667d1fa5ed91aff4a6600fb41bac9273"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a667d1fa5ed91aff4a6600fb41bac9273">&#9670;&nbsp;</a></span>run()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -255,7 +255,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const CommandMessage &amp;&#160;</td>
+          <td class="paramtype">const proto::CommandMessage &amp;&#160;</td>
           <td class="paramname"><em>message</em>&#160;</td>
         </tr>
         <tr>
@@ -280,7 +280,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
   </dd>
 </dl>
 
-<p>Implemented in <a class="el" href="classgoliath_1_1commands_1_1QueueCommand.html#a4dfe9a74a65329ee138130eec08a3276">goliath::commands::QueueCommand</a>, and <a class="el" href="classgoliath_1_1commands_1_1BasicCommand.html#ac8a538c66e5fd4c19ec6845a9ff2ad46">goliath::commands::BasicCommand</a>.</p>
+<p>Implemented in <a class="el" href="classgoliath_1_1commands_1_1QueueCommand.html#ae4889a22b03c1824e484d28edf0bf648">goliath::commands::QueueCommand</a>, and <a class="el" href="classgoliath_1_1commands_1_1BasicCommand.html#aea8b3a21eefb67a86e4ddc0631e4ffde">goliath::commands::BasicCommand</a>.</p>
 
 </div>
 </div>

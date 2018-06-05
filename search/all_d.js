@@ -10,7 +10,7 @@ var searchData=
   ['proto_5frepository_2eh',['proto_repository.h',['../proto__repository_8h.html',1,'']]],
   ['protocol',['PROTOCOL',['../zmq__io_8h.html#aa094b1356e3aa576d3e292b8d63dd1fc',1,'zmq_io.h']]],
   ['protorepository',['ProtoRepository',['../classgoliath_1_1repositories_1_1ProtoRepository.html',1,'goliath::repositories']]],
-  ['publish',['publish',['../classgoliath_1_1foundation_1_1PublisherService.html#aab389796da6ef3b3cb81f89f7f357aff',1,'goliath::foundation::PublisherService::publish()'],['../classgoliath_1_1messaging_1_1ZmqPublisher.html#ac88469990306f8774a5b5607ba6e7c32',1,'goliath::messaging::ZmqPublisher::publish()']]],
+  ['publish',['publish',['../classgoliath_1_1foundation_1_1PublisherService.html#a17375532764d0fe65f2e735547555448',1,'goliath::foundation::PublisherService::publish()'],['../classgoliath_1_1messaging_1_1ZmqPublisher.html#a4503e19275f9391fc3ad06170d953871',1,'goliath::messaging::ZmqPublisher::publish()']]],
   ['publisher_5fservice_2eh',['publisher_service.h',['../publisher__service_8h.html',1,'']]],
   ['publisherservice',['PublisherService',['../classgoliath_1_1foundation_1_1PublisherService.html',1,'goliath::foundation']]]
 ];

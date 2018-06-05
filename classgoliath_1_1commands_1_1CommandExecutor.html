@@ -84,9 +84,9 @@ $(function() {
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ac616d03dd1e107bc4245e60cdf53ad39"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1commands_1_1CommandExecutor.html#ac616d03dd1e107bc4245e60cdf53ad39">CommandExecutor</a> (size_t numberOfThreads, <a class="el" href="classgoliath_1_1commands_1_1CommandMap.html">CommandMap</a> &amp;commands, <a class="el" href="classgoliath_1_1handles_1_1HandleMap.html">HandleMap</a> &amp;handles)</td></tr>
 <tr class="separator:ac616d03dd1e107bc4245e60cdf53ad39"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a39ca77c30431a9d49dcd8604b2837f7d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1commands_1_1CommandExecutor.html#a39ca77c30431a9d49dcd8604b2837f7d">run</a> (size_t commandId, const CommandMessage &amp;message)</td></tr>
-<tr class="memdesc:a39ca77c30431a9d49dcd8604b2837f7d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a command is already running, if so drop it else execute it's instance by running.  <a href="#a39ca77c30431a9d49dcd8604b2837f7d">More...</a><br /></td></tr>
-<tr class="separator:a39ca77c30431a9d49dcd8604b2837f7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a125dacf4044326eb63f31cd379574dd3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1commands_1_1CommandExecutor.html#a125dacf4044326eb63f31cd379574dd3">run</a> (size_t commandId, const proto::CommandMessage &amp;message)</td></tr>
+<tr class="memdesc:a125dacf4044326eb63f31cd379574dd3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a command is already running, if so drop it else execute it's instance by running.  <a href="#a125dacf4044326eb63f31cd379574dd3">More...</a><br /></td></tr>
+<tr class="separator:a125dacf4044326eb63f31cd379574dd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Takes in a command id, and executes is. Also checks handles and interrupts commands. </p>
@@ -133,8 +133,8 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a39ca77c30431a9d49dcd8604b2837f7d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a39ca77c30431a9d49dcd8604b2837f7d">&#9670;&nbsp;</a></span>run()</h2>
+<a id="a125dacf4044326eb63f31cd379574dd3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a125dacf4044326eb63f31cd379574dd3">&#9670;&nbsp;</a></span>run()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -148,7 +148,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const CommandMessage &amp;&#160;</td>
+          <td class="paramtype">const proto::CommandMessage &amp;&#160;</td>
           <td class="paramname"><em>message</em>&#160;</td>
         </tr>
         <tr>

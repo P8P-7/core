@@ -91,9 +91,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a78bf740d519c7c7876f16fb40df7e1f8"><td class="memItemLeft" align="right" valign="top"><a id="a78bf740d519c7c7876f16fb40df7e1f8"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>QueueCommand</b> (const size_t &amp;id, const std::vector&lt; size_t &gt; &amp;requiredHandles)</td></tr>
 <tr class="separator:a78bf740d519c7c7876f16fb40df7e1f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4dfe9a74a65329ee138130eec08a3276"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1commands_1_1QueueCommand.html#a4dfe9a74a65329ee138130eec08a3276">run</a> (<a class="el" href="classgoliath_1_1handles_1_1HandleMap.html">handles::HandleMap</a> &amp;handles, const CommandMessage &amp;message) override</td></tr>
-<tr class="memdesc:a4dfe9a74a65329ee138130eec08a3276"><td class="mdescLeft">&#160;</td><td class="mdescRight">Execute a command whilst also setting its running property.  <a href="#a4dfe9a74a65329ee138130eec08a3276">More...</a><br /></td></tr>
-<tr class="separator:a4dfe9a74a65329ee138130eec08a3276"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4889a22b03c1824e484d28edf0bf648"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1commands_1_1QueueCommand.html#ae4889a22b03c1824e484d28edf0bf648">run</a> (<a class="el" href="classgoliath_1_1handles_1_1HandleMap.html">handles::HandleMap</a> &amp;handles, const proto::CommandMessage &amp;message) override</td></tr>
+<tr class="memdesc:ae4889a22b03c1824e484d28edf0bf648"><td class="mdescLeft">&#160;</td><td class="mdescRight">Execute a command whilst also setting its running property.  <a href="#ae4889a22b03c1824e484d28edf0bf648">More...</a><br /></td></tr>
+<tr class="separator:ae4889a22b03c1824e484d28edf0bf648"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a30fa1d001862d60f54df4d09279b9920"><td class="memItemLeft" align="right" valign="top"><a id="a30fa1d001862d60f54df4d09279b9920"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>canRunParallel</b> () const override</td></tr>
 <tr class="separator:a30fa1d001862d60f54df4d09279b9920"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -119,9 +119,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:ac05851c2e983e5090b224aff16098b5c"><td class="memItemLeft" align="right" valign="top"><a id="ac05851c2e983e5090b224aff16098b5c"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>execute</b> (<a class="el" href="classgoliath_1_1handles_1_1HandleMap.html">handles::HandleMap</a> &amp;handles, const CommandMessage &amp;message)=0</td></tr>
-<tr class="separator:ac05851c2e983e5090b224aff16098b5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1de15732f89f9a0f707a40fcb90ee6a"><td class="memItemLeft" align="right" valign="top"><a id="af1de15732f89f9a0f707a40fcb90ee6a"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>execute</b> (<a class="el" href="classgoliath_1_1handles_1_1HandleMap.html">handles::HandleMap</a> &amp;handles, const proto::CommandMessage &amp;message)=0</td></tr>
+<tr class="separator:af1de15732f89f9a0f707a40fcb90ee6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae68248740674b1987b88a4e269de422c"><td class="memItemLeft" align="right" valign="top"><a id="ae68248740674b1987b88a4e269de422c"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>onInterrupt</b> () override</td></tr>
 <tr class="separator:ae68248740674b1987b88a4e269de422c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -135,8 +135,8 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="separator:a82b9acae7feb096c203efd219b408c94 inherit pro_attribs_classgoliath_1_1commands_1_1Command"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a4dfe9a74a65329ee138130eec08a3276"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4dfe9a74a65329ee138130eec08a3276">&#9670;&nbsp;</a></span>run()</h2>
+<a id="ae4889a22b03c1824e484d28edf0bf648"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae4889a22b03c1824e484d28edf0bf648">&#9670;&nbsp;</a></span>run()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -153,7 +153,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const CommandMessage &amp;&#160;</td>
+          <td class="paramtype">const proto::CommandMessage &amp;&#160;</td>
           <td class="paramname"><em>message</em>&#160;</td>
         </tr>
         <tr>
@@ -178,7 +178,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
   </dd>
 </dl>
 
-<p>Implements <a class="el" href="classgoliath_1_1commands_1_1Command.html#ad7f726e67f054d71788ca41680cd0d5a">goliath::commands::Command</a>.</p>
+<p>Implements <a class="el" href="classgoliath_1_1commands_1_1Command.html#a667d1fa5ed91aff4a6600fb41bac9273">goliath::commands::Command</a>.</p>
 
 </div>
 </div>
