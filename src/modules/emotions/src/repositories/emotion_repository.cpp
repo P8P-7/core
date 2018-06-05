@@ -3,22 +3,22 @@
 using namespace goliath;
 
 repositories::EmotionRepository::EmotionRepository()
-        : currentEmotion(Emotion::NEUTRAL) {
+        : currentEmotion(proto::Emotion::NEUTRAL) {
 }
 
 std::unique_ptr<::google::protobuf::Message> repositories::EmotionRepository::getMessage() {
-    ::EmotionRepository emotionRepository;
+    proto::repositories::EmotionRepository emotionRepository;
 
     emotionRepository.set_emotion(currentEmotion);
 
-    return std::make_unique<::EmotionRepository>(emotionRepository);
+    return std::make_unique<proto::repositories::EmotionRepository>(emotionRepository);
 }
 
-const Emotion &repositories::EmotionRepository::getCurrentEmotion() const {
+const proto::Emotion &repositories::EmotionRepository::getCurrentEmotion() const {
     return currentEmotion;
 }
 
-void repositories::EmotionRepository::setCurrentEmotion(const Emotion& emotion) {
+void repositories::EmotionRepository::setCurrentEmotion(const proto::Emotion& emotion) {
     currentEmotion = emotion;
     invalidate();
 }

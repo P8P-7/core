@@ -14,6 +14,6 @@ namespace goliath::commands {
         DanceCommand(const size_t &id);
 
     private:
-        void execute(handles::HandleMap &handles, const CommandMessage &message) override;
+        void execute(handles::HandleMap &handles, const proto::CommandMessage &message) override;
     };
 }

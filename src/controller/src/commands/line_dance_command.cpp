@@ -7,6 +7,6 @@ commands::LineDanceCommand::LineDanceCommand(const size_t& id)
                        HANDLE_RIGHT_BACK_WING_SERVO}) { // TODO: Add motor handles
 }
 
-void commands::LineDanceCommand::execute(handles::HandleMap& handles, const CommandMessage& message) {
+void commands::LineDanceCommand::execute(handles::HandleMap& handles, const proto::CommandMessage& message) {
     // TODO: Implement line dance
 }

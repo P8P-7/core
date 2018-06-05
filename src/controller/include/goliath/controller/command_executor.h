@@ -32,7 +32,7 @@ namespace goliath::commands {
          * @param commandId ID of the command to run
          * @param message Arguments gathered from the protobuf input
          */
-        void run(size_t commandId, const CommandMessage &message);
+        void run(size_t commandId, const proto::CommandMessage &message);
 
     private:
         const size_t numberOfThreads;
@@ -54,8 +54,8 @@ namespace goliath::commands {
          * @param commandId ID of the command to try to execute
          * @param message Arguments gathered from the protobuf input
          */
-        void start(const size_t &commandId, const CommandMessage &message);
+        void start(const size_t &commandId, const proto::CommandMessage &message);
 
-        void delayedStart(const size_t &commandId, const CommandMessage &message);
+        void delayedStart(const size_t &commandId, const proto::CommandMessage &message);
     };
 }

@@ -16,14 +16,14 @@ repositories::ConfigRepository::ConfigRepository(std::string &configFile) {
     jsonString = jsonBuffer.str();
 }
 
-std::shared_ptr<::ConfigRepository> repositories::ConfigRepository::getConfig() {
-    ::ConfigRepository configRepository;
+std::shared_ptr<proto::repositories::ConfigRepository> repositories::ConfigRepository::getConfig() {
+    proto::repositories::ConfigRepository configRepository;
 
     google::protobuf::util::JsonParseOptions options;
     google::protobuf::util::JsonStringToMessage(jsonString, &configRepository, options);
 
-    return std::make_shared<::ConfigRepository>(configRepository);}
+    return std::make_shared<proto::repositories::ConfigRepository>(configRepository);}
 
 std::unique_ptr<::google::protobuf::Message> repositories::ConfigRepository::getMessage() {
-    return std::make_unique<::ConfigRepository>(*getConfig());
+    return std::make_unique<proto::repositories::ConfigRepository>(*getConfig());
 }
