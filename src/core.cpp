@@ -132,18 +132,21 @@ int main(int argc, char *argv[]) {
 
     BOOST_LOG_TRIVIAL(info) << "Setting up commands";
     commands::CommandMap commands(commandStatusRepository);
+    commands.add<commands::InterruptCommandCommand>(proto::CommandMessage::kInterruptCommandCommand,
+                                                    std::make_shared<commands::CommandMap>(commands));
     commands.add<commands::MoveCommand>(proto::CommandMessage::kMoveCommand);
     commands.add<commands::MoveWingCommand>(proto::CommandMessage::kMoveWingCommand);
     commands.add<commands::WunderhornCommand>(proto::CommandMessage::kWunderhornCommand);
-    commands.add<commands::MoveTowerCommand>(proto::CommandMessage::kMoveTowerCommand);
+    commands.add<commands::TransportRebuildCommand>(proto::CommandMessage::kTransportRebuildCommand);
     commands.add<commands::InvalidateAllCommand>(proto::CommandMessage::kInvalidateAllCommand, watcher);
 
     commands::CommandExecutor runner(config->command_executor().number_of_executors(), commands, handles);
 
-    subscriber.bind(proto::MessageCarrier::MessageCase::kCommandMessage, [&runner](const proto::MessageCarrier &carrier) {
-        proto::CommandMessage message = carrier.commandmessage();
-        runner.run(message.command_case(), message);
-    });
+    subscriber.bind(proto::MessageCarrier::MessageCase::kCommandMessage,
+                    [&runner](const proto::MessageCarrier &carrier) {
+                        proto::CommandMessage message = carrier.commandmessage();
+                        runner.run(message.command_case(), message);
+                    });
 
     BOOST_LOG_TRIVIAL(info) << "Launching subscriber";
     subscriber.start();
