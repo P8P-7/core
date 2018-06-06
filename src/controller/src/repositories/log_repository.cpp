@@ -13,7 +13,7 @@ namespace logging = boost::log;
 
 repositories::LogRepository::LogRepository(const size_t &bufferSize)
         : bufferSize(bufferSize),
-          sink(boost::make_shared<logging::sinks::synchronous_sink<logging::sinks::text_ostream_backend>>()) {
+          sink(boost::make_shared<SinkType>()) {
     sink->set_formatter([&](const logging::record_view &record, logging::formatting_ostream &stream) {
         this->formatter(record, stream);
     });

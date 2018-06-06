@@ -10,8 +10,7 @@ MACRO(compiler_flags WARNING_LEVEL)
                         "-fexceptions"
                         "-fpic"
                         "-shared"
-                        "-g"
-                        "-O2"
+                        "-Og"
                         "-pipe"
                         "-Werror=format-security"
                         "-Werror=implicit-function-declaration"
@@ -28,7 +27,7 @@ MACRO(compiler_flags WARNING_LEVEL)
         ENDIF ()
     ELSEIF (${CMAKE_BUILD_TYPE} STREQUAL "Release")
         IF (CMAKE_COMPILER_IS_GNUCXX)
-            add_compile_options("-O3")
+            add_compile_options("-O2")
         ENDIF ()
     ENDIF ()
 ENDMACRO(compiler_flags)

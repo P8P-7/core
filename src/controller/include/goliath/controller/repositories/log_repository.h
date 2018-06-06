@@ -16,6 +16,7 @@ namespace goliath::repositories {
         std::unique_ptr<::google::protobuf::Message> getMessage() override;
 
     private:
+        using SinkType = boost::log::sinks::synchronous_sink<boost::log::sinks::text_ostream_backend>;
         struct LogEntry {
             const std::uint64_t timestamp;
             const std::string thread_id;
@@ -28,7 +29,7 @@ namespace goliath::repositories {
         size_t bufferSize;
         std::deque<LogEntry> history;
 
-        boost::shared_ptr<boost::log::sinks::synchronous_sink<boost::log::sinks::text_ostream_backend>> sink;
+        boost::shared_ptr<SinkType> sink;
 
         void addEntry(const LogEntry &entry);
         void formatter(const boost::log::record_view &record, boost::log::formatting_ostream &stream);

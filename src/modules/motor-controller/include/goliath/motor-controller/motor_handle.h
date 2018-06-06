@@ -6,7 +6,8 @@
 namespace goliath::handles {
     class MotorHandle : public Handle {
     public:
-        MotorHandle(const size_t &handleId, const motor_controller::MotorId motorId) : Handle(handleId) {}
+        MotorHandle(const size_t &handleId, const motor_controller::MotorId motorId) : Handle(handleId),
+                                                                                       id(motorId) {}
 
         motor_controller::MotorId getMotorId() const;
     private:

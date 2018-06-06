@@ -98,9 +98,12 @@ BOOST_AUTO_TEST_SUITE(BOOST_TEST_MODULE)
         };
 
         for (motor_controller::MotorSpeed i = 0;; i++) {
-            BOOST_LOG_TRIVIAL(info) << "Speed: " << std::to_string(i);
-            message.speed = i;
-            controller.sendCommand(message);
+            for (motor_controller::MotorId id = 0; id < 4; id++) {
+                message.id = id;
+                BOOST_LOG_TRIVIAL(info) << "Speed: " << std::to_string(i);
+                message.speed = i;
+                controller.sendCommand(message);
+            }
 
             if (i == 255) {
                 break;
@@ -108,9 +111,40 @@ BOOST_AUTO_TEST_SUITE(BOOST_TEST_MODULE)
         }
 
         for (motor_controller::MotorSpeed i = 254;; i--) {
-            BOOST_LOG_TRIVIAL(info) << "Speed: " << std::to_string(i);
-            message.speed = i;
-            controller.sendCommand(message);
+            for (motor_controller::MotorId id = 0; id < 4; id++) {
+                message.id = id;
+                BOOST_LOG_TRIVIAL(info) << "Speed: " << std::to_string(i);
+                message.speed = i;
+                controller.sendCommand(message);
+            }
+
+            if (i == 0) {
+                break;
+            }
+        }
+
+        message.direction = motor_controller::MotorDirection::BACKWARDS;
+
+        for (motor_controller::MotorSpeed i = 0;; i++) {
+            for (motor_controller::MotorId id = 0; id < 4; id++) {
+                message.id = id;
+                BOOST_LOG_TRIVIAL(info) << "Speed: " << std::to_string(i);
+                message.speed = i;
+                controller.sendCommand(message);
+            }
+
+            if (i == 255) {
+                break;
+            }
+        }
+
+        for (motor_controller::MotorSpeed i = 254;; i--) {
+            for (motor_controller::MotorId id = 0; id < 4; id++) {
+                message.id = id;
+                BOOST_LOG_TRIVIAL(info) << "Speed: " << std::to_string(i);
+                message.speed = i;
+                controller.sendCommand(message);
+            }
 
             if (i == 0) {
                 break;
