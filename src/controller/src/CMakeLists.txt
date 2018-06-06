@@ -16,6 +16,7 @@ set(RELATIVE_SOURCES
         commands/obstacle_course_command.cpp
         commands/transport_rebuild_command.cpp
         command_map.cpp
+        command_item.cpp
         command_executor.cpp
         handle_map.cpp
         )

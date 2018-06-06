@@ -22,6 +22,7 @@
 #include "controller/commands/obstacle_course_command.h"
 #include "controller/commands/transport_rebuild_command.h"
 #include "controller/command_executor.h"
+#include "controller/command_item.h"
 #include "controller/command_map.h"
 #include "controller/handles.h"
 #include "controller/handle_map.h"

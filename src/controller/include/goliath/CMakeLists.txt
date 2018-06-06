@@ -14,6 +14,7 @@ set(RELATIVE_INCLUDES
         controller/commands/transport_rebuild_command.h
         controller/commands/wunderhorn_command.h
         controller/command_executor.h
+        controller/command_item.h
         controller/command_map.h
         controller/handle_map.h
         controller/handles.h

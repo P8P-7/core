@@ -30,7 +30,7 @@ void commands::MoveCommand::execute(HandleMap &handles, const proto::CommandMess
         motorCommand.direction = static_cast<motor_controller::MotorDirection>(command.gear());
         motorCommand.speed = static_cast<motor_controller::MotorSpeed>(command.speed());
         if (command.speed() < 0 || command.speed() > 255) {
-            BOOST_LOG_TRIVIAL(fatal) << "Speed is out of range [0, 255] " << command.speed();
+            BOOST_LOG_TRIVIAL(fatal) << "Speed is out of range [0, 255] " << std::to_string(command.speed());
             continue;
         }
 

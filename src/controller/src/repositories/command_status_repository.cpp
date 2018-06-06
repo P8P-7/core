@@ -3,18 +3,17 @@
 using namespace goliath::repositories;
 using namespace goliath;
 
-void CommandStatusRepository::addItem(size_t commandId, CommandStatusItem::CommandStatus status) {
+void CommandStatusRepository::addItem(size_t commandId, commands::CommandStatus status) {
     items[commandId] = status;
     invalidate();
 }
 
 void CommandStatusRepository::addItem(size_t commandId) {
-    addItem(commandId, CommandStatusItem::STALE);
+    addItem(commandId, commands::CommandStatus::STALE);
 }
 
-void CommandStatusRepository::updateItem(size_t commandId, CommandStatusItem::CommandStatus status) {
-    items[commandId] = status;
-    invalidate();
+void CommandStatusRepository::updateItem(size_t commandId, commands::CommandStatus status) {
+    addItem(commandId, status);
 }
 
 std::unique_ptr<google::protobuf::Message> CommandStatusRepository::getMessage() {
@@ -23,7 +22,22 @@ std::unique_ptr<google::protobuf::Message> CommandStatusRepository::getMessage()
     for (auto item : items) {
         auto *commandStatusItem = commandStatusRepository.add_status();
         commandStatusItem->set_id(item.first);
-        commandStatusItem->set_commandstatus(item.second);
+
+        CommandStatusItem::CommandStatus status;
+
+        switch (item.second) {
+            case commands::CommandStatus::STALE:
+                status = CommandStatusItem::STALE;
+                break;
+            case commands::CommandStatus::STARTING:
+                status = CommandStatusItem::STARTING;
+                break;
+            case commands::CommandStatus::STARTED:
+                status = CommandStatusItem::STARTED;
+                break;
+        }
+
+        commandStatusItem->set_commandstatus(status);
     }
 
     return std::make_unique<proto::repositories::CommandStatusRepository>(commandStatusRepository);

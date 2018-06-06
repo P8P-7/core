@@ -31,7 +31,7 @@ void CommandExecutor::run(const size_t commandId, const proto::CommandMessage &m
         BOOST_LOG_TRIVIAL(warning) << "Command " << commandId << " was already running, running parallel.";
     }
     item.status = CommandStatus::STARTING;
-    commands.getStatusRepository()->updateItem(commandId, repositories::CommandStatusRepository::CommandStatusItem::STARTING);
+    commands.getStatusRepository()->updateItem(commandId, item.status);
 
     if (numberOfActiveCommands + 1 >= std::ceil(numberOfThreads * 0.75)) {
         BOOST_LOG_TRIVIAL(warning) << "Number of active commands is almost exceeding the number of command threads!"
@@ -49,7 +49,7 @@ void CommandExecutor::start(const size_t &commandId, const proto::CommandMessage
     numberOfActiveCommands++;
     CommandItem &item = commands[commandId];
     item.status = CommandStatus::STARTED;
-    commands.getStatusRepository()->updateItem(commandId, repositories::CommandStatusRepository::CommandStatusItem::STARTED);
+    commands.getStatusRepository()->updateItem(commandId, item.status);
 
     auto requiredHandles = handles.getHandles(item.instance->getRequiredHandles());
     requiredHandles.lockAll(commandId);
@@ -66,7 +66,7 @@ void CommandExecutor::start(const size_t &commandId, const proto::CommandMessage
 
     lock.lock();
     item.status = CommandStatus::STALE;
-    commands.getStatusRepository()->updateItem(commandId, repositories::CommandStatusRepository::CommandStatusItem::STALE);
+    commands.getStatusRepository()->updateItem(commandId, item.status);
 
     numberOfActiveCommands--;
 }
@@ -91,7 +91,7 @@ void CommandExecutor::delayedStart(const size_t &commandId, const proto::Command
 
     lock.lock();
     item.status = CommandStatus::STARTED;
-    commands.getStatusRepository()->updateItem(commandId, repositories::CommandStatusRepository::CommandStatusItem::STARTED);
+    commands.getStatusRepository()->updateItem(commandId, item.status);
 
     lock.unlock();
     BOOST_LOG_TRIVIAL(info) << "* Execution of \"Command " << commandId << "\" has started";
@@ -104,6 +104,6 @@ void CommandExecutor::delayedStart(const size_t &commandId, const proto::Command
 
     lock.lock();
     item.status = CommandStatus::STALE;
-    commands.getStatusRepository()->updateItem(commandId, repositories::CommandStatusRepository::CommandStatusItem::STALE);
+    commands.getStatusRepository()->updateItem(commandId, item.status);
     numberOfActiveCommands--;
 }

@@ -4,12 +4,6 @@
 using namespace goliath::commands;
 using namespace goliath;
 
-CommandItem::CommandItem()
-    : status(CommandStatus::STALE) {}
-
-CommandItem::CommandItem(std::shared_ptr<Command> commandInstance, CommandStatus status)
-    : instance(commandInstance), status(status) {}
-
 CommandMap::CommandMap(std::shared_ptr<repositories::CommandStatusRepository> statusRepository)
     : statusRepository(statusRepository) {}
 

@@ -1,5 +1,6 @@
 #pragma once
 
+#include "command_item.h"
 #include "commands/command.h"
 #include "repositories/command_status_repository.h"
 
@@ -9,33 +10,6 @@
  */
 
 namespace goliath::commands {
-    /**
-     * @enum goliath::commands::CommandStatus
-     * @brief Defines the status of a specific command
-     */
-    enum class CommandStatus {
-        STARTING, /**< Command is just getting started */
-        STARTED, /**< Command has already started */
-        STALE /**< Command is doing nothing (idle) */
-    };
-
-    /**
-     * @struct goliath::commands::CommandItem
-     * @brief Tuple storing both the status of the command and the command instance itself
-     */
-    struct CommandItem {
-        CommandItem();
-
-        /**
-         * @param commandInstance Instance of a command
-         * @param status Starting status
-         */
-        CommandItem(std::shared_ptr<Command> commandInstance, CommandStatus status);
-
-        std::shared_ptr<Command> instance;
-        CommandStatus status;
-    };
-
     /**
      * @class goliath::commands::CommandMap
      * @brief Wrapper around a map storing indexes (Command ID's) and @see goliath::commands::CommandItem
