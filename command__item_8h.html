@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.14"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Goliath II: /core/src/controller/include/goliath/controller Directory Reference</title>
+<title>Goliath II: /core/src/controller/include/goliath/controller/command_item.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -67,28 +67,41 @@ $(function() {
 </div>
 </div><!-- top -->
 <div class="header">
+  <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#namespaces">Namespaces</a> &#124;
+<a href="#enum-members">Enumerations</a>  </div>
   <div class="headertitle">
-<div class="title">controller Directory Reference</div>  </div>
+<div class="title">command_item.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="command_8h_source.html">commands/command.h</a>&quot;</code><br />
+</div>
+<p><a href="command__item_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="subdirs"></a>
-Directories</h2></td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgoliath_1_1commands_1_1CommandItem.html">goliath::commands::CommandItem</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tuple storing both the status of the command and the command instance itself.  <a href="structgoliath_1_1commands_1_1CommandItem.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="files"></a>
-Files</h2></td></tr>
-<tr class="memitem:command__executor_8h"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="command__executor_8h.html">command_executor.h</a> <a href="command__executor_8h_source.html">[code]</a></td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
+Namespaces</h2></td></tr>
+<tr class="memitem:namespacegoliath_1_1commands"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegoliath_1_1commands.html">goliath::commands</a></td></tr>
+<tr class="memdesc:namespacegoliath_1_1commands"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains all command and command utilities. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:command__item_8h"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="command__item_8h.html">command_item.h</a> <a href="command__item_8h_source.html">[code]</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:command__map_8h"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="command__map_8h.html">command_map.h</a> <a href="command__map_8h_source.html">[code]</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:handle__map_8h"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="handle__map_8h.html">handle_map.h</a> <a href="handle__map_8h_source.html">[code]</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:handles_8h"><td class="memItemLeft" align="right" valign="top">file &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="handles_8h.html">handles.h</a> <a href="handles_8h_source.html">[code]</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:ad04221b592714b06a85a6415a475981b"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegoliath_1_1commands.html#ad04221b592714b06a85a6415a475981b">goliath::commands::CommandStatus</a> { <a class="el" href="namespacegoliath_1_1commands.html#ad04221b592714b06a85a6415a475981ba034312d8adc8099c1c6f53aaff745e26">goliath::commands::CommandStatus::STARTING</a>, 
+<a class="el" href="namespacegoliath_1_1commands.html#ad04221b592714b06a85a6415a475981ba17130e6c806885e23770df1519b18eb7">goliath::commands::CommandStatus::STARTED</a>, 
+<a class="el" href="namespacegoliath_1_1commands.html#ad04221b592714b06a85a6415a475981ba4d855a061b3066dc14a3b12ed26b5456">goliath::commands::CommandStatus::STALE</a>
+ }</td></tr>
+<tr class="separator:ad04221b592714b06a85a6415a475981b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><dl class="section author"><dt>Author</dt><dd>Group 7 - Informatica </dd></dl>
+</div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

@@ -92,8 +92,11 @@ using&#160;</td><td class="memItemRight" valign="bottom"><b>const_iterator</b> =
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ab3db81ba2af4066dac95a4cb529c5a29"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1commands_1_1CommandMap.html#ab3db81ba2af4066dac95a4cb529c5a29">CommandMap</a> (std::map&lt; size_t, <a class="el" href="structgoliath_1_1commands_1_1CommandItem.html">CommandItem</a> &gt; commands)</td></tr>
-<tr class="separator:ab3db81ba2af4066dac95a4cb529c5a29"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae53d312129a262c208e7cb5fafd36a76"><td class="memItemLeft" align="right" valign="top"><a id="ae53d312129a262c208e7cb5fafd36a76"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>CommandMap</b> (std::shared_ptr&lt; <a class="el" href="classgoliath_1_1repositories_1_1CommandStatusRepository.html">repositories::CommandStatusRepository</a> &gt; statusRepository)</td></tr>
+<tr class="separator:ae53d312129a262c208e7cb5fafd36a76"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57317b75d211d468a2f6f82b1056415e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1commands_1_1CommandMap.html#a57317b75d211d468a2f6f82b1056415e">CommandMap</a> (std::shared_ptr&lt; <a class="el" href="classgoliath_1_1repositories_1_1CommandStatusRepository.html">repositories::CommandStatusRepository</a> &gt; statusRepository, std::map&lt; size_t, <a class="el" href="structgoliath_1_1commands_1_1CommandItem.html">CommandItem</a> &gt; commands)</td></tr>
+<tr class="separator:a57317b75d211d468a2f6f82b1056415e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a24b7eaaf96c3fca72d995ef3d457d69e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgoliath_1_1commands_1_1CommandItem.html">CommandItem</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1commands_1_1CommandMap.html#a24b7eaaf96c3fca72d995ef3d457d69e">add</a> (std::shared_ptr&lt; <a class="el" href="classgoliath_1_1commands_1_1Command.html">Command</a> &gt; command)</td></tr>
 <tr class="memdesc:a24b7eaaf96c3fca72d995ef3d457d69e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a <a class="el" href="structgoliath_1_1commands_1_1CommandItem.html" title="Tuple storing both the status of the command and the command instance itself. ">goliath::commands::CommandItem</a> to the map.  <a href="#a24b7eaaf96c3fca72d995ef3d457d69e">More...</a><br /></td></tr>
 <tr class="separator:a24b7eaaf96c3fca72d995ef3d457d69e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -110,6 +113,9 @@ const <a class="el" href="structgoliath_1_1commands_1_1CommandItem.html">Command
 <tr class="memitem:a59b748c3d24f16cc7e7255b49194651e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1commands_1_1CommandMap.html#a59b748c3d24f16cc7e7255b49194651e">commandExists</a> (size_t id) const</td></tr>
 <tr class="memdesc:a59b748c3d24f16cc7e7255b49194651e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if a <a class="el" href="classgoliath_1_1commands_1_1Command.html" title="Command base class. ">goliath::commands::Command</a> exists.  <a href="#a59b748c3d24f16cc7e7255b49194651e">More...</a><br /></td></tr>
 <tr class="separator:a59b748c3d24f16cc7e7255b49194651e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a47b4b3f915bd50cdd9ee183cfd3ae5e0"><td class="memItemLeft" align="right" valign="top"><a id="a47b4b3f915bd50cdd9ee183cfd3ae5e0"></a>
+std::shared_ptr&lt; <a class="el" href="classgoliath_1_1repositories_1_1CommandStatusRepository.html">repositories::CommandStatusRepository</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getStatusRepository</b> ()</td></tr>
+<tr class="separator:a47b4b3f915bd50cdd9ee183cfd3ae5e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a53b32e2e65e9b4154f3edc42021f31f6"><td class="memItemLeft" align="right" valign="top">iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1commands_1_1CommandMap.html#a53b32e2e65e9b4154f3edc42021f31f6">begin</a> ()</td></tr>
 <tr class="memdesc:a53b32e2e65e9b4154f3edc42021f31f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Begin iterator.  <a href="#a53b32e2e65e9b4154f3edc42021f31f6">More...</a><br /></td></tr>
 <tr class="separator:a53b32e2e65e9b4154f3edc42021f31f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -127,28 +133,30 @@ const <a class="el" href="structgoliath_1_1commands_1_1CommandItem.html">Command
 <div class="textblock"><p>Wrapper around a map storing indexes (<a class="el" href="classgoliath_1_1commands_1_1Command.html" title="Command base class. ">Command</a> ID's) and. </p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="structgoliath_1_1commands_1_1CommandItem.html" title="Tuple storing both the status of the command and the command instance itself. ">goliath::commands::CommandItem</a> </dd></dl>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="ab3db81ba2af4066dac95a4cb529c5a29"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab3db81ba2af4066dac95a4cb529c5a29">&#9670;&nbsp;</a></span>CommandMap()</h2>
+<a id="a57317b75d211d468a2f6f82b1056415e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a57317b75d211d468a2f6f82b1056415e">&#9670;&nbsp;</a></span>CommandMap()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">CommandMap::CommandMap </td>
           <td>(</td>
-          <td class="paramtype">std::map&lt; size_t, <a class="el" href="structgoliath_1_1commands_1_1CommandItem.html">CommandItem</a> &gt;&#160;</td>
-          <td class="paramname"><em>commands</em></td><td>)</td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classgoliath_1_1repositories_1_1CommandStatusRepository.html">repositories::CommandStatusRepository</a> &gt;&#160;</td>
+          <td class="paramname"><em>statusRepository</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">std::map&lt; size_t, <a class="el" href="structgoliath_1_1commands_1_1CommandItem.html">CommandItem</a> &gt;&#160;</td>
+          <td class="paramname"><em>commands</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
