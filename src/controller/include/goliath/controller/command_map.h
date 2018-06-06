@@ -1,6 +1,8 @@
 #pragma once
 
+#include "command_item.h"
 #include "commands/command.h"
+#include "repositories/command_status_repository.h"
 
 /**
  * @file command_map.h
@@ -8,33 +10,6 @@
  */
 
 namespace goliath::commands {
-    /**
-     * @enum goliath::commands::CommandStatus
-     * @brief Defines the status of a specific command
-     */
-    enum class CommandStatus {
-        STARTING, /**< Command is just getting started */
-        STARTED, /**< Command has already started */
-        STALE /**< Command is doing nothing (idle) */
-    };
-
-    /**
-     * @struct goliath::commands::CommandItem
-     * @brief Tuple storing both the status of the command and the command instance itself
-     */
-    struct CommandItem {
-        CommandItem();
-
-        /**
-         * @param commandInstance Instance of a command
-         * @param status Starting status
-         */
-        CommandItem(std::shared_ptr<Command> commandInstance, CommandStatus status);
-
-        std::shared_ptr<Command> instance;
-        CommandStatus status;
-    };
-
     /**
      * @class goliath::commands::CommandMap
      * @brief Wrapper around a map storing indexes (Command ID's) and @see goliath::commands::CommandItem
@@ -44,12 +19,12 @@ namespace goliath::commands {
         using iterator = std::map<size_t, CommandItem>::iterator;
         using const_iterator = std::map<size_t, CommandItem>::const_iterator;
 
-        CommandMap();
+        explicit CommandMap(std::shared_ptr<repositories::CommandStatusRepository> statusRepository);
 
         /**
          * @param commands Initial map
          */
-        explicit CommandMap(std::map<size_t, CommandItem> commands);
+        CommandMap(std::shared_ptr<repositories::CommandStatusRepository> statusRepository, std::map<size_t, CommandItem> commands);
 
         /**
          * @brief Add a goliath::commands::CommandItem to the map
@@ -59,8 +34,8 @@ namespace goliath::commands {
 
         /**
          * @brief Add a goliath::commands::CommandItem to the map.
-         * Creates an instance of CommandType with handleId and args passed to it as arguments. CommandType's constructor should accept an commandId as its first argument.
-         *
+         * Creates an instance of CommandType with handleId and args passed to it as arguments. CommandType's
+         * constructor should accept an commandId as its first argument.
          * @tparam CommandType type to create an Command of
          * @tparam Targs types of arguments passed to
          * @param commandId passed to the command created
@@ -85,6 +60,8 @@ namespace goliath::commands {
          * @return Status
          */
         bool commandExists(size_t id) const;
+
+        std::shared_ptr<repositories::CommandStatusRepository> &getStatusRepository();
 
         /**
          * @brief Begin iterator
@@ -111,6 +88,7 @@ namespace goliath::commands {
         const_iterator end() const;
 
     private:
+        std::shared_ptr<repositories::CommandStatusRepository> statusRepository;
         std::map<size_t, CommandItem> map;
     };
 

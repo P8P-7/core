@@ -1,5 +1,6 @@
 set(RELATIVE_SOURCES
         repositories/battery_repository.cpp
+        repositories/command_status_repository.cpp
         repositories/config_repository.cpp
         repositories/log_repository.cpp
         commands/command.cpp
@@ -15,6 +16,7 @@ set(RELATIVE_SOURCES
         commands/obstacle_course_command.cpp
         commands/transport_rebuild_command.cpp
         command_map.cpp
+        command_item.cpp
         command_executor.cpp
         handle_map.cpp
         )

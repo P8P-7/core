@@ -6,6 +6,7 @@
  */
 
 #include "controller/repositories/config_repository.h"
+#include "controller/repositories/command_status_repository.h"
 #include "controller/repositories/battery_repository.h"
 #include "controller/repositories/log_repository.h"
 #include "controller/commands/command.h"
@@ -21,6 +22,7 @@
 #include "controller/commands/obstacle_course_command.h"
 #include "controller/commands/transport_rebuild_command.h"
 #include "controller/command_executor.h"
+#include "controller/command_item.h"
 #include "controller/command_map.h"
 #include "controller/handles.h"
 #include "controller/handle_map.h"
