@@ -1,6 +1,7 @@
 set(RELATIVE_INCLUDES
         controller.h
         controller/repositories/battery_repository.h
+        controller/repositories/command_status_repository.h
         controller/repositories/config_repository.h
         controller/repositories/log_repository.h
         controller/commands/command.h

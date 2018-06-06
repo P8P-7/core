@@ -1,8 +1,7 @@
 #pragma once
 
 #include <google/protobuf/message.h>
-
-#include "goliath/foundation/repositories/repository.h"
+#include <goliath/foundation/repositories/repository.h>
 
 /**
  * @file battery_repository.h

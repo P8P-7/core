@@ -6,6 +6,7 @@
  */
 
 #include "controller/repositories/config_repository.h"
+#include "controller/repositories/command_status_repository.h"
 #include "controller/repositories/battery_repository.h"
 #include "controller/repositories/log_repository.h"
 #include "controller/commands/command.h"

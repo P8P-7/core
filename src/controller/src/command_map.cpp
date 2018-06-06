@@ -2,22 +2,27 @@
 #include <goliath/controller/command_map.h>
 
 using namespace goliath::commands;
+using namespace goliath;
 
 CommandItem::CommandItem()
-        : status(CommandStatus::STALE) {}
+    : status(CommandStatus::STALE) {}
 
 CommandItem::CommandItem(std::shared_ptr<Command> commandInstance, CommandStatus status)
-        : instance(commandInstance), status(status) {}
+    : instance(commandInstance), status(status) {}
 
-CommandMap::CommandMap() {}
+CommandMap::CommandMap(std::shared_ptr<repositories::CommandStatusRepository> statusRepository)
+    : statusRepository(statusRepository) {}
 
-CommandMap::CommandMap(const std::map<size_t, CommandItem> commands)
-        : map(commands) {}
+CommandMap::CommandMap(std::shared_ptr<repositories::CommandStatusRepository> statusRepository,
+                       const std::map<size_t, CommandItem> commands)
+    : statusRepository(statusRepository), map(commands) {}
 
 CommandItem &CommandMap::add(std::shared_ptr<Command> command) {
     BOOST_LOG_TRIVIAL(debug) << "Added an instance of "
                              << std::string(boost::core::demangled_name(BOOST_CORE_TYPEID(*command))) << " with id "
                              << std::to_string(command->getId());
+
+    statusRepository->addItem(command->getId());
 
     return (map[command->getId()] = {command, CommandStatus::STALE});
 }
@@ -32,6 +37,10 @@ CommandItem &CommandMap::operator[](const size_t id) {
 
 bool CommandMap::commandExists(const size_t id) const {
     return map.find(id) != map.end();
+}
+
+std::shared_ptr<repositories::CommandStatusRepository> &CommandMap::getStatusRepository() {
+    return statusRepository;
 }
 
 CommandMap::iterator CommandMap::begin() {

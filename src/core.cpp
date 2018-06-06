@@ -36,6 +36,7 @@ int main(int argc, char *argv[]) {
                           "core-text.txt",
                           static_cast<boost::log::trivial::severity_level>(config->logging().severity_level()));
 
+    auto commandStatusRepository = std::make_shared<repositories::CommandStatusRepository>();
     auto emotionRepository = std::make_shared<repositories::EmotionRepository>();
     auto loggingRepository = std::make_shared<repositories::LogRepository>(config->logging().history_size());
 
@@ -62,6 +63,7 @@ int main(int argc, char *argv[]) {
     auto watcher = std::make_shared<repositories::Watcher>(config->watcher().polling_rate(), publisher);
     auto batteryRepo = std::make_shared<repositories::BatteryRepository>();
     watcher->watch(batteryRepo);
+    watcher->watch(commandStatusRepository);
     watcher->watch(emotionRepository);
     watcher->watch(loggingRepository);
 
@@ -125,7 +127,7 @@ int main(int argc, char *argv[]) {
     handles.add<handles::MotorHandle>(HANDLE_LEFT_FRONT_MOTOR, 0);
 
     BOOST_LOG_TRIVIAL(info) << "Setting up commands";
-    commands::CommandMap commands;
+    commands::CommandMap commands(commandStatusRepository);
     commands.add<commands::MoveCommand>(proto::CommandMessage::kMoveCommand);
     commands.add<commands::MoveWingCommand>(proto::CommandMessage::kMoveWingCommand);
     commands.add<commands::WunderhornCommand>(proto::CommandMessage::kWunderhornCommand);

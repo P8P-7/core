@@ -1,5 +1,6 @@
 set(RELATIVE_SOURCES
         repositories/battery_repository.cpp
+        repositories/command_status_repository.cpp
         repositories/config_repository.cpp
         repositories/log_repository.cpp
         commands/command.cpp
