@@ -14,7 +14,6 @@ int main(int argc, char *argv[]) {
     int baudRate = 1000000;
 
     std::vector<byte> data;
-    std::vector<byte> recvData;
 
     // parse command line args
     for (int i = 1; i < argc; i++) {
@@ -65,42 +64,28 @@ int main(int argc, char *argv[]) {
         Dynamixel motor(motorId, port);
         motor.setDirectionCallback(callback);
 
-        // meeded for MovingSpeed
-        motor.setCWAngleLimit(0);
-        motor.setCCWAngleLimit(0);
-
         // for debugging only:
-        byte buffer[1024];
-        int length = motor.formatCommand(command,
-                                         address,
-                                         data,
-                                         buffer);
+        std::vector<byte> buffer = motor.getBuffer(command, address, data);
 
-        std::cout << "buffer: " <<
-                  Utils::printBuffer(buffer, length) << std::endl;
+        std::cout << "Buffer:";
+        for (auto const &value: buffer) {
+            printf(" %02X", value);
+        }
+        std::cout << std::endl;
         // end for debugging
 
-        int retVal;
-        retVal = motor.sendReceiveCommand(command,
-                                          address,
-                                          data,
-                                          &recvData);
+        std::vector<byte> returnData = motor.sendReceiveCommand(command, address, data);
 
         int recvVal = 0;
-        if (recvData.size() == 1) {
-            recvVal = recvData[0];
-        } else if (recvData.size() == 2) {
-            recvVal = Utils::convertFromHL(recvData[0], recvData[1]);
+        if (returnData.size() == 1) {
+            recvVal = returnData[0];
+        } else if (returnData.size() == 2) {
+            recvVal = Utils::convertFromHL(returnData[0], returnData[1]);
         }
-        std::cout << "received: " <<
-                  retVal << " : " << recvVal << std::endl;
 
-        std::cout << "position: " <<
-                  motor.getPosition() << std::endl;
+        std::cout << "Received: " << recvVal << std::endl;
     } else {
-        std::cout << "Couldn't open " <<
-                  portName << " at baudRate " <<
-                  baudRate << std::endl;
+        std::cout << "Couldn't open " << portName << " at baudRate " << baudRate << std::endl;
         return -1;
     }
 
