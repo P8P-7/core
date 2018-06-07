@@ -139,9 +139,7 @@ int main(int argc, char *argv[]) {
     commands.add<commands::MoveWingCommand>(proto::CommandMessage::kMoveWingCommand);
 
     // Part 1: Entering the Arena
-    commands.add<commands::EnterCommand>(proto::CommandMessage::kEnterCommand,
-                                         static_cast<motor_controller::MotorDirection>(config->enter().direction()),
-                                         config->enter().speed());
+    commands.add<commands::EnterCommand>(proto::CommandMessage::kEnterCommand);
 
     // Part 2: So you think you can Dance!?
     commands.add<commands::DanceCommand>(proto::CommandMessage::kDanceCommand);

@@ -4,7 +4,6 @@
 
 #include "../handles.h"
 #include "basic_command.h"
-#include "move_command.h"
 
 /**
  * @file enter_command.h
@@ -14,13 +13,9 @@
 namespace goliath::commands {
     class EnterCommand : public BasicCommand {
     public:
-        EnterCommand(const size_t &id, const motor_controller::MotorDirection &direction,
-                     const motor_controller::MotorSpeed &speed);
+        EnterCommand(const size_t &id);
 
     private:
-        const motor_controller::MotorDirection direction;
-        const motor_controller::MotorSpeed speed;
-
         void execute(handles::HandleMap &handles, const proto::CommandMessage &message) override;
     };
 }
