@@ -1,5 +1,6 @@
 set(RELATIVE_SOURCES
         repositories/battery_repository.cpp
+        repositories/command_status_repository.cpp
         repositories/config_repository.cpp
         repositories/log_repository.cpp
         commands/command.cpp
@@ -7,14 +8,15 @@ set(RELATIVE_SOURCES
         commands/queue_command.cpp
         commands/move_command.cpp
         commands/wunderhorn_command.cpp
-        commands/move_tower_command.cpp
         commands/move_wing_command.cpp
         commands/dance_command.cpp
+        commands/interrupt_command_command.cpp
         commands/invalidate_all_command.cpp
         commands/line_dance_command.cpp
         commands/obstacle_course_command.cpp
         commands/transport_rebuild_command.cpp
         command_map.cpp
+        command_item.cpp
         command_executor.cpp
         handle_map.cpp
         )
