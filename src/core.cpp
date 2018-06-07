@@ -132,13 +132,29 @@ int main(int argc, char *argv[]) {
 
     BOOST_LOG_TRIVIAL(info) << "Setting up commands";
     commands::CommandMap commands(commandStatusRepository);
+    commands.add<commands::InvalidateAllCommand>(proto::CommandMessage::kInvalidateAllCommand, watcher);
     commands.add<commands::InterruptCommandCommand>(proto::CommandMessage::kInterruptCommandCommand,
                                                     std::make_shared<commands::CommandMap>(commands));
     commands.add<commands::MoveCommand>(proto::CommandMessage::kMoveCommand);
     commands.add<commands::MoveWingCommand>(proto::CommandMessage::kMoveWingCommand);
+
+    // Part 1: Entering the Arena
+    commands.add<commands::EnterCommand>(proto::CommandMessage::kEnterCommand);
+
+    // Part 2: So you think you can Dance!?
+    commands.add<commands::DanceCommand>(proto::CommandMessage::kDanceCommand);
+
+    // Part 3: "Line" Dance
+    commands.add<commands::LineDanceCommand>(proto::CommandMessage::kLineDanceCommand);
+
+    // Part 4: Obstacle Course
+    commands.add<commands::ObstacleCourseCommand>(proto::CommandMessage::kObstacleCourseCommand);
+
+    // Part 5: Des Knaben Wunderhorn
     commands.add<commands::WunderhornCommand>(proto::CommandMessage::kWunderhornCommand);
+
+    // Part 6: Transport and Rebuild
     commands.add<commands::TransportRebuildCommand>(proto::CommandMessage::kTransportRebuildCommand);
-    commands.add<commands::InvalidateAllCommand>(proto::CommandMessage::kInvalidateAllCommand, watcher);
 
     commands::CommandExecutor runner(config->command_executor().number_of_executors(), commands, handles);
 
