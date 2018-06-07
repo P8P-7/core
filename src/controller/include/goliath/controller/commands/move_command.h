@@ -16,7 +16,8 @@ namespace goliath::commands {
     private:
         using MotorProto = proto::commands::MotorCommand::Motor;
 
-        void execute(handles::HandleMap &handles, const proto::CommandMessage &message) override;
+        void process() override;
+        void execute(const std::vector<proto::commands::MotorCommand> &commandMessages);
 
         const std::map<proto::commands::MotorCommand_Motor, size_t> commandMotorToHandleMap = {{
                 {MotorProto::MotorCommand_Motor_LEFT_FRONT, HANDLE_LEFT_FRONT_MOTOR},

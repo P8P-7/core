@@ -10,10 +10,7 @@ Command::Command(const size_t &id, const std::vector<size_t> &requiredHandles)
 
 void Command::interrupt() {
     interrupted = true;
-    onInterrupt();
 }
-
-void Command::onInterrupt() {}
 
 bool Command::isInterrupted() const {
     return interrupted;
@@ -39,4 +36,12 @@ bool Command::canStart(const handles::HandleMap &handles) const {
 
 bool Command::canRunParallel() const {
     return false;
+}
+
+void Command::execute(goliath::handles::HandleMap &handles, const goliath::proto::CommandMessage &message) {
+    run(handles, message);
+    if (isInterrupted()) {
+        BOOST_LOG_TRIVIAL(info) << "Execution of command " << std::to_string(getId()) << " was interrupted";
+        interrupted = false;
+    }
 }
