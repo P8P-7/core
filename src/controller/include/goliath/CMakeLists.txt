@@ -6,6 +6,7 @@ set(RELATIVE_INCLUDES
         controller/repositories/log_repository.h
         controller/commands/command.h
         controller/commands/dance_command.h
+        controller/commands/enter_command.h
         controller/commands/interrupt_command_command.h
         controller/commands/invalidate_all_command.h
         controller/commands/line_dance_command.h

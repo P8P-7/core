@@ -16,6 +16,7 @@
 #include "controller/commands/move_command.h"
 #include "controller/commands/move_wing_command.h"
 #include "controller/commands/dance_command.h"
+#include "controller/commands/enter_command.h"
 #include "controller/commands/interrupt_command_command.h"
 #include "controller/commands/invalidate_all_command.h"
 #include "controller/commands/line_dance_command.h"
