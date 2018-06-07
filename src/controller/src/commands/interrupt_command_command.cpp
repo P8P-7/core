@@ -8,7 +8,7 @@ InterruptCommandCommand::InterruptCommandCommand(const size_t &id, std::shared_p
 }
 
 void InterruptCommandCommand::execute(handles::HandleMap &handles, const proto::CommandMessage &message) {
-    if ((*commandMap).commandExists(static_cast<size_t>(message.interruptcommandcommand().commandid()))) {
+    if (commandMap->commandExists(message.interruptcommandcommand().commandid())) {
         CommandItem item = (*commandMap)[message.interruptcommandcommand().commandid()];
 
         if (!item.instance->isInterrupted()) {
