@@ -1,22 +1,18 @@
-MACRO(add_goliath_test NAME DEPENDENCIES FILE)
+MACRO(add_goliath_test NAME LIBRARIES INCLUDES FILE)
     add_executable(goliath-${NAME}-test ${FILE})
+    target_link_libraries(goliath-${NAME}-test
+            PUBLIC
+                ${LIBRARIES}
+                ${Boost_LIBRARIES}
+            )
     target_include_directories(goliath-${NAME}-test
         PUBLIC
-            ${DEPENDENCIES}
+            ${INCLUDES}
             ${Boost_INCLUDE_DIR}
         )
-    target_link_libraries(goliath-${NAME}-test
-        PUBLIC
-            ${DEPENDENCIES}
-            ${Boost_LIBRARIES}
-        )
 ENDMACRO()
 
-MACRO(add_goliath_normal_test NAME DEPENDENCIES)
-    add_goliath_test(${NAME} ${DEPENDENCIES} test_${NAME}.cpp)
-ENDMACRO()
-
-MACRO(add_goliath_auto_test NAME DEPENDENCIES)
-    add_goliath_test(${NAME}-auto ${DEPENDENCIES} autotest_${NAME}.cpp)
+MACRO(add_goliath_auto_test NAME LIBRARIES INCLUDES)
+    add_goliath_test(${NAME}-auto ${LIBRARIES} INCLUDES autotest_${NAME}.cpp)
     add_test(NAME goliath-${NAME}-auto-test COMMAND $<TARGET_FILE:goliath-${NAME}-auto-test>)
 ENDMACRO()

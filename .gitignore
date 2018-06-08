@@ -50,3 +50,10 @@ CTestTestfile.cmake
 ### Protobuf generated files ###
 *.pb.h
 *.pb.cc
+
+### RaspberryPi toolchain ###
+raspbian-rootfs/
+linaro_packages/
+gcc-linaro-arm-linux-gnueabihf/
+gcc-linaro-6.4.1-2017.11-x86_64_arm-linux-gnueabihf/
+sysroot-relativelinks.py
