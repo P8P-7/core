@@ -10,6 +10,7 @@ set(RELATIVE_SOURCES
         commands/wunderhorn_command.cpp
         commands/move_wing_command.cpp
         commands/dance_command.cpp
+        commands/enter_command.cpp
         commands/interrupt_command_command.cpp
         commands/invalidate_all_command.cpp
         commands/line_dance_command.cpp

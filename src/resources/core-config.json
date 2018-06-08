@@ -70,5 +70,9 @@
  "logging": {
   "severity_level": "TRACE",
   "history_size": 50
+ },
+ "enter": {
+  "direction": "FORWARDS",
+  "speed": 25
  }
 }

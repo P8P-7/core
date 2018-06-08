@@ -11,18 +11,14 @@
 namespace goliath::commands {
     class MoveCommand : public QueueCommand {
     public:
+        using MotorProto = proto::commands::MotorCommand::Motor;
+
+        const static std::map<proto::commands::MotorCommand_Motor, size_t> COMMAND_MOTOR_TO_HANDLE_MAP;
+
         MoveCommand(const size_t &id);
 
     private:
-        using MotorProto = proto::commands::MotorCommand::Motor;
 
         void execute(handles::HandleMap &handles, const proto::CommandMessage &message) override;
-
-        const std::map<proto::commands::MotorCommand_Motor, size_t> commandMotorToHandleMap = {{
-                {MotorProto::MotorCommand_Motor_LEFT_FRONT, HANDLE_LEFT_FRONT_MOTOR},
-                {MotorProto::MotorCommand_Motor_LEFT_BACK, HANDLE_LEFT_BACK_MOTOR},
-                {MotorProto::MotorCommand_Motor_RIGHT_FRONT, HANDLE_RIGHT_FRONT_MOTOR},
-                {MotorProto::MotorCommand_Motor_RIGHT_BACK, HANDLE_RIGHT_BACK_MOTOR},
-        }};
     };
 }
