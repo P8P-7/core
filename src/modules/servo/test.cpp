@@ -1,26 +1,29 @@
 #include <iostream>
-#include "dynamixel/Dynamixel.h"
-#include <goliath/gpio.h>
+#include <boost/format.hpp>
 
-using namespace goliath;
+#include <goliath/gpio.h>
+#include "dynamixel/Dynamixel.h"
+
+using namespace goliath::gpio;
+using namespace goliath::dynamixel;
 
 int main(int argc, char *argv[]) {
-    byte motorId = 4;
+    unsigned char motorId = 4;
     int numBytes = 2;
     short iData = 512;
     Dynamixel::Commands command = Dynamixel::Commands::Set;
     Dynamixel::Addresses address = Dynamixel::Addresses::MovingSpeed;
     std::string portName = "/dev/serial0";
-    int baudRate = 1000000;
+    unsigned int baudRate = 1000000;
 
-    std::vector<byte> data;
+    std::vector<unsigned char> data;
 
-    // parse command line args
+    // Parse command line args
     for (int i = 1; i < argc; i++) {
         if (!strcmp(argv[i], "--baudRate")) {
-            baudRate = std::stoi(argv[++i]);
+            baudRate = static_cast<unsigned int>(std::stoul(argv[++i]));
         } else if (!strcmp(argv[i], "--motorId")) {
-            motorId = std::stoi(argv[++i]);
+            motorId = static_cast<unsigned char>(std::stoul(argv[++i]));
         } else if (!strcmp(argv[i], "--numBytes")) {
             numBytes = std::stoi(argv[++i]);
         } else if (!strcmp(argv[i], "--command")) {
@@ -30,51 +33,48 @@ int main(int argc, char *argv[]) {
         } else if (!strcmp(argv[i], "--portName")) {
             portName = argv[++i];
         } else if (!strcmp(argv[i], "--data")) {
-            iData = std::strtoul(argv[++i], 0, 10);
+            iData = static_cast<short>(std::stoul(argv[++i]));
         }
     }
 
     if (numBytes == 1) {
         data.push_back(iData);
     } else if (numBytes == 2) {
-        byte h, l;
-        Utils::convertToHL(iData, &h, &l);
-        data.push_back(l);
-        data.push_back(h);
+        data = Utils::convertToHL(iData);
     }
 
     SerialPort port;
-    std::cout << "Connecting to: " <<
-              portName << ":" << baudRate << std::endl;
+    BOOST_LOG_TRIVIAL(debug) <<  "Connecting to: " << portName << ":" << baudRate;
 
-    gpio::GPIO gpio(gpio::GPIO::MapPin::GPIO18, gpio::GPIO::Direction::Out,
-                    gpio::GPIO::State::Low);
-    if (port.connect(portName, baudRate) != 0) {
-        std::cout << "Success\n";
+    GPIO gpio(GPIO::MapPin::GPIO18, GPIO::Direction::Out, GPIO::State::Low);
+    if (port.connect(portName, baudRate)) {
+        BOOST_LOG_TRIVIAL(debug) << "Connected successfully";
+
         std::function<void(bool)> callback = [&gpio](bool isTx) {
             if (isTx) {
-                gpio.set(gpio::GPIO::State::High);
+                gpio.set(GPIO::State::High);
             } else {
                 std::this_thread::sleep_for(std::chrono::microseconds(20));
-                gpio.set(gpio::GPIO::State::Low);
+                gpio.set(GPIO::State::Low);
             }
         };
 
-        // configure the motor object
+        // Configure the motor object
         Dynamixel motor(motorId, port);
         motor.setDirectionCallback(callback);
 
-        // for debugging only:
-        std::vector<byte> buffer = motor.getBuffer(command, address, data);
+        // Debugging only
+        std::vector<unsigned char> buffer = motor.getBuffer(command, address, data);
 
-        std::cout << "Buffer:";
+        std::string bufferStr;
         for (auto const &value: buffer) {
-            printf(" %02X", value);
+            bufferStr += (boost::format("0x%02X ") % static_cast<int>(value)).str();
         }
-        std::cout << std::endl;
-        // end for debugging
 
-        std::vector<byte> returnData = motor.sendReceiveCommand(command, address, data);
+        BOOST_LOG_TRIVIAL(debug) << "Buffer: " << bufferStr;
+        // End debugging
+
+        std::vector<unsigned char> returnData = motor.sendReceiveCommand(command, address, data);
 
         int recvVal = 0;
         if (returnData.size() == 1) {
@@ -83,9 +83,9 @@ int main(int argc, char *argv[]) {
             recvVal = Utils::convertFromHL(returnData[0], returnData[1]);
         }
 
-        std::cout << "Received: " << recvVal << std::endl;
+        BOOST_LOG_TRIVIAL(debug) << "Received: " << recvVal;
     } else {
-        std::cout << "Couldn't open " << portName << " at baudRate " << baudRate << std::endl;
+        BOOST_LOG_TRIVIAL(warning) << "Couldn't open " << portName << " at baudRate " << baudRate;
         return -1;
     }
 

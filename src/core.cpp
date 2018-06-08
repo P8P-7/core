@@ -87,12 +87,8 @@ int main(int argc, char *argv[]) {
     std::string portName = config->serial().port();
     unsigned int baudRate = config->serial().baudrate();
 
-    SerialPort port;
-    bool connectSuccess = port.connect(portName, baudRate) != 0;
-
-    if (!connectSuccess) {
-        BOOST_LOG_TRIVIAL(warning) << "Couldn't connect to serial port";
-    }
+    dynamixel::SerialPort port;
+    bool connectSuccess = port.connect(portName, baudRate);
 
     handles.add<handles::WebcamHandle>(HANDLE_CAM, 0);
     handles.add<handles::EmotionHandle>(HANDLE_EMOTIONS, emotionPublisher);
@@ -103,7 +99,7 @@ int main(int argc, char *argv[]) {
         std::map<std::string, int> servos;
 
         for (proto::repositories::Wing wing : config->servos().wings()) {
-            std::shared_ptr<Dynamixel> dynamixel = std::make_shared<Dynamixel>(wing.id(), port);
+            std::shared_ptr<dynamixel::Dynamixel> dynamixel = std::make_shared<dynamixel::Dynamixel>(wing.id(), port);
 
             size_t handle;
 
