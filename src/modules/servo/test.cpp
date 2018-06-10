@@ -11,8 +11,8 @@ int main(int argc, char *argv[]) {
     unsigned char motorId = 4;
     int numBytes = 2;
     short iData = 512;
-    Dynamixel::Commands command = Dynamixel::Commands::Set;
-    Dynamixel::Addresses address = Dynamixel::Addresses::MovingSpeed;
+    Dynamixel::Instruction instruction = Dynamixel::Instruction::Write;
+    Dynamixel::Address address = Dynamixel::Address::MovingSpeed;
     std::string portName = "/dev/serial0";
     unsigned int baudRate = 1000000;
 
@@ -26,10 +26,10 @@ int main(int argc, char *argv[]) {
             motorId = static_cast<unsigned char>(std::stoul(argv[++i]));
         } else if (!strcmp(argv[i], "--numBytes")) {
             numBytes = std::stoi(argv[++i]);
-        } else if (!strcmp(argv[i], "--command")) {
-            command = static_cast<Dynamixel::Commands>(std::stoi(argv[++i]));
+        } else if (!strcmp(argv[i], "--instruction")) {
+            instruction = static_cast<Dynamixel::Instruction>(std::stoi(argv[++i]));
         } else if (!strcmp(argv[i], "--address")) {
-            address = static_cast<Dynamixel::Addresses>(std::stoi(argv[++i]));
+            address = static_cast<Dynamixel::Address>(std::stoi(argv[++i]));
         } else if (!strcmp(argv[i], "--portName")) {
             portName = argv[++i];
         } else if (!strcmp(argv[i], "--data")) {
@@ -37,10 +37,13 @@ int main(int argc, char *argv[]) {
         }
     }
 
+    data.push_back(static_cast<unsigned char>(address));
+
     if (numBytes == 1) {
         data.push_back(iData);
     } else if (numBytes == 2) {
-        data = Utils::convertToHL(iData);
+        std::vector<unsigned char> hlData = Utils::convertToHL(iData);
+        data.insert(data.end(), hlData.begin(), hlData.end());
     }
 
     SerialPort port;
@@ -64,7 +67,7 @@ int main(int argc, char *argv[]) {
         motor.setDirectionCallback(callback);
 
         // Debugging only
-        std::vector<unsigned char> buffer = motor.getBuffer(command, address, data);
+        std::vector<unsigned char> buffer = motor.getInstructionPacket(instruction, data);
 
         std::string bufferStr;
         for (auto const &value: buffer) {
@@ -74,7 +77,7 @@ int main(int argc, char *argv[]) {
         BOOST_LOG_TRIVIAL(debug) << "Buffer: " << bufferStr;
         // End debugging
 
-        std::vector<unsigned char> returnData = motor.sendReceiveCommand(command, address, data);
+        std::vector<unsigned char> returnData = motor.send(instruction, data);
 
         int recvVal = 0;
         if (returnData.size() == 1) {
