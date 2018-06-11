@@ -1,106 +1,100 @@
 #include <iostream>
-#include "dynamixel/Dynamixel.h"
-#include <goliath/gpio.h>
+#include <boost/format.hpp>
 
-using namespace goliath;
+#include <goliath/gpio.h>
+#include "dynamixel/Dynamixel.h"
+
+using namespace goliath::gpio;
+using namespace goliath::dynamixel;
 
 int main(int argc, char *argv[]) {
-    byte motorId = 4;
+    unsigned char motorId = 4;
     int numBytes = 2;
     short iData = 512;
-    Dynamixel::Commands command = Dynamixel::Commands::Set;
-    Dynamixel::Addresses address = Dynamixel::Addresses::MovingSpeed;
+    Dynamixel::Instruction instruction = Dynamixel::Instruction::Write;
+    Dynamixel::Address address = Dynamixel::Address::MovingSpeed;
     std::string portName = "/dev/serial0";
-    int baudRate = 1000000;
+    unsigned int baudRate = 1000000;
 
-    std::vector<byte> data;
-    std::vector<byte> recvData;
+    std::vector<unsigned char> data;
 
-    // parse command line args
+    // Parse command line args
     for (int i = 1; i < argc; i++) {
         if (!strcmp(argv[i], "--baudRate")) {
-            baudRate = std::stoi(argv[++i]);
+            baudRate = static_cast<unsigned int>(std::stoul(argv[++i]));
         } else if (!strcmp(argv[i], "--motorId")) {
-            motorId = std::stoi(argv[++i]);
+            motorId = static_cast<unsigned char>(std::stoul(argv[++i]));
         } else if (!strcmp(argv[i], "--numBytes")) {
             numBytes = std::stoi(argv[++i]);
-        } else if (!strcmp(argv[i], "--command")) {
-            command = static_cast<Dynamixel::Commands>(std::stoi(argv[++i]));
+        } else if (!strcmp(argv[i], "--instruction")) {
+            instruction = static_cast<Dynamixel::Instruction>(std::stoi(argv[++i]));
         } else if (!strcmp(argv[i], "--address")) {
-            address = static_cast<Dynamixel::Addresses>(std::stoi(argv[++i]));
+            address = static_cast<Dynamixel::Address>(std::stoi(argv[++i]));
         } else if (!strcmp(argv[i], "--portName")) {
             portName = argv[++i];
         } else if (!strcmp(argv[i], "--data")) {
-            iData = std::strtoul(argv[++i], 0, 10);
+            iData = static_cast<short>(std::stoul(argv[++i]));
         }
     }
+
+    data.push_back(static_cast<unsigned char>(address));
 
     if (numBytes == 1) {
         data.push_back(iData);
     } else if (numBytes == 2) {
-        byte h, l;
-        Utils::convertToHL(iData, &h, &l);
-        data.push_back(l);
-        data.push_back(h);
+        std::vector<unsigned char> hlData = Utils::convertToHL(iData);
+        data.insert(data.end(), hlData.begin(), hlData.end());
     }
 
     SerialPort port;
-    std::cout << "Connecting to: " <<
-              portName << ":" << baudRate << std::endl;
+    BOOST_LOG_TRIVIAL(debug) << "Connecting to: " << portName << ":" << baudRate;
 
-    gpio::GPIO gpio(gpio::GPIO::MapPin::GPIO18, gpio::GPIO::Direction::Out,
-                    gpio::GPIO::State::Low);
-    if (port.connect(portName, baudRate) != 0) {
-        std::cout << "Success\n";
+    GPIO gpio(GPIO::MapPin::GPIO18, GPIO::Direction::Out, GPIO::State::Low);
+    if (port.connect(portName, baudRate)) {
+        BOOST_LOG_TRIVIAL(debug) << "Connected successfully";
+
         std::function<void(bool)> callback = [&gpio](bool isTx) {
             if (isTx) {
-                gpio.set(gpio::GPIO::State::High);
+                gpio.set(GPIO::State::High);
             } else {
                 std::this_thread::sleep_for(std::chrono::microseconds(20));
-                gpio.set(gpio::GPIO::State::Low);
+                gpio.set(GPIO::State::Low);
             }
         };
 
-        // configure the motor object
+        // Configure the motor object
         Dynamixel motor(motorId, port);
         motor.setDirectionCallback(callback);
 
-        // meeded for MovingSpeed
-        motor.setCWAngleLimit(0);
-        motor.setCCWAngleLimit(0);
+        // Debugging only
+        std::vector<unsigned char> buffer = motor.getInstructionPacket(instruction, data);
 
-        // for debugging only:
-        byte buffer[1024];
-        int length = motor.formatCommand(command,
-                                         address,
-                                         data,
-                                         buffer);
+        std::string bufferStr;
+        for (auto const &value: buffer) {
+            bufferStr += (boost::format("0x%02X ") % static_cast<int>(value)).str();
+        }
 
-        std::cout << "buffer: " <<
-                  Utils::printBuffer(buffer, length) << std::endl;
-        // end for debugging
+        BOOST_LOG_TRIVIAL(debug) << "Buffer: " << bufferStr;
+        // End debugging
 
-        int retVal;
-        retVal = motor.sendReceiveCommand(command,
-                                          address,
-                                          data,
-                                          &recvData);
+        std::vector<unsigned char> returnData = motor.send(instruction, data);
+
+        // Remove the checksum
+        returnData.pop_back();
+
+        // Remove the first 5 elements, and shift everything else down by 5 indices.
+        returnData.erase(returnData.begin(), returnData.begin() + 5);
 
         int recvVal = 0;
-        if (recvData.size() == 1) {
-            recvVal = recvData[0];
-        } else if (recvData.size() == 2) {
-            recvVal = Utils::convertFromHL(recvData[0], recvData[1]);
+        if (returnData.size() == 1) {
+            recvVal = returnData[0];
+        } else if (returnData.size() == 2) {
+            recvVal = Utils::convertFromHL(returnData[0], returnData[1]);
         }
-        std::cout << "received: " <<
-                  retVal << " : " << recvVal << std::endl;
 
-        std::cout << "position: " <<
-                  motor.getPosition() << std::endl;
+        BOOST_LOG_TRIVIAL(debug) << "Received: " << recvVal;
     } else {
-        std::cout << "Couldn't open " <<
-                  portName << " at baudRate " <<
-                  baudRate << std::endl;
+        BOOST_LOG_TRIVIAL(warning) << "Couldn't open " << portName << " at baudRate " << baudRate;
         return -1;
     }
 
