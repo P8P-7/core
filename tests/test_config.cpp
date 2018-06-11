@@ -89,6 +89,10 @@ BOOST_AUTO_TEST_SUITE(BOOST_TEST_MODULE)
         loggingConfig->set_severity_level(proto::repositories::LogSeverity::TRACE);
         loggingConfig->set_history_size(50);
 
+        auto *enterConfig = new proto::repositories::EnterConfig;
+        enterConfig->set_direction(proto::repositories::EnterConfig::FORWARDS);
+        enterConfig->set_speed(25);
+
         configRepository.set_allocated_zmq(zmqConfig);
         configRepository.set_allocated_serial(serialConfig);
         configRepository.set_allocated_gpio(gpioConfig);
@@ -100,6 +104,7 @@ BOOST_AUTO_TEST_SUITE(BOOST_TEST_MODULE)
         configRepository.set_allocated_command_executor(commandExecutorConfig);
         configRepository.set_allocated_watcher(watcherConfig);
         configRepository.set_allocated_logging(loggingConfig);
+        configRepository.set_allocated_enter(enterConfig);
 
         google::protobuf::util::MessageToJsonString(configRepository, &jsonString, options);
 

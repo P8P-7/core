@@ -87,12 +87,8 @@ int main(int argc, char *argv[]) {
     std::string portName = config->serial().port();
     unsigned int baudRate = config->serial().baudrate();
 
-    SerialPort port;
-    bool connectSuccess = port.connect(portName, baudRate) != 0;
-
-    if (!connectSuccess) {
-        BOOST_LOG_TRIVIAL(warning) << "Couldn't connect to serial port";
-    }
+    dynamixel::SerialPort port;
+    bool connectSuccess = port.connect(portName, baudRate);
 
     handles.add<handles::WebcamHandle>(HANDLE_CAM, 0);
     handles.add<handles::EmotionHandle>(HANDLE_EMOTIONS, emotionPublisher);
@@ -101,7 +97,7 @@ int main(int argc, char *argv[]) {
         BOOST_LOG_TRIVIAL(info) << "Setting up Dynamixel servo handles";
 
         for (proto::repositories::Wing wing : config->servos().wings()) {
-            std::shared_ptr<Dynamixel> dynamixel = std::make_shared<Dynamixel>(wing.id(), port);
+            std::shared_ptr<dynamixel::Dynamixel> dynamixel = std::make_shared<dynamixel::Dynamixel>(wing.id(), port);
 
             size_t handle;
             switch (wing.position()) {
@@ -151,13 +147,29 @@ int main(int argc, char *argv[]) {
 
     BOOST_LOG_TRIVIAL(info) << "Setting up commands";
     commands::CommandMap commands(commandStatusRepository);
+    commands.add<commands::InvalidateAllCommand>(proto::CommandMessage::kInvalidateAllCommand, watcher);
     commands.add<commands::InterruptCommandCommand>(proto::CommandMessage::kInterruptCommandCommand,
                                                     std::make_shared<commands::CommandMap>(commands));
     commands.add<commands::MoveCommand>(proto::CommandMessage::kMoveCommand);
     commands.add<commands::MoveWingCommand>(proto::CommandMessage::kMoveWingCommand);
+
+    // Part 1: Entering the Arena
+    commands.add<commands::EnterCommand>(proto::CommandMessage::kEnterCommand);
+
+    // Part 2: So you think you can Dance!?
+    commands.add<commands::DanceCommand>(proto::CommandMessage::kDanceCommand);
+
+    // Part 3: "Line" Dance
+    commands.add<commands::LineDanceCommand>(proto::CommandMessage::kLineDanceCommand);
+
+    // Part 4: Obstacle Course
+    commands.add<commands::ObstacleCourseCommand>(proto::CommandMessage::kObstacleCourseCommand);
+
+    // Part 5: Des Knaben Wunderhorn
     commands.add<commands::WunderhornCommand>(proto::CommandMessage::kWunderhornCommand);
+
+    // Part 6: Transport and Rebuild
     commands.add<commands::TransportRebuildCommand>(proto::CommandMessage::kTransportRebuildCommand);
-    commands.add<commands::InvalidateAllCommand>(proto::CommandMessage::kInvalidateAllCommand, watcher);
 
     commands::CommandExecutor runner(config->command_executor().number_of_executors(), commands, handles);
 

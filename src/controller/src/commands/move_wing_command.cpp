@@ -1,13 +1,11 @@
 #include <goliath/controller/commands/move_wing_command.h>
 
-#include <boost/log/trivial.hpp>
-
 using namespace goliath;
 using namespace goliath::handles;
 
 commands::MoveWingCommand::MoveWingCommand(const size_t &id)
         : BasicCommand(id, {HANDLE_LEFT_FRONT_WING_SERVO, HANDLE_LEFT_BACK_WING_SERVO,
-                       HANDLE_RIGHT_FRONT_WING_SERVO, HANDLE_RIGHT_BACK_WING_SERVO}) {
+                            HANDLE_RIGHT_FRONT_WING_SERVO, HANDLE_RIGHT_BACK_WING_SERVO}) {
 }
 
 void commands::MoveWingCommand::execute(HandleMap &handles, const proto::CommandMessage &message) {

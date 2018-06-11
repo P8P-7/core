@@ -10,7 +10,14 @@ using namespace goliath;
 using namespace goliath::handles;
 using namespace goliath::commands;
 
-MoveCommand::MoveCommand(const size_t &id)
+const std::map<proto::commands::MotorCommand_Motor, size_t> commands::MoveCommand::COMMAND_MOTOR_TO_HANDLE_MAP = {{
+    {MotorProto::MotorCommand_Motor_LEFT_FRONT, HANDLE_LEFT_FRONT_MOTOR},
+    {MotorProto::MotorCommand_Motor_LEFT_BACK, HANDLE_LEFT_BACK_MOTOR},
+    {MotorProto::MotorCommand_Motor_RIGHT_FRONT, HANDLE_RIGHT_FRONT_MOTOR},
+    {MotorProto::MotorCommand_Motor_RIGHT_BACK, HANDLE_RIGHT_BACK_MOTOR},
+}};
+
+commands::MoveCommand::MoveCommand(const size_t &id)
         : QueueCommand(id, {HANDLE_I2C_BUS, HANDLE_MOTOR_CONTROLLER,
                             HANDLE_LEFT_FRONT_MOTOR, HANDLE_LEFT_BACK_MOTOR,
                             HANDLE_RIGHT_FRONT_MOTOR, HANDLE_RIGHT_BACK_MOTOR}) { }
@@ -22,7 +29,7 @@ void MoveCommand::execute(const std::vector<proto::commands::MotorCommand> &comm
 
     std::vector<motor_controller::MotorStatus> commands{};
     for (auto &command : commandMessages) {
-        if (commandMotorToHandleMap.find(command.motor()) == commandMotorToHandleMap.end()) {
+        if (COMMAND_MOTOR_TO_HANDLE_MAP.find(command.motor()) == COMMAND_MOTOR_TO_HANDLE_MAP.end()) {
             BOOST_LOG_TRIVIAL(fatal) << "Unknown motor " << std::to_string(command.motor());
             continue;
         }
@@ -32,7 +39,7 @@ void MoveCommand::execute(const std::vector<proto::commands::MotorCommand> &comm
             continue;
         }
 
-        auto handle = handles.get<handles::MotorHandle>(commandMotorToHandleMap.at(command.motor()));
+        auto handle = handles.get<handles::MotorHandle>(COMMAND_MOTOR_TO_HANDLE_MAP.at(command.motor()));
         motor_controller::MotorStatus motorCommand{
                 .id = handle->getMotorId(),
                 .direction = static_cast<motor_controller::MotorDirection>(command.gear()),

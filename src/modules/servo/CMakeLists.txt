@@ -3,6 +3,8 @@ project(goliath-servo-module LANGUAGES CXX)
 add_subdirectory(include/goliath)
 add_subdirectory(src)
 
+add_definitions(-DBOOST_LOG_DYN_LINK)
+
 add_library(${PROJECT_NAME} ${SOURCES} ${INCLUDES})
 
 target_include_directories(${PROJECT_NAME}
