@@ -8,8 +8,7 @@ MACRO(add_goliath_test NAME DEPENDENCIES FILE)
     target_link_libraries(goliath-${NAME}-test
         PUBLIC
             ${DEPENDENCIES}
-            ${Boost_LIBRARY}
-            ${Boost_LIBS}
+            ${Boost_LIBRARIES}
         )
 ENDMACRO()
 
