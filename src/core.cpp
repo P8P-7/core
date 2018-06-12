@@ -150,6 +150,8 @@ int main(int argc, char *argv[]) {
     commands.add<commands::InvalidateAllCommand>(proto::CommandMessage::kInvalidateAllCommand, watcher);
     commands.add<commands::InterruptCommandCommand>(proto::CommandMessage::kInterruptCommandCommand,
                                                     std::make_shared<commands::CommandMap>(commands));
+    commands.add<commands::SynchronizeCommandsCommand>(proto::CommandMessage::kSynchronizeCommandsCommand,
+                                                       commandStatusRepository);
     commands.add<commands::MoveCommand>(proto::CommandMessage::kMoveCommand);
     commands.add<commands::MoveWingCommand>(proto::CommandMessage::kMoveWingCommand);
 

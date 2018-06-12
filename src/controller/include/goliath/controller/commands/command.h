@@ -1,6 +1,5 @@
 #pragma once
 
-#include <boost/property_tree/ptree.hpp>
 #include <CommandMessage.pb.h>
 
 #include "../handle_map.h"
