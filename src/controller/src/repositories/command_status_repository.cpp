@@ -23,7 +23,7 @@ std::unique_ptr<google::protobuf::Message> CommandStatusRepository::getMessage()
         auto *commandStatusItem = commandStatusRepository.add_status();
         commandStatusItem->set_id(item.first);
 
-        CommandStatusItem::CommandStatus status;
+        CommandStatusItem::CommandStatus status = CommandStatusItem::STALE;
 
         switch (item.second) {
             case commands::CommandStatus::STALE:

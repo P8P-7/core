@@ -21,6 +21,7 @@
 #include "controller/commands/invalidate_all_command.h"
 #include "controller/commands/line_dance_command.h"
 #include "controller/commands/obstacle_course_command.h"
+#include "controller/commands/synchronize_commands_command.h"
 #include "controller/commands/transport_rebuild_command.h"
 #include "controller/command_executor.h"
 #include "controller/command_item.h"

@@ -15,6 +15,7 @@ set(RELATIVE_SOURCES
         commands/invalidate_all_command.cpp
         commands/line_dance_command.cpp
         commands/obstacle_course_command.cpp
+        commands/synchronize_commands_command.cpp
         commands/transport_rebuild_command.cpp
         command_map.cpp
         command_item.cpp

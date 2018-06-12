@@ -13,6 +13,7 @@ set(RELATIVE_INCLUDES
         controller/commands/move_command.h
         controller/commands/move_wing_command.h
         controller/commands/obstacle_course_command.h
+        controller/commands/synchronize_commands_command.h
         controller/commands/transport_rebuild_command.h
         controller/commands/wunderhorn_command.h
         controller/command_executor.h
