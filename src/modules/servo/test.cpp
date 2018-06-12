@@ -46,11 +46,11 @@ int main(int argc, char *argv[]) {
         data.insert(data.end(), hlData.begin(), hlData.end());
     }
 
-    SerialPort port;
+    auto port = std::make_shared<SerialPort>();
     BOOST_LOG_TRIVIAL(debug) << "Connecting to: " << portName << ":" << baudRate;
 
     GPIO gpio(GPIO::MapPin::GPIO18, GPIO::Direction::Out, GPIO::State::Low);
-    if (port.connect(portName, baudRate)) {
+    if (port->connect(portName, baudRate)) {
         BOOST_LOG_TRIVIAL(debug) << "Connected successfully";
 
         std::function<void(bool)> callback = [&gpio](bool isTx) {
