@@ -87,8 +87,8 @@ int main(int argc, char *argv[]) {
     std::string portName = config->serial().port();
     unsigned int baudRate = config->serial().baudrate();
 
-    dynamixel::SerialPort port;
-    bool connectSuccess = port.connect(portName, baudRate);
+    auto port = std::make_shared<dynamixel::SerialPort>();
+    bool connectSuccess = port->connect(portName, baudRate);
 
     handles.add<handles::WebcamHandle>(HANDLE_CAM, 0);
     handles.add<handles::EmotionHandle>(HANDLE_EMOTIONS, emotionPublisher);
@@ -97,7 +97,7 @@ int main(int argc, char *argv[]) {
         BOOST_LOG_TRIVIAL(info) << "Setting up Dynamixel servo handles";
 
         for (proto::repositories::Wing wing : config->servos().wings()) {
-            std::shared_ptr<dynamixel::Dynamixel> dynamixel = std::make_shared<dynamixel::Dynamixel>(wing.id(), port);
+            auto dynamixel = std::make_shared<dynamixel::Dynamixel>(wing.id(), port);
 
             size_t handle;
             switch (wing.position()) {
