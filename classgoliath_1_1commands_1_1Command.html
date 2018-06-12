@@ -109,11 +109,11 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aedcb0c5f613062f2b30132baad887e21"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acd1a6a6e17f1d51f962126168f80aa32"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1commands_1_1Command.html#acd1a6a6e17f1d51f962126168f80aa32">getId</a> () const</td></tr>
 <tr class="separator:acd1a6a6e17f1d51f962126168f80aa32"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a667d1fa5ed91aff4a6600fb41bac9273"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1commands_1_1Command.html#a667d1fa5ed91aff4a6600fb41bac9273">run</a> (<a class="el" href="classgoliath_1_1handles_1_1HandleMap.html">handles::HandleMap</a> &amp;handles, const proto::CommandMessage &amp;message)=0</td></tr>
-<tr class="memdesc:a667d1fa5ed91aff4a6600fb41bac9273"><td class="mdescLeft">&#160;</td><td class="mdescRight">Execute a command whilst also setting its running property.  <a href="#a667d1fa5ed91aff4a6600fb41bac9273">More...</a><br /></td></tr>
-<tr class="separator:a667d1fa5ed91aff4a6600fb41bac9273"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a93782479739f0b9f310a219396b39fcc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1commands_1_1Command.html#a93782479739f0b9f310a219396b39fcc">execute</a> (<a class="el" href="classgoliath_1_1handles_1_1HandleMap.html">handles::HandleMap</a> &amp;handles, const proto::CommandMessage &amp;message)</td></tr>
+<tr class="memdesc:a93782479739f0b9f310a219396b39fcc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Execute a command.  <a href="#a93782479739f0b9f310a219396b39fcc">More...</a><br /></td></tr>
+<tr class="separator:a93782479739f0b9f310a219396b39fcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0de018f805398f4af72233ec82b06b94"><td class="memItemLeft" align="right" valign="top"><a id="a0de018f805398f4af72233ec82b06b94"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1commands_1_1Command.html#a0de018f805398f4af72233ec82b06b94">interrupt</a> ()</td></tr>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1commands_1_1Command.html#a0de018f805398f4af72233ec82b06b94">interrupt</a> ()</td></tr>
 <tr class="memdesc:a0de018f805398f4af72233ec82b06b94"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interrupt a command by setting the interrupted property. <br /></td></tr>
 <tr class="separator:a0de018f805398f4af72233ec82b06b94"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a19f3f09c0f90a6e1421fe96008327796"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1commands_1_1Command.html#a19f3f09c0f90a6e1421fe96008327796">isInterrupted</a> () const</td></tr>
@@ -131,9 +131,9 @@ virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>canRunParalle
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:a74b5d64816f9ab25a96e60004595bb19"><td class="memItemLeft" align="right" valign="top"><a id="a74b5d64816f9ab25a96e60004595bb19"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>onInterrupt</b> ()</td></tr>
-<tr class="separator:a74b5d64816f9ab25a96e60004595bb19"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a667d1fa5ed91aff4a6600fb41bac9273"><td class="memItemLeft" align="right" valign="top"><a id="a667d1fa5ed91aff4a6600fb41bac9273"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>run</b> (<a class="el" href="classgoliath_1_1handles_1_1HandleMap.html">handles::HandleMap</a> &amp;handles, const proto::CommandMessage &amp;message)=0</td></tr>
+<tr class="separator:a667d1fa5ed91aff4a6600fb41bac9273"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -177,6 +177,43 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Whether or not all handles are free or not </dd></dl>
+
+</div>
+</div>
+<a id="a93782479739f0b9f310a219396b39fcc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a93782479739f0b9f310a219396b39fcc">&#9670;&nbsp;</a></span>execute()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Command::execute </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classgoliath_1_1handles_1_1HandleMap.html">handles::HandleMap</a> &amp;&#160;</td>
+          <td class="paramname"><em>handles</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const proto::CommandMessage &amp;&#160;</td>
+          <td class="paramname"><em>message</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Execute a command. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">handles</td><td>Handle map to be passed to command, contains only required handles in a locked state </td></tr>
+    <tr><td class="paramname">message</td><td>Arguments to be passed </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -235,53 +272,6 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 
 <p>Method to check wether a command is already interrupted. </p>
 <dl class="section return"><dt>Returns</dt><dd>The value of interrupted </dd></dl>
-
-</div>
-</div>
-<a id="a667d1fa5ed91aff4a6600fb41bac9273"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a667d1fa5ed91aff4a6600fb41bac9273">&#9670;&nbsp;</a></span>run()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual void goliath::commands::Command::run </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classgoliath_1_1handles_1_1HandleMap.html">handles::HandleMap</a> &amp;&#160;</td>
-          <td class="paramname"><em>handles</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const proto::CommandMessage &amp;&#160;</td>
-          <td class="paramname"><em>message</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Execute a command whilst also setting its running property. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">handles</td><td>Handle map to be passed to implementation to be unlocked dynamically </td></tr>
-    <tr><td class="paramname">message</td><td>Arguments to be passed </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p>Implemented in <a class="el" href="classgoliath_1_1commands_1_1QueueCommand.html#ae4889a22b03c1824e484d28edf0bf648">goliath::commands::QueueCommand</a>, and <a class="el" href="classgoliath_1_1commands_1_1BasicCommand.html#aea8b3a21eefb67a86e4ddc0631e4ffde">goliath::commands::BasicCommand</a>.</p>
 
 </div>
 </div>

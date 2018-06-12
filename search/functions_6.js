@@ -13,7 +13,7 @@ var searchData=
   ['getmotors',['getMotors',['../classgoliath_1_1motor__controller_1_1MotorController.html#a6c9d4a30c882c68fbfc8a884efe2f20f',1,'goliath::motor_controller::MotorController']]],
   ['getnumberofmotors',['getNumberOfMotors',['../classgoliath_1_1motor__controller_1_1MotorController.html#a04d5c2496f46c18ed1a81a2f6dbea2b5',1,'goliath::motor_controller::MotorController']]],
   ['getnumberofticks',['getNumberOfTicks',['../classgoliath_1_1transitions_1_1Phase.html#afc9563db2c31d58a44d8d6194bd443ef',1,'goliath::transitions::Phase::getNumberOfTicks()'],['../classgoliath_1_1transitions_1_1Reel.html#ad15fb09bcf5db216d99cb024f2af90ad',1,'goliath::transitions::Reel::getNumberOfTicks()']]],
-  ['getownerid',['getOwnerId',['../classgoliath_1_1handles_1_1Handle.html#a00f7ab977ce67d0accb67247914e8ef8',1,'goliath::handles::Handle']]],
+  ['getownerid',['getOwnerId',['../classgoliath_1_1handles_1_1Handle.html#a477e0c70e9ddb84b51fd6474f08ad737',1,'goliath::handles::Handle']]],
   ['getrepositories',['getRepositories',['../classgoliath_1_1repositories_1_1Watcher.html#a596442cf89ea2d9d5cedd754691efc76',1,'goliath::repositories::Watcher']]],
   ['getrequiredhandles',['getRequiredHandles',['../classgoliath_1_1commands_1_1Command.html#ad3dff4d11b544719909998c021201349',1,'goliath::commands::Command']]],
   ['getslaveaddress',['getSlaveAddress',['../classgoliath_1_1handles_1_1I2cSlaveHandle.html#a96cc9c70024d22e2e462c6c7d28a41b1',1,'goliath::handles::I2cSlaveHandle']]],
