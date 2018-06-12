@@ -19,7 +19,7 @@ sudo make
 
 ## Cross compile for the Raspberry PI
 
-1. Copy the entire `/usr` and `/lib` directories of your Raspberry PI into a newly created folder:
+1. Copy the entire `/lib`, `/usr` and `/opt` directories of your Raspberry PI into a newly created folder:
 ```bash
 mkdir raspbian-rootfs
 rsync -rl --delete-after pi@$RASPI:/{lib,usr,opt} raspbian-rootfs/
@@ -28,7 +28,7 @@ rsync -rl --delete-after pi@$RASPI:/{lib,usr,opt} raspbian-rootfs/
 
 2. Install the Raspberry PI toolchain.
 ```bash
-./install-toolchain.sh
+sudo ./install-toolchain.sh
 ```
 
 3. Turn all the absolute symlinks into relative ones:
