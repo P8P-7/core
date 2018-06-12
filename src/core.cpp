@@ -87,8 +87,8 @@ int main(int argc, char *argv[]) {
     std::string portName = config->serial().port();
     unsigned int baudRate = config->serial().baudrate();
 
-    dynamixel::SerialPort port;
-    bool connectSuccess = port.connect(portName, baudRate);
+    auto port = std::make_shared<dynamixel::SerialPort>();
+    bool connectSuccess = port->connect(portName, baudRate);
 
     handles.add<handles::WebcamHandle>(HANDLE_CAM, 0);
     handles.add<handles::EmotionHandle>(HANDLE_EMOTIONS, emotionPublisher);
@@ -96,23 +96,25 @@ int main(int argc, char *argv[]) {
     if (connectSuccess) {
         BOOST_LOG_TRIVIAL(info) << "Setting up Dynamixel servo handles";
 
-        std::map<std::string, int> servos;
-
         for (proto::repositories::Wing wing : config->servos().wings()) {
-            std::shared_ptr<dynamixel::Dynamixel> dynamixel = std::make_shared<dynamixel::Dynamixel>(wing.id(), port);
+            auto dynamixel = std::make_shared<dynamixel::Dynamixel>(wing.id(), port);
 
             size_t handle;
-
-            if (wing.position() == proto::repositories::Position::LEFT_FRONT) {
-                handle = HANDLE_LEFT_FRONT_WING_SERVO;
-            } else if (wing.position() == proto::repositories::Position::LEFT_BACK) {
-                handle = HANDLE_LEFT_BACK_WING_SERVO;
-            } else if (wing.position() == proto::repositories::Position::RIGHT_FRONT) {
-                handle = HANDLE_RIGHT_FRONT_WING_SERVO;
-            } else if (wing.position() == proto::repositories::Position::RIGHT_BACK) {
-                handle = HANDLE_RIGHT_BACK_WING_SERVO;
-            } else {
-                throw std::runtime_error("Servo position could not be handled");
+            switch (wing.position()) {
+                case proto::repositories::Position::LEFT_FRONT:
+                    handle = HANDLE_LEFT_FRONT_WING_SERVO;
+                    break;
+                case proto::repositories::Position::LEFT_BACK:
+                    handle = HANDLE_LEFT_BACK_WING_SERVO;
+                    break;
+                case proto::repositories::Position::RIGHT_FRONT:
+                    handle = HANDLE_RIGHT_FRONT_WING_SERVO;
+                    break;
+                case proto::repositories::Position::RIGHT_BACK:
+                    handle = HANDLE_RIGHT_BACK_WING_SERVO;
+                    break;
+                default:
+                    throw std::runtime_error("Servo position could not be handled");
             }
 
             handles.add<handles::ServoHandle>(handle, dynamixel, callback);
@@ -121,10 +123,27 @@ int main(int argc, char *argv[]) {
 
     handles.add<handles::I2cBusHandle>(HANDLE_I2C_BUS, "/dev/i2c-1");
     handles.add<handles::I2cSlaveHandle>(HANDLE_MOTOR_CONTROLLER, 0x30);
-    handles.add<handles::MotorHandle>(HANDLE_LEFT_FRONT_MOTOR, 0);
-    handles.add<handles::MotorHandle>(HANDLE_LEFT_BACK_MOTOR, 1);
-    handles.add<handles::MotorHandle>(HANDLE_RIGHT_FRONT_MOTOR, 2);
-    handles.add<handles::MotorHandle>(HANDLE_RIGHT_BACK_MOTOR, 3);
+    const auto &motors = config->motor_controller().motors();
+    for (const auto &motor : motors) {
+        size_t handle;
+        switch (motor.position()) {
+            case proto::repositories::Position::LEFT_FRONT:
+                handle = HANDLE_LEFT_FRONT_MOTOR;
+                break;
+            case proto::repositories::Position::LEFT_BACK:
+                handle = HANDLE_LEFT_BACK_MOTOR;
+                break;
+            case proto::repositories::Position::RIGHT_FRONT:
+                handle = HANDLE_RIGHT_FRONT_MOTOR;
+                break;
+            case proto::repositories::Position::RIGHT_BACK:
+                handle = HANDLE_RIGHT_BACK_MOTOR;
+                break;
+            default:
+                throw std::runtime_error("Servo position could not be handled");
+        }
+        handles.add<handles::MotorHandle>(handle, motor.id());
+    }
 
     BOOST_LOG_TRIVIAL(info) << "Setting up commands";
     commands::CommandMap commands(commandStatusRepository);

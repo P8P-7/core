@@ -58,7 +58,7 @@ void CommandExecutor::start(const size_t &commandId, const proto::CommandMessage
 
     BOOST_LOG_TRIVIAL(info) << "Execution of \"Command " << commandId << "\" has started";
     try {
-        item.instance->run(requiredHandles, message);
+        item.instance->execute(requiredHandles, message);
     } catch (std::exception &ex) {
         BOOST_LOG_TRIVIAL(error) << "Error executing command \"" << commandId << "\" what(): " << ex.what();
     }
@@ -96,7 +96,7 @@ void CommandExecutor::delayedStart(const size_t &commandId, const proto::Command
     lock.unlock();
     BOOST_LOG_TRIVIAL(info) << "* Execution of \"Command " << commandId << "\" has started";
     try {
-        item.instance->run(requiredHandles, message);
+        item.instance->execute(requiredHandles, message);
     } catch (std::exception &ex) {
         BOOST_LOG_TRIVIAL(fatal) << "Error executing command \"" << commandId << "\" what(): " << ex.what();
     }

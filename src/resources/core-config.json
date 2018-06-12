@@ -41,19 +41,19 @@
   "motors": [
    {
     "position": "LEFT_FRONT",
-    "id": "0"
-   },
-   {
-    "position": "LEFT_BACK",
     "id": "1"
    },
    {
+    "position": "LEFT_BACK",
+    "id": "3"
+   },
+   {
     "position": "RIGHT_FRONT",
-    "id": "2"
+    "id": "0"
    },
    {
     "position": "RIGHT_BACK",
-    "id": "3"
+    "id": "2"
    }
   ]
  },

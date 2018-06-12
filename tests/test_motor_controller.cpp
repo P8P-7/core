@@ -283,9 +283,9 @@ BOOST_AUTO_TEST_SUITE(BOOST_TEST_MODULE)
         motor_controller::MotorController controller(slave);
 
         std::array<motor_controller::MotorStatus, 2> commands = {{
-                                                                 {0, motor_controller::MotorDirection::FORWARDS, 0},
-                                                                 {0, motor_controller::MotorDirection::FORWARDS, 0},
-                                                         }};
+                                                                         {0, motor_controller::MotorDirection::FORWARDS, 0},
+                                                                         {0, motor_controller::MotorDirection::FORWARDS, 0},
+                                                                 }};
         controller.sendCommands(commands.begin(), commands.end());
 
         slave_handle.unlock();
@@ -336,7 +336,7 @@ BOOST_AUTO_TEST_SUITE(BOOST_TEST_MODULE)
         BOOST_CHECK(true);
     }
 
-    BOOST_AUTO_TEST_CASE(spam_test) {
+    BOOST_AUTO_TEST_CASE(kill_switch) {
         const std::string device = "/dev/i2c-1";
         const i2c::I2cAddress address = 0x30;
 
@@ -347,15 +347,13 @@ BOOST_AUTO_TEST_SUITE(BOOST_TEST_MODULE)
 
         i2c::I2cSlave slave(bus_handle, slave_handle);
         motor_controller::MotorController controller(slave);
-        motor_controller::MotorStatus message = {
-                0,
-                motor_controller::MotorDirection::FORWARDS,
-                255
-        };
-        for (int i = 0; i < 10000; i++) {
-            message.speed = rand();
-            controller.sendCommand(message);
-        }
+        std::array<motor_controller::MotorStatus, 4> commands = {{
+                                                                         {0, motor_controller::MotorDirection::LOCKED, 0},
+                                                                         {1, motor_controller::MotorDirection::LOCKED, 0},
+                                                                         {2, motor_controller::MotorDirection::LOCKED, 0},
+                                                                         {3, motor_controller::MotorDirection::LOCKED, 0}
+                                                                 }};
+        controller.sendCommands(commands.begin(), commands.end());
 
         slave_handle.unlock();
         bus_handle.unlock();

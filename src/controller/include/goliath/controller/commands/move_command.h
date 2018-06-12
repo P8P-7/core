@@ -18,7 +18,7 @@ namespace goliath::commands {
         MoveCommand(const size_t &id);
 
     private:
-
-        void execute(handles::HandleMap &handles, const proto::CommandMessage &message) override;
+        void process() override;
+        void execute(const std::vector<proto::commands::MotorCommand> &commandMessages);
     };
 }

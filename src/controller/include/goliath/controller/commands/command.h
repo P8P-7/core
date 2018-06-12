@@ -31,16 +31,16 @@ namespace goliath::commands {
         size_t getId() const;
 
         /**
-         * @brief Execute a command whilst also setting its running property
-         * @param handles Handle map to be passed to implementation to be unlocked dynamically
+         * @brief Execute a command
+         * @param handles Handle map to be passed to command, contains only required handles in a locked state
          * @param message Arguments to be passed
          */
-        virtual void run(handles::HandleMap &handles, const proto::CommandMessage &message) = 0;
+        void execute(handles::HandleMap &handles, const proto::CommandMessage &message);
 
         /**
          * @brief Interrupt a command by setting the interrupted property
          */
-        void interrupt();
+        virtual void interrupt();
 
         /**
          * @brief Method to check wether a command is already interrupted
@@ -69,7 +69,7 @@ namespace goliath::commands {
          */
         bool running;
 
-        virtual void onInterrupt();
+        virtual void run(handles::HandleMap &handles, const proto::CommandMessage &message) = 0;
 
     private:
         const size_t id;
@@ -77,7 +77,7 @@ namespace goliath::commands {
         /**
          * @brief Represents whether a command is interrupted or not
          */
-        bool interrupted;
+        std::atomic<bool> interrupted;
 
         /**
          * @brief Handle this command requires

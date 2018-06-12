@@ -1,6 +1,5 @@
 #include <Wire.h>
 
-#define DEBUG
 #define ADDRESS 0x30
 #define CHANGE_DIRECTION_TIME_SPAN 100
 #define MAX_SPEED 255

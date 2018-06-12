@@ -2,10 +2,24 @@
 
 #include <thread>
 
+using namespace goliath;
 using namespace goliath::commands;
 
 QueueCommand::QueueCommand(const size_t &id, const std::vector<size_t> &requiredHandles)
-        : Command(id, requiredHandles), queue{}, isWorking(true), worker(&QueueCommand::work, this) {}
+        : Command(id, requiredHandles), queue{}, isWorking(true), worker(&QueueCommand::work, this) { }
+
+QueueCommand::~QueueCommand() {
+    std::unique_lock<std::mutex> lock(mutex);
+
+    if (!isWorking) {
+        return;
+    }
+
+    isWorking = false;
+    lock.unlock();
+    cv.notify_all();
+    worker.join();
+}
 
 void QueueCommand::run(goliath::handles::HandleMap &handles, const proto::CommandMessage &message) {
     std::lock_guard<std::mutex> lock(mutex);
@@ -34,22 +48,19 @@ void QueueCommand::work() {
         BOOST_LOG_TRIVIAL(debug) << "Worker has been awakened";
 
         if (!isWorking || isInterrupted()) {
+            running = false;
+            handles.unlockAll();
+            while (!queue.empty()) {
+                queue.pop();
+            }
             break;
         }
 
         running = true;
         while (!queue.empty() && !isInterrupted()) {
-            handles::HandleMap handles = this->handles;
-            proto::CommandMessage message = queue.front();
-            queue.pop();
             lock.unlock();
 
-            try {
-                execute(handles, message);
-            } catch (std::exception &ex) {
-                BOOST_LOG_TRIVIAL(error) << "Error executing command \"" << getId() << "\" what(): "
-                                         << ex.what();
-            }
+            process();
 
             lock.lock();
         }
@@ -61,19 +72,9 @@ void QueueCommand::work() {
     BOOST_LOG_TRIVIAL(debug) << "Worker has exited";
 }
 
-QueueCommand::~QueueCommand() {
-    std::unique_lock<std::mutex> lock(mutex);
+void QueueCommand::interrupt() {
+    Command::interrupt();
 
-    if (!isWorking) {
-        return;
-    }
-
-    isWorking = false;
-    cv.notify_one();
-    worker.join();
-}
-
-void QueueCommand::onInterrupt() {
     cv.notify_one();
 }
 
