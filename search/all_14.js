@@ -4,7 +4,7 @@ var searchData=
   ['watch',['watch',['../classgoliath_1_1repositories_1_1Watcher.html#ab496ec3e1cd6417e7bb968d228115665',1,'goliath::repositories::Watcher']]],
   ['watcher',['Watcher',['../classgoliath_1_1repositories_1_1Watcher.html',1,'goliath::repositories::Watcher'],['../classgoliath_1_1repositories_1_1Watcher.html#a8bce0e16b2e07cd8798359b756dcaffd',1,'goliath::repositories::Watcher::Watcher()']]],
   ['watcher_2eh',['watcher.h',['../watcher_8h.html',1,'']]],
-  ['webcam',['Webcam',['../classgoliath_1_1vision_1_1Webcam.html',1,'goliath::vision::Webcam'],['../classgoliath_1_1vision_1_1Webcam.html#a002cbdf9be45b2f382610af812d011df',1,'goliath::vision::Webcam::Webcam(const int capId)'],['../classgoliath_1_1vision_1_1Webcam.html#ad4cba289bc1522b6ce2fc027175ab216',1,'goliath::vision::Webcam::Webcam(const int capId, const int color)']]],
+  ['webcam',['Webcam',['../classgoliath_1_1vision_1_1Webcam.html',1,'goliath::vision::Webcam'],['../classgoliath_1_1vision_1_1Webcam.html#a7ab8291de2f035d4e6b51f6166a3da75',1,'goliath::vision::Webcam::Webcam(int capId)'],['../classgoliath_1_1vision_1_1Webcam.html#a45adc843890e32ec90bac000b23a8642',1,'goliath::vision::Webcam::Webcam(int capId, int color)']]],
   ['webcam_2eh',['webcam.h',['../webcam_8h.html',1,'']]],
   ['webcam_5fhandle_2eh',['webcam_handle.h',['../webcam__handle_8h.html',1,'']]],
   ['webcamhandle',['WebcamHandle',['../classgoliath_1_1handles_1_1WebcamHandle.html',1,'goliath::handles::WebcamHandle'],['../classgoliath_1_1handles_1_1WebcamHandle.html#a9f2355c478a473ae74796f3b3f0c690b',1,'goliath::handles::WebcamHandle::WebcamHandle()']]],

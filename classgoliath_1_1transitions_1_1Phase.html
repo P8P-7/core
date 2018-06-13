@@ -92,11 +92,11 @@ using&#160;</td><td class="memItemRight" valign="bottom"><b>const_iterator</b> =
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a756d7e3923c5d8a50e707295745e931b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1transitions_1_1Phase.html#a756d7e3923c5d8a50e707295745e931b">Phase</a> (const std::chrono::milliseconds duration, const size_t ticksPerSecond, const double min, const double max, std::function&lt; double(double)&gt; method)</td></tr>
-<tr class="separator:a756d7e3923c5d8a50e707295745e931b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a46a2523e24f0d67f74ddf6537261eb9f"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1transitions_1_1Phase.html#a46a2523e24f0d67f74ddf6537261eb9f">get</a> (const Tick tick) const</td></tr>
-<tr class="memdesc:a46a2523e24f0d67f74ddf6537261eb9f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get value at specific tick.  <a href="#a46a2523e24f0d67f74ddf6537261eb9f">More...</a><br /></td></tr>
-<tr class="separator:a46a2523e24f0d67f74ddf6537261eb9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae236e692c15f1337c7f999b820db2d67"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1transitions_1_1Phase.html#ae236e692c15f1337c7f999b820db2d67">Phase</a> (std::chrono::milliseconds duration, size_t ticksPerSecond, double min, double max, std::function&lt; double(double)&gt; method)</td></tr>
+<tr class="separator:ae236e692c15f1337c7f999b820db2d67"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a11f9be7a1d0acec9bff94f336b5ac42c"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1transitions_1_1Phase.html#a11f9be7a1d0acec9bff94f336b5ac42c">get</a> (Tick tick) const</td></tr>
+<tr class="memdesc:a11f9be7a1d0acec9bff94f336b5ac42c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get value at specific tick.  <a href="#a11f9be7a1d0acec9bff94f336b5ac42c">More...</a><br /></td></tr>
+<tr class="separator:a11f9be7a1d0acec9bff94f336b5ac42c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad234d76df91a32380fe6a04bafea7e38"><td class="memItemLeft" align="right" valign="top">const std::chrono::milliseconds&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1transitions_1_1Phase.html#ad234d76df91a32380fe6a04bafea7e38">getDuration</a> () const</td></tr>
 <tr class="memdesc:ad234d76df91a32380fe6a04bafea7e38"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get length of this phase.  <a href="#ad234d76df91a32380fe6a04bafea7e38">More...</a><br /></td></tr>
 <tr class="separator:ad234d76df91a32380fe6a04bafea7e38"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -122,8 +122,8 @@ const_iterator&#160;</td><td class="memItemRight" valign="bottom"><b>end</b> () 
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A piece of a reel with form. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a756d7e3923c5d8a50e707295745e931b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a756d7e3923c5d8a50e707295745e931b">&#9670;&nbsp;</a></span>Phase()</h2>
+<a id="ae236e692c15f1337c7f999b820db2d67"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae236e692c15f1337c7f999b820db2d67">&#9670;&nbsp;</a></span>Phase()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -131,25 +131,25 @@ const_iterator&#160;</td><td class="memItemRight" valign="bottom"><b>end</b> () 
         <tr>
           <td class="memname">Phase::Phase </td>
           <td>(</td>
-          <td class="paramtype">const std::chrono::milliseconds&#160;</td>
+          <td class="paramtype">std::chrono::milliseconds&#160;</td>
           <td class="paramname"><em>duration</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const size_t&#160;</td>
+          <td class="paramtype">size_t&#160;</td>
           <td class="paramname"><em>ticksPerSecond</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const double&#160;</td>
+          <td class="paramtype">double&#160;</td>
           <td class="paramname"><em>min</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const double&#160;</td>
+          <td class="paramtype">double&#160;</td>
           <td class="paramname"><em>max</em>, </td>
         </tr>
         <tr>
@@ -179,8 +179,8 @@ const_iterator&#160;</td><td class="memItemRight" valign="bottom"><b>end</b> () 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a46a2523e24f0d67f74ddf6537261eb9f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a46a2523e24f0d67f74ddf6537261eb9f">&#9670;&nbsp;</a></span>get()</h2>
+<a id="a11f9be7a1d0acec9bff94f336b5ac42c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a11f9be7a1d0acec9bff94f336b5ac42c">&#9670;&nbsp;</a></span>get()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -188,7 +188,7 @@ const_iterator&#160;</td><td class="memItemRight" valign="bottom"><b>end</b> () 
         <tr>
           <td class="memname">double Phase::get </td>
           <td>(</td>
-          <td class="paramtype">const Tick&#160;</td>
+          <td class="paramtype">Tick&#160;</td>
           <td class="paramname"><em>tick</em></td><td>)</td>
           <td> const</td>
         </tr>

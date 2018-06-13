@@ -6,7 +6,7 @@ var searchData=
   ['transition_5ferror_2eh',['transition_error.h',['../transition__error_8h.html',1,'']]],
   ['transition_5fexecutor_2eh',['transition_executor.h',['../transition__executor_8h.html',1,'']]],
   ['transition_5futilities_2eh',['transition_utilities.h',['../transition__utilities_8h.html',1,'']]],
-  ['transitionerror',['TransitionError',['../classgoliath_1_1exceptions_1_1TransitionError.html',1,'goliath::exceptions::TransitionError'],['../classgoliath_1_1exceptions_1_1TransitionError.html#a68cc0ee5a199b4df0a4820bec9be6e11',1,'goliath::exceptions::TransitionError::TransitionError()']]],
+  ['transitionerror',['TransitionError',['../classgoliath_1_1exceptions_1_1TransitionError.html',1,'goliath::exceptions::TransitionError'],['../classgoliath_1_1exceptions_1_1TransitionError.html#adb3a2be3dd30bdb65a84d2bfc8e704f9',1,'goliath::exceptions::TransitionError::TransitionError()']]],
   ['transitionexecutor',['TransitionExecutor',['../classgoliath_1_1transitions_1_1TransitionExecutor.html',1,'goliath::transitions']]],
   ['transitions_2eh',['transitions.h',['../transitions_8h.html',1,'']]],
   ['transitionutilities',['TransitionUtilities',['../classgoliath_1_1util_1_1TransitionUtilities.html',1,'goliath::util']]],
