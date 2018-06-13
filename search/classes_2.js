@@ -12,5 +12,6 @@ var searchData=
   ['commandstatusrepository',['CommandStatusRepository',['../classgoliath_1_1repositories_1_1CommandStatusRepository.html',1,'goliath::repositories']]],
   ['configrepository',['ConfigRepository',['../classgoliath_1_1repositories_1_1ConfigRepository.html',1,'goliath::repositories']]],
   ['console',['Console',['../classgoliath_1_1util_1_1Console.html',1,'goliath::util']]],
-  ['context',['Context',['../classgoliath_1_1openal_1_1Context.html',1,'goliath::openal']]]
+  ['context',['Context',['../classgoliath_1_1openal_1_1Context.html',1,'goliath::openal']]],
+  ['cupdetector',['CupDetector',['../classgoliath_1_1vision_1_1CupDetector.html',1,'goliath::vision']]]
 ];

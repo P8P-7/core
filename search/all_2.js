@@ -31,5 +31,7 @@ var searchData=
   ['context',['Context',['../classgoliath_1_1openal_1_1Context.html',1,'goliath::openal::Context'],['../classgoliath_1_1openal_1_1Context.html#adbd52d5a7c9937624417b1e8ffbbc1e9',1,'goliath::openal::Context::Context()']]],
   ['context_2eh',['context.h',['../context_8h.html',1,'']]],
   ['controller_2eh',['controller.h',['../controller_8h.html',1,'']]],
+  ['cup_5fdetector_2eh',['cup_detector.h',['../cup__detector_8h.html',1,'']]],
+  ['cupdetector',['CupDetector',['../classgoliath_1_1vision_1_1CupDetector.html',1,'goliath::vision']]],
   ['core',['Core',['../index.html',1,'']]]
 ];

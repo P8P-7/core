@@ -70,6 +70,7 @@ $(function() {
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#enum-members">Enumerations</a> &#124;
+<a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">goliath::vision Namespace Reference</div>  </div>
@@ -88,6 +89,8 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classgoliath_1_1vision_1_1Processor.html" title="Base class of processors that take in an input and manipulate in some way returning the output from t...">Processor</a> that returns an image with only colors within a specific range.  <a href="classgoliath_1_1vision_1_1ColorProcessor.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1vision_1_1ColorRegionDetector.html">ColorRegionDetector</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1vision_1_1CupDetector.html">CupDetector</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1vision_1_1Detector.html">Detector</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Base class of detectors that take an input and detect a vector of shapes, colors or sizes.  <a href="classgoliath_1_1vision_1_1Detector.html#details">More...</a><br /></td></tr>
@@ -120,8 +123,20 @@ Enumerations</h2></td></tr>
 <tr class="memdesc:ab57b7fa0d8bdbecbaa361caf5050b9b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a direction the robot should go in, outputted from the follow_line_detector.  <a href="namespacegoliath_1_1vision.html#ab57b7fa0d8bdbecbaa361caf5050b9b5">More...</a><br /></td></tr>
 <tr class="separator:ab57b7fa0d8bdbecbaa361caf5050b9b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a3eca65f08dd07f97e93680b2e6093017"><td class="memItemLeft" align="right" valign="top"><a id="a3eca65f08dd07f97e93680b2e6093017"></a>
+const cv::Scalar&#160;</td><td class="memItemRight" valign="bottom"><b>COLOR_MIN</b> (0, 254, 0)</td></tr>
+<tr class="separator:a3eca65f08dd07f97e93680b2e6093017"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a722b17581ec61a7a2bc07e868fab80dc"><td class="memItemLeft" align="right" valign="top"><a id="a722b17581ec61a7a2bc07e868fab80dc"></a>
+const cv::Scalar&#160;</td><td class="memItemRight" valign="bottom"><b>COLOR_MAX</b> (0, 255, 0)</td></tr>
+<tr class="separator:a722b17581ec61a7a2bc07e868fab80dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
+<tr class="memitem:acad87ef05a3e3bc7f105ad48270e70b8"><td class="memItemLeft" align="right" valign="top"><a id="acad87ef05a3e3bc7f105ad48270e70b8"></a>
+constexpr double&#160;</td><td class="memItemRight" valign="bottom"><b>MIN_CONTOUR_SIZE</b> = 500</td></tr>
+<tr class="separator:acad87ef05a3e3bc7f105ad48270e70b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7e252e4581a0e7f460632530d298056d"><td class="memItemLeft" align="right" valign="top"><a id="a7e252e4581a0e7f460632530d298056d"></a>
 const double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegoliath_1_1vision.html#a7e252e4581a0e7f460632530d298056d">DEFAULT_LINE_DETECTOR_RHO</a> = 1</td></tr>
 <tr class="memdesc:a7e252e4581a0e7f460632530d298056d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default Rho. <br /></td></tr>
