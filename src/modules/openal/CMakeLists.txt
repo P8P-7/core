@@ -9,7 +9,7 @@ target_include_directories(${PROJECT_NAME}
     PUBLIC
         ${CMAKE_CURRENT_SOURCE_DIR}/include
     PRIVATE
-        ${OPENAL_INCLUDE_DIRS}
+        ${OPENAL_INCLUDE_DIR}
         ${CMAKE_THREAD_LIBS_INIT}
     )
 

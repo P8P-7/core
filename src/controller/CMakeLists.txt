@@ -5,8 +5,6 @@ add_subdirectory(src)
 
 add_library(${PROJECT_NAME} ${SOURCES} ${INCLUDES})
 
-include_directories(${Boost_INCLUDE_DIRS})
-
 add_definitions(-DBOOST_LOG_DYN_LINK)
 
 target_link_libraries(${PROJECT_NAME}
@@ -26,4 +24,5 @@ target_link_libraries(${PROJECT_NAME}
 target_include_directories(${PROJECT_NAME}
         PUBLIC
             ${CMAKE_CURRENT_SOURCE_DIR}/include
+            ${Boost_INCLUDE_DIR}
         )
