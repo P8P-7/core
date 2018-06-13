@@ -16,6 +16,7 @@ set(RELATIVE_INCLUDES
         controller/commands/synchronize_commands_command.h
         controller/commands/transport_rebuild_command.h
         controller/commands/wunderhorn_command.h
+        controller/commands/shutdown_command.h
         controller/command_executor.h
         controller/command_item.h
         controller/command_map.h
