@@ -1,6 +1,7 @@
 set(RELATIVE_INCLUDES
         vision.h
         vision/detectors/color_region_detector.h
+        vision/detectors/cup_detector.h
         vision/detectors/detector.h
         vision/detectors/follow_line_detector.h
         vision/detectors/within_box_detector.h
@@ -13,7 +14,7 @@ set(RELATIVE_INCLUDES
         vision/webcam_handle.h
         )
 
-prepend(ASOLUTE_INCLUDES ${CMAKE_CURRENT_SOURCE_DIR} ${RELATIVE_INCLUDES})
+prepend(ABSOLUTE_INCLUDES ${CMAKE_CURRENT_SOURCE_DIR} ${RELATIVE_INCLUDES})
 
 set(INCLUDES
         ${ABSOLUTE_INCLUDES}
