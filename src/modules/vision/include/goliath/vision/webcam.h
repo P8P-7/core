@@ -18,12 +18,12 @@ namespace goliath::vision {
         /**
          * @param capId VideoCapture to be used
          */
-        explicit Webcam(const int capId);
+        explicit Webcam(int capId);
         /**
          * @param capId VideoCapture to be used
          * @param color Convert incoming image to a specific format, must always start with CV_BGR2<color>
          */
-        Webcam(const int capId, const int color);
+        Webcam(int capId, int color);
         ~Webcam();
 
         /**

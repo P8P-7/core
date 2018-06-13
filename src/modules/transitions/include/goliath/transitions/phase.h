@@ -28,15 +28,15 @@ namespace goliath::transitions {
          * @param max Upper bound of the phase (mapped to 1)
          * @param method Type of transition (e. g. linear, eases)
          */
-        Phase(const std::chrono::milliseconds duration, const size_t ticksPerSecond, const double min,
-              const double max, std::function<double(double)> method);
+        Phase(std::chrono::milliseconds duration, size_t ticksPerSecond, double min,
+              double max, std::function<double(double)> method);
 
         /**
          * @brief Get value at specific tick
          * @param tick Tick
          * @return Value at tick
          */
-        double get(const Tick tick) const;
+        double get(Tick tick) const;
         /**
          * @brief Get length of this phase
          * @return Duration

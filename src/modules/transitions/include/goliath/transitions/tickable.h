@@ -37,7 +37,7 @@ namespace goliath::transitions {
 
     protected:
         mutable std::chrono::milliseconds duration;
-        const unsigned ticksPerSecond;
+        const size_t ticksPerSecond;
 
     };
 }

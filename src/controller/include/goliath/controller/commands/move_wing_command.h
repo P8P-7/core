@@ -9,7 +9,7 @@
 namespace goliath::commands {
     class MoveWingCommand : public BasicCommand {
     public:
-        MoveWingCommand(const size_t &id);
+        explicit MoveWingCommand(const size_t &id);
 
     private:
         void execute(handles::HandleMap &handles, const proto::CommandMessage &message) override;

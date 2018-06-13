@@ -18,9 +18,9 @@ namespace goliath::exceptions {
         /**
          * @param reason Reason for exception
          */
-        TransitionError(const std::string reason);
+        explicit TransitionError(const std::string &reason);
 
-        const char* what() const noexcept override;
+        const char *what() const noexcept override;
 
     private:
         const std::string reason;

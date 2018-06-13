@@ -20,7 +20,7 @@ std::vector<cv::Vec4d> WithinBoxDetector::detect() const {
     return edgeLines;
 }
 
-bool WithinBoxDetector::pointAtEdge(int point, int edge) const {
+bool WithinBoxDetector::pointAtEdge(double point, int edge) const {
     return point <= DISTANCE_FROM_EDGE_THRESHOLD || point > edge + DISTANCE_FROM_EDGE_THRESHOLD;
 }
 

@@ -9,7 +9,7 @@ using namespace goliath::exceptions;
 Microphone::Microphone(ALCuint frequency, ALCenum format, ALCsizei bufferSize, ALchar* deviceName) {
     alcDevice = alcCaptureOpenDevice(deviceName, frequency, format, bufferSize);
 
-    if(alcDevice == NULL) {
+    if(alcDevice == nullptr) {
         throw OpenalError("Unable to create microphone");
     }
 }

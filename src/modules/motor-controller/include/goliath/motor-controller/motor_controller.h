@@ -50,7 +50,7 @@ namespace goliath::motor_controller {
         /**
          * @param slave the slave on the i2c bus representing the motor controller
          */
-        MotorController(i2c::I2cSlave &slave);
+        explicit MotorController(i2c::I2cSlave &slave);
 
         /**
          * Sends a message to the physical controller to process.

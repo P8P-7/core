@@ -20,24 +20,24 @@ namespace goliath::transitions {
         using iterator = std::vector<double>::iterator;
         using const_iterator = std::vector<double>::const_iterator;
 
-        explicit Reel(const size_t ticksPerSecond);
+        explicit Reel(size_t ticksPerSecond);
         /**
          * @param callback Update on every tick
          */
-        Reel(const size_t ticksPerSecond, std::function<void(double)> callback);
+        Reel(size_t ticksPerSecond, std::function<void(double)> callback);
 
         /**
          * @brief Add a phase to this reel by creating a new one
 
          */
-        void addPhase(const std::chrono::milliseconds duration, double min, double max,
+        void addPhase(std::chrono::milliseconds duration, double min, double max,
                       std::function<double(double)> method);
 
         /**
          * @brief Add a predefined phase to this reel
          * @param phase The new phase to be added
          */
-        void addPhase(const std::shared_ptr<Phase> phase);
+        void addPhase(std::shared_ptr<Phase> phase);
 
         /**
          * @brief Get the value at the current tick

@@ -14,7 +14,7 @@
 namespace goliath::openal {
     class Microphone : public Device {
     public:
-        Microphone(ALCuint frequency, ALCenum format, ALCsizei bufferSize, ALchar* deviceName = NULL);
+        Microphone(ALCuint frequency, ALCenum format, ALCsizei bufferSize, ALchar* deviceName = nullptr);
 
         /**
          * @brief Records audio from the microphone and returns it into the buffer.

@@ -75,7 +75,7 @@ namespace goliath::controller {
 
     class LedStripController {
     public:
-        LedStripController(i2c::I2cSlave &slave);
+        explicit LedStripController(i2c::I2cSlave &slave);
 
         /**
          * Sends the @param message to the physical controller to process.

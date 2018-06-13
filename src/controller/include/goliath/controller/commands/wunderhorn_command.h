@@ -21,7 +21,7 @@ namespace goliath::commands {
          * @param id Command ID
          * @param config Optional configuration
          */
-        WunderhornCommand(const size_t &id);
+        explicit WunderhornCommand(const size_t &id);
 
     private:
         void execute(handles::HandleMap &handles, const proto::CommandMessage &message) override;

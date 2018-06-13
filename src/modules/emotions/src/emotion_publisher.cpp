@@ -4,7 +4,7 @@ using namespace goliath::emotions;
 
 EmotionPublisher::EmotionPublisher(zmq::context_t& context, const std::string& host, int port,
                                    std::shared_ptr<repositories::EmotionRepository> repository)
-    : ZmqPublisher(context, host, port), repository(repository) {
+    : ZmqPublisher(context, host, port), repository(std::move(repository)) {
 }
 
 EmotionPublisher::EmotionPublisher(const EmotionPublisher& other)

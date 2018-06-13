@@ -17,7 +17,7 @@ namespace goliath::transitions {
      */
     class ParallelReel : public Tickable {
     public:
-        ParallelReel(std::vector<std::shared_ptr<Reel>> reels);
+        explicit ParallelReel(std::vector<std::shared_ptr<Reel>> reels);
 
         void tick() override;
 

@@ -10,7 +10,7 @@ commands::MoveWingCommand::MoveWingCommand(const size_t &id)
 
 void commands::MoveWingCommand::execute(HandleMap &handles, const proto::CommandMessage &message) {
     BOOST_LOG_TRIVIAL(info) << "Execution of move wing command has started";
-    proto::commands::MoveWingCommand wingCommand = message.movewingcommand();
+    const proto::commands::MoveWingCommand wingCommand = message.movewingcommand();
 
     std::vector<size_t> requiredHandles = getRequiredHandles();
 

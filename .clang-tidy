@@ -3,8 +3,8 @@ Checks:          'clang-diagnostic-*,clang-analyzer-*,cppcoreguidelines-*,readab
 WarningsAsErrors: ''
 HeaderFilterRegex: ''
 AnalyzeTemporaryDtors: false
-FormatStyle:     llvm
-CheckOptions:    
+FormatStyle: llvm
+CheckOptions:
   - key:             cppcoreguidelines-no-malloc.Allocations
     value:           '::malloc;::calloc'
   - key:             cppcoreguidelines-no-malloc.Deallocations
@@ -45,4 +45,14 @@ CheckOptions:
     value:           llvm
   - key:             modernize-use-nullptr.NullMacros
     value:           'NULL'
-... 
+  - key:             readability-identifier-naming.ClassCase
+    value:           CamelCase
+  - key:             readability-identifier-naming.EnumCase
+    value:           CamelCase
+  - key:             readability-identifier-naming.FunctionCase
+    value:           lowerCase
+  - key:             readability-identifier-naming.UnionCase
+    value:           CamelCase
+  - key:             readability-identifier-naming.VariableCase
+    value:           CamelCase
+...

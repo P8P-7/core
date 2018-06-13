@@ -2,10 +2,9 @@
 
 using namespace goliath::exceptions;
 
-TransitionError::TransitionError(const std::string reason)
-        : reason(reason) {
-}
+TransitionError::TransitionError(const std::string &reason)
+        : reason(reason) { }
 
-const char* TransitionError::what() const noexcept {
+const char *TransitionError::what() const noexcept {
     return reason.c_str();
 }

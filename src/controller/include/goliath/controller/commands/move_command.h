@@ -15,7 +15,7 @@ namespace goliath::commands {
 
         const static std::map<proto::commands::MotorCommand_Motor, size_t> COMMAND_MOTOR_TO_HANDLE_MAP;
 
-        MoveCommand(const size_t &id);
+        explicit MoveCommand(const size_t &id);
 
     private:
         void process() override;

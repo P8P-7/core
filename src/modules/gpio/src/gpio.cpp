@@ -175,5 +175,5 @@ std::string GPIO::getGpionum() {
 }
 
 int GPIO::getiGpionum() {
-    return atoi(gpionum.c_str());
+    return std::stoi(gpionum);
 }

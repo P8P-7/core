@@ -7,17 +7,13 @@
 using namespace goliath::vision;
 
 LineDetector::LineDetector(const cv::Mat &input, int threshold, double rho, double theta, double minLineLength, double maxLineGap)
-        : Detector(input), threshold(threshold), rho(rho), theta(theta), minLineLength(minLineLength), maxLineGap(maxLineGap) {
-}
+        : Detector(input), threshold(threshold), rho(rho), theta(theta), minLineLength(minLineLength), maxLineGap(maxLineGap) { }
 
 LineDetector::LineDetector(const cv::Mat& input, int threshold, double minLineLength, double maxLineGap)
-        : LineDetector(input, DEFAULT_LINE_DETECTOR_RHO, DEFAULT_LINE_DETECTOR_THETA, threshold, minLineLength, maxLineGap) {
-}
+        : LineDetector(input, threshold, DEFAULT_LINE_DETECTOR_RHO, DEFAULT_LINE_DETECTOR_THETA, minLineLength, maxLineGap) { }
 
 LineDetector::LineDetector(const LineDetector &other)
-        : LineDetector(other.input, other.rho, other.theta, other.threshold, other.minLineLength, other.maxLineGap) {
-}
-
+        : LineDetector(other.input, other.threshold, other.rho, other.theta, other.minLineLength, other.maxLineGap) { }
 
 std::vector<cv::Vec4d> LineDetector::detect() const {
     std::vector<cv::Vec4d> lines;

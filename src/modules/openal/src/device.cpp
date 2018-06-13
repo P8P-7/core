@@ -7,7 +7,7 @@ using namespace goliath::exceptions;
 Device::Device(ALchar *deviceName) {
     alcDevice = alcOpenDevice(deviceName);
 
-    if(alcDevice == NULL) {
+    if(alcDevice == nullptr) {
         throw OpenalError("Unable to open device");
     }
 }

@@ -11,7 +11,7 @@
 namespace goliath::commands {
     class DanceCommand : public BasicCommand {
     public:
-        DanceCommand(const size_t &id);
+        explicit DanceCommand(const size_t &id);
 
     private:
         void execute(handles::HandleMap &handles, const proto::CommandMessage &message) override;

@@ -17,7 +17,7 @@ namespace goliath::exceptions {
         /**
          * @param reason Reason for exception
          */
-        OpenalError(const std::string reason);
+        explicit OpenalError(std::string reason);
 
         const char* what() const noexcept override;
 

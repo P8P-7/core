@@ -10,7 +10,7 @@
 namespace goliath::repositories {
     class LogRepository : public Repository {
     public:
-        LogRepository(const size_t &bufferSize);
+        explicit LogRepository(const size_t &bufferSize);
         ~LogRepository();
 
         std::unique_ptr<::google::protobuf::Message> getMessage() override;

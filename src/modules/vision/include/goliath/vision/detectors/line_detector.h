@@ -13,7 +13,7 @@ namespace goliath::vision {
     /**
      * @brief Default Rho
      */
-    const double DEFAULT_LINE_DETECTOR_RHO = 1;
+    const int DEFAULT_LINE_DETECTOR_RHO = 1;
     /**
      * @brief Default Theta
      */

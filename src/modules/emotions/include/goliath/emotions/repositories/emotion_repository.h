@@ -19,7 +19,7 @@ namespace goliath::repositories {
     public:
         EmotionRepository();
 
-        std::unique_ptr<::google::protobuf::Message> getMessage();
+        std::unique_ptr<::google::protobuf::Message> getMessage() override;
 
         const proto::Emotion &getCurrentEmotion() const;
         void setCurrentEmotion(const proto::Emotion &emotion);

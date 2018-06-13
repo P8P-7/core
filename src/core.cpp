@@ -96,7 +96,7 @@ int main(int argc, char *argv[]) {
     if (connectSuccess) {
         BOOST_LOG_TRIVIAL(info) << "Setting up Dynamixel servo handles";
 
-        for (proto::repositories::Wing wing : config->servos().wings()) {
+        for (const proto::repositories::Wing &wing : config->servos().wings()) {
             auto dynamixel = std::make_shared<dynamixel::Dynamixel>(wing.id(), port);
 
             size_t handle;

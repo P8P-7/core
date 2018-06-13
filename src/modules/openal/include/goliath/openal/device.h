@@ -19,7 +19,7 @@ namespace goliath::openal {
         /**
          * @param deviceName Location of device (Default NULL)
          */
-        Device(ALchar *deviceName = NULL);
+        explicit Device(ALchar *deviceName = nullptr);
         virtual ~Device();
 
         ALCdevice* getDevice() const;

@@ -18,7 +18,7 @@ namespace goliath::vision {
         std::vector<cv::Vec4d> detect() const override;
 
     private:
-        bool pointAtEdge(int point, int edge) const;
+        bool pointAtEdge(double point, int edge) const;
         bool lineIsCorner(cv::Vec4d& line, std::vector<cv::Vec4d>& others);
         bool pointIsCorner(cv::Vec4d& line1, cv::Vec4d& line2);
     };

@@ -21,7 +21,7 @@ namespace goliath::vision {
         /**
          * @param other Copy constructor
          */
-        explicit Detector(const Detector &other);
+        Detector(const Detector &other);
 
         virtual ~Detector();
 

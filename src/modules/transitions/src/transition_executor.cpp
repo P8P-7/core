@@ -41,7 +41,7 @@ size_t TransitionExecutor::execute(std::shared_ptr<Tickable> tickable) {
         auto timeAfter = intervalStart - Clock::now() + interval;
 
         if (timeAfter.count() < 0) {
-            currentSkips = std::abs(timeAfter.count() / interval.count() / 1000) + 1;
+            currentSkips = static_cast<size_t>(std::abs(timeAfter.count() / interval.count() / 1000) + 1);
         } else {
             std::this_thread::sleep_for(timeAfter);
         }

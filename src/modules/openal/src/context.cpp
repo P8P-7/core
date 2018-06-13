@@ -7,7 +7,7 @@ using namespace goliath::exceptions;
 Context::Context(const Device &device, const ALCint *context) {
     alcContext = alcCreateContext(device.getDevice(), context);
 
-    if(alcContext == NULL) {
+    if(alcContext == nullptr) {
         throw OpenalError("Unable to create context");
     }
 

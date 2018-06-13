@@ -23,7 +23,7 @@ namespace goliath::exceptions {
         /**
          * @param reason Reason for exception
          */
-        VisionError(const std::string reason);
+        explicit VisionError(std::string reason);
 
         const char* what() const noexcept override;
 

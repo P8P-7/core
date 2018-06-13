@@ -6,4 +6,4 @@ CommandItem::CommandItem()
     : status(CommandStatus::STALE) {}
 
 CommandItem::CommandItem(std::shared_ptr<Command> commandInstance, CommandStatus status)
-    : instance(commandInstance), status(status) {}
+    : instance(std::move(commandInstance)), status(status) {}
