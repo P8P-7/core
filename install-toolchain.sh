@@ -3,6 +3,19 @@
 INSTALL_PATH=$(pwd)
 TARGET_ROOTFS="${INSTALL_PATH}/raspbian-rootfs"
 TOOLCHAIN_SYMLINK_DIR="${INSTALL_PATH}/gcc-linaro-arm-linux-gnueabihf"
+ARCH="armv8"
+
+for i in "$@"
+do
+case $i in
+    -a=*|--arch=*)
+        ARCH="${i#*=}"
+    ;;
+    *)
+        # unknown option
+    ;;
+esac
+done
 
 # Install arm-linux-gnueabihf-ldd
 install_crosstool_ng_ldd() {
@@ -43,15 +56,20 @@ install_crosstool_ng_ldd() {
 
 # Install ARM cross compiler from linaro.org
 install_linaro_cross_compiler() {
-	local OS_32BIT_64BIT
 	local TOOLCHAIN
 	local TOOLCHAIN_DOWNLOAD_URL
 	local LINARO_PACKAGES_DIR
 	local RETVAL
 
-    # gcc build with: --with-tune=cortex-a9 --with-arch=armv7-a --with-fpu=vfpv3-d16 --with-float=hard --with-mode=thumb
-	TOOLCHAIN="gcc-linaro-6.4.1-2017.11-x86_64_arm-linux-gnueabihf"
-	TOOLCHAIN_DOWNLOAD_URL="https://releases.linaro.org/components/toolchain/binaries/6.4-2017.11/arm-linux-gnueabihf/${TOOLCHAIN}.tar.xz"
+	if [ "${ARCH}" = "armv8" ]; then
+		# gcc build with: --with-arch=armv8-a --with-fpu=neon-fp-armv8 -with-float=hard --with-mode=thumb --with-tls=gnu
+		TOOLCHAIN="gcc-linaro-6.4.1-2017.11-x86_64_armv8l-linux-gnueabihf"
+		TOOLCHAIN_DOWNLOAD_URL="https://releases.linaro.org/components/toolchain/binaries/6.4-2017.11/armv8l-linux-gnueabihf/${TOOLCHAIN}.tar.xz"
+	else
+		# gcc build with: --with-tune=cortex-a9 --with-arch=armv7-a --with-fpu=vfpv3-d16 --with-float=hard --with-mode=thumb
+		TOOLCHAIN="gcc-linaro-6.4.1-2017.11-x86_64_arm-linux-gnueabihf"
+		TOOLCHAIN_DOWNLOAD_URL="https://releases.linaro.org/components/toolchain/binaries/6.4-2017.11/arm-linux-gnueabihf/${TOOLCHAIN}.tar.xz"
+	fi
 
 	LINARO_PACKAGES_DIR="${INSTALL_PATH}/linaro_packages"
 	rm -fr ${INSTALL_PATH}/${TOOLCHAIN}
