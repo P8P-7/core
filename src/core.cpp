@@ -10,7 +10,6 @@
 #include <goliath/i2c.h>
 #include <goliath/motor-controller.h>
 #include <goliath/controller.h>
-#include "../cmake-build-debug/third_party/CommandMessage.pb.h"
 
 /**
  * @file main.cpp
