@@ -190,6 +190,10 @@ int main(int argc, char *argv[]) {
 
     BOOST_LOG_TRIVIAL(info) << "Press CTR+C to stop the controller";
 
+    commands::ShutdownCommand cmd(123,&ioService);
+
+    cmd.run(handles,proto::CommandMessage());
+
     ioService.run();
 
     BOOST_LOG_TRIVIAL(warning) << "Core is shutting down...";
