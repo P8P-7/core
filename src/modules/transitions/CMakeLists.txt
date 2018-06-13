@@ -10,6 +10,7 @@ add_library(${PROJECT_NAME} ${SOURCES} ${INCLUDES})
 target_include_directories(${PROJECT_NAME}
         PUBLIC
             ${CMAKE_CURRENT_SOURCE_DIR}/include
+            ${Boost_INCLUDE_DIR}
         PRIVATE
         )
 
