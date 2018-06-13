@@ -10,6 +10,7 @@
 #include <goliath/i2c.h>
 #include <goliath/motor-controller.h>
 #include <goliath/controller.h>
+#include "../cmake-build-debug/third_party/CommandMessage.pb.h"
 
 /**
  * @file main.cpp
@@ -150,6 +151,7 @@ int main(int argc, char *argv[]) {
     commands.add<commands::InvalidateAllCommand>(proto::CommandMessage::kInvalidateAllCommand, watcher);
     commands.add<commands::InterruptCommandCommand>(proto::CommandMessage::kInterruptCommandCommand,
                                                     std::make_shared<commands::CommandMap>(commands));
+    commands.add<commands::ShutdownCommand>(proto::CommandMessage::kShutdownCommand, &ioService);
     commands.add<commands::SynchronizeCommandsCommand>(proto::CommandMessage::kSynchronizeCommandsCommand,
                                                        commandStatusRepository);
     commands.add<commands::MoveCommand>(proto::CommandMessage::kMoveCommand);
@@ -187,6 +189,10 @@ int main(int argc, char *argv[]) {
     watcher->start();
 
     BOOST_LOG_TRIVIAL(info) << "Press CTR+C to stop the controller";
+
+    commands::ShutdownCommand cmd(123,&ioService);
+
+    cmd.run(handles,proto::CommandMessage());
 
     ioService.run();
 
