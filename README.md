@@ -17,16 +17,16 @@ cmake -DCMAKE_BUILD_TYPE=Release ..
 sudo make
 ```
 
-## Cross compile for the Raspberry PI
+## Cross compile for the Raspberry Pi
 
-1. Copy the entire `/lib`, `/usr` and `/opt` directories of your Raspberry PI into a newly created folder:
+1. Copy the entire `/lib`, `/usr` and `/opt` directories of your Raspberry Pi into a newly created folder:
 ```bash
 mkdir raspbian-rootfs
 rsync -rl --delete-after pi@$RASPI:/{lib,usr,opt} raspbian-rootfs/
 ```
-(where `$RASPI` is the IP address of the Raspberry)
+(where `$RASPI` is the IP address of the Raspberry Pi)
 
-2. Install the Raspberry PI toolchain.
+2. Install the Raspberry Pi toolchain.
 ```bash
 sudo ./install-toolchain.sh
 ```
@@ -45,4 +45,4 @@ cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE="../toolchains/toolchain
 make
 ```
 
-5. Upload `build/bin` to your Raspberry PI.
+5. Upload `build/bin` to your Raspberry Pi.
