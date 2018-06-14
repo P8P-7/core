@@ -1,11 +1,11 @@
 # Define our host system
 set(CMAKE_SYSTEM_NAME Linux)
-set(CMAKE_SYSTEM_PROCESSOR arm)
+set(CMAKE_SYSTEM_PROCESSOR armv8l)
 set(CMAKE_LIBRARY_ARCHITECTURE arm-linux-gnueabihf)
 
 # Define the cross compiler locations
-set(CMAKE_C_COMPILER ${CMAKE_SOURCE_DIR}/gcc-linaro-arm-linux-gnueabihf/bin/arm-linux-gnueabihf-gcc)
-set(CMAKE_CXX_COMPILER ${CMAKE_SOURCE_DIR}/gcc-linaro-arm-linux-gnueabihf/bin/arm-linux-gnueabihf-g++)
+set(CMAKE_C_COMPILER ${CMAKE_SOURCE_DIR}/gcc-linaro-arm-linux-gnueabihf/bin/${CMAKE_SYSTEM_PROCESSOR}-linux-gnueabihf-gcc)
+set(CMAKE_CXX_COMPILER ${CMAKE_SOURCE_DIR}/gcc-linaro-arm-linux-gnueabihf/bin/${CMAKE_SYSTEM_PROCESSOR}-linux-gnueabihf-g++)
 
 # Specify path for CMake to search when invoke find_package(), find_library(), find_path() functions
 set(CMAKE_FIND_ROOT_PATH ${CMAKE_SOURCE_DIR}/raspbian-rootfs)
@@ -22,10 +22,11 @@ set(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE ONLY)
 set(LINK_FLAGS "-Wl,-rpath-link=${CMAKE_FIND_ROOT_PATH}/lib/${CMAKE_LIBRARY_ARCHITECTURE} -Wl,-rpath-link=${CMAKE_FIND_ROOT_PATH}/usr/lib/${CMAKE_LIBRARY_ARCHITECTURE} -Wl,-rpath-link=${CMAKE_FIND_ROOT_PATH}/usr/local/lib -Wl,-rpath-link=${CMAKE_FIND_ROOT_PATH}/opt/vc/lib")
 
 set(CMAKE_C_LINK_FLAGS "${CMAKE_C_LINK_FLAGS} ${LINK_FLAGS}" CACHE STRING "" FORCE)
-set(CMAKE_CXX_LINK_FLAGS "${CMAKE_CXX_LINK_FLAGS} ${LINK_FLAGS}"  CACHE STRING "" FORCE)
+set(CMAKE_CXX_LINK_FLAGS "${CMAKE_CXX_LINK_FLAGS} ${LINK_FLAGS}" CACHE STRING "" FORCE)
 
-# Hint OpenAL path, otherwise the wrong path is targeted
-set(OPENAL_INCLUDE_DIR ${CMAKE_FIND_ROOT_PATH}/usr/include/ CACHE STRING "" FORCE)
+# Hint OpenAL path, otherwise the dependency will not found.
+set(OPENAL_INCLUDE_DIR ${CMAKE_FIND_ROOT_PATH}/usr/include CACHE STRING "" FORCE)
+set(OPENAL_LIBRARY ${CMAKE_FIND_ROOT_PATH}/usr/lib/${CMAKE_LIBRARY_ARCHITECTURE}/libopenal.so CACHE STRING "" FORCE)
 
 # Compile with C++ 14 support
 set(CMAKE_CXX_STANDARD 14)
