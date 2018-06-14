@@ -3,7 +3,7 @@
 using namespace goliath::commands;
 using namespace goliath;
 
-ShutdownCommand::ShutdownCommand(const size_t &id, boost::asio::io_service *ioService)
+ShutdownCommand::ShutdownCommand(const size_t &id, std::shared_ptr<boost::asio::io_service> ioService)
         : BasicCommand(id, {}), ioService(std::move(ioService)) {
 }
 

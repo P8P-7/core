@@ -14,7 +14,7 @@
 namespace goliath::commands {
     class ShutdownCommand : public BasicCommand {
     public:
-        ShutdownCommand(const size_t &id, boost::asio::io_service *ioService);
+        ShutdownCommand(const size_t &id, std::shared_ptr<boost::asio::io_service> ioService);
 
     private:
         std::shared_ptr<boost::asio::io_service> ioService;

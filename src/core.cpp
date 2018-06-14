@@ -40,12 +40,12 @@ int main(int argc, char *argv[]) {
     auto emotionRepository = std::make_shared<repositories::EmotionRepository>();
     auto loggingRepository = std::make_shared<repositories::LogRepository>(config->logging().history_size());
 
-    boost::asio::io_service ioService;
+    auto ioService = std::make_shared<boost::asio::io_service>();
 
-    boost::asio::signal_set signals(ioService, SIGINT, SIGTERM);
+    boost::asio::signal_set signals(*ioService, SIGINT, SIGTERM);
     signals.async_wait([&ioService](const boost::system::error_code &errorCode, int signalNumber) {
         BOOST_LOG_TRIVIAL(info) << "Got signal " << signalNumber << " stopping io_service.";
-        ioService.stop();
+        ioService->stop();
     });
 
     BOOST_LOG_TRIVIAL(info) << "Core is starting";
@@ -150,7 +150,7 @@ int main(int argc, char *argv[]) {
     commands.add<commands::InvalidateAllCommand>(proto::CommandMessage::kInvalidateAllCommand, watcher);
     commands.add<commands::InterruptCommandCommand>(proto::CommandMessage::kInterruptCommandCommand,
                                                     std::make_shared<commands::CommandMap>(commands));
-    commands.add<commands::ShutdownCommand>(proto::CommandMessage::kShutdownCommand, &ioService);
+    commands.add<commands::ShutdownCommand>(proto::CommandMessage::kShutdownCommand, ioService);
     commands.add<commands::SynchronizeCommandsCommand>(proto::CommandMessage::kSynchronizeCommandsCommand,
                                                        commandStatusRepository);
     commands.add<commands::MoveCommand>(proto::CommandMessage::kMoveCommand);
@@ -189,7 +189,7 @@ int main(int argc, char *argv[]) {
 
     BOOST_LOG_TRIVIAL(info) << "Press CTR+C to stop the controller";
 
-    ioService.run();
+    ioService->run();
 
     BOOST_LOG_TRIVIAL(warning) << "Core is shutting down...";
 
