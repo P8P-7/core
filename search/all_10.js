@@ -6,6 +6,8 @@ var searchData=
   ['servo_5fhandle_2eh',['servo_handle.h',['../servo__handle_8h.html',1,'']]],
   ['servohandle',['ServoHandle',['../classgoliath_1_1handles_1_1ServoHandle.html',1,'goliath::handles::ServoHandle'],['../classgoliath_1_1handles_1_1ServoHandle.html#af57e30d98974e3be2cc45ef17e37fcc9',1,'goliath::handles::ServoHandle::ServoHandle()']]],
   ['shouldsynchronize',['shouldSynchronize',['../classgoliath_1_1repositories_1_1Watcher.html#a60695e6b04fbae2d48480f3239e24175',1,'goliath::repositories::Watcher']]],
+  ['shutdown_5fcommand_2eh',['shutdown_command.h',['../shutdown__command_8h.html',1,'']]],
+  ['shutdowncommand',['ShutdownCommand',['../classgoliath_1_1commands_1_1ShutdownCommand.html',1,'goliath::commands']]],
   ['speccolmessage',['SpecColMessage',['../structgoliath_1_1controller_1_1SpecColMessage.html',1,'goliath::controller']]],
   ['specificcolour',['SpecificColour',['../structgoliath_1_1controller_1_1SpecificColour.html',1,'goliath::controller']]],
   ['specificrainbow',['SpecificRainbow',['../structgoliath_1_1controller_1_1SpecificRainbow.html',1,'goliath::controller']]],
