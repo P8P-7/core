@@ -22,13 +22,17 @@ sudo make
 1. Copy the entire `/lib`, `/usr` and `/opt` directories of your Raspberry Pi into a newly created folder:
 ```bash
 mkdir raspbian-rootfs
-rsync -rl --delete-after pi@$RASPI:/{lib,usr,opt} raspbian-rootfs/
+rsync -vrl --delete-after pi@$RASPI:/{lib,usr,opt} raspbian-rootfs/
 ```
 (where `$RASPI` is the IP address of the Raspberry Pi)
 
 2. Install the Raspberry Pi toolchain.
 ```bash
-sudo ./install-toolchain.sh
+# For Raspberry PI 3B
+sudo ./install-toolchain.sh --arch=armv7
+
+# For Raspberry PI 3B+
+sudo ./install-toolchain.sh --arch=armv8
 ```
 
 3. Turn all the absolute symlinks into relative ones:
