@@ -9,6 +9,6 @@ ShutdownCommand::ShutdownCommand(const size_t &id, boost::asio::io_service *ioSe
 
 void ShutdownCommand::execute(handles::HandleMap &handles, const proto::CommandMessage &message) {
     ioService->stop();
-    system("sleep 5; shutdown -P -t now > /tmp/shutdown.log&");
-    BOOST_LOG_TRIVIAL(fatal) << "Machine is powering down in 5 seconds.";
+    system("shutdown now > /tmp/shutdown.log&");
+    BOOST_LOG_TRIVIAL(fatal) << "System is shutting down.";
 }
