@@ -76,8 +76,7 @@ BOOST_AUTO_TEST_SUITE(BOOST_TEST_MODULE)
         rightBackMotor->set_id(2);
 
         auto *emotionsConfig = new proto::repositories::EmotionConfig;
-        emotionsConfig->set_host("localhost");
-        emotionsConfig->set_port(5558);
+        emotionsConfig->set_default_emotion(proto::repositories::EmotionRepository::NEUTRAL);
 
         auto *commandExecutorConfig = new proto::repositories::CommandExecutorConfig;
         commandExecutorConfig->set_number_of_executors(4);

@@ -55,9 +55,6 @@ int main(int argc, char *argv[]) {
     messaging::ZmqSubscriber subscriber(context, "localhost", config->zmq().subscriber_port());
     BOOST_LOG_TRIVIAL(info) << "Setting up publisher";
     messaging::ZmqPublisher publisher(context, "localhost", config->zmq().publisher_port());
-    BOOST_LOG_TRIVIAL(info) << "Setting up emotion publisher";
-    emotions::EmotionPublisher emotionPublisher(context, config->emotions().host(), config->emotions().port(),
-                                                emotionRepository);
 
     BOOST_LOG_TRIVIAL(info) << "Setting up watcher";
     auto watcher = std::make_shared<repositories::Watcher>(config->watcher().polling_rate(), publisher);
@@ -91,7 +88,6 @@ int main(int argc, char *argv[]) {
     bool connectSuccess = port->connect(portName, baudRate);
 
     handles.add<handles::WebcamHandle>(HANDLE_CAM, 0);
-    handles.add<handles::EmotionHandle>(HANDLE_EMOTIONS, emotionPublisher);
 
     if (connectSuccess) {
         BOOST_LOG_TRIVIAL(info) << "Setting up Dynamixel servo handles";

@@ -41,11 +41,11 @@
   "motors": [
    {
     "position": "LEFT_FRONT",
-    "id": "1"
+    "id": "3"
    },
    {
     "position": "LEFT_BACK",
-    "id": "3"
+    "id": "1"
    },
    {
     "position": "RIGHT_FRONT",
@@ -58,8 +58,7 @@
   ]
  },
  "emotions": {
-  "host": "localhost",
-  "port": 5558
+  "default_emotion": "NEUTRAL"
  },
  "command_executor": {
   "number_of_executors": 4

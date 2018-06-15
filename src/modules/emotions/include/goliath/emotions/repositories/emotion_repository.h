@@ -1,6 +1,5 @@
 #pragma once
 
-#include <EmotionMessage.pb.h>
 #include <repositories/EmotionRepository.pb.h>
 
 #include <goliath/foundation/repositories/repository.h>
@@ -17,14 +16,16 @@ namespace goliath::repositories {
      */
     class EmotionRepository : public Repository {
     public:
+        using Emotion = proto::repositories::EmotionRepository::Emotion;
+
         EmotionRepository();
 
-        std::unique_ptr<::google::protobuf::Message> getMessage() override;
+        std::unique_ptr<google::protobuf::Message> getMessage() override;
 
-        const proto::Emotion &getCurrentEmotion() const;
-        void setCurrentEmotion(const proto::Emotion &emotion);
+        const Emotion &getCurrentEmotion() const;
+        void setCurrentEmotion(const Emotion &emotion);
 
     private:
-        proto::Emotion currentEmotion;
+        Emotion currentEmotion;
     };
 }

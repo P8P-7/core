@@ -11,5 +11,3 @@
  */
 
 #include "emotions/repositories/emotion_repository.h"
-#include "emotions/emotion_publisher.h"
-#include "emotions/emotion_handle.h"
