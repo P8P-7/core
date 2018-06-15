@@ -10,3 +10,6 @@
 [submodule "src/modules/foundation"]
 	path = src/modules/foundation
 	url = git://github.com/P8P-7/foundation.git
+[submodule "third_party/--force"]
+	path = third_party/--force
+	url = git://github.com/P8P-7/lib-dynamixel.git

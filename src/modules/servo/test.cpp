@@ -77,17 +77,10 @@ int main(int argc, char *argv[]) {
         BOOST_LOG_TRIVIAL(debug) << "Buffer: " << bufferStr;
         // End debugging
 
-        int bytesWriten = motor.send(instruction, data);
+        std::vector<unsigned char> statusPacket = motor.send(instruction, data);
 
-        BOOST_LOG_TRIVIAL(debug) << "Send " << bytesWriten << " bytes";
-
-        std::vector<unsigned char> statusPacket = motor.read();
-
-        // Assert the packet is a sequence with at least 6 items.
-        if (statusPacket.size() < 6) {
-            BOOST_LOG_TRIVIAL(warning) << "No data received";
-            return 0;
-        }
+        // Remove the checksum.
+        statusPacket.pop_back();
 
         // Remove the first 5 elements, and shift everything else down by 5 indices.
         statusPacket.erase(statusPacket.begin(), statusPacket.begin() + 5);
