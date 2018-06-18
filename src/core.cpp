@@ -11,7 +11,6 @@
 #include <goliath/motor-controller.h>
 #include <goliath/controller.h>
 #include <goliath/controller/repositories/system_status_repository.h>
-#include "../cmake-build-debug/third_party/CommandMessage.pb.h"
 
 /**
  * @file main.cpp
