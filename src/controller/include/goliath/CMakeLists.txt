@@ -4,6 +4,7 @@ set(RELATIVE_INCLUDES
         controller/repositories/command_status_repository.h
         controller/repositories/config_repository.h
         controller/repositories/log_repository.h
+        controller/repositories/system_status_repository.h
         controller/commands/command.h
         controller/commands/dance_command.h
         controller/commands/enter_command.h
@@ -14,6 +15,7 @@ set(RELATIVE_INCLUDES
         controller/commands/move_wing_command.h
         controller/commands/obstacle_course_command.h
         controller/commands/synchronize_commands_command.h
+        controller/commands/synchronize_system_status_command.h
         controller/commands/transport_rebuild_command.h
         controller/commands/wunderhorn_command.h
         controller/commands/shutdown_command.h
