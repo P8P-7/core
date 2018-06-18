@@ -18,5 +18,8 @@ var searchData=
   ['starting',['STARTING',['../namespacegoliath_1_1commands.html#ad04221b592714b06a85a6415a475981ba034312d8adc8099c1c6f53aaff745e26',1,'goliath::commands']]],
   ['stop',['stop',['../classgoliath_1_1repositories_1_1Watcher.html#afd174ac54c2b26148217d3e2593d3cfc',1,'goliath::repositories::Watcher::stop()'],['../classgoliath_1_1messaging_1_1ZmqSubscriber.html#ae3fd22868c3094fde0981ae266314194',1,'goliath::messaging::ZmqSubscriber::stop()']]],
   ['synchronize_5fcommands_5fcommand_2eh',['synchronize_commands_command.h',['../synchronize__commands__command_8h.html',1,'']]],
-  ['synchronizecommandscommand',['SynchronizeCommandsCommand',['../classgoliath_1_1commands_1_1SynchronizeCommandsCommand.html',1,'goliath::commands']]]
+  ['synchronizecommandscommand',['SynchronizeCommandsCommand',['../classgoliath_1_1commands_1_1SynchronizeCommandsCommand.html',1,'goliath::commands']]],
+  ['synchronizesystemstatuscommand',['SynchronizeSystemStatusCommand',['../classgoliath_1_1commands_1_1SynchronizeSystemStatusCommand.html',1,'goliath::commands']]],
+  ['system_5fstatus_5frepository_2eh',['system_status_repository.h',['../system__status__repository_8h.html',1,'']]],
+  ['systemstatusrepository',['SystemStatusRepository',['../classgoliath_1_1repositories_1_1SystemStatusRepository.html',1,'goliath::repositories']]]
 ];
