@@ -5,7 +5,7 @@
 using namespace goliath::commands;
 using namespace goliath;
 
-const std::string SynchronizeSystemStatusCommand::TEMPERATURE_FILE = "/sys/devices/virtual/thermal/thermal_zone8/temp";
+const std::string SynchronizeSystemStatusCommand::TEMPERATURE_FILE = "/sys/devices/virtual/thermal/thermal_zone0/temp";
 
 SynchronizeSystemStatusCommand::SynchronizeSystemStatusCommand(const size_t &id,
                                                                std::shared_ptr<repositories::SystemStatusRepository> systemStatusRepository)
