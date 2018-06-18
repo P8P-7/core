@@ -16,6 +16,7 @@ set(RELATIVE_INCLUDES
         controller/commands/obstacle_course_command.h
         controller/commands/synchronize_commands_command.h
         controller/commands/synchronize_system_status_command.h
+        controller/commands/synchronize_battery_voltage_command.h
         controller/commands/transport_rebuild_command.h
         controller/commands/wunderhorn_command.h
         controller/commands/shutdown_command.h

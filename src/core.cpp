@@ -11,6 +11,8 @@
 #include <goliath/motor-controller.h>
 #include <goliath/controller.h>
 #include <goliath/controller/repositories/system_status_repository.h>
+#include <CommandMessage.pb.h>
+#include "../cmake-build-debug/third_party/CommandMessage.pb.h"
 
 /**
  * @file main.cpp
@@ -60,8 +62,8 @@ int main(int argc, char *argv[]) {
 
     BOOST_LOG_TRIVIAL(info) << "Setting up watcher";
     auto watcher = std::make_shared<repositories::Watcher>(config->watcher().polling_rate(), publisher);
-    auto batteryRepo = std::make_shared<repositories::BatteryRepository>();
-    watcher->watch(batteryRepo);
+    auto batteryRepository = std::make_shared<repositories::BatteryRepository>();
+    watcher->watch(batteryRepository);
     watcher->watch(commandStatusRepository);
     watcher->watch(emotionRepository);
     watcher->watch(loggingRepository);
@@ -155,6 +157,8 @@ int main(int argc, char *argv[]) {
     commands.add<commands::MoveWingCommand>(proto::CommandMessage::kMoveWingCommand);
     commands.add<commands::SynchronizeSystemStatusCommand>(proto::CommandMessage::kSynchronizeSystemStatusCommand,
                                                        systemStatusRepository);
+    commands.add<commands::SynchronizeBatteryVoltageCommand>(proto::CommandMessage::kSynchronizeBatteryVoltageCommand,
+                                                       batteryRepository);
 
     // Part 1: Entering the Arena
     commands.add<commands::EnterCommand>(proto::CommandMessage::kEnterCommand);
@@ -177,6 +181,8 @@ int main(int argc, char *argv[]) {
     commands::CommandExecutor runner(config->command_executor().number_of_executors(), commands, handles);
 
     runner.run(proto::CommandMessage::kSynchronizeSystemStatusCommand, proto::CommandMessage());
+
+    runner.run(proto::CommandMessage::kSynchronizeBatteryVoltageCommand, proto::CommandMessage());
 
     subscriber.bind(proto::MessageCarrier::MessageCase::kCommandMessage,
                     [&runner](const proto::MessageCarrier &carrier) {

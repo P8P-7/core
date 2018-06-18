@@ -21,9 +21,21 @@ namespace goliath::repositories {
         int getBatteryLevel() const;
 
         /**
+        * @return Battery voltage
+        */
+        int getBatteryVoltage() const;
+
+        void setBatteryVoltage(int voltage);
+
+        /**
          * @return Protobuf
          */
         std::unique_ptr<::google::protobuf::Message> getMessage() override;
+
+    private:
+        int voltage;
+        int minVoltage = 105;
+        int maxVoltage = 125;
     };
 }
 

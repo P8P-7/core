@@ -18,6 +18,7 @@ set(RELATIVE_SOURCES
         commands/obstacle_course_command.cpp
         commands/synchronize_commands_command.cpp
         commands/synchronize_system_status_command.cpp
+        commands/synchronize_battery_voltage_command.cpp
         commands/transport_rebuild_command.cpp
         commands/shutdown_command.cpp
         command_map.cpp
