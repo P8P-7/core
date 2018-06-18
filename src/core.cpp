@@ -10,6 +10,8 @@
 #include <goliath/i2c.h>
 #include <goliath/motor-controller.h>
 #include <goliath/controller.h>
+#include <goliath/controller/repositories/system_status_repository.h>
+#include "../cmake-build-debug/third_party/CommandMessage.pb.h"
 
 /**
  * @file main.cpp
@@ -39,6 +41,7 @@ int main(int argc, char *argv[]) {
     auto commandStatusRepository = std::make_shared<repositories::CommandStatusRepository>();
     auto emotionRepository = std::make_shared<repositories::EmotionRepository>();
     auto loggingRepository = std::make_shared<repositories::LogRepository>(config->logging().history_size());
+    auto systemStatusRepository = std::make_shared<repositories::SystemStatusRepository>();
 
     auto ioService = std::make_shared<boost::asio::io_service>();
 
@@ -151,6 +154,8 @@ int main(int argc, char *argv[]) {
                                                        commandStatusRepository);
     commands.add<commands::MoveCommand>(proto::CommandMessage::kMoveCommand);
     commands.add<commands::MoveWingCommand>(proto::CommandMessage::kMoveWingCommand);
+    commands.add<commands::SynchronizeSystemStatusCommand>(proto::CommandMessage::kSynchronizeSystemStatusCommand,
+                                                       systemStatusRepository);
 
     // Part 1: Entering the Arena
     commands.add<commands::EnterCommand>(proto::CommandMessage::kEnterCommand);
@@ -171,6 +176,8 @@ int main(int argc, char *argv[]) {
     commands.add<commands::TransportRebuildCommand>(proto::CommandMessage::kTransportRebuildCommand);
 
     commands::CommandExecutor runner(config->command_executor().number_of_executors(), commands, handles);
+
+    runner.run(proto::CommandMessage::kSynchronizeSystemStatusCommand, proto::CommandMessage());
 
     subscriber.bind(proto::MessageCarrier::MessageCase::kCommandMessage,
                     [&runner](const proto::MessageCarrier &carrier) {

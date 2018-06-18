@@ -56,13 +56,15 @@ void CommandExecutor::start(const size_t &commandId, const proto::CommandMessage
 
     lock.unlock();
 
-    BOOST_LOG_TRIVIAL(info) << "Execution of \"Command " << commandId << "\" has started";
+    std::string commandName = boost::core::demangled_name(BOOST_CORE_TYPEID(*item.instance));
+
+    BOOST_LOG_TRIVIAL(info) << "Execution of \"Command " << commandName << "\" has started";
     try {
         item.instance->execute(requiredHandles, message);
     } catch (std::exception &ex) {
         BOOST_LOG_TRIVIAL(error) << "Error executing command \"" << commandId << "\" what(): " << ex.what();
     }
-    BOOST_LOG_TRIVIAL(info) << "Execution of \"Command " << commandId << "\" has finished";
+    BOOST_LOG_TRIVIAL(info) << "Execution of \"Command " << commandName << "\" has finished";
 
     lock.lock();
     item.status = CommandStatus::STALE;
