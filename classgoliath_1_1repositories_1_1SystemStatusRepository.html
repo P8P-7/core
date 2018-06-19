@@ -85,6 +85,7 @@ Inheritance diagram for goliath::repositories::SystemStatusRepository:</div>
  <div class="center">
   <img src="classgoliath_1_1repositories_1_1SystemStatusRepository.png" usemap="#goliath::repositories::SystemStatusRepository_map" alt=""/>
   <map id="goliath::repositories::SystemStatusRepository_map" name="goliath::repositories::SystemStatusRepository_map">
+<area href="classgoliath_1_1repositories_1_1PollingRepository.html" alt="goliath::repositories::PollingRepository" shape="rect" coords="0,56,261,80"/>
 <area href="classgoliath_1_1repositories_1_1Repository.html" title="Repository base class. " alt="goliath::repositories::Repository" shape="rect" coords="0,0,261,24"/>
 </map>
  </div></div>
@@ -96,8 +97,15 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a640b0f5645a7688117692219833b47f9"><td class="memItemLeft" align="right" valign="top"><a id="a640b0f5645a7688117692219833b47f9"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>setTemperature</b> (double temperature)</td></tr>
 <tr class="separator:a640b0f5645a7688117692219833b47f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa4806e9a10de41a0308f8c5ce4525f4d"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt;::google::protobuf::Message &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1repositories_1_1SystemStatusRepository.html#aa4806e9a10de41a0308f8c5ce4525f4d">getMessage</a> () override</td></tr>
-<tr class="separator:aa4806e9a10de41a0308f8c5ce4525f4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a834b079fc21afc4b44443535fbab5e9e"><td class="memItemLeft" align="right" valign="top"><a id="a834b079fc21afc4b44443535fbab5e9e"></a>
+size_t&#160;</td><td class="memItemRight" valign="bottom"><b>getPollingCommandId</b> () override</td></tr>
+<tr class="separator:a834b079fc21afc4b44443535fbab5e9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb65f5c78a630f3473298ea15adc66d7"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; google::protobuf::Message &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1repositories_1_1SystemStatusRepository.html#aeb65f5c78a630f3473298ea15adc66d7">getMessage</a> () override</td></tr>
+<tr class="separator:aeb65f5c78a630f3473298ea15adc66d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classgoliath_1_1repositories_1_1PollingRepository"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classgoliath_1_1repositories_1_1PollingRepository')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classgoliath_1_1repositories_1_1PollingRepository.html">goliath::repositories::PollingRepository</a></td></tr>
+<tr class="memitem:a246a5e9618ebe6770fffb7627aa8ce9d inherit pub_methods_classgoliath_1_1repositories_1_1PollingRepository"><td class="memItemLeft" align="right" valign="top"><a id="a246a5e9618ebe6770fffb7627aa8ce9d"></a>
+virtual std::vector&lt; proto::CommandMessage &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getCommandMessages</b> ()</td></tr>
+<tr class="separator:a246a5e9618ebe6770fffb7627aa8ce9d inherit pub_methods_classgoliath_1_1repositories_1_1PollingRepository"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classgoliath_1_1repositories_1_1Repository"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classgoliath_1_1repositories_1_1Repository')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classgoliath_1_1repositories_1_1Repository.html">goliath::repositories::Repository</a></td></tr>
 <tr class="memitem:a97f79f6167ee29783efc5be1d5029ed9 inherit pub_methods_classgoliath_1_1repositories_1_1Repository"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1repositories_1_1Repository.html#a97f79f6167ee29783efc5be1d5029ed9">isInvalidated</a> () const</td></tr>
 <tr class="separator:a97f79f6167ee29783efc5be1d5029ed9 inherit pub_methods_classgoliath_1_1repositories_1_1Repository"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -109,8 +117,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="classgoliath_1_1repositories_1_1Repository.html" title="Repository base class. ">Repository</a> containing system info. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="aa4806e9a10de41a0308f8c5ce4525f4d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa4806e9a10de41a0308f8c5ce4525f4d">&#9670;&nbsp;</a></span>getMessage()</h2>
+<a id="aeb65f5c78a630f3473298ea15adc66d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb65f5c78a630f3473298ea15adc66d7">&#9670;&nbsp;</a></span>getMessage()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -119,7 +127,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::unique_ptr&lt;::google::protobuf::Message &gt; SystemStatusRepository::getMessage </td>
+          <td class="memname">std::unique_ptr&lt; google::protobuf::Message &gt; SystemStatusRepository::getMessage </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
