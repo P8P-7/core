@@ -10,6 +10,7 @@
 #include <goliath/i2c.h>
 #include <goliath/motor-controller.h>
 #include <goliath/controller.h>
+#include <goliath/controller/repositories/system_status_repository.h>
 
 #include <repositories/SystemStatusRepository.pb.h>
 

@@ -1,6 +1,7 @@
 #pragma once
 
 #include <atomic>
+
 #include <google/protobuf/message.h>
 #include <goliath/foundation/repositories/repository.h>
 
