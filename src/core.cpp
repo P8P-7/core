@@ -161,8 +161,7 @@ int main(int argc, char *argv[]) {
     commands.add<commands::MoveWingCommand>(proto::CommandMessage::kMoveWingCommand);
     commands.add<commands::SynchronizeSystemStatusCommand>(
         proto::CommandMessage::kSynchronizeSystemStatusCommand,
-        systemStatusRepository,
-        std::chrono::milliseconds(config->system_status().temperature_poll_interval()));
+        systemStatusRepository);
 
     // Part 1: Entering the Arena
     commands.add<commands::EnterCommand>(proto::CommandMessage::kEnterCommand);
