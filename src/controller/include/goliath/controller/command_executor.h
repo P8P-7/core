@@ -33,6 +33,7 @@ namespace goliath::commands {
          * @param message Arguments gathered from the protobuf input
          */
         void run(size_t commandId, const proto::CommandMessage &message);
+        void run(size_t commandId);
 
     private:
         const size_t numberOfThreads;

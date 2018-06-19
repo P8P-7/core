@@ -12,8 +12,8 @@ CommandMap::CommandMap(std::shared_ptr<repositories::CommandStatusRepository> st
     : statusRepository(statusRepository), map(commands) {}
 
 CommandItem &CommandMap::add(std::shared_ptr<Command> command) {
-    BOOST_LOG_TRIVIAL(debug) << "Added an instance of "
-                             << std::string(boost::core::demangled_name(BOOST_CORE_TYPEID(*command))) << " with id "
+    BOOST_LOG_TRIVIAL(debug) << "Registered an instance of "
+                             << std::string(boost::core::demangled_name(BOOST_CORE_TYPEID(*command))) << " at id "
                              << std::to_string(command->getId());
 
     statusRepository->addItem(command->getId());

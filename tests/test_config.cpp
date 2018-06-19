@@ -92,6 +92,9 @@ BOOST_AUTO_TEST_SUITE(BOOST_TEST_MODULE)
         enterConfig->set_direction(proto::repositories::EnterConfig::FORWARDS);
         enterConfig->set_speed(25);
 
+        auto *systemStatusConfig = new proto::repositories::SystemStatusConfig;
+        systemStatusConfig->set_temperature_poll_interval(200);
+
         configRepository.set_allocated_zmq(zmqConfig);
         configRepository.set_allocated_serial(serialConfig);
         configRepository.set_allocated_gpio(gpioConfig);
@@ -104,6 +107,7 @@ BOOST_AUTO_TEST_SUITE(BOOST_TEST_MODULE)
         configRepository.set_allocated_watcher(watcherConfig);
         configRepository.set_allocated_logging(loggingConfig);
         configRepository.set_allocated_enter(enterConfig);
+        configRepository.set_allocated_system_status(systemStatusConfig);
 
         google::protobuf::util::MessageToJsonString(configRepository, &jsonString, options);
 
