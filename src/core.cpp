@@ -1,5 +1,4 @@
 #include <boost/log/trivial.hpp>
-#include <memory>
 
 #include <goliath/foundation.h>
 #include <goliath/gpio.h>
@@ -10,7 +9,6 @@
 #include <goliath/i2c.h>
 #include <goliath/motor-controller.h>
 #include <goliath/controller.h>
-#include <goliath/controller/repositories/system_status_repository.h>
 
 /**
  * @file main.cpp
@@ -154,7 +152,7 @@ int main(int argc, char *argv[]) {
     commands.add<commands::MoveCommand>(proto::CommandMessage::kMoveCommand);
     commands.add<commands::MoveWingCommand>(proto::CommandMessage::kMoveWingCommand);
     commands.add<commands::SynchronizeSystemStatusCommand>(proto::CommandMessage::kSynchronizeSystemStatusCommand,
-                                                       systemStatusRepository);
+                                                           systemStatusRepository);
 
     // Part 1: Entering the Arena
     commands.add<commands::EnterCommand>(proto::CommandMessage::kEnterCommand);
@@ -163,6 +161,8 @@ int main(int argc, char *argv[]) {
     commands.add<commands::DanceCommand>(proto::CommandMessage::kDanceCommand);
 
     // Part 3: "Line" Dance
+    gpio::GPIO gpio5(gpio::GPIO::MapPin::GPIO5, gpio::GPIO::Direction::Out, gpio::GPIO::State::Low);
+    handles.add<handles::GPIOHandle>(HANDLE_GPIO_PIN_5, std::make_shared<gpio::GPIO>(gpio5));
     commands.add<commands::LineDanceCommand>(proto::CommandMessage::kLineDanceCommand);
 
     // Part 4: Obstacle Course

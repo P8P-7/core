@@ -1,5 +1,6 @@
 set(RELATIVE_SOURCES
         gpio.cpp
+        gpio_handle.cpp
         )
 
 prepend(ABSOLUTE_SOURCES ${CMAKE_CURRENT_SOURCE_DIR} ${RELATIVE_SOURCES})
