@@ -9,6 +9,8 @@
 #include "controller/repositories/command_status_repository.h"
 #include "controller/repositories/battery_repository.h"
 #include "controller/repositories/log_repository.h"
+#include "controller/repositories/system_status_repository.h"
+#include "controller/watcher.h"
 #include "controller/commands/command.h"
 #include "controller/commands/basic_command.h"
 #include "controller/commands/queue_command.h"

@@ -12,6 +12,7 @@
 #include <goliath/controller.h>
 #include <goliath/controller/repositories/system_status_repository.h>
 #include <CommandMessage.pb.h>
+#include <repositories/SystemStatusRepository.pb.h>
 
 /**
  * @file main.cpp
@@ -37,8 +38,11 @@ int main(int argc, char *argv[]) {
                           argv[0],
                           "core-text.txt",
                           static_cast<boost::log::trivial::severity_level>(config->logging().severity_level()));
+    BOOST_LOG_TRIVIAL(info) << "Core is starting";
 
+    BOOST_LOG_TRIVIAL(info) << "Setting up repositories";
     auto commandStatusRepository = std::make_shared<repositories::CommandStatusRepository>();
+    auto batteryRepository = std::make_shared<repositories::BatteryRepository>();
     auto emotionRepository = std::make_shared<repositories::EmotionRepository>();
     auto loggingRepository = std::make_shared<repositories::LogRepository>(config->logging().history_size());
     auto systemStatusRepository = std::make_shared<repositories::SystemStatusRepository>();
@@ -51,8 +55,6 @@ int main(int argc, char *argv[]) {
         ioService->stop();
     });
 
-    BOOST_LOG_TRIVIAL(info) << "Core is starting";
-
     BOOST_LOG_TRIVIAL(info) << "Setting up subscriber";
     zmq::context_t context(1);
     messaging::ZmqSubscriber subscriber(context, "localhost", config->zmq().subscriber_port());
@@ -61,12 +63,16 @@ int main(int argc, char *argv[]) {
 
     BOOST_LOG_TRIVIAL(info) << "Setting up watcher";
     auto watcher = std::make_shared<repositories::Watcher>(config->watcher().polling_rate(), publisher);
+
+    BOOST_LOG_TRIVIAL(info) << "Watching repositories";
+    watcher->watch(batteryRepository);
     auto batteryRepository = std::make_shared<repositories::BatteryRepository>();
     watcher->watch(batteryRepository);
     watcher->watch(commandStatusRepository);
     watcher->watch(emotionRepository);
     watcher->watch(loggingRepository);
     watcher->watch(configRepository);
+    watcher->watch(systemStatusRepository);
 
     BOOST_LOG_TRIVIAL(info) << "Setting up GPIO";
     gpio::GPIO gpio(static_cast<gpio::GPIO::MapPin>(config->gpio().pin()), gpio::GPIO::Direction::Out,
@@ -80,15 +86,14 @@ int main(int argc, char *argv[]) {
         }
     };
 
-    BOOST_LOG_TRIVIAL(info) << "Setting up handles";
-    handles::HandleMap handles;
-
     BOOST_LOG_TRIVIAL(info) << "Setting up serial port";
     std::string portName = config->serial().port();
-    unsigned int baudRate = config->serial().baudrate();
-
+    ulong baudRate = config->serial().baudrate();
     auto port = std::make_shared<dynamixel::SerialPort>();
-    bool connectSuccess = port->connect(portName, baudRate);
+    bool connectSuccess = port->connect(portName, static_cast<uint>(baudRate));
+
+    BOOST_LOG_TRIVIAL(info) << "Setting up handles";
+    handles::HandleMap handles;
 
     handles.add<handles::WebcamHandle>(HANDLE_CAM, 0);
 
@@ -147,13 +152,18 @@ int main(int argc, char *argv[]) {
     BOOST_LOG_TRIVIAL(info) << "Setting up commands";
     commands::CommandMap commands(commandStatusRepository);
     commands.add<commands::InvalidateAllCommand>(proto::CommandMessage::kInvalidateAllCommand, watcher);
-    commands.add<commands::InterruptCommandCommand>(proto::CommandMessage::kInterruptCommandCommand,
-                                                    std::make_shared<commands::CommandMap>(commands));
+    commands.add<commands::InterruptCommandCommand>(
+        proto::CommandMessage::kInterruptCommandCommand,
+        std::make_shared<commands::CommandMap>(commands));
     commands.add<commands::ShutdownCommand>(proto::CommandMessage::kShutdownCommand, ioService);
-    commands.add<commands::SynchronizeCommandsCommand>(proto::CommandMessage::kSynchronizeCommandsCommand,
-                                                       commandStatusRepository);
+    commands.add<commands::SynchronizeCommandsCommand>(
+        proto::CommandMessage::kSynchronizeCommandsCommand,
+        commandStatusRepository);
     commands.add<commands::MoveCommand>(proto::CommandMessage::kMoveCommand);
     commands.add<commands::MoveWingCommand>(proto::CommandMessage::kMoveWingCommand);
+    commands.add<commands::SynchronizeSystemStatusCommand>(
+        proto::CommandMessage::kSynchronizeSystemStatusCommand,
+        systemStatusRepository);
     commands.add<commands::SynchronizeSystemStatusCommand>(proto::CommandMessage::kSynchronizeSystemStatusCommand,
                                                        systemStatusRepository);
     commands.add<commands::SynchronizeBatteryVoltageCommand>(proto::CommandMessage::kSynchronizeBatteryVoltageCommand,
@@ -179,18 +189,19 @@ int main(int argc, char *argv[]) {
 
     commands::CommandExecutor runner(config->command_executor().number_of_executors(), commands, handles);
 
-    runner.run(proto::CommandMessage::kSynchronizeSystemStatusCommand, proto::CommandMessage());
+    BOOST_LOG_TRIVIAL(info) << "Starting default commands";
+    runner.run(proto::CommandMessage::kSynchronizeSystemStatusCommand);
 
     runner.run(proto::CommandMessage::kSynchronizeBatteryVoltageCommand, proto::CommandMessage());
 
+    BOOST_LOG_TRIVIAL(info) << "Launching subscriber";
     subscriber.bind(proto::MessageCarrier::MessageCase::kCommandMessage,
                     [&runner](const proto::MessageCarrier &carrier) {
-                        proto::CommandMessage message = carrier.commandmessage();
+                        const proto::CommandMessage &message = carrier.commandmessage();
                         runner.run(message.command_case(), message);
                     });
-
-    BOOST_LOG_TRIVIAL(info) << "Launching subscriber";
     subscriber.start();
+
     BOOST_LOG_TRIVIAL(info) << "Starting watcher";
     watcher->start();
 

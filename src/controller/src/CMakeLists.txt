@@ -25,6 +25,7 @@ set(RELATIVE_SOURCES
         command_item.cpp
         command_executor.cpp
         handle_map.cpp
+        watcher.cpp
         )
 
 prepend(ABSOLUTE_SOURCES ${CMAKE_CURRENT_SOURCE_DIR} ${RELATIVE_SOURCES})

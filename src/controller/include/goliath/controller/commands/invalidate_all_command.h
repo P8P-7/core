@@ -1,7 +1,6 @@
 #pragma once
 
-#include <goliath/foundation/repositories/watcher.h>
-
+#include "../watcher.h"
 #include "../handles.h"
 #include "basic_command.h"
 

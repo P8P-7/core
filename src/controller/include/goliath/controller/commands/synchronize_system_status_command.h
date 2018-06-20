@@ -1,5 +1,7 @@
 #pragma once
 
+#include <thread>
+
 #include "../handles.h"
 #include "../repositories/system_status_repository.h"
 #include "basic_command.h"
@@ -13,7 +15,7 @@ namespace goliath::commands {
     class SynchronizeSystemStatusCommand : public BasicCommand {
     public:
         SynchronizeSystemStatusCommand(const size_t &id,
-                               std::shared_ptr<repositories::SystemStatusRepository> systemStatusRepository);
+                                       std::shared_ptr<repositories::SystemStatusRepository> systemStatusRepository);
 
     private:
         static const std::string TEMPERATURE_FILE;
