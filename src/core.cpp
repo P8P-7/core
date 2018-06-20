@@ -66,8 +66,6 @@ int main(int argc, char *argv[]) {
 
     BOOST_LOG_TRIVIAL(info) << "Watching repositories";
     watcher->watch(batteryRepository);
-    auto batteryRepository = std::make_shared<repositories::BatteryRepository>();
-    watcher->watch(batteryRepository);
     watcher->watch(commandStatusRepository);
     watcher->watch(emotionRepository);
     watcher->watch(loggingRepository);
@@ -192,7 +190,7 @@ int main(int argc, char *argv[]) {
     BOOST_LOG_TRIVIAL(info) << "Starting default commands";
     runner.run(proto::CommandMessage::kSynchronizeSystemStatusCommand);
 
-    runner.run(proto::CommandMessage::kSynchronizeBatteryVoltageCommand, proto::CommandMessage());
+    runner.run(proto::CommandMessage::kSynchronizeBatteryVoltageCommand);
 
     BOOST_LOG_TRIVIAL(info) << "Launching subscriber";
     subscriber.bind(proto::MessageCarrier::MessageCase::kCommandMessage,
