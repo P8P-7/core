@@ -6,10 +6,11 @@
 using namespace goliath::commands;
 
 Command::Command(const size_t &id, const std::vector<size_t> &requiredHandles)
-        : running(false), id(id), interrupted(false), requiredHandles(requiredHandles) {}
+    : running(false), id(id), interrupted(false), requiredHandles(requiredHandles) {}
 
 void Command::interrupt() {
     interrupted = true;
+    interrupter.notify_all();
 }
 
 bool Command::isInterrupted() const {
@@ -44,4 +45,12 @@ void Command::execute(goliath::handles::HandleMap &handles, const goliath::proto
         BOOST_LOG_TRIVIAL(info) << "Execution of command " << std::to_string(getId()) << " was interrupted";
         interrupted = false;
     }
+}
+
+void Command::waitForInterrupt() {
+    std::unique_lock<std::mutex> lock(mutex);
+    interrupter.wait(lock, [&]() {
+        return static_cast<bool>(interrupted);
+    });
+    lock.unlock();
 }

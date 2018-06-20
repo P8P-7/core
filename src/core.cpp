@@ -153,9 +153,6 @@ int main(int argc, char *argv[]) {
     BOOST_LOG_TRIVIAL(info) << "Setting up commands";
     commands::CommandMap commands(commandStatusRepository);
     commands.add<commands::InvalidateAllCommand>(proto::CommandMessage::kInvalidateAllCommand, watcher);
-    commands.add<commands::InterruptCommandCommand>(
-        proto::CommandMessage::kInterruptCommandCommand,
-        std::make_shared<commands::CommandMap>(commands));
     commands.add<commands::ShutdownCommand>(proto::CommandMessage::kShutdownCommand, ioService);
     commands.add<commands::SynchronizeCommandsCommand>(
         proto::CommandMessage::kSynchronizeCommandsCommand,
@@ -183,6 +180,11 @@ int main(int argc, char *argv[]) {
 
     // Part 6: Transport and Rebuild
     commands.add<commands::TransportRebuildCommand>(proto::CommandMessage::kTransportRebuildCommand);
+
+    // Must be last
+    commands.add<commands::InterruptCommandCommand>(
+        proto::CommandMessage::kInterruptCommandCommand,
+        std::make_shared<commands::CommandMap>(commands));
 
     commands::CommandExecutor runner(config->command_executor().number_of_executors(), commands, handles);
 
