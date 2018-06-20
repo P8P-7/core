@@ -96,7 +96,6 @@ void loop() {
         }
     }
 
-
     if (rainbow) {
         hsv2rgb_rainbow(CHSV(gHue, 255, 255), rgbVals);
         for (int j = 0; j < NUM_LEDS; ++j) {
@@ -108,7 +107,8 @@ void loop() {
     if (cycle) {
         hsv2rgb_rainbow(CHSV(circleInfo.hue, circleInfo.saturation, 255), rgbVals);
         leds[ledId] = rgbVals;
-        EVERY_N_MILLISECONDS(250) {
+        EVERY_N_MILLISECONDS(250)
+        {
             if (circleInfo.cw) {
                 if (ledId < circleInfo.endId) {
                     ledId++;
@@ -146,7 +146,7 @@ void on_receive_message(int length) {
     buffer[0] = Wire.read();
     buffer[1] = Wire.read();
 
-    LedStatus* packetType = (LedStatus*) buffer;
+    LedStatus *packetType = (LedStatus*) buffer;
 
     if (packetType->lightingType == LightingType::SPECIFIC) {
         rainbow = false;
@@ -155,7 +155,7 @@ void on_receive_message(int length) {
             for (int i = 0; Wire.available(); i++) {
                 ledBuffer[i] = Wire.read();
             }
-            SpecificColor* command = (SpecificColor*) ledBuffer;
+            SpecificColor *command = (SpecificColor*) ledBuffer;
             rainbowLEDS[command->ledId] = false;
             hsv[command->ledId] = CHSV(command->hue, command->saturation, command->value);
         } else if (packetType->colorType == ColorType::RAINBOW) {
@@ -163,7 +163,7 @@ void on_receive_message(int length) {
             for (int i = 0; Wire.available(); i++) {
                 ledBuffer[i] = Wire.read();
             }
-            SpecificRainbow* command = (SpecificRainbow*) ledBuffer;
+            SpecificRainbow *command = (SpecificRainbow*) ledBuffer;
             hsv[command->ledId] = CHSV(command->startHue, 255, 255);
             rainbowLEDS[command->ledId] = true;
         }
@@ -173,7 +173,7 @@ void on_receive_message(int length) {
         for (int i = 0; Wire.available(); i++) {
             ledBuffer[i] = Wire.read();
         }
-        Circle* command = (Circle*) ledBuffer;
+        Circle *command = (Circle*) ledBuffer;
 
         if (command->startId == command->endId) {
             cycle = false;
@@ -190,7 +190,7 @@ void on_receive_message(int length) {
         for (int i = 0; Wire.available(); i++) {
             ledBuffer[i] = Wire.read();
         }
-        AllLeds* command = (AllLeds*) ledBuffer;
+        AllLeds *command = (AllLeds*) ledBuffer;
         if (rainbow) {
             rainbow = true;
         } else {

@@ -147,6 +147,9 @@ int main(int argc, char *argv[]) {
         handles.add<handles::MotorHandle>(handle, motor.id());
     }
 
+    handles.add<handles::Handle>(HANDLE_LED_CONTROLLER);
+    handles.add<handles::EmotionHandle>(HANDLE_EMOTIONS, emotionRepository);
+
     BOOST_LOG_TRIVIAL(info) << "Setting up commands";
     commands::CommandMap commands(commandStatusRepository);
     commands.add<commands::InvalidateAllCommand>(proto::CommandMessage::kInvalidateAllCommand, watcher);

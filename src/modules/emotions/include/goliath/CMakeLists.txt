@@ -1,5 +1,6 @@
 set(RELATIVE_INCLUDES
         emotions.h
+        emotions/emotion_handle.h
         emotions/repositories/emotion_repository.h
         )
 

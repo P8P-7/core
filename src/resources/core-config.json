@@ -73,8 +73,5 @@
  "enter": {
   "direction": "FORWARDS",
   "speed": 25
- },
- "system_status": {
-  "temperature_poll_interval": 200
  }
 }

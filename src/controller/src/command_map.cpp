@@ -5,11 +5,11 @@ using namespace goliath::commands;
 using namespace goliath;
 
 CommandMap::CommandMap(std::shared_ptr<repositories::CommandStatusRepository> statusRepository)
-    : statusRepository(statusRepository) {}
+        : statusRepository(statusRepository) { }
 
 CommandMap::CommandMap(std::shared_ptr<repositories::CommandStatusRepository> statusRepository,
                        const std::map<size_t, CommandItem> commands)
-    : statusRepository(statusRepository), map(commands) {}
+        : statusRepository(statusRepository), map(commands) { }
 
 CommandItem &CommandMap::add(std::shared_ptr<Command> command) {
     BOOST_LOG_TRIVIAL(debug) << "Registered an instance of "
