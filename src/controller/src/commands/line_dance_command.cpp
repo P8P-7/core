@@ -43,24 +43,24 @@ void commands::LineDanceCommand::execute(handles::HandleMap &handles, const prot
                                      *handles.get<handles::I2cSlaveHandle>(HANDLE_LED_CONTROLLER));
     led_controller::LedStripController ledController(ledControllerSlave);
 
-    led_controller::SpecColMessage specColMessage{
-            {led_controller::LightingType::SPECIFIC, led_controller::ColorType::HSV},
-            {0, 0, 255, 0}
+    led_controller::AllLedsMessage allLedsMessage{
+            {led_controller::LightingType::ALL, led_controller::ColorType::HSV},
+            {90, 255, 0}
     };
 
     bool lastPulse = false;
+
+    int pulsesReceived = 0;
 
     while (!isInterrupted()) {
         bool pulse = gpioDevice->get() != 0;
 
         if (pulse != lastPulse) {
             // Turn lights on/off for a pulse.
-            for (led_controller::LedId j = 0; j < led_controller::LedStripController::numberOfPixels; ++j) {
-                specColMessage.specificColour.value = static_cast<led_controller::Value>(pulse ? 255 : 0);
-                specColMessage.specificColour.ledId = j;
-                ledController.sendCommand(specColMessage);
-            }
+            allLedsMessage.allLeds.value = static_cast<led_controller::Value>(pulse ? 255 : 0);
+            ledController.sendCommand(allLedsMessage);
 
+            pulsesReceived++;
             lastPulse = pulse;
         }
 
