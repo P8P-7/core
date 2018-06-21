@@ -44,6 +44,10 @@ void CommandExecutor::run(const size_t commandId, const proto::CommandMessage &m
     boost::asio::post(pool, std::bind(starter, this, commandId, message));
 }
 
+void CommandExecutor::run(size_t commandId) {
+    run(commandId, proto::CommandMessage());
+}
+
 void CommandExecutor::start(const size_t &commandId, const proto::CommandMessage &message) {
     std::unique_lock<std::mutex> lock(mutex);
     numberOfActiveCommands++;

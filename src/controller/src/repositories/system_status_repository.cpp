@@ -1,5 +1,6 @@
 #include <goliath/controller/repositories/system_status_repository.h>
 
+#include <CommandMessage.pb.h>
 #include <repositories/SystemStatusRepository.pb.h>
 
 using namespace goliath::repositories;
@@ -12,14 +13,18 @@ double SystemStatusRepository::getTempearture() const {
     return temperature;
 }
 
+size_t SystemStatusRepository::getPollingCommandId() {
+    return proto::CommandMessage::kSynchronizeSystemStatusCommand;
+}
+
 void SystemStatusRepository::setTemperature(double temperature) {
     this->temperature = temperature;
 }
 
-std::unique_ptr<::google::protobuf::Message> SystemStatusRepository::getMessage() {
+std::unique_ptr<google::protobuf::Message> SystemStatusRepository::getMessage() {
     proto::repositories::SystemStatusRepository systemStatusRepository;
 
-    systemStatusRepository.set_temperature(temperature);
+    systemStatusRepository.set_temperature(getTempearture());
 
     return std::make_unique<proto::repositories::SystemStatusRepository>(systemStatusRepository);
 }

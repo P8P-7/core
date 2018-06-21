@@ -3,6 +3,8 @@
 #include "basic_command.h"
 #include "../handles.h"
 
+#include <thread>
+
 /**
  * @file line_dance_command.h
  * @author Group 7 - Informatica

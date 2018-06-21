@@ -22,7 +22,8 @@ std::shared_ptr<proto::repositories::ConfigRepository> repositories::ConfigRepos
     google::protobuf::util::JsonParseOptions options;
     google::protobuf::util::JsonStringToMessage(jsonString, &configRepository, options);
 
-    return std::make_shared<proto::repositories::ConfigRepository>(configRepository);}
+    return std::make_shared<proto::repositories::ConfigRepository>(configRepository);
+}
 
 std::unique_ptr<::google::protobuf::Message> repositories::ConfigRepository::getMessage() {
     return std::make_unique<proto::repositories::ConfigRepository>(*getConfig());

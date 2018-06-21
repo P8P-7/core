@@ -1,5 +1,7 @@
 #pragma once
 
+#include <thread>
+
 #include "command.h"
 
 namespace goliath::commands {

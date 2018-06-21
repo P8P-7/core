@@ -1,5 +1,7 @@
 #define BOOST_TEST_MODULE test_motor_controller
 
+#include <thread>
+
 #include <boost/test/included/unit_test.hpp>
 #include <goliath/led-strip-controller.h>
 

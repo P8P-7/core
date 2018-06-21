@@ -1,7 +1,9 @@
 #pragma once
 
+#include <atomic>
+
 #include <google/protobuf/message.h>
-#include <goliath/foundation/repositories/repository.h>
+#include <goliath/foundation/repositories/polling_repository.h>
 
 /**
  * @file system_status_repository.h
@@ -13,7 +15,7 @@ namespace goliath::repositories {
      * @class goliath::repositories::SystemStatusRepository
      * @brief Repository containing system info
      */
-    class SystemStatusRepository : public Repository {
+    class SystemStatusRepository : public PollingRepository {
     public:
         SystemStatusRepository();
 
@@ -24,13 +26,15 @@ namespace goliath::repositories {
 
         void setTemperature(double temperature);
 
+        size_t getPollingCommandId() override;
+
         /**
          * @return Protobuf
          */
-        std::unique_ptr<::google::protobuf::Message> getMessage() override;
+        std::unique_ptr<google::protobuf::Message> getMessage() override;
 
     private:
-        double temperature;
+        std::atomic<double> temperature;
     };
 }
 
