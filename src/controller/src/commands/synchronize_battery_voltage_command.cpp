@@ -16,14 +16,14 @@ void SynchronizeBatteryVoltageCommand::execute(handles::HandleMap &handles, cons
     int count = 0;
 
     for (auto const &servoHandle : requiredHandles) {
-        voltage = GetVoltage(std::static_pointer_cast<ServoHandle>(handles[servoHandle]));
+        voltage = getVoltage(std::static_pointer_cast<ServoHandle>(handles[servoHandle]));
         count++;
     }
 
     batteryRepository->setBatteryVoltage(voltage / count);
 }
 
-int SynchronizeBatteryVoltageCommand::GetVoltage(const std::shared_ptr<handles::ServoHandle> servoHandle) {
+int SynchronizeBatteryVoltageCommand::getVoltage(const std::shared_ptr<ServoHandle> servoHandle) {
     auto servoDevice = servoHandle->getDevice();
     return servoDevice->getPresentVoltage();
 }

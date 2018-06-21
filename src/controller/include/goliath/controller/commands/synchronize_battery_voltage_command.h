@@ -21,6 +21,6 @@ namespace goliath::commands {
 
         void execute(handles::HandleMap &handles, const proto::CommandMessage &message) override;
 
-        int GetVoltage(std::shared_ptr<handles::ServoHandle> servoHandle);
+        int getVoltage(const std::shared_ptr<handles::ServoHandle> servoHandle);
     };
 }

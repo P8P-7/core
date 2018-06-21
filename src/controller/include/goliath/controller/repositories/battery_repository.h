@@ -34,8 +34,8 @@ namespace goliath::repositories {
 
     private:
         int voltage;
-        int minVoltage = 105;
-        int maxVoltage = 125;
+        const int minVoltage = 105;
+        const int maxVoltage = 125;
     };
 }
 
