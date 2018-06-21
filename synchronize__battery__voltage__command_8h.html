@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.14"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Goliath II: Member List</title>
+<title>Goliath II: /core/src/controller/include/goliath/controller/commands/synchronize_battery_voltage_command.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -63,24 +63,38 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="namespacegoliath.html">goliath</a></li><li class="navelem"><b>repositories</b></li><li class="navelem"><a class="el" href="classgoliath_1_1repositories_1_1BatteryRepository.html">BatteryRepository</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_41ef5d8a90b9cc03a02949a5c062e6f0.html">controller</a></li><li class="navelem"><a class="el" href="dir_3da184053cef6309fb10ae6763224551.html">include</a></li><li class="navelem"><a class="el" href="dir_79e13471e5b8a784b53cdf5b8a85c6a0.html">goliath</a></li><li class="navelem"><a class="el" href="dir_541fb6dd1d7809a24ffc31c3f0ccf18e.html">controller</a></li><li class="navelem"><a class="el" href="dir_621fdeb894c912f063ef87f4078a77ea.html">commands</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
+  <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#namespaces">Namespaces</a>  </div>
   <div class="headertitle">
-<div class="title">goliath::repositories::BatteryRepository Member List</div>  </div>
+<div class="title">synchronize_battery_voltage_command.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-
-<p>This is the complete list of members for <a class="el" href="classgoliath_1_1repositories_1_1BatteryRepository.html">goliath::repositories::BatteryRepository</a>, including all inherited members.</p>
-<table class="directory">
-  <tr class="even"><td class="entry"><a class="el" href="classgoliath_1_1repositories_1_1BatteryRepository.html#a6c4c5412e197fb11092b4e1c8bcbbe0e">getBatteryLevel</a>() const</td><td class="entry"><a class="el" href="classgoliath_1_1repositories_1_1BatteryRepository.html">goliath::repositories::BatteryRepository</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="classgoliath_1_1repositories_1_1BatteryRepository.html#a7446f142ec2cc650afe28ae14bcf598e">getBatteryVoltage</a>() const</td><td class="entry"><a class="el" href="classgoliath_1_1repositories_1_1BatteryRepository.html">goliath::repositories::BatteryRepository</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classgoliath_1_1repositories_1_1BatteryRepository.html#a65019f94f32e6b4e2ecb16022948bd32">getMessage</a>() override</td><td class="entry"><a class="el" href="classgoliath_1_1repositories_1_1BatteryRepository.html">goliath::repositories::BatteryRepository</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
-  <tr><td class="entry"><a class="el" href="classgoliath_1_1repositories_1_1Repository.html#af24dfd78e809c4ff8e2522ff4a060880">invalidate</a>()</td><td class="entry"><a class="el" href="classgoliath_1_1repositories_1_1Repository.html">goliath::repositories::Repository</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classgoliath_1_1repositories_1_1Repository.html#a97f79f6167ee29783efc5be1d5029ed9">isInvalidated</a>() const</td><td class="entry"><a class="el" href="classgoliath_1_1repositories_1_1Repository.html">goliath::repositories::Repository</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>setBatteryVoltage</b>(int voltage) (defined in <a class="el" href="classgoliath_1_1repositories_1_1BatteryRepository.html">goliath::repositories::BatteryRepository</a>)</td><td class="entry"><a class="el" href="classgoliath_1_1repositories_1_1BatteryRepository.html">goliath::repositories::BatteryRepository</a></td><td class="entry"></td></tr>
-</table></div><!-- contents -->
+<div class="textblock"><code>#include &lt;goliath/servo.h&gt;</code><br />
+<code>#include &quot;basic_command.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="handles_8h_source.html">../handles.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="battery__repository_8h_source.html">../repositories/battery_repository.h</a>&quot;</code><br />
+</div>
+<p><a href="synchronize__battery__voltage__command_8h_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1commands_1_1SynchronizeBatteryVoltageCommand.html">goliath::commands::SynchronizeBatteryVoltageCommand</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
+Namespaces</h2></td></tr>
+<tr class="memitem:namespacegoliath_1_1commands"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegoliath_1_1commands.html">goliath::commands</a></td></tr>
+<tr class="memdesc:namespacegoliath_1_1commands"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains all command and command utilities. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><dl class="section author"><dt>Author</dt><dd>Group 7 - Informatica </dd></dl>
+</div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

@@ -7,6 +7,7 @@ var searchData=
   ['specificcolour',['SpecificColour',['../structgoliath_1_1controller_1_1SpecificColour.html',1,'goliath::controller']]],
   ['specificrainbow',['SpecificRainbow',['../structgoliath_1_1controller_1_1SpecificRainbow.html',1,'goliath::controller']]],
   ['specrainmessage',['SpecRainMessage',['../structgoliath_1_1controller_1_1SpecRainMessage.html',1,'goliath::controller']]],
+  ['synchronizebatteryvoltagecommand',['SynchronizeBatteryVoltageCommand',['../classgoliath_1_1commands_1_1SynchronizeBatteryVoltageCommand.html',1,'goliath::commands']]],
   ['synchronizecommandscommand',['SynchronizeCommandsCommand',['../classgoliath_1_1commands_1_1SynchronizeCommandsCommand.html',1,'goliath::commands']]],
   ['synchronizesystemstatuscommand',['SynchronizeSystemStatusCommand',['../classgoliath_1_1commands_1_1SynchronizeSystemStatusCommand.html',1,'goliath::commands']]],
   ['systemstatusrepository',['SystemStatusRepository',['../classgoliath_1_1repositories_1_1SystemStatusRepository.html',1,'goliath::repositories']]]
