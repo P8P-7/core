@@ -18,6 +18,7 @@ target_link_libraries(${PROJECT_NAME}
             goliath-motor-controller-module
             goliath-i2c-module
             goliath-led-strip-controller-module
+            goliath-transitions-module
             ${Boost_LIBRARIES}
             ${CMAKE_THREAD_LIBS_INIT}
         )

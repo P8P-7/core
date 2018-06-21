@@ -10,8 +10,12 @@ Reel::Reel(const size_t ticksPerSecond)
 
 Reel::Reel(const size_t ticksPerSecond, std::function<void(double)> callback)
         : Tickable(ticksPerSecond), ticks(0), currentTick(0),
-          callback(std::make_unique<std::function<void(double)>>(callback)) {
+          callback(std::make_shared<std::function<void(double)>>(callback)) {
 }
+
+Reel::Reel(const Reel &other)
+        : Tickable(other.getTicksPerSecond()), ticks(0), currentTick(0), callback(other.callback) { }
+
 
 
 void Reel::addPhase(const std::chrono::milliseconds duration, double min, double max,
