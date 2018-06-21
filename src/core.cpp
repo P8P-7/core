@@ -34,14 +34,10 @@ int main(int argc, char *argv[]) {
     auto configRepository = std::make_shared<repositories::ConfigRepository>(configFile);
     std::shared_ptr<proto::repositories::ConfigRepository> config = configRepository->getConfig();
 
-    auto severity = static_cast<boost::log::trivial::severity_level>(config->logging().severity_level());
-
-    util::Console console(&util::colorConsoleFormatter, argv[0], "core-text.txt", severity);
-
-    if (geteuid() && severity > boost::log::trivial::severity_level::debug) {
-        BOOST_LOG_TRIVIAL(fatal) << "Core must be run with root access";
-        return 0;
-    }
+    util::Console console(&util::colorConsoleFormatter,
+                          argv[0],
+                          "core-text.txt",
+                          static_cast<boost::log::trivial::severity_level>(config->logging().severity_level()));
 
     BOOST_LOG_TRIVIAL(info) << "Core is starting";
 
