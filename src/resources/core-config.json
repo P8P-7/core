@@ -17,19 +17,27 @@
   "wings": [
    {
     "position": "LEFT_FRONT",
-    "id": "1"
+    "id": "1",
+    "mirror": false,
+    "number_of_sectors": 0
    },
    {
     "position": "LEFT_BACK",
-    "id": "2"
+    "id": "2",
+    "mirror": false,
+    "number_of_sectors": 0
    },
    {
     "position": "RIGHT_FRONT",
-    "id": "3"
+    "id": "3",
+    "mirror": false,
+    "number_of_sectors": 0
    },
    {
     "position": "RIGHT_BACK",
-    "id": "4"
+    "id": "4",
+    "mirror": false,
+    "number_of_sectors": 0
    }
   ]
  },
@@ -73,8 +81,5 @@
  "enter": {
   "direction": "FORWARDS",
   "speed": 25
- },
- "system_status": {
-  "temperature_poll_interval": 200
  }
 }

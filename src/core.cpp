@@ -11,7 +11,7 @@
 #include <goliath/motor-controller.h>
 #include <goliath/controller.h>
 #include <goliath/controller/repositories/system_status_repository.h>
-
+#include <CommandMessage.pb.h>
 #include <repositories/SystemStatusRepository.pb.h>
 
 /**
@@ -167,6 +167,10 @@ int main(int argc, char *argv[]) {
     commands.add<commands::SynchronizeSystemStatusCommand>(
         proto::CommandMessage::kSynchronizeSystemStatusCommand,
         systemStatusRepository);
+    commands.add<commands::SynchronizeSystemStatusCommand>(proto::CommandMessage::kSynchronizeSystemStatusCommand,
+                                                       systemStatusRepository);
+    commands.add<commands::SynchronizeBatteryVoltageCommand>(proto::CommandMessage::kSynchronizeBatteryVoltageCommand,
+                                                       batteryRepository);
 
     // Part 1: Entering the Arena
     commands.add<commands::EnterCommand>(proto::CommandMessage::kEnterCommand);
@@ -190,6 +194,8 @@ int main(int argc, char *argv[]) {
 
     BOOST_LOG_TRIVIAL(info) << "Starting default commands";
     runner.run(proto::CommandMessage::kSynchronizeSystemStatusCommand);
+
+    runner.run(proto::CommandMessage::kSynchronizeBatteryVoltageCommand);
 
     BOOST_LOG_TRIVIAL(info) << "Launching subscriber";
     subscriber.bind(proto::MessageCarrier::MessageCase::kCommandMessage,
