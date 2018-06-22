@@ -19,14 +19,17 @@ set(RELATIVE_INCLUDES
         controller/commands/queue_command.h
         controller/commands/synchronize_commands_command.h
         controller/commands/synchronize_system_status_command.h
+        controller/commands/synchronize_battery_voltage_command.h
         controller/commands/transport_rebuild_command.h
         controller/commands/wunderhorn_command.h
         controller/commands/shutdown_command.h
+        controller/commands/set_wing_position_command.h
         controller/command_executor.h
         controller/command_item.h
         controller/command_map.h
         controller/handle_map.h
         controller/handles.h
+        controller/watcher.h
         )
 
 prepend(ABSOLUTE_INCLUDES ${CMAKE_CURRENT_SOURCE_DIR} ${RELATIVE_INCLUDES})

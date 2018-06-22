@@ -1,5 +1,8 @@
 #pragma once
 
+#include <goliath/foundation.h>
+#include <goliath/controller/command_executor.h>
+
 #include <atomic>
 #include <thread>
 #include <vector>
@@ -24,7 +27,8 @@ namespace goliath::repositories {
          * @param pollingRate rate at which the watcher thread polls each repository
          * @param publisher service to which the watcher should publish a @see SynchronizeMessage
          */
-        Watcher(int pollingRate, foundation::PublisherService &publisher);
+        Watcher(int polling_rate, foundation::PublisherService &publisher,
+                std::shared_ptr<commands::CommandExecutor> &executor);
         /**
          * @brief Destructs the watcher and calls stop()
          */
@@ -67,6 +71,8 @@ namespace goliath::repositories {
 
         std::atomic<bool> running;
         std::thread thread;
+
+        std::shared_ptr<commands::CommandExecutor> commandExecutor;
 
         void synchronize();
         void run();

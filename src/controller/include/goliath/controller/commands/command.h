@@ -63,6 +63,10 @@ namespace goliath::commands {
          */
         virtual bool canStart(const handles::HandleMap &handles) const;
 
+        /**
+         * Overriden by a child class. Should return true of a command can run in parallel
+         * @return true if this command can run in parallel
+         */
         virtual bool canRunParallel() const;
 
     protected:
@@ -71,6 +75,11 @@ namespace goliath::commands {
          */
         bool running;
 
+        /**
+         * @brief execute this command with a set of locked handles and the command message containing the parameters.
+         * @param handles set of locked handles. All handles that are in getRequiredHandles() should be in here
+         * @param message parameters to the command
+         */
         virtual void run(handles::HandleMap &handles, const proto::CommandMessage &message) = 0;
 
         void waitForInterrupt();

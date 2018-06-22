@@ -11,7 +11,7 @@
 #include <goliath/motor-controller.h>
 #include <goliath/controller.h>
 #include <goliath/controller/repositories/system_status_repository.h>
-
+#include <CommandMessage.pb.h>
 #include <repositories/SystemStatusRepository.pb.h>
 
 /**
@@ -32,7 +32,7 @@ using namespace goliath;
 int main(int argc, char *argv[]) {
     std::string configFile = util::FoundationUtilities::executableToFile(argv[0], "config/core-config.json");
     auto configRepository = std::make_shared<repositories::ConfigRepository>(configFile);
-    std::shared_ptr<proto::repositories::ConfigRepository> config = configRepository->getConfig();
+    auto config = configRepository->getConfig();
 
     auto severity = static_cast<boost::log::trivial::severity_level>(config->logging().severity_level());
 
@@ -66,28 +66,10 @@ int main(int argc, char *argv[]) {
     BOOST_LOG_TRIVIAL(info) << "Setting up publisher";
     messaging::ZmqPublisher publisher(context, "localhost", config->zmq().publisher_port());
 
-    BOOST_LOG_TRIVIAL(info) << "Setting up watcher";
-    auto watcher = std::make_shared<repositories::Watcher>(config->watcher().polling_rate(), publisher);
-
-    BOOST_LOG_TRIVIAL(info) << "Watching repositories";
-    watcher->watch(batteryRepository);
-    watcher->watch(commandStatusRepository);
-    watcher->watch(emotionRepository);
-    watcher->watch(loggingRepository);
-    watcher->watch(configRepository);
-    watcher->watch(systemStatusRepository);
-
     BOOST_LOG_TRIVIAL(info) << "Setting up GPIO";
     gpio::GPIO gpio(static_cast<gpio::GPIO::MapPin>(config->gpio().pin()), gpio::GPIO::Direction::Out,
                     gpio::GPIO::State::Low);
-    std::function<void(bool)> callback = [&gpio](bool isTx) {
-        if (isTx) {
-            gpio.set(gpio::GPIO::State::High);
-        } else {
-            std::this_thread::sleep_for(std::chrono::microseconds(20));
-            gpio.set(gpio::GPIO::State::Low);
-        }
-    };
+
 
     BOOST_LOG_TRIVIAL(info) << "Setting up serial port";
     std::string portName = config->serial().port();
@@ -99,33 +81,46 @@ int main(int argc, char *argv[]) {
     handles::HandleMap handles;
 
     handles.add<handles::WebcamHandle>(HANDLE_CAM, 0);
-
+    std::shared_ptr<repositories::WingStateRepository> wingStateRepository = nullptr;
     if (connectSuccess) {
         BOOST_LOG_TRIVIAL(info) << "Setting up Dynamixel servo handles";
 
+        std::vector<size_t> wingHandleIds;
         for (const proto::repositories::Wing &wing : config->servos().wings()) {
             auto dynamixel = std::make_shared<dynamixel::Dynamixel>(wing.id(), port);
+            dynamixel->setDirectionCallback([&gpio](bool isTx) {
+                gpio.set(isTx ? gpio::GPIO::State::High : gpio::GPIO::State::Low);
+            });
 
-            size_t handle;
+            size_t handleId;
             switch (wing.position()) {
                 case proto::repositories::Position::LEFT_FRONT:
-                    handle = HANDLE_LEFT_FRONT_WING_SERVO;
+                    handleId = HANDLE_LEFT_FRONT_WING_SERVO;
                     break;
                 case proto::repositories::Position::LEFT_BACK:
-                    handle = HANDLE_LEFT_BACK_WING_SERVO;
+                    handleId = HANDLE_LEFT_BACK_WING_SERVO;
                     break;
                 case proto::repositories::Position::RIGHT_FRONT:
-                    handle = HANDLE_RIGHT_FRONT_WING_SERVO;
+                    handleId = HANDLE_RIGHT_FRONT_WING_SERVO;
                     break;
                 case proto::repositories::Position::RIGHT_BACK:
-                    handle = HANDLE_RIGHT_BACK_WING_SERVO;
+                    handleId = HANDLE_RIGHT_BACK_WING_SERVO;
                     break;
                 default:
-                    throw std::runtime_error("Servo position could not be handled");
+                    throw std::runtime_error("Wing position could not be handled");
             }
 
-            handles.add<handles::ServoHandle>(handle, dynamixel, callback);
+            auto handle = handles.add<handles::WingHandle>(handleId,
+                    dynamixel,
+                    wing.number_of_sectors(),
+                    wing.mirror(),
+                    wing.mirror(),
+                    0.0
+            );
+            wingHandleIds.emplace_back(handle->getId());
         }
+
+        wingStateRepository = std::make_shared<repositories::WingStateRepository>(wingHandleIds);
     }
 
     handles.add<handles::I2cBusHandle>(HANDLE_I2C_BUS, "/dev/i2c-1");
@@ -147,7 +142,7 @@ int main(int argc, char *argv[]) {
                 handle = HANDLE_RIGHT_BACK_MOTOR;
                 break;
             default:
-                throw std::runtime_error("Servo position could not be handled");
+                throw std::runtime_error("Unknown motor position");
         }
         handles.add<handles::MotorHandle>(handle, motor.id());
     }
@@ -157,17 +152,41 @@ int main(int argc, char *argv[]) {
 
     BOOST_LOG_TRIVIAL(info) << "Setting up commands";
     commands::CommandMap commands(commandStatusRepository);
+
+    auto runner = std::make_shared<commands::CommandExecutor>(config->command_executor().number_of_executors(),
+                                                              commands, handles);
+    BOOST_LOG_TRIVIAL(info) << "Setting up watcher";
+    auto watcher = std::make_shared<repositories::Watcher>(config->watcher().polling_rate(), publisher, runner);
+
+    BOOST_LOG_TRIVIAL(info) << "Watching repositories";
+    watcher->watch(batteryRepository);
+    watcher->watch(commandStatusRepository);
+    watcher->watch(emotionRepository);
+    watcher->watch(loggingRepository);
+    watcher->watch(configRepository);
+    watcher->watch(systemStatusRepository);
+
+    subscriber.bind(proto::MessageCarrier::MessageCase::kCommandMessage,
+                    [&runner](const proto::MessageCarrier &carrier) {
+                        const proto::CommandMessage &message = carrier.commandmessage();
+                        runner->run(message.command_case(), message);
+                    });
+
     commands.add<commands::InvalidateAllCommand>(proto::CommandMessage::kInvalidateAllCommand, watcher);
     commands.add<commands::ShutdownCommand>(proto::CommandMessage::kShutdownCommand, ioService);
     commands.add<commands::SynchronizeCommandsCommand>(
         proto::CommandMessage::kSynchronizeCommandsCommand,
         commandStatusRepository);
     commands.add<commands::MoveCommand>(proto::CommandMessage::kMoveCommand);
-    commands.add<commands::MoveWingCommand>(proto::CommandMessage::kMoveWingCommand);
-    commands.add<commands::SynchronizeSystemStatusCommand>(
-        proto::CommandMessage::kSynchronizeSystemStatusCommand,
-        systemStatusRepository);
-
+    commands.add<commands::MoveWingCommand>(proto::CommandMessage::kMoveWingCommand, wingStateRepository);
+    commands.add<commands::SynchronizeSystemStatusCommand>(proto::CommandMessage::kSynchronizeSystemStatusCommand,
+                                                           systemStatusRepository);
+    commands.add<commands::SetWingPositionCommand>(proto::CommandMessage::kSetWingPositionCommand, wingStateRepository);
+    commands.add<commands::MoveWingCommand>(proto::CommandMessage::kMoveWingCommand, wingStateRepository);
+    commands.add<commands::SynchronizeSystemStatusCommand>(proto::CommandMessage::kSynchronizeSystemStatusCommand,
+                                                       systemStatusRepository);
+    commands.add<commands::SynchronizeBatteryVoltageCommand>(proto::CommandMessage::kSynchronizeBatteryVoltageCommand,
+                                                       batteryRepository);
     // Part 1: Entering the Arena
     commands.add<commands::EnterCommand>(proto::CommandMessage::kEnterCommand);
 
@@ -186,22 +205,11 @@ int main(int argc, char *argv[]) {
     // Part 6: Transport and Rebuild
     commands.add<commands::TransportRebuildCommand>(proto::CommandMessage::kTransportRebuildCommand);
 
-    // Must be last
     commands.add<commands::InterruptCommandCommand>(
         proto::CommandMessage::kInterruptCommandCommand,
         std::make_shared<commands::CommandMap>(commands));
 
-    commands::CommandExecutor runner(config->command_executor().number_of_executors(), commands, handles);
-
-    BOOST_LOG_TRIVIAL(info) << "Starting default commands";
-    runner.run(proto::CommandMessage::kSynchronizeSystemStatusCommand);
-
     BOOST_LOG_TRIVIAL(info) << "Launching subscriber";
-    subscriber.bind(proto::MessageCarrier::MessageCase::kCommandMessage,
-                    [&runner](const proto::MessageCarrier &carrier) {
-                        const proto::CommandMessage &message = carrier.commandmessage();
-                        runner.run(message.command_case(), message);
-                    });
     subscriber.start();
 
     BOOST_LOG_TRIVIAL(info) << "Starting watcher";
