@@ -9,7 +9,14 @@ using namespace goliath::motor_controller;
 MotorController::MotorController(i2c::I2cSlave &slave) : slave(slave) {}
 
 void MotorController::sendCommand(const MotorStatus &message) {
-    slave.write(reinterpret_cast<const char *>(&message), sizeof(message));
+    for (int i = 0; i < 5; i++) {
+        try {
+            slave.write(reinterpret_cast<const char *>(&message), sizeof(message));
+            break;
+        } catch (std::exception &ex) {
+            BOOST_LOG_TRIVIAL(warning) << "Failed to send motor command";
+        }
+    }
 }
 
 size_t MotorController::getNumberOfMotors() {

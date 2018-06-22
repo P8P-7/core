@@ -9,15 +9,17 @@
 namespace goliath::commands {
     class MoveWingCommand : public BasicCommand {
     public:
-        explicit MoveWingCommand(const size_t &id);
+        MoveWingCommand(const size_t &id, std::shared_ptr<repositories::WingStateRepository> repository);
 
     private:
+        std::shared_ptr<repositories::WingStateRepository> repository;
+
         void execute(handles::HandleMap &handles, const proto::CommandMessage &message) override;
 
-        void executeServoCommand(std::shared_ptr<handles::ServoHandle> servoHandle,
-                                 const proto::commands::ServoCommand &servoCommand);
+        void executeServoCommand(std::shared_ptr<handles::WingHandle> handle,
+                                 const proto::commands::ServoCommand &command);
 
-        int enumToHandle(proto::commands::ServoCommand_Motor motor);
+        static size_t enumToHandle(proto::commands::ServoCommand_Motor motor);
     };
 }
 

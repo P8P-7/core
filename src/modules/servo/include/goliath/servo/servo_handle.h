@@ -18,7 +18,7 @@ namespace goliath::handles {
         /**
          * @param device The dynamixel device.
          */
-        ServoHandle(const size_t &id, std::shared_ptr<dynamixel::Dynamixel> device, std::function<void(bool)> txCallback);
+        ServoHandle(const size_t &id, std::shared_ptr<dynamixel::Dynamixel> device);
 
         /**
          * @return Currently set device

@@ -40,18 +40,26 @@ BOOST_AUTO_TEST_SUITE(BOOST_TEST_MODULE)
         auto *leftFrontWing = servoConfig->add_wings();
         leftFrontWing->set_position(proto::repositories::Position::LEFT_FRONT);
         leftFrontWing->set_id(1);
+        leftFrontWing->set_mirror(false);
+        leftFrontWing->set_number_of_sectors(4);
 
         auto *leftBackWing = servoConfig->add_wings();
         leftBackWing->set_position(proto::repositories::Position::LEFT_BACK);
         leftBackWing->set_id(2);
+        leftFrontWing->set_mirror(true);
+        leftFrontWing->set_number_of_sectors(4);
 
         auto *rightFrontWing = servoConfig->add_wings();
         rightFrontWing->set_position(proto::repositories::Position::RIGHT_FRONT);
         rightFrontWing->set_id(3);
+        rightFrontWing->set_mirror(true);
+        leftFrontWing->set_number_of_sectors(4);
 
         auto *rightBackWing = servoConfig->add_wings();
         rightBackWing->set_position(proto::repositories::Position::RIGHT_BACK);
         rightBackWing->set_id(4);
+        rightBackWing->set_mirror(false);
+        leftFrontWing->set_number_of_sectors(4);
 
         auto *i2cConfig = new proto::repositories::I2cConfig;
         i2cConfig->set_device("/dev/i2c-1");
