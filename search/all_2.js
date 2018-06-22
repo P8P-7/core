@@ -2,6 +2,7 @@ var searchData=
 [
   ['canny_5fprocessor_2eh',['canny_processor.h',['../canny__processor_8h.html',1,'']]],
   ['cannyprocessor',['CannyProcessor',['../classgoliath_1_1vision_1_1CannyProcessor.html',1,'goliath::vision::CannyProcessor'],['../classgoliath_1_1vision_1_1CannyProcessor.html#a3810bb792f931797ad2a9c27ca3d6533',1,'goliath::vision::CannyProcessor::CannyProcessor()']]],
+  ['canrunparallel',['canRunParallel',['../classgoliath_1_1commands_1_1Command.html#a01acaa0c9b5f507e6cddcf5780496d7d',1,'goliath::commands::Command::canRunParallel()'],['../classgoliath_1_1commands_1_1QueueCommand.html#a30fa1d001862d60f54df4d09279b9920',1,'goliath::commands::QueueCommand::canRunParallel()']]],
   ['canstart',['canStart',['../classgoliath_1_1commands_1_1Command.html#a74ffadb13c20ccc0d6cbadf975fb6a85',1,'goliath::commands::Command']]],
   ['cantick',['canTick',['../classgoliath_1_1transitions_1_1Reel.html#ad44ed20c7af18395f98863b85f1b1e13',1,'goliath::transitions::Reel']]],
   ['circle',['Circle',['../structgoliath_1_1controller_1_1Circle.html',1,'goliath::controller']]],
@@ -16,6 +17,7 @@ var searchData=
   ['command_5fexecutor_2eh',['command_executor.h',['../command__executor_8h.html',1,'']]],
   ['command_5fitem_2eh',['command_item.h',['../command__item_8h.html',1,'']]],
   ['command_5fmap_2eh',['command_map.h',['../command__map_8h.html',1,'']]],
+  ['command_5fmotor_5fto_5fhandle_5fmap',['COMMAND_MOTOR_TO_HANDLE_MAP',['../classgoliath_1_1commands_1_1MoveCommand.html#a0598b5b770271fbe298ef115fb18483e',1,'goliath::commands::MoveCommand']]],
   ['command_5fstatus_5frepository_2eh',['command_status_repository.h',['../command__status__repository_8h.html',1,'']]],
   ['commandexecutor',['CommandExecutor',['../classgoliath_1_1commands_1_1CommandExecutor.html',1,'goliath::commands::CommandExecutor'],['../classgoliath_1_1commands_1_1CommandExecutor.html#ac616d03dd1e107bc4245e60cdf53ad39',1,'goliath::commands::CommandExecutor::CommandExecutor()']]],
   ['commandexists',['commandExists',['../classgoliath_1_1commands_1_1CommandMap.html#a59b748c3d24f16cc7e7255b49194651e',1,'goliath::commands::CommandMap']]],

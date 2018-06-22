@@ -82,7 +82,7 @@ $(function() {
 <h3><a id="index_b"></a>- b -</h3><ul>
 <li>begin()
 : <a class="el" href="classgoliath_1_1commands_1_1CommandMap.html#a53b32e2e65e9b4154f3edc42021f31f6">goliath::commands::CommandMap</a>
-, <a class="el" href="classgoliath_1_1handles_1_1HandleMap.html#ae9d846669aba194648c19cccd701ef56">goliath::handles::HandleMap</a>
+, <a class="el" href="classgoliath_1_1handles_1_1HandleMap.html#ae5e41ac908dc5664a7cd185510f58f33">goliath::handles::HandleMap</a>
 </li>
 <li>bind()
 : <a class="el" href="classgoliath_1_1messaging_1_1ZmqIo.html#a51776980746b4fe0e021929e48b6e986">goliath::messaging::ZmqIo</a>
@@ -95,6 +95,10 @@ $(function() {
 <li>CannyProcessor()
 : <a class="el" href="classgoliath_1_1vision_1_1CannyProcessor.html#a3810bb792f931797ad2a9c27ca3d6533">goliath::vision::CannyProcessor</a>
 </li>
+<li>canRunParallel()
+: <a class="el" href="classgoliath_1_1commands_1_1Command.html#a01acaa0c9b5f507e6cddcf5780496d7d">goliath::commands::Command</a>
+, <a class="el" href="classgoliath_1_1commands_1_1QueueCommand.html#a30fa1d001862d60f54df4d09279b9920">goliath::commands::QueueCommand</a>
+</li>
 <li>canStart()
 : <a class="el" href="classgoliath_1_1commands_1_1Command.html#a74ffadb13c20ccc0d6cbadf975fb6a85">goliath::commands::Command</a>
 </li>
@@ -103,6 +107,9 @@ $(function() {
 </li>
 <li>ColorProcessor()
 : <a class="el" href="classgoliath_1_1vision_1_1ColorProcessor.html#ad5b26395e885a83ee5ae185033fe6095">goliath::vision::ColorProcessor</a>
+</li>
+<li>COMMAND_MOTOR_TO_HANDLE_MAP
+: <a class="el" href="classgoliath_1_1commands_1_1MoveCommand.html#a0598b5b770271fbe298ef115fb18483e">goliath::commands::MoveCommand</a>
 </li>
 <li>CommandExecutor()
 : <a class="el" href="classgoliath_1_1commands_1_1CommandExecutor.html#ac616d03dd1e107bc4245e60cdf53ad39">goliath::commands::CommandExecutor</a>
@@ -138,7 +145,7 @@ $(function() {
 , <a class="el" href="classgoliath_1_1vision_1_1WithinBoxDetector.html#a24dddd545258791ea234005a4b73d1bc">goliath::vision::WithinBoxDetector</a>
 </li>
 <li>Detector()
-: <a class="el" href="classgoliath_1_1vision_1_1Detector.html#abe4e1c93e93d641c67539c4fee0e13b6">goliath::vision::Detector</a>
+: <a class="el" href="classgoliath_1_1vision_1_1Detector.html#aa267ce350d6bbc77f3d9ea6cc5cecdaa">goliath::vision::Detector</a>
 </li>
 <li>Device()
 : <a class="el" href="classgoliath_1_1openal_1_1Device.html#ad3a630d71a14b6391e5f217f30c0ae70">goliath::openal::Device</a>
@@ -149,7 +156,7 @@ $(function() {
 <h3><a id="index_e"></a>- e -</h3><ul>
 <li>end()
 : <a class="el" href="classgoliath_1_1commands_1_1CommandMap.html#a57b20314d5567070ccfe0d4d7ef68b3c">goliath::commands::CommandMap</a>
-, <a class="el" href="classgoliath_1_1handles_1_1HandleMap.html#aac94e077195d7d0e952d36d872237518">goliath::handles::HandleMap</a>
+, <a class="el" href="classgoliath_1_1handles_1_1HandleMap.html#a8951c4d3fd08ceefbe6a8ed4c7f7cedc">goliath::handles::HandleMap</a>
 </li>
 <li>execute()
 : <a class="el" href="classgoliath_1_1commands_1_1BasicCommand.html#afc41c0188d04cf734070662af3b62555">goliath::commands::BasicCommand</a>
@@ -207,6 +214,7 @@ $(function() {
 , <a class="el" href="classgoliath_1_1repositories_1_1ProtoRepository.html#a4b6ec7503f46039ce590a46c70e4b5dd">goliath::repositories::ProtoRepository&lt; T &gt;</a>
 , <a class="el" href="classgoliath_1_1repositories_1_1Repository.html#acaac526575f19832ff2a954fee3fb527">goliath::repositories::Repository</a>
 , <a class="el" href="classgoliath_1_1repositories_1_1SystemStatusRepository.html#aeb65f5c78a630f3473298ea15adc66d7">goliath::repositories::SystemStatusRepository</a>
+, <a class="el" href="classgoliath_1_1repositories_1_1WingStateRepository.html#a59d40d82c92d1e8cb43d252ab2406d65">goliath::repositories::WingStateRepository</a>
 </li>
 <li>getMotors()
 : <a class="el" href="classgoliath_1_1motor__controller_1_1MotorController.html#a6c9d4a30c882c68fbfc8a884efe2f20f">goliath::motor_controller::MotorController</a>
@@ -278,7 +286,7 @@ $(function() {
 : <a class="el" href="classgoliath_1_1repositories_1_1Repository.html#a97f79f6167ee29783efc5be1d5029ed9">goliath::repositories::Repository</a>
 </li>
 <li>isLocked()
-: <a class="el" href="classgoliath_1_1handles_1_1Handle.html#a45bdffb4614b4ac51c60cc07468ed65b">goliath::handles::Handle</a>
+: <a class="el" href="classgoliath_1_1handles_1_1Handle.html#ac8e062237bca4078695bf88f9512564c">goliath::handles::Handle</a>
 </li>
 </ul>
 
@@ -330,7 +338,8 @@ $(function() {
 : <a class="el" href="classgoliath_1_1transitions_1_1Phase.html#ae236e692c15f1337c7f999b820db2d67">goliath::transitions::Phase</a>
 </li>
 <li>process()
-: <a class="el" href="classgoliath_1_1vision_1_1CannyProcessor.html#a5ac2cc9e9180ac542636ac05cfd8045e">goliath::vision::CannyProcessor</a>
+: <a class="el" href="classgoliath_1_1commands_1_1QueueCommand.html#a67120944751c88e7fb0750bb6a4a907a">goliath::commands::QueueCommand</a>
+, <a class="el" href="classgoliath_1_1vision_1_1CannyProcessor.html#a5ac2cc9e9180ac542636ac05cfd8045e">goliath::vision::CannyProcessor</a>
 , <a class="el" href="classgoliath_1_1vision_1_1ColorProcessor.html#a90811bcb0e3a3a51cdeba36d8224ef1d">goliath::vision::ColorProcessor</a>
 , <a class="el" href="classgoliath_1_1vision_1_1Processor.html#ab0e9d4d69dcf10170a40fa6d36e291eb">goliath::vision::Processor</a>
 , <a class="el" href="classgoliath_1_1vision_1_1RoiProcessor.html#a5272dc92d105d9b1017a50e76ca4d465">goliath::vision::RoiProcessor</a>
@@ -341,6 +350,13 @@ $(function() {
 <li>publish()
 : <a class="el" href="classgoliath_1_1foundation_1_1PublisherService.html#a17375532764d0fe65f2e735547555448">goliath::foundation::PublisherService</a>
 , <a class="el" href="classgoliath_1_1messaging_1_1ZmqPublisher.html#a4503e19275f9391fc3ad06170d953871">goliath::messaging::ZmqPublisher</a>
+</li>
+</ul>
+
+
+<h3><a id="index_q"></a>- q -</h3><ul>
+<li>queueMutex
+: <a class="el" href="classgoliath_1_1commands_1_1QueueCommand.html#a2ed029cb75e5f5d63d1e91e84f63055e">goliath::commands::QueueCommand</a>
 </li>
 </ul>
 
@@ -359,7 +375,10 @@ $(function() {
 : <a class="el" href="classgoliath_1_1vision_1_1RoiProcessor.html#ace4336cddf11631c508e14c85d49bb43">goliath::vision::RoiProcessor</a>
 </li>
 <li>run()
-: <a class="el" href="classgoliath_1_1commands_1_1CommandExecutor.html#a125dacf4044326eb63f31cd379574dd3">goliath::commands::CommandExecutor</a>
+: <a class="el" href="classgoliath_1_1commands_1_1BasicCommand.html#aea8b3a21eefb67a86e4ddc0631e4ffde">goliath::commands::BasicCommand</a>
+, <a class="el" href="classgoliath_1_1commands_1_1Command.html#a667d1fa5ed91aff4a6600fb41bac9273">goliath::commands::Command</a>
+, <a class="el" href="classgoliath_1_1commands_1_1CommandExecutor.html#a125dacf4044326eb63f31cd379574dd3">goliath::commands::CommandExecutor</a>
+, <a class="el" href="classgoliath_1_1commands_1_1QueueCommand.html#ae4889a22b03c1824e484d28edf0bf648">goliath::commands::QueueCommand</a>
 </li>
 <li>running
 : <a class="el" href="classgoliath_1_1commands_1_1Command.html#a82b9acae7feb096c203efd219b408c94">goliath::commands::Command</a>
@@ -373,7 +392,7 @@ $(function() {
 , <a class="el" href="classgoliath_1_1motor__controller_1_1MotorController.html#aa6a728c6ba23204e42b552bcf42b99bc">goliath::motor_controller::MotorController</a>
 </li>
 <li>ServoHandle()
-: <a class="el" href="classgoliath_1_1handles_1_1ServoHandle.html#af57e30d98974e3be2cc45ef17e37fcc9">goliath::handles::ServoHandle</a>
+: <a class="el" href="classgoliath_1_1handles_1_1ServoHandle.html#a9bb5e972d99b012a4cfc30d3b367842b">goliath::handles::ServoHandle</a>
 </li>
 <li>shouldSynchronize()
 : <a class="el" href="classgoliath_1_1repositories_1_1Watcher.html#a60695e6b04fbae2d48480f3239e24175">goliath::repositories::Watcher</a>
@@ -432,7 +451,7 @@ $(function() {
 : <a class="el" href="classgoliath_1_1repositories_1_1Watcher.html#ab496ec3e1cd6417e7bb968d228115665">goliath::repositories::Watcher</a>
 </li>
 <li>Watcher()
-: <a class="el" href="classgoliath_1_1repositories_1_1Watcher.html#a8bce0e16b2e07cd8798359b756dcaffd">goliath::repositories::Watcher</a>
+: <a class="el" href="classgoliath_1_1repositories_1_1Watcher.html#aea807da77ba78df8c61763d4f6d72520">goliath::repositories::Watcher</a>
 </li>
 <li>Webcam()
 : <a class="el" href="classgoliath_1_1vision_1_1Webcam.html#a7ab8291de2f035d4e6b51f6166a3da75">goliath::vision::Webcam</a>

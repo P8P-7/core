@@ -102,11 +102,11 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a78bf740d519c7c7876f16fb40df7e1f8 inherit pub_methods_classgoliath_1_1commands_1_1QueueCommand"><td class="memItemLeft" align="right" valign="top"><a id="a78bf740d519c7c7876f16fb40df7e1f8"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>QueueCommand</b> (const size_t &amp;id, const std::vector&lt; size_t &gt; &amp;requiredHandles)</td></tr>
 <tr class="separator:a78bf740d519c7c7876f16fb40df7e1f8 inherit pub_methods_classgoliath_1_1commands_1_1QueueCommand"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae4889a22b03c1824e484d28edf0bf648 inherit pub_methods_classgoliath_1_1commands_1_1QueueCommand"><td class="memItemLeft" align="right" valign="top"><a id="ae4889a22b03c1824e484d28edf0bf648"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>run</b> (<a class="el" href="classgoliath_1_1handles_1_1HandleMap.html">handles::HandleMap</a> &amp;handles, const proto::CommandMessage &amp;message) override</td></tr>
+<tr class="memitem:ae4889a22b03c1824e484d28edf0bf648 inherit pub_methods_classgoliath_1_1commands_1_1QueueCommand"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1commands_1_1QueueCommand.html#ae4889a22b03c1824e484d28edf0bf648">run</a> (<a class="el" href="classgoliath_1_1handles_1_1HandleMap.html">handles::HandleMap</a> &amp;handles, const proto::CommandMessage &amp;message) override</td></tr>
+<tr class="memdesc:ae4889a22b03c1824e484d28edf0bf648 inherit pub_methods_classgoliath_1_1commands_1_1QueueCommand"><td class="mdescLeft">&#160;</td><td class="mdescRight">execute this command with a set of locked handles and the command message containing the parameters.  <a href="classgoliath_1_1commands_1_1QueueCommand.html#ae4889a22b03c1824e484d28edf0bf648">More...</a><br /></td></tr>
 <tr class="separator:ae4889a22b03c1824e484d28edf0bf648 inherit pub_methods_classgoliath_1_1commands_1_1QueueCommand"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a30fa1d001862d60f54df4d09279b9920 inherit pub_methods_classgoliath_1_1commands_1_1QueueCommand"><td class="memItemLeft" align="right" valign="top"><a id="a30fa1d001862d60f54df4d09279b9920"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>canRunParallel</b> () const override</td></tr>
+<tr class="memitem:a30fa1d001862d60f54df4d09279b9920 inherit pub_methods_classgoliath_1_1commands_1_1QueueCommand"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1commands_1_1QueueCommand.html#a30fa1d001862d60f54df4d09279b9920">canRunParallel</a> () const override</td></tr>
+<tr class="memdesc:a30fa1d001862d60f54df4d09279b9920 inherit pub_methods_classgoliath_1_1commands_1_1QueueCommand"><td class="mdescLeft">&#160;</td><td class="mdescRight">always true because a <a class="el" href="classgoliath_1_1commands_1_1QueueCommand.html">QueueCommand</a> can receive command in parallel  <a href="classgoliath_1_1commands_1_1QueueCommand.html#a30fa1d001862d60f54df4d09279b9920">More...</a><br /></td></tr>
 <tr class="separator:a30fa1d001862d60f54df4d09279b9920 inherit pub_methods_classgoliath_1_1commands_1_1QueueCommand"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac2ab307389c2bf61c0f1022d39a11c96 inherit pub_methods_classgoliath_1_1commands_1_1QueueCommand"><td class="memItemLeft" align="right" valign="top"><a id="ac2ab307389c2bf61c0f1022d39a11c96"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1commands_1_1QueueCommand.html#ac2ab307389c2bf61c0f1022d39a11c96">interrupt</a> () override</td></tr>
@@ -133,15 +133,16 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
-<tr class="memitem:a0598b5b770271fbe298ef115fb18483e"><td class="memItemLeft" align="right" valign="top">static const std::map&lt; proto::commands::MotorCommand_Motor, size_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>COMMAND_MOTOR_TO_HANDLE_MAP</b></td></tr>
+<tr class="memitem:a0598b5b770271fbe298ef115fb18483e"><td class="memItemLeft" align="right" valign="top">static const std::map&lt; proto::commands::MotorCommand_Motor, size_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1commands_1_1MoveCommand.html#a0598b5b770271fbe298ef115fb18483e">COMMAND_MOTOR_TO_HANDLE_MAP</a></td></tr>
 <tr class="separator:a0598b5b770271fbe298ef115fb18483e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pro_attribs_classgoliath_1_1commands_1_1QueueCommand"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classgoliath_1_1commands_1_1QueueCommand')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classgoliath_1_1commands_1_1QueueCommand.html">goliath::commands::QueueCommand</a></td></tr>
-<tr class="memitem:a31830791dee2f34413dbe83f2b53ad52 inherit pro_attribs_classgoliath_1_1commands_1_1QueueCommand"><td class="memItemLeft" align="right" valign="top"><a id="a31830791dee2f34413dbe83f2b53ad52"></a>
-std::mutex&#160;</td><td class="memItemRight" valign="bottom"><b>mutex</b></td></tr>
-<tr class="separator:a31830791dee2f34413dbe83f2b53ad52 inherit pro_attribs_classgoliath_1_1commands_1_1QueueCommand"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ed029cb75e5f5d63d1e91e84f63055e inherit pro_attribs_classgoliath_1_1commands_1_1QueueCommand"><td class="memItemLeft" align="right" valign="top"><a id="a2ed029cb75e5f5d63d1e91e84f63055e"></a>
+std::mutex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1commands_1_1QueueCommand.html#a2ed029cb75e5f5d63d1e91e84f63055e">queueMutex</a></td></tr>
+<tr class="memdesc:a2ed029cb75e5f5d63d1e91e84f63055e inherit pro_attribs_classgoliath_1_1commands_1_1QueueCommand"><td class="mdescLeft">&#160;</td><td class="mdescRight">mutex protecting the queue <br /></td></tr>
+<tr class="separator:a2ed029cb75e5f5d63d1e91e84f63055e inherit pro_attribs_classgoliath_1_1commands_1_1QueueCommand"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4f696e537e8296300d8253aefb3d2c28 inherit pro_attribs_classgoliath_1_1commands_1_1QueueCommand"><td class="memItemLeft" align="right" valign="top"><a id="a4f696e537e8296300d8253aefb3d2c28"></a>
 std::condition_variable&#160;</td><td class="memItemRight" valign="bottom"><b>cv</b></td></tr>
 <tr class="separator:a4f696e537e8296300d8253aefb3d2c28 inherit pro_attribs_classgoliath_1_1commands_1_1QueueCommand"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -177,7 +178,8 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
   </tr>
 </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">= {{</div><div class="line">    {MotorProto::MotorCommand_Motor_LEFT_FRONT, HANDLE_LEFT_FRONT_MOTOR},</div><div class="line">    {MotorProto::MotorCommand_Motor_LEFT_BACK, HANDLE_LEFT_BACK_MOTOR},</div><div class="line">    {MotorProto::MotorCommand_Motor_RIGHT_FRONT, HANDLE_RIGHT_FRONT_MOTOR},</div><div class="line">    {MotorProto::MotorCommand_Motor_RIGHT_BACK, HANDLE_RIGHT_BACK_MOTOR},</div><div class="line">}}</div></div><!-- fragment -->
+<b>Initial value:</b><div class="fragment"><div class="line">= {{</div><div class="line">    { MotorProto::MotorCommand_Motor_LEFT_FRONT, HANDLE_LEFT_FRONT_MOTOR },</div><div class="line">    {MotorProto::MotorCommand_Motor_LEFT_BACK, HANDLE_LEFT_BACK_MOTOR},</div><div class="line">    {MotorProto::MotorCommand_Motor_RIGHT_FRONT, HANDLE_RIGHT_FRONT_MOTOR},</div><div class="line">    {MotorProto::MotorCommand_Motor_RIGHT_BACK, HANDLE_RIGHT_BACK_MOTOR},</div><div class="line">}}</div></div><!-- fragment --><p>map of a protobuf motor id to a handle id representing the id </p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>

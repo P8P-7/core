@@ -96,12 +96,13 @@ Inheritance diagram for goliath::commands::Command:</div>
 <area href="classgoliath_1_1commands_1_1LineDanceCommand.html" alt="goliath::commands::LineDanceCommand" shape="rect" coords="339,336,668,360"/>
 <area href="classgoliath_1_1commands_1_1MoveWingCommand.html" alt="goliath::commands::MoveWingCommand" shape="rect" coords="339,392,668,416"/>
 <area href="classgoliath_1_1commands_1_1ObstacleCourseCommand.html" alt="goliath::commands::ObstacleCourseCommand" shape="rect" coords="339,448,668,472"/>
-<area href="classgoliath_1_1commands_1_1ShutdownCommand.html" alt="goliath::commands::ShutdownCommand" shape="rect" coords="339,504,668,528"/>
-<area href="classgoliath_1_1commands_1_1SynchronizeBatteryVoltageCommand.html" alt="goliath::commands::SynchronizeBatteryVoltageCommand" shape="rect" coords="339,560,668,584"/>
-<area href="classgoliath_1_1commands_1_1SynchronizeCommandsCommand.html" alt="goliath::commands::SynchronizeCommandsCommand" shape="rect" coords="339,616,668,640"/>
-<area href="classgoliath_1_1commands_1_1SynchronizeSystemStatusCommand.html" alt="goliath::commands::SynchronizeSystemStatusCommand" shape="rect" coords="339,672,668,696"/>
-<area href="classgoliath_1_1commands_1_1TransportRebuildCommand.html" alt="goliath::commands::TransportRebuildCommand" shape="rect" coords="339,728,668,752"/>
-<area href="classgoliath_1_1commands_1_1WunderhornCommand.html" title="Command that follows a line and pauses on a coled area in the center. " alt="goliath::commands::WunderhornCommand" shape="rect" coords="339,784,668,808"/>
+<area href="classgoliath_1_1commands_1_1SetWingPositionCommand.html" alt="goliath::commands::SetWingPositionCommand" shape="rect" coords="339,504,668,528"/>
+<area href="classgoliath_1_1commands_1_1ShutdownCommand.html" alt="goliath::commands::ShutdownCommand" shape="rect" coords="339,560,668,584"/>
+<area href="classgoliath_1_1commands_1_1SynchronizeBatteryVoltageCommand.html" alt="goliath::commands::SynchronizeBatteryVoltageCommand" shape="rect" coords="339,616,668,640"/>
+<area href="classgoliath_1_1commands_1_1SynchronizeCommandsCommand.html" alt="goliath::commands::SynchronizeCommandsCommand" shape="rect" coords="339,672,668,696"/>
+<area href="classgoliath_1_1commands_1_1SynchronizeSystemStatusCommand.html" alt="goliath::commands::SynchronizeSystemStatusCommand" shape="rect" coords="339,728,668,752"/>
+<area href="classgoliath_1_1commands_1_1TransportRebuildCommand.html" alt="goliath::commands::TransportRebuildCommand" shape="rect" coords="339,784,668,808"/>
+<area href="classgoliath_1_1commands_1_1WunderhornCommand.html" title="Command that follows a line and pauses on a coled area in the center. " alt="goliath::commands::WunderhornCommand" shape="rect" coords="339,840,668,864"/>
 <area href="classgoliath_1_1commands_1_1MoveCommand.html" alt="goliath::commands::MoveCommand" shape="rect" coords="678,112,1007,136"/>
 </map>
  </div></div>
@@ -129,14 +130,13 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 <tr class="memitem:a74ffadb13c20ccc0d6cbadf975fb6a85"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1commands_1_1Command.html#a74ffadb13c20ccc0d6cbadf975fb6a85">canStart</a> (const <a class="el" href="classgoliath_1_1handles_1_1HandleMap.html">handles::HandleMap</a> &amp;handles) const</td></tr>
 <tr class="memdesc:a74ffadb13c20ccc0d6cbadf975fb6a85"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a command can start by checking all the handles it occupies.  <a href="#a74ffadb13c20ccc0d6cbadf975fb6a85">More...</a><br /></td></tr>
 <tr class="separator:a74ffadb13c20ccc0d6cbadf975fb6a85"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a01acaa0c9b5f507e6cddcf5780496d7d"><td class="memItemLeft" align="right" valign="top"><a id="a01acaa0c9b5f507e6cddcf5780496d7d"></a>
-virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>canRunParallel</b> () const</td></tr>
+<tr class="memitem:a01acaa0c9b5f507e6cddcf5780496d7d"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1commands_1_1Command.html#a01acaa0c9b5f507e6cddcf5780496d7d">canRunParallel</a> () const</td></tr>
 <tr class="separator:a01acaa0c9b5f507e6cddcf5780496d7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:a667d1fa5ed91aff4a6600fb41bac9273"><td class="memItemLeft" align="right" valign="top"><a id="a667d1fa5ed91aff4a6600fb41bac9273"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>run</b> (<a class="el" href="classgoliath_1_1handles_1_1HandleMap.html">handles::HandleMap</a> &amp;handles, const proto::CommandMessage &amp;message)=0</td></tr>
+<tr class="memitem:a667d1fa5ed91aff4a6600fb41bac9273"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1commands_1_1Command.html#a667d1fa5ed91aff4a6600fb41bac9273">run</a> (<a class="el" href="classgoliath_1_1handles_1_1HandleMap.html">handles::HandleMap</a> &amp;handles, const proto::CommandMessage &amp;message)=0</td></tr>
+<tr class="memdesc:a667d1fa5ed91aff4a6600fb41bac9273"><td class="mdescLeft">&#160;</td><td class="mdescRight">execute this command with a set of locked handles and the command message containing the parameters.  <a href="#a667d1fa5ed91aff4a6600fb41bac9273">More...</a><br /></td></tr>
 <tr class="separator:a667d1fa5ed91aff4a6600fb41bac9273"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
@@ -149,6 +149,34 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="classgoliath_1_1commands_1_1Command.html" title="Command base class. ">Command</a> base class. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a01acaa0c9b5f507e6cddcf5780496d7d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a01acaa0c9b5f507e6cddcf5780496d7d">&#9670;&nbsp;</a></span>canRunParallel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Command::canRunParallel </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Overriden by a child class. Should return true of a command can run in parallel </p><dl class="section return"><dt>Returns</dt><dd>true if this command can run in parallel </dd></dl>
+
+<p>Reimplemented in <a class="el" href="classgoliath_1_1commands_1_1QueueCommand.html#a30fa1d001862d60f54df4d09279b9920">goliath::commands::QueueCommand</a>.</p>
+
+</div>
+</div>
 <a id="a74ffadb13c20ccc0d6cbadf975fb6a85"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a74ffadb13c20ccc0d6cbadf975fb6a85">&#9670;&nbsp;</a></span>canStart()</h2>
 
@@ -276,6 +304,53 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 
 <p>Method to check wether a command is already interrupted. </p>
 <dl class="section return"><dt>Returns</dt><dd>The value of interrupted </dd></dl>
+
+</div>
+</div>
+<a id="a667d1fa5ed91aff4a6600fb41bac9273"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a667d1fa5ed91aff4a6600fb41bac9273">&#9670;&nbsp;</a></span>run()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void goliath::commands::Command::run </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classgoliath_1_1handles_1_1HandleMap.html">handles::HandleMap</a> &amp;&#160;</td>
+          <td class="paramname"><em>handles</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const proto::CommandMessage &amp;&#160;</td>
+          <td class="paramname"><em>message</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>execute this command with a set of locked handles and the command message containing the parameters. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">handles</td><td>set of locked handles. All handles that are in <a class="el" href="classgoliath_1_1commands_1_1Command.html#ad3dff4d11b544719909998c021201349" title="Handle getter. ">getRequiredHandles()</a> should be in here </td></tr>
+    <tr><td class="paramname">message</td><td>parameters to the command </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implemented in <a class="el" href="classgoliath_1_1commands_1_1QueueCommand.html#ae4889a22b03c1824e484d28edf0bf648">goliath::commands::QueueCommand</a>, and <a class="el" href="classgoliath_1_1commands_1_1BasicCommand.html#aea8b3a21eefb67a86e4ddc0631e4ffde">goliath::commands::BasicCommand</a>.</p>
 
 </div>
 </div>

@@ -82,8 +82,8 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a8bce0e16b2e07cd8798359b756dcaffd"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1repositories_1_1Watcher.html#a8bce0e16b2e07cd8798359b756dcaffd">Watcher</a> (int pollingRate, <a class="el" href="classgoliath_1_1foundation_1_1PublisherService.html">foundation::PublisherService</a> &amp;publisher)</td></tr>
-<tr class="separator:a8bce0e16b2e07cd8798359b756dcaffd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea807da77ba78df8c61763d4f6d72520"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1repositories_1_1Watcher.html#aea807da77ba78df8c61763d4f6d72520">Watcher</a> (int polling_rate, <a class="el" href="classgoliath_1_1foundation_1_1PublisherService.html">foundation::PublisherService</a> &amp;publisher, std::shared_ptr&lt; <a class="el" href="classgoliath_1_1commands_1_1CommandExecutor.html">commands::CommandExecutor</a> &gt; &amp;executor)</td></tr>
+<tr class="separator:aea807da77ba78df8c61763d4f6d72520"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a84db4a7c7f7c7d3a62104713920678c8"><td class="memItemLeft" align="right" valign="top"><a id="a84db4a7c7f7c7d3a62104713920678c8"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1repositories_1_1Watcher.html#a84db4a7c7f7c7d3a62104713920678c8">~Watcher</a> ()</td></tr>
 <tr class="memdesc:a84db4a7c7f7c7d3a62104713920678c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructs the watcher and calls <a class="el" href="classgoliath_1_1repositories_1_1Watcher.html#afd174ac54c2b26148217d3e2593d3cfc" title="Stops the watcher thread. ">stop()</a> <br /></td></tr>
@@ -111,8 +111,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>watches multiple repositories for changes and sends them to the publisher service </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a8bce0e16b2e07cd8798359b756dcaffd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8bce0e16b2e07cd8798359b756dcaffd">&#9670;&nbsp;</a></span>Watcher()</h2>
+<a id="aea807da77ba78df8c61763d4f6d72520"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea807da77ba78df8c61763d4f6d72520">&#9670;&nbsp;</a></span>Watcher()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -121,13 +121,19 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
           <td class="memname">Watcher::Watcher </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>pollingRate</em>, </td>
+          <td class="paramname"><em>polling_rate</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="classgoliath_1_1foundation_1_1PublisherService.html">foundation::PublisherService</a> &amp;&#160;</td>
-          <td class="paramname"><em>publisher</em>&#160;</td>
+          <td class="paramname"><em>publisher</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classgoliath_1_1commands_1_1CommandExecutor.html">commands::CommandExecutor</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>executor</em>&#160;</td>
         </tr>
         <tr>
           <td></td>

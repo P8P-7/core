@@ -2,6 +2,7 @@ var searchData=
 [
   ['dance_5fcommand_2eh',['dance_command.h',['../dance__command_8h.html',1,'']]],
   ['dancecommand',['DanceCommand',['../classgoliath_1_1commands_1_1DanceCommand.html',1,'goliath::commands']]],
+  ['deadzonetransitioncontroller',['DeadzoneTransitionController',['../classgoliath_1_1servo_1_1DeadzoneTransitionController.html',1,'goliath::servo']]],
   ['default_5fcanny_5fkernel',['DEFAULT_CANNY_KERNEL',['../namespacegoliath_1_1vision.html#a385b4117f013bea50419e57df6c980f5',1,'goliath::vision']]],
   ['default_5fline_5fdetector_5frho',['DEFAULT_LINE_DETECTOR_RHO',['../namespacegoliath_1_1vision.html#a2839bc81a7b20238c5ce7b6f6dbb0864',1,'goliath::vision']]],
   ['default_5fline_5fdetector_5ftheta',['DEFAULT_LINE_DETECTOR_THETA',['../namespacegoliath_1_1vision.html#ab54eb23513b99eeccf10c04ea285f0cb',1,'goliath::vision']]],
