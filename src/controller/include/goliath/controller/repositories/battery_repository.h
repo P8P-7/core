@@ -25,6 +25,16 @@ namespace goliath::repositories {
         */
         int getBatteryVoltage() const;
 
+        /**
+        * @return Battery min voltage
+        */
+        int getBatteryMinVoltage() const;
+
+        /**
+        * @return Battery max voltage
+        */
+        int getBatteryMaxVoltage() const;
+
         void setBatteryVoltage(int voltage);
 
         /**
@@ -35,7 +45,7 @@ namespace goliath::repositories {
     private:
         int voltage;
         const int minVoltage = 105;
-        const int maxVoltage = 125;
+        const int maxVoltage = 126;
     };
 }
 
