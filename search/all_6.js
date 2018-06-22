@@ -6,6 +6,8 @@ var searchData=
   ['exceptions',['exceptions',['../namespacegoliath_1_1exceptions.html',1,'goliath']]],
   ['get',['get',['../classgoliath_1_1transitions_1_1Phase.html#a11f9be7a1d0acec9bff94f336b5ac42c',1,'goliath::transitions::Phase']]],
   ['getbatterylevel',['getBatteryLevel',['../classgoliath_1_1repositories_1_1BatteryRepository.html#a6c4c5412e197fb11092b4e1c8bcbbe0e',1,'goliath::repositories::BatteryRepository']]],
+  ['getbatterymaxvoltage',['getBatteryMaxVoltage',['../classgoliath_1_1repositories_1_1BatteryRepository.html#a12fd7e7fbb18ed5abebba21456622ef2',1,'goliath::repositories::BatteryRepository']]],
+  ['getbatteryminvoltage',['getBatteryMinVoltage',['../classgoliath_1_1repositories_1_1BatteryRepository.html#aff896c18824d91ceb208960d28da7f36',1,'goliath::repositories::BatteryRepository']]],
   ['getbatteryvoltage',['getBatteryVoltage',['../classgoliath_1_1repositories_1_1BatteryRepository.html#a7446f142ec2cc650afe28ae14bcf598e',1,'goliath::repositories::BatteryRepository']]],
   ['getcolor',['getColor',['../namespacegoliath_1_1util.html#a5b75618ebec9d2df7cefdf27df41dcea',1,'goliath::util']]],
   ['getdevice',['getDevice',['../classgoliath_1_1handles_1_1ServoHandle.html#ac713ee5b49cbc1db0d7f262238efe70a',1,'goliath::handles::ServoHandle::getDevice()'],['../classgoliath_1_1handles_1_1WebcamHandle.html#a4747a23d8633078f66161ad21ea8f53c',1,'goliath::handles::WebcamHandle::getDevice()']]],
