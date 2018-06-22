@@ -5,6 +5,7 @@ set(RELATIVE_SOURCES
         wings/wings/commandbuilder/wing_command_builder.cpp
         wings/wings/wing_controller.cpp
         wings/wing_state_repository.cpp
+        wings/wings/deadzone_transition.cpp
         wings/wing_state.cpp
         )
 

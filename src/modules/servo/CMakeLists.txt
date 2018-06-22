@@ -5,7 +5,7 @@ add_subdirectory(src)
 
 add_definitions(-DBOOST_LOG_DYN_LINK)
 
-add_library(${PROJECT_NAME} ${SOURCES} ${INCLUDES} include/goliath/servo/wings/wing_command.h src/wings/deadzone_transition.cpp src/wings/deadzone_transition.h)
+add_library(${PROJECT_NAME} ${SOURCES} ${INCLUDES})
 
 target_include_directories(${PROJECT_NAME}
         PUBLIC
