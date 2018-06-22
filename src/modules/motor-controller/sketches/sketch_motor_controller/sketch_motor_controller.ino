@@ -64,7 +64,6 @@ struct Motor {
     bool isStalling = false;
     Transition speedTransition;
 
-    volatile long timeOfDirectionChange = 0;
     volatile MotorDirection targetDirection = MotorDirection::FORWARDS;
     volatile byte targetSpeed = 0;
 
@@ -79,7 +78,7 @@ struct Motor {
     }
 
     bool isTransitioningDirection() {
-        return timeOfDirectionChange > 0;
+        return isStalling;
     }
 
     bool hasChangedSpeed() {
@@ -152,7 +151,7 @@ void loop() {
             continue;
         }
 
-        if (m.isStalling && !m.hasChangedDirection()) {
+        if (m.isTransitioningDirection() && !m.hasChangedDirection()) {
             m.isStalling = false;
         }
 
@@ -219,7 +218,7 @@ void setupMotors() {
     }
 }
 
-void setDirection(const Motor& motor, const MotorDirection& direction) {
+void setDirection(const Motor &motor, const MotorDirection &direction) {
     bool forwards = HIGH;
     bool backwards = HIGH;
 

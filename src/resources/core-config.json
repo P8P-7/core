@@ -1,85 +1,85 @@
 {
- "zmq": {
-  "subscriber_port": 5555,
-  "publisher_port": 5556
- },
- "serial": {
-  "port": "/dev/serial0",
-  "baudrate": "1000000"
- },
- "gpio": {
-  "pin": 18
- },
- "vision": {
-  "webcam": 0
- },
- "servos": {
-  "wings": [
-   {
-    "position": "LEFT_FRONT",
-    "id": "1",
-    "mirror": false,
-    "number_of_sectors": 0
-   },
-   {
-    "position": "LEFT_BACK",
-    "id": "2",
-    "mirror": false,
-    "number_of_sectors": 0
-   },
-   {
-    "position": "RIGHT_FRONT",
-    "id": "3",
-    "mirror": false,
-    "number_of_sectors": 0
-   },
-   {
-    "position": "RIGHT_BACK",
-    "id": "4",
-    "mirror": false,
-    "number_of_sectors": 0
-   }
-  ]
- },
- "i2c": {
-  "device": "/dev/i2c-1"
- },
- "motor_controller": {
-  "address": "0x30",
-  "motors": [
-   {
-    "position": "LEFT_FRONT",
-    "id": "3"
-   },
-   {
-    "position": "LEFT_BACK",
-    "id": "1"
-   },
-   {
-    "position": "RIGHT_FRONT",
-    "id": "0"
-   },
-   {
-    "position": "RIGHT_BACK",
-    "id": "2"
-   }
-  ]
- },
- "emotions": {
-  "default_emotion": "NEUTRAL"
- },
- "command_executor": {
-  "number_of_executors": 4
- },
- "watcher": {
-  "polling_rate": 250
- },
- "logging": {
-  "severity_level": "TRACE",
-  "history_size": 50
- },
- "enter": {
-  "direction": "FORWARDS",
-  "speed": 25
- }
+  "zmq": {
+    "subscriber_port": 5555,
+    "publisher_port": 5556
+  },
+  "serial": {
+    "port": "/dev/serial0",
+    "baudrate": "1000000"
+  },
+  "gpio": {
+    "pin": 18
+  },
+  "vision": {
+    "webcam": 0
+  },
+  "servos": {
+    "wings": [
+      {
+        "position": "LEFT_FRONT",
+        "id": "1",
+        "mirror": false,
+        "number_of_sectors": 4
+      },
+      {
+        "position": "LEFT_BACK",
+        "id": "2",
+        "mirror": true,
+        "number_of_sectors": 4
+      },
+      {
+        "position": "RIGHT_FRONT",
+        "id": "3",
+        "mirror": true,
+        "number_of_sectors": 4
+      },
+      {
+        "position": "RIGHT_BACK",
+        "id": "4",
+        "mirror": false,
+        "number_of_sectors": 4
+      }
+    ]
+  },
+  "i2c": {
+    "device": "/dev/i2c-1"
+  },
+  "motor_controller": {
+    "address": "0x30",
+    "motors": [
+      {
+        "position": "LEFT_FRONT",
+        "id": "2"
+      },
+      {
+        "position": "LEFT_BACK",
+        "id": "1"
+      },
+      {
+        "position": "RIGHT_FRONT",
+        "id": "0"
+      },
+      {
+        "position": "RIGHT_BACK",
+        "id": "3"
+      }
+    ]
+  },
+  "emotions": {
+    "default_emotion": "NEUTRAL"
+  },
+  "command_executor": {
+    "number_of_executors": 4
+  },
+  "watcher": {
+    "polling_rate": 250
+  },
+  "logging": {
+    "severity_level": "TRACE",
+    "history_size": 50
+  },
+  "enter": {
+    "direction": "FORWARDS",
+    "speed": 25
+  }
 }

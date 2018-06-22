@@ -9,6 +9,6 @@ ShutdownCommand::ShutdownCommand(const size_t &id, std::shared_ptr<boost::asio::
 
 void ShutdownCommand::execute(handles::HandleMap &handles, const proto::CommandMessage &message) {
     ioService->stop();
-    system("shutdown now > /tmp/shutdown.log&");
-    BOOST_LOG_TRIVIAL(fatal) << "System is shutting down.";
+    int error = system("shutdown now > /tmp/shutdown.log&");
+    BOOST_LOG_TRIVIAL(fatal) << "System is shutting down (" << error << ")";
 }

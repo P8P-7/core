@@ -9,7 +9,7 @@ QueueCommand::QueueCommand(const size_t &id, const std::vector<size_t> &required
         : Command(id, requiredHandles), queue{}, isWorking(true), worker(&QueueCommand::work, this) { }
 
 QueueCommand::~QueueCommand() {
-    std::unique_lock<std::mutex> lock(mutex);
+    std::unique_lock<std::mutex> lock(queueMutex);
 
     if (!isWorking) {
         return;
@@ -22,7 +22,7 @@ QueueCommand::~QueueCommand() {
 }
 
 void QueueCommand::run(goliath::handles::HandleMap &handles, const proto::CommandMessage &message) {
-    std::lock_guard<std::mutex> lock(mutex);
+    std::lock_guard<std::mutex> lock(queueMutex);
 
     if (!isWorking) {
         BOOST_LOG_TRIVIAL(warning) << "Worker isn't working, please restart";
@@ -37,7 +37,7 @@ void QueueCommand::run(goliath::handles::HandleMap &handles, const proto::Comman
 }
 
 void QueueCommand::work() {
-    std::unique_lock<std::mutex> lock(mutex);
+    std::unique_lock<std::mutex> lock(queueMutex);
 
     while (isWorking) {
         BOOST_LOG_TRIVIAL(debug) << "Worker has started working... waiting for messages";
@@ -53,6 +53,7 @@ void QueueCommand::work() {
             while (!queue.empty()) {
                 queue.pop();
             }
+
             break;
         }
 

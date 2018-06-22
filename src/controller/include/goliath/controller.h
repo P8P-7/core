@@ -28,6 +28,7 @@
 #include "controller/commands/synchronize_battery_voltage_command.h"
 #include "controller/commands/transport_rebuild_command.h"
 #include "controller/commands/shutdown_command.h"
+#include "controller/commands/set_wing_position_command.h"
 #include "controller/command_executor.h"
 #include "controller/command_item.h"
 #include "controller/command_map.h"

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../watcher.h"
+
 #include <goliath/zmq-messaging.h>
 #include <boost/asio/io_service.hpp>
 

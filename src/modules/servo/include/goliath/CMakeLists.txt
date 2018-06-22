@@ -1,6 +1,11 @@
 set(RELATIVE_INCLUDES
-        vision.h
+        servo/repositories/wing_state_repository.h
+        servo/repositories/wing_state.h
+        servo/wings/wing_controller.h
         servo/servo_handle.h
+        servo/wing_handle.h
+        servo/servo_mode.h
+        servo/utilities.h
         )
 
 prepend(ASOLUTE_INCLUDES ${CMAKE_CURRENT_SOURCE_DIR} ${RELATIVE_INCLUDES})

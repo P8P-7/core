@@ -11,4 +11,6 @@ add_goliath_test(led-control goliath-led-strip-controller-module "" test_led_con
 add_goliath_test(config goliath-proto "" test_config.cpp)
 target_compile_definitions(goliath-config-test PRIVATE GOLIATH_TEST_CONFIG_OUTPUT="${CMAKE_SOURCE_DIR}/src/resources/core-config.json")
 
+add_goliath_test(wing-controller "goliath-gpio-module;goliath-servo-module" "" test_wing_controller.cpp)
+
 add_definitions(-DBOOST_LOG_DYN_LINK)

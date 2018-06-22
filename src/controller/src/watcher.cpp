@@ -6,10 +6,21 @@
 using namespace goliath::repositories;
 using namespace goliath;
 
+Watcher::Watcher(int polling_rate, foundation::PublisherService &publisher,
+                 std::shared_ptr<commands::CommandExecutor> &executor)
+        : pollingRate(polling_rate), publisher(publisher), running(false), commandExecutor(executor) {
+}
+
+Watcher::~Watcher() {
+    if (running) {
+        stop();
+    }
+}
+
 void Watcher::synchronize() {
     proto::MessageCarrier carrier;
     proto::SynchronizeMessage *message = new proto::SynchronizeMessage;
-    for (auto repo : repositories) {
+    for (const auto &repo : repositories) {
         if (!repo->isInvalidated()) {
             continue;
         }
@@ -25,13 +36,13 @@ void Watcher::synchronize() {
 }
 
 void Watcher::invalidateAll() {
-    for (auto repo : repositories) {
+    for (const auto &repo : repositories) {
         repo->invalidate();
     }
 }
 
 bool Watcher::shouldSynchronize() const {
-    for (auto repo : repositories) {
+    for (const auto &repo : repositories) {
         if (repo->isInvalidated()) {
             return true;
         }
@@ -46,16 +57,6 @@ void Watcher::watch(std::shared_ptr<Repository> repo) {
 
 std::vector<std::shared_ptr<Repository>> Watcher::getRepositories() {
     return repositories;
-}
-
-Watcher::Watcher(int polling_rate, foundation::PublisherService &publisher)
-    : pollingRate(polling_rate), publisher(publisher), running(false) {
-}
-
-Watcher::~Watcher() {
-    if (running) {
-        stop();
-    }
 }
 
 void Watcher::start() {
@@ -84,6 +85,15 @@ void Watcher::run() {
         if (shouldSynchronize()) {
             BOOST_LOG_TRIVIAL(debug) << "Broadcasting synchronize message";
             synchronize();
+        }
+
+        for (auto &repo : getRepositories()) {
+            if (dynamic_cast<repositories::PollingRepository *>(repo.get())) {
+                auto pollingRepository = std::dynamic_pointer_cast<repositories::PollingRepository>(repo);
+                for (auto message : pollingRepository->getCommandMessages()) {
+                    commandExecutor->run(pollingRepository->getPollingCommandId(), message);
+                }
+            }
         }
     }
 }

@@ -22,11 +22,13 @@ set(RELATIVE_INCLUDES
         controller/commands/transport_rebuild_command.h
         controller/commands/wunderhorn_command.h
         controller/commands/shutdown_command.h
+        controller/commands/set_wing_position_command.h
         controller/command_executor.h
         controller/command_item.h
         controller/command_map.h
         controller/handle_map.h
         controller/handles.h
+        controller/watcher.h
         )
 
 prepend(ABSOLUTE_INCLUDES ${CMAKE_CURRENT_SOURCE_DIR} ${RELATIVE_INCLUDES})
