@@ -2,7 +2,7 @@
 
 #include <goliath/servo/wings/wing_controller.h>
 #include <numeric>
-#include "deadzone_transition.h"
+#include "../deadzone_transition.h"
 
 using namespace goliath;
 using namespace goliath::servo;
