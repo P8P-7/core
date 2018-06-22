@@ -94,6 +94,7 @@ void commands::WunderhornCommand::follow_line(vision::FollowLineDetector &follow
         followLineDetector.update(new_frame);
     }
 
+    BOOST_LOG_TRIVIAL(debug) << "setting speed to 0";
     move(0, 0, motorController);
 }
 
@@ -110,11 +111,16 @@ commands::WunderhornCommand::move(double direction, int speed, motor_controller:
         rightSpeed -= rightSpeed * (1 - direction);
     }
 
+    motor_controller::MotorDirection gear = motor_controller::MotorDirection::FORWARDS;
+    if(speed == 0){
+        gear = motor_controller::MotorDirection::LOCKED;
+    }
+
     for (size_t motor : leftMotors) {
         auto handle = handleMap.get<handles::MotorHandle>(motor);
         motor_controller::MotorStatus motorCommand{
                 .id = handle->getMotorId(),
-                .direction = motor_controller::MotorDirection::FORWARDS,
+                .direction = gear,
                 .speed = static_cast<motor_controller::MotorSpeed>(leftSpeed)
         };
 
@@ -125,7 +131,7 @@ commands::WunderhornCommand::move(double direction, int speed, motor_controller:
         auto handle = handleMap.get<handles::MotorHandle>(motor);
         motor_controller::MotorStatus motorCommand{
                 .id = handle->getMotorId(),
-                .direction = motor_controller::MotorDirection::FORWARDS,
+                .direction = gear,
                 .speed = static_cast<motor_controller::MotorSpeed>(rightSpeed)
         };
 
