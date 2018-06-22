@@ -15,28 +15,17 @@ commands::LineDanceCommand::LineDanceCommand(const size_t &id)
                             // ALl wings
                             HANDLE_LEFT_FRONT_WING_SERVO, HANDLE_LEFT_BACK_WING_SERVO,
                             HANDLE_RIGHT_FRONT_WING_SERVO, HANDLE_RIGHT_BACK_WING_SERVO,
-                            // I²C bus for led and motor
+                            // I²C bus for led
                             HANDLE_I2C_BUS,
-                            // Handle for the motor controller
-                            HANDLE_MOTOR_CONTROLLER,
                             // Handle for the led controller
-                            HANDLE_LED_CONTROLLER,
-                            // All motors
-                            HANDLE_LEFT_FRONT_MOTOR, HANDLE_LEFT_BACK_MOTOR,
-                            HANDLE_RIGHT_FRONT_MOTOR, HANDLE_RIGHT_BACK_MOTOR}) {
+                            HANDLE_LED_CONTROLLER}) {
 }
 
 void commands::LineDanceCommand::execute(handles::HandleMap &handles, const proto::CommandMessage &message) {
     BOOST_LOG_TRIVIAL(info) << "Execution of line dance command has started";
 
     // Get GPIO device
-    std::shared_ptr<gpio::GPIO> gpioDevice = std::static_pointer_cast<GPIOHandle>(
-            handles[HANDLE_GPIO_PIN_5])->getDevice();
-
-    // Get motor controller
-    i2c::I2cSlave motorControllerSlave(*handles.get<handles::I2cBusHandle>(HANDLE_I2C_BUS),
-                                       *handles.get<handles::I2cSlaveHandle>(HANDLE_MOTOR_CONTROLLER));
-    motor_controller::MotorController motorController(motorControllerSlave);
+    std::shared_ptr<gpio::GPIO> gpioDevice = handles.get<GPIOHandle>(HANDLE_GPIO_PIN_5)->getDevice();
 
     // Get led strip controller
     i2c::I2cSlave ledControllerSlave(*handles.get<handles::I2cBusHandle>(HANDLE_I2C_BUS),
