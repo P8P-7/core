@@ -12,15 +12,20 @@ void SynchronizeBatteryVoltageCommand::execute(handles::HandleMap &handles, cons
 
     std::vector<size_t> requiredHandles = getRequiredHandles();
 
-    int voltage = 0;
+    double voltageTotal = 0;
     int count = 0;
 
     for (auto const &servoHandle : requiredHandles) {
-        voltage = getVoltage(std::static_pointer_cast<ServoHandle>(handles[servoHandle]));
-        count++;
+        int voltage = getVoltage(handles.get<ServoHandle>(servoHandle));
+        if(voltage >= batteryRepository->getBatteryMinVoltage() - 1 && voltage <= batteryRepository->getBatteryMaxVoltage()){
+            voltageTotal += voltage;
+            count++;
+        }
     }
 
-    batteryRepository->setBatteryVoltage(voltage / count);
+    if(count > 0){
+        batteryRepository->setBatteryVoltage(static_cast<int>(voltageTotal / count));
+    }
 }
 
 int SynchronizeBatteryVoltageCommand::getVoltage(const std::shared_ptr<ServoHandle> servoHandle) {
