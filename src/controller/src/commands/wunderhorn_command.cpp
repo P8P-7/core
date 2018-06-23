@@ -28,13 +28,18 @@ void commands::WunderhornCommand::execute(HandleMap &handles, const proto::Comma
                                   *handles.get<handles::I2cSlaveHandle>(HANDLE_MOTOR_CONTROLLER));
     motor_controller::MotorController motorController(controllerSlave);
 
-    BOOST_LOG_TRIVIAL(debug) << "following line...";
+    BOOST_LOG_TRIVIAL(trace) << "following line...";
     follow_line(followLineDetector, webcam, motorController);
-    BOOST_LOG_TRIVIAL(debug) << "stopped following line";
+    BOOST_LOG_TRIVIAL(trace) << "stopped following line";
 
     vision::ColorRegionDetector colorRegionDetector(webcam.getFrame(), 0, 0, 0, 0);
+
+    BOOST_LOG_TRIVIAL(trace) << "driving into red zone";
+    move(0, 128, motorController);
+
     while (true) {
         if (isInterrupted()) {
+            move(0, 0, motorController);
             return;
         }
 
@@ -45,6 +50,7 @@ void commands::WunderhornCommand::execute(HandleMap &handles, const proto::Comma
         } while (detected == -1);
 
         if (detected == 1) {
+            move(0, 0, motorController);
             break;
         }
 
@@ -52,12 +58,12 @@ void commands::WunderhornCommand::execute(HandleMap &handles, const proto::Comma
         followLineDetector.update(new_frame);
     }
 
-    BOOST_LOG_TRIVIAL(debug) << "waiting 30 seconds";
+    BOOST_LOG_TRIVIAL(trace) << "waiting 30 seconds";
     std::this_thread::sleep_for(std::chrono::seconds(30));
 
-    BOOST_LOG_TRIVIAL(debug) << "following line...";
+    BOOST_LOG_TRIVIAL(trace) << "following line...";
     follow_line(followLineDetector, webcam, motorController);
-    BOOST_LOG_TRIVIAL(debug) << "stopped following line";
+    BOOST_LOG_TRIVIAL(trace) << "stopped following line";
 
     handles[HANDLE_CAM]->unlock();
 }
@@ -70,6 +76,7 @@ void commands::WunderhornCommand::follow_line(vision::FollowLineDetector &follow
 
     while (noLinesCount < 20) {
         if (isInterrupted()) {
+            move(0, 0, motorController);
             return;
         }
 
@@ -83,7 +90,7 @@ void commands::WunderhornCommand::follow_line(vision::FollowLineDetector &follow
         } else if (lines[0][0] == vision::FollowLineDirection::RIGHT) {
             direction = lines[0][1];
         }
-        BOOST_LOG_TRIVIAL(debug) << "direction set to " << direction;
+        BOOST_LOG_TRIVIAL(trace) << "direction set to " << direction;
 
         if (direction != lastDirection) {
             move(direction, 128, motorController);
@@ -94,7 +101,7 @@ void commands::WunderhornCommand::follow_line(vision::FollowLineDetector &follow
         followLineDetector.update(new_frame);
     }
 
-    BOOST_LOG_TRIVIAL(debug) << "setting speed to 0";
+    BOOST_LOG_TRIVIAL(trace) << "setting speed to 0";
     move(0, 0, motorController);
 }
 
