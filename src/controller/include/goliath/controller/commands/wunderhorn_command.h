@@ -27,6 +27,8 @@ namespace goliath::commands {
     private:
         handles::HandleMap handleMap;
 
+        vision::RoiProcessor roiProcessor;
+
         void execute(handles::HandleMap &handles, const proto::CommandMessage &message) override;
         /**
          * @brief Follows a straight line until it stops

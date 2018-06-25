@@ -16,13 +16,13 @@ const std::vector<proto::commands::MotorCommand_Motor> rightMotors{proto::comman
 commands::WunderhornCommand::WunderhornCommand(const size_t &id)
         : BasicCommand(id, {HANDLE_CAM, HANDLE_I2C_BUS, HANDLE_MOTOR_CONTROLLER,
                             HANDLE_LEFT_FRONT_MOTOR, HANDLE_LEFT_BACK_MOTOR,
-                            HANDLE_RIGHT_FRONT_MOTOR, HANDLE_RIGHT_BACK_MOTOR}) {
+                            HANDLE_RIGHT_FRONT_MOTOR, HANDLE_RIGHT_BACK_MOTOR}), roiProcessor(0,240,640,240) {
 }
 
 void commands::WunderhornCommand::execute(HandleMap &handles, const proto::CommandMessage &message) {
     handleMap = handles;
     vision::Webcam webcam = std::static_pointer_cast<WebcamHandle>(handles[HANDLE_CAM])->getDevice();
-    vision::FollowLineDetector followLineDetector(webcam.getFrame(), 4, 80, 20, 20, 10, 10000);
+    vision::FollowLineDetector followLineDetector(webcam.getRoiFrame(roiProcessor), 4, 80, 20, 20, 10, 10000);
 
     i2c::I2cSlave controllerSlave(*handles.get<handles::I2cBusHandle>(HANDLE_I2C_BUS),
                                   *handles.get<handles::I2cSlaveHandle>(HANDLE_MOTOR_CONTROLLER));
@@ -32,7 +32,7 @@ void commands::WunderhornCommand::execute(HandleMap &handles, const proto::Comma
     follow_line(followLineDetector, webcam, motorController);
     BOOST_LOG_TRIVIAL(trace) << "stopped following line";
 
-    vision::ColorRegionDetector colorRegionDetector(webcam.getFrame(), 0, 0, 0, 0);
+    vision::ColorRegionDetector colorRegionDetector(webcam.getRoiFrame(roiProcessor), 0, 0, 0, 0);
 
     BOOST_LOG_TRIVIAL(trace) << "driving into red zone";
     move(0, 128, motorController);
@@ -57,7 +57,7 @@ void commands::WunderhornCommand::execute(HandleMap &handles, const proto::Comma
             break;
         }
 
-        cv::Mat new_frame = webcam.getFrame();
+        cv::Mat new_frame = webcam.getRoiFrame(roiProcessor);
         followLineDetector.update(new_frame);
     }
 
@@ -120,6 +120,8 @@ commands::WunderhornCommand::move(double direction, int speed, motor_controller:
     } else if (direction > 0) {
         rightSpeed -= rightSpeed * (1 - direction);
     }
+
+    BOOST_LOG_TRIVIAL(trace) << "speed left: " << leftSpeed << "/t right: " << rightSpeed;
 
     motor_controller::MotorDirection gear = motor_controller::MotorDirection::FORWARDS;
     if (speed == 0) {
