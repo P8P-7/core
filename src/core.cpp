@@ -200,7 +200,7 @@ int main(int argc, char *argv[]) {
     gpio::GPIO gpio5(gpio::GPIO::MapPin::GPIO5, gpio::GPIO::Direction::In);
     // TODO: Fix hardcoded GPIO pin.
     handles.add<handles::GPIOHandle>(HANDLE_GPIO_PIN_5, std::make_shared<gpio::GPIO>(gpio5));
-    commands.add<commands::LineDanceCommand>(proto::CommandMessage::kLineDanceCommand);
+    commands.add<commands::LineDanceCommand>(proto::CommandMessage::kLineDanceCommand, wingStateRepository);
 
     // Part 4: Obstacle Course
     commands.add<commands::ObstacleCourseCommand>(proto::CommandMessage::kObstacleCourseCommand, wingStateRepository);
@@ -221,7 +221,7 @@ int main(int argc, char *argv[]) {
     BOOST_LOG_TRIVIAL(info) << "Starting watcher";
     watcher->start();
 
-    BOOST_LOG_TRIVIAL(info) << "Press CTR+C to stop the controller";
+    BOOST_LOG_TRIVIAL(info) << "Press CTR+C to stop the core";
 
     ioService->run();
 

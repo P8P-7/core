@@ -1,10 +1,11 @@
 #pragma once
 
+#include <goliath/servo/wings/wing_command.h>
+#include <goliath/servo/wings/wing_controller.h>
+#include <goliath/servo/repositories/wing_state_repository.h>
+
 #include "basic_command.h"
 #include "../handles.h"
-
-#include <numeric>
-#include <thread>
 
 /**
  * @file line_dance_command.h
@@ -14,11 +15,13 @@
 namespace goliath::commands {
     class LineDanceCommand : public BasicCommand {
     public:
-        explicit LineDanceCommand(const size_t &id);
+        explicit LineDanceCommand(const size_t &id, const std::shared_ptr<repositories::WingStateRepository> &repository);
 
-        void processPulse();
+        void processPulse(servo::WingController &wingController, std::vector<servo::WingCommand> commands);
 
     private:
+        std::shared_ptr<repositories::WingStateRepository> repository;
+
         std::chrono::high_resolution_clock::time_point t0;
         std::chrono::high_resolution_clock::time_point t1;
 

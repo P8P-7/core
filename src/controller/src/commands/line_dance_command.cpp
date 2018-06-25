@@ -1,7 +1,11 @@
 #include <goliath/gpio.h>
+#include <goliath/servo.h>
 #include <goliath/motor-controller.h>
 #include <goliath/controller/commands/line_dance_command.h>
 #include <goliath/led-strip-controller/led_strip_controller.h>
+
+#include <numeric>
+#include <thread>
 
 using namespace goliath;
 using namespace goliath::handles;
@@ -10,15 +14,15 @@ using namespace goliath::commands;
 // In milliseconds
 const int pollingRate = 15;
 
-commands::LineDanceCommand::LineDanceCommand(const size_t &id)
+commands::LineDanceCommand::LineDanceCommand(const size_t &id, const std::shared_ptr<repositories::WingStateRepository> &repository)
         : BasicCommand(id, {HANDLE_GPIO_PIN_5, // GPIO Pin 5 (for VU-meter)
                             // ALl wings
-                            /*HANDLE_LEFT_FRONT_WING_SERVO, HANDLE_LEFT_BACK_WING_SERVO,
-                            HANDLE_RIGHT_FRONT_WING_SERVO, HANDLE_RIGHT_BACK_WING_SERVO,*/
+                            HANDLE_LEFT_FRONT_WING_SERVO, HANDLE_LEFT_BACK_WING_SERVO,
+                            HANDLE_RIGHT_FRONT_WING_SERVO, HANDLE_RIGHT_BACK_WING_SERVO,
                             // I²C bus for led
                             /*HANDLE_I2C_BUS,*/
                             // Handle for the led controller
-                            /*HANDLE_LED_CONTROLLER*/}) {
+                            /*HANDLE_LED_CONTROLLER*/}), repository(repository) {
 }
 
 void commands::LineDanceCommand::execute(handles::HandleMap &handles, const proto::CommandMessage &message) {
@@ -29,7 +33,7 @@ void commands::LineDanceCommand::execute(handles::HandleMap &handles, const prot
 
     // Get led strip controller
     /*i2c::I2cSlave ledControllerSlave(*handles.get<handles::I2cBusHandle>(HANDLE_I2C_BUS),
-                                     *handles.get<handles::I2cSlaveHandle>(HANDLE_LED_CONTROLLER));
+                                       *handles.get<handles::I2cSlaveHandle>(HANDLE_LED_CONTROLLER));
     led_controller::LedStripController ledController(ledControllerSlave);
 
     led_controller::AllLedsMessage allLedsMessage{
@@ -37,26 +41,43 @@ void commands::LineDanceCommand::execute(handles::HandleMap &handles, const prot
             {90, 255, 0}
     };*/
 
+    servo::WingController wingController(repository);
+
+    servo::WingCommandBuilder upBuilder(handles.get<handles::WingHandle>(HANDLE_LEFT_FRONT_WING_SERVO));
+    servo::WingCommandBuilder downBuilder(handles.get<handles::WingHandle>(HANDLE_LEFT_FRONT_WING_SERVO));
+
+    servo::WingCommand leftFrontUp = upBuilder.setSpeed(511)
+            .setAngle(10)
+            .setDirection(servo::Direction::CLOCKWISE)
+            .build();
+
+    servo::WingCommand leftFrontDown = downBuilder.setSpeed(511)
+            .setAngle(0)
+            .setDirection(servo::Direction::COUNTER_CLOCKWISE)
+            .build();
+
+    wingController.execute({leftFrontDown});
+
     t0 = std::chrono::high_resolution_clock::now();
 
     while (!isInterrupted()) {
         bool pulse = gpioDevice->get() != 0;
 
         if (pulse) {
-            processPulse();
+            processPulse(wingController, {leftFrontUp, leftFrontDown});
 
             /*allLedsMessage.allLeds.value = static_cast<led_controller::Value>(pulse ? 255 : 0);
             ledController.sendCommand(allLedsMessage);*/
         }
 
-        std::this_thread::sleep_for(std::chrono::milliseconds(pollingRate + (pulse ? 100 : 0)));
+        std::this_thread::sleep_for(std::chrono::milliseconds(pollingRate));
     }
 
     BOOST_LOG_TRIVIAL(info) << "Execution of line dance command has finished";
 }
 
 
-void commands::LineDanceCommand::processPulse() {
+void commands::LineDanceCommand::processPulse(servo::WingController &wingController, std::vector<servo::WingCommand> commands) {
     // Beat amplitude trigger has been detected
     t1 = std::chrono::high_resolution_clock::now();
     history.push_back(60.0 / (std::chrono::duration_cast<std::chrono::milliseconds>(t1 - t0).count() / 1000.0));
@@ -71,6 +92,11 @@ void commands::LineDanceCommand::processPulse() {
     if (bpm >= minimumAllowedBpm && bpm <= maximumAllowedBpm) {
         runningBpm = bpm;
         BOOST_LOG_TRIVIAL(debug) << "Current BPM " << runningBpm << std::endl;
+
+        // Chain commands instead of executing them parallel
+        for (servo::WingCommand &wingCommand : commands) {
+            wingController.execute({wingCommand});
+        }
     } else {
         // Outside of bpm threshold, ignore
         history.pop_back();
