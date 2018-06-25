@@ -1,7 +1,7 @@
 #pragma once
 
 #include <google/protobuf/message.h>
-#include <goliath/foundation/repositories/repository.h>
+#include <goliath/foundation/repositories/polling_repository.h>
 
 /**
  * @file battery_repository.h
@@ -13,7 +13,7 @@ namespace goliath::repositories {
      * @class goliath::repositories::BatteryRepository
      * @brief Repository containing battery level
      */
-    class BatteryRepository : public Repository {
+    class BatteryRepository : public PollingRepository {
     public:
         /**
          * @return Battery level
@@ -36,6 +36,8 @@ namespace goliath::repositories {
         int getBatteryMaxVoltage() const;
 
         void setBatteryVoltage(int voltage);
+
+        size_t getPollingCommandId() override;
 
         /**
          * @return Protobuf
