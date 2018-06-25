@@ -27,7 +27,9 @@ namespace goliath::commands {
     private:
         handles::HandleMap handleMap;
 
-        vision::RoiProcessor roiProcessor;
+        vision::RoiProcessor lineRoi;
+
+        vision::RoiProcessor areaRoi;
 
         void execute(handles::HandleMap &handles, const proto::CommandMessage &message) override;
         /**

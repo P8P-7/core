@@ -9,21 +9,21 @@ using namespace goliath::handles;
 using namespace goliath;
 
 const std::vector<size_t> leftMotors{HANDLE_LEFT_FRONT_MOTOR,
-                                                                  HANDLE_LEFT_BACK_MOTOR};
+                                     HANDLE_LEFT_BACK_MOTOR};
 const std::vector<size_t> rightMotors{HANDLE_RIGHT_FRONT_MOTOR,
-                                                                   HANDLE_RIGHT_BACK_MOTOR};
+                                      HANDLE_RIGHT_BACK_MOTOR};
 
 commands::WunderhornCommand::WunderhornCommand(const size_t &id)
         : BasicCommand(id, {HANDLE_CAM, HANDLE_I2C_BUS, HANDLE_MOTOR_CONTROLLER,
                             HANDLE_LEFT_FRONT_MOTOR, HANDLE_LEFT_BACK_MOTOR,
-                            HANDLE_RIGHT_FRONT_MOTOR, HANDLE_RIGHT_BACK_MOTOR}), roiProcessor(cv::Mat(480, 640, CV_8U), 0, 240, 639, 239)
-                            {
+                            HANDLE_RIGHT_FRONT_MOTOR, HANDLE_RIGHT_BACK_MOTOR}),
+          lineRoi(cv::Mat(480, 640, CV_8U), 0, 240, 639, 239), areaRoi(cv::Mat(480, 640, CV_8U), 220, 400, 200, 80) {
 }
 
 void commands::WunderhornCommand::execute(HandleMap &handles, const proto::CommandMessage &message) {
     handleMap = handles;
     vision::Webcam webcam = std::static_pointer_cast<WebcamHandle>(handles[HANDLE_CAM])->getDevice();
-    vision::FollowLineDetector followLineDetector(webcam.getRoiFrame(roiProcessor), 4, 50, 10, 20, 10, 10000);
+    vision::FollowLineDetector followLineDetector(webcam.getRoiFrame(lineRoi), 4, 40, 10, 20, 10, 10000);
 
     i2c::I2cSlave controllerSlave(*handles.get<handles::I2cBusHandle>(HANDLE_I2C_BUS),
                                   *handles.get<handles::I2cSlaveHandle>(HANDLE_MOTOR_CONTROLLER));
@@ -33,10 +33,10 @@ void commands::WunderhornCommand::execute(HandleMap &handles, const proto::Comma
     follow_line(followLineDetector, webcam, motorController);
     BOOST_LOG_TRIVIAL(trace) << "stopped following line";
 
-    vision::ColorRegionDetector colorRegionDetector(webcam.getRoiFrame(roiProcessor), 0, 0, 80, 100);
+    vision::ColorRegionDetector colorRegionDetector(webcam.getRoiFrame(areaRoi), 340, 20, 70, 100);
 
     BOOST_LOG_TRIVIAL(trace) << "driving into red zone";
-    move(0, 20, motorController);
+    move(0, 50, motorController);
 
     while (true) {
         if (isInterrupted()) {
@@ -58,7 +58,7 @@ void commands::WunderhornCommand::execute(HandleMap &handles, const proto::Comma
             break;
         }
 
-        cv::Mat new_frame = webcam.getRoiFrame(roiProcessor);
+        cv::Mat new_frame = webcam.getRoiFrame(lineRoi);
         followLineDetector.update(new_frame);
     }
 
@@ -97,7 +97,7 @@ void commands::WunderhornCommand::follow_line(vision::FollowLineDetector &follow
         BOOST_LOG_TRIVIAL(trace) << "direction set to " << direction;
 
         if (direction != lastDirection) {
-            move(direction, 20, motorController);
+            move(direction, 50, motorController);
             lastDirection = direction;
         }
 
@@ -116,6 +116,10 @@ commands::WunderhornCommand::move(double direction, int speed, motor_controller:
 
     double leftSpeed = speed;
     double rightSpeed = speed;
+
+    if(std::abs(direction) > 1){
+        direction = direction / std::abs(direction);
+    }
 
     if (direction < 0) {
         leftSpeed -= leftSpeed * -direction;
