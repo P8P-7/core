@@ -33,3 +33,7 @@ int repositories::BatteryRepository::getBatteryMinVoltage() const {
 int repositories::BatteryRepository::getBatteryMaxVoltage() const {
     return maxVoltage;
 }
+
+size_t repositories::BatteryRepository::getPollingCommandId() {
+    return proto::CommandMessage::kSynchronizeBatteryVoltageCommand;
+}
