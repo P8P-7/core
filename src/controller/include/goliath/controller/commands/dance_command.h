@@ -1,5 +1,7 @@
 #pragma once
 
+#include <goliath/servo/wings/wing_command.h>
+#include <goliath/servo/wings/wing_controller.h>
 #include <goliath/servo/repositories/wing_state_repository.h>
 #include <goliath/motor-controller.h>
 
@@ -27,6 +29,10 @@ namespace goliath::commands {
         const std::uint8_t chainSawSpeedExtraFast;
 
         void execute(handles::HandleMap &handles, const proto::CommandMessage &message) override;
+
         void saw(motor_controller::MotorController &motorController, motor_controller::MotorId motor, std::uint8_t speed);
+        void moveWingOverTime(const std::chrono::milliseconds &duration, servo::WingController &wingController,
+                              std::vector<servo::WingCommand> commands);
+        motor_controller::MotorId motorHandleToId(handles::HandleMap &handles, size_t handle);
     };
 }

@@ -219,7 +219,7 @@ int main(int argc, char *argv[]) {
     BOOST_LOG_TRIVIAL(info) << "Starting watcher";
     watcher->start();
 
-    BOOST_LOG_TRIVIAL(info) << "Press CTR+C to stop the controller";
+    BOOST_LOG_TRIVIAL(info) << "Press CTR+C to stop the core";
 
     ioService->run();
 
