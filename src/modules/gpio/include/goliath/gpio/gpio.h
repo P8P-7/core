@@ -53,9 +53,13 @@ namespace goliath::gpio {
 
         explicit GPIO(MapPin x);
 
+        GPIO(MapPin x, Direction dir);
+
         GPIO(MapPin x, Direction dir, State val);
 
         void setup(MapPin x);
+
+        void setup(MapPin x, Direction dir);
 
         void setup(MapPin x, Direction dir, State val);
 

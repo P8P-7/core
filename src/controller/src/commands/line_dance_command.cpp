@@ -13,12 +13,12 @@ const int pollingRate = 15;
 commands::LineDanceCommand::LineDanceCommand(const size_t &id)
         : BasicCommand(id, {HANDLE_GPIO_PIN_5, // GPIO Pin 5 (for VU-meter)
                             // ALl wings
-                            HANDLE_LEFT_FRONT_WING_SERVO, HANDLE_LEFT_BACK_WING_SERVO,
-                            HANDLE_RIGHT_FRONT_WING_SERVO, HANDLE_RIGHT_BACK_WING_SERVO,
+                            /*HANDLE_LEFT_FRONT_WING_SERVO, HANDLE_LEFT_BACK_WING_SERVO,
+                            HANDLE_RIGHT_FRONT_WING_SERVO, HANDLE_RIGHT_BACK_WING_SERVO,*/
                             // I²C bus for led
-                            HANDLE_I2C_BUS,
+                            /*HANDLE_I2C_BUS,*/
                             // Handle for the led controller
-                            HANDLE_LED_CONTROLLER}) {
+                            /*HANDLE_LED_CONTROLLER*/}) {
 }
 
 void commands::LineDanceCommand::execute(handles::HandleMap &handles, const proto::CommandMessage &message) {
@@ -37,24 +37,46 @@ void commands::LineDanceCommand::execute(handles::HandleMap &handles, const prot
             {90, 255, 0}
     };
 
-    bool lastPulse = false;
-
-    int pulsesReceived = 0;
+    t0 = std::chrono::high_resolution_clock::now();
 
     while (!isInterrupted()) {
-        bool pulse = gpioDevice->get() != 0;
+        bool pulse = gpioDevice->get() != 1;
 
-        if (pulse != lastPulse) {
-            // Turn lights on/off for a pulse.
-            allLedsMessage.allLeds.value = static_cast<led_controller::Value>(pulse ? 255 : 0);
-            ledController.sendCommand(allLedsMessage);
+        if (pulse) {
+            processPulse();
 
-            pulsesReceived++;
-            lastPulse = pulse;
+            /*allLedsMessage.allLeds.value = static_cast<led_controller::Value>(pulse ? 255 : 0);
+            ledController.sendCommand(allLedsMessage);*/
         }
 
-        std::this_thread::sleep_for(std::chrono::milliseconds(pollingRate));
+        std::this_thread::sleep_for(std::chrono::milliseconds(pollingRate + (pulse ? 100 : 0)));
     }
 
     BOOST_LOG_TRIVIAL(info) << "Execution of line dance command has finished";
+}
+
+
+void commands::LineDanceCommand::processPulse() {
+    // Beat amplitude trigger has been detected
+    t1 = std::chrono::high_resolution_clock::now();
+    history.push_back(60.0 / (std::chrono::duration_cast<std::chrono::milliseconds>(t1 - t0).count() / 1000.0));
+
+    double bpm = std::accumulate(history.begin(), history.end(), 0.0) / history.size();
+
+    BOOST_LOG_TRIVIAL(debug) << "Pulse" << std::endl;
+
+    t0 = t1;
+
+    // Check to see that this tempo is within the limits allowed
+    if (bpm >= minimumAllowedBpm && bpm <= maximumAllowedBpm) {
+        runningBpm = bpm;
+        BOOST_LOG_TRIVIAL(debug) << "Current BPM " << runningBpm << std::endl;
+    } else {
+        // Outside of bpm threshold, ignore
+        history.pop_back();
+    }
+
+    if (history.size() >= 4) {
+        history.erase(history.begin());
+    }
 }

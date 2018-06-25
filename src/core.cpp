@@ -190,7 +190,8 @@ int main(int argc, char *argv[]) {
     commands.add<commands::DanceCommand>(proto::CommandMessage::kDanceCommand);
 
     // Part 3: "Line" Dance
-    gpio::GPIO gpio5(gpio::GPIO::MapPin::GPIO5, gpio::GPIO::Direction::Out, gpio::GPIO::State::Low);
+    gpio::GPIO gpio5(gpio::GPIO::MapPin::GPIO5, gpio::GPIO::Direction::In);
+    // TODO: Fix hardcoded GPIO pin.
     handles.add<handles::GPIOHandle>(HANDLE_GPIO_PIN_5, std::make_shared<gpio::GPIO>(gpio5));
     commands.add<commands::LineDanceCommand>(proto::CommandMessage::kLineDanceCommand);
 
