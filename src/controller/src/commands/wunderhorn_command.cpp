@@ -22,7 +22,7 @@ commands::WunderhornCommand::WunderhornCommand(const size_t &id)
 void commands::WunderhornCommand::execute(HandleMap &handles, const proto::CommandMessage &message) {
     handleMap = handles;
     vision::Webcam webcam = std::static_pointer_cast<WebcamHandle>(handles[HANDLE_CAM])->getDevice();
-    vision::FollowLineDetector followLineDetector(webcam.getRoiFrame(roiProcessor), 4, 50, 20, 20, 10, 10000);
+    vision::FollowLineDetector followLineDetector(webcam.getRoiFrame(roiProcessor), 4, 50, 0, 20, 10, 10000);
 
     i2c::I2cSlave controllerSlave(*handles.get<handles::I2cBusHandle>(HANDLE_I2C_BUS),
                                   *handles.get<handles::I2cSlaveHandle>(HANDLE_MOTOR_CONTROLLER));
