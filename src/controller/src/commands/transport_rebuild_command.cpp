@@ -8,10 +8,10 @@ commands::TransportRebuildCommand::TransportRebuildCommand(const size_t &id)
     : BasicCommand(id, {HANDLE_I2C_BUS, HANDLE_LED_CONTROLLER}) { }
 
 void commands::TransportRebuildCommand::execute(handles::HandleMap &handles, const proto::CommandMessage &message) {
-    controller::CircleMessage helmetMessage{
+    led_controller::CircleMessage helmetMessage{
         .ledStatus = {
-            .lightingType = controller::LightingType::CIRCLE,
-            .colorType = controller::ColorType::HSV
+            .lightingType = led_controller::LightingType::CIRCLE,
+            .colorType = led_controller::ColorType::HSV
         },
         .circle = {
             .startId = 0,
@@ -24,16 +24,16 @@ void commands::TransportRebuildCommand::execute(handles::HandleMap &handles, con
 
     i2c::I2cSlave ledControllerSlave(*handles.get<handles::I2cBusHandle>(HANDLE_I2C_BUS),
                                      *handles.get<handles::I2cSlaveHandle>(HANDLE_LED_CONTROLLER));
-    controller::LedStripController ledController(ledControllerSlave);
+    led_controller::LedStripController ledController(ledControllerSlave);
 
     ledController.sendCommand(helmetMessage);
 
     waitForInterrupt();
 
-    ledController.sendCommand(controller::AllLedsMessage{
+    ledController.sendCommand(led_controller::AllLedsMessage{
         .ledStatus = {
-            .lightingType = controller::LightingType::ALL,
-            .colorType = controller::ColorType::HSV
+            .lightingType = led_controller::LightingType::ALL,
+            .colorType = led_controller::ColorType::HSV
         },
         .allLeds = {
             .hue = 0,

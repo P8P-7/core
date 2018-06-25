@@ -35,12 +35,12 @@ void commands::DanceCommand::execute(HandleMap &handles, const proto::CommandMes
     using Emotion = proto::repositories::EmotionRepository;
     using Motor = proto::commands::MotorCommand;
 
-    controller::LedStatus allColor{
-        .lightingType = controller::LightingType::ALL,
-        .colorType = controller::ColorType::HSV
+    led_controller::LedStatus allColor{
+        .lightingType = led_controller::LightingType::ALL,
+        .colorType = led_controller::ColorType::HSV
     };
 
-    controller::AllLedsMessage allGreen{
+    led_controller::AllLedsMessage allGreen{
         allColor,
         .allLeds = {
             .hue = 125,
@@ -50,7 +50,7 @@ void commands::DanceCommand::execute(HandleMap &handles, const proto::CommandMes
         }
     };
 
-    controller::AllLedsMessage allRed{
+    led_controller::AllLedsMessage allRed{
         allColor,
         .allLeds = {
             .hue = 0,
@@ -60,7 +60,7 @@ void commands::DanceCommand::execute(HandleMap &handles, const proto::CommandMes
         }
     };
 
-    controller::AllLedsMessage allBlue{
+    led_controller::AllLedsMessage allBlue{
         allColor,
         .allLeds = {
             .hue = 236,
@@ -70,7 +70,7 @@ void commands::DanceCommand::execute(HandleMap &handles, const proto::CommandMes
         }
     };
 
-    controller::AllLedsMessage allYellow{
+    led_controller::AllLedsMessage allYellow{
         allColor,
         .allLeds = {
             .hue = 59,
@@ -87,7 +87,7 @@ void commands::DanceCommand::execute(HandleMap &handles, const proto::CommandMes
 
     i2c::I2cSlave ledControllerSlave(*handles.get<handles::I2cBusHandle>(HANDLE_I2C_BUS),
                                      *handles.get<handles::I2cSlaveHandle>(HANDLE_LED_CONTROLLER));
-    controller::LedStripController ledController(ledControllerSlave);
+    led_controller::LedStripController ledController(ledControllerSlave);
 
     i2c::I2cSlave controllerSlave(*handles.get<handles::I2cBusHandle>(HANDLE_I2C_BUS),
                                   *handles.get<handles::I2cSlaveHandle>(HANDLE_MOTOR_CONTROLLER));

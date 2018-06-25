@@ -13,7 +13,7 @@
 namespace goliath::commands {
     class ObstacleCourseCommand : public BasicCommand {
     public:
-        explicit ObstacleCourseCommand(const size_t &id);
+        ObstacleCourseCommand(const size_t &id, std::shared_ptr<repositories::WingStateRepository> repository);
 
     private:
         std::shared_ptr<repositories::WingStateRepository> repository;
