@@ -117,6 +117,10 @@ commands::WunderhornCommand::move(double direction, int speed, motor_controller:
     double leftSpeed = speed;
     double rightSpeed = speed;
 
+    if(std::abs(direction) > 1){
+        direction = direction / std::abs(direction);
+    }
+
     if (direction < 0) {
         leftSpeed -= leftSpeed * -direction;
         rightSpeed += rightSpeed * -direction;
