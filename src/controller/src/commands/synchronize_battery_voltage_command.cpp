@@ -24,6 +24,7 @@ void SynchronizeBatteryVoltageCommand::execute(handles::HandleMap &handles, cons
     }
 
     if(count > 0){
+        BOOST_LOG_TRIVIAL(trace) << "battery voltage: " << static_cast<int>(voltageTotal / count);
         batteryRepository->setBatteryVoltage(static_cast<int>(voltageTotal / count));
     }
 }
