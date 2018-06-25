@@ -1,5 +1,7 @@
 #pragma once
 
+#include <goliath/servo.h>
+
 #include "basic_command.h"
 #include "../handles.h"
 
@@ -14,6 +16,8 @@ namespace goliath::commands {
         explicit ObstacleCourseCommand(const size_t &id);
 
     private:
+        std::shared_ptr<repositories::WingStateRepository> repository;
+
         void execute(handles::HandleMap &handles, const proto::CommandMessage &message) override;
     };
 }

@@ -47,7 +47,7 @@ void SetWingPositionCommand::calibrate(handles::HandleMap &handles) {
     controller.calibrate(*handles.get<handles::WingHandle>(HANDLE_LEFT_BACK_WING_SERVO));
     controller.setMode(*handles.get<handles::WingHandle>(HANDLE_RIGHT_FRONT_WING_SERVO), servo::ServoMode::JOINT);
     controller.calibrate(*handles.get<handles::WingHandle>(HANDLE_RIGHT_FRONT_WING_SERVO));
-    controller.setMode(*handles.get<handles::WingHandle>(HANDLE_RIGHT_BACK_WING_SERVO), servo::ServoMode::JOINT);;
+    controller.setMode(*handles.get<handles::WingHandle>(HANDLE_RIGHT_BACK_WING_SERVO), servo::ServoMode::JOINT);
     controller.calibrate(*handles.get<handles::WingHandle>(HANDLE_RIGHT_BACK_WING_SERVO));
 }
 

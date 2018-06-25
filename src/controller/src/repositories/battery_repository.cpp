@@ -5,13 +5,16 @@
 using namespace goliath;
 
 std::unique_ptr<::google::protobuf::Message> repositories::BatteryRepository::getMessage() {
-    proto::repositories::BatteryRepository repo;
+    proto::repositories::BatteryRepository batteryRepository;
 
-    return std::make_unique<proto::repositories::BatteryRepository>(repo);
+    batteryRepository.set_level(getBatteryLevel());
+
+    return std::make_unique<proto::repositories::BatteryRepository>(batteryRepository);
 }
 
 int repositories::BatteryRepository::getBatteryLevel() const {
-    return (voltage - minVoltage) * 100 / (maxVoltage - minVoltage);
+    int level = (voltage - minVoltage) * 100 / (maxVoltage - minVoltage);
+    return std::min(100, std::max(0,level));
 }
 
 int repositories::BatteryRepository::getBatteryVoltage() const {
@@ -21,4 +24,12 @@ int repositories::BatteryRepository::getBatteryVoltage() const {
 void repositories::BatteryRepository::setBatteryVoltage(int voltage) {
     this->voltage = voltage;
     this->invalidate();
+}
+
+int repositories::BatteryRepository::getBatteryMinVoltage() const {
+    return minVoltage;
+}
+
+int repositories::BatteryRepository::getBatteryMaxVoltage() const {
+    return maxVoltage;
 }

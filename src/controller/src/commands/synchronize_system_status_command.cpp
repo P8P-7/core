@@ -17,12 +17,7 @@ void SynchronizeSystemStatusCommand::execute(handles::HandleMap &handles, const 
     std::string line;
     std::getline(tempFile, line);
 
-    if (isInterrupted()) {
-        return;
-    }
-
     double temperature = std::stod(line) / 1000.0;
 
     systemStatusRepository->setTemperature(temperature);
-    systemStatusRepository->invalidate();
 }

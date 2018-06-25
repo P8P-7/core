@@ -9,7 +9,7 @@ using namespace goliath;
 SystemStatusRepository::SystemStatusRepository()
         : temperature(0) { }
 
-double SystemStatusRepository::getTempearture() const {
+double SystemStatusRepository::getTemperature() const {
     return temperature;
 }
 
@@ -19,12 +19,14 @@ size_t SystemStatusRepository::getPollingCommandId() {
 
 void SystemStatusRepository::setTemperature(double temperature) {
     this->temperature = temperature;
+
+    invalidate();
 }
 
 std::unique_ptr<google::protobuf::Message> SystemStatusRepository::getMessage() {
     proto::repositories::SystemStatusRepository systemStatusRepository;
 
-    systemStatusRepository.set_temperature(getTempearture());
+    systemStatusRepository.set_temperature(getTemperature());
 
     return std::make_unique<proto::repositories::SystemStatusRepository>(systemStatusRepository);
 }

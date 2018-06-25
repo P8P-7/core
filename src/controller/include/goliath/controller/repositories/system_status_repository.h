@@ -22,7 +22,7 @@ namespace goliath::repositories {
         /**
          * @return Raspberry Pi CPU temperature
          */
-        double getTempearture() const;
+        double getTemperature() const;
 
         void setTemperature(double temperature);
 
