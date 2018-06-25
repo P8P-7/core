@@ -26,6 +26,8 @@ namespace goliath::transitions {
          */
         Reel(size_t ticksPerSecond, std::function<void(double)> callback);
 
+        Reel(const Reel &other);
+
         /**
          * @brief Add a phase to this reel by creating a new one
 
@@ -70,6 +72,6 @@ namespace goliath::transitions {
 
         Tick currentTick;
 
-        std::unique_ptr<std::function<void(double)>> callback;
+        std::shared_ptr<std::function<void(double)>> callback;
     };
 }

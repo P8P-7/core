@@ -6,6 +6,7 @@ set(RELATIVE_INCLUDES
         controller/repositories/log_repository.h
         controller/repositories/system_status_repository.h
         controller/watcher.h
+        controller/commands/basic_command.h
         controller/commands/command.h
         controller/commands/dance_command.h
         controller/commands/enter_command.h

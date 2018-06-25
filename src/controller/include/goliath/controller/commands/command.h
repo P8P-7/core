@@ -1,7 +1,10 @@
 #pragma once
 
-#include <CommandMessage.pb.h>
+#include <thread>
+#include <mutex>
+#include <condition_variable>
 
+#include <CommandMessage.pb.h>
 #include "../handle_map.h"
 
 /**
@@ -79,6 +82,8 @@ namespace goliath::commands {
          */
         virtual void run(handles::HandleMap &handles, const proto::CommandMessage &message) = 0;
 
+        void waitForInterrupt();
+
     private:
         const size_t id;
 
@@ -86,6 +91,12 @@ namespace goliath::commands {
          * @brief Represents whether a command is interrupted or not
          */
         std::atomic<bool> interrupted;
+
+        std::mutex mutex;
+        /**
+         * @brief Condition variable that can be waited on by infinite commands
+         */
+        std::condition_variable interrupter;
 
         /**
          * @brief Handle this command requires

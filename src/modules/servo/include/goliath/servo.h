@@ -11,6 +11,7 @@
  */
 #include "servo/repositories/wing_state_repository.h"
 #include "servo/repositories/wing_state.h"
+#include "servo/wings/commandbuilder/wing_command_builder.h"
 #include "servo/wings/wing_command.h"
 #include "servo/wings/wing_controller.h"
 #include "servo/servo_handle.h"

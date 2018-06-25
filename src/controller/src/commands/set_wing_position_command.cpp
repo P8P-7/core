@@ -9,9 +9,9 @@ using namespace goliath::commands;
 
 SetWingPositionCommand::SetWingPositionCommand(const size_t &id,
                                                std::shared_ptr<repositories::WingStateRepository> repository)
-        : BasicCommand(id, {HANDLE_LEFT_FRONT_WING_SERVO, HANDLE_LEFT_BACK_WING_SERVO,
-                            HANDLE_RIGHT_FRONT_WING_SERVO, HANDLE_RIGHT_BACK_WING_SERVO}), repository(
-        std::move(repository)) {}
+    : BasicCommand(id, {HANDLE_LEFT_FRONT_WING_SERVO, HANDLE_LEFT_BACK_WING_SERVO,
+                        HANDLE_RIGHT_FRONT_WING_SERVO, HANDLE_RIGHT_BACK_WING_SERVO}), repository(
+    std::move(repository)) {}
 
 void SetWingPositionCommand::execute(handles::HandleMap &handles, const proto::CommandMessage &message) {
     auto &command = message.setwingpositioncommand();
@@ -102,14 +102,14 @@ void SetWingPositionCommand::setRamp(handles::HandleMap &handles, std::uint16_t 
 void SetWingPositionCommand::setDown(handles::HandleMap &handles, std::uint16_t speed) {
     servo::WingController controller(repository);
     servo::WingCommand leftFrontCenter = buildCommand(
-            *handles.get<handles::WingHandle>(HANDLE_LEFT_BACK_WING_SERVO),
-            speed,
-            std::min(30.0, std::max(repository->getState(HANDLE_LEFT_BACK_WING_SERVO).getWorldAngle(), 90.0))
+        *handles.get<handles::WingHandle>(HANDLE_LEFT_BACK_WING_SERVO),
+        speed,
+        std::min(30.0, std::max(repository->getState(HANDLE_LEFT_BACK_WING_SERVO).getWorldAngle(), 90.0))
     );
     servo::WingCommand rightFrontCenter = buildCommand(
-            *handles.get<handles::WingHandle>(HANDLE_RIGHT_BACK_WING_SERVO),
-            speed,
-            std::min(30.0, std::max(repository->getState(HANDLE_RIGHT_BACK_WING_SERVO).getWorldAngle(), 90.0))
+        *handles.get<handles::WingHandle>(HANDLE_RIGHT_BACK_WING_SERVO),
+        speed,
+        std::min(30.0, std::max(repository->getState(HANDLE_RIGHT_BACK_WING_SERVO).getWorldAngle(), 90.0))
     );
     controller.execute({leftFrontCenter, rightFrontCenter});
 
@@ -126,18 +126,18 @@ void SetWingPositionCommand::setDown(handles::HandleMap &handles, std::uint16_t 
     controller.execute({leftBack, rightBack});
 }
 
-servo::WingCommand
-SetWingPositionCommand::buildCommand(handles::WingHandle &handle, std::uint16_t speed, double angle) {
+servo::WingCommand SetWingPositionCommand::buildCommand(handles::WingHandle &handle, std::uint16_t speed, double angle) {
     auto &state = repository->getState(handle.getId());
-    return buildCommand(handle, speed, angle, handle.getTranslatedDirection(state.getDirectionFromWorldAngle(angle, 190)));
+    return buildCommand(handle, speed, angle,
+                        handle.getTranslatedDirection(state.getDirectionFromWorldAngle(angle, 190)));
 }
 
 servo::WingCommand SetWingPositionCommand::buildCommand(handles::WingHandle &handle, std::uint16_t speed, double angle,
                                                         servo::Direction direction) {
     return {
-            .handle = handle,
-            .speed = speed,
-            .angle = angle,
-            .direction = direction
+        .handle = handle,
+        .speed = speed,
+        .angle = angle,
+        .direction = direction
     };
 }

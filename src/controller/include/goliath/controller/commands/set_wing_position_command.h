@@ -16,7 +16,7 @@ namespace goliath::commands {
 
     private:
         std::shared_ptr<repositories::WingStateRepository> repository;
-        
+
         void execute(handles::HandleMap &handles, const proto::CommandMessage &message) override;
 
         void calibrate(handles::HandleMap &handles);

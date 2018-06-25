@@ -108,11 +108,11 @@ int main(int argc, char *argv[]) {
             }
 
             auto handle = handles.add<handles::WingHandle>(handleId,
-                    dynamixel,
-                    wing.number_of_sectors(),
-                    wing.mirror(),
-                    wing.mirror(),
-                    0.0
+                                                           dynamixel,
+                                                           wing.number_of_sectors(),
+                                                           wing.mirror(),
+                                                           wing.mirror(),
+                                                           0.0
             );
             wingHandleIds.emplace_back(handle->getId());
         }
@@ -143,6 +143,9 @@ int main(int argc, char *argv[]) {
         }
         handles.add<handles::MotorHandle>(handle, motor.id());
     }
+
+    handles.add<handles::Handle>(HANDLE_LED_CONTROLLER);
+    handles.add<handles::EmotionHandle>(HANDLE_EMOTIONS, emotionRepository);
 
     BOOST_LOG_TRIVIAL(info) << "Setting up commands";
     commands::CommandMap commands(commandStatusRepository);
@@ -183,12 +186,15 @@ int main(int argc, char *argv[]) {
                                                            systemStatusRepository);
     commands.add<commands::SynchronizeBatteryVoltageCommand>(proto::CommandMessage::kSynchronizeBatteryVoltageCommand,
                                                              batteryRepository);
-
     // Part 1: Entering the Arena
     commands.add<commands::EnterCommand>(proto::CommandMessage::kEnterCommand);
 
     // Part 2: So you think you can Dance!?
-    commands.add<commands::DanceCommand>(proto::CommandMessage::kDanceCommand);
+    commands.add<commands::DanceCommand>(proto::CommandMessage::kDanceCommand, wingStateRepository,
+                                         config->dance().chainsaw_speed_low(),
+                                         config->dance().chainsaw_speed_medium(),
+                                         config->dance().chainsaw_speed_high(),
+                                         config->dance().chainsaw_speed_extra_high());
 
     // Part 3: "Line" Dance
     gpio::GPIO gpio5(gpio::GPIO::MapPin::GPIO5, gpio::GPIO::Direction::In);
@@ -197,13 +203,17 @@ int main(int argc, char *argv[]) {
     commands.add<commands::LineDanceCommand>(proto::CommandMessage::kLineDanceCommand);
 
     // Part 4: Obstacle Course
-    commands.add<commands::ObstacleCourseCommand>(proto::CommandMessage::kObstacleCourseCommand);
+    commands.add<commands::ObstacleCourseCommand>(proto::CommandMessage::kObstacleCourseCommand, wingStateRepository);
 
     // Part 5: Des Knaben Wunderhorn
     commands.add<commands::WunderhornCommand>(proto::CommandMessage::kWunderhornCommand);
 
     // Part 6: Transport and Rebuild
     commands.add<commands::TransportRebuildCommand>(proto::CommandMessage::kTransportRebuildCommand);
+
+    commands.add<commands::InterruptCommandCommand>(
+        proto::CommandMessage::kInterruptCommandCommand,
+        std::make_shared<commands::CommandMap>(commands));
 
     BOOST_LOG_TRIVIAL(info) << "Launching subscriber";
     subscriber.start();
