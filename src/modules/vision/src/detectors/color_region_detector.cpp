@@ -25,8 +25,11 @@ std::vector<cv::Vec4d> ColorRegionDetector::detect() const {
     cv::Point sh;
     cv::minMaxLoc(hist, nullptr, nullptr, nullptr, &sh);
 
+
     if(sh.x == 0 && sh.y == 0) {
         return {{-1, 0, 0, 0}};
+    } else if(hMin > hMax && (sh.y >= hMin || sh.y <= hMax)){
+        return {{1, 0, 0, 0}};
     } else if(sh.x >= sMin && sh.x <= sMax && sh.y >= hMin && sh.y <= hMax) {
         return {{1, 0, 0, 0}};
     } else {
