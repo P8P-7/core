@@ -1,6 +1,7 @@
 #include <goliath/controller/command_executor.h>
 #include <goliath/controller/commands/queue_command.h>
 
+#include <boost/range/adaptor/map.hpp>
 #include <boost/log/trivial.hpp>
 #include <cmath>
 
@@ -38,10 +39,23 @@ void CommandExecutor::run(const size_t commandId, const proto::CommandMessage &m
                                    << " Execution of commands may be postponed.";
     }
 
+    std::string commandName = boost::core::demangled_name(BOOST_CORE_TYPEID(*item.instance));
     auto requiredHandles = handles.getHandles(item.instance->getRequiredHandles());
-    auto starter = item.instance->canStart(requiredHandles) ? &CommandExecutor::start
-                                                            : &CommandExecutor::delayedStart;
-    boost::asio::post(pool, std::bind(starter, this, commandId, message));
+    for (auto &handle : requiredHandles | boost::adaptors::map_values) {
+        if (handle->isLocked(commandId)) {
+            continue;
+        } else if (!handle->isLocked()) {
+            handle->lock(commandId);
+        } else {
+            BOOST_LOG_TRIVIAL(warning) << "Execution of \"Command " << commandName << "\" is delayed by handle " << std::to_string(handle->getId());
+
+            size_t lockerId = handle->getOwnerId();
+            commands[lockerId].instance->interrupt();
+            handle->waitAndLock(commandId);
+        }
+    }
+
+    boost::asio::post(pool, std::bind(&CommandExecutor::start, this, commandId, message));
 }
 
 void CommandExecutor::run(size_t commandId) {
@@ -55,15 +69,12 @@ void CommandExecutor::start(const size_t &commandId, const proto::CommandMessage
     item.status = CommandStatus::STARTED;
     commands.getStatusRepository()->updateItem(commandId, item.status);
 
-    auto requiredHandles = handles.getHandles(item.instance->getRequiredHandles());
-    requiredHandles.lockAll(commandId);
-
-    lock.unlock();
-
     std::string commandName = boost::core::demangled_name(BOOST_CORE_TYPEID(*item.instance));
+    lock.unlock();
 
     BOOST_LOG_TRIVIAL(info) << "Execution of \"Command " << commandName << "\" has started";
     try {
+        auto requiredHandles = handles.getHandles(item.instance->getRequiredHandles());
         item.instance->execute(requiredHandles, message);
     } catch (std::exception &ex) {
         BOOST_LOG_TRIVIAL(error) << "Error executing command \"" << commandId << "\" what(): " << ex.what();
@@ -74,42 +85,5 @@ void CommandExecutor::start(const size_t &commandId, const proto::CommandMessage
     item.status = CommandStatus::STALE;
     commands.getStatusRepository()->updateItem(commandId, item.status);
 
-    numberOfActiveCommands--;
-}
-
-void CommandExecutor::delayedStart(const size_t &commandId, const proto::CommandMessage &message) {
-    std::unique_lock<std::mutex> lock(mutex);
-    numberOfActiveCommands++;
-    CommandItem &item = commands[commandId];
-
-    lock.unlock();
-
-    auto requiredHandles = handles.getHandles(item.instance->getRequiredHandles());
-    for (size_t handleId : item.instance->getRequiredHandles()) {
-        if (handles[handleId]->isLocked(commandId)) {
-            continue;
-        }
-
-        size_t lockerId = handles[handleId]->getOwnerId();
-        commands[lockerId].instance->interrupt();
-        requiredHandles[handleId]->waitAndLock(commandId);
-    }
-
-    lock.lock();
-    item.status = CommandStatus::STARTED;
-    commands.getStatusRepository()->updateItem(commandId, item.status);
-
-    lock.unlock();
-    BOOST_LOG_TRIVIAL(info) << "* Execution of \"Command " << commandId << "\" has started";
-    try {
-        item.instance->execute(requiredHandles, message);
-    } catch (std::exception &ex) {
-        BOOST_LOG_TRIVIAL(fatal) << "Error executing command \"" << commandId << "\" what(): " << ex.what();
-    }
-    BOOST_LOG_TRIVIAL(info) << "* Execution of \"Command " << commandId << "\" has finished";
-
-    lock.lock();
-    item.status = CommandStatus::STALE;
-    commands.getStatusRepository()->updateItem(commandId, item.status);
     numberOfActiveCommands--;
 }

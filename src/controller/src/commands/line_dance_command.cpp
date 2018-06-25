@@ -28,19 +28,19 @@ void commands::LineDanceCommand::execute(handles::HandleMap &handles, const prot
     std::shared_ptr<gpio::GPIO> gpioDevice = handles.get<GPIOHandle>(HANDLE_GPIO_PIN_5)->getDevice();
 
     // Get led strip controller
-    i2c::I2cSlave ledControllerSlave(*handles.get<handles::I2cBusHandle>(HANDLE_I2C_BUS),
+    /*i2c::I2cSlave ledControllerSlave(*handles.get<handles::I2cBusHandle>(HANDLE_I2C_BUS),
                                      *handles.get<handles::I2cSlaveHandle>(HANDLE_LED_CONTROLLER));
     led_controller::LedStripController ledController(ledControllerSlave);
 
     led_controller::AllLedsMessage allLedsMessage{
             {led_controller::LightingType::ALL, led_controller::ColorType::HSV},
             {90, 255, 0}
-    };
+    };*/
 
     t0 = std::chrono::high_resolution_clock::now();
 
     while (!isInterrupted()) {
-        bool pulse = gpioDevice->get() != 1;
+        bool pulse = gpioDevice->get() != 0;
 
         if (pulse) {
             processPulse();

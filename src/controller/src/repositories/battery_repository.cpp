@@ -14,7 +14,7 @@ std::unique_ptr<::google::protobuf::Message> repositories::BatteryRepository::ge
 
 int repositories::BatteryRepository::getBatteryLevel() const {
     int level = (voltage - minVoltage) * 100 / (maxVoltage - minVoltage);
-    return std::min(100, std::max(0,level));
+    return std::min(100, std::max(0, level));
 }
 
 int repositories::BatteryRepository::getBatteryVoltage() const {

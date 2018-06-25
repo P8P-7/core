@@ -52,5 +52,4 @@ void Command::waitForInterrupt() {
     interrupter.wait(lock, [&]() {
         return static_cast<bool>(interrupted);
     });
-    lock.unlock();
 }
