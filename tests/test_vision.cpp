@@ -9,7 +9,6 @@ using namespace goliath;
 BOOST_AUTO_TEST_SUITE(BOOST_TEST_MODULE)
     BOOST_AUTO_TEST_CASE(test_webcam_line_following) {
         vision::Webcam camera(0);
-        cv::namedWindow("webcam");
 
         while (true) {
             cv::Mat input = camera.getFrame();
@@ -17,14 +16,9 @@ BOOST_AUTO_TEST_SUITE(BOOST_TEST_MODULE)
 
             std::vector<cv::Vec4d> output = followLineDetector.detect();
 
-            cv::rectangle(input, cv::Rect(output[1][0], output[1][1], output[1][2], output[1][3]),
-                          cv::Scalar(0, 0, 255), 2);
-
             std::cout << "Direction: " << output[0][0]
                       << " Offset:    " << output[0][1] << std::endl;
 
-            cv::imshow("webcam", input);
-            cv::waitKey(1);
         }
     }
 

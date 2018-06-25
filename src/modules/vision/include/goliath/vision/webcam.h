@@ -3,6 +3,8 @@
 #include <opencv2/opencv.hpp>
 #include <boost/optional.hpp>
 
+#include <goliath/vision/processors/roi_processor.h>
+
 /**
  * @file webcam.h
  * @author Group 7 - Informatica
@@ -35,6 +37,9 @@ namespace goliath::vision {
          * @return Captured frame
          */
         cv::Mat getFrame();
+
+        void getRoiFrame(cv::Mat &frame, const vision::RoiProcessor& roiProcessor);
+        cv::Mat getRoiFrame(const vision::RoiProcessor& roiProcessor);
 
     private:
         const int capId;

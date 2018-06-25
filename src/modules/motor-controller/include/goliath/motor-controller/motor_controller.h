@@ -52,6 +52,8 @@ namespace goliath::motor_controller {
          */
         explicit MotorController(i2c::I2cSlave &slave);
 
+        MotorController();
+
         /**
          * Sends a message to the physical controller to process.
          * @param command new motor status to process

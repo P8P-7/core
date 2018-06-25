@@ -35,6 +35,11 @@ int main(int argc, char *argv[]) {
                           "core-text.txt",
                           static_cast<boost::log::trivial::severity_level>(config->logging().severity_level()));
 
+    if (geteuid() != 0) {
+        BOOST_LOG_TRIVIAL(error) << "Root privileges needed.";
+        return 1;
+    }
+
     BOOST_LOG_TRIVIAL(info) << "Core is starting";
 
     BOOST_LOG_TRIVIAL(info) << "Setting up repositories";
