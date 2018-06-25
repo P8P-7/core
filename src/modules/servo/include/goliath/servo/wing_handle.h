@@ -17,6 +17,7 @@ namespace goliath::handles {
         double getTranslatedAngle(double angle) const;
         std::size_t getTranslatedSector(std::size_t sector) const;
         servo::Direction getTranslatedDirection(servo::Direction direction) const;
+
     private:
         std::size_t numberOfSectors;
         bool mirrorAngle;

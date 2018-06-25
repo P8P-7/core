@@ -111,11 +111,11 @@ int main(int argc, char *argv[]) {
             }
 
             auto handle = handles.add<handles::WingHandle>(handleId,
-                    dynamixel,
-                    wing.number_of_sectors(),
-                    wing.mirror(),
-                    wing.mirror(),
-                    0.0
+                                                           dynamixel,
+                                                           wing.number_of_sectors(),
+                                                           wing.mirror(),
+                                                           wing.mirror(),
+                                                           0.0
             );
             wingHandleIds.emplace_back(handle->getId());
         }
@@ -184,20 +184,24 @@ int main(int argc, char *argv[]) {
     commands.add<commands::SetWingPositionCommand>(proto::CommandMessage::kSetWingPositionCommand, wingStateRepository);
     commands.add<commands::MoveWingCommand>(proto::CommandMessage::kMoveWingCommand, wingStateRepository);
     commands.add<commands::SynchronizeSystemStatusCommand>(proto::CommandMessage::kSynchronizeSystemStatusCommand,
-                                                       systemStatusRepository);
+                                                           systemStatusRepository);
     commands.add<commands::SynchronizeBatteryVoltageCommand>(proto::CommandMessage::kSynchronizeBatteryVoltageCommand,
-                                                       batteryRepository);
+                                                             batteryRepository);
     // Part 1: Entering the Arena
     commands.add<commands::EnterCommand>(proto::CommandMessage::kEnterCommand);
 
     // Part 2: So you think you can Dance!?
-    commands.add<commands::DanceCommand>(proto::CommandMessage::kDanceCommand);
+    commands.add<commands::DanceCommand>(proto::CommandMessage::kDanceCommand, wingStateRepository,
+                                         config->dance().chainsaw_speed_low(),
+                                         config->dance().chainsaw_speed_medium(),
+                                         config->dance().chainsaw_speed_high(),
+                                         config->dance().chainsaw_speed_extra_high());
 
     // Part 3: "Line" Dance
     commands.add<commands::LineDanceCommand>(proto::CommandMessage::kLineDanceCommand);
 
     // Part 4: Obstacle Course
-    commands.add<commands::ObstacleCourseCommand>(proto::CommandMessage::kObstacleCourseCommand);
+    commands.add<commands::ObstacleCourseCommand>(proto::CommandMessage::kObstacleCourseCommand, wingStateRepository);
 
     // Part 5: Des Knaben Wunderhorn
     commands.add<commands::WunderhornCommand>(proto::CommandMessage::kWunderhornCommand);

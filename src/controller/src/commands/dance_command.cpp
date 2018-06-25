@@ -5,20 +5,30 @@
 #include <boost/log/trivial.hpp>
 #include <commands/MoveCommand.pb.h>
 
+#include <goliath/controller/commands/set_wing_position_command.h>
 #include <goliath/controller/commands/move_command.h>
-#include <goliath/motor-controller.h>
 #include <goliath/emotions.h>
 #include <goliath/led-strip-controller.h>
 #include <goliath/transitions.h>
+#include <goliath/servo.h>
 
 using namespace goliath::handles;
 using namespace goliath;
 
-commands::DanceCommand::DanceCommand(const size_t &id)
-    : BasicCommand(id, {HANDLE_EMOTIONS, HANDLE_LED_CONTROLLER, HANDLE_I2C_BUS, HANDLE_MOTOR_CONTROLLER,
-                        HANDLE_LEFT_FRONT_MOTOR, HANDLE_LEFT_BACK_MOTOR, HANDLE_RIGHT_FRONT_MOTOR,
-                        HANDLE_RIGHT_BACK_MOTOR, HANDLE_LEFT_FRONT_WING_SERVO, HANDLE_LEFT_BACK_WING_SERVO,
-                        HANDLE_RIGHT_FRONT_WING_SERVO, HANDLE_RIGHT_BACK_WING_SERVO}) {}
+commands::DanceCommand::DanceCommand(const size_t &id,
+                                     const std::shared_ptr<repositories::WingStateRepository> &repository,
+                                     const std::uint8_t chainSawSpeedLow, const std::uint8_t chainSawSpeedMedium,
+                                     const std::uint8_t chainSawSpeedFast, const std::uint8_t chainSawSpeedExtraFast)
+    : BasicCommand(id, {HANDLE_EMOTIONS,
+                        HANDLE_LED_CONTROLLER,
+                        HANDLE_I2C_BUS, HANDLE_MOTOR_CONTROLLER,
+                        HANDLE_LEFT_FRONT_MOTOR, HANDLE_LEFT_BACK_MOTOR,
+                        HANDLE_RIGHT_FRONT_MOTOR, HANDLE_RIGHT_BACK_MOTOR,
+                        HANDLE_LEFT_FRONT_WING_SERVO, HANDLE_LEFT_BACK_WING_SERVO,
+                        HANDLE_RIGHT_FRONT_WING_SERVO, HANDLE_RIGHT_BACK_WING_SERVO}),
+      repository(repository),
+      chainSawSpeedLow(chainSawSpeedLow), chainSawSpeedMedium(chainSawSpeedMedium),
+      chainSawSpeedFast(chainSawSpeedFast), chainSawSpeedExtraFast(chainSawSpeedExtraFast) {}
 
 void commands::DanceCommand::execute(HandleMap &handles, const proto::CommandMessage &message) {
     using namespace std::chrono_literals;
@@ -70,6 +80,11 @@ void commands::DanceCommand::execute(HandleMap &handles, const proto::CommandMes
         }
     };
 
+    if (repository->hasLostTracking()) {
+        BOOST_LOG_TRIVIAL(error) << "Wings not calibrated";
+        return;
+    }
+
     i2c::I2cSlave ledControllerSlave(*handles.get<handles::I2cBusHandle>(HANDLE_I2C_BUS),
                                      *handles.get<handles::I2cSlaveHandle>(HANDLE_LED_CONTROLLER));
     controller::LedStripController ledController(ledControllerSlave);
@@ -81,78 +96,230 @@ void commands::DanceCommand::execute(HandleMap &handles, const proto::CommandMes
     std::shared_ptr<repositories::EmotionRepository> emotionRepository = handles.get<handles::EmotionHandle>(
         HANDLE_EMOTIONS)->getEmotionRepository();
 
-    // Phase 1: Happy
-    BOOST_LOG_TRIVIAL(info) << "Starting phase 1 of dance: Happy";
+    servo::WingController wingController(repository);
+
+    auto start = std::chrono::high_resolution_clock::now();
+
     emotionRepository->setCurrentEmotion(Emotion::HAPPY);
     ledController.sendCommand(allGreen);
-    // TODO: Move wings up
-    auto spinUpPhase = std::make_shared<transitions::Phase>(15000ms, 20, 0, 127, &transitions::methods::easeInOutCubic);
-    auto spinDownPhase = std::make_shared<transitions::Phase>(15000ms, 20, 127, 0, &transitions::methods::easeInOutCubic);
 
-    transitions::Reel spinUpReel(20, [&motorController](double value){
-        motorController.sendCommand(motor_controller::MotorStatus{
-            .id = Motor::RIGHT_FRONT,
-            .direction = motor_controller::MotorDirection::FORWARDS,
-            .speed = static_cast<motor_controller::MotorSpeed>(value)
-        });
-        motorController.sendCommand(motor_controller::MotorStatus{
-            .id = Motor::RIGHT_BACK,
-            .direction = motor_controller::MotorDirection::FORWARDS,
-            .speed = static_cast<motor_controller::MotorSpeed>(value)
-        });
-    });
+    servo::WingCommandBuilder upBuilder(handles.get<handles::WingHandle>(HANDLE_LEFT_FRONT_WING_SERVO));
+    upBuilder.setSpeed(511)
+        .setAngle(74)
+        .setDirection(servo::Direction::CLOCKWISE);
 
-    transitions::Reel spinDownReel = spinUpReel;
-    // TODO: Move arm up and down
-    transitions::TransitionExecutor::execute(std::make_shared<transitions::Reel>(spinUpReel));
-    transitions::TransitionExecutor::execute(std::make_shared<transitions::Reel>(spinDownReel));
+    servo::WingCommandBuilder standBuilder(handles.get<handles::WingHandle>(HANDLE_LEFT_FRONT_WING_SERVO));
+    standBuilder.setSpeed(511)
+        .setAngle(340)
+        .setDirection(servo::Direction::COUNTER_CLOCKWISE);
 
-    // Phase 2: Angry
-    BOOST_LOG_TRIVIAL(info) << "Starting phase 2 of dance: Angry";
-    // TODO: Move wings diagonal
+    servo::WingCommand leftBackStand = standBuilder.build();
+    servo::WingCommand rightBackStand = standBuilder
+        .setHandle(handles.get<handles::WingHandle>(HANDLE_RIGHT_BACK_WING_SERVO))
+        .build();
+
+    wingController.execute({leftBackStand, rightBackStand});
+
+    std::this_thread::sleep_for(1s - (std::chrono::high_resolution_clock::now() - start));
+
+    servo::WingCommand leftFrontStand = standBuilder
+        .setHandle(handles.get<handles::WingHandle>(HANDLE_LEFT_FRONT_WING_SERVO))
+        .setDirection(servo::Direction::CLOCKWISE)
+        .build();
+    servo::WingCommand rightFrontStand = standBuilder
+        .setHandle(handles.get<handles::WingHandle>(HANDLE_RIGHT_FRONT_WING_SERVO))
+        .setDirection(servo::Direction::CLOCKWISE)
+        .build();
+
+    start = std::chrono::high_resolution_clock::now();
+
+    wingController.execute({leftFrontStand});
+
+    std::this_thread::sleep_for(1s - (std::chrono::high_resolution_clock::now() - start));
+
     emotionRepository->setCurrentEmotion(Emotion::ANGRY);
     ledController.sendCommand(allRed);
-    // TODO: Move arm up
-    // TODO: Drive to edge
-    // TODO: Turn 90 degrees
-    emotionRepository->setCurrentEmotion(Emotion::SUPRISED);
-    // TODO: Move arm down
-    // TODO: Move
 
-    // Phase 3: Scared
-    BOOST_LOG_TRIVIAL(info) << "Starting phase 2 of dance: Sad";
-    // TODO: Turn 90 degrees
+    // Start chainsaw phase 1
+    saw(motorController, Motor::RIGHT_FRONT, chainSawSpeedLow);
+
+    std::this_thread::sleep_for(500ms);
+
+    for (int i = 0; i < 6; ++i) {
+        saw(motorController, Motor::RIGHT_FRONT, chainSawSpeedFast);
+        std::this_thread::sleep_for(500ms);
+
+        saw(motorController, Motor::RIGHT_FRONT, chainSawSpeedMedium);
+        std::this_thread::sleep_for(500ms);
+    }
+
+    std::this_thread::sleep_for(2s);
+
+    saw(motorController, Motor::RIGHT_FRONT, chainSawSpeedFast);
+
+    std::this_thread::sleep_for(500ms);
+
+    saw(motorController, Motor::RIGHT_FRONT, chainSawSpeedMedium);
+
+    for (int i = 0; i < 4; ++i) {
+        saw(motorController, Motor::RIGHT_FRONT, chainSawSpeedLow);
+        std::this_thread::sleep_for(500ms);
+
+        saw(motorController, Motor::RIGHT_FRONT, chainSawSpeedMedium);
+        std::this_thread::sleep_for(500ms);
+    }
+
+    for (int i = 0; i < 6; ++i) {
+        saw(motorController, Motor::RIGHT_FRONT, chainSawSpeedLow);
+        std::this_thread::sleep_for(500ms);
+
+        saw(motorController, Motor::RIGHT_FRONT, chainSawSpeedFast);
+        std::this_thread::sleep_for(500ms);
+    }
+
+    motorController.sendCommand(motor_controller::MotorStatus{
+        .id = Motor::RIGHT_FRONT,
+        .direction = motor_controller::MotorDirection::LOCKED,
+        .speed = 0
+    });
+
+    servo::WingCommandBuilder allFlatBuilder = servo::WingCommandBuilder(
+        handles.get<handles::WingHandle>(HANDLE_LEFT_BACK_WING_SERVO))
+        .setDirection(servo::Direction::CLOCKWISE)
+        .setSpeed(511)
+        .setAngle(0);
+
+    servo::WingCommand leftBackFlat = allFlatBuilder.build();
+    servo::WingCommand rightBackFlat = allFlatBuilder
+        .setHandle(handles.get<handles::WingHandle>(HANDLE_RIGHT_BACK_WING_SERVO))
+        .build();
+    servo::WingCommand leftFrontFlat = allFlatBuilder
+        .setHandle(handles.get<handles::WingHandle>(HANDLE_LEFT_FRONT_WING_SERVO))
+        .setDirection(servo::Direction::COUNTER_CLOCKWISE)
+        .build();
+    servo::WingCommand rightFrontFlat = allFlatBuilder
+        .setHandle(handles.get<handles::WingHandle>(HANDLE_RIGHT_FRONT_WING_SERVO))
+        .setDirection(servo::Direction::COUNTER_CLOCKWISE)
+        .build();
+
+    wingController.execute({leftBackFlat, rightBackFlat, leftFrontFlat, rightFrontFlat});
+
+    start = std::chrono::high_resolution_clock::now();
+    wingController.execute({leftBackFlat, rightBackFlat, leftFrontFlat, rightFrontFlat});
+    std::this_thread::sleep_for(1s - (std::chrono::high_resolution_clock::now() - start));
+
+    // 15 Sec.
     emotionRepository->setCurrentEmotion(Emotion::SAD);
     ledController.sendCommand(allBlue);
 
-    for (int i = 0; i < 4; ++i) {
-        for (auto motor : MoveCommand::COMMAND_MOTOR_TO_HANDLE_MAP) {
-            motorController.sendCommand(motor_controller::MotorStatus{
-                .id = static_cast<motor_controller::MotorId>(motor.first),
-                .direction = motor_controller::MotorDirection::FORWARDS,
-                .speed = 127
-            });
+    servo::WingCommand leftFrontUp = upBuilder.build();
+    servo::WingCommand rightFrontUp = upBuilder
+        .setHandle(handles.get<handles::WingHandle>(HANDLE_RIGHT_FRONT_WING_SERVO))
+        .build();
+    servo::WingCommand leftBackUp = upBuilder
+        .setHandle(handles.get<handles::WingHandle>(HANDLE_LEFT_BACK_WING_SERVO))
+        .build();
+    servo::WingCommand rightBackUp = upBuilder
+        .setHandle(handles.get<handles::WingHandle>(HANDLE_RIGHT_BACK_WING_SERVO))
+        .build();
 
-            std::this_thread::sleep_for(1s);
+    start = std::chrono::high_resolution_clock::now();
+    wingController.execute({leftFrontUp, rightFrontUp, leftBackUp, rightBackUp});
+    std::this_thread::sleep_for(1s - (std::chrono::high_resolution_clock::now() - start));
 
-            motorController.sendCommand(motor_controller::MotorStatus{
-                .id = static_cast<motor_controller::MotorId>(motor.first),
-                .direction = motor_controller::MotorDirection::BACKWARDS,
-                .speed = 127
-            });
-        }
+    // TODO: Add dance when singing
+    motorController.sendCommand(motor_controller::MotorStatus{
+        .id = Motor::RIGHT_FRONT,
+        .direction = motor_controller::MotorDirection::FORWARDS,
+        .speed = 126
+    });
+    motorController.sendCommand(motor_controller::MotorStatus{
+        .id = Motor::RIGHT_BACK,
+        .direction = motor_controller::MotorDirection::FORWARDS,
+        .speed = 126
+    });
+    std::this_thread::sleep_for(10s);
+
+    std::this_thread::sleep_for(54s);
+
+    // 1 Min. 23
+    // Chainsaw phase 2
+
+    start = std::chrono::high_resolution_clock::now();
+    wingController.execute({leftBackStand, rightBackStand});
+    std::this_thread::sleep_for(1s - (std::chrono::high_resolution_clock::now() - start));
+
+    start = std::chrono::high_resolution_clock::now();
+    wingController.execute({rightFrontStand, leftFrontStand});
+    std::this_thread::sleep_for(1s - (std::chrono::high_resolution_clock::now() - start));
+
+    saw(motorController, Motor::LEFT_FRONT, chainSawSpeedExtraFast);
+
+    std::this_thread::sleep_for(200ms);
+
+    motorController.sendCommand(motor_controller::MotorStatus{
+        .id = Motor::LEFT_FRONT,
+        .direction = motor_controller::MotorDirection::FREE,
+        .speed = 0
+    });
+
+    std::this_thread::sleep_for(1800ms);
+
+    for (int i = 0; i < 16; ++i) {
+        saw(motorController, Motor::LEFT_FRONT, chainSawSpeedExtraFast);
+        std::this_thread::sleep_for(500ms);
+
+        saw(motorController, Motor::LEFT_FRONT, chainSawSpeedMedium);
+        std::this_thread::sleep_for(500ms);
     }
 
-    // TODO: Turn towards jury (or any)
-    // TODO: Wave
-    emotionRepository->setCurrentEmotion(Emotion::WINK_RIGHT);
+    saw(motorController, Motor::LEFT_FRONT, chainSawSpeedLow);
+    std::this_thread::sleep_for(2s);
 
-    // Phase 4: Neutral
-    BOOST_LOG_TRIVIAL(info) << "Starting phase 2 of dance: Neutral";
-    emotionRepository->setCurrentEmotion(Emotion::NEUTRAL);
-    ledController.sendCommand(allYellow);
-    // TODO: Turn 360 degrees
-    // TODO: Improvise
-    // TODO: Turn towards jury
-    emotionRepository->setCurrentEmotion(Emotion::WINK_LEFT);
+    for (int i = 0; i < 10; ++i) {
+        saw(motorController, Motor::LEFT_FRONT, chainSawSpeedExtraFast);
+        std::this_thread::sleep_for(500ms);
+
+        saw(motorController, Motor::LEFT_FRONT, chainSawSpeedFast);
+        std::this_thread::sleep_for(500ms);
+    }
+
+    for (int i = 0; i < 4; ++i) {
+        saw(motorController, Motor::LEFT_FRONT, chainSawSpeedLow);
+        std::this_thread::sleep_for(500ms);
+
+        saw(motorController, Motor::LEFT_FRONT, chainSawSpeedMedium);
+        std::this_thread::sleep_for(500ms);
+    }
+
+    for (int i = 0; i < 8; ++i) {
+        saw(motorController, Motor::LEFT_FRONT, chainSawSpeedFast);
+        std::this_thread::sleep_for(500ms);
+
+        saw(motorController, Motor::LEFT_FRONT, chainSawSpeedMedium);
+        std::this_thread::sleep_for(500ms);
+    }
+
+    saw(motorController, Motor::LEFT_FRONT, chainSawSpeedExtraFast);
+    std::this_thread::sleep_for(5s);
+
+    for (int i = 0; i < 6; ++i) {
+        saw(motorController, Motor::LEFT_FRONT, chainSawSpeedExtraFast);
+        std::this_thread::sleep_for(500ms);
+
+        saw(motorController, Motor::LEFT_FRONT, chainSawSpeedMedium);
+        std::this_thread::sleep_for(500ms);
+    }
+
+    saw(motorController, Motor::LEFT_FRONT, chainSawSpeedLow);
+    std::this_thread::sleep_for(3s);
+}
+
+void commands::DanceCommand::saw(motor_controller::MotorController &motorController, motor_controller::MotorId motor,
+                                 std::uint8_t speed) {
+    motorController.sendCommand(motor_controller::MotorStatus{
+        .id = motor,
+        .direction = motor_controller::MotorDirection::FORWARDS,
+        .speed = speed
+    });
 }
