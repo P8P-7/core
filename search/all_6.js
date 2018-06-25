@@ -24,7 +24,7 @@ var searchData=
   ['getrepositories',['getRepositories',['../classgoliath_1_1repositories_1_1Watcher.html#a596442cf89ea2d9d5cedd754691efc76',1,'goliath::repositories::Watcher']]],
   ['getrequiredhandles',['getRequiredHandles',['../classgoliath_1_1commands_1_1Command.html#ad3dff4d11b544719909998c021201349',1,'goliath::commands::Command']]],
   ['getslaveaddress',['getSlaveAddress',['../classgoliath_1_1handles_1_1I2cSlaveHandle.html#a96cc9c70024d22e2e462c6c7d28a41b1',1,'goliath::handles::I2cSlaveHandle']]],
-  ['gettempearture',['getTempearture',['../classgoliath_1_1repositories_1_1SystemStatusRepository.html#a447e9d3577df5b977c3210506c0bc12e',1,'goliath::repositories::SystemStatusRepository']]],
+  ['gettemperature',['getTemperature',['../classgoliath_1_1repositories_1_1SystemStatusRepository.html#a310dcec42bfd0bc4771f5f629107d03d',1,'goliath::repositories::SystemStatusRepository']]],
   ['gettick',['getTick',['../classgoliath_1_1transitions_1_1Reel.html#af9f6d732f0146ea5350ac0dcad8a947b',1,'goliath::transitions::Reel']]],
   ['gettickspersecond',['getTicksPerSecond',['../classgoliath_1_1transitions_1_1ParallelReel.html#aa9b4daca721ed2ab4b62013b40562e4d',1,'goliath::transitions::ParallelReel::getTicksPerSecond()'],['../classgoliath_1_1transitions_1_1Phase.html#a1b6972be791ebd0da43261504462594b',1,'goliath::transitions::Phase::getTicksPerSecond()'],['../classgoliath_1_1transitions_1_1Tickable.html#a7d1306f8c7e19e8b6ff60fba48a497ea',1,'goliath::transitions::Tickable::getTicksPerSecond()']]],
   ['goliath',['goliath',['../namespacegoliath.html',1,'']]],

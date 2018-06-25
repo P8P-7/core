@@ -10,6 +10,7 @@ var searchData=
   ['webcamhandle',['WebcamHandle',['../classgoliath_1_1handles_1_1WebcamHandle.html',1,'goliath::handles::WebcamHandle'],['../classgoliath_1_1handles_1_1WebcamHandle.html#a9f2355c478a473ae74796f3b3f0c690b',1,'goliath::handles::WebcamHandle::WebcamHandle()']]],
   ['what',['what',['../classgoliath_1_1exceptions_1_1I2cError.html#a1fc3993163c339b096d22749cfc3a61f',1,'goliath::exceptions::I2cError']]],
   ['wingcommand',['WingCommand',['../structgoliath_1_1servo_1_1WingCommand.html',1,'goliath::servo']]],
+  ['wingcommandbuilder',['WingCommandBuilder',['../classgoliath_1_1servo_1_1WingCommandBuilder.html',1,'goliath::servo']]],
   ['wingcontroller',['WingController',['../classgoliath_1_1servo_1_1WingController.html',1,'goliath::servo']]],
   ['winghandle',['WingHandle',['../classgoliath_1_1handles_1_1WingHandle.html',1,'goliath::handles']]],
   ['wingstate',['WingState',['../classgoliath_1_1servo_1_1WingState.html',1,'goliath::servo']]],
