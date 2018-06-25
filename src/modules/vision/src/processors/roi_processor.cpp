@@ -20,10 +20,30 @@ RoiProcessor::RoiProcessor(const cv::Mat& input, int x, int y, int w, int h)
     }
 }
 
+RoiProcessor::RoiProcessor(int x, int y, int w, int h)
+    : RoiProcessor(cv::Mat(), x, y, w, h) {}
+
+
 RoiProcessor::RoiProcessor(Processor& other, int x, int y, int w, int h)
     : Processor(other.process()), x(x), y(y), w(w), h(h) {
 }
 
 cv::Mat RoiProcessor::process() const {
     return cv::Mat(input, cv::Rect(x, y, w, h));
+}
+
+const int RoiProcessor::getX() const {
+    return x;
+}
+
+const int RoiProcessor::getY() const {
+    return y;
+}
+
+const int RoiProcessor::getWidth() const {
+    return w;
+}
+
+const int RoiProcessor::getHeight() const {
+    return h;
 }

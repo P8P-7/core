@@ -21,6 +21,7 @@ namespace goliath::vision {
          * @param h Height of ROI
          */
         RoiProcessor(const cv::Mat &input, int x, int y, int w, int h);
+        RoiProcessor(int x, int y, int w, int h);
 
         RoiProcessor(Processor &other, int x, int y, int w, int h);
 
@@ -28,6 +29,11 @@ namespace goliath::vision {
          * @return ROI Selection of the input
          */
         cv::Mat process() const override;
+
+        const int getX() const;
+        const int getY() const;
+        const int getWidth() const;
+        const int getHeight() const;
 
     private:
         const int x, y, w, h;
