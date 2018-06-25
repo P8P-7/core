@@ -1,6 +1,6 @@
 #include <goliath/led-strip-controller/led_strip_controller.h>
 
-using namespace goliath::controller;
+using namespace goliath::led_controller;
 
 LedStripController::LedStripController(i2c::I2cSlave &slave)
         : slave(slave) {

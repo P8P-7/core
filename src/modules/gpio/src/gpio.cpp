@@ -16,12 +16,22 @@ GPIO::GPIO(MapPin gnum) {
     setup(gnum);
 }
 
+GPIO::GPIO(MapPin gnum, Direction dir) {
+    setup(gnum, dir);
+}
+
 GPIO::GPIO(MapPin gnum, Direction dir, State val) {
     setup(gnum, dir, val);
 }
 
 void GPIO::setup(MapPin gnum) {
     gpionum = std::to_string(static_cast<int>(gnum));
+}
+
+void GPIO::setup(MapPin gnum, Direction dir) {
+    gpionum = std::to_string(static_cast<int>(gnum));
+    exportGpio();
+    setdirGpio(dir == Direction::Out ? "out" : "in");
 }
 
 void GPIO::setup(MapPin gnum, Direction dir, State val) {

@@ -5,7 +5,7 @@
 #include <cstdint>
 #include <vector>
 
-namespace goliath::controller {
+namespace goliath::led_controller {
     using LedId = std::uint8_t;
     using Hue = std::uint8_t;
     using Saturation = std::uint8_t;

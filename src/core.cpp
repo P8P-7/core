@@ -1,5 +1,4 @@
 #include <boost/log/trivial.hpp>
-#include <memory>
 
 #include <goliath/foundation.h>
 #include <goliath/gpio.h>
@@ -10,9 +9,6 @@
 #include <goliath/i2c.h>
 #include <goliath/motor-controller.h>
 #include <goliath/controller.h>
-#include <goliath/controller/repositories/system_status_repository.h>
-#include <CommandMessage.pb.h>
-#include <repositories/SystemStatusRepository.pb.h>
 
 /**
  * @file main.cpp
@@ -71,7 +67,7 @@ int main(int argc, char *argv[]) {
     std::string portName = config->serial().port();
     ulong baudRate = config->serial().baudrate();
     auto port = std::make_shared<dynamixel::SerialPort>();
-    bool connectSuccess = port->connect(portName, static_cast<uint>(baudRate));
+    bool connectSuccess = port->connect(portName, static_cast<uint32_t>(baudRate));
 
     BOOST_LOG_TRIVIAL(info) << "Setting up handles";
     handles::HandleMap handles;
@@ -167,22 +163,22 @@ int main(int argc, char *argv[]) {
 
     commands.add<commands::InvalidateAllCommand>(proto::CommandMessage::kInvalidateAllCommand, watcher);
     commands.add<commands::InterruptCommandCommand>(
-        proto::CommandMessage::kInterruptCommandCommand,
-        std::make_shared<commands::CommandMap>(commands));
+            proto::CommandMessage::kInterruptCommandCommand,
+            std::make_shared<commands::CommandMap>(commands));
     commands.add<commands::ShutdownCommand>(proto::CommandMessage::kShutdownCommand, ioService);
     commands.add<commands::SynchronizeCommandsCommand>(
-        proto::CommandMessage::kSynchronizeCommandsCommand,
-        commandStatusRepository);
+            proto::CommandMessage::kSynchronizeCommandsCommand,
+            commandStatusRepository);
     commands.add<commands::MoveCommand>(proto::CommandMessage::kMoveCommand);
     commands.add<commands::MoveWingCommand>(proto::CommandMessage::kMoveWingCommand, wingStateRepository);
     commands.add<commands::SynchronizeSystemStatusCommand>(proto::CommandMessage::kSynchronizeSystemStatusCommand,
                                                            systemStatusRepository);
     commands.add<commands::SetWingPositionCommand>(proto::CommandMessage::kSetWingPositionCommand, wingStateRepository);
-    commands.add<commands::MoveWingCommand>(proto::CommandMessage::kMoveWingCommand, wingStateRepository);
     commands.add<commands::SynchronizeSystemStatusCommand>(proto::CommandMessage::kSynchronizeSystemStatusCommand,
-                                                       systemStatusRepository);
+                                                           systemStatusRepository);
     commands.add<commands::SynchronizeBatteryVoltageCommand>(proto::CommandMessage::kSynchronizeBatteryVoltageCommand,
-                                                       batteryRepository);
+                                                             batteryRepository);
+
     // Part 1: Entering the Arena
     commands.add<commands::EnterCommand>(proto::CommandMessage::kEnterCommand);
 
@@ -190,6 +186,9 @@ int main(int argc, char *argv[]) {
     commands.add<commands::DanceCommand>(proto::CommandMessage::kDanceCommand);
 
     // Part 3: "Line" Dance
+    gpio::GPIO gpio5(gpio::GPIO::MapPin::GPIO5, gpio::GPIO::Direction::In);
+    // TODO: Fix hardcoded GPIO pin.
+    handles.add<handles::GPIOHandle>(HANDLE_GPIO_PIN_5, std::make_shared<gpio::GPIO>(gpio5));
     commands.add<commands::LineDanceCommand>(proto::CommandMessage::kLineDanceCommand);
 
     // Part 4: Obstacle Course

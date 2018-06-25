@@ -11,3 +11,4 @@
   */
 
 #include "gpio/gpio.h"
+#include "gpio/gpio_handle.h"
