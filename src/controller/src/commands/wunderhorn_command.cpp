@@ -17,7 +17,7 @@ commands::WunderhornCommand::WunderhornCommand(const size_t &id)
         : BasicCommand(id, {HANDLE_CAM, HANDLE_I2C_BUS, HANDLE_MOTOR_CONTROLLER,
                             HANDLE_LEFT_FRONT_MOTOR, HANDLE_LEFT_BACK_MOTOR,
                             HANDLE_RIGHT_FRONT_MOTOR, HANDLE_RIGHT_BACK_MOTOR}),
-          lineRoi(cv::Mat(480, 640, CV_8U), 0, 240, 639, 239), areaRoi(cv::Mat(480, 640, CV_8U), 220, 400, 200, 80) {
+          lineRoi(cv::Mat(480, 640, CV_8U), 0, 240, 639, 239), areaRoi(cv::Mat(480, 640, CV_8U), 220, 390, 200, 80) {
 }
 
 void commands::WunderhornCommand::execute(HandleMap &handles, const proto::CommandMessage &message) {
