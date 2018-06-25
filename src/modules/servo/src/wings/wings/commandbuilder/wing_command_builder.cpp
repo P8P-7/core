@@ -41,7 +41,7 @@ WingCommandBuilder &WingCommandBuilder::setDirection(Direction direction) {
 }
 
 WingCommandBuilder &WingCommandBuilder::setShortestDirection(const WingState &state, double angle, double threshold) {
-    this->direction = state.getDirectionFromWorldAngle(angle, threshold);
+    this->direction = handle->getTranslatedDirection(state.getDirectionFromWorldAngle(angle, threshold));
 
     return *this;
 }
