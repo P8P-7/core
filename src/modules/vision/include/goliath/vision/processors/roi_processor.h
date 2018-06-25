@@ -21,7 +21,6 @@ namespace goliath::vision {
          * @param h Height of ROI
          */
         RoiProcessor(const cv::Mat &input, int x, int y, int w, int h);
-        RoiProcessor(int x, int y, int w, int h);
 
         RoiProcessor(Processor &other, int x, int y, int w, int h);
 

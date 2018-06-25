@@ -8,21 +8,22 @@
 using namespace goliath::handles;
 using namespace goliath;
 
-const std::vector<proto::commands::MotorCommand_Motor> leftMotors{proto::commands::MotorCommand_Motor_LEFT_FRONT,
-                                                                  proto::commands::MotorCommand_Motor_LEFT_BACK};
-const std::vector<proto::commands::MotorCommand_Motor> rightMotors{proto::commands::MotorCommand_Motor_RIGHT_FRONT,
-                                                                   proto::commands::MotorCommand_Motor_RIGHT_BACK};
+const std::vector<size_t> leftMotors{HANDLE_LEFT_FRONT_MOTOR,
+                                     HANDLE_LEFT_BACK_MOTOR};
+const std::vector<size_t> rightMotors{HANDLE_RIGHT_FRONT_MOTOR,
+                                      HANDLE_RIGHT_BACK_MOTOR};
 
 commands::WunderhornCommand::WunderhornCommand(const size_t &id)
         : BasicCommand(id, {HANDLE_CAM, HANDLE_I2C_BUS, HANDLE_MOTOR_CONTROLLER,
                             HANDLE_LEFT_FRONT_MOTOR, HANDLE_LEFT_BACK_MOTOR,
-                            HANDLE_RIGHT_FRONT_MOTOR, HANDLE_RIGHT_BACK_MOTOR}), roiProcessor(0,240,640,240) {
+                            HANDLE_RIGHT_FRONT_MOTOR, HANDLE_RIGHT_BACK_MOTOR}),
+          lineRoi(cv::Mat(480, 640, CV_8U), 0, 240, 639, 239), areaRoi(cv::Mat(480, 640, CV_8U), 220, 400, 200, 80) {
 }
 
 void commands::WunderhornCommand::execute(HandleMap &handles, const proto::CommandMessage &message) {
     handleMap = handles;
     vision::Webcam webcam = std::static_pointer_cast<WebcamHandle>(handles[HANDLE_CAM])->getDevice();
-    vision::FollowLineDetector followLineDetector(webcam.getRoiFrame(roiProcessor), 4, 50, 0, 20, 10, 10000);
+    vision::FollowLineDetector followLineDetector(webcam.getRoiFrame(lineRoi), 4, 40, 10, 20, 10, 10000);
 
     i2c::I2cSlave controllerSlave(*handles.get<handles::I2cBusHandle>(HANDLE_I2C_BUS),
                                   *handles.get<handles::I2cSlaveHandle>(HANDLE_MOTOR_CONTROLLER));
@@ -32,10 +33,10 @@ void commands::WunderhornCommand::execute(HandleMap &handles, const proto::Comma
     follow_line(followLineDetector, webcam, motorController);
     BOOST_LOG_TRIVIAL(trace) << "stopped following line";
 
-    vision::ColorRegionDetector colorRegionDetector(webcam.getRoiFrame(roiProcessor), 0, 0, 0, 0);
+    vision::ColorRegionDetector colorRegionDetector(webcam.getRoiFrame(areaRoi), 340, 20, 70, 100);
 
     BOOST_LOG_TRIVIAL(trace) << "driving into red zone";
-    move(0, 128, motorController);
+    move(0, 50, motorController);
 
     while (true) {
         if (isInterrupted()) {
@@ -57,7 +58,7 @@ void commands::WunderhornCommand::execute(HandleMap &handles, const proto::Comma
             break;
         }
 
-        cv::Mat new_frame = webcam.getRoiFrame(roiProcessor);
+        cv::Mat new_frame = webcam.getRoiFrame(lineRoi);
         followLineDetector.update(new_frame);
     }
 
@@ -89,19 +90,20 @@ void commands::WunderhornCommand::follow_line(vision::FollowLineDetector &follow
 
         double direction = 0;
         if (lines[0][0] == vision::FollowLineDirection::LEFT) {
-            direction = -lines[0][1];
+            direction = -lines[0][1] * 4;
         } else if (lines[0][0] == vision::FollowLineDirection::RIGHT) {
-            direction = lines[0][1];
+            direction = lines[0][1] * 4;
         }
         BOOST_LOG_TRIVIAL(trace) << "direction set to " << direction;
 
         if (direction != lastDirection) {
-            move(direction, 128, motorController);
+            move(direction, 50, motorController);
             lastDirection = direction;
         }
 
         cv::Mat new_frame = camera.getFrame();
         followLineDetector.update(new_frame);
+        lines = followLineDetector.detect();
     }
 
     BOOST_LOG_TRIVIAL(trace) << "setting speed to 0";
@@ -115,15 +117,21 @@ commands::WunderhornCommand::move(double direction, int speed, motor_controller:
     double leftSpeed = speed;
     double rightSpeed = speed;
 
-    if (direction < 0) {
-        leftSpeed -= leftSpeed * (1 + direction);
-    } else if (direction > 0) {
-        rightSpeed -= rightSpeed * (1 - direction);
+    if(std::abs(direction) > 1){
+        direction = direction / std::abs(direction);
     }
 
-    BOOST_LOG_TRIVIAL(trace) << "speed left: " << leftSpeed << "/t right: " << rightSpeed;
+    if (direction < 0) {
+        leftSpeed -= leftSpeed * -direction;
+        rightSpeed += rightSpeed * -direction;
+    } else if (direction > 0) {
+        leftSpeed += leftSpeed * direction;
+        rightSpeed -= rightSpeed * direction;
+    }
 
-    motor_controller::MotorDirection gear = motor_controller::MotorDirection::FORWARDS;
+    BOOST_LOG_TRIVIAL(trace) << "speed left: " << leftSpeed << "\t right: " << rightSpeed;
+
+    motor_controller::MotorDirection gear = motor_controller::MotorDirection::BACKWARDS;
     if (speed == 0) {
         gear = motor_controller::MotorDirection::LOCKED;
     }

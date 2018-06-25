@@ -9,22 +9,15 @@ SynchronizeBatteryVoltageCommand::SynchronizeBatteryVoltageCommand(const size_t 
         : BasicCommand(id,{HANDLE_LEFT_FRONT_WING_SERVO}), batteryRepository(std::move(batteryRepository)) {}
 
 void SynchronizeBatteryVoltageCommand::execute(handles::HandleMap &handles, const proto::CommandMessage &message) {
-
-    std::vector<size_t> requiredHandles = getRequiredHandles();
-
-    double voltageTotal = 0;
-    int count = 0;
-
-    for (auto const &servoHandle : requiredHandles) {
-        int voltage = getVoltage(handles.get<ServoHandle>(servoHandle));
-        if(voltage >= batteryRepository->getBatteryMinVoltage() - 1 && voltage <= batteryRepository->getBatteryMaxVoltage()){
-            voltageTotal += voltage;
-            count++;
-        }
-    }
-
-    if(count > 0){
-        batteryRepository->setBatteryVoltage(static_cast<int>(voltageTotal / count));
+    return;
+    
+    int voltage = getVoltage(handles.get<ServoHandle>(HANDLE_LEFT_FRONT_WING_SERVO));
+    BOOST_LOG_TRIVIAL(trace) << "Received voltage " << std::to_string(voltage);
+    if(voltage >= batteryRepository->getBatteryMinVoltage() - 1 && voltage <= batteryRepository->getBatteryMaxVoltage()) {
+        BOOST_LOG_TRIVIAL(trace) << "Valid voltage";
+        batteryRepository->setBatteryVoltage(voltage);
+    } else {
+        BOOST_LOG_TRIVIAL(trace) << "Invalid voltage";
     }
 }
 

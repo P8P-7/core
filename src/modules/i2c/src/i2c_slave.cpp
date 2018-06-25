@@ -37,7 +37,10 @@ void I2cSlave::setActiveSlaveOnBus(const i2c::I2cAddress &address) {
 ssize_t I2cSlave::write(const char *buffer, size_t length) {
     setActiveSlaveOnBus(address);
 
-    ssize_t write_result = ::write(file_descriptor, buffer, length);
+    ssize_t write_result = -1;
+    for (int i = 0; i < 10 && write_result == -1; i++) {
+        write_result = ::write(file_descriptor, buffer, length);
+    }
     if (write_result == -1) {
         throw exceptions::I2cError(device, str(boost::format("Could not write to slave %1$#x")
                                                % static_cast<int>(address)));

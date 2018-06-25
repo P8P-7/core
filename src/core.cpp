@@ -226,6 +226,9 @@ int main(int argc, char *argv[]) {
     ioService->run();
 
     BOOST_LOG_TRIVIAL(warning) << "Core is shutting down...";
+    for (auto &command : commands) {
+        command.second.instance->interrupt();
+    }
 
     BOOST_LOG_TRIVIAL(info) << "Stopping watcher";
     watcher->stop();
