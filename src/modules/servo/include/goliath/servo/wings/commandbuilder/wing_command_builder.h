@@ -19,7 +19,7 @@ namespace goliath::servo {
 
         WingCommandBuilder &setDirection(Direction direction);
 
-        WingCommandBuilder &setShortestDirection(const WingState &state, double angle, double threshold = 180);
+        WingCommandBuilder &setShortestDirection(const WingState &state, double threshold = 180);
 
         WingCommandBuilder &flipDirection();
 

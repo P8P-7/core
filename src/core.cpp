@@ -178,7 +178,6 @@ int main(int argc, char *argv[]) {
         proto::CommandMessage::kSynchronizeCommandsCommand,
         commandStatusRepository);
     commands.add<commands::MoveCommand>(proto::CommandMessage::kMoveCommand);
-    commands.add<commands::MoveWingCommand>(proto::CommandMessage::kMoveWingCommand, wingStateRepository);
     commands.add<commands::SynchronizeSystemStatusCommand>(proto::CommandMessage::kSynchronizeSystemStatusCommand,
                                                            systemStatusRepository);
     commands.add<commands::SetWingPositionCommand>(proto::CommandMessage::kSetWingPositionCommand, wingStateRepository);
@@ -197,7 +196,7 @@ int main(int argc, char *argv[]) {
     commands.add<commands::LineDanceCommand>(proto::CommandMessage::kLineDanceCommand);
 
     // Part 4: Obstacle Course
-    commands.add<commands::ObstacleCourseCommand>(proto::CommandMessage::kObstacleCourseCommand);
+    commands.add<commands::ObstacleCourseCommand>(proto::CommandMessage::kObstacleCourseCommand, wingStateRepository);
 
     // Part 5: Des Knaben Wunderhorn
     commands.add<commands::WunderhornCommand>(proto::CommandMessage::kWunderhornCommand);
