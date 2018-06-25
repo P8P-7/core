@@ -10,7 +10,7 @@ SynchronizeBatteryVoltageCommand::SynchronizeBatteryVoltageCommand(const size_t 
 
 void SynchronizeBatteryVoltageCommand::execute(handles::HandleMap &handles, const proto::CommandMessage &message) {
     return;
-    
+
     int voltage = getVoltage(handles.get<ServoHandle>(HANDLE_LEFT_FRONT_WING_SERVO));
     BOOST_LOG_TRIVIAL(trace) << "Received voltage " << std::to_string(voltage);
     if(voltage >= batteryRepository->getBatteryMinVoltage() - 1 && voltage <= batteryRepository->getBatteryMaxVoltage()) {
