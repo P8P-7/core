@@ -231,16 +231,37 @@ void commands::DanceCommand::execute(HandleMap &handles, const proto::CommandMes
     motorController.sendCommand(motor_controller::MotorStatus{
         .id = Motor::RIGHT_FRONT,
         .direction = motor_controller::MotorDirection::FORWARDS,
-        .speed = 126
+        .speed = 127
     });
     motorController.sendCommand(motor_controller::MotorStatus{
         .id = Motor::RIGHT_BACK,
         .direction = motor_controller::MotorDirection::FORWARDS,
-        .speed = 126
+        .speed = 127
     });
     std::this_thread::sleep_for(10s);
 
-    std::this_thread::sleep_for(54s);
+    emotionRepository->setCurrentEmotion(Emotion::SUPRISED);
+    ledController.sendCommand(allYellow);
+
+    for (auto motor : commands::MoveCommand::COMMAND_MOTOR_TO_HANDLE_MAP) {
+        motorController.sendCommand(motor_controller::MotorStatus{
+            .id = motor.first,
+            .direction = motor_controller::MotorDirection::FORWARDS,
+            .speed = 127
+        });
+    }
+    std::this_thread::sleep_for(3s);
+
+    for (auto motor : commands::MoveCommand::COMMAND_MOTOR_TO_HANDLE_MAP) {
+        motorController.sendCommand(motor_controller::MotorStatus{
+            .id = motor.first,
+            .direction = motor_controller::MotorDirection::BACKWARDS,
+            .speed = 127
+        });
+    }
+    std::this_thread::sleep_for(3s);
+
+    std::this_thread::sleep_for(48s);
 
     // 1 Min. 23
     // Chainsaw phase 2
