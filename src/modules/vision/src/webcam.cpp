@@ -17,6 +17,7 @@ Webcam::~Webcam() {
 void Webcam::getFrame(cv::Mat& frame) {
     if (cap.isOpened()) {
         cap >> frame;
+        cv::flip(frame,frame,-1);
     }
 
     if (color.is_initialized()) {

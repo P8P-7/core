@@ -8,10 +8,10 @@
 using namespace goliath::handles;
 using namespace goliath;
 
-std::vector<proto::commands::MotorCommand_Motor> leftMotors{proto::commands::MotorCommand_Motor_LEFT_FRONT,
-                                                            proto::commands::MotorCommand_Motor_LEFT_BACK};
-std::vector<proto::commands::MotorCommand_Motor> rightMotors{proto::commands::MotorCommand_Motor_RIGHT_FRONT,
-                                                             proto::commands::MotorCommand_Motor_RIGHT_BACK};
+const std::vector<proto::commands::MotorCommand_Motor> leftMotors{proto::commands::MotorCommand_Motor_LEFT_FRONT,
+                                                                  proto::commands::MotorCommand_Motor_LEFT_BACK};
+const std::vector<proto::commands::MotorCommand_Motor> rightMotors{proto::commands::MotorCommand_Motor_RIGHT_FRONT,
+                                                                   proto::commands::MotorCommand_Motor_RIGHT_BACK};
 
 commands::WunderhornCommand::WunderhornCommand(const size_t &id)
         : BasicCommand(id, {HANDLE_CAM, HANDLE_I2C_BUS, HANDLE_MOTOR_CONTROLLER,
@@ -50,7 +50,10 @@ void commands::WunderhornCommand::execute(HandleMap &handles, const proto::Comma
         } while (detected == -1);
 
         if (detected == 1) {
+            BOOST_LOG_TRIVIAL(trace) << "red zone detected, stopping in 500ms";
+            std::this_thread::sleep_for(std::chrono::milliseconds(500));
             move(0, 0, motorController);
+            BOOST_LOG_TRIVIAL(trace) << "stopped";
             break;
         }
 
@@ -119,7 +122,7 @@ commands::WunderhornCommand::move(double direction, int speed, motor_controller:
     }
 
     motor_controller::MotorDirection gear = motor_controller::MotorDirection::FORWARDS;
-    if(speed == 0){
+    if (speed == 0) {
         gear = motor_controller::MotorDirection::LOCKED;
     }
 
