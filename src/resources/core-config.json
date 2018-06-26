@@ -18,26 +18,26 @@
    {
     "position": "LEFT_FRONT",
     "id": "1",
-    "mirror": true,
+    "mirror": false,
     "number_of_sectors": 4
    },
    {
     "position": "LEFT_BACK",
     "id": "2",
-    "mirror": false,
-    "number_of_sectors": 0
+    "mirror": true,
+    "number_of_sectors": 4
    },
    {
     "position": "RIGHT_FRONT",
     "id": "3",
     "mirror": true,
-    "number_of_sectors": 0
+    "number_of_sectors": 4
    },
    {
     "position": "RIGHT_BACK",
     "id": "4",
     "mirror": false,
-    "number_of_sectors": 0
+    "number_of_sectors": 4
    }
   ]
  },
@@ -49,7 +49,7 @@
   "motors": [
    {
     "position": "LEFT_FRONT",
-    "id": "3"
+    "id": "2"
    },
    {
     "position": "LEFT_BACK",
@@ -61,7 +61,7 @@
    },
    {
     "position": "RIGHT_BACK",
-    "id": "2"
+    "id": "3"
    }
   ]
  },
@@ -81,6 +81,11 @@
  "enter": {
   "direction": "FORWARDS",
   "speed": 25
+ },
+ "fan": {
+  "start_threshold": 50,
+  "stop_threshold": 40,
+  "pin": 6
  },
  "dance": {
   "chainsaw_speed_low": 50,

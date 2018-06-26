@@ -67,7 +67,6 @@ int main(int argc, char *argv[]) {
     gpio::GPIO gpio(static_cast<gpio::GPIO::MapPin>(config->gpio().pin()), gpio::GPIO::Direction::Out,
                     gpio::GPIO::State::Low);
 
-
     BOOST_LOG_TRIVIAL(info) << "Setting up serial port";
     std::string portName = config->serial().port();
     ulong baudRate = config->serial().baudrate();
@@ -162,6 +161,9 @@ int main(int argc, char *argv[]) {
     handles.add<handles::Handle>(HANDLE_LED_CONTROLLER);
     handles.add<handles::EmotionHandle>(HANDLE_EMOTIONS, emotionRepository);
 
+    gpio::GPIO fanGpio(static_cast<gpio::GPIO::MapPin>(config->gpio().pin()), gpio::GPIO::Direction::Out, gpio::GPIO::State::High);
+    handles.add<handles::GPIOHandle>(HANDLE_GPIO_PIN_FAN, std::make_shared<gpio::GPIO>(fanGpio));
+
     BOOST_LOG_TRIVIAL(info) << "Setting up commands";
     commands::CommandMap commands(commandStatusRepository);
 
@@ -194,11 +196,11 @@ int main(int argc, char *argv[]) {
             commandStatusRepository);
     commands.add<commands::MoveCommand>(proto::CommandMessage::kMoveCommand);
     commands.add<commands::MoveWingCommand>(proto::CommandMessage::kMoveWingCommand, wingStateRepository);
-    commands.add<commands::SynchronizeSystemStatusCommand>(proto::CommandMessage::kSynchronizeSystemStatusCommand,
-                                                           systemStatusRepository);
     commands.add<commands::SetWingPositionCommand>(proto::CommandMessage::kSetWingPositionCommand, wingStateRepository);
     commands.add<commands::SynchronizeSystemStatusCommand>(proto::CommandMessage::kSynchronizeSystemStatusCommand,
-                                                           systemStatusRepository);
+                                                           systemStatusRepository,
+                                                           config->fan().start_threshold(),
+                                                           config->fan().stop_threshold());
     commands.add<commands::SynchronizeBatteryVoltageCommand>(proto::CommandMessage::kSynchronizeBatteryVoltageCommand,
                                                              batteryRepository);
     commands.add<commands::MoveArmCommand>(proto::CommandMessage::kMoveArmCommand);

@@ -15,12 +15,17 @@ namespace goliath::commands {
     class SynchronizeSystemStatusCommand : public BasicCommand {
     public:
         SynchronizeSystemStatusCommand(const size_t &id,
-                                       std::shared_ptr<repositories::SystemStatusRepository> systemStatusRepository);
+                                       std::shared_ptr<repositories::SystemStatusRepository> systemStatusRepository,
+                                       double enableFanThreshold,
+                                       double disableFanThreshold);
 
     private:
         static const std::string TEMPERATURE_FILE;
 
         std::shared_ptr<repositories::SystemStatusRepository> systemStatusRepository;
+
+        double enableFanThreshold;
+        double disableFanThreshold;
 
         void execute(handles::HandleMap &handles, const proto::CommandMessage &message) override;
     };

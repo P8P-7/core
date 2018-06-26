@@ -46,20 +46,20 @@ BOOST_AUTO_TEST_SUITE(BOOST_TEST_MODULE)
         auto *leftBackWing = servoConfig->add_wings();
         leftBackWing->set_position(proto::repositories::Position::LEFT_BACK);
         leftBackWing->set_id(2);
-        leftFrontWing->set_mirror(true);
-        leftFrontWing->set_number_of_sectors(4);
+        leftBackWing->set_mirror(true);
+        leftBackWing->set_number_of_sectors(4);
 
         auto *rightFrontWing = servoConfig->add_wings();
         rightFrontWing->set_position(proto::repositories::Position::RIGHT_FRONT);
         rightFrontWing->set_id(3);
         rightFrontWing->set_mirror(true);
-        leftFrontWing->set_number_of_sectors(4);
+        rightFrontWing->set_number_of_sectors(4);
 
         auto *rightBackWing = servoConfig->add_wings();
         rightBackWing->set_position(proto::repositories::Position::RIGHT_BACK);
         rightBackWing->set_id(4);
         rightBackWing->set_mirror(false);
-        leftFrontWing->set_number_of_sectors(4);
+        rightBackWing->set_number_of_sectors(4);
 
         auto *i2cConfig = new proto::repositories::I2cConfig;
         i2cConfig->set_device("/dev/i2c-1");
@@ -100,6 +100,11 @@ BOOST_AUTO_TEST_SUITE(BOOST_TEST_MODULE)
         enterConfig->set_direction(proto::repositories::EnterConfig::FORWARDS);
         enterConfig->set_speed(25);
 
+        auto *fanConfig = new proto::repositories::FanConfig;
+        fanConfig->set_start_threshold(50.0);
+        fanConfig->set_stop_threshold(40.0);
+        fanConfig->set_pin(6);
+
         auto *danceCommandConfig = new proto::repositories::DanceCommandConfig;
         danceCommandConfig->set_chainsaw_speed_low(50);
         danceCommandConfig->set_chainsaw_speed_medium(100);
@@ -118,6 +123,7 @@ BOOST_AUTO_TEST_SUITE(BOOST_TEST_MODULE)
         configRepository.set_allocated_watcher(watcherConfig);
         configRepository.set_allocated_logging(loggingConfig);
         configRepository.set_allocated_enter(enterConfig);
+        configRepository.set_allocated_fan(fanConfig);
         configRepository.set_allocated_dance(danceCommandConfig);
 
         google::protobuf::util::MessageToJsonString(configRepository, &jsonString, options);
