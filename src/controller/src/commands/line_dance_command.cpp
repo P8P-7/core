@@ -36,7 +36,7 @@ void commands::LineDanceCommand::waitForBeat() {
     });
 }
 
-void commands::LineDanceCommand::listenGpio(const std::shared_ptr<gpio::GPIO> &gpioDevice) {
+void commands::LineDanceCommand::listenGpio(std::shared_ptr<gpio::GPIO> gpioDevice) {
     t0 = std::chrono::high_resolution_clock::now();
 
     while (!isInterrupted()) {

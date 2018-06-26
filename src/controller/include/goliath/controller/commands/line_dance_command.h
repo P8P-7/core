@@ -25,7 +25,7 @@ namespace goliath::commands {
 
         void waitForBeat();
 
-        void listenGpio(const std::shared_ptr<gpio::GPIO> &gpioDevice);
+        void listenGpio(std::shared_ptr<gpio::GPIO> gpioDevice);
 
     private:
         std::shared_ptr<repositories::WingStateRepository> repository;
