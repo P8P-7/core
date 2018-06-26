@@ -70,8 +70,8 @@ void commands::LineDanceCommand::execute(handles::HandleMap &handles, const prot
     led_controller::LedStripController ledController(ledControllerSlave);
 
     led_controller::AllLedsMessage allLedsMessage{
-            {led_controller::LightingType::ALL, led_controller::ColorType::HSV},
-            {90, 255, 0}
+            {led_controller::LightingType::ALL, led_controller::ColorType::HSV, 0},
+            {90, 255, 255}
     };
 
     servo::WingController wingController(repository);
