@@ -20,63 +20,63 @@ commands::DanceCommand::DanceCommand(const size_t &id,
                                      const std::shared_ptr<repositories::WingStateRepository> &repository,
                                      const std::uint8_t chainSawSpeedLow, const std::uint8_t chainSawSpeedMedium,
                                      const std::uint8_t chainSawSpeedFast, const std::uint8_t chainSawSpeedExtraFast)
-        : BasicCommand(id, {HANDLE_EMOTIONS,
-                            HANDLE_LED_CONTROLLER,
-                            HANDLE_I2C_BUS, HANDLE_MOTOR_CONTROLLER,
-                            HANDLE_LEFT_FRONT_MOTOR, HANDLE_LEFT_BACK_MOTOR,
-                            HANDLE_RIGHT_FRONT_MOTOR, HANDLE_RIGHT_BACK_MOTOR,
-                            HANDLE_LEFT_FRONT_WING_SERVO, HANDLE_LEFT_BACK_WING_SERVO,
-                            HANDLE_RIGHT_FRONT_WING_SERVO, HANDLE_RIGHT_BACK_WING_SERVO}),
-          repository(repository),
-          chainSawSpeedLow(chainSawSpeedLow), chainSawSpeedMedium(chainSawSpeedMedium),
-          chainSawSpeedFast(chainSawSpeedFast), chainSawSpeedExtraFast(chainSawSpeedExtraFast) {}
+    : BasicCommand(id, {HANDLE_EMOTIONS,
+                        HANDLE_LED_CONTROLLER,
+                        HANDLE_I2C_BUS, HANDLE_MOTOR_CONTROLLER,
+                        HANDLE_LEFT_FRONT_MOTOR, HANDLE_LEFT_BACK_MOTOR,
+                        HANDLE_RIGHT_FRONT_MOTOR, HANDLE_RIGHT_BACK_MOTOR,
+                        HANDLE_LEFT_FRONT_WING_SERVO, HANDLE_LEFT_BACK_WING_SERVO,
+                        HANDLE_RIGHT_FRONT_WING_SERVO, HANDLE_RIGHT_BACK_WING_SERVO}),
+      repository(repository),
+      chainSawSpeedLow(chainSawSpeedLow), chainSawSpeedMedium(chainSawSpeedMedium),
+      chainSawSpeedFast(chainSawSpeedFast), chainSawSpeedExtraFast(chainSawSpeedExtraFast) {}
 
 void commands::DanceCommand::execute(HandleMap &handles, const proto::CommandMessage &message) {
     using Emotion = proto::repositories::EmotionRepository;
 
     led_controller::LedStatus allColor{
-            .lightingType = led_controller::LightingType::ALL,
-            .colorType = led_controller::ColorType::HSV
+        .lightingType = led_controller::LightingType::ALL,
+        .colorType = led_controller::ColorType::HSV
     };
 
     led_controller::AllLedsMessage allGreen{
-            allColor,
-            .allLeds = {
-                    .hue = 125,
-                    .saturation = 100,
-                    .value = 100,
-                    .rainbow = false
-            }
+        allColor,
+        .allLeds = {
+            .hue = 125,
+            .saturation = 100,
+            .value = 100,
+            .rainbow = false
+        }
     };
 
     led_controller::AllLedsMessage allRed{
-            allColor,
-            .allLeds = {
-                    .hue = 0,
-                    .saturation = 100,
-                    .value = 100,
-                    .rainbow = false
-            }
+        allColor,
+        .allLeds = {
+            .hue = 0,
+            .saturation = 100,
+            .value = 100,
+            .rainbow = false
+        }
     };
 
     led_controller::AllLedsMessage allBlue{
-            allColor,
-            .allLeds = {
-                    .hue = 236,
-                    .saturation = 100,
-                    .value = 100,
-                    .rainbow = false
-            }
+        allColor,
+        .allLeds = {
+            .hue = 236,
+            .saturation = 100,
+            .value = 100,
+            .rainbow = false
+        }
     };
 
     led_controller::AllLedsMessage allYellow{
-            allColor,
-            .allLeds = {
-                    .hue = 59,
-                    .saturation = 100,
-                    .value = 100,
-                    .rainbow = false
-            }
+        allColor,
+        .allLeds = {
+            .hue = 59,
+            .saturation = 100,
+            .value = 100,
+            .rainbow = false
+        }
     };
 
     if (repository->hasLostTracking()) {
@@ -93,7 +93,7 @@ void commands::DanceCommand::execute(HandleMap &handles, const proto::CommandMes
     motor_controller::MotorController motorController(controllerSlave);
 
     std::shared_ptr<repositories::EmotionRepository> emotionRepository = handles.get<handles::EmotionHandle>(
-            HANDLE_EMOTIONS)->getEmotionRepository();
+        HANDLE_EMOTIONS)->getEmotionRepository();
 
     servo::WingController wingController(repository);
 
@@ -101,53 +101,54 @@ void commands::DanceCommand::execute(HandleMap &handles, const proto::CommandMes
     //ledController.sendCommand(allGreen);
 
     servo::WingCommandBuilder upBuilder(handles.get<handles::WingHandle>(HANDLE_LEFT_FRONT_WING_SERVO));
-    upBuilder.setSpeed(511)
-            .setAngle(74)
-            .setDirection(servo::Direction::CLOCKWISE);
+    upBuilder
+        .setSpeed(511)
+        .setAngle(74)
+        .setDirection(servo::Direction::CLOCKWISE);
 
     servo::WingCommandBuilder standBuilder(handles.get<handles::WingHandle>(HANDLE_LEFT_BACK_WING_SERVO));
-    standBuilder.setSpeed(511)
-            .setAngle(280)
-            .setDirection(servo::Direction::CLOCKWISE);
+    standBuilder
+        .setSpeed(511)
+        .setAngle(280)
+        .setDirection(servo::Direction::COUNTER_CLOCKWISE);
 
     servo::WingCommand leftBackStand = standBuilder.build();
     servo::WingCommand rightBackStand = standBuilder
-            .setHandle(handles.get<handles::WingHandle>(HANDLE_RIGHT_BACK_WING_SERVO))
-            .build();
+        .setHandle(handles.get<handles::WingHandle>(HANDLE_RIGHT_BACK_WING_SERVO))
+        .build();
     servo::WingCommand leftFrontStand = standBuilder
-            .setHandle(handles.get<handles::WingHandle>(HANDLE_LEFT_FRONT_WING_SERVO))
-            .setDirection(servo::Direction::COUNTER_CLOCKWISE)
-            .build();
+        .setHandle(handles.get<handles::WingHandle>(HANDLE_LEFT_FRONT_WING_SERVO))
+        .build();
     servo::WingCommand rightFrontStand = standBuilder
-            .setHandle(handles.get<handles::WingHandle>(HANDLE_RIGHT_FRONT_WING_SERVO))
-            .setDirection(servo::Direction::COUNTER_CLOCKWISE)
-            .build();
+        .setHandle(handles.get<handles::WingHandle>(HANDLE_RIGHT_FRONT_WING_SERVO))
+        .build();
 
     servo::WingCommandBuilder allFlatBuilder = servo::WingCommandBuilder(
-            handles.get<handles::WingHandle>(HANDLE_LEFT_BACK_WING_SERVO))
-            .setDirection(servo::Direction::CLOCKWISE)
-            .setSpeed(511)
-            .setAngle(0);
+        handles.get<handles::WingHandle>(HANDLE_LEFT_BACK_WING_SERVO))
+        .setDirection(servo::Direction::CLOCKWISE)
+        .setSpeed(511)
+        .setAngle(0);
 
     servo::WingCommand leftBackFlat = allFlatBuilder.build();
     servo::WingCommand rightBackFlat = allFlatBuilder
-            .setHandle(handles.get<handles::WingHandle>(HANDLE_RIGHT_BACK_WING_SERVO))
-            .build();
+        .setHandle(handles.get<handles::WingHandle>(HANDLE_RIGHT_BACK_WING_SERVO))
+        .build();
     servo::WingCommand leftFrontFlat = allFlatBuilder
-            .setHandle(handles.get<handles::WingHandle>(HANDLE_LEFT_FRONT_WING_SERVO))
-            .setDirection(servo::Direction::COUNTER_CLOCKWISE)
-            .build();
+        .setHandle(handles.get<handles::WingHandle>(HANDLE_LEFT_FRONT_WING_SERVO))
+        .setDirection(servo::Direction::CLOCKWISE)
+        .build();
     servo::WingCommand rightFrontFlat = allFlatBuilder
-            .setHandle(handles.get<handles::WingHandle>(HANDLE_RIGHT_FRONT_WING_SERVO))
-            .setDirection(servo::Direction::COUNTER_CLOCKWISE)
-            .build();
+        .setHandle(handles.get<handles::WingHandle>(HANDLE_RIGHT_FRONT_WING_SERVO))
+        .setDirection(servo::Direction::CLOCKWISE)
+        .build();
 
     moveWingOverTime(2000ms, wingController, {leftFrontStand, rightFrontStand});
     if (isInterrupted()) {
         return;
     }
     moveWingOverTime(1000ms, wingController, {allFlatBuilder
-                                                  .setHandle(handles.get<handles::WingHandle>(HANDLE_RIGHT_FRONT_WING_SERVO))
+                                                  .setHandle(
+                                                      handles.get<handles::WingHandle>(HANDLE_RIGHT_FRONT_WING_SERVO))
                                                   .build()});
     if (isInterrupted()) {
         return;
@@ -213,7 +214,7 @@ void commands::DanceCommand::execute(HandleMap &handles, const proto::CommandMes
             return;
         }
 
-        saw(motorController,motorHandleToId(handles, HANDLE_RIGHT_FRONT_MOTOR), chainSawSpeedFast);
+        saw(motorController, motorHandleToId(handles, HANDLE_RIGHT_FRONT_MOTOR), chainSawSpeedFast);
         std::this_thread::sleep_for(500ms);
         if (isInterrupted()) {
             return;
@@ -221,12 +222,12 @@ void commands::DanceCommand::execute(HandleMap &handles, const proto::CommandMes
     }
 
     motorController.sendCommand(motor_controller::MotorStatus{
-            .id = motorHandleToId(handles, HANDLE_RIGHT_FRONT_MOTOR),
-            .direction = motor_controller::MotorDirection::LOCKED,
-            .speed = 0
+        .id = motorHandleToId(handles, HANDLE_RIGHT_FRONT_MOTOR),
+        .direction = motor_controller::MotorDirection::LOCKED,
+        .speed = 0
     });
 
-    moveWingOverTime(1000ms, wingController, {leftBackFlat, rightBackFlat, leftFrontFlat, rightFrontFlat});
+    moveWingOverTime(1000ms, wingController, {leftFrontFlat});
     if (isInterrupted()) {
         return;
     }
@@ -237,14 +238,14 @@ void commands::DanceCommand::execute(HandleMap &handles, const proto::CommandMes
 
     servo::WingCommand leftFrontUp = upBuilder.build();
     servo::WingCommand rightFrontUp = upBuilder
-            .setHandle(handles.get<handles::WingHandle>(HANDLE_RIGHT_FRONT_WING_SERVO))
-            .build();
+        .setHandle(handles.get<handles::WingHandle>(HANDLE_RIGHT_FRONT_WING_SERVO))
+        .build();
     servo::WingCommand leftBackUp = upBuilder
-            .setHandle(handles.get<handles::WingHandle>(HANDLE_LEFT_BACK_WING_SERVO))
-            .build();
+        .setHandle(handles.get<handles::WingHandle>(HANDLE_LEFT_BACK_WING_SERVO))
+        .build();
     servo::WingCommand rightBackUp = upBuilder
-            .setHandle(handles.get<handles::WingHandle>(HANDLE_RIGHT_BACK_WING_SERVO))
-            .build();
+        .setHandle(handles.get<handles::WingHandle>(HANDLE_RIGHT_BACK_WING_SERVO))
+        .build();
 
     moveWingOverTime(1000ms, wingController, {leftFrontUp, rightFrontUp, leftBackUp, rightBackUp});
     if (isInterrupted()) {
@@ -252,14 +253,14 @@ void commands::DanceCommand::execute(HandleMap &handles, const proto::CommandMes
     }
 
     motorController.sendCommand(motor_controller::MotorStatus{
-            .id = motorHandleToId(handles, HANDLE_RIGHT_FRONT_MOTOR),
-            .direction = motor_controller::MotorDirection::FORWARDS,
-            .speed = 127
+        .id = motorHandleToId(handles, HANDLE_RIGHT_FRONT_MOTOR),
+        .direction = motor_controller::MotorDirection::FORWARDS,
+        .speed = 127
     });
     motorController.sendCommand(motor_controller::MotorStatus{
-            .id = motorHandleToId(handles, HANDLE_RIGHT_BACK_MOTOR),
-            .direction = motor_controller::MotorDirection::FORWARDS,
-            .speed = 127
+        .id = motorHandleToId(handles, HANDLE_RIGHT_BACK_MOTOR),
+        .direction = motor_controller::MotorDirection::FORWARDS,
+        .speed = 127
     });
     std::this_thread::sleep_for(10s);
     if (isInterrupted()) {
@@ -267,14 +268,14 @@ void commands::DanceCommand::execute(HandleMap &handles, const proto::CommandMes
     }
 
     motorController.sendCommand(motor_controller::MotorStatus{
-            .id = motorHandleToId(handles, HANDLE_RIGHT_FRONT_MOTOR),
-            .direction = motor_controller::MotorDirection::FORWARDS,
-            .speed = 0
+        .id = motorHandleToId(handles, HANDLE_RIGHT_FRONT_MOTOR),
+        .direction = motor_controller::MotorDirection::FORWARDS,
+        .speed = 0
     });
     motorController.sendCommand(motor_controller::MotorStatus{
-            .id = motorHandleToId(handles, HANDLE_RIGHT_BACK_MOTOR),
-            .direction = motor_controller::MotorDirection::FORWARDS,
-            .speed = 0
+        .id = motorHandleToId(handles, HANDLE_RIGHT_BACK_MOTOR),
+        .direction = motor_controller::MotorDirection::FORWARDS,
+        .speed = 0
     });
 
     moveWingOverTime(1000ms, wingController, {leftFrontFlat, rightFrontFlat, leftBackFlat, rightBackFlat});
@@ -287,9 +288,9 @@ void commands::DanceCommand::execute(HandleMap &handles, const proto::CommandMes
 
     for (auto motor : commands::MoveCommand::COMMAND_MOTOR_TO_HANDLE_MAP) {
         motorController.sendCommand(motor_controller::MotorStatus{
-                .id = static_cast<motor_controller::MotorId>(motor.first),
-                .direction = motor_controller::MotorDirection::FORWARDS,
-                .speed = 127
+            .id = static_cast<motor_controller::MotorId>(motor.first),
+            .direction = motor_controller::MotorDirection::FORWARDS,
+            .speed = 127
         });
     }
     std::this_thread::sleep_for(3s);
@@ -299,9 +300,9 @@ void commands::DanceCommand::execute(HandleMap &handles, const proto::CommandMes
 
     for (auto motor : commands::MoveCommand::COMMAND_MOTOR_TO_HANDLE_MAP) {
         motorController.sendCommand(motor_controller::MotorStatus{
-                .id = static_cast<motor_controller::MotorId>(motor.first),
-                .direction = motor_controller::MotorDirection::BACKWARDS,
-                .speed = 127
+            .id = static_cast<motor_controller::MotorId>(motor.first),
+            .direction = motor_controller::MotorDirection::BACKWARDS,
+            .speed = 127
         });
     }
     std::this_thread::sleep_for(3s);
@@ -449,9 +450,9 @@ void commands::DanceCommand::execute(HandleMap &handles, const proto::CommandMes
 void commands::DanceCommand::saw(motor_controller::MotorController &motorController, motor_controller::MotorId motor,
                                  std::uint8_t speed) {
     motorController.sendCommand(motor_controller::MotorStatus{
-            .id = motor,
-            .direction = motor_controller::MotorDirection::FORWARDS,
-            .speed = speed
+        .id = motor,
+        .direction = motor_controller::MotorDirection::FORWARDS,
+        .speed = speed
     });
 }
 
