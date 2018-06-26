@@ -19,6 +19,8 @@ namespace goliath::servo {
         WingCommandBuilder &flipDirection();
         WingCommandBuilder &setSpeed(std::uint16_t speed);
 
+        std::shared_ptr<handles::WingHandle> getHandle() const;
+
         WingCommand build() const;
 
     private:

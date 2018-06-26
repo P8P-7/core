@@ -67,3 +67,6 @@ WingCommand WingCommandBuilder::build() const {
     };
 }
 
+std::shared_ptr<handles::WingHandle> WingCommandBuilder::getHandle() const {
+    return handle;
+}

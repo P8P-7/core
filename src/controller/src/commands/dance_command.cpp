@@ -100,351 +100,154 @@ void commands::DanceCommand::execute(HandleMap &handles, const proto::CommandMes
     emotionRepository->setCurrentEmotion(Emotion::HAPPY);
     //ledController.sendCommand(allGreen);
 
-    servo::WingCommandBuilder upBuilder(handles.get<handles::WingHandle>(HANDLE_LEFT_FRONT_WING_SERVO));
-    upBuilder
-        .setSpeed(511)
-        .setAngle(74)
-        .setDirection(servo::Direction::CLOCKWISE);
+    servo::WingCommandBuilder leftFront(handles.get<handles::WingHandle>(HANDLE_LEFT_FRONT_WING_SERVO));
+    servo::WingCommandBuilder rightFront(handles.get<handles::WingHandle>(HANDLE_RIGHT_FRONT_WING_SERVO));
+    servo::WingCommandBuilder leftBack(handles.get<handles::WingHandle>(HANDLE_LEFT_BACK_WING_SERVO));
+    servo::WingCommandBuilder rightBack(handles.get<handles::WingHandle>(HANDLE_RIGHT_BACK_WING_SERVO));
 
-    servo::WingCommandBuilder standBuilder(handles.get<handles::WingHandle>(HANDLE_LEFT_BACK_WING_SERVO));
-    standBuilder
-        .setSpeed(511)
-        .setAngle(280)
-        .setDirection(servo::Direction::COUNTER_CLOCKWISE);
 
-    servo::WingCommand leftBackStand = standBuilder.build();
-    servo::WingCommand rightBackStand = standBuilder
-        .setHandle(handles.get<handles::WingHandle>(HANDLE_RIGHT_BACK_WING_SERVO))
-        .build();
-    servo::WingCommand leftFrontStand = standBuilder
-        .setHandle(handles.get<handles::WingHandle>(HANDLE_LEFT_FRONT_WING_SERVO))
-        .build();
-    servo::WingCommand rightFrontStand = standBuilder
-        .setHandle(handles.get<handles::WingHandle>(HANDLE_RIGHT_FRONT_WING_SERVO))
-        .build();
+    using clock = std::chrono::high_resolution_clock;
+    std::vector<motor_controller::MotorStatus> motorCommands;
+    clock::time_point start = clock::now();
 
-    servo::WingCommandBuilder allFlatBuilder = servo::WingCommandBuilder(
-        handles.get<handles::WingHandle>(HANDLE_LEFT_BACK_WING_SERVO))
-        .setDirection(servo::Direction::CLOCKWISE)
-        .setSpeed(511)
-        .setAngle(0);
+    // Start: Doggy Style
+    leftFront.setSpeed(1023).setAngle(290).setDirection(servo::Direction::COUNTER_CLOCKWISE);
+    rightFront.setSpeed(1023).setAngle(290).setDirection(servo::Direction::COUNTER_CLOCKWISE);
+    wingController.execute({leftFront.build(), rightFront.build()});
 
-    servo::WingCommand leftBackFlat = allFlatBuilder.build();
-    servo::WingCommand rightBackFlat = allFlatBuilder
-        .setHandle(handles.get<handles::WingHandle>(HANDLE_RIGHT_BACK_WING_SERVO))
-        .build();
-    servo::WingCommand leftFrontFlat = allFlatBuilder
-        .setHandle(handles.get<handles::WingHandle>(HANDLE_LEFT_FRONT_WING_SERVO))
-        .setDirection(servo::Direction::CLOCKWISE)
-        .build();
-    servo::WingCommand rightFrontFlat = allFlatBuilder
-        .setHandle(handles.get<handles::WingHandle>(HANDLE_RIGHT_FRONT_WING_SERVO))
-        .setDirection(servo::Direction::CLOCKWISE)
-        .build();
+    leftBack.setSpeed(1023).setAngle(220).setDirection(servo::Direction::COUNTER_CLOCKWISE);
+    rightBack.setSpeed(1023).setAngle(220).setDirection(servo::Direction::COUNTER_CLOCKWISE);
+    wingController.execute({{leftBack.build(), rightBack.build()}});
 
-    moveWingOverTime(2000ms, wingController, {leftFrontStand, rightFrontStand});
-    if (isInterrupted()) {
-        return;
-    }
-    moveWingOverTime(1000ms, wingController, {allFlatBuilder
-                                                  .setHandle(
-                                                      handles.get<handles::WingHandle>(HANDLE_RIGHT_FRONT_WING_SERVO))
-                                                  .build()});
-    if (isInterrupted()) {
-        return;
-    }
+    leftFront.setSpeed(512).setAngle(45).setDirection(servo::Direction::CLOCKWISE);
+    wingController.execute({{leftFront.build()}});
+    std::this_thread::sleep_until(start + 7s);
 
-    emotionRepository->setCurrentEmotion(Emotion::ANGRY);
-    //ledController.sendCommand(allRed);
-
-    // Start chainsaw phase 1
-    saw(motorController, motorHandleToId(handles, HANDLE_RIGHT_FRONT_MOTOR), chainSawSpeedLow);
-
-    std::this_thread::sleep_for(500ms);
-    if (isInterrupted()) {
-        return;
-    }
-
-    for (int i = 0; i < 6; ++i) {
-        saw(motorController, motorHandleToId(handles, HANDLE_RIGHT_FRONT_MOTOR), chainSawSpeedFast);
-        std::this_thread::sleep_for(500ms);
-        if (isInterrupted()) {
-            return;
-        }
-
-        saw(motorController, motorHandleToId(handles, HANDLE_RIGHT_FRONT_MOTOR), chainSawSpeedMedium);
-        std::this_thread::sleep_for(500ms);
-        if (isInterrupted()) {
-            return;
-        }
-    }
-
-    std::this_thread::sleep_for(2s);
-    if (isInterrupted()) {
-        return;
-    }
-
-    saw(motorController, motorHandleToId(handles, HANDLE_RIGHT_FRONT_MOTOR), chainSawSpeedFast);
-
-    std::this_thread::sleep_for(500ms);
-    if (isInterrupted()) {
-        return;
-    }
-
-    saw(motorController, motorHandleToId(handles, HANDLE_RIGHT_FRONT_MOTOR), chainSawSpeedMedium);
-
-    for (int i = 0; i < 4; ++i) {
-        saw(motorController, motorHandleToId(handles, HANDLE_RIGHT_FRONT_MOTOR), chainSawSpeedLow);
-        std::this_thread::sleep_for(500ms);
-        if (isInterrupted()) {
-            return;
-        }
-
-        saw(motorController, motorHandleToId(handles, HANDLE_RIGHT_FRONT_MOTOR), chainSawSpeedMedium);
-        std::this_thread::sleep_for(500ms);
-        if (isInterrupted()) {
-            return;
-        }
-    }
-
-    for (int i = 0; i < 6; ++i) {
-        saw(motorController, motorHandleToId(handles, HANDLE_RIGHT_FRONT_MOTOR), chainSawSpeedLow);
-        std::this_thread::sleep_for(500ms);
-        if (isInterrupted()) {
-            return;
-        }
-
-        saw(motorController, motorHandleToId(handles, HANDLE_RIGHT_FRONT_MOTOR), chainSawSpeedFast);
-        std::this_thread::sleep_for(500ms);
-        if (isInterrupted()) {
-            return;
-        }
-    }
-
-    motorController.sendCommand(motor_controller::MotorStatus{
-        .id = motorHandleToId(handles, HANDLE_RIGHT_FRONT_MOTOR),
-        .direction = motor_controller::MotorDirection::LOCKED,
-        .speed = 0
-    });
-
-    moveWingOverTime(1000ms, wingController, {leftFrontFlat});
-    if (isInterrupted()) {
-        return;
-    }
-
-    // 15 Sec.
-    emotionRepository->setCurrentEmotion(Emotion::SAD);
-    //ledController.sendCommand(allBlue);
-
-    servo::WingCommand leftFrontUp = upBuilder.build();
-    servo::WingCommand rightFrontUp = upBuilder
-        .setHandle(handles.get<handles::WingHandle>(HANDLE_RIGHT_FRONT_WING_SERVO))
-        .build();
-    servo::WingCommand leftBackUp = upBuilder
-        .setHandle(handles.get<handles::WingHandle>(HANDLE_LEFT_BACK_WING_SERVO))
-        .build();
-    servo::WingCommand rightBackUp = upBuilder
-        .setHandle(handles.get<handles::WingHandle>(HANDLE_RIGHT_BACK_WING_SERVO))
-        .build();
-
-    moveWingOverTime(1000ms, wingController, {leftFrontUp, rightFrontUp, leftBackUp, rightBackUp});
-    if (isInterrupted()) {
-        return;
-    }
-
-    motorController.sendCommand(motor_controller::MotorStatus{
-        .id = motorHandleToId(handles, HANDLE_RIGHT_FRONT_MOTOR),
-        .direction = motor_controller::MotorDirection::FORWARDS,
-        .speed = 127
-    });
-    motorController.sendCommand(motor_controller::MotorStatus{
-        .id = motorHandleToId(handles, HANDLE_RIGHT_BACK_MOTOR),
-        .direction = motor_controller::MotorDirection::FORWARDS,
-        .speed = 127
-    });
-    std::this_thread::sleep_for(10s);
-    if (isInterrupted()) {
-        return;
-    }
-
-    motorController.sendCommand(motor_controller::MotorStatus{
-        .id = motorHandleToId(handles, HANDLE_RIGHT_FRONT_MOTOR),
-        .direction = motor_controller::MotorDirection::FORWARDS,
-        .speed = 0
-    });
-    motorController.sendCommand(motor_controller::MotorStatus{
-        .id = motorHandleToId(handles, HANDLE_RIGHT_BACK_MOTOR),
-        .direction = motor_controller::MotorDirection::FORWARDS,
-        .speed = 0
-    });
-
-    moveWingOverTime(1000ms, wingController, {leftFrontFlat, rightFrontFlat, leftBackFlat, rightBackFlat});
-    if (isInterrupted()) {
-        return;
-    }
-
-    emotionRepository->setCurrentEmotion(Emotion::SUPRISED);
-    //ledController.sendCommand(allYellow);
-
-    for (auto motor : commands::MoveCommand::COMMAND_MOTOR_TO_HANDLE_MAP) {
-        motorController.sendCommand(motor_controller::MotorStatus{
-            .id = static_cast<motor_controller::MotorId>(motor.first),
-            .direction = motor_controller::MotorDirection::FORWARDS,
-            .speed = 127
-        });
-    }
-    std::this_thread::sleep_for(3s);
-    if (isInterrupted()) {
-        return;
-    }
-
-    for (auto motor : commands::MoveCommand::COMMAND_MOTOR_TO_HANDLE_MAP) {
-        motorController.sendCommand(motor_controller::MotorStatus{
-            .id = static_cast<motor_controller::MotorId>(motor.first),
-            .direction = motor_controller::MotorDirection::BACKWARDS,
-            .speed = 127
-        });
-    }
-    std::this_thread::sleep_for(3s);
-    if (isInterrupted()) {
-        return;
-    }
-
-    for (int i = 0; i < 10; ++i) {
-        moveWingOverTime(1000ms, wingController, {leftFrontFlat, rightFrontFlat, leftBackFlat, rightBackFlat});
-        if (isInterrupted()) {
-            return;
-        }
-
-        moveWingOverTime(1000ms, wingController, {leftFrontUp, rightFrontUp, leftBackUp, rightBackUp});
-        if (isInterrupted()) {
-            return;
-        }
-    }
-
-    std::this_thread::sleep_for(27s);
-
-    // Chainsaw phase 2
-
-    moveWingOverTime(1000ms, wingController, {leftBackStand, rightBackStand});
-    if (isInterrupted()) {
-        return;
-    }
-    moveWingOverTime(1000ms, wingController, {rightFrontStand, leftFrontStand});
-    if (isInterrupted()) {
-        return;
-    }
-
-    saw(motorController, motorHandleToId(handles, HANDLE_LEFT_FRONT_MOTOR), chainSawSpeedExtraFast);
-
-    std::this_thread::sleep_for(200ms);
-    if (isInterrupted()) {
-        return;
-    }
-
-    motorController.sendCommand(motor_controller::MotorStatus{
-        .id = motorHandleToId(handles, HANDLE_LEFT_FRONT_MOTOR),
-        .direction = motor_controller::MotorDirection::LOCKED,
-        .speed = 0
-    });
-
-    std::this_thread::sleep_for(1800ms);
-    if (isInterrupted()) {
-        return;
-    }
-
-    for (int i = 0; i < 16; ++i) {
-        saw(motorController, motorHandleToId(handles, HANDLE_LEFT_FRONT_MOTOR), chainSawSpeedExtraFast);
-        std::this_thread::sleep_for(500ms);
-        if (isInterrupted()) {
-            return;
-        }
-
-        saw(motorController, motorHandleToId(handles, HANDLE_LEFT_FRONT_MOTOR), chainSawSpeedMedium);
-        std::this_thread::sleep_for(500ms);
-        if (isInterrupted()) {
-            return;
-        }
-    }
-
+    // Start sawing section 1
+    saw(motorController, motorHandleToId(handles, HANDLE_LEFT_FRONT_MOTOR), chainSawSpeedMedium);
+    wingController.setAngle(*leftFront.getHandle(), 15 * 4, 256, false);
+    std::this_thread::sleep_until(start + 9s);
+    saw(motorController, motorHandleToId(handles, HANDLE_LEFT_FRONT_MOTOR), chainSawSpeedFast);
+    wingController.setAngle(*leftFront.getHandle(), 35 * 4, 756, false);
+    std::this_thread::sleep_until(start + 9s + 500ms);
+    saw(motorController, motorHandleToId(handles, HANDLE_LEFT_FRONT_MOTOR), chainSawSpeedMedium);
+    wingController.setAngle(*leftFront.getHandle(), 25 * 4, 512, false);
+    std::this_thread::sleep_until(start + 10s);
+    saw(motorController, motorHandleToId(handles, HANDLE_LEFT_FRONT_MOTOR), chainSawSpeedMedium);
+    wingController.setAngle(*leftFront.getHandle(), 45 * 4, 1023, false);
+    std::this_thread::sleep_until(start + 10s + 250ms);
     saw(motorController, motorHandleToId(handles, HANDLE_LEFT_FRONT_MOTOR), chainSawSpeedLow);
-    std::this_thread::sleep_for(2s);
-    if (isInterrupted()) {
-        return;
-    }
-
-    for (int i = 0; i < 10; ++i) {
-        saw(motorController, motorHandleToId(handles, HANDLE_LEFT_FRONT_MOTOR), chainSawSpeedExtraFast);
-        std::this_thread::sleep_for(500ms);
-        if (isInterrupted()) {
-            return;
-        }
-
-        saw(motorController, motorHandleToId(handles, HANDLE_LEFT_FRONT_MOTOR), chainSawSpeedFast);
-        std::this_thread::sleep_for(500ms);
-        if (isInterrupted()) {
-            return;
-        }
-    }
-
-    for (int i = 0; i < 4; ++i) {
-        saw(motorController, motorHandleToId(handles, HANDLE_LEFT_FRONT_MOTOR), chainSawSpeedLow);
-        std::this_thread::sleep_for(500ms);
-        if (isInterrupted()) {
-            return;
-        }
-
-        saw(motorController, motorHandleToId(handles, HANDLE_LEFT_FRONT_MOTOR), chainSawSpeedMedium);
-        std::this_thread::sleep_for(500ms);
-        if (isInterrupted()) {
-            return;
-        }
-    }
-
-    for (int i = 0; i < 8; ++i) {
-        saw(motorController, motorHandleToId(handles, HANDLE_LEFT_FRONT_MOTOR), chainSawSpeedFast);
-        std::this_thread::sleep_for(500ms);
-        if (isInterrupted()) {
-            return;
-        }
-
-        saw(motorController, motorHandleToId(handles, HANDLE_LEFT_FRONT_MOTOR), chainSawSpeedMedium);
-        std::this_thread::sleep_for(500ms);
-        if (isInterrupted()) {
-            return;
-        }
-    }
-
-    saw(motorController, motorHandleToId(handles, HANDLE_LEFT_FRONT_MOTOR), chainSawSpeedExtraFast);
-    std::this_thread::sleep_for(5s);
-    if (isInterrupted()) {
-        return;
-    }
-
-    for (int i = 0; i < 6; ++i) {
-        saw(motorController, motorHandleToId(handles, HANDLE_LEFT_FRONT_MOTOR), chainSawSpeedExtraFast);
-        std::this_thread::sleep_for(500ms);
-        if (isInterrupted()) {
-            return;
-        }
-
-        saw(motorController, motorHandleToId(handles, HANDLE_LEFT_FRONT_MOTOR), chainSawSpeedMedium);
-        std::this_thread::sleep_for(500ms);
-        if (isInterrupted()) {
-            return;
-        }
-    }
-
+    std::this_thread::sleep_until(start + 11s);
+    saw(motorController, motorHandleToId(handles, HANDLE_LEFT_FRONT_MOTOR), chainSawSpeedMedium);
+    std::this_thread::sleep_until(start + 11s + 500ms);
     saw(motorController, motorHandleToId(handles, HANDLE_LEFT_FRONT_MOTOR), chainSawSpeedLow);
-    std::this_thread::sleep_for(3s);
-
-    for (auto motor : commands::MoveCommand::COMMAND_MOTOR_TO_HANDLE_MAP) {
-        motorController.sendCommand(motor_controller::MotorStatus{
-            .id = static_cast<motor_controller::MotorId>(motor.first),
-            .direction = motor_controller::MotorDirection::LOCKED,
+    std::this_thread::sleep_until(start + 12s);
+    wingController.setAngle(*leftFront.getHandle(), 15 * 4, 256, false);
+    motorController.sendCommand(motor_controller::MotorStatus{
+            .id = motorHandleToId(handles, HANDLE_LEFT_FRONT_MOTOR),
+            .direction = motor_controller::MotorDirection::FREE,
             .speed = 0
-        });
-    }
+    });
+    std::this_thread::sleep_until(start + 13s);
+    saw(motorController, motorHandleToId(handles, HANDLE_LEFT_FRONT_MOTOR), chainSawSpeedExtraFast);
+    wingController.setAngle(*leftFront.getHandle(), 65 * 4, 256, false);
+    saw(motorController, motorHandleToId(handles, HANDLE_LEFT_FRONT_MOTOR), 0);
+    std::this_thread::sleep_until(start + 15s);
+
+    // Reset to base position
+    leftFront.setSpeed(1023).setAngle(290).setDirection(servo::Direction::COUNTER_CLOCKWISE);
+    wingController.execute({{leftFront.build()}});
+
+    // Set back wings along body
+    leftBack.setSpeed(1023).setAngle(180).setDirection(servo::Direction::COUNTER_CLOCKWISE);
+    rightBack.setSpeed(1023).setAngle(180).setDirection(servo::Direction::COUNTER_CLOCKWISE);
+    wingController.execute({{leftBack.build(), rightBack.build()}});
+
+    // Set front wings to lower push up position
+    leftFront.setSpeed(1023).setAngle(345).setDirection(servo::Direction::CLOCKWISE);
+    rightFront.setSpeed(1023).setAngle(345).setDirection(servo::Direction::CLOCKWISE);
+    wingController.execute({{leftFront.build(), rightFront.build()}});
+
+    // Set front wings to upper push up position
+    leftFront.setSpeed(1023).setAngle(300).setDirection(servo::Direction::COUNTER_CLOCKWISE);
+    rightFront.setSpeed(1023).setAngle(300).setDirection(servo::Direction::COUNTER_CLOCKWISE);
+    wingController.execute({{leftFront.build(), rightFront.build()}});
+
+    // Repeat
+    leftFront.setSpeed(1023).setAngle(345).setDirection(servo::Direction::CLOCKWISE);
+    rightFront.setSpeed(1023).setAngle(345).setDirection(servo::Direction::CLOCKWISE);
+    wingController.execute({{leftFront.build(), rightFront.build()}});
+
+    leftFront.setSpeed(1023).setAngle(300).setDirection(servo::Direction::COUNTER_CLOCKWISE);
+    rightFront.setSpeed(1023).setAngle(300).setDirection(servo::Direction::COUNTER_CLOCKWISE);
+    wingController.execute({{leftFront.build(), rightFront.build()}});
+    // End repeat
+
+    // Set front wings up
+    leftFront.setSpeed(1023).setAngle(75).setDirection(servo::Direction::CLOCKWISE);
+    rightFront.setSpeed(1023).setAngle(75).setDirection(servo::Direction::CLOCKWISE);
+    wingController.execute({{leftFront.build(), rightFront.build()}});
+
+    // Set back wings up
+    leftBack.setSpeed(1023).setAngle(75).setDirection(servo::Direction::COUNTER_CLOCKWISE);
+    rightBack.setSpeed(1023).setAngle(75).setDirection(servo::Direction::COUNTER_CLOCKWISE);
+    wingController.execute({{leftBack.build(), rightBack.build()}});
+    // All wings are up
+
+    // Drive forwards a bit and then back again
+    motorCommands = {
+            motor_controller::MotorStatus{
+                    .id = motorHandleToId(handles, HANDLE_LEFT_FRONT_MOTOR),
+                    .direction = motor_controller::MotorDirection::FORWARDS,
+                    .speed = 128
+            },
+            motor_controller::MotorStatus{
+                    .id = motorHandleToId(handles, HANDLE_LEFT_BACK_MOTOR),
+                    .direction = motor_controller::MotorDirection::FORWARDS,
+                    .speed = 128
+            },
+            motor_controller::MotorStatus{
+                    .id = motorHandleToId(handles, HANDLE_RIGHT_FRONT_MOTOR),
+                    .direction = motor_controller::MotorDirection::FORWARDS,
+                    .speed = 128
+            },
+            motor_controller::MotorStatus{
+                    .id = motorHandleToId(handles, HANDLE_RIGHT_BACK_MOTOR),
+                    .direction = motor_controller::MotorDirection::FORWARDS,
+                    .speed = 128
+            },
+    };
+    // Drive forwards
+    motorController.sendCommands(motorCommands.begin(), motorCommands.end());
+    std::this_thread::sleep_for(3s);
+
+    motorCommands = {
+            motor_controller::MotorStatus{
+                    .id = motorHandleToId(handles, HANDLE_LEFT_FRONT_MOTOR),
+                    .direction = motor_controller::MotorDirection::BACKWARDS,
+                    .speed = 128
+            },
+            motor_controller::MotorStatus{
+                    .id = motorHandleToId(handles, HANDLE_LEFT_BACK_MOTOR),
+                    .direction = motor_controller::MotorDirection::BACKWARDS,
+                    .speed = 128
+            },
+            motor_controller::MotorStatus{
+                    .id = motorHandleToId(handles, HANDLE_RIGHT_FRONT_MOTOR),
+                    .direction = motor_controller::MotorDirection::BACKWARDS,
+                    .speed = 128
+            },
+            motor_controller::MotorStatus{
+                    .id = motorHandleToId(handles, HANDLE_RIGHT_BACK_MOTOR),
+                    .direction = motor_controller::MotorDirection::BACKWARDS,
+                    .speed = 128
+            },
+    };
+    // Drive backwards
+    motorController.sendCommands(motorCommands.begin(), motorCommands.end());
+    std::this_thread::sleep_for(6s);
+
+    
 }
 
 void commands::DanceCommand::saw(motor_controller::MotorController &motorController, motor_controller::MotorId motor,

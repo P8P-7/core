@@ -48,7 +48,9 @@ namespace goliath::commands {
         /**
          * @brief Used to calculate the running BPM
          */
-        std::vector<double> history;
+        std::deque<double> history;
+
+        std::atomic<bool> hasBeat;
 
         /**
          * @brief Running BPM

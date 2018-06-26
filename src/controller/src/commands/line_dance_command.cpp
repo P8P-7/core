@@ -7,12 +7,10 @@
 #include <numeric>
 #include <thread>
 
+using namespace std::chrono_literals;
 using namespace goliath;
 using namespace goliath::handles;
 using namespace goliath::commands;
-
-// In milliseconds
-const int pollingRate = 15;
 
 commands::LineDanceCommand::LineDanceCommand(const size_t &id, const std::shared_ptr<repositories::WingStateRepository> &repository)
         : BasicCommand(id, {HANDLE_GPIO_PIN_5, // GPIO Pin 5 (for VU-meter)
@@ -20,9 +18,9 @@ commands::LineDanceCommand::LineDanceCommand(const size_t &id, const std::shared
                             HANDLE_LEFT_FRONT_WING_SERVO, HANDLE_LEFT_BACK_WING_SERVO,
                             HANDLE_RIGHT_FRONT_WING_SERVO, HANDLE_RIGHT_BACK_WING_SERVO,
                             // I²C bus for led
-                            /*HANDLE_I2C_BUS,*/
+                            HANDLE_I2C_BUS,
                             // Handle for the led controller
-                            /*HANDLE_LED_CONTROLLER*/}), repository(repository) {
+                            HANDLE_LED_CONTROLLER}), repository(repository) {
 }
 
 void commands::LineDanceCommand::startBeat() {
@@ -43,15 +41,20 @@ void commands::LineDanceCommand::listenGpio(const std::shared_ptr<gpio::GPIO> &g
 
     while (!isInterrupted()) {
         bool pulse = gpioDevice->get() != 0;
+        auto timeSinceLastBeat = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now() - t0);
 
         if (pulse) {
             processPulse();
-
-            /*allLedsMessage.allLeds.value = static_cast<led_controller::Value>(pulse ? 255 : 0);
-            ledController.sendCommand(allLedsMessage);*/
+        } else if (timeSinceLastBeat > 15s) {
+            interrupt();
+            break;
+        } else if (timeSinceLastBeat > 3s) {
+            history.clear();
+            hasBeat = false;
+            runningBpm = 0;
         }
 
-        std::this_thread::sleep_for(std::chrono::milliseconds(pollingRate));
+        //std::this_thread::sleep_for(std::chrono::milliseconds(pollingRate));
     }
 }
 
@@ -62,14 +65,14 @@ void commands::LineDanceCommand::execute(handles::HandleMap &handles, const prot
     std::shared_ptr<gpio::GPIO> gpioDevice = handles.get<GPIOHandle>(HANDLE_GPIO_PIN_5)->getDevice();
 
     // Get led strip controller
-    /*i2c::I2cSlave ledControllerSlave(*handles.get<handles::I2cBusHandle>(HANDLE_I2C_BUS),
-                                       *handles.get<handles::I2cSlaveHandle>(HANDLE_LED_CONTROLLER));
+    i2c::I2cSlave ledControllerSlave(*handles.get<handles::I2cBusHandle>(HANDLE_I2C_BUS),
+                                     *handles.get<handles::I2cSlaveHandle>(HANDLE_LED_CONTROLLER));
     led_controller::LedStripController ledController(ledControllerSlave);
 
     led_controller::AllLedsMessage allLedsMessage{
             {led_controller::LightingType::ALL, led_controller::ColorType::HSV},
             {90, 255, 0}
-    };*/
+    };
 
     servo::WingController wingController(repository);
 
@@ -93,17 +96,20 @@ void commands::LineDanceCommand::execute(handles::HandleMap &handles, const prot
     waitForBeat();
 
     while (!isInterrupted()) {
-        auto now = std::chrono::high_resolution_clock::now();
+        while (!hasBeat);
+
+        allLedsMessage.allLeds.value = static_cast<led_controller::Value>(255);
+        ledController.sendCommand(allLedsMessage);
 
         wingController.execute({leftFrontDown});
         wingController.execute({leftFrontUp});
 
-        auto executeTime = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now() - now);
+        allLedsMessage.allLeds.value = static_cast<led_controller::Value>(0);
+        ledController.sendCommand(allLedsMessage);
 
-        auto waitFor = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::duration<double>{((60.0 / runningBpm) / 1000.0)});
-        waitFor -= executeTime;
+        hasBeat = false;
 
-        std::this_thread::sleep_for(waitFor);
+        BOOST_LOG_TRIVIAL(debug) << "Current BPM " << runningBpm << std::endl;
     }
 
     t.join();
@@ -125,6 +131,7 @@ void commands::LineDanceCommand::processPulse() {
 
     // Check to see that this tempo is within the limits allowed
     if (bpm >= minimumAllowedBpm && bpm <= maximumAllowedBpm) {
+        hasBeat = true;
         runningBpm = bpm;
 
         if (!beatStarted) {
@@ -138,6 +145,6 @@ void commands::LineDanceCommand::processPulse() {
     }
 
     if (history.size() >= 4) {
-        history.erase(history.begin());
+        history.pop_front();
     }
 }

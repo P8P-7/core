@@ -26,11 +26,18 @@ void SynchronizeSystemStatusCommand::execute(handles::HandleMap &handles, const 
     double temperature = std::stod(line) / 1000.0;
     systemStatusRepository->setTemperature(temperature);
 
-    bool enableFan = temperature > enableFanThreshold &&
-                     !(systemStatusRepository->getFanStatus() && temperature < disableFanThreshold);
+    bool enableFan = false;
+    if (temperature > enableFanThreshold) {
+        enableFan = true;
+    } else if (systemStatusRepository->getFanStatus() && temperature < disableFanThreshold) {
+        enableFan = false;
+    } else if (!systemStatusRepository->getFanStatus() && temperature < enableFanThreshold) {
+        enableFan = false;
+    }
+
     if (enableFan != systemStatusRepository->getFanStatus()) {
         systemStatusRepository->setFanStatus(enableFan);
-        auto device = handles.get<handles::GPIOHandle>(HANDLE_GPIO_PIN_FAN)->getDevice();
-        device->set(enableFan ? gpio::GPIO::State::Low : gpio::GPIO::State::High);
     }
+    auto device = handles.get<handles::GPIOHandle>(HANDLE_GPIO_PIN_FAN)->getDevice();
+    device->set(enableFan ? gpio::GPIO::State::Low : gpio::GPIO::State::High);
 }
