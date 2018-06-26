@@ -69,19 +69,19 @@ BOOST_AUTO_TEST_SUITE(BOOST_TEST_MODULE)
 
         auto *leftFrontMotor = motorControllerConfig->add_motors();
         leftFrontMotor->set_position(proto::repositories::Position::LEFT_FRONT);
-        leftFrontMotor->set_id(2);
+        leftFrontMotor->set_id(1);
 
         auto *leftBackMotor = motorControllerConfig->add_motors();
         leftBackMotor->set_position(proto::repositories::Position::LEFT_BACK);
-        leftBackMotor->set_id(1);
+        leftBackMotor->set_id(2);
 
         auto *rightFrontMotor = motorControllerConfig->add_motors();
         rightFrontMotor->set_position(proto::repositories::Position::RIGHT_FRONT);
-        rightFrontMotor->set_id(0);
+        rightFrontMotor->set_id(3);
 
         auto *rightBackMotor = motorControllerConfig->add_motors();
         rightBackMotor->set_position(proto::repositories::Position::RIGHT_BACK);
-        rightBackMotor->set_id(3);
+        rightBackMotor->set_id(0);
 
         auto *emotionsConfig = new proto::repositories::EmotionConfig;
         emotionsConfig->set_default_emotion(proto::repositories::EmotionRepository::NEUTRAL);

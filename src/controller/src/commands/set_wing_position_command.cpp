@@ -92,9 +92,9 @@ void SetWingPositionCommand::setRamp(handles::HandleMap &handles, std::uint16_t 
     controller.execute(frontCommands);
 
     servo::WingCommand leftBack = buildCommand(*handles.get<handles::WingHandle>(HANDLE_LEFT_BACK_WING_SERVO), speed,
-                                               190);
+                                               190, servo::Direction::CLOCKWISE);
     servo::WingCommand rightBack = buildCommand(*handles.get<handles::WingHandle>(HANDLE_RIGHT_BACK_WING_SERVO), speed,
-                                                190);
+                                                190, servo::Direction::CLOCKWISE);
     std::vector<servo::WingCommand> backCommands = {leftBack, rightBack};
     controller.execute(backCommands);
 }

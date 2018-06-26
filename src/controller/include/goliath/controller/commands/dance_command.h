@@ -34,5 +34,7 @@ namespace goliath::commands {
         void moveWingOverTime(const std::chrono::milliseconds &duration, servo::WingController &wingController,
                               std::vector<servo::WingCommand> commands);
         motor_controller::MotorId motorHandleToId(handles::HandleMap &handles, size_t handle);
+
+        void stand(handles::HandleMap &handles);
     };
 }

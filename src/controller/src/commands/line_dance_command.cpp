@@ -7,6 +7,7 @@
 #include <numeric>
 #include <thread>
 
+using namespace std::chrono_literals;
 using namespace goliath;
 using namespace goliath::handles;
 using namespace goliath::commands;
@@ -43,15 +44,20 @@ void commands::LineDanceCommand::listenGpio(const std::shared_ptr<gpio::GPIO> &g
 
     while (!isInterrupted()) {
         bool pulse = gpioDevice->get() != 0;
+        auto timeSinceLastBeat = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now() - t0);
 
         if (pulse) {
             processPulse();
-
-            /*allLedsMessage.allLeds.value = static_cast<led_controller::Value>(pulse ? 255 : 0);
-            ledController.sendCommand(allLedsMessage);*/
+        } else if (timeSinceLastBeat > 15s) {
+            interrupt();
+            break;
+        } else if (timeSinceLastBeat > 3s) {
+            history.clear();
+            hasBeat = false;
+            runningBpm = 0;
         }
 
-        std::this_thread::sleep_for(std::chrono::milliseconds(pollingRate));
+        //std::this_thread::sleep_for(std::chrono::milliseconds(pollingRate));
     }
 }
 
@@ -93,17 +99,14 @@ void commands::LineDanceCommand::execute(handles::HandleMap &handles, const prot
     waitForBeat();
 
     while (!isInterrupted()) {
-        auto now = std::chrono::high_resolution_clock::now();
+        while (!hasBeat) ;
 
         wingController.execute({leftFrontDown});
         wingController.execute({leftFrontUp});
 
-        auto executeTime = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now() - now);
+        hasBeat = false;
 
-        auto waitFor = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::duration<double>{((60.0 / runningBpm) / 1000.0)});
-        waitFor -= executeTime;
-
-        std::this_thread::sleep_for(waitFor);
+        BOOST_LOG_TRIVIAL(debug) << "Current BPM " << runningBpm << std::endl;
     }
 
     t.join();
@@ -125,6 +128,7 @@ void commands::LineDanceCommand::processPulse() {
 
     // Check to see that this tempo is within the limits allowed
     if (bpm >= minimumAllowedBpm && bpm <= maximumAllowedBpm) {
+        hasBeat = true;
         runningBpm = bpm;
 
         if (!beatStarted) {
@@ -138,6 +142,6 @@ void commands::LineDanceCommand::processPulse() {
     }
 
     if (history.size() >= 4) {
-        history.erase(history.begin());
+        history.pop_front();
     }
 }
