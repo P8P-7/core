@@ -38,7 +38,8 @@ void commands::WunderhornCommand::execute(HandleMap &handles, const proto::Comma
     BOOST_LOG_TRIVIAL(trace) << "driving into red zone";
     move(0, 50, motorController);
 
-    while (true) {
+    int count = 0;
+    while (count < 20) {
         if (isInterrupted()) {
             move(0, 0, motorController);
             return;
@@ -56,6 +57,7 @@ void commands::WunderhornCommand::execute(HandleMap &handles, const proto::Comma
 
         cv::Mat new_frame = webcam.getFrame();
         followLineDetector.update(new_frame);
+        count++;
     }
 
     BOOST_LOG_TRIVIAL(trace) << "waiting 30 seconds";
