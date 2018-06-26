@@ -25,6 +25,36 @@ commands::LineDanceCommand::LineDanceCommand(const size_t &id, const std::shared
                             /*HANDLE_LED_CONTROLLER*/}), repository(repository) {
 }
 
+void commands::LineDanceCommand::startBeat() {
+    std::unique_lock<std::mutex> lock(mutex);
+    beatStarted = true;
+    beatStart.notify_all();
+}
+
+void commands::LineDanceCommand::waitForBeat() {
+    std::unique_lock<std::mutex> lock(mutex);
+    beatStart.wait(lock, [&]() {
+        return static_cast<bool>(beatStarted);
+    });
+}
+
+void commands::LineDanceCommand::listenGpio(const std::shared_ptr<gpio::GPIO> &gpioDevice) {
+    t0 = std::chrono::high_resolution_clock::now();
+
+    while (!isInterrupted()) {
+        bool pulse = gpioDevice->get() != 0;
+
+        if (pulse) {
+            processPulse();
+
+            /*allLedsMessage.allLeds.value = static_cast<led_controller::Value>(pulse ? 255 : 0);
+            ledController.sendCommand(allLedsMessage);*/
+        }
+
+        std::this_thread::sleep_for(std::chrono::milliseconds(pollingRate));
+    }
+}
+
 void commands::LineDanceCommand::execute(handles::HandleMap &handles, const proto::CommandMessage &message) {
     BOOST_LOG_TRIVIAL(info) << "Execution of line dance command has started";
 
@@ -58,26 +88,31 @@ void commands::LineDanceCommand::execute(handles::HandleMap &handles, const prot
 
     wingController.execute({leftFrontDown});
 
-    t0 = std::chrono::high_resolution_clock::now();
+    std::thread t(&commands::LineDanceCommand::listenGpio, this, gpioDevice);
+
+    waitForBeat();
 
     while (!isInterrupted()) {
-        bool pulse = gpioDevice->get() != 0;
+        auto now = std::chrono::high_resolution_clock::now();
 
-        if (pulse) {
-            processPulse(wingController, {leftFrontUp, leftFrontDown});
+        wingController.execute({leftFrontDown});
+        wingController.execute({leftFrontUp});
 
-            /*allLedsMessage.allLeds.value = static_cast<led_controller::Value>(pulse ? 255 : 0);
-            ledController.sendCommand(allLedsMessage);*/
-        }
+        auto executeTime = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now() - now);
 
-        std::this_thread::sleep_for(std::chrono::milliseconds(pollingRate));
+        auto waitFor = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::duration<double>{((60.0 / runningBpm) / 1000.0)});
+        waitFor -= executeTime;
+
+        std::this_thread::sleep_for(waitFor);
     }
+
+    t.join();
 
     BOOST_LOG_TRIVIAL(info) << "Execution of line dance command has finished";
 }
 
 
-void commands::LineDanceCommand::processPulse(servo::WingController &wingController, std::vector<servo::WingCommand> commands) {
+void commands::LineDanceCommand::processPulse() {
     // Beat amplitude trigger has been detected
     t1 = std::chrono::high_resolution_clock::now();
     history.push_back(60.0 / (std::chrono::duration_cast<std::chrono::milliseconds>(t1 - t0).count() / 1000.0));
@@ -91,12 +126,12 @@ void commands::LineDanceCommand::processPulse(servo::WingController &wingControl
     // Check to see that this tempo is within the limits allowed
     if (bpm >= minimumAllowedBpm && bpm <= maximumAllowedBpm) {
         runningBpm = bpm;
-        BOOST_LOG_TRIVIAL(debug) << "Current BPM " << runningBpm << std::endl;
 
-        // Chain commands instead of executing them parallel
-        for (servo::WingCommand &wingCommand : commands) {
-            wingController.execute({wingCommand});
+        if (!beatStarted) {
+            startBeat();
         }
+
+        BOOST_LOG_TRIVIAL(debug) << "Current BPM " << runningBpm << std::endl;
     } else {
         // Outside of bpm threshold, ignore
         history.pop_back();
