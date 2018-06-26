@@ -44,12 +44,7 @@ void commands::WunderhornCommand::execute(HandleMap &handles, const proto::Comma
             return;
         }
 
-        int detected;
-
-        do {
-            detected = static_cast<int>(colorRegionDetector.detect()[0][0]);
-            BOOST_LOG_TRIVIAL(trace) << "detected region: " << detected;
-        } while (detected == -1);
+        int detected = static_cast<int>(colorRegionDetector.detect()[0][0]);
 
         if (detected == 1) {
             BOOST_LOG_TRIVIAL(trace) << "red zone detected, stopping in 500ms";
@@ -77,7 +72,7 @@ void commands::WunderhornCommand::follow_line(vision::FollowLineDetector &follow
     int noLinesCount = 0;
     double lastDirection = 0;
 
-    while (noLinesCount < 20) {
+    while (noLinesCount < 10) {
         if (isInterrupted()) {
             move(0, 0, motorController);
             return;
@@ -117,7 +112,7 @@ commands::WunderhornCommand::move(double direction, int speed, motor_controller:
     double leftSpeed = speed;
     double rightSpeed = speed;
 
-    if(std::abs(direction) > 1){
+    if (std::abs(direction) > 1) {
         direction = direction / std::abs(direction);
     }
 
