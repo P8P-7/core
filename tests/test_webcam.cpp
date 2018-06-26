@@ -14,16 +14,28 @@ BOOST_AUTO_TEST_SUITE(BOOST_TEST_MODULE)
         cv::imwrite("./test_output/test_webcam.jpg",input);
     }
 
-    BOOST_AUTO_TEST_CASE(test_webcam_roi) {
+    BOOST_AUTO_TEST_CASE(test_webcam_line_roi) {
         vision::Webcam camera(0);
 
         cv::Mat input = camera.getFrame();
 
-        vision::RoiProcessor roiProcessor(input,0,240,640,240);
+        vision::RoiProcessor roiProcessor(input, 0, 240, 639, 239);
 
         input = roiProcessor.process();
 
-        cv::imwrite("./test_output/test_webcam_roi.jpg",input);
+        cv::imwrite("./test_output/test_webcam_line_roi.jpg",input);
+    }
+
+    BOOST_AUTO_TEST_CASE(test_webcam_area_roi) {
+        vision::Webcam camera(0);
+
+        cv::Mat input = camera.getFrame();
+
+        vision::RoiProcessor roiProcessor(input, 220, 390, 200, 80);
+
+        input = roiProcessor.process();
+
+        cv::imwrite("./test_output/test_webcam_area_roi.jpg",input);
     }
 
 BOOST_AUTO_TEST_SUITE_END()
