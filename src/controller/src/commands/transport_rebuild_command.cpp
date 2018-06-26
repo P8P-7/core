@@ -1,11 +1,12 @@
 #include <goliath/controller/commands/transport_rebuild_command.h>
 
 #include <goliath/led-strip-controller.h>
+#include <goliath/emotions.h>
 
 using namespace goliath;
 
 commands::TransportRebuildCommand::TransportRebuildCommand(const size_t &id)
-    : BasicCommand(id, {HANDLE_I2C_BUS, HANDLE_LED_CONTROLLER}) { }
+    : BasicCommand(id, {HANDLE_I2C_BUS, HANDLE_LED_CONTROLLER, HANDLE_EMOTIONS}) { }
 
 void commands::TransportRebuildCommand::execute(handles::HandleMap &handles, const proto::CommandMessage &message) {
     led_controller::CircleMessage helmetMessage{
