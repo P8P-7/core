@@ -16,16 +16,16 @@ namespace goliath::repositories {
      */
     class EmotionRepository : public Repository {
     public:
-        using Emotion = proto::repositories::EmotionRepository::Emotion;
+        using Emotion = proto::repositories::EmotionRepository;
 
         EmotionRepository();
 
         std::unique_ptr<google::protobuf::Message> getMessage() override;
 
-        const Emotion &getCurrentEmotion() const;
-        void setCurrentEmotion(const Emotion &emotion);
+        const Emotion::Emotion &getCurrentEmotion() const;
+        void setCurrentEmotion(const Emotion::Emotion &emotion);
 
     private:
-        Emotion currentEmotion;
+        Emotion::Emotion currentEmotion;
     };
 }
