@@ -11,7 +11,7 @@ using namespace goliath::handles;
 using namespace goliath::commands;
 
 const std::map<proto::commands::MotorCommand_Motor, size_t> commands::MoveCommand::COMMAND_MOTOR_TO_HANDLE_MAP = {{
-    { MotorProto::MotorCommand_Motor_LEFT_FRONT, HANDLE_LEFT_FRONT_MOTOR },
+    {MotorProto::MotorCommand_Motor_LEFT_FRONT, HANDLE_LEFT_FRONT_MOTOR},
     {MotorProto::MotorCommand_Motor_LEFT_BACK, HANDLE_LEFT_BACK_MOTOR},
     {MotorProto::MotorCommand_Motor_RIGHT_FRONT, HANDLE_RIGHT_FRONT_MOTOR},
     {MotorProto::MotorCommand_Motor_RIGHT_BACK, HANDLE_RIGHT_BACK_MOTOR},

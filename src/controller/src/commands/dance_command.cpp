@@ -107,8 +107,8 @@ void commands::DanceCommand::execute(HandleMap &handles, const proto::CommandMes
 
     servo::WingCommandBuilder standBuilder(handles.get<handles::WingHandle>(HANDLE_LEFT_BACK_WING_SERVO));
     standBuilder.setSpeed(511)
-            .setAngle(260)
-            .setDirection(servo::Direction::COUNTER_CLOCKWISE);
+            .setAngle(280)
+            .setDirection(servo::Direction::CLOCKWISE);
 
     servo::WingCommand leftBackStand = standBuilder.build();
     servo::WingCommand rightBackStand = standBuilder
@@ -116,11 +116,11 @@ void commands::DanceCommand::execute(HandleMap &handles, const proto::CommandMes
             .build();
     servo::WingCommand leftFrontStand = standBuilder
             .setHandle(handles.get<handles::WingHandle>(HANDLE_LEFT_FRONT_WING_SERVO))
-            .setDirection(servo::Direction::CLOCKWISE)
+            .setDirection(servo::Direction::COUNTER_CLOCKWISE)
             .build();
     servo::WingCommand rightFrontStand = standBuilder
             .setHandle(handles.get<handles::WingHandle>(HANDLE_RIGHT_FRONT_WING_SERVO))
-            .setDirection(servo::Direction::CLOCKWISE)
+            .setDirection(servo::Direction::COUNTER_CLOCKWISE)
             .build();
 
     servo::WingCommandBuilder allFlatBuilder = servo::WingCommandBuilder(

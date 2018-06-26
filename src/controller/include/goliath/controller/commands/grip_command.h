@@ -5,7 +5,6 @@
 #include "basic_command.h"
 #include "../handles.h"
 
-
 namespace goliath::commands {
     class GripCommand : public BasicCommand {
     public:
