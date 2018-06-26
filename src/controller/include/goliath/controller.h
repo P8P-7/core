@@ -17,6 +17,8 @@
 #include "controller/commands/wunderhorn_command.h"
 #include "controller/commands/move_command.h"
 #include "controller/commands/move_wing_command.h"
+#include "controller/commands/move_arm_command.h"
+#include "controller/commands/grip_command.h"
 #include "controller/commands/dance_command.h"
 #include "controller/commands/enter_command.h"
 #include "controller/commands/interrupt_command_command.h"
