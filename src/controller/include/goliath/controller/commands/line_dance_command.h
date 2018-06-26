@@ -1,5 +1,6 @@
 #pragma once
 
+#include <goliath/gpio.h>
 #include <goliath/servo/wings/wing_command.h>
 #include <goliath/servo/wings/wing_controller.h>
 #include <goliath/servo/repositories/wing_state_repository.h>
@@ -15,9 +16,16 @@
 namespace goliath::commands {
     class LineDanceCommand : public BasicCommand {
     public:
-        explicit LineDanceCommand(const size_t &id, const std::shared_ptr<repositories::WingStateRepository> &repository);
+        explicit LineDanceCommand(const size_t &id,
+                                  const std::shared_ptr<repositories::WingStateRepository> &repository);
 
-        void processPulse(servo::WingController &wingController, std::vector<servo::WingCommand> commands);
+        void processPulse();
+
+        void startBeat();
+
+        void waitForBeat();
+
+        void listenGpio(const std::shared_ptr<gpio::GPIO> &gpioDevice);
 
     private:
         std::shared_ptr<repositories::WingStateRepository> repository;
@@ -25,16 +33,36 @@ namespace goliath::commands {
         std::chrono::high_resolution_clock::time_point t0;
         std::chrono::high_resolution_clock::time_point t1;
 
-        // Used to calculate the running BPM
+        /**
+         * @brief Represents whether a beat has been started or not
+         */
+        std::atomic<bool> beatStarted;
+
+        std::mutex mutex;
+
+        /**
+         * @brief Condition variable that can be waited on
+         */
+        std::condition_variable beatStart;
+
+        /**
+         * @brief Used to calculate the running BPM
+         */
         std::vector<double> history;
 
-        // Running BPM
-        double runningBpm = 0.0;
+        /**
+         * @brief Running BPM
+         */
+        std::atomic<double> runningBpm{0.0};
 
-        // Smallest possible BPM allowed,
+        /**
+         * @brief Smallest possible BPM allowed
+         */
         double minimumAllowedBpm = 40.0;
 
-        // Largest possible BPM allowed
+        /**
+         * @brief Largest possible BPM allowed
+         */
         double maximumAllowedBpm = 120.0;
 
         void execute(handles::HandleMap &handles, const proto::CommandMessage &message) override;

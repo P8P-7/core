@@ -26,6 +26,10 @@ namespace goliath::repositories {
 
         void setTemperature(double temperature);
 
+        bool getFanStatus() const;
+
+        void setFanStatus(bool enabled);
+
         size_t getPollingCommandId() override;
 
         /**
@@ -35,6 +39,7 @@ namespace goliath::repositories {
 
     private:
         std::atomic<double> temperature;
+        std::atomic<bool> fanEnabled;
     };
 }
 

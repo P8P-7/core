@@ -10,6 +10,7 @@ namespace goliath::led_controller {
     using Hue = std::uint8_t;
     using Saturation = std::uint8_t;
     using Value = std::uint8_t;
+    using Place = std::uint8_t;
 
     enum class LightingType : std::uint8_t {
         SPECIFIC = 0,
@@ -25,6 +26,7 @@ namespace goliath::led_controller {
     struct LedStatus {
         LightingType lightingType;
         ColorType colorType;
+        Place place;
     };
 
     struct SpecificColour {
@@ -86,7 +88,7 @@ namespace goliath::led_controller {
         void sendCommand(const SpecRainMessage &message);
         void sendCommand(const CircleMessage &message);
 
-        const static size_t numberOfPixels = 5;
+        const static size_t numberOfPixels = 30;
 
     private:
         i2c::I2cSlave &slave;

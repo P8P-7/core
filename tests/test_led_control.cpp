@@ -1,4 +1,4 @@
-#define BOOST_TEST_MODULE test_motor_controller
+#define BOOST_TEST_MODULE test_led_strip
 
 #include <thread>
 #include <boost/test/included/unit_test.hpp>
@@ -19,73 +19,79 @@ BOOST_AUTO_TEST_SUITE(BOOST_TEST_MODULE)
         led_controller::LedStripController controller(slave);
 
         led_controller::SpecColMessage specColMessage{
-            {led_controller::LightingType::SPECIFIC, led_controller::ColorType::HSV},
+            {led_controller::LightingType::SPECIFIC, led_controller::ColorType::HSV, 0},
             {0, 0, 255, 0}
         };
         led_controller::AllLedsMessage allLedsMessage{
-            {led_controller::LightingType::ALL, led_controller::ColorType::HSV},
+            {led_controller::LightingType::ALL, led_controller::ColorType::HSV, 0},
             { 90, 255, 255}
         };
         led_controller::SpecRainMessage specRainMessage{
-            {led_controller::LightingType::SPECIFIC, led_controller::ColorType::RAINBOW},
+            {led_controller::LightingType::SPECIFIC, led_controller::ColorType::RAINBOW, 0},
             {0, 0}
         };
         led_controller::CircleMessage circleMessage{
-            {led_controller::LightingType::CIRCLE, led_controller::ColorType::HSV},
-            {0, 4, false, 180, 255}
+            {led_controller::LightingType::CIRCLE, led_controller::ColorType::HSV, 0},
+            {0, led_controller::LedStripController::numberOfPixels-1, false, 180, 255}
         };
 
-        for (led_controller::LedId j = 0; j < led_controller::LedStripController::numberOfPixels; ++j) {
-            specRainMessage.specificRainbow.ledId = j;
-            specRainMessage.specificRainbow.startHue = static_cast<led_controller::Hue>(
-                255 / led_controller::LedStripController::numberOfPixels * j);
-            controller.sendCommand(specRainMessage);
-        }
-
-        std::this_thread::sleep_for(std::chrono::seconds(3));
-        controller.sendCommand(circleMessage);
-        std::this_thread::sleep_for(std::chrono::seconds(4));
-
-        for (led_controller::LedId j = 0; j < led_controller::LedStripController::numberOfPixels; ++j) {
-            specRainMessage.specificRainbow.ledId = j;
-            specRainMessage.specificRainbow.startHue = static_cast<led_controller::Hue>(0);
-            controller.sendCommand(specRainMessage);
-        }
-
-        std::this_thread::sleep_for(std::chrono::seconds(3));
-        for (led_controller::LedId j = 0; j < led_controller::LedStripController::numberOfPixels; ++j) {
-            specColMessage.specificColour.ledId = j;
-            controller.sendCommand(specColMessage);
-        }
-
-        for (led_controller::LedId j = 0; j < led_controller::LedStripController::numberOfPixels; ++j) {
-            specColMessage.specificColour.value = 255;
-            specColMessage.specificColour.ledId = j;
-            for (led_controller::Hue i = 0;; i++) {
-                specColMessage.specificColour.hue = static_cast<led_controller::Hue>(i * 25);
-                controller.sendCommand(specColMessage);
-                std::this_thread::sleep_for(std::chrono::milliseconds(250));
-
-                if (i == 10) {
-                    break;
-                }
+        for (std::uint8_t ledStripId = 0; ledStripId < 3; ++ledStripId) {
+            specColMessage.ledStatus.place = ledStripId;
+            allLedsMessage.ledStatus.place = ledStripId;
+            specRainMessage.ledStatus.place = ledStripId;
+            circleMessage.ledStatus.place = ledStripId;
+            for (led_controller::LedId j = 0; j < led_controller::LedStripController::numberOfPixels; ++j) {
+                specRainMessage.specificRainbow.ledId = j;
+                specRainMessage.specificRainbow.startHue = static_cast<led_controller::Hue>(
+                        255 / led_controller::LedStripController::numberOfPixels * j);
+                controller.sendCommand(specRainMessage);
             }
-            specRainMessage.specificRainbow.ledId = j;
-            controller.sendCommand(specRainMessage);
+
             std::this_thread::sleep_for(std::chrono::seconds(3));
+            controller.sendCommand(circleMessage);
+            std::this_thread::sleep_for(std::chrono::seconds(4));
 
-            specColMessage.specificColour.value = 0;
-            controller.sendCommand(specColMessage);
+            for (led_controller::LedId j = 0; j < led_controller::LedStripController::numberOfPixels; ++j) {
+                specRainMessage.specificRainbow.ledId = j;
+                specRainMessage.specificRainbow.startHue = static_cast<led_controller::Hue>(0);
+                controller.sendCommand(specRainMessage);
+            }
+
+            std::this_thread::sleep_for(std::chrono::seconds(3));
+            for (led_controller::LedId j = 0; j < led_controller::LedStripController::numberOfPixels; ++j) {
+                specColMessage.specificColour.ledId = j;
+                controller.sendCommand(specColMessage);
+            }
+
+            for (led_controller::LedId j = 0; j < 5; ++j) {
+                specColMessage.specificColour.value = 255;
+                specColMessage.specificColour.ledId = j;
+                for (led_controller::Hue i = 0;; i++) {
+                    specColMessage.specificColour.hue = static_cast<led_controller::Hue>(i * 25);
+                    controller.sendCommand(specColMessage);
+                    std::this_thread::sleep_for(std::chrono::milliseconds(250));
+
+                    if (i == 10) {
+                        break;
+                    }
+                }
+                specRainMessage.specificRainbow.ledId = j;
+                controller.sendCommand(specRainMessage);
+                std::this_thread::sleep_for(std::chrono::seconds(3));
+
+                specColMessage.specificColour.value = 0;
+                controller.sendCommand(specColMessage);
+            }
+
+            controller.sendCommand(allLedsMessage);
+            std::this_thread::sleep_for(std::chrono::seconds(4));
+            allLedsMessage.allLeds.value = 0;
+            controller.sendCommand(allLedsMessage);
+
+
+            circleMessage.circle.endId = 0;
+            controller.sendCommand(circleMessage);
         }
-
-        controller.sendCommand(allLedsMessage);
-        std::this_thread::sleep_for(std::chrono::seconds(4));
-        allLedsMessage.allLeds.value = 0;
-        controller.sendCommand(allLedsMessage);
-
-
-        circleMessage.circle.endId = 0;
-        controller.sendCommand(circleMessage);
 
         slaveHandle.unlock();
         busHandle.unlock();
