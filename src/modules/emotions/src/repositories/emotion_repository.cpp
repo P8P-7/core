@@ -10,6 +10,8 @@ EmotionRepository::EmotionRepository()
 std::unique_ptr<::google::protobuf::Message> repositories::EmotionRepository::getMessage() {
     proto::repositories::EmotionRepository emotionRepository;
 
+    emotionRepository.set_emotion(currentEmotion);
+
     return std::make_unique<proto::repositories::EmotionRepository>(emotionRepository);
 }
 
