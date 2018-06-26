@@ -67,7 +67,6 @@ int main(int argc, char *argv[]) {
     gpio::GPIO gpio(static_cast<gpio::GPIO::MapPin>(config->gpio().pin()), gpio::GPIO::Direction::Out,
                     gpio::GPIO::State::Low);
 
-
     BOOST_LOG_TRIVIAL(info) << "Setting up serial port";
     std::string portName = config->serial().port();
     ulong baudRate = config->serial().baudrate();
@@ -79,15 +78,17 @@ int main(int argc, char *argv[]) {
 
     handles.add<handles::WebcamHandle>(HANDLE_CAM, 0);
     std::shared_ptr<repositories::WingStateRepository> wingStateRepository = nullptr;
+
+    auto callback = [&gpio](bool isTx) {
+        gpio.set(isTx ? gpio::GPIO::State::High : gpio::GPIO::State::Low);
+    };
     if (connectSuccess) {
         BOOST_LOG_TRIVIAL(info) << "Setting up Dynamixel servo handles";
 
         std::vector<size_t> wingHandleIds;
         for (const proto::repositories::Wing &wing : config->servos().wings()) {
             auto dynamixel = std::make_shared<dynamixel::Dynamixel>(wing.id(), port);
-            dynamixel->setDirectionCallback([&gpio](bool isTx) {
-                gpio.set(isTx ? gpio::GPIO::State::High : gpio::GPIO::State::Low);
-            });
+            dynamixel->setDirectionCallback(callback);
 
             size_t handleId;
             switch (wing.position()) {
@@ -120,6 +121,19 @@ int main(int argc, char *argv[]) {
         wingStateRepository = std::make_shared<repositories::WingStateRepository>(wingHandleIds);
     }
 
+    auto servo_arm = std::make_shared<dynamixel::Dynamixel>(5, port);
+    servo_arm->setDirectionCallback(callback);
+    handles.add<handles::ServoHandle>(HANDLE_BASE_ARM, servo_arm);
+    auto servo_first_joint = std::make_shared<dynamixel::Dynamixel>(6, port);
+    servo_first_joint->setDirectionCallback(callback);
+    handles.add<handles::ServoHandle>(HANDLE_FIRST_JOINT_ARM, servo_first_joint);
+    auto servo_second_joint = std::make_shared<dynamixel::Dynamixel>(7, port);
+    servo_second_joint->setDirectionCallback(callback);
+    handles.add<handles::ServoHandle>(HANDLE_SECOND_JOINT_ARM, servo_second_joint);
+    auto servo_gripper = std::make_shared<dynamixel::Dynamixel>(8, port);
+    servo_gripper->setDirectionCallback(callback);
+    handles.add<handles::ServoHandle>(HANDLE_GRIPPER_ARM, servo_gripper);
+
     handles.add<handles::I2cBusHandle>(HANDLE_I2C_BUS, "/dev/i2c-1");
     handles.add<handles::I2cSlaveHandle>(HANDLE_MOTOR_CONTROLLER, 0x30);
     const auto &motors = config->motor_controller().motors();
@@ -146,6 +160,9 @@ int main(int argc, char *argv[]) {
 
     handles.add<handles::Handle>(HANDLE_LED_CONTROLLER);
     handles.add<handles::EmotionHandle>(HANDLE_EMOTIONS, emotionRepository);
+
+    gpio::GPIO fanGpio(static_cast<gpio::GPIO::MapPin>(config->gpio().pin()), gpio::GPIO::Direction::Out, gpio::GPIO::State::High);
+    handles.add<handles::GPIOHandle>(HANDLE_GPIO_PIN_FAN, std::make_shared<gpio::GPIO>(fanGpio));
 
     BOOST_LOG_TRIVIAL(info) << "Setting up commands";
     commands::CommandMap commands(commandStatusRepository);
@@ -179,13 +196,16 @@ int main(int argc, char *argv[]) {
             commandStatusRepository);
     commands.add<commands::MoveCommand>(proto::CommandMessage::kMoveCommand);
     commands.add<commands::MoveWingCommand>(proto::CommandMessage::kMoveWingCommand, wingStateRepository);
-    commands.add<commands::SynchronizeSystemStatusCommand>(proto::CommandMessage::kSynchronizeSystemStatusCommand,
-                                                           systemStatusRepository);
     commands.add<commands::SetWingPositionCommand>(proto::CommandMessage::kSetWingPositionCommand, wingStateRepository);
     commands.add<commands::SynchronizeSystemStatusCommand>(proto::CommandMessage::kSynchronizeSystemStatusCommand,
-                                                           systemStatusRepository);
+                                                           systemStatusRepository,
+                                                           config->fan().start_threshold(),
+                                                           config->fan().stop_threshold());
     commands.add<commands::SynchronizeBatteryVoltageCommand>(proto::CommandMessage::kSynchronizeBatteryVoltageCommand,
                                                              batteryRepository);
+    commands.add<commands::MoveArmCommand>(proto::CommandMessage::kMoveArmCommand);
+    commands.add<commands::GripCommand>(proto::CommandMessage::kGripCommand);
+
     // Part 1: Entering the Arena
     commands.add<commands::EnterCommand>(proto::CommandMessage::kEnterCommand);
 

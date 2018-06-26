@@ -9,12 +9,20 @@ using namespace goliath;
 SystemStatusRepository::SystemStatusRepository()
         : temperature(0) { }
 
-double SystemStatusRepository::getTemperature() const {
-    return temperature;
+std::unique_ptr<google::protobuf::Message> SystemStatusRepository::getMessage() {
+    proto::repositories::SystemStatusRepository systemStatusRepository;
+
+    systemStatusRepository.set_temperature(getTemperature());
+
+    return std::make_unique<proto::repositories::SystemStatusRepository>(systemStatusRepository);
 }
 
 size_t SystemStatusRepository::getPollingCommandId() {
     return proto::CommandMessage::kSynchronizeSystemStatusCommand;
+}
+
+double SystemStatusRepository::getTemperature() const {
+    return temperature;
 }
 
 void SystemStatusRepository::setTemperature(double temperature) {
@@ -23,10 +31,12 @@ void SystemStatusRepository::setTemperature(double temperature) {
     invalidate();
 }
 
-std::unique_ptr<google::protobuf::Message> SystemStatusRepository::getMessage() {
-    proto::repositories::SystemStatusRepository systemStatusRepository;
+bool SystemStatusRepository::getFanStatus() const {
+    return fanEnabled;
+}
 
-    systemStatusRepository.set_temperature(getTemperature());
+void SystemStatusRepository::setFanStatus(bool enabled) {
+    fanEnabled = enabled;
 
-    return std::make_unique<proto::repositories::SystemStatusRepository>(systemStatusRepository);
+    invalidate();
 }
