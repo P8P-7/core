@@ -10,6 +10,8 @@ set(RELATIVE_SOURCES
         commands/move_command.cpp
         commands/wunderhorn_command.cpp
         commands/move_wing_command.cpp
+        commands/move_arm_command.cpp
+        commands/grip_command.cpp
         commands/dance_command.cpp
         commands/enter_command.cpp
         commands/interrupt_command_command.cpp

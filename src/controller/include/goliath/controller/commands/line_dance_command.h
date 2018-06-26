@@ -32,10 +32,10 @@ namespace goliath::commands {
         double runningBpm = 0.0;
 
         // Smallest possible BPM allowed,
-        double minimumAllowedBpm = 60.0;
+        double minimumAllowedBpm = 40.0;
 
         // Largest possible BPM allowed
-        double maximumAllowedBpm = 180.0;
+        double maximumAllowedBpm = 120.0;
 
         void execute(handles::HandleMap &handles, const proto::CommandMessage &message) override;
     };

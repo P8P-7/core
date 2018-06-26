@@ -86,7 +86,7 @@ void commands::DanceCommand::execute(HandleMap &handles, const proto::CommandMes
 
     i2c::I2cSlave ledControllerSlave(*handles.get<handles::I2cBusHandle>(HANDLE_I2C_BUS),
                                      *handles.get<handles::I2cSlaveHandle>(HANDLE_LED_CONTROLLER));
-    led_controller::LedStripController ledController(ledControllerSlave);
+    //led_controller::LedStripController ledController(ledControllerSlave);
 
     i2c::I2cSlave controllerSlave(*handles.get<handles::I2cBusHandle>(HANDLE_I2C_BUS),
                                   *handles.get<handles::I2cSlaveHandle>(HANDLE_MOTOR_CONTROLLER));
@@ -98,7 +98,7 @@ void commands::DanceCommand::execute(HandleMap &handles, const proto::CommandMes
     servo::WingController wingController(repository);
 
     emotionRepository->setCurrentEmotion(Emotion::HAPPY);
-    ledController.sendCommand(allGreen);
+    //ledController.sendCommand(allGreen);
 
     servo::WingCommandBuilder upBuilder(handles.get<handles::WingHandle>(HANDLE_LEFT_FRONT_WING_SERVO));
     upBuilder.setSpeed(511)
@@ -154,7 +154,7 @@ void commands::DanceCommand::execute(HandleMap &handles, const proto::CommandMes
     }
 
     emotionRepository->setCurrentEmotion(Emotion::ANGRY);
-    ledController.sendCommand(allRed);
+    //ledController.sendCommand(allRed);
 
     // Start chainsaw phase 1
     saw(motorController, motorHandleToId(handles, HANDLE_RIGHT_FRONT_MOTOR), chainSawSpeedLow);
@@ -233,7 +233,7 @@ void commands::DanceCommand::execute(HandleMap &handles, const proto::CommandMes
 
     // 15 Sec.
     emotionRepository->setCurrentEmotion(Emotion::SAD);
-    ledController.sendCommand(allBlue);
+    //ledController.sendCommand(allBlue);
 
     servo::WingCommand leftFrontUp = upBuilder.build();
     servo::WingCommand rightFrontUp = upBuilder
@@ -283,7 +283,7 @@ void commands::DanceCommand::execute(HandleMap &handles, const proto::CommandMes
     }
 
     emotionRepository->setCurrentEmotion(Emotion::SUPRISED);
-    ledController.sendCommand(allYellow);
+    //ledController.sendCommand(allYellow);
 
     for (auto motor : commands::MoveCommand::COMMAND_MOTOR_TO_HANDLE_MAP) {
         motorController.sendCommand(motor_controller::MotorStatus{

@@ -15,6 +15,8 @@ set(RELATIVE_INCLUDES
         controller/commands/line_dance_command.h
         controller/commands/move_command.h
         controller/commands/move_wing_command.h
+        controller/commands/move_arm_command.h
+        controller/commands/grip_command.h
         controller/commands/obstacle_course_command.h
         controller/commands/queue_command.h
         controller/commands/synchronize_commands_command.h
