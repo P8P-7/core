@@ -15,7 +15,9 @@ namespace goliath::servo {
         WingCommandBuilder &setHandle(std::shared_ptr<handles::WingHandle> handle);
         WingCommandBuilder &setAngle(double angle);
         WingCommandBuilder &setDirection(Direction direction);
-        WingCommandBuilder &setShortestDirection(const WingState &state, double angle, double threshold = 180);
+
+        WingCommandBuilder &setShortestDirection(const WingState &state, double threshold = 180);
+
         WingCommandBuilder &flipDirection();
         WingCommandBuilder &setSpeed(std::uint16_t speed);
 
