@@ -91,7 +91,7 @@ void commands::LineDanceCommand::execute(handles::HandleMap &handles, const prot
 
     wingController.execute({leftFrontDown});
 
-    std::thread t(&commands::LineDanceCommand::listenGpio, this, gpioDevice);
+    thread = std::thread(&commands::LineDanceCommand::listenGpio, this, gpioDevice);
 
     waitForBeat();
 
@@ -112,7 +112,9 @@ void commands::LineDanceCommand::execute(handles::HandleMap &handles, const prot
         BOOST_LOG_TRIVIAL(debug) << "Current BPM " << runningBpm << std::endl;
     }
 
-    t.join();
+    if (thread.joinable()) {
+        thread.join();
+    }
 
     BOOST_LOG_TRIVIAL(info) << "Execution of line dance command has finished";
 }

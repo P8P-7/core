@@ -36,9 +36,11 @@ namespace goliath::commands {
         /**
          * @brief Represents whether a beat has been started or not
          */
-        std::atomic<bool> beatStarted;
+        std::atomic<bool> beatStarted{false};
 
         std::mutex mutex;
+
+        std::thread thread;
 
         /**
          * @brief Condition variable that can be waited on
