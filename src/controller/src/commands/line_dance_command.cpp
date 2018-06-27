@@ -12,6 +12,8 @@ using namespace goliath;
 using namespace goliath::handles;
 using namespace goliath::commands;
 
+const int pollingRate = 15;
+
 commands::LineDanceCommand::LineDanceCommand(const size_t &id, const std::shared_ptr<repositories::WingStateRepository> &repository)
         : BasicCommand(id, {HANDLE_GPIO_PIN_5, // GPIO Pin 5 (for VU-meter)
                             // ALl wings
@@ -54,7 +56,7 @@ void commands::LineDanceCommand::listenGpio(std::shared_ptr<gpio::GPIO> gpioDevi
             runningBpm = 0;
         }
 
-        //std::this_thread::sleep_for(std::chrono::milliseconds(pollingRate));
+        std::this_thread::sleep_for(std::chrono::milliseconds(pollingRate));
     }
 }
 
