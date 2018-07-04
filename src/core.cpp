@@ -158,7 +158,7 @@ int main(int argc, char *argv[]) {
         handles.add<handles::MotorHandle>(handle, motor.id());
     }
 
-    handles.add<handles::Handle>(HANDLE_LED_CONTROLLER);
+    handles.add<handles::I2cSlaveHandle>(HANDLE_LED_CONTROLLER, 0x40);
     handles.add<handles::EmotionHandle>(HANDLE_EMOTIONS, emotionRepository);
 
     gpio::GPIO fanGpio(static_cast<gpio::GPIO::MapPin>(config->gpio().pin()), gpio::GPIO::Direction::Out, gpio::GPIO::State::High);

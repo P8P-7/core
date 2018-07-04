@@ -18,12 +18,12 @@ void MoveArmCommand::execute(goliath::handles::HandleMap &handles,
         case proto::commands::MoveArmCommand::TUCKED:
             servoBase->setGoalPosition(197);
             servoFirstJoint->setGoalPosition(768);
-            servoSecondJoint->setGoalPosition(255);
+            servoSecondJoint->setGoalPosition(755);
             break;
         case proto::commands::MoveArmCommand::HIGH:
             servoBase->setGoalPosition(500);
             servoFirstJoint->setGoalPosition(465);
-            servoSecondJoint->setGoalPosition(648);
+            servoSecondJoint->setGoalPosition(448);
             break;
         case proto::commands::MoveArmCommand::MED:
             servoBase->setGoalPosition(500);

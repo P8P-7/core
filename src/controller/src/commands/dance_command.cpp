@@ -220,64 +220,89 @@ void commands::DanceCommand::execute(HandleMap &handles, const proto::CommandMes
     // All wings are up
     emotionRepository->setCurrentEmotion(Emotion::SAD);
 
+    BOOST_LOG_TRIVIAL(info) << "Start driving forwards and backwards";
+    start = clock::now();
+
     // Drive forwards a bit and then back again
     motorCommands = {
             motor_controller::MotorStatus{
                     .id = motorHandleToId(handles, HANDLE_LEFT_FRONT_MOTOR),
                     .direction = motor_controller::MotorDirection::FORWARDS,
-                    .speed = 64
+                    .speed = 32
             },
             motor_controller::MotorStatus{
                     .id = motorHandleToId(handles, HANDLE_LEFT_BACK_MOTOR),
                     .direction = motor_controller::MotorDirection::FORWARDS,
-                    .speed = 64
+                    .speed = 32
             },
             motor_controller::MotorStatus{
                     .id = motorHandleToId(handles, HANDLE_RIGHT_FRONT_MOTOR),
                     .direction = motor_controller::MotorDirection::FORWARDS,
-                    .speed = 64
+                    .speed = 32
             },
             motor_controller::MotorStatus{
                     .id = motorHandleToId(handles, HANDLE_RIGHT_BACK_MOTOR),
                     .direction = motor_controller::MotorDirection::FORWARDS,
-                    .speed = 64
+                    .speed = 32
             },
     };
     // Drive forwards
     motorController.sendCommands(motorCommands.begin(), motorCommands.end());
-    std::this_thread::sleep_for(1500ms);
+    std::this_thread::sleep_until(start + 2s);
+
+    motorCommands = {
+            motor_controller::MotorStatus{
+                    .id = motorHandleToId(handles, HANDLE_LEFT_FRONT_MOTOR),
+                    .direction = motor_controller::MotorDirection::LOCKED,
+                    .speed = 0
+            },
+            motor_controller::MotorStatus{
+                    .id = motorHandleToId(handles, HANDLE_LEFT_BACK_MOTOR),
+                    .direction = motor_controller::MotorDirection::LOCKED,
+                    .speed = 0
+            },
+            motor_controller::MotorStatus{
+                    .id = motorHandleToId(handles, HANDLE_RIGHT_FRONT_MOTOR),
+                    .direction = motor_controller::MotorDirection::LOCKED,
+                    .speed = 0
+            },
+            motor_controller::MotorStatus{
+                    .id = motorHandleToId(handles, HANDLE_RIGHT_BACK_MOTOR),
+                    .direction = motor_controller::MotorDirection::LOCKED,
+                    .speed = 0
+            },
+    };
+    motorController.sendCommands(motorCommands.begin(), motorCommands.end());
 
     emotionRepository->setCurrentEmotion(Emotion::WINK_LEFT);
-    std::this_thread::sleep_for(2s);
+    std::this_thread::sleep_until(start + 4s);
     emotionRepository->setCurrentEmotion(Emotion::HAPPY);
 
-    start = clock::now();
-    BOOST_LOG_TRIVIAL(info) << "Start driving forwards and backwards";
     motorCommands = {
             motor_controller::MotorStatus{
                     .id = motorHandleToId(handles, HANDLE_LEFT_FRONT_MOTOR),
                     .direction = motor_controller::MotorDirection::BACKWARDS,
-                    .speed = 64
+                    .speed = 32
             },
             motor_controller::MotorStatus{
                     .id = motorHandleToId(handles, HANDLE_LEFT_BACK_MOTOR),
                     .direction = motor_controller::MotorDirection::BACKWARDS,
-                    .speed = 64
+                    .speed = 32
             },
             motor_controller::MotorStatus{
                     .id = motorHandleToId(handles, HANDLE_RIGHT_FRONT_MOTOR),
                     .direction = motor_controller::MotorDirection::BACKWARDS,
-                    .speed = 64
+                    .speed = 32
             },
             motor_controller::MotorStatus{
                     .id = motorHandleToId(handles, HANDLE_RIGHT_BACK_MOTOR),
                     .direction = motor_controller::MotorDirection::BACKWARDS,
-                    .speed = 64
+                    .speed = 32
             },
     };
     // Drive backwards
     motorController.sendCommands(motorCommands.begin(), motorCommands.end());
-    std::this_thread::sleep_for(6s);
+    std::this_thread::sleep_until(start + 6s);
 
     leftFront.setAngle(0).setDirection(servo::Direction::COUNTER_CLOCKWISE);
     rightFront.setAngle(0).setDirection(servo::Direction::COUNTER_CLOCKWISE);
@@ -648,13 +673,16 @@ void commands::DanceCommand::execute(HandleMap &handles, const proto::CommandMes
     saw(motorController, motorHandleToId(handles, HANDLE_RIGHT_FRONT_MOTOR), chainSawSpeedExtraFast);
     wingController.setAngle(*rightFront.getHandle(), 75 * 4, 1023, false);
     std::this_thread::sleep_until(realStart + 1min + 54s);
+    saw(motorController, motorHandleToId(handles, HANDLE_RIGHT_FRONT_MOTOR), 0);
+
+    rightFront.setSpeed(1023).setAngle(290).setDirection(servo::Direction::COUNTER_CLOCKWISE);
 
     leftBack.setAngle(190).setSpeed(1023).setDirection(servo::Direction::COUNTER_CLOCKWISE);
     rightBack.setAngle(190).setSpeed(1023).setDirection(servo::Direction::COUNTER_CLOCKWISE);
     wingController.execute({{leftBack.build(), rightBack.build()}});
 
-    leftFront.setAngle(0).setSpeed(1023).setDirection(servo::Direction::COUNTER_CLOCKWISE);
-    rightFront.setAngle(0).setSpeed(1023).setDirection(servo::Direction::COUNTER_CLOCKWISE);
+    leftFront.setAngle(0).setSpeed(1023).setDirection(servo::Direction::CLOCKWISE);
+    rightFront.setAngle(0).setSpeed(1023).setDirection(servo::Direction::CLOCKWISE);
     wingController.execute({{leftFront.build(), rightFront.build()}});
 
     leftFront.setAngle(75).setSpeed(1023).setDirection(servo::Direction::CLOCKWISE);

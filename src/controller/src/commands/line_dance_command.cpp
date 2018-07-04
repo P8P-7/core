@@ -47,16 +47,13 @@ void commands::LineDanceCommand::listenGpio(std::shared_ptr<gpio::GPIO> gpioDevi
 
         if (pulse) {
             processPulse();
-        } else if (timeSinceLastBeat > 15s) {
-            interrupt();
-            break;
         } else if (timeSinceLastBeat > 3s) {
             history.clear();
             hasBeat = false;
             runningBpm = 0;
         }
 
-        std::this_thread::sleep_for(std::chrono::milliseconds(pollingRate));
+        std::this_thread::sleep_for(std::chrono::milliseconds(pollingRate + pulse ? 100 : 0));
     }
 }
 
