@@ -84,18 +84,20 @@ Inheritance diagram for goliath::commands::BasicCommand:</div>
 <area href="classgoliath_1_1commands_1_1Command.html" title="Command base class. " alt="goliath::commands::Command" shape="rect" coords="0,0,329,24"/>
 <area href="classgoliath_1_1commands_1_1DanceCommand.html" alt="goliath::commands::DanceCommand" shape="rect" coords="339,112,668,136"/>
 <area href="classgoliath_1_1commands_1_1EnterCommand.html" alt="goliath::commands::EnterCommand" shape="rect" coords="339,168,668,192"/>
-<area href="classgoliath_1_1commands_1_1InterruptCommandCommand.html" alt="goliath::commands::InterruptCommandCommand" shape="rect" coords="339,224,668,248"/>
-<area href="classgoliath_1_1commands_1_1InvalidateAllCommand.html" alt="goliath::commands::InvalidateAllCommand" shape="rect" coords="339,280,668,304"/>
-<area href="classgoliath_1_1commands_1_1LineDanceCommand.html" alt="goliath::commands::LineDanceCommand" shape="rect" coords="339,336,668,360"/>
-<area href="classgoliath_1_1commands_1_1MoveWingCommand.html" alt="goliath::commands::MoveWingCommand" shape="rect" coords="339,392,668,416"/>
-<area href="classgoliath_1_1commands_1_1ObstacleCourseCommand.html" alt="goliath::commands::ObstacleCourseCommand" shape="rect" coords="339,448,668,472"/>
-<area href="classgoliath_1_1commands_1_1SetWingPositionCommand.html" alt="goliath::commands::SetWingPositionCommand" shape="rect" coords="339,504,668,528"/>
-<area href="classgoliath_1_1commands_1_1ShutdownCommand.html" alt="goliath::commands::ShutdownCommand" shape="rect" coords="339,560,668,584"/>
-<area href="classgoliath_1_1commands_1_1SynchronizeBatteryVoltageCommand.html" alt="goliath::commands::SynchronizeBatteryVoltageCommand" shape="rect" coords="339,616,668,640"/>
-<area href="classgoliath_1_1commands_1_1SynchronizeCommandsCommand.html" alt="goliath::commands::SynchronizeCommandsCommand" shape="rect" coords="339,672,668,696"/>
-<area href="classgoliath_1_1commands_1_1SynchronizeSystemStatusCommand.html" alt="goliath::commands::SynchronizeSystemStatusCommand" shape="rect" coords="339,728,668,752"/>
-<area href="classgoliath_1_1commands_1_1TransportRebuildCommand.html" alt="goliath::commands::TransportRebuildCommand" shape="rect" coords="339,784,668,808"/>
-<area href="classgoliath_1_1commands_1_1WunderhornCommand.html" title="Command that follows a line and pauses on a coled area in the center. " alt="goliath::commands::WunderhornCommand" shape="rect" coords="339,840,668,864"/>
+<area href="classgoliath_1_1commands_1_1GripCommand.html" alt="goliath::commands::GripCommand" shape="rect" coords="339,224,668,248"/>
+<area href="classgoliath_1_1commands_1_1InterruptCommandCommand.html" alt="goliath::commands::InterruptCommandCommand" shape="rect" coords="339,280,668,304"/>
+<area href="classgoliath_1_1commands_1_1InvalidateAllCommand.html" alt="goliath::commands::InvalidateAllCommand" shape="rect" coords="339,336,668,360"/>
+<area href="classgoliath_1_1commands_1_1LineDanceCommand.html" alt="goliath::commands::LineDanceCommand" shape="rect" coords="339,392,668,416"/>
+<area href="classgoliath_1_1commands_1_1MoveArmCommand.html" alt="goliath::commands::MoveArmCommand" shape="rect" coords="339,448,668,472"/>
+<area href="classgoliath_1_1commands_1_1MoveWingCommand.html" alt="goliath::commands::MoveWingCommand" shape="rect" coords="339,504,668,528"/>
+<area href="classgoliath_1_1commands_1_1ObstacleCourseCommand.html" alt="goliath::commands::ObstacleCourseCommand" shape="rect" coords="339,560,668,584"/>
+<area href="classgoliath_1_1commands_1_1SetWingPositionCommand.html" alt="goliath::commands::SetWingPositionCommand" shape="rect" coords="339,616,668,640"/>
+<area href="classgoliath_1_1commands_1_1ShutdownCommand.html" alt="goliath::commands::ShutdownCommand" shape="rect" coords="339,672,668,696"/>
+<area href="classgoliath_1_1commands_1_1SynchronizeBatteryVoltageCommand.html" alt="goliath::commands::SynchronizeBatteryVoltageCommand" shape="rect" coords="339,728,668,752"/>
+<area href="classgoliath_1_1commands_1_1SynchronizeCommandsCommand.html" alt="goliath::commands::SynchronizeCommandsCommand" shape="rect" coords="339,784,668,808"/>
+<area href="classgoliath_1_1commands_1_1SynchronizeSystemStatusCommand.html" alt="goliath::commands::SynchronizeSystemStatusCommand" shape="rect" coords="339,840,668,864"/>
+<area href="classgoliath_1_1commands_1_1TransportRebuildCommand.html" alt="goliath::commands::TransportRebuildCommand" shape="rect" coords="339,896,668,920"/>
+<area href="classgoliath_1_1commands_1_1WunderhornCommand.html" title="Command that follows a line and pauses on a coled area in the center. " alt="goliath::commands::WunderhornCommand" shape="rect" coords="339,952,668,976"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -137,6 +139,10 @@ Protected Member Functions</h2></td></tr>
 <tr class="memitem:afc41c0188d04cf734070662af3b62555"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1commands_1_1BasicCommand.html#afc41c0188d04cf734070662af3b62555">execute</a> (<a class="el" href="classgoliath_1_1handles_1_1HandleMap.html">handles::HandleMap</a> &amp;handles, const proto::CommandMessage &amp;message)=0</td></tr>
 <tr class="memdesc:afc41c0188d04cf734070662af3b62555"><td class="mdescLeft">&#160;</td><td class="mdescRight">The actual execute method implemented by underlying commands.  <a href="#afc41c0188d04cf734070662af3b62555">More...</a><br /></td></tr>
 <tr class="separator:afc41c0188d04cf734070662af3b62555"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_methods_classgoliath_1_1commands_1_1Command"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_classgoliath_1_1commands_1_1Command')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="classgoliath_1_1commands_1_1Command.html">goliath::commands::Command</a></td></tr>
+<tr class="memitem:ac778c455595baf7c7b6a23d513f3c47d inherit pro_methods_classgoliath_1_1commands_1_1Command"><td class="memItemLeft" align="right" valign="top"><a id="ac778c455595baf7c7b6a23d513f3c47d"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>waitForInterrupt</b> ()</td></tr>
+<tr class="separator:ac778c455595baf7c7b6a23d513f3c47d inherit pro_methods_classgoliath_1_1commands_1_1Command"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>

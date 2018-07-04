@@ -87,9 +87,21 @@ Inheritance diagram for goliath::commands::LineDanceCommand:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a65a85c32969864f5164873ae37ae5985"><td class="memItemLeft" align="right" valign="top"><a id="a65a85c32969864f5164873ae37ae5985"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>LineDanceCommand</b> (const size_t &amp;id)</td></tr>
-<tr class="separator:a65a85c32969864f5164873ae37ae5985"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aabbf13663fcbd2b323eef447961ee8d2"><td class="memItemLeft" align="right" valign="top"><a id="aabbf13663fcbd2b323eef447961ee8d2"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>LineDanceCommand</b> (const size_t &amp;id, const std::shared_ptr&lt; <a class="el" href="classgoliath_1_1repositories_1_1WingStateRepository.html">repositories::WingStateRepository</a> &gt; &amp;repository)</td></tr>
+<tr class="separator:aabbf13663fcbd2b323eef447961ee8d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a89232c2fa084b7ca1baa163c085838e2"><td class="memItemLeft" align="right" valign="top"><a id="a89232c2fa084b7ca1baa163c085838e2"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>processPulse</b> ()</td></tr>
+<tr class="separator:a89232c2fa084b7ca1baa163c085838e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a90b48cb96e8a85c934e204149f3cb117"><td class="memItemLeft" align="right" valign="top"><a id="a90b48cb96e8a85c934e204149f3cb117"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>startBeat</b> ()</td></tr>
+<tr class="separator:a90b48cb96e8a85c934e204149f3cb117"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2efe4ded28ce59f4b34d8bfb4e5c6a6"><td class="memItemLeft" align="right" valign="top"><a id="ac2efe4ded28ce59f4b34d8bfb4e5c6a6"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>waitForBeat</b> ()</td></tr>
+<tr class="separator:ac2efe4ded28ce59f4b34d8bfb4e5c6a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acfce2ac44eaf67ae6bc0acdebf14a268"><td class="memItemLeft" align="right" valign="top"><a id="acfce2ac44eaf67ae6bc0acdebf14a268"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>listenGpio</b> (std::shared_ptr&lt; <a class="el" href="classgoliath_1_1gpio_1_1GPIO.html">gpio::GPIO</a> &gt; gpioDevice)</td></tr>
+<tr class="separator:acfce2ac44eaf67ae6bc0acdebf14a268"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classgoliath_1_1commands_1_1BasicCommand"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classgoliath_1_1commands_1_1BasicCommand')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classgoliath_1_1commands_1_1BasicCommand.html">goliath::commands::BasicCommand</a></td></tr>
 <tr class="memitem:ac828eb930f42975ac2018f65959196bc inherit pub_methods_classgoliath_1_1commands_1_1BasicCommand"><td class="memItemLeft" align="right" valign="top"><a id="ac828eb930f42975ac2018f65959196bc"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>BasicCommand</b> (const size_t &amp;id, const std::vector&lt; size_t &gt; &amp;requiredHandles)</td></tr>
@@ -124,6 +136,10 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
+<tr class="inherit_header pro_methods_classgoliath_1_1commands_1_1Command"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_classgoliath_1_1commands_1_1Command')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="classgoliath_1_1commands_1_1Command.html">goliath::commands::Command</a></td></tr>
+<tr class="memitem:ac778c455595baf7c7b6a23d513f3c47d inherit pro_methods_classgoliath_1_1commands_1_1Command"><td class="memItemLeft" align="right" valign="top"><a id="ac778c455595baf7c7b6a23d513f3c47d"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>waitForInterrupt</b> ()</td></tr>
+<tr class="separator:ac778c455595baf7c7b6a23d513f3c47d inherit pro_methods_classgoliath_1_1commands_1_1Command"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_classgoliath_1_1commands_1_1Command"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classgoliath_1_1commands_1_1Command')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classgoliath_1_1commands_1_1Command.html">goliath::commands::Command</a></td></tr>
 <tr class="memitem:a82b9acae7feb096c203efd219b408c94 inherit pro_attribs_classgoliath_1_1commands_1_1Command"><td class="memItemLeft" align="right" valign="top"><a id="a82b9acae7feb096c203efd219b408c94"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgoliath_1_1commands_1_1Command.html#a82b9acae7feb096c203efd219b408c94">running</a></td></tr>

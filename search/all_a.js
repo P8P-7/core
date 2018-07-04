@@ -8,6 +8,7 @@ var searchData=
   ['motorhandle',['MotorHandle',['../classgoliath_1_1handles_1_1MotorHandle.html',1,'goliath::handles']]],
   ['motorstatus',['MotorStatus',['../structgoliath_1_1motor__controller_1_1MotorStatus.html',1,'goliath::motor_controller']]],
   ['move_5fcommand_2eh',['move_command.h',['../move__command_8h.html',1,'']]],
+  ['movearmcommand',['MoveArmCommand',['../classgoliath_1_1commands_1_1MoveArmCommand.html',1,'goliath::commands']]],
   ['movecommand',['MoveCommand',['../classgoliath_1_1commands_1_1MoveCommand.html',1,'goliath::commands']]],
   ['movewingcommand',['MoveWingCommand',['../classgoliath_1_1commands_1_1MoveWingCommand.html',1,'goliath::commands']]]
 ];

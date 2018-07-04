@@ -1,8 +1,8 @@
 var searchData=
 [
   ['cannyprocessor',['CannyProcessor',['../classgoliath_1_1vision_1_1CannyProcessor.html',1,'goliath::vision']]],
-  ['circle',['Circle',['../structgoliath_1_1controller_1_1Circle.html',1,'goliath::controller']]],
-  ['circlemessage',['CircleMessage',['../structgoliath_1_1controller_1_1CircleMessage.html',1,'goliath::controller']]],
+  ['circle',['Circle',['../structgoliath_1_1led__controller_1_1Circle.html',1,'goliath::led_controller']]],
+  ['circlemessage',['CircleMessage',['../structgoliath_1_1led__controller_1_1CircleMessage.html',1,'goliath::led_controller']]],
   ['colorprocessor',['ColorProcessor',['../classgoliath_1_1vision_1_1ColorProcessor.html',1,'goliath::vision']]],
   ['colorregiondetector',['ColorRegionDetector',['../classgoliath_1_1vision_1_1ColorRegionDetector.html',1,'goliath::vision']]],
   ['command',['Command',['../classgoliath_1_1commands_1_1Command.html',1,'goliath::commands']]],

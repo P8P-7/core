@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['ledstatus',['LedStatus',['../structgoliath_1_1controller_1_1LedStatus.html',1,'goliath::controller']]],
-  ['ledstripcontroller',['LedStripController',['../classgoliath_1_1controller_1_1LedStripController.html',1,'goliath::controller']]],
+  ['ledstatus',['LedStatus',['../structgoliath_1_1led__controller_1_1LedStatus.html',1,'goliath::led_controller']]],
+  ['ledstripcontroller',['LedStripController',['../classgoliath_1_1led__controller_1_1LedStripController.html',1,'goliath::led_controller']]],
   ['linedancecommand',['LineDanceCommand',['../classgoliath_1_1commands_1_1LineDanceCommand.html',1,'goliath::commands']]],
   ['linedetector',['LineDetector',['../classgoliath_1_1vision_1_1LineDetector.html',1,'goliath::vision']]],
   ['logrepository',['LogRepository',['../classgoliath_1_1repositories_1_1LogRepository.html',1,'goliath::repositories']]]
